@@ -1,0 +1,202 @@
+		Software AG Command Central 10.15 WebUI Fix 10 readme
+
+                             August 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Software AG Command Central 10.15 WebUI Fix 10
+
+
+2.0 Fix ID
+
+CCE_10.15_WebUI_Fix10
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Software AG Command Central 10.15.
+
+
+
+4.0 Requirements and Dependencies
+
+Software AG Command Central 10.15 Fix 10
+
+
+5.0 Platform Support
+
+The fix is supported on all platforms supported by 
+Software AG Command Central 10.15.
+
+
+
+6.0 Cautions and Warnings
+
+On a Windows operating system, if you uninstall Fix 6 or higher to downgrade to Fix 5 or higher, you must re-register the Command Central Windows service before starting it. 
+For more information, see section 9.0 Uninstallation. 
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+CCE-8385 (CCE_10.15_WebUI_Fix5)
+In the Command Central web user interface, when you navigate to Installations 
+and attempt to sort the available installations by status, the Status column 
+does not display the installations in the correct order.
+
+The issue is resolved. 
+
+CCE-8371 (CCE_10.15_WebUI_Fix5)
+In the Command Central web user interface, the Create Mirror Repository 
+dialog box does not display the last letter of long repository names in 
+the "Repositories to use as sources" and "Product repositories to filter by" fields.
+
+The issue is resolved. 
+
+CCE-8309 (CCE_10.15_WebUI_Fix5)
+When upgrading a stack using the Stacks view of the Command Central web user 
+interface, the Credentials drop-down box provides the option to use a password-only 
+alias. However, when using the password-only alias for upgrading a stack, 
+the upgrade operation fails with an exception.
+
+The issue is resolved. The password-only alias is no longer listed in the
+Credentials drop-down box. 
+
+CCE-8209 (CCE_10.15_WebUI_Fix4)
+In the Command Central web user interface, when you navigate to Installations > 
+Environments, if the list of environments does not fit on the screen and you scroll 
+down to select an environment from the bottom of the list, the scroll bar incorrectly 
+goes back to the top.
+
+The issue is resolved. Now the scroll bar stays at the correct position. 
+
+CCE-8193 (CCE_10.15_WebUI_Fix4)
+In the Command Central web user interface, the Create Mirror Repository dialog 
+box does not fully display long repository names in the "Repositories to use as 
+sources" and "Product repositories to filter by" fields.
+
+The issue is resolved. Now a scroll bar appears on the bottom of the fields if 
+they contain repositories with long names. 
+
+
+CCE-8095 (CCE_10.15_WebUI_Fix4)
+Software AG Command Central uses an outdated version of the 
+third-party gwt-material-jquery component, which has known security vulnerabilities.
+
+The issue is resolved. The gwt-material-jquery.jar file is migrated to the stable 
+version 2.6.1.
+
+
+CCE-7982 (CCE_10.15_WebUI_Fix4)
+When creating a layer configuration in the Stacks view of the Command Central 
+web user interface, the Credentials Aliases drop-down box incorrectly lists 
+username credentials entries for password-only credentials aliases.
+
+The issue is resolved. Now the Credentials Aliases drop-down box lists only 
+password entries for password-only credentials aliases. 
+
+
+CCE-7944 (CCE_10.15_WebUI_Fix4)
+In the Stacks view of the Command Central web user interface, when adding a 
+new node with a new runtime and a new database layer, the tooltip and labels 
+for the available properties for the database layer are incorrect. 
+Furthermore, the dropdown list for selecting property values from
+another layer is empty but the button for it appears enabled.
+
+The issue is resolved. The toolttip and labels are now correct and the button 
+for empty dropdown list is disabled. 
+
+CCE-8125 (CCE_10.15_WebUI_Fix3)
+In the Add Installation wizard in the Command Central web user interface, when 
+you add a new installation with a hostname value different than "localhost" and 
+you select "Install Platform Manager", the "Summary" step states that Platform 
+Manager is already installed, which is incorrect.
+
+The issue is resolved. The "Summary" step now correctly states that Platform 
+Manager will be installed. 
+
+
+CCE-7964 (CCE_10.15_WebUI_Fix2)
+The Command Central web user interface stops responding when you navigate to 
+CCE > Command Central Server in the local installation, select the Configuration 
+tab, and click the CCE link to navigate back.
+
+The issue is resolved.
+
+CCE-7819 (CCE_10.15_WebUI_Fix1)
+In the Command Central web user interface, the switches for the credentials 
+properties do not work properly and are not aligned.
+
+The issue is now resolved.
+
+
+CCE-7825 (CCE_10.15_WebUI_Fix1)
+When adding a new node or runtime or upgrading a stack, the list of credentials 
+alias parameters is not sorted.
+
+The issue is now resolved. 
+
+
+CCE-7828 (CCE_10.15_WebUI_Fix1)
+When upgrading a stack or creating a runtime or database layer in the stack, 
+if you want to re-use the value of a property from other layers in the stack, 
+the list of available properties is empty.
+
+The issue is now resolved. 
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a central location (9.7 or later), 
+or IBM webMethods Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at https://www.ibm.com/docs/en/products.
+
+
+
+9.0 Uninstallation
+
+If you are running Command Central on a Windows operating system, and you uninstall Fix 6 or higher to downgrade to Fix 5 or higher, Command Central might fail to start. 
+The issue occurs because the Tanuki Java Service Wrapper reverts from version 3.5.53 to version 3.5.50. 
+Fix 5 or higher of Command Central reference should reference the newer version of the wrapper, while Fix 4 and lower should reference reference the older version.
+Re-registering the Command Central Windows service ensures that Command Central references the correct version of the Tanuki wrapper.
+To re-register the Command Central Windows service:
+1.Open a command prompt, navigate to the [Software AG_directory]\profiles\CCE\bin directory and run the following command to remove the Command Central service:
+service.bat -remove
+3.Run the following command to register the Windows service for Command Central:
+service.bat -install
+
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+
+Uninstall using IBM webMethods Command Central or IBM webMethods Update Manager. For instructions, see 
+the documentation at https://www.ibm.com/docs/en/products.
+
+
+10.0 Copyright
+
+Copyright IBM Corporation 2025

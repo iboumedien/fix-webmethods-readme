@@ -1,0 +1,280 @@
+			SAG Web Services Stack 10.5 Fix 11 readme
+
+                    July 2022
+
+________________________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+SAG Web Services Stack 10.5 Fix 11
+
+
+
+2.0 Fix ID
+
+WSS_10.5_OSGi_Fix11
+
+
+3.0 Product(s)/Component(s) Affected
+
+
+This fix affects SAG Web Services Stack 10.5.
+
+
+
+4.0 Requirements
+
+This fix requires SAG Web Services Stack 10.5. 
+SAG Web Services Stack 10.5 Fix 11 
+must be installed together with WSSCore_10.5.0_Fix11,wMFix.WSSWebApp;version 
+if the products for these fixes are installed on the system. 
+
+Official fixes are cumulative. Therefore, you can install the specified fix or later.
+
+For language pack requirements, see the Globalization section of the Software AG
+Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported
+by webMethods Product Suite 10.5.
+
+
+
+6.0 Cautions and Warnings
+
+Software AG Tomcat Server is stopped by Software AG Update 
+Manager, therefore it must be restarted after applying the fix.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+WSSTACK-3811
+Software AG Web Services Stack uses the third-party Spring library v. 5.3.18, 
+which has а security vulnerability CVE-2022-22968.
+This issue is resolved. Web Services Stack now uses the stable version 
+Spring 5.3.21.
+
+WSSTACK-3864
+The Software AG Web Services Stack uses a version of
+Apache Commons-IO that has known vulnerabilities.
+This issue is resolved. Apache Commons-IO is upgraded to the stable
+version 2.10.0.
+
+WSSTACK-3676
+Web Services Stack uses the third-party XmlSec library v.1.5.6, which has а security vulnerability.
+This issue is resolved.
+
+WSSTACK-3793
+Web Services Stack uses the third-party Spring library which has а security vulnerability.
+This issue is resolved.
+
+WSSTACK-3721
+A security vulnerability exists in the third-party Log4j library.
+This issue is resolved. Web Services Stack now uses 
+Log4j 2.17.1, where this vulnerability is fixed.
+ 
+
+WSSTACK-3716
+The Web Services Stack now uses Apache Log4j version
+from Common OSGi Platform 
+
+WSSTACK-3696
+The Web Services Stack uses a version of Apache Log4j
+that has known vulnerabilities.
+This issue is resolved. The Web Services Stack now uses
+the stable version Apache Log4j 2.16.0.
+ 
+
+WSSTACK-3584
+A security vulnerability exists in the third-party XmlBeans library.
+This issue is resolved. Web Services Stack now uses
+XmlBeans 3.1.0, where this vulnerability is fixed.
+
+WSSTACK-3539
+When you populate a service from a large WSDL file 
+with multi-level nested elements, a stack overflow may occur.
+
+This issue is resolved.
+ 
+
+WSSTACK-3591
+When installing the Web Services Stack Core and Web Services Stack Web
+Application fixes, an old version of the third-party Bouncy Castle library
+might remain installed in Web Services Stack.
+This issue is resolved. Web Services Stack now always uses Bouncy Castle 1.68.
+
+OGI-2604
+A security vulnerability exists in the third-party Bouncy Castle library.
+This issue is resolved. Software AG Common Platform now uses
+Bouncy Castle 1.68, where this vulnerability is fixed.
+ 
+
+WSSTACK-3488
+In Software AG Web Services Stack, a security vulnerability exists in 
+the third-party Quartz library.
+
+This issue is resolved. Web Services Stack no longer uses the Quartz library.
+ 
+
+WSSTACK-3502
+In Software AG Web Services Stack, false warnings “Cannot uniquely identify
+endpoint for service” are displayed during SOAP message processing.
+
+This issue is resolved.
+ 
+
+WSSTACK-3270
+When deploying Software AG Web Services Stack on an Apache Tomcat
+Installation, the multipart request does not contain a Cross-site request
+forgery (CSRF) token.
+
+This issue is resolved.
+
+OGI-2069
+A security vulnerability exists in the third-party Bouncy Castle library.
+
+This issue is resolved.
+
+WSSTACK-3412
+When an encryption key is transferred in a SOAP message in Web Services Stack,
+the message does not state the digest method algorithm that is used.
+This issue is resolved.
+
+WSSTACK-3419
+Web Services Stack logs may show sensitive information.
+
+This issue is resolved.
+
+WSSTACK-3434
+Web Services Stack does not support the configuration of a WS-A anonymous
+address for the WS-RM AcksTo element.
+This issue is resolved. You can configure the WS-A anonymous address with the
+UseRMAnonURI option in the WS-Policy.
+ 
+
+WSSTACK-3382
+The Web Services Stack client does not support a custom HTTP Host header.
+
+This issue is resolved.
+ 
+
+WSSTACK-3353
+When using an XML schema compiler in Web Services Stack, the primitive
+data fields that are marked as nillable do not accept null values at runtime.
+
+This issue is resolved.
+
+
+
+8.0 Installation
+
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or Software AG Update Manager to install 
+fixes on one machine at a time. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was tested
+with non-English configurations and non-ASCII data.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new 
+messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2022 Software AG, Darmstadt, Germany and/or Software AG USA Inc.,
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks
+or registered trademarks of Software AG and/or Software AG USA Inc. 
+and/or its subsidiaries and/or its affiliates and/or their licensors.
+Other company and product names mentioned herein may be trademarks
+of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries
+is located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. 
+For third-party copyright notices, license terms, additional rights or restrictions,
+please refer to "License Texts, Copyright Notices and Disclaimers of Third Party Products".
+For certain specific third-party license restrictions, please refer to section E of 
+the Legal Notices available under "License Terms and Conditions for Use of Software AG Products /
+Copyright and Trademark Notices of Software AG Products". 
+These documents are part of the product documentation, located at
+http://softwareag.com/licenses and/or in the root installation directory of the licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

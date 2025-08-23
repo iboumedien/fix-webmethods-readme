@@ -1,0 +1,321 @@
+        webMethods Flat File 10.7 Fix 17 readme
+
+                          June 2025
+						  
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+
+1.0 Fix Name
+
+webMethods Flat File 10.7 Fix 17
+
+
+2.0 Fix ID
+
+WFF_10.7_Fix17
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Flat File
+
+
+4.0 Requirements and Dependencies
+
+None
+
+
+5.0 Platform Support
+
+The fix is supported on the same platforms as webMethods Integration Server.
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+WF-35957
+
+Fix includes security updates with no new features to existing user-facing
+functionalities.
+
+WFF-1117 (WFF_10.7_Fix16)
+
+In the webMethods FlatFile module, the file poller fails to process files
+because it is unable to delete lock files properly.
+
+The issue is resolved.
+
+WFF-1115 (WFF_10.7_Fix16)
+
+In the webMethods module for FlatFile, the File Polling Port does not honor the
+input provided for the Number of files to process per interval.
+
+The issue is resolved.
+
+WFF-1079 (WFF_10.7_Fix15)
+
+In the IBM webMethods FlatFile module, the service pub.flatFile:convertToString 
+generates an incorrect output when the service inputs are configured as below:
+
+a) The input ffValues contains a Record for which the first field data is missing.
+b) The input ffSchema has the below definition:
+1) The value of Starts at position of Record Identifier is set to 0
+2) The value of the Nth Field Extractor for the first field is set to 0
+c) The noEmptyTailingFields is set to false
+
+This issue is resolved.
+
+WFF-1064 (WFF_10.7_Fix14)
+
+In the webMethods module for Flat File, the copyright information is updated.
+
+This issue is now resolved.
+
+WFF-1029 (WFF_10.7_Fix13)
+
+In the webMethods FlatFile module 10.7, the throughput of the service
+"pub.flatFile:convertToValues" reduces when you run this service with a fixed
+length Flat File Schema as the input "ffSchema."
+
+This issue is resolved.
+
+WFF-1012 (WFF_10.7_Fix12)
+ 
+In the webMethods FlatFile module, the "pub.flatFile:getSupportedEncodings"
+service returns an empty output, when you use OpenJ9 JVM.
+ 
+This issue is resolved.
+
+WFF-1010 (WFF_10.7_Fix12)
+
+In the webMethods FlatFile module, the "pub.flatFile:convertToValues" service
+returns an incorrect output for a fixed length Flat File Schema when the input
+"ffData" is a stream created from a remote file using SFTP client version 1.
+ 
+This issue is resolved.
+
+WFF-995 (WFF_10.7_Fix11)
+
+In the webMethods FlatFile module, when you set the input parameter Encoding
+to a Custom Character Encoding such as WM_UTF8 and run the service
+"pub.flatFile:convertToString", the following error appears:
+"com.wm.lang.flow.FlowException:java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer."
+
+This issue is resolved.
+
+WFF-981 (WFF_10.7_Fix10)
+
+The "pub.flatFile:convertToString" service generates the Nth fields data 
+incorrectly in the output for a Position based Flat File Schema.
+
+This issue is resolved.
+
+WFF-923 (WFF_10.7_Fix9)
+
+When you submit the "return to port link" on the file poling port details page
+in the UI, the link displays a query parameter containing the Cross-Site Request
+Forgery token in the URL.
+
+This issue is resolved.
+
+WFF-918 (WFF_10.7_Fix9)
+
+In webMethods FlatFile module, "pub.flatFile:convertToString" produces an extra
+newline in the output when the Flat File schema input has a default record.
+
+This issue is now resolved.
+
+WFF-911 (WFF_10.7_Fix9)
+
+In webMethods FlatFile module, File Polling Port does not validate invalid 
+'File Name Filter' input pattern when enabling the port for polling.
+
+This issue is now resolved.
+
+WFF-895 (WFF_10.7_Fix8)
+
+When the input data has multiple errors, "batchSize" input is set, 
+and "returnErrors" is set to "asArray", "pub.flatFile:convertToValues"
+service throws ArrayIndexOutOfBoundsException.
+
+This issue is now resolved.
+
+WFF-885 (WFF_10.7_Fix8)
+
+When the input field "returnErrors" is set to "inResults" in
+"pub.flatFile:convertToValues", the output field "isValid" is
+returned "true" even though the input data has errors.
+
+This issue is now resolved.
+
+WFF-875 (WFF_10.7_Fix7)
+
+Not able to save the edit/changes on file polling port from IS Administrator UI,
+Now this issue is resolved
+
+WFF-871 (WFF_10.7_Fix6)
+
+WmFlatFile 10.7 Fix 5 is not cumulative of all the previous fixes.
+
+This issue is now resolved.
+
+WFF-789 (WFF_10.7_Fix6)
+
+"pub.flatFile:convertToString" omits Composite fields data
+in the output for a Position based Flat File Schema.
+
+This issue is now resolved.
+
+WFF-843 (WFF_10.7_Fix5)
+
+While creating a File Polling configuration, Alias field input is not validated.
+
+This issue is now resolved.
+
+DTS-1599 (WFF_10.7_Fix5)
+
+The Server > Ports > 'Add file polling configuration' page displays additional 
+text as part of the 'Return to Ports' link.
+
+On the 'Add file polling configuration' page, the link to return to the Ports 
+page is "Return to Ports?webMethods-wM-AdminUI=true".
+
+This issue is now resolved.
+
+WFF-777 (WFF_10.7_Fix5)
+
+File Polling Transport data "length" value is 0 in some cases
+when the monitor directory is NAS directory even though the file
+has content in it.
+
+This issue is now resolved.
+
+WFF-803 (WFF_10.7_Fix4)
+
+Failure to handle user-supplied input resulted in a reflective cross-site
+scripting vulnerability within the File Polling interface.
+
+This issue is now resolved.
+
+WFF-755 (WFF_10.7_Fix3)
+
+When WmFlatFile config property "recordIdentifierPre105Version" is set to "true"
+and Nth field Record Identifier is used,
+
+a) "pub.flatFile:convertToString" adds the Record Identifier to the output.
+
+b) "pub.flatFile:convertToString" does not add the Record Identifier to the
+output when the field defined at the same position as Nth field Record 
+Identifier does not include Record Identifier as value.
+
+The above two issues are now resolved.
+
+WFF-750 (WFF_10.7_Fix3)
+
+File Polling ignores de-duplicated files from the monitor directory.
+
+This issue is now resolved.
+
+WFF-728 (WFF_10.7_Fix3)
+
+In webMethods FlatFile module, 'pub.flatFile:convertToValues' service cannot
+process the records in batches.
+
+This issue is now resolved and the service takes batchSize input to process the
+records in batches.
+
+WFF-703 (WFF_10.7_Fix1)
+
+The webMethods FlatFile module was not reading the sef file with segment/element
+description text and not displaying the same in the designer.
+
+This issue is now resolved.
+
+WFF-692 (WFF_10.7_Fix1)
+
+In webMethods FlatFile module, 'pub.flatFile.generate:getFFSchemaAsXML' was not
+able to recognize the UUIDs of CodeListValidator from the Flat file Schema due
+to which the output 'FFXML' did not include UUIDs and was incorrect.
+
+This issue is now resolved and the 'pub.flatFile.generate:getFFSchemaAsXML'
+service returns the expected output.
+
+WFF-690 (WFF_10.7_Fix1)
+
+In webMethods FlatFile module, 'pub.flatFile:convertToString' generates an extra 
+field delimiter in the end of the output string when 'noEmptyTrailingFields' is
+set to 'false'.
+
+This issue is now resolved and the 'pub.flatFile:convertToString' service
+returns the expected output.
+
+WFF-682 (WFF_10.7_Fix1)
+
+In webMethods FlatFile module, 'pub.flatFile:convertToString' service used to
+generate incorrect output when the extractor position of the fields in the 
+flatfile schema are not sequential.
+
+This issue is now resolved and the 'pub.flatFile:convertToString' service
+returns the expected output.
+
+WFF-677 (WFF_10.7_Fix1)
+
+In webMethods EDI module, the wm.b2b.edi:convertToString service was not 
+returning the expected output.
+
+This issue is now resolved and the service returns the expected output.
+
+WFF-676 (WFF_10.7_Fix1)
+
+In webMethods FlatFile module, the pub.flatFile:convertToString service was 
+returning an empty string for EDI data.
+
+This issue is now resolved and the service returns the expected output.
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. 
+For instructions, see the documentation at https://docs.webmethods.io.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using IBM webMethods Update Manager.
+For instructions, see the documentation at https://docs.webmethods.io.
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

@@ -1,0 +1,168 @@
+     webMethods Oracle Applications Adapter 6.0 Fix 12 readme
+
+                         May 2016
+_________________________________________________________________
+
+This file provides important information for applying webMethods
+Oracle Applications Adapter 6.0 Fix 12 to webMethods Oracle
+Applications Adapter 6.0. For additional information about
+webMethods Oracle Applications Adapter 6.0, see the readme in the
+directory in which you installed webMethods Oracle Applications
+Adapter.
+
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Product(s)/Component(s) Affected
+3.0   Fix Requirements
+4.0   Fix Contents
+5.0   Platform Support
+6.0   Installation
+7.0   Uninstallation
+8.0   Cautions and Warnings
+9.0   Globalization
+9.1   Localization
+10.0  Copyright
+11.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+webMethods Oracle Applications Adapter 6.0 Fix 12.
+
+
+
+2.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Oracle Applications Adapter.
+
+
+
+3.0 Fix Requirements
+
+You must install webMethods Oracle Applications Adapter 6.0
+before installing this fix.
+
+
+
+4.0 Fix Contents
+
+WOA-236
+
+webMethods Oracle Applications Adapter support for new Admin screens 
+IS 9.10 onwards. 
+
+webMethods Oracle Applications Adapter Admin UI pages did not support
+new format of screens developed for IS 9.10. 
+
+This issue is resolved now by modifying the webMethods Oracle
+Applications Adapter pages.
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods Oracle
+Applications Adapter.
+
+
+
+6.0 Installation
+
+Install the fix using the Software AG Update Manager.
+For instructions, see Using the Software AG Update Manager
+located either in the _documentation directory or on the
+documentation Web site at http://documentation.softwareag.com.
+
+
+
+7.0 Uninstallation
+
+Uninstall the fix using the Software AG Update Manager.
+For instructions, see Using the Software AG Update Manager.
+
+NOTE: This uninstall procedure can only be used to uninstall the
+most recently installed fix. This action will revert your
+installation to the previously installed fix. You cannot apply
+this uninstall procedure to the previously installed fix.
+
+
+
+8.0 Cautions and Warnings
+
+None.
+
+
+
+9.0 Globalization
+
+This fix conforms to the internationalization standards of the
+webMethods product suite and includes support for operation in
+any country, locale, or language as specified in the webMethods
+Installation Guide. It was not tested with non-English
+configurations and non-ASCII data. However, this fix has no
+globalization impact and can be applied to systems running in
+any supported locale or configuration.
+
+
+9.1 Localization
+
+This fix does not require an updated Language Pack. It might
+contain new messages and these messages will appear in English.
+
+
+
+10.0 Copyright
+
+Copyright (c) 2016 Software AG, Darmstadt, Germany and/or
+Software AG USA Inc., Reston, VA, USA, and/or its subsidiaries
+and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either
+trademarks or registered trademarks of Software AG and/or
+Software AG USA Inc. and/or its subsidiaries and/or its
+affiliates and/or their licensors. Other company and product
+names mentioned herein may be trademarks of their respective
+owners.
+
+Detailed information on trademarks and patents owned by
+Software AG and/or its subsidiaries is located at
+http://softwareag.com/licenses.
+
+This software may include portions of third-party products.
+For third-party copyright notices, license terms, additional
+rights or restrictions, please refer to "License Texts, Copyright
+Notices and Disclaimers of Third Party Products". For certain
+specific third-party license restrictions, please refer to
+section E of the Legal Notices available under "License Terms and
+Conditions for Use of Software AG Products / Copyright and
+Trademark Notices of Software AG Products". These documents are
+part of the product documentation, located at
+http://softwareag.com/licenses and/or in the root installation
+directory of the licensed product(s). 
+
+
+11.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG
+Global Support in the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: wecare@softwareag.com
+
+You can find complete contact information in our Global Support
+Contact Directory at:
+
+  https://empower.softwareag.com/public_directory.asp
+
+You can also participate in our Software AG Developer
+Communities,
+which feature technical information, useful resources, and online
+discussion forums, moderated by Software AG professionals, to
+help you do more with technology:
+
+http://www.softwareag.com/Corporate/community/dev_net/default.asp

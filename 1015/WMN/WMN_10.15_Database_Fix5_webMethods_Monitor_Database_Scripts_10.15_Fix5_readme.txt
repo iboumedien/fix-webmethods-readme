@@ -1,0 +1,134 @@
+                       webMethods Monitor 10.15 Database Fix 5 readme
+
+                                      July 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Monitor 10.15 Database Fix 5.
+
+
+
+2.0 Fix ID
+
+MON_10.15_Database_Fix5
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Monitor Archive components.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods Monitor 10.15.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+WMN-8803
+In webMethods Monitor, pub.monitor.archive:processArchive incorrectly deletes data from the WMCUSTOMFIELDDEFINITION, WMSTEPTRANSITIONDEFINITION, WMPROCESSIMAGE, and WMSTEPDEFINITION tables in the Process Audit Log database component.
+
+The issue is resolved. 
+
+PIE-94409 (MON_10.15_Database_Fix4)
+An issue in the SERVICE_ARCHIVE stored procedure logic affects the performance
+in webMethods Monitor.
+
+In webMethods Monitor, when batch mode is enabled, the deletion loop runs
+unnecessarily without processing any records due to a logic error in the stored
+procedure.
+
+This issue is now resolved.
+
+WDA-1910 (MON_10.15_Database_Fix3)
+In webMethods Monitor, when you set the USE_BATCH_ARCHIVE flag in the OPERATION_PARAMETER table to TRUE, serviceArchive fails with an error: "ORA-00001: unique constraint (IDX_SVC_MINMAX_CTX) violated." The issue occurs when Integration Server uses an Oracle database.
+
+The issue is resolved.
+
+WMN-8428 (MON_10.15_Database_Fix3)
+In webMethods Monitor, the serverArchive service fails with an error: "ORA-06502: PL/SQL: numeric or value error: number precision too large."
+
+The issue is resolved.
+
+WMN-8377 (MON_10.15_Database_Fix2)
+In webMethods Monitor, when you execute a stored procedure to archive or delete data from a database table, 
+the procedure blocks new inserts into that table.
+
+The issue is resolved.
+
+WMN-8299 (MON_10.15_Database_Fix2)
+In webMethods Monitor, when you create ProcessAudit and Archive in the same Oracle database schema,
+the PRA_CUSTOM_PROCESS1 trigger is missing from the PRA_PROCESS_CUSTOM database table.
+
+The issue is resolved.
+
+WMN-8304 (MON_10.15_Database_Fix2)
+In webMethods Monitor, when Integration Server uses a Microsoft SQL Server database, the PROCESS_ARCHIVE_START_PROCESSARCHIVE 
+procedure fails with an error: "Invalid column name 'contextid'".
+
+The issue is resolved.
+
+WMN-8099 (MON_10.15_Database_Fix1)
+When you migrate an Oracle Database from a Monitor 10.5 installation to a Monitor 10.11 installation, 
+the PRA_CUSTOM_PROCESS1 trigger from the PRA_PROCESS_CUSTOM database table is missing.
+
+The issue is resolved.
+
+WMN-8167 (MON_10.15_Database_Fix1)
+In webMethods Monitor, when Integration Server uses an Oracle Server database and 
+OPERATION_PARAMETER.USE_BATCH_ARCHIVE is set to TRUE, the PROCESS_ARCHIVE procedure fails with an error: 
+“ORA-06502: PL/SQL: numeric or value error: number precision too large.”
+
+The issue is resolved.
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a central  location (9.7 or later
+products), or IBM webMethods Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action
+will revert your installation to the previously installed fix. You cannot use these instructions to
+uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Command Central (9.7 or later) or IBM webMethods Update Manager. For instructions, see
+the documentation at https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025.

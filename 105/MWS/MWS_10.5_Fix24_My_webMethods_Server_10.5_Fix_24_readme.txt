@@ -1,0 +1,244 @@
+                   My webMethods Server MWS 10.5 Fix 24 readme
+
+                                       July 2024
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+My webMethods Server 10.5 Fix 24.
+
+
+
+2.0 Fix ID
+
+MWS_10.5_Fix24
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+
+
+
+4.0 Requirements and Dependencies
+
+My webMethods Server Database Scripts 10.5 Fix5
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product 
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+1. If MWS_10.5_Fix24 is the first My webMethods Server fix installed using Software AG 
+   Update Manager then the fix cannot be uninstalled using Software AG Update Manager.
+   To uninstall the fix later, stop My webMethods Server and back up the My webMethods Server 
+   database and file system before installing the fix.
+   Please see section 9.0 Un-Installation.
+    
+
+2. Before starting a Fix installation shut down all My    webMethods Server cluster nodes. 
+   Software AG Update Manager will shut down and restart My webMethods Server during fix 
+   installation. Software AG Update Manager waits for a preconfigured time of 300000 ms (5 mins) 
+   for My webMethods Server to shut down and restart. If a particular My    webMethods Server 
+   installation takes more time for shutdown and restart, you can configure the wait time by setting
+   the following system property for Software AG Update Manager.
+   -Dmws.shutdown.waittime = <time_in_ms>
+   
+3. If multiple nodes exist in one SAG installation directory, the Software AG Update Manager will 
+   install the fix on only the default node. The default node is determined to be the node named 
+   'default' or the first node subdirectory found in /MWS/server/. Other nodes will require that 
+   the fix be applied manually. Following are these manual steps:
+
+   a. Create a fix image containing the MWS official fix e.g. MWS_10.5_Fix1.
+
+   b. Open the fix image using 7zip and locate MWS fix, e.g. wMFix.MwsProgramFiles_10.5.0.001-0033, 
+   in 'binary' folder.
+
+   c. Browse further inside the fix and copy content from \MWS\server\default\* to the 
+   <SAG installation directory>\MWS\server\<server node>\*.
+
+   d. Copy the fix xml file, e.g. MWS_10.5_Fix1.xml, from 
+   <SAG installation directory>\MWS\server\default\deploy to
+   <SAG installation directory>\MWS\server\<server instance>\deploy and restart the MWS server node.
+
+   e. Run the command 'mws -s <server instance> update' at location
+   <SAG installation directory>\MWS\bin and restart the MWS server node again.
+   
+4. If the cluster nodes are on different installation/machines, the fix installation should be done 
+   sequentially for each My webMethods Server cluster node. Wait for Software AG Update Manager to 
+   complete Fix installation on one My webMethods Server installation before installing the fix to 
+   another cluster node installation/machine.
+
+5. If you have a webMethods product that runs outside of the current webMethods installation 
+   directory (the directory in which you installed this fix) and uses any of the files in
+   <webMethods_directory>/common/lib, then apply this fix to the other product installation
+
+6. If you are applying this fix as part of the My webMethods Server Overinstall Upgrade 
+   from v7.1.x or v8.0.x or v8.2.x to v9.5.1, please follow the steps below:
+   
+   a. Complete installation of My webMethods Server 10.5 but do not select Upgrade My webMethods 
+   Server Instances during installation. Once the overinstall is complete and the My webMethods 
+   Server database components have been migrated, start the Software AG Upgrade Manager to install 
+   the fix. This step will copy all the fix files and exit without trying to install the copied files.  
+
+   b. Run the My webMethods Server initialization by executing the command "mws init" from 
+   <installDir>/MWS/bin, which will install all of the upgraded components. After completing the
+   installation of upgraded components, My webMethods Server will shut down automatically. 
+   You can then restart My webMethods Server normally.
+   
+7. Applying a fix reverts the changes made to files MWS\server\default\bin\server.properties.[bat|sh],
+   MWS\bin\setenv.[bat|sh], MWS\bin\mws.[bat|sh], MWS\server\default\config\wrapper.conf.template to
+   their default values.
+   If you have made changes to these files, please create a backup of these files before applying 
+   the fix. After the fix is applied reapply the changes.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+MWS-30770 (MWS_10.5_Fix24)
+The instance management commands for My webMethods Server do not provide an option for installing
+the latest available fixes when creating or recreating a new server instance, or the OSGi profile
+for a server instance.
+
+The issue is resolved. The instance management scripts are enhanced to support the creation of
+instances, patched to the latest fix level available in the configured fix repository. Now the
+CLI utility for My webMethods Server will invoke Software AG Update Manager and install the latest
+available fixes each time you issue one of the following commands:
+
+mws new - to create a new server instance; mws create-osgi-profile - to create an OSGi profile for
+a server instance. By default The CLI utility for My webMethods Serve looks for Software AG
+Update Manager in the same installation directory as your My webMethods Server installation. You
+can specify a different Update Manager location, and further customize the Update Manager
+behavior by adding a sum.properties file in <Software AG_installation_directory>/MWS/bin. The
+sum.properties file can contain the following parameters:
+
+sum.install.dir=<dir> - Full path to the Update Manager installation directory. Optional. If empty
+or not specified, the default is <Software AG_installation_directory>/SAGUpdateManager.
+sum.image.location=<path> - Full path to an existing fix image. Optional. sum.empower.user=<user>
+- The Update Manager user. Optional. sum.empower.pass=pass_or_pass_file> - The Update Manager
+password. Optional. Valid values are: plain text, encypted password, or a password file. Specify
+the password file as a fully qualified URI as in
+sum.empower.pass=file:/C:/my_files/my_pass_file/sum_pass.txt. Encrypt the pasword using the
+procedure, documented in Administering My webMethods Server. In addition, the CLI utility for My
+webMethods Server will attempt to call Software AG Update Manager and refresh the metadata it
+stores for a server instance each time you issue the delete or delete-osgi-profile commands.
+
+
+
+
+MWS-32776 (MWS_10.5_Fix24)
+<Remove me from the official fix readme>
+
+
+
+
+WTN-6023 (MWS_10.5_Fix24)
+Task Engine does not fire scheduled task events after you modify the original schedule time.
+
+After a scheduled task event fires and you change the schedule time for the event, Task Engine
+does not trigger the event again.
+
+The issue is resolved.
+
+
+
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+1. If this is the first time you are installing a fix using the Software AG Update Manager, stop 
+   My webMethods Server and back up the My webMethods Server database and file system before 
+   applying the fix.   
+
+2. Important: See Section 6.0 Cautions and Warnings, point 6 in case you want to apply this fix to 
+   an environment being upgraded.
+
+
+
+9.0 Uninstallation
+
+These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+You can only uninstall one My webMethods Server fix at a time. Make sure you backup your server 
+settings before uninstalling My webMethods Server fixes.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was not tested with non-English configurations and non-ASCII data. However, this 
+fix has no globalization impact and can be applied to systems running in any supported locale or 
+configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2020 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, 
+and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or registered trademarks
+of Software AG and/or Software AG USA Inc. and/or its subsidiaries and/or its affiliates and/or 
+their licensors. Other company and product names mentioned herein may be trademarks of their 
+respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries is 
+located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party copyright notices, 
+license terms, additional rights or restrictions, please refer to "License Texts, Copyright Notices 
+and Disclaimers of Third Party Products". For certain specific third-party license restrictions, 
+please refer to section E of the Legal Notices available under "License Terms and Conditions for 
+Use of Software AG Products / Copyright and Trademark Notices of Software AG Products". 
+These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the licensed product(s).

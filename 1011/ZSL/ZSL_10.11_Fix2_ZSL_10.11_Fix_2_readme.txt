@@ -1,0 +1,176 @@
+    Central Security Library 10.11 Fix 2 readme
+
+                          January 2024
+
+_________________________________________________________________
+
+This file provides important information for applying
+Central Security Library 10.11 SP1 Fix 2 to Central Security 
+Library 10.11 SP1. For additional information about Central 
+Security Library 10.11 SP1, see the readme file in the 
+_documentation directory of your Software AG installation
+(if installed) or on the Empower Web site at
+https://empower.softwareag.com.
+
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Product(s)/Component(s) Affected
+3.0   Fix Requirements
+4.0   Fix Contents
+5.0   Platform Support
+6.0   Installation
+7.0   Uninstallation
+8.0   Cautions and Warnings
+9.0   Globalization
+10.0  Copyright
+11.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+Central Security Library 10.11 Fix 2
+
+
+2.0 Product(s)/Component(s) Affected
+
+This fix affects Central Security Library 10.11
+
+
+
+3.0 Fix Requirements
+
+For language pack requirements, see the Globalization section
+of the Software AG Empower Product Support Web site. The
+Globalization section can be found at:
+
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+4.0 Fix Contents
+
+ZSL-153 (ZSL_10.11_Fix2)
+
+ZSL contains the third party ESAPI v2.4.0.0 which has been reported as vulnerable.
+
+The issue is resolved. Following libraries have been updated to a newer version:
+esapi is updated from v2.4.0.0 to v2.5.2.0
+commons-fileupload is updated from v1.4.0 to v1.5.0
+
+ZSL-142 (ZSL_10.11_Fix2)
+
+ZSL contains the third party Apache Tika Core v1.22.0, which has been reported as vulnerable. 
+
+The issue is resolved. Following libraries have been updated to a newer version:
+org.apache.tika.core is updated from v1.22.0 to v2.8.0
+
+ZSL-140 (ZSL_10.11_Fix2)
+
+ZSL contains the third party Apache POI v4.1.2, which has been reported as vulnerable. 
+
+The issue is resolved. Following libraries have been updated to a newer version:
+org.apache.poi is updated from v4.1.2 to v5.2.2
+
+ZSL-90 (ZSL_10.11_Fix1)
+
+ZSL contains the third party ESAPI v2.1.0.1 which has been reported as vulnerable.
+
+The issue is resolved. Following libraries have been updated to a newer version:
+esapi is updated from v2.1.0.1 to v2.4.0.0
+
+ZSL-81 (ZSL_10.11_Fix1)
+
+ZSL contains the third party ESAPI 2.1.0.1, which defines a dependency to the vulnerable Apache Commons FileUpload (CVE-2016-1000031). 
+
+The issue is resolved. Following libraries have been updated to a newer version:
+commons-fileupload is updated from v1.3.1 to v1.4.0
+
+5.0 Platform Support
+
+Central Security Library 10.11 Fix 2 is supported on
+the same platforms and operating systems and with the same JREs
+as Central Security Library 10.11.
+
+
+
+6.0 Installation
+
+Install the fix using the Software AG Update Manager.
+For instructions, see Using the Software AG Update Manager
+located either in the _documentation directory or on the
+documentation Web site at http://documentation.softwareag.com.
+
+7.0 Uninstallation
+
+Uninstall the fix using the Software AG Update Manager.
+For instructions, see Using the Software AG Update Manager.
+
+8.0 Cautions and Warnings
+
+None.
+
+
+9.0 Globalization
+
+This fix conforms to the internationalization standards of the
+webMethods product suite and includes support for operation in
+any country, locale, or language as specified in the Installing
+webMethods Products guide. It was tested with non-English
+configurations and non-ASCII data.
+
+
+9.1 Localization
+
+None.
+
+
+
+10.0 Copyright
+
+Copyright ? 2024  Software AG, Darmstadt, Germany and/or
+Software AG USA, Inc., Reston, VA, United States of America,
+and/or their licensors.
+
+Detailed information on trademarks and patents owned by
+Software AG and/or its subsidiaries is located at
+http://documentation.softwareag.com/legal/.
+
+Use of this software is subject to adherence to Software AG?s
+licensing conditions and terms. These terms are part of the
+product documentation, located at
+http://documentation.softwareag.com/legal/ and/or in the root
+installation directory of the licensed product(s).
+
+This software may include portions of third-party products.  For
+third-party copyright notices and license terms, please refer to
+"License Texts, Copyright Notices and Disclaimers of Third Party
+Products." This document is part of the product documentation,
+located at http://documentation.softwareag.com/legal/ and/or in
+the root installation directory of the licensed product(s).
+
+
+
+11.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG
+Global Support in the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support
+Contact Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to
+access additional articles, demos, and tutorials, technical
+information, samples, useful resources, online discussion forums
+moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

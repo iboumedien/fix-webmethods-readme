@@ -1,0 +1,218 @@
+           IBM webMethods 1SYNC Module 6.5.2 Fix 10 readme
+
+                          September 2024
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods 1SYNC Module 6.5.2 Fix 10.
+
+
+
+2.0 Fix ID
+
+ONESYNC_6.5.2_Fix10
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects IBM webMethods 1SYNC Module 6.5.2.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by 
+IBM webMethods 1SYNC Module 6.5.2.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+This fix addresses the following issues:
+
+SYN-77
+In the IBM webMethods Module 6.5.2 for 1SYNC, the copyright information is updated.
+
+This issue is now resolved.
+
+SYN-70 (ONESYNC_6.5.2_Fix9)
+Sending messages to 1SYNC fails because the validation of the 
+envelope against the schema fails. This issue occurs because the 
+schema is of version 2.0 while the services refer to version 1.0. 
+  
+This issue is resolved. The services are updated to version 
+2.0 and the URL to schema locations are updated with the latest 
+versions.
+
+SYN-65 (ONESYNC_6.5.2_Fix8)
+IBM webMethods Module 6.5.2 for 1SYNC supports version 1.0 TN. In the 
+IBM webMethods Module 6.5.2 for 1SYNC, the copyright information is updated.
+
+This issue is now resolved.
+Document types and schemas. Whereas, version 2.0 TN Document
+types and schemas are required.
+                                   
+This issue is now resolved. After applying IBM webMethods 1SYNC
+Module 6.5.2 Fix 8, the module provides support for version
+2.0 TN Document types and schemas instead of version 1.0 TN
+Document types and schemas. 
+
+SYN-60 (ONESYNC_6.5.2_Fix7)
+IBM webMethods 1SYNC Module contains references to the WmUCCnet package
+which is deprecated.
+
+The wm.ip.sync.common.profile:getTPAInfo service contains
+references to the document type, wm.ip.uccnet.cm.recs:TPAInfo in
+the deprecated WmUCCnet package.
+
+This issue is resolved. All the references to the deprecated
+WmUCCnet package is now removed.
+
+SYN-57 (ONESYNC_6.5.2_Fix6)
+Update IBM webMethods 1SYNC Module 6.5.2 to include the 1SYNC IM
+Release 6.8 schema changes.
+
+This issue is resolved. IBM webMethods 1SYNC Module 6.5.2 now includes
+the 1SYNC IM Release 6.8 schema changes. 
+
+
+SYN-49 (ONESYNC_6.5.2_Fix4)
+Update IBM webMethods 1SYNC Module 6.5.2 to include the 1SYNC IM
+Release 6.6 schema changes.
+
+This issue is resolved. IBM webMethods 1SYNC Module 6.5.2 now includes
+the 1SYNC IM Release 6.6 schema changes. 
+
+
+SYN-38 (ONESYNC_6.5.2_Fix3)
+Update IBM webMethods 1SYNC Module 6.5.2 with the revised XML schema
+released by 1SYNC on 10/22/2008.
+
+Currently, IBM webMethods 1SYNC Module 6.5.2 does not include the 
+IM 6.4 XML schema released by 1SYNC.
+
+This issue is now resolved.
+
+SYN-36 (ONESYNC_6.5.2_Fix3)
+IBM webMethods 1SYNC Module 6.5.2 on Integration Server 7.1.2 throws 
+an exception while sending documents to 1SYNC.
+
+1SYNC Module 6.5.2 on Integration Server 7.1.2 throws the 
+following exception while sending documents to 1SYNC:
+
+  com.wm.lang.flow.FlowException: Error trapped in service
+  : wm.ip.sync.transport:send Error: [ISC.0049.9010] Service
+  'wm.tn.route:routeBizdoc' invoking unknown service 
+  'pub.prt.tn:handleBizDoc' at '$default'. The service may 
+  have been renamed, moved or disabled.
+  
+This error message occurs when the process runtime is not 
+configured in the IBM webMethods Integration Server. When the 
+IBM webMethods 1SYNC Module 6.5.2 sends a document to 1SYNC, it 
+extracts the conversation ID of the document, and then Trading 
+Networks invokes the process runtime to execute a process model 
+associated with the document type. If the process runtime is not 
+installed when 1SYNC Module is sending the document, an exception 
+occurs.
+
+This issue is resolved either by installing the WmPRT package or 
+by setting the value of the 1Sync.ignorePRTDocument parameter to 
+'true'. When the process runtime is not installed in Integration 
+Server, to prevent the exception, set the value of the new 
+1Sync.ignorePRTDocument configuration parameter to 'true' in the 
+<Integration_Server>\packages\Wm1SYNC\config\config.cnf file.
+
+1-1RKLXT (OneSYNC_6-5-2_Fix1)
+Reference to wm.ip.util:formatErrorMessage service not completely
+removed from IBM webMethods 1SYNC Module 6.5.2.
+
+If IBM webMethods 1SYNC Module 6.5.2 has to run on IBM webMethods
+Integration Server 7.1, all the dependencies on WmIPRoot package
+should be removed from the module. But,
+wm.ip.sync.common.profile:getTPAInfo and
+wm.ip.sync.common.profile:getProfile services are still dependent
+on wm.ip.util:formatErrorMessage service. Due to these
+dependencies, IBM webMethods 1SYNC Module 6.5.2 cannot run on
+IBM webMethods Integration Server 7.1.
+
+This issue is resolved. IBM webMethods 1SYNC Module 6.5.2 is now
+compatible with IBM webMethods Integration Server 7.1.
+wm.ip.sync.common.profile:getTPAInfo and
+wm.ip.sync.common.profile:getProfile services now call
+wm.ip.logutil:formatErrorMessage service instead of calling
+wm.ip.util:formatErrorMessage service.
+
+1-1S0JFR
+Update IBM webMethods 1SYNC Module 6.5.2 with the revised XML Schema
+released by 1SYNC on 12/14/2007.
+
+IBM webMethods 1SYNC Module 6.5.2 has not yet included the latest XML
+Schema released by 1SYNC.
+
+This issue is now resolved.
+
+1-1S0JH2
+In wm.ip.sync.recs:docType_ns_catalogueItemNotification and
+wm.ip.sync.recs:docType_ns_catalogueRequest Integration Server
+documents, the attrGroup and attrGroupMany element names are
+prefixed with "ns:" namespace (ns:attrGroup and
+ns:attrGroupMany).
+
+When the Integration Server creates a document from an XML schema
+and if there is a reference to any Integration Server document in
+that schema, then the attrGroup and attrGroupMany elements are
+prefixed with "ns:" namespace. This behavior is normal, however
+some users may not want the element names to be prefixed with
+"ns:" namespace.
+
+This issue is now resolved. The attrGroup and attrGroupMany
+element names are no longer prefixed with "ns:" namespace.
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central
+location (9.7 or later products), or Update Manager to install fixes on
+one machine at a time. For instructions,
+see the documentation at https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Uninstall using Command Central (9.7 or later) or Update Manager. 
+For instructions, see the documentation at https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Copyright Super iPaaS Integration LLC, an IBM Company 2024.

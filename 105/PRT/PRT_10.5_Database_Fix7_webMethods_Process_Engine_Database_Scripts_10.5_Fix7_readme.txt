@@ -1,0 +1,277 @@
+                       webMethods Process Engine CDC 10.5 Fix 7 readme
+
+                                      April 2022
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Process Engine CDC 10.5 Fix 7.
+
+
+
+2.0 Fix ID
+
+WPECDC_10.5_Fix7
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Process Engine.
+
+
+
+4.0 Requirements and Dependencies
+
+DC 10.5 DBS Fix 3 or higher is required.
+
+Process Engine 10.5 Fix 9 or higher is required.
+
+It is recommended to update to the latest fix level for related BPM products
+such as Designer, Process Engine, Optimize and ESB, and Business Console.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product 
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods Monitor.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+
+WPE-4886
+With webMethods Process Engine, Database Component Configurator fails to migrate database components from an older installation to a 10.11 installation.
+
+The issue is resolved.
+
+WPE-4973
+In SQL Server by design , writes and reads lock each other and has created a lots of contention issues with SQL server in high workload environment.. So the code is modified to use batching instead of bulk DELETE to let SQL server release locks more frequently.
+
+The issue is now resolved.
+
+WPE-5006
+With webMethods Process Engine, Database Component Configurator fails to migrate database components from an older installation to a 10.7 installation.
+
+The issue is resolved.
+
+WMN-7730 (WPECDC_10.5_Fix6)
+Partitioning scripts for Process Audit component are available.
+
+To create and manage partitions for Process Audit Log data, refer the document in the following directory:
+<Software AG_directory>\common\db\ProcessEngine\ProcessAudit\scripts\10.3.fix1-10.5\oracle\partition_support
+<Software AG_directory>\common\db\ProcessEngine\ProcessAudit\scripts\10.3.fix1-10.5\sqlserver\partition_support
+
+WMN-7831 (WPECDC_10.5_Fix6)
+When webMethods Monitor is migrated from 9.12 to 10.5, there is performance degradation when you open the Business Process or Process Instance pages.
+
+The issue is resolved.
+
+WPE-4941 (WPECDC_10.5_Fix6)
+During the run of MySQL database procedure "PESTORAGECLEANER" observed some of locking on "PRTPROCESS" table update queries and that can be decreased after the change.
+
+The issue is resolved.
+
+WMN-7544 (WPECDC_10.5_Fix6)
+With WebMethods Monitor, a wrong status is displayed in the My webMethods user interface after a failed step is resubmitted .
+This issue occurs with MySQL database configured in Integration Server.
+
+The issue is resolved.
+
+WMN-7648 (WPECDC_10.5_Fix6)
+With webMethods Monitor, when a MySQL database configured in Integration Server, the
+Process Audit tables cannot handle milliseconds for different timestamp columns.
+
+The issue is resolved.
+
+WPE-4491 (WPECDC_10.5_Fix6)
+With webMethods Process engine, logged field is incorrectly truncated.
+
+Logged field values of type String were truncated to 512 bytes instead of 1024 bytes which the database allowed.
+
+This issue is now resolved. Process engine now supports logging of upto 2000 bytes. 
+Note: ProcessAudit database component should be migrated to version 81.2
+
+WPE-4830 (WPECDC_10.5_Fix6)
+With webMethods Process Engine, deadlock errors may occur.
+
+With MySQL database, storage cleaner procedure may cause deadlocks
+in database.
+
+The issue is resolved.
+
+WPE-4777 (WPECDC_10.5_Fix5)
+With webMethods Process Engine, the Process Audit migration might fail with an error.
+
+The Process Audit migration from version 10.3 to version 10.5 might fail with the following 
+error: "ORA-00957 duplicate column name".
+
+The issue is resolved. 
+
+WPE-4615 (WPECDC_10.5_Fix5)
+With webMethods Process Engine, the storage cleaner performance might be slow.
+
+The issue is resolved. The storage cleaner performance is now improved. 
+
+WMN-7346 (WPECDC_10.5_Fix5)
+With WebMethods Monitor, displaying the process instance detail page might be slow with
+an oracle database configured in Integration Server.
+
+The issue is resolved.
+
+WDA-1545 (WPECDC_10.5_Fix5)
+Process Audit migration might fail with an error.
+
+The Process Audit migration from version 9.8 to version 10.3 might fail with the following error:
+ORA-01404: ALTER COLUMN will make an index too large.
+
+The issue is resolved.
+
+WPE-4739 (WPECDC_10.5_Fix4)
+With webMethods Process Engine, migration of Process Audit may fail.
+
+Migration might throw "ORA-04095: trigger 'PRA_CUSTOM_PROCESS1' already exists" error.
+
+The issue is resolved.
+
+WMN-7453 (WPECDC_10.5_Fix4)
+With webMethods Monitor, a wrong process instance status might be displayed.
+
+When a Postgres database is configured in Integration Server and a failed process model is resubmitted,
+a "failed" status is wrongly displayed in the My webMethods user interface.
+
+This issue is resolved.
+
+WPE-4542 (WPECDC_10.5_Fix3)
+With webMethods Process Engine, the storage cleaner might encounter a deadlock.
+
+The issue is resolved. 
+
+WPE-4680 (WPECDC_10.5_Fix3)
+Migrating Process Audit schema might fail with the following error:
+java.sql.SQLSyntaxErrorException: [SoftwareAG][SQLServer JDBC
+Driver][SQLServer]There is already an object named 'WMRULEDIST'
+in the database.
+
+The issue is resolved.
+
+WPE-4684 (WPECDC_10.5_Fix3)
+Unused table has been removed.
+
+PROCESSMODELDEFINITION table was no longer used in the
+product. Scripts have been updated to drop this table.
+
+Ths issue is resolved.
+
+WPE-4692 (WPECDC_10.5_Fix3)
+With webMethods Process Engine, an incorrect table space may be assigned to WMSERVICEACTIVITYLOG.
+
+The creation of a Process Audit component might cause WMSERVICEACTIVITYLOG to have a wrong table space.
+
+The issue is resolved.
+
+WPE-4685
+MYSQL 8 database support is added for Process Engine.
+
+WPE-4645 (WPECDC_10.5_Fix2)
+Migration of Process Audit component may fail.
+
+Migration of Process Audit from 9.12 version to 10.5 fails
+with the following exception:
+
+ORA-00955: name is already used by an existing object
+
+The issue is resolved.
+
+
+RGHWPE-4389 (WPECDC_10.5_Fix2)
+PostgreSQL database support is added for Process engine.
+
+
+WDA-1551 (WPECDC_10.5_Fix2)
+The migration script for Process Audit component has been updated to 
+take care of a scenario wherein the index is already created prior 
+to migration. This is a valid scenario of migration from DCC1 to DCC2. 
+The fix was to create the index if it was not already present.
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central  location (9.7 or later 
+products), or Software AG Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Command Central (9.7 or later) or Software AG Update Manager. For instructions, see 
+the documentation at http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was not tested with non-English configurations and non-ASCII data. However, this 
+fix has no globalization impact and can be applied to systems running in any supported locale or 
+configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2022 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, and/or 
+its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or registered trademarks of 
+Software AG and/or Software AG USA Inc. and/or its subsidiaries and/or its affiliates and/or their licensors. 
+Other company and product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries is located at 
+http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party copyright notices, license terms, 
+additional rights or restrictions, please refer to 
+"License Texts, Copyright Notices and Disclaimers of Third Party Products". For certain specific third-party 
+license restrictions, please refer to section E of the Legal Notices available under 
+"License Terms and Conditions for Use of Software AG Products / Copyright and Trademark Notices of 
+Software AG Products". These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the licensed product(s). 

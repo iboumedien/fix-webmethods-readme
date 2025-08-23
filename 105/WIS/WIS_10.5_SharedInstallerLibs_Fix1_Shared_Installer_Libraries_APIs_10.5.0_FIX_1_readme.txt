@@ -1,0 +1,183 @@
+              Shared Installer Libraries APIs 10.5 Fix 1 readme
+
+                                   February 2020
+
+________________________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+Shared Installer Libraries APIs 10.5 Fix 1
+
+
+
+2.0 Fix ID
+
+WIS_10.5_SharedInstallerLibs_Fix1
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects My webMethods Server 10.5
+
+
+
+4.0 Requirements
+
+For language pack requirements, see the Globalization section of the Software AG
+Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Shared Installer Libraries APIs is supported on
+the same platforms and operating systems and with the same JREs
+as My webMethods Server 10.5.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes 
+for the release.
+
+MWS-26565
+MWS_9.12_Fix37 can not be uninstalled
+
+The issue is resolved.
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or Software AG Update Manager to install 
+fixes on one machine at a time. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Command Central (9.7 or later) or Software AG Update Manager. 
+For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+[If the fix is for language packs, remove this section from here and from the 
+TOC, and renumber subsequent sections here and in the TOC.]
+
+[Keep the appropriate statement below, remove the rest. Send any questions to
+RnD-ROS-G11N-ENG]
+
+[i18n compliant, tested]
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was tested
+with non-English configurations and non-ASCII data.
+
+[i18n compliant, NOT tested, NO i18n impact]
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix has
+no globalization impact and can be applied to systems running in any supported 
+locale or configuration.
+
+[i18n compliant, NOT tested, i18n impact]
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was not 
+tested with non-English configurations and non-ASCII data. This fix may have 
+some globalization impact.
+
+[NOT i18n compliant, NOT tested]
+This fix does not conform to the internationalization standards of the 
+webMethods product suite. It was not tested with non-English configurations and 
+non-ASCII data. This fix can be installed only in an English environment running
+ASCII data.
+
+
+10.1 Localization
+
+
+[If NOT i18n compliant, NOT tested, remove this section. Otherwise, keep one of 
+the statements below and remove the other.]
+
+[no Language Pack update needed]
+This fix does not require an updated language pack. It might contain new 
+messages and these messages will appear in English.
+
+[Language Pack update REQUIRED; that is, DSP changes]
+This fix includes changes to DSP files. It requires these language pack fix(es) 
+when installed on systems with existing language packs:
+
+<language pack fix>
+<language pack fix>
+
+
+
+11.0 Copyright
+
+[Include the current copyright statement from this page:
+https://iwiki.eur.ad.sag/display/RNDROS/Copyright+Information#allinfo--23560435]
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

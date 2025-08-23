@@ -1,0 +1,219 @@
+      webMethods Universal Messaging for Platform Manager 
+                        10.11 Fix 3 Readme
+
+                          March 2024
+
+_________________________________________________________________
+
+This file provides important information for applying webMethods Universal 
+Messaging for Platform Manager 10.11 Fix 3 to webMethods Universal Messaging 10.11
+installations. For additional information about webMethods Universal Messaging, 
+see the Universal Messaging readme file on the Empower website at
+https://empower.softwareag.com. 
+
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+webMethods Universal Messaging for Platform Manager 10.11 Fix 3
+
+
+
+2.0 Fix ID
+
+NUM_10.11_PlatformManagerPlugins_Fix3
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+webMethods Universal Messaging 10.11
+
+
+
+4.0 Requirements
+
+For language pack requirements, see the Globalization section of the 
+Software AG Empower Product Support Web site. The Globalization section can be 
+found at: Https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods 
+Universal Messaging.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include 
+enhancements to existing functionality and features. Any of these items can result 
+in new or changed built-in services,APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes 
+for the release.
+
+NUM-16651 (NUM_10.11_PlatformManagerPlugins_Fix3)
+
+A temp directory creation vulnerability exists in all versions of Guava, 
+allowing an attacker with access to the machine to potentially access data 
+in a temporary directory created by the Guava API com.google.common.io.Files.createTempDir(). 
+By default, on unix-like systems, the created directory is world-readable (readable by an 
+attacker with access to the system). The method in question has been marked @Deprecated in 
+versions 30.0 and later and should not be used.
+
+https://nvd.nist.gov/vuln/detail/CVE-2020-8908
+CVSS Score: 3.3 Low
+
+The issue is now resolved.
+
+NUM-19490 (NUM_10.11_PlatformManagerPlugins_Fix2)
+
+The package com.google.code.gson:gson before 2.8.9 are vulnerable to Deserialization
+of Untrusted Data via the writeReplace() method in internal classes, which may 
+lead to DoS attacks.
+This is now upgraded to safer package 2.10.1.
+
+NUM-19730 (NUM_10.11_PlatformManagerPlugins_Fix2)
+
+Command Central always displays JKS keystore and truststore certificate types for
+Universal Messaging NSPS and NHPS ports, regardless of the certificate type you select.
+
+After you select and provide a PKCS12 certificate file, the Command Central web user 
+interface displays the certificate type as JKS. In addition, the tooltip incorrectly
+states that the only supported certificate type is JKS.
+
+The issue is resolved.
+
+NUM-18808 (NUM_10.11_PlatformManagerPlugins_Fix2)
+
+Creating a Universal Messaging interface with an encrypted keystore password 
+using a Command Central template fails.
+
+When you encrypt the keystore password for an interface using the 'sagcc exec 
+security encrypt' command, you cannot pass the encrypted password in a Command Central 
+template and create the interface.
+
+The issue is now resolved.
+
+
+NUM-18313 (NUM_10.11_PlatformManagerPlugins_Fix2)
+
+The package com.google.code.gson:gson before 2.8.9 are vulnerable to Deserialization of 
+Untrusted Data via the writeReplace() method in internal classes, which may lead to DoS attacks.
+
+https://nvd.nist.gov/vuln/detail/CVE-2022-25647
+Base Score: 7.5 HIGH
+
+The issue is now resolved.
+
+
+
+8.0 Installation
+
+Install the fix using the Software AG Update Manager. For instructions, see 
+Using the Software AG Update Manager located on the documentation website at 
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Uninstall the fix using the Software AG Update Manager. For instructions, see 
+Using the Software AG Update Manager.
+
+NOTE: This procedure can only be used to uninstall the most recently installed 
+fix. This action will revert your installation to the previously installed fix. 
+You cannot use this procedure to uninstall a previously installed fix.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the webMethods Installation Guide. It was not tested 
+with non-English configurations and non-ASCII data. However, this fix has no
+globalization impact and can be applied to systems running in any supported 
+locale or configuration.
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might contain new 
+messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., 
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their 
+licensors.
+
+The name Software AG and all Software AG product names are either trademarks or 
+registered trademarks of Software AG and/or Software AG USA Inc. and/or its 
+subsidiaries and/or its affiliates and/or their licensors. Other company and 
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its 
+subsidiaries is located at http://softwareag.com/licenses. 
+
+This software may include portions of third-party products. For third-party 
+copyright notices, license terms, additional rights or restrictions, please 
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party 
+Products". For certain specific third-party license restrictions, please refer 
+to section E of the Legal Notices available under "License Terms and Conditions 
+for Use of Software AG Products / Copyright and Trademark Notices of Software AG
+Products". These documents are part of the product documentation, located at
+http://softwareag.com/licenses and/or in the root installation directory of the 
+licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+  
+  E-mail: empower@softwareag.com
+  
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful 
+resources, online discussion forums moderated by Software AG professionals, 
+and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

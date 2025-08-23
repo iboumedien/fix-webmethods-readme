@@ -1,0 +1,181 @@
+           webMethods Adapter 9.0 For OFTP Fix 1 readme
+
+                          May 2016
+                          
+_________________________________________________________________
+
+This file provides important information for applying webMethods
+Adapter 9.0 for OFTP Fix1 to webMethods Adapter 9.0 for OFTP. For
+additional information about webMethods Adapter 9.0 for OFTP, see the
+readme file in the _documentation directory of your Software AG
+installation (if installed) or on the Empower website at 
+https://empower.softwareag.com.
+
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Product(s)/Component(s) Affected
+3.0   Fix Requirements
+4.0   Fix Contents
+5.0   Platform Support
+6.0   Installation
+7.0   Uninstallation
+8.0   Cautions and Warnings
+9.0   Globalization
+9.1   Localization
+10.0  Copyright
+11.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+webMethods Adapter 9.0 for OFTP Fix1
+
+
+
+2.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Adapter for OFTP.
+
+
+
+3.0 Fix Requirements
+
+None.
+
+For language pack requirements, see the Globalization section 
+of the Software AG Empower Product Support website. The 
+Globalization section can be found at:
+
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+4.0 Fix Contents
+
+OFT-23
+webMethods Adapter 9.0 For OFTP support for new Admin screens 
+IS 9.10 onwards. 
+
+webMethods Adapter 9.0 For OFTP Admin UI pages did not support
+new format of screens developed for IS 9.10. 
+
+This issue is resolved now by modifying the webMethods Adapter 9.0
+For OFTP pages.
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods
+Adapter 9.0 for OFTP.
+
+
+
+6.0 Installation
+
+Install the fix using the Software AG Update Manager.
+For instructions, see Using the Software AG Update Manager
+located either in the _documentation directory or on the
+documentation website at http://documentation.softwareag.com.
+
+Note: When using the Adapter for OFTP with Integration Server 9.0
+and later, this fix will appear in the list of updates that have
+been applied to the adapter. The list of updates appears in the
+Updates field on the adapter's About page in the Integration
+Server Administrator. Adapter fixes and updates that were
+installed before the release of Integration Server 9.0 will not
+appear in the Updates field.
+
+
+
+7.0 Uninstallation
+
+Uninstall the fix using the Software AG Update Manager.
+For instructions, see Using the Software AG Update Manager.
+
+NOTE: This uninstall procedure can only be used to uninstall the
+most recently installed fix. This action will revert your
+installation to the previously installed fix. You cannot apply
+this uninstall procedure to the previously installed fix.
+
+
+
+8.0 Cautions and Warnings
+
+None.
+
+
+
+9.0 Globalization
+
+This fix conforms to the internationalization standards of the
+webMethods product suite and includes support for operation in
+any country, locale, or language as specified in the webMethods
+Installation Guide. It was not tested with non-English
+configurations and non-ASCII data. However, this fix has no
+globalization impact and can be applied to systems running in any
+supported locale or configuration.
+
+
+9.1 Localization
+
+This fix does not require an updated Language Pack. It might
+contain new messages and these messages will appear in English.
+
+
+
+10.0 Copyright
+
+Copyright (c) 2016 Software AG, Darmstadt, Germany and/or
+Software AG USA Inc., Reston, VA, USA, and/or its subsidiaries
+and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either
+trademarks or registered trademarks of Software AG and/or
+Software AG USA Inc. and/or its subsidiaries and/or its
+affiliates and/or their licensors. Other company and product
+names mentioned herein may be trademarks of their respective
+owners.
+
+Detailed information on trademarks and patents owned by
+Software AG and/or its subsidiaries is located at
+http://softwareag.com/licenses.
+
+This software may include portions of third-party products.
+For third-party copyright notices, license terms, additional
+rights or restrictions, please refer to "License Texts, Copyright
+Notices and Disclaimers of Third Party Products". For certain
+specific third-party license restrictions, please refer to
+section E of the Legal Notices available under "License Terms and
+Conditions for Use of Software AG Products / Copyright and
+Trademark Notices of Software AG Products". These documents are
+part of the product documentation, located at
+http://softwareag.com/licenses and/or in the root installation
+directory of the licensed product(s).
+
+
+
+11.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG
+Global Support in the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support
+Contact Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to
+access additional articles, demos, and tutorials, technical
+information, samples, useful resources, online discussion forums
+moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html 

@@ -1,0 +1,218 @@
+                           webMethods Broker Java API 10.15 Fix 7 readme
+
+                                          September 2024
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Broker Java API 10.15 Fix 7
+
+
+
+2.0 Fix ID
+
+BR_10.15_Java_API_Fix7
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Broker 10.15.
+
+
+
+4.0 Requirements and Dependencies
+
+CJP_10.15_Fix354
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or
+later.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to
+existing functionality and features. Any of these items can result in new or changed built-in
+services, APIs, or configuration parameters. Review the fix contents carefully before installing the
+fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+PIF-15875
+Broker Java Admin API now supports reporting storage cache utilization. API
+BrokerServerClient.getStorageStats() now contains the following additional fields:
+- sessions[].max_cache_kbytes -- (long) Maximum storage cache size.
+- sessions[].current_cache_kbytes_inuse -- (long) Current storage cache size in use.
+
+PIF-16240
+Sometimes the following error appears in the log:
+javax.jms.JMSException: [BRM.10.4001] JMS: No response from Broker.
+
+This issue occurs when the connection loss is not properly detected by the caller.
+
+This issue is resolved. Now, a proper exception appears when a connection loss is detected.
+
+PIF-15913 (BR_10.15_Java_API_Fix6)
+Broker 10.15 now supports JRE 17 at runtime and continues to support JRE 11. The bytecode for
+client libraries is generated for Java 11.
+
+PIF-15804 (BR_10.15_Java_API_Fix4)
+Uninstallation fails for wMFix.Broker.SharedBundles fix with the following error:
+Missing requirement: JMS Client API requires 'java.package; iaik.security.jsse.provider 0.0.0' but
+it could not be found.
+
+This issue occurs due to incorrect fix dependencies. A second attempt uninstalls the fix correctly.
+
+This issue has been resolved.
+
+PIF-15716 (BR_10.15_Java_API_Fix3)
+Broker JMS API method WmJMSConfig.setKeepAliveAttempts() now sets the keep-alive attempts
+correctly.
+
+PIF-15765 (BR_10.15_Java_API_Fix3)
+webMethods Broker command-line tools work but report the error message
+"Self-Integrity Check FAILED".
+
+This issue occurs because the Broker/lib/enttoolkit.jar file was not getting updated by the earlier
+Java API fixes.
+
+This issue is resolved.
+
+PIF-15653 (BR_10.15_Java_API_Fix2)
+Broker JMS API now uses in-built methods to encrypt passwords. Entrust library is no longer used.
+
+PIF-15672 (BR_10.15_Java_API_Fix2)
+webMethods Broker JMS Client throws following exception while processing very large messages:
+java.lang.NegativeArraySizeException
+at com.webmethods.jms.protocol.ProtocolHandler.read
+at com.webmethods.jms.protocol.BinaryProtocolHandler.dispatch
+at com.webmethods.jms.protocol.ProtocolHandler$LinkReader.run
+at java.lang.Thread.run
+
+This issue occurs because of an integer overflow error while attempting to increase the buffer size
+from 1 GB to 2 GB.
+
+This issue has been resolved. Now, Broker JMS Client should be able to process very large messages
+up to 2 GB in size.
+
+PIF-15564 (BR_10.15_Java_API_Fix1)
+The Broker Java and JMS APIs now use Entrust Toolkit version 8.1.20.
+
+With the latest Java fixes, the old Entrust Toolkit 8.0.33 cannot be used as it is signed with the
+SHA1 algorithm.
+With this update of Entrust Toolkit version to 8.1.20, Entrust as the SSL provider does not work
+with Broker Java and JMS APIs, and Broker command-line tools.
+
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+Install all of the following fixes, if available in Software AG Update Manager:
+- Broker > Broker Java API 10.15 Fix 7
+- Infrastructure > Libraries > Broker Libraries 10.15 Fix 7
+- Infrastructure > Shared Platform > Bundles > Broker Bundles 10.15 Fix 7
+- Designer > Shared Plug-ins > Broker Integration 10.15 Fix 7
+
+When you apply the webMethods Broker Java API Fix, The Broker/lib and common/lib folders are updated
+based on the components you have installed.
+
+- If you have installed only webMethods Broker, applying the latest webMethods Broker Java API Fix
+  will update both Broker/lib and common/lib folders.
+
+- If you have installed webMethods Broker along with webMethods Integration Server and
+  My webMethods, applying the latest webMethods Broker Java API Fix will update both Broker/lib and
+  common/lib folders.
+
+- If you have installed only webMethods Integration Server and My webMethods, the webMethods
+  application that uses the Broker Java API jar is installed. In this case only the common/lib
+  files will be present. Applying the Broker Java API Common Libraries will update only the
+  common/lib folder.
+
+- If you are using application servers such as WebSphere Application Server, JBoss, and WebLogic,
+  you would have pointed the application server to the required jars in either the Broker/lib or
+  common/lib folder. In this case applying the latest webMethods Broker Java API Fix will update
+  both Broker/lib and common/lib folders.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action
+will revert your installation to the previously installed fix. You cannot use these instructions to
+uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and includes
+support for operation in any country, locale, or language as specified in the Installing webMethods
+Products guide. It was not tested with non-English configurations and non-ASCII data. However, this
+fix has no globalization impact and can be applied to systems running in any supported locale or
+configuration.
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright � 2024 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or registered
+trademarks of Software AG and/or Software AG USA Inc. and/or its subsidiaries and/or its affiliates
+and/or their licensors. Other company and product names mentioned herein may be trademarks of their
+respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries is
+located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party copyright notices,
+license terms, additional rights or restrictions, please refer to "License Texts, Copyright Notices
+and Disclaimers of Third Party Products". For certain specific third-party license restrictions,
+please refer to section E of the Legal Notices available under "License Terms and Conditions for Use
+of Software AG Products / Copyright and Trademark Notices of Software AG Products". These documents
+are part of the product documentation, located at http://softwareag.com/licenses and/or in the root
+installation directory of the licensed product(s).

@@ -1,0 +1,363 @@
+        IBM webMethods RosettaNet PIP Tools 7.1 Fix 17 readme
+		
+
+                        December 2024
+                          
+_________________________________________________________________
+
+Contents:
+
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+
+
+
+1.0 Fix Name
+
+IBM webMethods RosettaNet Module: PIP Tools 7.1 Fix 17.
+
+
+
+2.0 Fix ID
+
+PIPTools_7.1_Fix17
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects IBM webMethods RosettaNet Module: PIP Tools.
+
+
+
+4.0 Requirements and Dependencies
+
+Integration Server 7.1.2 or above.
+
+Note: For WRNPI-20, following fixes are required:
+
+Integration Server 8.2.1 - IS_8.2_SP1_Core_Fix7 or higher.
+Integration Server 8.2.2 - IS_8.2_SP2_Core_Fix3 or higher
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+WRNPI-133
+
+Fix includes security updates with no new features to existing user-facing
+functionalities.
+
+WRNPI-127 (PIPTools_7-1_Fix16)
+In IBM webMethods RosettaNet PIP Tools Module, the copyright information is 
+updated.
+
+This issue is now resolved.
+
+
+WRNPI-119 (PIPTools_7-1_Fix15)
+
+In IBM webMethods RosettaNet PIP Tools Module, the fixes were unable to install 
+in Microservices Runtime from 10.15 Integration Server release.
+
+This issue is now resolved.
+
+
+WRNPI-111 (PIPTools_7-1_Fix14)
+
+Fix for IBM webMethods RosettaNet PIP Tools does not install in webMethods 11.0 
+suite release.
+
+This issue is resolved.
+
+
+WRNPI-97 (PIPTools_7-1_Fix13)
+
+Exception during Modular PIP Import.
+This issue is resolved. Now, the PIP is imported correctly.
+
+Usage Note: 
+
+Please make sure to have the request document root tag name is same in the BPSS 
+file for element
+RequestingBusinessActivity\DocumentEnvelope\nameID
+before postfix _DE if any.
+
+Please make sure to have the response document root tag name is same in BPSS 
+file for
+RespondingBusinessActivity\DocumentEnvelope\nameID
+before postfix _DE if any.
+
+
+WRNPI-85 (PIPTools_7-1_Fix12)
+
+IS documents created using PIP tools were not getting created with proper
+references and were showing missing reference, also flow service mappings for IS
+documents that were created by PIP tools was get altered.
+This issue is resolved. Now, the IS documents are created correctly and
+therefore no alteration in the flow service mappings occurs.
+
+Usage Note: Please delete the existing IS documents where you observe this
+problem & recreate those IS Documents after applying this fix.
+
+
+WRNPI-72 (PIPTools_7-1_Fix11)
+
+Integration Server Administrator has a new user interface.
+
+The HTML-based utility that administers IBM webMethods RosettaNet PIP Tools 
+Module has a new user interface. However, the menu and screen locations remain 
+unchanged
+
+
+WRNPI-71 (PIPTools_7-1_Fix11)
+
+A new PIP Tools dictionary file, rosettanet_v3_0_webm.xml that supports all the 
+latest PIP Tools versions is created. The PIP tools specifications and 
+corresponding versions in the PIP<specification> - <version_number> format 
+are as follows:
+
+PIP0A1 - V02_00_00, PIP0C4 - R01_02_01, PIP1A1 - B01.00.00A, 
+PIP1A2 - B01.00.00B, 
+PIP2A10 - V02_00_00, PIP2A12 - V01_03_00, PIP2A1 - V02_04_00, 
+PIP2A3 - B01.00.00A, 
+PIP2A4 - B01.00.00A, PIP2A6 - B01.00.00A, PIP2A7 - B01.00.00A, 
+PIP2A9 - V01_01_01, 
+PIP2B1 - B01_00_00B, PIP2B2 - B01.00.00A, PIP2B3 - B01.00.00A, 
+PIP2B4 - B01.00.00A, 
+PIP2B5 - B01.00.00A, PIP2C10 - R01_00_00A, PIP2C11 - R01_00_00, 
+PIP2C12 - V01_00_00, 
+PIP2C1 - R01_00_00A, PIP2C2 - R01_00_00A, PIP2C3 - R01_00_00A, 
+PIP2C4 - R01_00_00A, 
+PIP2C5 - R01_00_00A, PIP2C6 - R01_00_00A, PIP2C7 - R01_00_00A, 
+PIP2C8 - R01_00_00A, 
+PIP2C9 - V01_00_00, PIP3A10 - R01_00_00A, PIP3A13 - V01_00_01, 
+PIP3A14 - R01_00_00A, 
+PIP3A15 - V01_00_00, PIP3A16 - V01_00_00, PIP3A17 - V01_00_00, 
+PIP3A18 - V01_00_00, 
+PIP3A19 - V01_00_00, PIP3A1 - V02_03_00, PIP3A20 - V01_00_00, 
+PIP3A21 - V01_00_00, 
+PIP3A22 - V01_00_00, PIP3A23 - V01_00_00, PIP3A24 - V01_00_00, 
+PIP3A2 - V02_01_00, 
+PIP3A3 - R02_00_00A, PIP3A4 - V02_06_00, PIP3A5 - R02_00_00A, 
+PIP3A6 - V02_04_00, 
+PIP3A7 - V02_04_00, PIP3A8 - V01_05_00, PIP3A9 - V01_02_00, 
+PIP3B11 - V01_00_00, 
+PIP3B12 - V01_03_00, PIP3B13 - V01_04_00, PIP3B14 - V01_02_00, 
+PIP3B18 - V01_02_00, 
+PIP3B19 - V01_01_00, PIP3B1 - R01_00_00A, PIP3B20 - V01_01_00, 
+PIP3B21 - V01_00_00, 
+PIP3B22 - V01_00_00, PIP3B2 - V01_03_00, PIP3B3 - R01_00_00A, 
+PIP3B4 - R01_00_00A, 
+PIP3B5 - R01_00_00A, PIP3B6 - R01_00_00A, PIP3C1 - V01_02_00, 
+PIP3C2 - R01_00_00A, 
+PIP3C3 - V01_03_00, PIP3C4 - V01_01_00, PIP3C5 - R01_00_00A, 
+PIP3C6 - V01_03_00, 
+PIP3C7 - V01_01_00, PIP3C8 - V01_00_00, PIP3C9 - V01_00_00, 
+PIP4A1 - V02_00_00,
+PIP4A2 - V02_00_00, PIP4A3 - V02_03_00, PIP4A4 - V03_00_00, 
+PIP4A5 - V02_00_00, 
+PIP4A6 - R01_00_00A, PIP4B2 - V01_01_00, PIP4B3 - V01_02_00, 
+PIP4C1 - V02_08_00, 
+PIP4D1 - V01_00_01, PIP5C1 - V01_00_00, PIP5C2 - V01_03_00, 
+PIP5C3 - V01_02_00, 
+PIP5C4 - V01_06_00, PIP5C5 - B01.00.00A, PIP5C6 - V01_00_00, 
+PIP5C7 - V01_00_00, 
+PIP5C8 - V01_00_00, PIP5C9 - V01_00_00, PIP5D10 - V01_00_00, 
+PIP5D1 - V01_02_00, 
+PIP5D2 - R01_00_00, PIP5D3 - V01_02_00, PIP5D4 - R01_00_00A, 
+PIP5D5 - V01_01_00, 
+PIP5D6 - R01_00_00A, PIP5D7 - V01_00_00, PIP5D8 - V01_00_00, 
+PIP5D9 - V01_00_00, 
+PIP6C1 - V01_01_00, PIP6C2 - V01_01_00, PIP6C5 - V01_00_00, 
+PIP6C6 - V01_00_00, 
+PIP6C7 - V01_00_00, PIP6C8 - V01_00_00, PIP7B1 - V01_02_00, 
+PIP7B2 - R01_00_00A, 
+PIP7B5 - V01_02_00, PIP7B6 - V01_00_00, PIP7C6 - V01_01_00.
+
+
+WRNPI-67 (PIPTools_7-1_Fix10)
+
+IBM webMethods RosettaNet PIP Tool Module displays an error while 
+validating the GlobalPhysicalUnitOfMeasureCode field for certain 
+missing values in the schema dictionary.
+
+This issue is resolved. The missing values are now available 
+in the schema dictionary.
+
+
+WRNPI-66 (PIPTools_7-1_Fix10)
+
+In IBM webMethods RosettaNet PIP Tools Module, when you click  
+View button in RosettaNet 'Modular PIP Import', the following 
+error occurs: "Got Error: class com.wm.app.b2b.server.ServiceException 
+Message = [ISS.0026.9102] Service 'wm.ip.utils: stringToStringArray' 
+is not operational. To run this service, first recompile the Java 
+source."
+
+This issue is resolved.
+
+
+WRNPI-48 (PIPTools_7-1_Fix10)
+
+Integration Server Administrator has a new look and feel.
+
+The HTML-based utility used to administer the IBM webMethods
+RosettaNet PIP Tools module has a new look and feel. Menu
+and screen locations have not changed.
+  
+This issue is resolved.
+  
+  
+WRN-1337 (PIPTools_7-1_Fix8)
+
+Issue with PIP document types mappings while editing flow service
+
+IBM webMethods RosettaNet Module: PIP Tools Fix fails to get 
+installed due to the missing jar for Integration Server 9.8,9.9 and 910
+This issue is resolved.
+
+
+WRNPI-41
+
+The IBM webMethods RosettaNet PIP Tool Module does not support
+a few enumerations in the schema dictionary.
+
+This issue is resolved. The dictionary now contains the 
+enumerations that were previously missing.
+
+
+WRNPI-36 (PIPTools_7-1_Fix6)
+
+IBM webMethods RosettaNet Module: PIP Tools Fix does not get 
+installed on Integration Server 9.0
+
+IBM webMethods RosettaNet Module: PIP Tools Fix fails to get 
+installed due to the missing jar for Integration Server 9.0
+This issue is resolved. 
+
+
+WRNPI-25 (PIPTools_7-1_Fix5)
+
+Invalid document type segment generated when importing two
+action schema based PIPs using PIP Tool. 
+
+Schema based PIPs are imported as reference IS document types.
+If the same segment is present in request and response schemas
+with different structures, only one segment is created. As a
+result, only one of the schemas, that is, either request or
+response, will have the correct structure. 
+
+This issue is solved. As part of resolution, a new option is
+added with Modular PIP Import Options. Navigate to RosettaNet
+Module screen and click on Modular PIP Import link. New section
+"Modular PIP Import Options" is added with option "IS Doc Types
+as reference", which is set as selected by default. Deselect the
+checkbox for "IS Doc Types as reference" so that the IS document
+type is created in expanded form (that is, inline) instead of as
+reference. 
+
+
+WRNPI-20 (PIPTools_7-1_Fix4)
+
+PIP Build failing for DTD based Pip. 
+
+Navigate to PIP Builder and insert values, for example, for
+3B12 V01.01. Building the Pip results in Null Pointer
+Exception. 
+
+This issue is resolved.
+
+
+WRN-846 (PIPTools_7-1_Fix2)
+
+Flow service mappings for IS documents that are created by 
+PIP tools get altered. 
+
+If you install the Developer fix ID_7-1-2_Fix3 or higher, the 
+IS document mappings in the flow services that you create using
+Developer are altered after you save the mappings. This issue 
+happens only for the IS documents that are created using PIP 
+tools. This issue occurs because of the incorrect way of
+creating IS documents by PIP tools while importing the PIP. 
+
+This issue is resolved. Now, the IS documents are created
+correctly and therefore no alteration in the flow service
+mappings occurs. 
+
+Usage Note: Please delete the existing IS documents where you
+observe this problem & recreate those IS Documents after
+applying this fix.
+
+
+1-1U2EFZ (PIPTools_7-1_Fix1)
+
+Error is thrown while importing complex recursive schema based 
+PIPs.
+
+The error can be as follows:
+Got Error:class com.wm.app.b2b.server.ServiceException Message= 
+[ISS.0086.9091] Parameters xmldata, $filestream and $filedata 
+are all missing.
+
+This error occurs because even though Integration Server 7.1 
+supports the importing of complex recursive schema based PIPs, 
+RosettaNet Module 7.1 did not support it.
+
+This issue is resolved. Now, RosettaNet 7.1 supports the import 
+of complex recursive schema based PIPs.
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central  
+location (9.7 or later products), or Update Manager to install fixes on one 
+machine at a time. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Command Central (9.7 or later) or Update Manager. For 
+instructions, see the documentation at https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Copyright Super iPaaS Integration LLC, an IBM Company 2024.

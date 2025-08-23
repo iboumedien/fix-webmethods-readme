@@ -1,0 +1,501 @@
+    webMethods Designer Service Development 10.5 Fix 15 readme
+
+                         May 2023
+
+_________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+webMethods Designer Service Development 10.5 Fix 15
+
+
+
+2.0 Fix ID
+
+ESB_10.5_Fix15
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Designer Service Development 10.5
+
+
+
+4.0 Requirements
+
+- IS_10.5_Core_Fix14 or the latest fix that supersedes this fix.
+- SDF_10.5_Fix1 or the latest fix that supersedes this fix.
+
+For language pack requirements, see the Globalization section of the Software 
+AG Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods 
+Designer Service Development 10.5.
+
+
+
+6.0 Cautions and Warnings
+
+Warning: Do not use the "Uninstall" option (from About Eclipse
+SDK > Installation Details > Installed Software tab), as that
+will completely remove a particular feature.
+
+
+
+7.0 Fix Contents
+
+WED-9982
+In Designer, lines of code disappear while editing a flow service.
+
+In Designer, consider a flow service with multiple steps such as MAP,
+INVOKE, and so on under steps such as SEQUENCE and REPEAT. While
+editing the flow service using operations such as Move Left and
+Move Right, Designer throws an exception that results in missing code.
+
+This issue is now resolved. 
+
+
+WED-9861 (ESB_10.5_Fix14)
+Designer becomes unresponsive while locking or unlocking a map service
+with complex mappings.
+
+Consider a map service with complex mappings involving multiple
+transformers, map links, map sets, and map drops. While locking or
+unlocking such a map service using the context menu in the map
+service editor, Designer becomes unresponsive indefinitely before
+completing the action.
+
+This issue is resolved. Now, locking or unlocking a map service from the
+editor is quick and responsive. Designer refreshes the editor quickly
+with the updated lock state. 
+
+
+WED-9637 (ESB_10.5_Fix13)
+In Designer 10.5, saving changes to a flow service on a remote Integration
+Server is slower than Designer 9.8.
+
+In Designer 10.5 connected to a remote Integration Server, saving changes to a
+flow service is slower than Designer 9.8 when a pipeline mapping in the flow
+service contains many Document References (number of elements to cache exceeds
+999).
+
+This issue is now resolved. 
+
+
+WED-9639 (ESB_10.5_Fix13)
+Creating a provider REST API Descriptor from a Swagger document fails with 
+"NullPointerException".
+
+This issue is now resolved. 
+
+
+WED-9528 (ESB_10.5_Fix12)
+A security issue with the Bootstrap library was discovered
+in Designer Service Development.
+
+The issue is resolved. The vulnerable version 3.3.7 of the library
+is now upgraded to a more secure version (4.6.0).
+ 
+
+WED-9529 (ESB_10.5_Fix12)
+A security issue with the jQuery library was discovered
+in Designer Service Development.
+
+The issue is resolved. The vulnerable version 3.1.1 of the library
+is now upgraded to a more secure version (3.6.0).
+
+
+WED-9507 (ESB_10.5_Fix12)
+Designer throws the following exception during cloud deployment.
+
+<java.io.InterruptedIOException: Read timed out after xxx ms>
+
+While deploying assets to a cloud environment, Designer synchronizes assets in
+the local (source) repository according to the cloud (target) repository. If the
+cloud repository contains more files or large packages, synchronization takes
+more time, and the connection timeout happens.
+
+To resolve this issue, a new parameter called "Repository timeout (seconds)" is
+added under "Window > Preferences > Software AG > Service Development > Cloud
+Deployment". This parameter specifies the connection timeout in seconds between
+the cloud and the local repository. The default value is 240 seconds.
+
+
+WED-9239 (ESB_10.5_Fix11)
+Designer connected to a multi-user remote Integration Server does not
+synchronize the lock and unlock states between the flow editor view and the
+pipeline view.
+
+When Designer connects to a remote Integration Server with multiple users, it
+does not synchronize the lock and unlock states of a flow service between the
+flow editor view and the pipeline view. This makes the users to lock and unlock
+the flow service to continue with the development.
+
+This issue is resolved now.
+
+
+WED-9323 (ESB_10.5_Fix11)
+Designer throws a NullPointerException while comparing identical services between
+two Integration Servers.
+
+Designer throws a NullPointerException when you compare a service on one
+Integration Server with an identical service on another Integration Server by
+right-clicking and selecting "Compare Element(s) With > Other Server > {server_name}",
+where {server_name} signifies another connected Integration Server that has the
+second service.
+
+This issue is now resolved. 
+
+
+WED-9315 (ESB_10.5_Fix11)
+Designer incorrectly handles the breakpoints of flow steps in the flow editor.
+
+In a flow service, the breakpoint enabled for a MAP or INVOKE step must remain
+attached to the step regardless of the modifications to the flow service.
+However, when the flow service is modified by adding, deleting, or rearranging
+the steps, the breakpoint does not move with the original step in the flow editor,
+which is incorrect. Similar behavior is observed in the Debug perspective as
+well.
+
+This issue is resolved now. 
+
+
+WED-9195 (ESB_10.5_Fix10)
+While comparing the current version of a flow service in Local Service
+Development with a specific revision in the Version Control System, Designer
+generates a NullPointerException and does not display the differences.
+
+This issue is now fixed. 
+
+
+WED-9060 (ESB_10.5_Fix9)
+Designer does not publish REST API Descriptors (RAD) to API Gateway.
+
+While publishing RADs to an API Gateway tenant, Designer incorrectly resolves
+the host name of the RAD URL with the tenant machine's physical host name and
+does not publish the asset to the cloud.
+
+This issue is now resolved.
+
+
+PIER-1466 (ESB_10.5_Fix9)
+The Adapter Runtime and Designer do not support multiple metadata versions for
+adapter templates. This issue is resolved in Adapter Runtime and corresponding
+support is added to the Designer.
+
+Now when you create a new service using Designer, it will be created with the
+new version of metadata. The older services will continue to use the older
+definition of metadata till they are upgraded to the newer version of metadata. 
+
+WED-8852 (ESB_10.5_Fix8)
+Designer does not support to drag the services from the Package Navigator view
+and add it under the Pipeline view as transformers.
+
+This issue is resolved. Now, Designer supports to drag and drop the services
+from the Package Navigator view to the Pipeline view.
+
+
+WED-8933 (ESB_10.5_Fix8)
+Designer loads incomplete field values in the service input dialog for document
+arrays with different field count.
+
+During the service execution, Designer does not load the complete data structure
+in the service input dialog as defined in the input file. Designer uses the last
+document in the document arrays as the template. Consequently, Designer
+populates the values of the rest of the documents based on the last document
+which means if the input file contains multiple occurrences of field values,
+Designer only considers the last occurrence and displays the respective field
+values in the service input dialog.
+
+This issue is now resolved. Now, Designer considers all the occurrences present
+in the file and displays a unique set of field values in the service input
+dialog.
+
+
+WED-8878 (ESB_10.5_Fix7)
+Designer shows the state of a custom or dynamic SQL adapter service as dirty in 
+the service editor. 
+
+In Designer, when a custom or dynamic SQL adapter service created on Linux is 
+opened on Windows, the service state is modified or dirty in the service editor 
+due to the difference between newline characters across Windows (\r\n), Linux 
+(\n), and Mac (\n). 
+
+This issue is resolved now. 
+
+
+WED-8790 (ESB_10.5_Fix7)
+In Designer, when the Pipeline and Properties tabs are placed side by side,
+property values are not updated for the pipeline mappings of an element.
+ 
+This issue is resolved. Now, Designer updates the properties of the pipeline
+mappings when a mapping is selected in the Pipeline view. 
+
+
+WED-8844 (ESB_10.5_Fix7)
+Designer adds spaces and new lines while saving a Java service with old
+signature.
+
+In Designer, under 'Window > Preferences > Java > Code Style > Formatter', if
+the 'Indentation > Tab policy' is set as 'Spaces' or 'Mixed' in the active
+profile, the Designer adds spaces and new lines while saving a Java service with
+old service signature.
+
+This issue is now resolved.
+
+
+WED-8843 (ESB_10.5_Fix7)
+Designer adds incorrect return statements while saving a Java service containing
+the old signature.
+
+In Designer, under 'Window > Preferences > Java > Code Style > Formatter', if
+the 'Indentation > Tab policy' is set to 'Mixed' in the active profile, then
+Designer cannot save a Java service with old service signature. It also adds
+erroneous statements in the primary Java service method, and fails to compile
+while saving the service.
+
+This issue is resolved now. 
+
+
+WED-8825 (ESB_10.5_Fix7)
+Designer does not generate a REST API Descriptor (RAD) from a Swagger document
+present at an API portal location..
+
+While creating a RAD using a Swagger document present at an API portal location,
+if the API portal connection configurations are not stored in the Eclipse secure
+storage while adding the connection under 'Window > Preferences > Software AG >
+API Portal', Designer cannot generate the RAD. In some cases, even if the
+credentials are stored while adding the API portal connection, Designer throws
+NullPointerException while creating the RAD.
+
+These issues are resolved now.
+
+WF-15304 (ESB_10.5_Fix6)
+Designer now supports fetching the solutions from Cloud Container and displays
+them under a new perspective called ‘Cloud Service Development’. Designer also
+supports debugging of Integration Server assets and services that are hosted in
+the Cloud Container. 
+
+
+WED-8751 (ESB_10.5_Fix5)
+Designer generates the output template file only in HTML format for the selected
+service.
+
+Designer generates the output template file for the selected service based on
+the “Name” field value under "Property > Output template" in the
+“Properties” view. Designer does not provide any option to select the format of
+the template file.
+
+This issue is now resolved. A new property "Type" is added under "Property >
+Output template". Supported values are "html" and "xml". By default, "html" is
+selected. Designer generates the output template file based on the selected
+format.
+ 
+ 
+WED-8750 (ESB_10.5_Fix5)
+In Designer, values of JDBC service fields that have SQL statements are not
+fully visible nor can be selected when the service is in read-only mode.
+
+In Designer, the JDBC service editor does not fully display the SQL statements
+when the service is in read-only mode, nor does it allow you to select such
+values. To view the complete SQL statement or select it, you need to right-click
+on the service and select "Lock for Edit".
+
+This issue is now resolved. Now, Designer displays the complete SQL statements
+in the JDBC adapter service editor in read-only mode and you can
+also select the statements if needed. 
+   
+                                              
+WED-8702 (ESB_10.5_Fix4)
+Designer does not store the output template name for services in Local Service
+Development and does not allow to enter the template source immediately after
+entering the template name for a service.
+
+In Designer under "Software AG > Service Development > Local Service
+Development", when you enter a template name for service under "Properties >
+Output Template > Name" and save it, the Designer does not store the name once
+the Integration Server is restarted. The Designer does not allow to add or
+modify a template source under "Properties > Output Template > Template source"
+immediately after entering an output template name for a service. After
+entering the output template name, you need to save the changes and then you can
+add the template source.
+
+These issues are now resolved.
+
+
+WED-8614 (ESB_10.5_Fix4)
+After applying a fix or upgrading to a release that includes WED-7036 and 
+WED-6846 the size of the flow.xml file for an existing flow service becomes 
+extremely large when it is edited and then saved.
+ 
+The size of the flow.xml file for a flow service that has a long signature or 
+contains MAP steps with transformers increases dramatically when the flow is 
+edited and then saved.
+
+This issue is now resolved.
+
+                                       
+Note: WED-8614 is the Service Development companion to the Integration Server 
+issue PIE-60577.
+
+
+WED-8515 (ESB_10.5_Fix3)
+The Resource monitoring service property is missing from the Transient error 
+handling property group for MQTT triggers.
+
+In Designer, a resource monitoring service cannot be specified for an MQTT 
+trigger because the Resource monitoring service property is not visible.
+
+The issue is resolved. 
+
+
+WED-8292 (ESB_10.5_Fix3)
+Designer does not support multiple connections to a server using different
+hostnames, same IP address, and the same port.
+ 
+In Designer, while trying to establish multiple connections to a server using
+different hostnames, same IP address, and same port, Designer throws an error
+and connection fails. To resolve this, a new checkbox, 'Verify hostname for
+server connections' is added under 'Preference > Package Navigator' in the
+Service Development perspective in Designer. By default, this checkbox is
+selected and does not allow users to configure multiple connections to the
+server using multiple hostnames, the same IP address, and the same port. If
+users want to set up such multiple connections, users must deselect this
+checkbox.
+
+This issue is now resolved. 
+
+
+WED-8582 (ESB_10.5_Fix2)
+In Software AG Designer, while creating new adapter service, the Adapter Service
+wizard displays the deprecated templates.
+
+This issue is now resolved, as the deprecated templates do not appear in the
+wizard.
+
+             
+WED-8560 (ESB_10.5_Fix1)
+Integration Server incorrectly deploys the assets to the cloud.
+
+In Designer during cloud deployment, the variable substitution in Integration
+Server Runtime Variable Substitution page does not work as expected.
+
+This issue is now resolved.
+
+
+WED-8561
+Integration Server cannot compare two different versions of flow services from
+Version Control System (VCS).
+
+In Designer, while comparing two different versions of flow services present in
+VCS, the comparison fails.
+
+This issue is now resolved.
+             
+             
+
+8.0 Installation
+
+Install using the Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot apply these instructions to the previously installed 
+fix. 
+
+Uninstall using the Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com. 
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix has 
+no globalization impact and can be applied to systems running in any supported 
+locale or configuration. 
+
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might contain new 
+messages and these messages will appear in English. 
+
+
+
+11.0 Copyright
+
+Copyright © 2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., 
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their 
+licensors. 
+
+The name Software AG and all Software AG product names are either trademarks or 
+registered trademarks of Software AG and/or Software AG USA Inc. and/or its 
+subsidiaries and/or its affiliates and/or their licensors. Other company and 
+product names mentioned herein may be trademarks of their respective owners. 
+
+Detailed information on trademarks and patents owned by Software AG and/or its 
+subsidiaries is located at http://softwareag.com/licenses . 
+
+This software may include portions of third-party products. For third-party 
+copyright notices, license terms, additional rights or restrictions, please 
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party 
+Products". For certain specific third-party license restrictions, please refer 
+to section E of the Legal Notices available under "License Terms and Conditions 
+for Use of Software AG Products / Copyright and Trademark Notices of Software AG 
+Products". These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the 
+licensed product(s). 
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

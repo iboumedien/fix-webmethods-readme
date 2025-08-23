@@ -1,0 +1,525 @@
+                 webMethods Microgateway 10.5 Fix 41 Readme
+
+                         July 2024
+
+____________________________________________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Microgateway 10.5 Fix 41
+
+
+
+2.0 Fix ID
+
+YAM_10.5_Fix41
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Microgateway 10.5
+
+
+
+4.0 Requirements and Dependencies
+
+None
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+
+YAM-0000 (YAM_10.5_Fix41)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-1766 (YAM_10.5_Fix40)
+Vulnerable third-party component Eclipse jetty is used.
+
+ - CVE-2023-44487
+
+This issue is resolved.
+
+
+(Fix number 39 omitted intentionally)
+
+
+YAM-1738 (YAM_10.5_Fix38)
+Vulnerable third party component Guava being used.
+
+ - CVE-2023-2976
+
+This issue is resolved.
+
+
+YAM-1708 (YAM_10.5_Fix38)
+Microgateway does not support configuring a hostname for the Prometheus metrics.
+
+This issue is resolved. Prometheus metrics for Microgateway now support
+configuring the hostname or IP address in order to display the configured
+hostname or IP address in the Metrics output. You can configure
+'mcgw_prometheus_url_host = <host_name:port/IP_address>' as the environment
+variable in the environment file or include the following properties in the
+Config.yml file:
+prometheus:
+url_host: "host_name:port"
+
+Config.yml file example:
+ports:
+    http: 7077
+api_gateway:
+    url: "myhost:port"
+    user: "myuser"
+    password : "mypwd"
+prometheus:
+    url_host: "host_name:port/IP_address"
+policies:
+    user_auth: "internal"
+
+
+(Fix numbers 36 - 37 omitted intentionally)
+
+
+YAM-1554 (YAM_10.5_Fix35)
+Vulnerable third-party component jackson databind is used.
+
+ - CVE-2022-42004
+ - CVE-2022-42003
+
+YAM-1579 (YAM_10.5_Fix35)
+Vulnerable third-party component snakeyaml is used.
+
+ - CVE-2022-1471
+ - CVE-2022-25857
+
+This issue is resolved.
+
+YAM-1603 (YAM_10.5_Fix35)
+Vulnerable third-party component OpenJDK 11 is used.
+
+ - CVE-2021-2163
+
+This issue is resolved.
+
+YAM-1584 (YAM_10.5_Fix35)
+Vulnerable third-party component jettison is used.
+
+ - CVE-2022-45693
+ - CVE-2022-45685
+ - CVE-2022-40150
+
+This issue is resolved.
+
+YAM-1677 (YAM_10.5_Fix35)
+Vulnerable third-party json-smart jar is used.
+
+ - CVE-2023-1370
+
+This issue is resolved.
+
+YAM-1672 (YAM_10.5_Fix35)
+Vulnerable third-party woodstox-core jar is used.
+
+ - CVE-2022-40152
+
+This issue is resolved.
+
+
+(Fix numbers 30 - 34 omitted intentionally)
+
+YAM-0000 (YAM_10.5_Fix29)
+Synchronize libraries with API Gateway Fix.
+
+(Fix numbers 27/28 omitted intentionally)
+
+YAM-0000 (YAM_10.5_Fix26)
+Synchronize libraries with API Gateway Fix.
+
+YAM-1461 (YAM_10.5_Fix25)
+Vulnerable third-party component jackson-databind is used.
+
+This issue is resolved.
+
+YAM-1428 (YAM_10.5_Fix24)
+Microgateway fails to send events to external Elasticsearch.
+
+When Microgateway is configured with an external Elasticsearch destination, and
+the connection to Elasticsearch is protected by basic authentication, then
+Microgateway fails to send events to Elasticsearch. The Microgateway trace level
+log shows that the HTTP POST request to Elasticsearch fails with the response
+code 401.
+
+This issue is resolved.
+
+YAM-0000 (YAM_10.5_Fix23)
+Synchronize libraries with API Gateway Fix.
+
+YAI-23908 (YAM_10.5_Fix22)
+Identified third party Log4j 2.16.0, which have known security vulnerability
+CVE-2021-45105.
+
+The issue is resolved. All Log4j libraries are updated to version 2.17.1.
+
+(Fix number 21 omitted intentionally)
+
+YAM-1386 (YAM_10.5_Fix20)
+Vulnerable third-party component Log4j is used.
+
+This issue is resolved.
+
+(Fix numbers 18 and 19 omitted intentionally)
+
+YAM-0000 (YAM_10.5_Fix17)
+Synchronize libraries with API Gateway Fix.
+
+YAM-1332 (YAM_10.5_Fix16)
+Vulnerable third-party component json-smart is used.
+
+This issue is resolved.
+
+YAM-1265 (YAM_10.5_Fix15)
+Vulnerable third-party component is used.
+
+This issue is resolved.
+
+YAM-1295 (YAM_10.5_Fix14)
+Monitor Performance policy with the alert frequency setting set to Alert
+frequency once fails.
+
+Monitor performance policies with the alert frequency setting set to Alert
+frequency once fails to raise an alert occasionally.
+
+This issue is resolved.
+
+YAM-1290 (YAM_10.5_Fix14)
+Vulnerable third-party jetty jars are used.
+
+This issue is resolved.
+
+YAM-0000 (YAM_10.5_Fix13)
+Synchronize libraries with API Gateway Fix.
+
+YAM-0000 (YAM_10.5_Fix12)
+Synchronize libraries with API Gateway Fix.
+
+YAM-1219 (YAM_10.5_Fix11)
+Accessing API Gateway cloud instance with https might fail.
+
+When Microgateway accesses API Gateway cloud instance with https, the SSL
+connection might fail with an exception.
+ 
+This issue is resolved.
+
+YAM-1211 (YAM_10.5_Fix11)
+Vulnerable third-party jackson-databind jar is used.
+
+This issue is resolved.
+
+YAM-1194 (YAM_10.5_Fix10)
+Microgateway registration handles applications wrongly.
+
+When registering itself to API Gateway, Microgateway handles application assets
+wrongly.
+
+This issue is resolved.
+
+YAM-1185  (YAM_10.5_Fix10)
+Vulnerable third-party Jetty jars are used.
+
+This issue is resolved.
+
+YAM-1035 (YAM_10.5_Fix9)
+Performance degrade observed for native HTTPS services.
+
+When a native HTTPS service is called through Microgateway, and the native
+service requires SSL client authentication, a performance degrade is observed.
+When starting Microgateway with the "-Djavax.net.debug" JVM option
+the error log shows that each HTTP request results in a separate SSL handshake.
+
+This issue is resolved. 
+
+YAM-1151 (YAM_10.5_Fix9)
+Throttling global policy does not work.
+
+When starting Microgateway with a throttling global policy the corresponding
+policy is reported in the assets of the given API, but it is also observed to
+send requests against the API the throttling restriction is not applied.
+
+This issue is resolved. 
+
+YAM-1043 (YAM_10.5_Fix9)
+Vulnerable third-party slf4j jars are used.
+
+This issue is resolved.
+The jars have been updated.
+
+YAM-1131 (YAM_10.5_Fix8)
+Microgateway is unable to recognize global policies in deployed APIs pulled from
+either API Gateway or the archive.
+
+This issue is resolved.
+
+YAM-993 (YAM_10.5_Fix7)
+Microgateway incorrectly enforces global policies on APIs.
+
+On starting a Microgateway with a global policy that has a name filter, the
+global policy is enforced on an API even if the API name does not match the
+filter.
+
+This issue is resolved.
+
+YAM-1040 (YAM_10.5_Fix7)
+OAuth2 token introspection does not work.
+
+When Microgateway runs with OAuth2 authentications, the path to API Gateway
+installation is necessary (-gwd option).
+
+This issue is resolved. The path to API Gateway installation is no longer
+necessary.
+
+YAM-1071 (YAM_10.5_Fix7)
+A throttling PolicyViolation event in the API Gateway analytics has an empty
+alertDesc column.
+
+When a throttling policy is violated within Microgateway then the corresponding
+PolicyViolation event in the Runtime events section of the API Gateway Analytics
+user interface has an empty alertDesc column.
+
+This issue is resolved.
+
+YAM-999 (YAM_10.5_Fix6)
+Insufficient error handling when Microgateway keystore is incorrectly
+configured.
+
+When the Microgateway keystore entry is configured incorrectly, the keystore
+file is not present or is invalid then unspecified errors are observed.
+
+This issue is resolved.
+
+YAM-996 (YAM_10.5_Fix6)
+Server process might remain active when Microgateway does not start.
+
+When Microgateway does not start due an error, some server processes might stay
+active in the operation system.
+
+This issue is resolved.
+
+YAM-1005 (YAM_10.5_Fix6)
+Accessing an API Gateway cloud instance fails
+
+Accessing an API Gateway cloud instance might fail due to invalid availability
+request.
+
+This issue is resolved. Now the official health check call is used.
+
+YAM-941 (YAM_10.5_Fix6)
+OAuth2 token introspection does not work.
+
+On pulling an API from API Gateway, which has a OAuth2 policy and a scope
+associated, it is observed that the scope information is not considered.
+
+This issue is resolved.
+In general, if Microgateway starts without the required OAuth2 data, then a
+warning message is displayed.
+
+YAM-977 (YAM_10.5_Fix6)
+Wrong base path in Microgateway endpoints.
+
+In the API Gateway UI, the Microgateway endpoints displayed in the API Details
+page > Technical Information section contain the base path "/gateway", although
+the corresponding Microgateway was started with a custom base path by specifying
+the --base_path command line option.
+
+This issue is resolved.
+
+YAM-962 (YAM_10.5_Fix6)
+Microgateway registers an incorrect basePath in the Consul Service Registry.
+
+The basePath for a particular API registered by Microgateway in the Consul
+Service Registry misses a "/" character between the URL prefix
+"http://&lt;microgateway-hostname&gt;:&lt;microgateway-port&gt;/gateway"
+and the subsequent API name.
+
+This issue is resolved.
+
+YAM-980 (YAM_10.5_Fix5)
+Microgateway deploys an API using OAuth2 API without necessary assets.
+
+When Microgateway is started with an API using OAuth2, the necessary OAuth2
+assets are missing and the API is deployed without OAuth2.
+
+This issue is resolved. Such an API is not deployed during Microgateway startup
+start and an appropriate message is displayed.
+
+YAM-949 (YAM_10.5_Fix5)
+Under high transactional load Microgateway might generate an unexpected error
+response.
+
+This issue is resolved.
+
+YAM-942 (YAM_10.5_Fix5)
+Prometheus unable to pick up the metric values.
+
+The Prometheus graph or Console tab do not display any metric values when
+Microgateway is running on the Windows platform.
+
+This issue is resolved.
+
+YAM-913 (YAM_10.5_Fix5)
+The Microgateway error log contains the error message "Connect to localhost:9240
+failed".
+
+An error occurs if a service request is sent to the Microgateway server while
+the API Gateway server is down. If this service request results in a policy
+violation, an error message "Connect to localhost:9240 failed" appears in the
+Microgateway error log at <installation_dir>/Microgateway/logs/gw.<port>.err.
+
+This issue is resolved.
+
+(Fix 4 omitted intentionally)
+
+YAM-907 (YAM_10.5_Fix3)
+Microgateway/lib contains older jars after a fix is applied.
+
+This issue is resolved.
+Microgateway/lib is now deleted before the fix jars are unpacked by the fix.
+
+YAM-903 (YAM_10.5_Fix3)
+The microgateway.sh createDockerFile command fails.
+
+The microgateway.sh createDockerFile command fails with the error message "No
+config file or archives specified" even when all the required parameters are
+specified.
+
+This issue is resolved.
+
+YAM-866 (YAM_10.5_Fix2)
+SSL handshake failure observed for Microgateway.
+
+This issue is resolved.
+To prevent automatic following of HTTP redirects a new global option
+follow_redirects is now introduced. It is true by default but can be set
+to false if necessary.
+
+YAM-782 (YAM_10.5_Fix2)
+Information persists in the Microgateway cache even after the information has
+expired.
+
+Information persists in the cache, which is maintained for user information for
+storing responses obtained from API Gateway while delegating user auth to
+API Gateway, even after the information has expired.
+
+This issue is resolved.
+A timeout is now provided for limiting the lifetime of user authentication in
+the Microgateway cache.
+
+YAM-845 (YAM_10.5_Fix1)
+Under high load an occasional incorrect HTTP 500 is received.
+
+This issue is resolved.
+
+YAM-820 (YAM_10.5_Fix1)
+Only one set of cookies is included in the response from the native API.
+
+When multiple sets of Set-Cookie headers are present, only one is included in
+the response from the native API.
+
+This issue is resolved. Multiple Set-Cookie values are now included in the
+response from the native API.
+
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action
+will revert your installation to the previously installed fix. You cannot use these instructions to
+uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and includes
+support for operation in any country, locale, or language as specified in the Installing webMethods
+Products guide. It was not tested with non-English configurations and non-ASCII data. However, this
+fix has no globalization impact and can be applied to systems running in any supported locale or
+configuration.
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2024 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or registered
+trademarks of Software AG and/or Software AG USA Inc. and/or its subsidiaries and/or its affiliates
+and/or their licensors. Other company and product names mentioned herein may be trademarks of their
+respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries is
+located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party copyright notices,
+license terms, additional rights or restrictions, please refer to "License Texts, Copyright Notices
+and Disclaimers of Third Party Products". For certain specific third-party license restrictions,
+please refer to section E of the Legal Notices available under "License Terms and Conditions for Use
+of Software AG Products / Copyright and Trademark Notices of Software AG Products". These documents
+are part of the product documentation, located at http://softwareag.com/licenses and/or in the root
+installation directory of the licensed product(s).

@@ -1,0 +1,275 @@
+                 Business Rules UI 10.5 Fix 23 readme
+
+                         August 2023
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Business Rules UI 10.5 Fix 23
+
+
+
+2.0 Fix ID
+
+WOK_10.5_RMC_Fix23
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Business Rules UI.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in 
+services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes 
+for the release.
+
+WOK-13976 (WOK_10.5_RMC_Fix2)
+Silent import failure on large CSV files
+When importing a CSV file that is larger than the supported request size 20MB into a decision 
+table, the import fails, but no error message is displayed.
+This issue has been resolved by adding a corresponding error message to the decision table editor 
+and updating the documentation.
+
+WOK-14010 (WOK_10.5_RMC_Fix2)
+Inconsistent validation for assignment operators
+When importing a CSV file into a decision table, it is possible to use the != operator in an 
+assignment result column.
+This issue has been resolved by only allowing the use of the = operator in an assignment result 
+column.
+
+WOK-14023 (WOK_10.5_RMC_Fix15)
+CSV Import error messages show placeholders
+When importing a CSV file with errors into the Business Rules UI on My webMethods Server, some 
+error messages are displayed with placeholders like "{1}" instead of the actual error values.
+This issue is now resolved.
+
+WOK-14032 (WOK_10.5_RMC_Fix2)
+Incorrect parsing of very large numeric values
+When importing a CSV file containing a very large number into a decision table, the number is 
+incorrectly interpreted as String.
+This issue has been resolved by adding proper validation and error messages.
+
+WOK-14063 (WOK_10.5_RMC_Fix2)
+RuleProjectCompilationException after installing Business Rules UI Fix
+After installing a Business Rules UI Fix, hot deploying a rule project led to a 
+com.softwareag.rules.java.builder.RuleProjectCompilationException.
+This issue is now resolved.
+
+WOK-14087 (WOK_10.5_RMC_Fix3)
+The Rules Management Console did not synchronize navigation entries in a MWS cluster.
+This issue is now resolved.
+
+WOK-14098 (WOK_10.5_RMC_Fix2)
+Wrong prefix for functions
+When using a CSV file to import a function into a decision table, the incorrect prefix $[...] is 
+used to denote a function.
+This issue has been resolved by using the correct prefix FUNC[...].
+
+WOK-14116 (WOK_10.5_RMC_Fix3)
+No error visible when rule project assembly fails
+If an error occurs during the assembly of a rule project that contains Action definitions in either 
+Asset Build Environment, Designer or the Business Rules UI in My webMethods Server, the error will 
+not be visible to the user.
+This issue has been resolved.
+
+WOK-14126 (WOK_10.5_RMC_Fix9)
+BusinessRules does not support self-signed certificates for SSL connections.
+This issue is resolved.
+
+WOK-14272 (WOK_10.5_RMC_Fix7)
+When attempting to use the Business Rules UI in My webMethods Server, some rule projects could not 
+be accessed with a "Migration in Progress" notification.
+This issue has been resolved.
+
+WOK-14318 (WOK_10.5_RMC_Fix4)
+NoClassDefFoundError while working with 10.5 RMC
+If only the Business Rules UI under My webMethods User Interfaces is installed and the 
+configuration parameter "wrapper.java.additional.111=-DRulesAuditingDESOnOff" is set to "On", and 
+attempt to deploy a rule project to this My webMethods Server will fail with a NoClassDefFoundError.
+This issue has been resolved.
+
+WOK-14706 (WOK_10.5_RMC_Fix7)
+When attempting to use the Business Rules UI in My webMethods Server, some rule projects could not 
+be accessed with a "Migration in Progress" notification.
+This issue has been resolved.
+
+WOK-15002 (WOK_10.5_RMC_Fix9)
+The bundle class path entry "classes" could not be found for the bundle "osgi.identity; osgi.identit
+When starting up My webMethods Server with the Business Rules UI installed, the OSGi framework logs 
+this error: org.osgi.framework.BundleException: The bundle class path entry "classes" could not be 
+found for the bundle "osgi.identity; osgi.identity="mws.pdp.wm_xt_rma_ruleproject"; 
+type="osgi.bundle"; version:Version="0.9.0.v20190801-0923"". Business Rules functionality is 
+unaffected and works normally.
+
+
+WOK-15328 (WOK_10.5_RMC_Fix11)
+Cloud Deployment support
+The Business Rules Development perspective in Designer now supports "Deploy to Cloud" to a Cloud 
+Container solution.
+This issue has been resolved.
+
+WOK-15456 (WOK_10.5_RMC_Fix12)
+The value of the condition cell is not defined. [RUL.0070.0970]
+When using the service PUT 
+%MWS%/wm_rma/rest/content/project/AflacInvoiceReconRules/decisiontable/%decisiontable%, the server 
+returns an "The value of the condition cell is not defined. [RUL.0070.0970]" error, when the caller 
+is trying to replace an empty cell with a cell containing an operator and a value.
+This issue is now resolved.
+
+WOK-15570 (WOK_10.5_RMC_Fix19)
+Error displaying business rules in MWS
+When clicking on the navigation item "Administration - Business - webMethods Business Rules - rule 
+project - Decision Tables" in the left-hand side navigation bar, sometimes the Decision Table 
+portlets on the right are not displayed and an empty page is shown.
+This issue has been resolved by refactoring the Business Rules navigation bar.
+
+WOK-15663 (WOK_10.5_RMC_Fix15)
+NullPointerException during rule project builds
+When building a rule project with the Asset Build Environment, the build would fail with
+java.lang.NullPointerException
+at com.wm.lang.ns.NSRecordRef.getNSRecord(NSRecordRef.java:245)
+This issue is now resolved.
+
+WOK-16308 (WOK_10.5_RMC_Fix19)
+Unsynchronized navigation entries with concurrent users
+In rare occasions, there could be wrong Business Rules navigation entries when multiple concurrent 
+users are logging in.
+This issue has been resolved.
+
+WOK-16333 (WOK_10.5_RMC_Fix17)
+Jackson library v2.12.3 causes com.fasterxml.jackson.databind.exc.InvalidDefinitionException
+When using Jackson library version 2.12.3, reading Business Rules auditing information from the 
+database results in a com.fasterxml.jackson.databind.exc.InvalidDefinitionException.
+This issue has been resolved.
+
+WOK-16873 (WOK_10.5_RMC_Fix21)
+Business Rules support for MySQL version 8.x Community edition
+Business Rules 10.5 did not MySQL version 8.x Community edition.
+This issue has been resolved.
+
+WOK-17437 (WOK_10.5_RMC_Fix22)
+Security issue within sag-web-components.js
+sag-web-components.js contained outdated and potentially vulnerable libraries moment.js and jquery.
+This issue is resolved by updating these libraries to moment.js 2.29.3 and jquery 3.6.0.
+
+WOK-18753
+Vulnerable 3rd Party component commons-fileupload found
+Vulnerable 3rd Party component commons-fileupload 1.4.0 was delivered.
+This issue is now resolved by updating commons-fileupload to version 1.5
+
+                                            
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and 
+includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was tested with non-English configurations and non-ASCII data.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these 
+messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright 
+© 2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston,
+VA, USA, and/or its subs
+idiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG pro
+duct names are either trademarks or registered
+trademarks of Software AG and/or Software AG USA Inc.
+ and/or its subsidiaries and/or its
+affiliates and/or their licensors. Other company and product nam
+es mentioned herein may be
+trademarks of their respective owners.
+
+Detailed information on trademark
+s and patents owned by Software AG and/or its subsidiaries is
+located at http://softwareag.com/licen
+ses .
+
+This software may include portions of third-party products. For third-party copyright notices
+,
+license terms, additional rights or restrictions, please refer to "License Texts, Copyright Notice
+s
+and Disclaimers of Third Party Products". For certain specific third-party license restrictions,
+p
+lease refer to section E of the Legal Notices available under "License Terms and Conditions for
+Use 
+of Software AG Products / Copyright and Trademark Notices of Software AG Products". These
+documents 
+are part of the product documentation, located at http://softwareag.com/licenses and/or
+in the root 
+installation directory of the licensed product(s).

@@ -1,0 +1,1350 @@
+					IBM webMethods Adapter 6.5 For MQ Fix 52 readme
+
+										September 2024
+						
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods Adapter 6.5 For MQ Fix 52
+
+
+
+2.0 Fix ID
+
+MQS_6.5_Fix52
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+None.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include 
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the 
+release.
+
+IMQ-1633
+Updated copyright notes, vendor, and product names for IBM rebranding.
+
+IMQ-1591(MQS_6.5_Fix51)
+In webMethods Adapter for WebSphere MQ, while configuring a connection, when a
+SSL Option between keystore file and keystore alias is selected, then all the
+fields related to both options appear.
+
+This issue is now resolved.
+
+IMQ-1573(MQS_6.5_Fix51)
+Set the watt property 'watt.WmMQAdapter.Notification.LogMessageHeaders=true'
+to log the message identification details (MQMD headers) selected in
+notification 'Output Field Names', for every notification document getting
+published from adapter, without having to enable any additional logging
+for webMethods Adapter for WebSphere MQ or webMethods Adapter Runtime.
+
+
+IMQ-1531(MQS_6.5_Fix50)
+In webMethods Adapter for WebSphere MQ, the following ciphers are added in the 
+WebSphere MQ Adapter config file in the AllCipherSpec tag as a part of TLSv1.2 
+cipher support: 
+TLS_RSA_WITH_AES_256_GCM_SHA384
+TLS_RSA_WITH_RC4_128_SHA256
+TLS_RSA_WITH_AES_128_GCM_SHA256
+
+IMQ-1528 (MQS_6.5_Fix50)
+In webMethods WebSphere MQ Adapter, when a listener notification is completed,
+the references to com.wm.adk.cci.record.WmRecord objects are not explicitly
+deleted, causing a memory leak.
+
+This issue is now resolved.
+
+IMQ-1483 (MQS_6.5_Fix49)
+When MQ Adapter connection fails to get enabled during Integration Server startup
+or loading the package, the connection appears to be disabled in the Integration
+Server Admin User interface .
+
+This issue is now resolved.
+
+A new connection state "Suspended" is introduced in the Integration Server Admin
+User interface for the connections. This feature is available in Integration
+Server 10.7 and above.
+
+IMQ-1450 (MQS_6.5_Fix48)
+In webMethods MQ Adapter, most of IS Admin UI DSP pages have reference to .js 
+files in IS_99 and below and is causing improper UI. 
+
+The issue is now resolved. 
+
+IMQ-1424 (MQS_6.5_Fix47)
+In webMethods MQ Adapter, most of IS Admin UI DSP pages have reference to .js.txt
+file. Reference to .js.txt file is causing MIME type mismatch while loading DSP 
+page in browser. Due to MIME type mismatch, Cloud Container environment doesn't 
+load javascript files for DSP pages.
+
+IMQ-1401 (MQS_6.5_Fix46)
+If connection pooling is enabled and the minimum pool size is more than zero, the
+connection pool checks for the connectivity of the connections that are idle for 
+the value of Heart Beat Interval. If the idle connection is stale then the 
+connection pool is reset.
+The default value for Heart Beat Interval is zero and it is mentioned in seconds. 
+
+WF-11674 (MQS_6.5_Fix45)
+webMethods WebSphere MQ Adapter has new SSL and TLS CipherSpec listings 
+introduced with a new watt property- watt.WmMQAdapter.Connection.CiphersList.
+It takes priority over old watt properties. Also, toggles between Normal, 
+SSL, and TLS connections with different Cipher listings.
+
+By default this watt property is not set. You can set the watt property as 
+follows: 
+watt.WmMQAdapter.Connection.CiphersList=SSL		-	Lists only SSL CipherSpecs
+watt.WmMQAdapter.Connection.CiphersList=TLS		-	Lists only TLS CipherSpecs
+watt.WmMQAdapter.Connection.CiphersList=AllCipherSuite	- 	Lists both SSL and TLS CipherSuite
+watt.WmMQAdapter.Connection.CiphersList=AllCipherSpec	-	Lists both SSL and TLS CipherSpecs
+
+IMQ-1377(MQS_6.5_Fix44)
+WebSphere MQ Adapter incorrectly retrieves the user-defined JMS header due to 
+the changing length of some special characters. 
+
+This issue is resolved. Now, UTF-8 is the default CCSID for user-defined JMS 
+headers and accordingly calculates the length.
+
+IMQ-1364(MQS_6.5_Fix43)
+In Websphere MQ Adapter, there are no mandatory parameters required to 
+create a new connection.  
+
+This issue is now resolved.
+
+IMQ-1343(MQS_6.5_Fix42)
+In webMethods Adapter for webSphere MQ, unable to display the list of all queues
+in Edit Connection screen.
+
+This issue occurs when you edit the connection in the Connections screen that 
+connects to Queue Manager for listing all Queues, but is unable to connect as 
+password from passman store is not used.
+
+This issue is now resolved.
+
+RGHADPESTBL-4690(MQS_6.5_Fix42)
+In webMethods WebSphere MQ Adapter, the home page is updated with 
+minimalcompliance with DELITE. 
+
+IMQ-1319(MQS_6.5_Fix42)
+In webMethods Adapter for WebSphere MQ, the connection can be enabled or 
+disabled, even if the CSRF secure token is invalid.
+
+This issue occurs when the CSRF secure token is modified or removed while
+enabling or disabling the connection in the Connections page. However, no valid
+error message appears.
+
+This issue is now resolved.
+
+IMQ-1318(MQS_6.5_Fix42)
+In webMethdos Adapter for webSphere MQ, the parameter fields such as,
+Startup Retry Count and Startup Backoff Timeout are not updated while you edit a
+newly created connection.
+
+This issue occurs when you edit the Startup Retry Count and Startup Backoff
+Timeout fields for the newly created connection. The fields are not updated when
+you set the Enable Connection Pooling field to flase.
+
+This issue is now resolved. 
+
+IMQ-1323(MQS_6.5_Fix41)
+In webMethods MQ Adapter, the adapter's administrator UI pages does not support 
+the new Administrator screens of Integration Server(IS) 10.1.
+
+This issue is resolved. webMethods MQ Adapter now supports the new Administrator
+screens of IS from version 10.1 and later. 
+
+IMQ-1314(MQS_6.5_Fix41)
+In Websphere MQ Adapter, it is mandatory to add all the required properties in 
+the Connection Properties section when you create a new connection.
+
+The error occurs when you save the newly created connection without entering the
+required parameters, and try to enable the same connection.
+
+This issue is now resolved. Now, you cannot enable the connection without adding
+the required parameters.
+
+IMQ-1315(MQS_6.5_Fix41)
+In Websphere MQ Adapter, the port number parameter in the Connections screen 
+allows you to add alphanumeric values.
+
+This issue is resolved. Now, the port number parameter allows to add only 
+numerical values.
+
+IMQ-1253(MQS_6.5_Fix40)
+In WebSphere MQ Adapter, the msgHeader.ReplyToQueueMgr and msgHeader.ReplyToQ 
+fields of Request/Reply service sometimes takes the value of 
+OverrideReplyToConnection\QueueManagerName and 
+OverrideReplyToConnection\QueueName.
+
+This issue is resolved. Now, the values for msgHeader.ReplyToQueueMgr and 
+msgHeader.ReplyToQ fields does not overlap and the same values are sent to the 
+MQ server.
+
+IMQ-1260(MQS_6.5_Fix40)
+In WebSphere MQ Adapter, the migartion of old listner fails when new properties 
+are added to the listener as a part of Fix 30.
+
+The following service is added to the listener to search all the listeners and 
+update the node with newly added properties- wm.mqseries.admin:updateListener
+
+This issue is resolved. Now, execute the service if you want to update the 
+listener.
+
+IMQ-1304(MQS_6.5_Fix40)
+In WebSphere MQ Adapter,the following new watt property is added which supports 
+both TLS and SSL connection on a single Integration Server,
+watt.WmMQAdapter.ShowCipherSuit=true
+
+When you set the value of the property as true, then the Connection page shows 
+the cipher suits for both SSL and TLS connections, so that you can create both 
+the connections and when you set the value as false, then the cipher spec for 
+either SSL or TLS connection appears based on the IBM property.
+
+IMQ-1292(MQS_6.5_Fix39)
+Adapter Fix Install and Uninstall was not Supported for  IS 10.0 and 10.1
+
+This issue is resolved.
+
+IMQ-1271(MQS_6.5_Fix38)
+In webMethods Websphere MQ Adapter, the connection fails when you are trying to 
+create an MQ connection using CCDT file URL.
+
+This issue occurs if you do not add the port number field while creating the 
+connection using CCDT file URL, because the field appears to be mandatory.
+
+This issue is resolved. 
+
+IMQ-1256(MQS_6.5_Fix38)
+In Websphere MQ Adapter, uninsatlling the Fix 36 and Fix 37 fails.
+
+This issue is now resolved. By changing the instructions file, you can uninsatll
+the Fix 36 and Fix 37.
+
+IMQ-1252(MQS_6.5_Fix38)
+In Websphere MQ Adapter, the doInvoke call fails with a missing session issue.
+
+This issue occurs when doInvoke call tries to call Integration Server(IS) 
+service for checking the IS version.
+
+This issue is resolved. Now, the adapter checks for IS version using IS public 
+API.
+ 
+IMQ1251(MQS_6.5_Fix38)
+In Websphere MQ Adapter, unable to overide the connection parmeters of SSL 
+Connection.
+
+This issue is resolved. Now, connection parameters of SSL Connection can be 
+overidden in all the services.
+
+IMQ-1257(MQS_6.5_Fix38)
+In WebSphere MQ Adapter, unable to update the listener parameters Listener 
+Properties section.
+
+When you enter the new values of listener parameters and save the changes in 
+Listener Properties section, then these values are not replaced by the old 
+values in Listener screen.
+
+This issue is now resolved.
+
+IMQ-1214(MQS_6.5_Fix38)
+In webMethods MQ Adapter, the migration service for a Multi_Queue Listener is 
+missing.
+
+This issue occurs when you migrate the assets from a Multi_Queue Listener. 
+During migration, if there is a change in the Queue Name, then you manually 
+delete and recreate the Multi_Queue Listener.
+
+This issue is resolved. Now, wm.mqseries.admin:updateMultiQueueListener service 
+is introduced, which deletes and recreates the listener assets.
+
+IMQ-1233(MQS_6.5_Fix37)
+In webMethods WebSphere MQ Adapter, authentication error occurs while creating a
+SSL connection.
+
+This issue occurs while creating a SSL connection, which consist of the UserID 
+authentication in the backend.
+
+This issue is now resolved. 
+
+IMQ-1240(MQS_6.5_Fix37)
+In webMethods WebSphere MQ Adapter, editing the exsiting connection results in 
+the creation of new connections in the backend. However, these newly created 
+conections are not closed, unless you restart the Integeration Server.
+
+This issue is now resolved. 
+
+IMQ-1235(MQS_6.5_Fix37)
+In webMethods WebSphere MQ Adapter, the extra logging related to Queue Name are 
+printed as part of info level.
+
+This issue is resolved. Now, the logs are moved to trace level.
+
+IMQ-1229(MQS_6.5_Fix36)
+In webMethods WebSphere MQ Adapter, While creating the connections, if any 
+thread gets into a hung state, the  connection factory is locked. The remaining 
+threads cannot create connections in other connection pools. 
+
+This issue is resolved. 
+
+IMQ-1219(MQS_6.5_Fix36)
+In webMethods WebSphere MQ Adapter, the MQ messages are lost when the listener 
+fails to put the undeliverable messages to system dead letter 
+queue(SYSTEM.DEAD.LETTER.QUEUE).
+
+This issue is resolved. Now, if the listener fails to put the undeliverable 
+messages to system dead letter queue, then it moves back the messages onto the 
+original queue.
+
+IMQ-1223(MQS_6.5_Fix36)
+In webMethods MQ Adapter,the msgHeader property PutApplType populates 
+incorrectly for the Get and Put service.
+
+This issue occurs because the adapter does not support all the values of 
+PutApplType msgHeader property. Therefore, the mapping of MQAT_QMGR_PUBLISH 
+value to PutApplType msgHeader fails.
+
+This issue is resolved. The adapter now allows all the values which are 
+supported by the backend. 
+
+IMQ-1225(MQS_6.5_Fix36)
+webMethods MQ Adapter, the adapter supports MQ CCDT feature. This issue is 
+resolved. This fix supports the new feature for CCDT.
+
+IMQ-1198(MQS_6.5_Fix35)
+The open input count increases on MQ server, as a result the "MQ reason code 
+2017" is displayed.
+
+If the MQ get or put services are executed multiple times, then the open input 
+count on the MQ server increases.
+
+This issue is now resolved.
+
+IMQ-1197(MQS_6.5_Fix35)
+In webMethods MQ Adapter 6.5 Fix 33, the open input count property of the queue 
+increases on the MQ server.
+
+This issue occurs if the listner is enabled and it gets the MQ message multiple 
+times, then the open input count property on the MQ server increases.
+ 
+This issue is now resolved.
+
+IMQ-1196(MQS_6.5_Fix35)
+In webMethods MQ Adapter 6.5, the Inquire Queue Manager/Queue services fails to 
+inquire the Queue which is of type remoteQueue.
+ 
+When the service tries to inquire a Queue, where the input is a remoteQueue, the
+following error meassage is displayed in the error logs: "MQJE001: Completion 
+Code 2, Reason 2045"
+ 
+This issue is resolved. For the new input parameter, if the queue name is a 
+remoteQueue, then you need to set the value to true.
+
+IMQ-1212(MQS_6.5_Fix35)
+In webMethods MQ Adapter 6.5, performance impact after changing the 
+implementation of the queue name parameter for OverrideConnection.
+
+When executing a Get service or Put service each time, an extra call was created
+to open the respective queue, to put or get the message, and then close the 
+queue.
+Due to which the performance level was dropped.
+
+This issue is now resolved. The changes are reverted.
+
+IMQ-1201(MQS_6.5_Fix34)
+webMethods WebSphere MQ Adapter 6.5 support for new Admin screens IS 9.10 
+onwards. 
+
+webMethods WebSphere MQ Adapter 6.5 Admin UI pages did not support new format of
+screens developed for IS 9.10. 
+
+This issue is resolved now by modifying the webMethods WebSphere MQ Adapter 6.5 
+pages.
+
+IMQ-1176(MQS_6.5_Fix33)
+In webMethods webSphere MQ Adapter, the adapter creates a new connection when 
+queueName is passed in the overrideConnection parameter.
+ 
+When the queueName is passed in the overrideConnection parameter, the adapter 
+creates a new connection during the execution of the adapter services.
+
+This issue is resolved. Now, the adapter uses only the existing connection which
+is referring to the new queueName for the execution of specific adapter services.
+
+IMQ-1172(MQS_6.5_Fix32)
+In webMethods webSphere MQ Adapter, MQ listener should not listen to the remote 
+queue.
+
+If MQ listener is connected to the remote queue, the listener notification 
+should not be executed.
+
+This issue is now resolved. 
+
+IMQ-1173(MQS_6.5_Fix32)
+In webMethods webSphere MQ Adapter, an exception occurs while creating a service
+using MQ transactional connection.
+
+When creating any service using MQ transactional connection, if the connection 
+parameter values are overridden by Override connection parameters in the service,
+then the service fails with an exception.
+
+This issue is now resolved.
+
+IMQ-1136(MQS_6.5_Fix31)
+In webMethods WebSphere MQ Adapter, message flows to an incorrect queue when 
+there are multiple Put services which are running simultaneously.
+
+This issue occurs when there are multiple Put services, where one of the service
+consist of input specified in overrideConnection property. The Put services runs
+simultaneously with the common MQ connection. The message flows to the incorrect
+queue instead of the queue configured as part of MQ connection.
+
+This issue is resolved. 
+
+IMQ-1155(MQS_6.5_Fix31)
+In webMethods WebSphere MQ Adapter, an error occurs while creating the 
+Notification document.
+
+This issue occurs while processing the MQ message for creating a notification, 
+so that the document for JMS headers can be created. Therefore, creation of 
+document for JMS headers requires Integration Server public services which are
+pub.xml:xmlStringToXMLNode, pub.xml:xmlNodeToDocument for converting xml file to
+IData. The following error message is displayed during the creation of the 
+document:
+
+Active transaction detected while completing service pub.xml:xmlStringToXMLNode.
+Rolling back pending operations.
+
+This issue is resolved.
+
+IMQ-1156 (MQS_6.5_Fix31)
+In webMethods WebSphere MQ Adapter, the Get service and the Listener displays an
+incorrect pipeline structure after installing the MQ Adapter Fix 30.
+
+This issue occurs because pipeline structure for Get service and Listener 
+Notification consist of an extra <usr> document, if the incoming message has an 
+JMS and User-Defined properties.
+
+This issue is now resolved. 
+
+IMQ-1153 (MQS_6.5_Fix30)
+webMethods WebSphere MQ Adapter could not retrieve the list of available queue 
+names from the MQ backend.
+
+This issue occurs when editing an existing connection which includes a list of 
+connection parameters such as Host Name, Queue Manager Name and Port Number. 
+The Queue Name(s) field displays the following error message: "The list of 
+Available queues could not be retrieved from the Queue Manager".
+
+This issue is now resolved.
+
+IMQ-1137 (MQS_6.5_Fix30)
+In webMethods webSphere MQ Adapter, MQ listener is unable to retrieve the MQ 
+backout queue name.
+
+This issue occurs when the Queue Manager consist of different character encoding
+which is, EBCDIC with Euro character. Therefore, the queue name has to be 
+decoded with the queue managers encoding to obtain a valid backout queue name.
+
+This issue is resolved. Now, for MQ backend version 7.5 and above, the customer 
+is required to add the watt property watt.WmMQAdapter.MQServer75AndAbove=true, 
+so that the queue name is retrieved as a string value. If the value is set to 
+false, then the queue name cannot be retrieved because the facility is not 
+available in the lower version of MQ jars.
+
+IMQ-1096 (MQS_6.5_Fix29)
+webMethods WebSphere MQ Adapter should support IBM certified TLS Cipher Specs 
+for JAVA clients running on a non-IBM JDK. 
+
+This issue is resolved. The adapter now supports IBM certified TLS Cipher Specs 
+for JAVA clients running on a non-IBM JDK.
+
+IMQ-1138 (MQS_6.5_Fix29)
+webMethods WebSphere MQ Adapter does not consider JMS User-Defined properties 
+that are defined multiple times in an MQ message.
+
+When an MQ message contains multiple occurrences of a JMS User-Defined property 
+where the property is defined as an attribute and a value, the adapter does not 
+consider all the occurrences of the property. The Get adapter service ignores 
+the second occurrence of the property when the MQ message is added to IData.
+
+This issue is resolved. The adapter now considers all occurrences of JMS 
+User-Defined properties in an MQ message. 
+
+IMQ-1125 (MQS_6.5_Fix29)
+In webmethods WebSphere MQ Adapter, the MQ message created from running a Get or
+Put service contains empty tags in the message header.
+
+The message header of the MQ message created from running a Get or Put service 
+contains empty tags for JMS Properties and User-Defined Properties which are not
+required.
+
+This issue is resolved. Now, the MQ message does not contain tags for properties
+that are not defined in the service. 
+
+IMQ-1131 (MQS_6.5_Fix29)
+In webmethods WebSphere MQ Adapter, the text boxes of the Dead Letter Queue 
+properties are enabled even though the value of the Handle Backout ReQueue 
+property is set to "true".
+
+In the Configure Listener Type screen, when the value of the Handle Backout 
+ReQueue property is set to "true" the text boxes of the Dead Letter Queue 
+properties, Dead Letter Queue Name, Dead Letter Queue Manager Name, and 
+Deadletter Backout Threshold are still enabled.
+
+This issue is resolved. Now, when the value of the Handle Backout ReQueue 
+property is set to "true", the text boxes of the Dead Letter Queue properties 
+are disabled. 
+
+IMQ-1123 (MQS_6.5_Fix29)
+In webmethods WebSphere MQ Adapter, when an SSL connection is enabled, 
+restarting the Integration Server causes a connection failure between the 
+adapter and the queue manager.
+
+When Integration Server is restarted while an SSL connection between the adapter
+and the MQ Server is still enabled, the adapter disables the SSL connection. 
+This causes a connection failure between the adapter and the queue manager. The 
+error logs contain the error code 2397.
+
+This issue is resolved. Now, the adapter does not disable an enabled SSL 
+connection after restarting the Integration Server. 
+
+IMQ-1116 (MQS_6.5_Fix29)
+In webmethods WebSphere MQ Adapter, when you click the 'Find Queues' button 
+secure information related to the connection is displayed in the address bar.
+
+When you click the 'Find Queues' button in the Configure Connection Type screen,
+the adapter uses the HTTP GET method to refresh the Connections screen. The HTTP
+GET call appends all the information related to the connection in the address 
+bar of the browser. This information also includes the password of the 
+connection.
+
+This issue is resolved. Now, the adapter uses the HTTP POST method to refresh 
+the Connections screen. 
+
+IMQ-1120 (MQS_6.5_Fix28)
+In WebSphere MQ Adapter, undeliverable messages for a listener can now be moved
+to the Backout ReQueue queue.
+
+The property, 'Handle Backout ReQueue' in the listener configuration page of 
+WebSphere MQ Adapter allows you to move undeliverable messages for a listener to
+either the Backout ReQueue queue, or the Dead Letter Queue. The Backout ReQueue 
+queue is specified in the queue properties of 
+WebSphere MQ server. 
+
+When the property is set to true, the undeliverable messages are moved to the 
+Backout ReQueue queue. When the property is set to false, the undeliverable 
+messages are moved to the Dead Letter Queue. The default is false.
+
+IMQ-1067 (MQS_6.5_Fix27)
+In Websphere MQ Adapter, the Find Queues function does not display the list of 
+queues for SSL connections.
+
+By default, the adapter uses the watt property watt.adapter.MQ.UsePCFAgentToFindQ
+to get the list of queues for all types of connections.
+ 
+This issue is resolved. The watt property watt.adapter.MQ.UsePCFAgentToFindQ is 
+removed and the adapter now uses IBM's PCFMessageAgent API class to get the list
+of queues for all types of connections. 
+
+IMQ-1106 (MQS_6.5_Fix27)
+In Websphere MQ Adapter, the filter is reset when the state of a listener from a
+filtered list is changed.
+
+When filters are applied to a list of listeners in Adapters > Websphere MQ 
+Adapter > Listeners page of Integration Server Administrator, changing the state 
+of a listener from the filtered list causes the filter to be reset. Consequently, 
+the adapter displays all the listeners on the page.
+ 
+This issue is now resolved. Only the filtered list of listeners is displayed 
+after changing the state of a listener to which a filter is applied. 
+
+IMQ-1108 (MQS_6.5_Fix27)
+In Websphere MQ Adapter, running the Inquire Queue Manager/Queue service on a 
+clustered queue fails.
+
+In Developer or Designer, when you run the Inquire Queue Manager/Queue service 
+on a clustered queue to query "QueueProperties.BackoutRequeueQName", the adapter
+returns an error code 2068.
+
+This issue is resolved. 
+
+IMQ-1087 (MQS_6.5_Fix26)
+In webMethods MQ Adapter, audit logging is enabled for internal services. 
+
+Log entries are created in the audit log for internal services of MQ Adapter 
+because the "Enable Auditing" and "Log on" properties are enabled. 
+
+This issue is resolved. "Enable Auditing" property is disabled and the "Log on" 
+property is set to create a log entry in the audit log only if an internal 
+service throws errors.
+
+IMQ-1070 (MQS_6.5_Fix26)
+In WebSphere MQ Adapter, the listener automatically selects the first connection
+from the "Connection Name" drop-down list if the original connection does not 
+exist. 
+
+When editing a listener, if the "Connection Name" associated with the listener 
+does not exist, the listener selects the first available connection from the 
+drop-down list. WebSphere MQ Adapter does not display any warning message 
+stating that the "Connection Name" has changed. 
+
+This issue is resolved. MQ Adapter displays the following message on the edit 
+page of the listener if the listener selects a different connection: 
+
+"Connection previously associated with this listener is not found."
+
+IMQ-1079 (MQS_6.5_Fix26)
+In WebSphere MQ Adapter, services and listener notifications are failing with an
+error message. 
+
+This issue occurs because of a mismatch between the data input to the msgHeader 
+properties MsgId and CorrelId, and their data type. The data type of MsgId and 
+CorrelID were previously configured as String. As part of MQS_6.5_Fix21, MsgId 
+and CorrelId are configured as Object. 
+
+This issue is resolved. The new watt properties enable you to set the data type 
+of MsgId and CorrelID in existing services and listener notifications. 
+
+To set the MsgId and CorrelID as String, add the two watt properties - 
+watt.WmMQAdapter.MQMD.CorrelID.DataType.String, and  
+watt.WmMQAdapter.MQMD.MessageID.DataType.String. Set them to true. With this 
+watt property, you can avoid re-creating the services and listener notifications 
+for which the MsgId and CorrelId properties are configured as String. 
+   
+To let the adapter identify the data type set for the MsgId and CorrelId 
+properties, add the watt property - watt.WmMQAdapter.instrospectHeaderDataTypes.
+Set it to true. The data is passed as String or Object to the properties as 
+configured.
+
+IMQ-1066 (MQS_6.5_Fix26)
+In WebSphere MQ Adapter, the MsgId and CorrelId properties are set to Object 
+data type when a new service or listener notification is created. 
+
+When a new service or listener notification is created, the msgHeader properties
+MsgId and CorrelId are set to Object data type instead of String. However, the 
+MsgId and CorrelId properties in existing services and listener notifications 
+are set to String data type. 
+
+You must re-create the services and listener notifications to set the data type 
+of the MsgId and CorrelId properties to Object
+
+IMQ-1049 (MQS_6.5_Fix26)
+Changes to address security vulnerabilities found in Integration Server 
+Administrator. This fix resolves several cross-site scripting (XSS) issues found
+during internal security testing
+
+IMQ-1057 (MQS_6.5_Fix25)
+In WebSphere MQ Adapter, Adapter Notification service generates duplicate 
+information in both, msgBody and msgBodyByteArray fields.
+
+The same notification information is generated in msgBody as well as 
+msgBodyByteArray as two different data types. This may cause an increase in 
+memory consumption and network traffic especially in the case of large files.
+
+This issue is resolved. The Adapter Notification wizard of the WebSphere MQ 
+Adapter now includes a new tab, Msg properties where you can choose the field to
+generate notification information. 
+
+IMQ-1039 (MQS_6.5_Fix25)
+In WebSphere MQ Adapter, after setting the SSL Option, Internet Explorer takes a
+long time to respond.
+
+When using Internet Explorer to set the SSL Option in the Connections page of MQ
+Adapter, there is a delay in the response time of the browser.
+  
+This issue is now resolved. 
+
+IMQ-1048 (MQS_6.5_Fix25)
+In WebSphere MQ Adapter, Find Queues service fails during the configuration of a
+new connection on the IBM z/OS platform.
+
+When you click the Find Queues button on the Connections page of MQ Adapter, the
+adapter displays an MQ 3003 error. This issue occurs because the MQ message that
+the adapter constructs to retrieve the list of queue names is invalid.
+
+This issue is resolved. The watt property,
+watt.adapter.MQ.UsePCFAgentToFindQ, is now set to True and the MQ message is 
+constructed using IBM's PCFMessageAgent API class.
+
+IMQ-1013 (MQS_6.5_Fix25)
+In webMethods WebSphere MQ Adapter, the output value for the correID in the 
+message header of a WebSphere MQ message is inconsistent. 
+
+In WebSphere MQ Adapter, the CorreId field of the Put service msgHeader property
+gets processed as String, which results in inconsistent output. The issue occurs
+because the CorreId field is binary and when it is converted to bytes, the 
+adapter uses the default encoding of the OS platform on which
+Integration Server is running. 
+
+This issues is resolved. Now the CorreId field of the msgHeader property takes 
+an Object as input and the Put service maps the Object to a byte[] in the output.
+
+IMQ-1035 (MQS_6.5_Fix24)
+In webMethods WebSphere MQ Adapter, configuring an SSL connection using keystore
+and truststore aliases is not possible on Integration Server 8.0. 
+  
+Now WebSphere MQ Adapter provides support for SSL connections using keystore and
+truststore aliases with Integration Server 8.0. 
+  
+Before you configure an SSL connection in the adapter, you must create a 
+keystore alias and truststore alias in Integration Server Administrator. For 
+information about creating keystore and truststore aliases, see "webMethods 
+Integration Server Administrator's Guide". 
+  
+To configure an SSL connection, when configuring a WebSphere MQ Adapter 
+connection in Integration Server Administrator, specify values for the following
+fields on the Connections screen: - SSL Option, where the SSL Option is 
+"keystore alias". 
+- SSL Keystore Alias. The alias for the keystore file. 
+- SSL Truststore Alias. The alias for the truststore file. 
+  
+For more information about configuring WebSphere MQ Adapter connections, see 
+"webMethods WebSphere MQ Adapter Installation and User's Guide". 
+
+IMQ-1031 (MQS_6.5_Fix24)
+Trying to disable a webMethods WebSphere MQ Adapter connection results in a 
+JavaScript error. 
+
+When you attempt to disable a WebSphere MQ Adapter connection, a JavaScript 
+error is displayed and the connection remains enabled. 
+
+This issue is resolved. 
+
+IMQ-1030 (MQS_6.5_Fix24)
+In webMethods WebSphere MQ Adapter, configuring and managing SSL connections 
+results in the following issues: 
+
+- After applying MQS_6.5_Fix23, when you attempt to create a WebSphere MQ 
+Adapter SSL connection using keystore and truststore aliases in Integration 
+Server Administrator, the fields to create this type of SSL connection - SSL 
+Option, SSL Keystore Alias, and SSL Truststore Alias - are missing. 
+
+- After applying MQS_6.5_Fix22, the Edit Connection, Copy Connection, and View 
+Connection screens do not properly display some of the fields for SSL 
+connections. On the Edit Connection and Copy Connection screens, this issue 
+affects both connections using a keystore alias and connections using a keystore 
+file. The View Connections screen does not display the fields for connections 
+using a keystore alias. 
+
+The issues are resolved.
+
+IMQ-1020 (MQS_6.5_Fix23)
+Executing the webMethods WebSphere MQ Adapter Request/Reply adapter service 
+takes time when an invalid CCSID is specified. 
+
+The performance of the WebSphere MQ Adapter Request/Reply service is slow when 
+using an invalid or unsupported Coded Character Set Identifier (CCSID) in the 
+adapter connection. The issue occurs because converting the JMS Headers and 
+Message Body to String takes too much time when using an invalid character set. 
+
+This issue is resolved. Two new watt properties, 
+"watt.WmMQAdapter.RequestReplyService.ignoreReplyJMSHeader" and 
+"watt.MQAdapter.RequestReplyService.skipReplyMsgBodyToStringConversion", 
+are introduced to skip the JMS header and message body processing in the Reply 
+message when the adapter service executes. 
+
+Adapter Configuration Parameter Reference: 
+watt.WmMQAdapter.RequestReplyService.ignoreReplyJMSHeader 
+Ignores the JMS Headers in the Reply message.
+Values are: 
+-true. The services ignores the JMS Header in the Reply 
+ message. 
+- false (default). The service processes the JMS Header in the 
+  Reply message. 
+
+watt.MQAdapter.RequestReplyService.skipReplyMsgBodyToStringConversion Does not 
+convert the Message Body content of the Reply message to String. 
+Values are: 
+- true. The services does not convert the Message Body in the 
+Reply message to String. 
+- false (default). The service converts the Message Body in the 
+Reply message to String. 
+
+For more information about setting the watt properties and working with extended
+configuration settings, see "webMethods Integration Server Administrator's 
+Guide". 
+
+IMQ-1012 (MQS_6.5_Fix22)
+With Integration Server 8.2 and higher, when configuring Secure Sockets Layer 
+(SSL) connections in WebSphere MQ Adapter, you can use keystore and truststore 
+aliases.
+
+Before you configure an SSL connection in WebSphere MQ Adapter, you must create 
+a keystore alias and truststore alias in Integration Server Administrator. For 
+information about creating keystore and truststore aliases, see "webMethods 
+Integration Server Administrator's Guide". 
+ 
+To configure an SSL connection, when configuring a WebSphere MQ Adapter 
+connection in Integration Server Administrator, specify values for the following
+fields on the Connections screen: 
+- SSL Option, where the SSL Option is "keystore alias".
+- SSL Keystore Alias. The alias for the keystore file.
+- SSL Truststore Alias. The alias for the truststore file.
+ 
+For more information about configuring WebSphere MQ Adapter connections, see 
+"webMethods WebSphere MQ Adapter Installation and User's Guide".
+
+IMQ-1021 (MQS_6.5_Fix22)
+Accessing the DSP pages of the WmMQAdapter package fails when webMethods 
+Integration Server is using the CSRF guard feature. 
+
+When you enable the Cross-Site Request Forgery (CSRF) guard in Integration 
+Server, access to the dynamic server pages (DSP) of the WmMQAdapter package is 
+denied. 
+
+This issue is now resolved. 
+
+Note: 
+Integration Server 8.2 SP2 now provides the CSRF guard feature to prevent 
+Cross-Site Request Forgery (CSRF) attacks. For more information about securing 
+Integration Server with CSRF guard, see CSRF Guard Enhancement for Integration 
+Server Documentation Supplement Version 8.2 SP2 at 
+http://documentation.softwareag.com.
+
+IMQ-1011 (MQS_6.5_Fix22)
+Using webMethods WebSphere MQ Adapter to override an adapter connection that 
+contains a Security Exit parameter fails with an error. 
+
+In WebSphere MQ Adapter, when a cache thread creates an adapter connection with 
+a Security Exit parameter, while another cache thread attempts to create an 
+adapter connection with the values, specified in the overrideConnection property
+of an adapter service, the adapter returns the following error: "Queue manager
+cannot be initialized." The issue occurs because under high message load the 
+second thread sets the value of the Security Exit parameter of the first thread 
+to null. 
+
+The issue is resolved.
+
+IMQ-981 (MQS_6.5_Fix21)
+webMethods WebSphere MQ Adapter does not process correctly MQ messages that have
+JMS headers with complex XML format (such as the messages in IMQ-974). 
+
+When WebSphere MQ Adapter receives a message that has JMS headers with complex 
+XML format, the adapter does not convert the JMS headers to IData correctly. 
+
+The issue is resolved. A new watt property, 
+"watt.WmMQAdapter.useInternalDecodeXML", ensures that JMS headers in complex XML
+format are properly converted to IData. 
+
+Adapter Configuration Parameter Reference: 
+watt.WmMQAdapter.useInternalDecodeXML 
+Converts MQ messages with complex XML format in the JMS headers. Values are: 
+- true (default). WebSphere MQ Adapter uses its internal logic to 
+  handle JMS message headers. 
+- false. WebSphere MQ Adapter uses Integration Server public 
+  services to convert JMS header XML to IData. 
+
+For more information about setting the watt.WmMQAdapter.useInternalDecodeXML 
+property and working with extended configuration settings, see "Administering 
+webMethods Integration Server".  
+
+IMQ-974 (MQS_6.5_Fix20)
+webMethods WebSphere MQ Adapter fails to send a JMS message over WebSphere MQ, 
+with a VV-005 error. 
+
+When using WebSphere MQ Adapter to send a JMS message over WebSphere MQ, the 
+adapter returns the following error: "/JMSProperties errorCode=VV-005 Error". 
+The error occurs when: 
+- The custom header parameter for the JMS Properties is defined
+  with an integer value. 
+- The "Validate when published" option for the publish document
+  is set to true.
+ 
+This issue is resolved. The custom header parameter for the JMS Properties 
+accepts data types other than String. 
+
+IMQ-968 (MQS_6.5_Fix20)
+In webMethods WebSphere MQ Adapter, the output value for the message ID in the 
+message header of a WebSphere MQ message is inconsistent. 
+
+In WebSphere MQ Adapter, the MsgId field of the Put service msgHeader property 
+gets processed as String, which results in inconsistent output. The issue occurs
+because the MsgId field is binary and when it is converted to bytes, the adapter 
+uses the default encoding of the OS platform on which Integration Server is 
+running. 
+
+This issues is resolved. Now the MsgId field of the msgHeader property takes an 
+Object as input and the Put service maps the Object to a byte[] in the output.
+
+IMQ-964 (MQS_6.5_Fix19)
+When webMethods WebSphere MQ Adapter passes a message, getting the correct 
+message type from the message MQ header fails. 
+
+In WebSphere MQ Adapter, getting the correct message type from the MQ header of 
+a message fails because the adapter supports only the following message types: 
+MQMT_REQUEST, MQMT_REPLY, and MQMT_REPORT. If the message contains another 
+message type, by default the adapter selects the MQMT_DATAGRAM message type. 
+
+This issue is resolved. WebSphere MQ Adapter uses the correct message type in 
+the message MQ header. Along with the four supported message types, WebSphere MQ
+Adapter now supports all message types supported by the WebSphere MQ server 
+version 6, as follows: MQMT_APPL_FIRST, MQMT_APPL_LAST, and MQMT_SYSTEM_LAST.
+
+IMQ-946 (MQS_6.5_Fix18)
+webMethods WebSphere MQ Adapter's asynchronous listener notification throws a 
+NullPointerException if the JMSValues object is null. 
+
+When processing an MQRFH2 header, the adapter's asynchronous listener 
+notification throws a NullPointerException in getJMSHeader(), if the JMSValues 
+object is not available. 
+
+This issue is resolved. A null check has been added for the JMSValues object, 
+which solves the problem. 
+
+IMQ-942 (MQS_6.5_Fix17)
+When you execute a webMethods WebSphere MQ Adapter service, using an adapter 
+connection without a security exit property after using a connection with a 
+security exit property, the service fails. 
+
+The execution of a WebSphere MQ Adapter service fails with connections that use 
+the overrideConnection property when you use the connections in the following
+sequence: first a connection without a security exit property, then a connection
+with security exit, and again the connection without security exit. 
+
+This issue is now resolved. Each time you create or override the connection, the
+values in the WebSphere MQ Adapter environment are set to null and the adapter
+service executes successfully.
+
+IMQ-939 (MQS_6.5_Fix17)
+The webMethods WebSphere MQ Adapter PCF Command service throws an exception when
+configured to use the Set Authority Record PCF command. 
+
+When you configure the PCF Command service to use the SET_AUTH_REC PCF command, 
+the service throws the following exception: "The value expected on the ObjectType
+is integer." The issue occurs because the order of the mandatory parameters in 
+the SET_AUTH_REC command is reversed (the ObjectType parameter comes before the 
+ProfileName parameter). 
+
+This issue is resolved. The order of the mandatory parameters in the SET_AUTH_REC
+command has been corrected: the ProfileName parameter is followed by the 
+ObjectType parameter. Now the PCF Command service executes successfully.
+
+IMQ-923 (MQS_6.5_Fix16)
+The UUID attribute in the envelope of a published notification, generated by 
+webMethods WebSphere MQ Adapter, has a length of 80 bytes that exceeds the
+length limit of the database column for PRTUUIDXREF.UUID.
+
+webMethods WebSphere MQ Adapter generates the UUID attribute based on the MsgId 
+of the message. When the MsgId is long, this results in a UUID attribute that is
+longer than the length limit of the database column.
+
+The issue is now resolved. With the new Integration Server
+watt property "watt.WmMQAdapter.UUID.msgIdBasedUUID", you
+can choose whether to generate the UUID attribute based on
+the MsgId, or use the new approach that limits the maximum
+length up to 30 bytes.
+
+To configure the "watt.WmMQAdapter.UUID.msgIdBasedUUID" property:
+
+1. From the Integration Server Administrator, go to Settings > Extended.
+
+2. Click "Edit Extended Settings". In the Extended Settings editor, type the 
+   following:
+
+   watt.WmMQAdapter.UUID.msgIdBasedUUID=<value>
+
+   where <value> is true or false.
+   When you set the parameter to:
+   - false, WebSphere MQ Adapter generates the UUID with a maximun length of 30 
+     bytes. The UUID has no logical relation to the MsgId.
+   - true, WebSphere MQ Adapter retains the existing behavior, which is also the
+     default behavior in the absence of any setting.
+   
+   Note: The property name is case sensitive.
+
+3. Click Save Changes.
+   A key for the new property appears in the Extended Settings list.
+
+4. Restart webMethods Integration Server for the changes to take effect.
+
+For more information about the server configuration file and working with 
+extended configuration settings, see "Administering webMethods Integration 
+Server".
+
+IMQ-919 (MQS_6.5_Fix15)
+Next page indicator on WebSphere MQ Adapter connections page does not display 
+correctly in Japanese environment.
+
+When viewing adapter connections and there are more connections than can fit on 
+a page, users can click "Next >>" to advance to additional pages. But in a 
+Japanese environment, the character ">>" does not display correctly. This 
+behavior is due to use of a UTF-8 compliant character for >>.
+
+This issue is resolved. The >> character has been changed to use ISO-8859-1, and
+the next page indicator now displays properly.
+
+IMQ-916 (MQS_6.5_Fix15)
+Cannot modify existing WebSphere MQ Adapter connections for SSL because there 
+are no SSL-related connection parameters shown.
+
+When configuring connections for WebSphere MQ Adapter, after enabling SSL by 
+setting the property watt.WmMQAdapter.SSL.Support=true, new connections can be 
+defined with SSL-related connection parameters. However, any existing non-SSL 
+connections cannot be modified to add SSL, because the SSL-related parameters 
+are not visible on the connection's properties.
+
+This issue is resolved. SSL-related parameters will now be visible for existing 
+connections as well as for new connections after setting the property 
+watt.WmMQAdapter.SSL.Support=true.
+
+IMQ-906 (MQS_6.5_Fix12)
+JMS messages received with webMethods WebSphere MQ Adapter 6.5 using IBM 
+WebSphere MQ 7.0 libraries do not pass on the MQMD header format, MQHRF2.
+
+When a WebSphere MQ Adapter listener fetches JMS messages, it fails to pass on 
+the MQHRF2 format for the MQMD header. The issue occurs only when using the IBM 
+WebSphere MQ version 7.0 libraries.
+
+This issue is resolved. A new server watt property,watt.WmMQAdapter.forceMQRFH2,
+has been added that enables the adapter to force the MQHRF2 format for the MQMD 
+header. To configure this property:
+
+1. From the Integration Server Administrator, click Settings > Extended.
+
+2. Click Edit Extended Settings. In the Extended Settings editor, type the 
+   following:
+
+   watt.WmMQAdapter.forceMQRFH2=<value>
+
+     where <value> is true or false.
+
+   Setting the parameter to true forces the WebSphere MQ Adapter listener to pass
+   the MQHRF2 format for the MQMD header when fetching JMS messages.
+
+   Setting the parameter to false (or deleting it from the Extended Settings 
+   list)
+   causes the adapter to not force the MQHRF2 format.
+
+   Note: The parameter name is case sensitive.
+
+3. Click Save Changes. A key for the new parameter appears in the Extended 
+   Settings list.
+
+4. Restart webMethods Integration Server for the changes to take effect.
+
+For more information about the server configuration file and working with 
+extended configuration settings, see the guide "Administering webMethods 
+Integration Server".
+
+IMQ-898 (MQS_6.5_Fix11)
+Listener fails with MQRC 2033 when retrieving messages in a group from the queue,
+and orphaned messages remain in the message queue.
+
+With webMethods MQ Adapter 6.5, when a listener attempts to retrieve a message 
+that is for a specific group from the queue, the operation is slow and fails 
+with MQRC 2033. This code occurs when the messages are put into the queue as a 
+group and the time frame in which the messages are put into the queue exceeds 
+the "Wait Interval" property of the listener.
+
+This behavior is as per design to stop the listener from fetching messages from 
+the queue because messages were not found in the configured timeframe. However, 
+when the listener fails, MQRC 2033 is thrown, and can cause orphaned messages 
+when messages are put into the queue after the listener fails with a timeout.
+
+This issue is resolved. A new listener parameter has been added to the Configure
+Listener Type screen and the Edit Listener screen. The new parameter, "Retrieve 
+only when all messages available," applies only to messages in a group.
+
+- When set to True, the listener will not fetch messages from the queue until 
+all messages that pertain to a group are present in the queue. (This is the new 
+behavior.)
+
+- When set to False (this is the default), the listener fetches messages when 
+they arrive in the queue, even if not all messages in the group are in the queue.
+
+IMQ-860 (MQS_6.5_Fix10)
+Adapter notification fails when JMS property is empty.
+
+When an adapter listener retrieves a WebSphere MQ message that contains empty 
+XML structure in its MQRFH2 header the notification document published has the 
+corresponding field missing.
+
+WebSphere MQ messages can contain XML data in the MQRFH2 header, which the 
+adapter parses and converts to Integration Server document format. However, 
+WebSphere MQ Adapter does not correctly parse the empty XML structure of the 
+form '</tag>', and the resulting notification document for the message has the
+corresponding field missing. An error occurs during the publish of the document,
+because all the fields of the notification document are mandatory.
+
+This issue is resolved.
+
+IMQ-852 (MQS_6-5_Fix9)
+WebSphere MQ Adapter PUT service throws Java exception at run time.
+
+When attempting to run a WebSphere MQ Adapter PUT service, the following error 
+is thrown:
+ADA.0600.1055 Exception caught action : RequestReply : Queue <queue> could not 
+be opened for Output; com.ibm.mq.MQException: MQJE001: Completion Code 2, Reason
+2035.MQJE001: Completion Code 2, Reason 2035 By default, the PUT adapter service
+populates the 'putDateTime' field of the MQ message during execution. Because 
+this field is populated by the adapter, IBM MQ Server requires the setall user
+permission to be set in the MQ Queue Manager. However, giving setall permission 
+may be seen as a security issue at some sites.
+
+This issue is resolved. A new server watt property, 
+watt.WmMQAdapter.Message.AddDateTimeStamp, has been added that enables the 
+adapter to bypass populating the MQ message field 'putDateTime' field, thus 
+setting the setall user permission is not required.
+
+To configure the watt.WmMQAdapter.Message.AddDateTimeStamp property:
+
+1. From the Integration Server Administrator, click Settings >  Extended.
+
+2. Click Edit Extended Settings. In the Extended Settings editor, type the 
+   following:
+
+   watt.WmMQAdapter.Message.AddDateTimeStamp=<value>
+
+     where <value> is true or false.
+
+   Setting the parameter to true retains the existing behavior. That is, the 
+   'putDateTime' field is implicitly set during PUT service execution. This is 
+   the default.
+
+   Setting the parameter to false bypasses setting the value for the 
+   'putDateTime' field. That is, the 'putDateTime' field in the MQ message is 
+   empty.
+
+   Note: The parameter name is case sensitive.
+
+3. Click Save Changes. A key for the new parameter appears in the Extended 
+   Settings list.
+
+4. Restart the webMethods Integration Server for the changes to take effect.
+
+For more information about the server configuration file and working with 
+extended configuration settings, see the webMethods Integration Server 
+Administrator's Guide or Administering webMethods Integration Server.
+
+1-1UQV4K (MQS_6-5_Fix8)
+After a fatal error, Request/Reply service does not purge overridden ReplyTo 
+connection.
+
+When a fatal error occurs during the execution of a Request/Reply service whose 
+ReplyTo connection properties are overridden, the service fails to recover from 
+the error. The error persists even after the connection associated with this 
+service is disabled and enabled again. This occurs because the Request/Reply 
+service does not terminate and clean-up the stale overridden connection after
+a fatal exception.
+
+This issue is resolved.
+
+1-1WMSHB (MQS_6-5_Fix8)
+StringIndexOutOfBoundsException error is thrown when adapter service retrieves 
+WebSphere MQ message containing repeated nested XML structures in its MQRFH2 
+header.
+
+WebSphere MQ messages can contain XML data in the MQRFH2 header which the adapter
+parses and converts to Integration Server document format. However, the WebSphere
+MQ Adapter code for XML parsing does not handle repeated nested XML structures 
+correctly and an error is thrown.
+
+This issue is resolved.
+
+1-1WSOCD (MQS_6-5_Fix8)
+Invoking the archive or clear tracing files services enables WebSphere MQ Adapter
+tracing even when it is disabled.
+
+When you run wm.mqseries.admin:archiveTraceFile or 
+wm.mqseries.admin:clearTraceFile services, the WebSphere MQ client tracing is 
+enabled even if the WebSphere MQ Trace Status is set to Disabled.
+
+This issue is resolved.
+
+1-1UVBK0 (MQS_6-5_Fix7)
+WebSphere MQ Adapter does not create the child listener when the associated 
+queue name contains special characters.
+
+When creating a multi-queue listener, the adapter does not create the child 
+listeners when the associated queue name contains special characters like '.',
+'%' and '/'.
+
+This issue is resolved. Now when creating a multi-queue listener, if a queue name
+contains special characters, the adapter successfully creates the child listeners
+for the associated queues. The child listeners are named after the queue they 
+listen to, prefixed by the parent multi-queue listener name provided, but the 
+special characters are replaced with underscores ('_').
+
+1-1U19ZZ (MQS_6-5_Fix6)
+webMethods WebSphere MQ Adapter services fail to recover from the errors when 
+the override connection parameters are invalid.
+
+At runtime the WebSphere MQ Adapter enables you to override the default 
+connection parameters associated with an adapter service. However, if you specify
+invalid values for the host name, port, or channel connection parameters, 
+subsequent invocations of the adapter service fail, even after specifying valid 
+values. This error occurs because the adapter does not revert to the original 
+connection parameter values after encountering an error in overridden parameters.
+
+This issue is resolved. WebSphere MQ Adapter now restores the connection 
+parameters after you provide the original connection parameters, and subsequent 
+invocations of the adapter service complete successfully.
+
+1-1RWSM4 (MQS_6-5_Fix5)
+webMethods WebSphere MQ Adapter 6.5 does not support IBM Coded Character Set 
+Identifier (CCSID) 1200 character encoding.
+
+In webMethods WebSphere MQ Adapter 6.5, GET and PEEK services return an empty 
+'msgBody' field when msgHeader.CodedCharSetId field is set to "1200" or "CP1200".
+This is because webMethods WebSphere MQ Adapter 6.5 does not support messages 
+with UTF-16 character encoding. CCSID 1200 represents UTF-16 character encoding.
+
+This issue is resolved. webMethods WebSphere MQ Adapter 6.5 now supports IBM 
+Coded Character Set Identifier (CCSID) 1200 character encoding.
+
+1-1KQMJN (MQS_6-5_Fix4)
+The WebSphere MQ Server fails to send COD (Confirmation On Delivery) report 
+messages when CorrelId or MsgId is specified in the MQMD header or UserId is 
+specified in the WebSphere MQ Adapter connection properties.
+
+In WebSphere MQ Adapter, when the messages are put using the 'PUT' service and 
+the COD acknowledgement is enabled for that message, WebSphere MQ Server fails 
+to send COD report messages when CorrelId or MsgId is specified in the MQMD 
+header or UserId is specified in the WebSphere MQ Adapter connection properties.
+
+This issue is now resolved. The WebSphere MQ Server will send COD report messages
+even when CorrelId or MsgId is specified in the MQMD header or UserID is 
+specified in the WebSphere MQ Adapter connection properties.
+
+1-1M5TO3 (MQS_6-5_Fix3)
+When you create a "Put" service in WebSphere MQ Adapter 6.5 without selecting a 
+JMSType from the "JMS Properties" tab, the message header contains 
+<Type>jms_text</Type> tag.
+
+By default, the <Type>jms_text</Type> tag is present in the message header of 
+the "Put" service. This is happening for messages having RFH2 header. The <Type>
+tag is inserted in the MQ message, even if the "JMSProperties.jms.JMSType" is 
+not selected in "JMS Properties" tab.
+
+The issue is now resolved. The <Type> tag will be inserted in the MQ message 
+only if the "JMSProperties.jms.JMSType" is selected in the "JMS Properties" tab 
+while creating the service.
+
+Note: The property watt.MQSeries.Suppress.JMSType.tag is no longer used in 
+webMethods WebSphere MQ Adapter 6.5.
+
+1-1IW7O9 (MQS_6-5_Fix2)
+When JMS application puts a message into WebSphere MQ queue, WebSphere MQ Adapter
+notification throws an error with the following error code: ADA.600.1007.
+
+WebSphere MQ Adapter notification throws an error when trying to read messages 
+from WebSphere MQ queue. This issue happens only when the message put into the 
+queue by JMS application has a null value in the "JMS Type" header field.
+
+This issue is now resolved. The WebSphere MQ Adapter Notification and GET 
+service can now handle WebSphere MQ messages with null values in the "JMS Type"
+header field.
+
+1-153LVB (MQS_6-5_Fix1)
+WebSphere MQ Adapter throws a Null Pointer Exception when you invoke a Get, Peek,
+or Request/Reply service.
+
+When a Get, Peek, or Request/Reply service retrieves a message with RFH 1 Header,
+a Null Pointer exception occurs while parsing the header. WebSphere MQ Adapter 
+handles only messages with RFH 2 Headers and the RFH 2 header values are put in
+the corresponding JMS header fields.
+
+This issue is resolved. If a message in WebSphere MQ queue is having RFH 1 Header,
+the Get, Peek, or Request/Reply services will ignore the header and treat the 
+message as a normal message. The RFH 1 header values will be present in the 
+message body.
+
+1-1BVR53 (MQS_6-5_Fix1)
+In webMethods WebSphere MQ Adapter, the logging of MQJE messages cannot be 
+controlled.
+
+WebSphere MQ client directs all the MQJE messages to the console or to a log 
+file. This will result in a large amount of log data, especially when a listener
+is running.
+
+This issue is now resolved. A new watt property
+'watt.WmMQAdapter.Log.MQJE.ExcludeList' is added. You can use
+this watt property to control the logging of MQJE messages by
+setting the following values:
+1) 'NONE' (Default behavior): Logs all the MQJE messages.
+2) 'ALL': Will not log any MQJE messages.
+3) Specific Reason codes separated by comma: The messages of the
+specified reason codes will not be logged.
+
+1-150GZN (MQS_6-5_Fix1)
+When putting a message into the queue using the Put service, the adapter ignores
+the Put Time and Put Date specified at the runtime.
+
+The "Put Date" and "Put Time" fields present in MQ header are by default 
+populated with the current date and time. You can also override the values of 
+Put Date and Put Time at runtime. The values specified at the runtime are 
+currently not set to the corresponding fields in the MQ message header.
+
+This issue is resolved. The Put Date and Put Time should be specified in GMT. 
+The format for Put Date should be 'YYYYMMDD' where 'YYYY' is the year, 'MM' is 
+the month ('00' for Jan and '11' for Dec) and 'DD' is the date.
+
+The format for Put Time is 'HHMMSSTT', where 'HH' is hour, 'MM' is minutes, 'SS'
+is seconds, and 'TT' is 1/100th of a second.
+
+
+
+8.0 Installation
+
+Install using Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Copyright Super iPaas Integration LLC, an IBM Company 2024.

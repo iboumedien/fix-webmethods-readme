@@ -1,0 +1,560 @@
+	IBM webMethods RosettaNet Module 7.1 SP2 Fix 23 readme
+
+	                 March 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods RosettaNet Module 7.1 SP2 Fix 23.
+
+
+
+2.0 Fix ID
+
+RN_7.1_SP2_Fix23
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+IBM webMethods RosettaNet Module 7.1 SP2.
+
+
+
+4.0 Requirements and Dependencies
+
+- wMFix.estdsCommon_7.1.0.0013 or higher
+- wMFix.TNServer_9.7.0.0002 or higher on IS 9.7
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install
+the specified fix or
+later.
+
+
+5.0 Platform Support
+
+Same platforms as a product release.
+
+
+
+6.0 Cautions and Warnings
+
+Apply fix (RN_7-1_SP2_Fix17 or later) after complete processing the existing
+running transaction to avoid "java.io.InvalidClassException".
+
+WRN-1565 requires an Integration Server Core Fix that addresses PIE-92339.
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can
+result in new or changed built-in services, APIs, or configuration parameters.
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes
+for the release.
+
+WRN-1577
+
+In IBM webMethods module for RosettaNet 7.1 SP2, in certain scenarios,
+when converting the payload (IS document) to a record using the service
+'wm.estd.common.util:documentToRecord', inbound validation fails
+because it is randomly altered.
+
+This issue is now resolved. Now, a new configuration
+'RosettaNet.skip.estdsCommon.documentToRecord' has been added to skip the
+existing document conversion process. To use this, you must set the PIP codes
+as comma-separated values, for example,
+RosettaNet.skip.estdsCommon.documentToRecord=3A4,4A5.
+This will create a new IS document with a root node from the existing PIP IS
+document under the same Pip folder with the suffix '_RN'.
+
+Note: Then a new configuration must be used along with the service
+'RosettaNet.document.structureFormat' set as true.
+
+RGHADPESTBL-12845 (RN_7-1_SP2_Fix21)
+
+Fix includes security updates with no new features to existing user-facing
+functionalities.
+
+WRN-1565 (RN_7-1_SP2_Fix21)
+
+In IBM webMethods RosettaNet Module 7.1 SP2, when the module sends RosettaNet
+outbound messages that exceed the maximum limit set for the load balancer, it
+fails with the error "Broken pipe (Write failed)". This issue occurs when the
+service content in the RosettaNet MIME message is in pretty-print format. The
+content size increases in this format, which leads to exceeding the limits set
+for the load balancer.
+
+This issue is now resolved. Now, the optional input parameter
+"customParams/prettyPrint" has been added to the service
+"pub.estd.rosettaNet:send" to avoid the pretty-print format. Set this parameter
+to "false" if pretty-print is not needed, the default value is "true".
+
+WRN-1561 (RN_7-1_SP2_Fix20)
+
+In IBM webMethods RosettaNet Module 7.1 SP2, the copyright information is
+updated.
+
+This issue is now resolved.
+
+WRN-1531 (RN_7-1_SP2_Fix19)
+
+In IBM webMethods RosettaNet Module 7.1 SP2, the fixes were unable to install in
+Microservices Runtime from 10.15 Integration Server release.
+
+This issue is now resolved.
+
+WRN-1489 (RN_7-1_SP2_Fix18)
+
+In IBM webMethods RosettaNet Module 7.1 SP2, the module calls terracotta's size
+function even when the log level trace is not enabled. The module's overall
+performance reduces and it displays the following error occasionally:
+NonStopException: size timed out.
+
+This issue is now resolved.
+
+WRN-1464 (RN_7-1_SP2_Fix17)
+
+Doc structure issue in documents\Payload IData object for the internal document
+when the doc structure contains an array and a single index is present in the
+input internal document.
+This issue is now resolved. A new TPA variable, "InternalDocumentNS" is
+introduced and available under the "PipInfo" TPA parameter. You can set this
+variable to the namespace of the internal document which will be processed
+through 'pub.estd.rosettaNet:processDocument'.
+
+WRNPI-95 (RN_7-1_SP2_Fix17)
+
+There is no response when clicking the 'Create Archive' button during PIP
+Export.
+This issue is now resolved.
+
+WRN-1423 (RN_7-1_SP2_Fix16)
+
+In IBM webMethods RosettaNet Module 7.1 SP2, TPA does not support Java Secure
+Socket Extension (JSSE).
+
+This issue is resolved. A new TPA variable, "useJSSE" is introduced and
+available under the "ProcessInfo" TPA parameter. You can set this variable to
+yes or no to enable or disable JSSE support for TPA. By default, "useJSSE"
+variable is set to no.
+
+WRN-1398 (RN_7-1_SP2_Fix15)
+
+Integration Server Administrator has a new user interface.
+
+The HTML-based utility that administers IBM webMethods RosettaNet Module has a
+new user interface. However, the menu and screen locations remain unchanged.
+
+
+WRN-1388 (RN_7-1_SP2_Fix14)
+
+In IBM webMethods RosettaNet Module, the timeToLive cache property
+resets to 0 after every Integration Server restart.This issue
+was resolved partially in fix 13.
+
+This issue is resolved.
+
+
+WRN-1380 (RN_7-1_SP2_Fix13)
+
+The TimeToLive Ehcache property resets to 0 during every
+Integration Server restart.
+
+You can configure the TimeToLive and maxEntriesLocalHeap
+SoftwareAG-IS-RosettaNet Ehcache properties to DEFAULT or
+INFINITY in the RosettaNet configuration file. If you configure
+the property to DEFAULT and the SoftwareAG-IS-RosettaNet cache
+file property value is 0, then the cache property value is set
+to its default value. If you configure the property to INFINITY,
+then the cache property value is set to infinity irrespective
+of the previous value. The default value for the configuration
+property is DEFAULT.
+
+To modify the default values, update the following syntax in
+the config.cnf file:
+Prefix.EhcacheProperty=value
+For example: <Prefix>.<EhcacheProperty>
+              RosettaNet.cache.timeToLiveSeconds=DEFAULT, or
+              RosettaNet.cache.timeToLiveSeconds=INFINITY
+
+This issue occurs after installing the fix, RN_7.1_SP2_Fix12.
+
+This issue is resolved.
+
+
+WRN-1361 (RN_7-1_SP2_Fix12)
+
+The cache initialization fails and displays either the
+net.sf.ehcache.CacheException or FileNotFoundException while
+loading the RosettaNet package.
+
+This issue is now resolved.
+
+
+WRN-1368 (RN_7-1_SP2_Fix12)
+
+The following error message is incorrectly constructed:
+"Cannot find the TPA that contains the sender, receiver, and
+agreement ID. Define the TPA using Trading Networks Console
+/ My webMethods"
+
+This issue is now resolved.
+
+
+WRN-1370 (RN_7-1_SP2_Fix12)
+
+Integration Server 9.12 has a new user interface.
+
+The HTML-based utility that administrates the IBM webMethods RosettaNet
+Module must adhere to the user interface changes in Integration
+Server 9.12.
+
+This issue is resolved.
+
+
+WRN-1338 (RN_7-1_SP2_Fix11)
+
+Cache size is growing causing shut down and GC pauses
+
+This issue is resolved. Default value for maxEntriesLocalHeap has been set to
+20000 which will make the eviction of cached content more efficient.
+
+
+WRN-1341 (RN_7-1_SP2_Fix10)
+
+In IBM webMethods RosettaNet Module, an exception occurs when the
+value of RosettaNet.cache.CacheSearchStyle property is set to
+key.
+
+The following exception occurs for some PIP standards such as
+PIP6C3 when the value of RosettaNet.cache.CacheSearchStyle
+property is set to key.
+
+java.lang.ClassCastException:
+com.wm.estd.rosettaNet.cache.MSCElements cannot be cast to
+com.wm.estd.rosettaNet.cache.ProcessElement
+
+This issue is resolved.
+
+
+WRN-1316 (RN_7-1_SP2_Fix9)
+
+In IBM webMethods RosettaNet Module, searching for NOF
+conversation IDs causes performance issues.
+
+The module performs a sequential search for NOF conversation IDs
+reading all keys stored in the cache. Sequential search is an
+iterative method where the NOF conversation IDs are compared with
+every entry in the cache. This method takes longer to retrieve NOF
+conversation IDs from the cache which causes a delay in the
+performance of the module.
+
+This issue is resolved. Now, you can configure the search method
+that the module uses to search for NOF conversation IDs. You can
+choose between sequential and key methods.
+Key search uses key-value pair approach to retrieve the value of
+NOF conversation IDs from the cache. This method improves the
+performance of the module. Although, memory utilization is higher
+when using key search.
+
+To configure the search method for the module,
+1. Go to Integration Server_directory\instances\instance_name
+\packages\WmRosettaNet\config\config.cnf.
+2. Set the variable RosettaNet.cache.CacheSearchStyle to
+"sequential" or "key". The default value is "sequential".
+3. Reload the WmRosettaNet package.
+
+
+WRN-1302 (RN_7-1_SP2_Fix8)
+
+In IBM webMethods RosettaNet Module 7.1 SP2, PRT is unable to launch
+PIP 0A1 business process.
+
+This issue occurs because the RosettaNet module is unable to
+return the valid conversation ID to the Integration Server during
+the heavy load. Therefore, the module does not join the PIP 0A1
+process model.
+
+This issue is resolved. Now, the module returns the valid
+conversation ID and joins the PIP 0A1 process model.
+
+
+WRN-1288 (RN_7-1_SP2_Fix7)
+
+In IBM webMethods RosettaNet Module 7.1 SP2, SHA-2 HashAlgorithm is
+not supported.
+
+This issue is resolved. Now, the module supports following SHA-2
+HashAlgorithms, SHA-256, SHA-384, and SHA-512.
+
+
+WRN-1236 (RN_7-1_SP2_Fix6)
+
+When CSRF guard is enabled, some RosettaNet Module pages return
+an error.
+
+When CSRF guard is enabled in Integration Server, some of the
+IBM webMethods RosettaNet Module 7.1 SP2 pages in the Integration
+Server Administrator console report the following error: "Access
+denied. Invalid CSRF secure token."
+
+This issue is resolved.
+
+
+WRN-1215 (RN_7-1_SP2_Fix5)
+
+IBM webMethods RosettaNet Module returns contents along with the response
+code "202 Accepted", for an asynchronous request.
+
+The IBM webMethods RosettaNet Module 7.1 SP2 adds pipeline data as content
+to the response that is sent for an asynchronous request.
+
+This issue is resolved. IBM webMethods RosettaNet module sends only the
+response code "202 Accepted" as response for an asynchronous request.
+
+
+WRN-1211 (RN_7-1_SP2_Fix5)
+
+Cannot process XML payloads which do not contain XML version header.
+
+IBM webMethods RosettaNet Module 7.1 SP2 does not recognize those XML
+payloads which do not contain XML version headers.
+
+This issue is resolved. IBM webMethods RosettaNet Module processes XML
+payloads with or without XML version headers.
+
+
+WRN-1187 (RN_7-1_SP2_Fix5)
+
+Certificate validation errors are not logged to the Integration Server
+console.
+
+This issue is resolved. When a Certificate Validation fails, an error
+is logged to the Integration Server console.
+
+
+WRN-1204 (RN_7-1_SP2_Fix4)
+
+IBM webMethods RosettaNet Module wrongly initiates a new process instance
+for a duplicate acknowledgement response.
+
+IBM webMethods RosettaNet Module 7.1 SP2 does not verify whether the received
+bizdocEnvelope has a unique process instance ID. When an acknowledgement
+with a duplicate process instance ID is received, RosettaNet Module
+initiates a new process instance, instead of reporting an error.
+
+This issue is resolved. IBM webMethods RosettaNet Module 7.1 SP2 checks for
+the existence of instance ID and if a duplicate is found,it throws an error.
+As part of the resolution, a new parameter
+?RosettaNet.receive.checkDuplicateDoc? is added to the config file and set to
+true. Use the property as specified below:
+1. Go to <IntegrationServer_Directory>\packages\WmRosettaNet\config directory.
+2. Open config.cfg file, and add the following:
+    RosettaNet.receive.checkDuplicateDoc=true
+3. Restart Integration Server.
+
+
+WRN-1187 (RN_7-1_SP2_Fix3)
+
+Certificate validation in IBM webMethods RosettaNet Module 7.1 SP2 does
+not behave as expected.
+
+IBM webMethods RosettaNet Module 7.1 SP2 does not validate between the
+certificates extracted from a signed RosettaNet message, and the
+certificate configured in the Trading Networks  profile. As a result,
+the certificate validation fails.
+
+This issue is resolved for RNIF20 messages. As part of the resolution,
+a new parameter ?RosettaNet.security.validateCertificateWithTN? is
+added to the config file.Use the property as specified below:
+1. Go to <IntegrationServer_Directory>\packages\WmRosettaNet\config directory.
+2. Open config.cfg file, and add the following:
+    RosettaNet.security.validateCertificateWithTN=true
+3. Restart Integration Server.
+
+
+WRN-1179 (RN_7-1_SP2_Fix2)
+
+The RosettaNet Object (RNO) received from the partner has a very
+lengthy filename, resulting in failure when archiving the RNO.
+
+RosettaNet 7.1 SP2 module archives the RNO with a unique name
+that is a combination of the TNDocType, UniqueID and TimeStamp.
+The UniqueID is retrieved from the incoming RNO's Instance ID.
+As a result, when a partner sends an excessively long Instance
+ID, the RNO's filename length becomes too long.
+
+This issue is resolved. As part of the resolution, a new
+parameter RosettaNet.archive.receive.uniqueIDIsInternalDocID is
+added to set the value of UniqueID as TN doc's internal ID. Steps
+to use the RosettaNet.archive.receive.uniqueIDIsInternalDocID
+parameter is given below:
+
+1. Open config.cnf file from
+\IntegrationServer_Directory\packages\WmRosettaNet\config directory.
+2. Add the config parameter as follows:
+    RosettaNet.archive.receive.uniqueIDIsInternalDocID=true
+3. Restart Integration Server.
+
+
+WRN-1144(RN_7-1_SP2_Fix1)
+
+NOF is not handled in RosettaNet 7.1 SP2 when the parent process that started
+the NOF process has gone into Error or Completed state.
+
+In RosettaNet 6.1, the NOF handing is done in a separate process model, and not
+by the same process model that started the NOF. However, in RosettaNet 7.1 SP2,
+the NOF handling is done by the same parent process model that started the NOF
+process. When the parent process model ends in an error state, and a NOF is
+started, the NOF is not handled as the parent process model is in error state.
+
+This issue is resolved. As part of the resolution, three properties are added
+to the config.cnf file in the
+Integration Server_directory\packages\WmRosettaNet\config folder. These
+properties control the behavior of NOF, as explained below:
+
+1. RosettaNet.NOF.initiator.invokeNewProcess: Set to true, to use separate NOF
+initiator model to send the NOF and to handle NOF acknowledgement. Default value
+is false.
+
+2. RosettaNet.NOF.responder.invokeNewProcess: Set to true, to use separate NOF
+responder model to receive the NOF related documents and to send the
+acknowledgement. Default value is false.
+
+3. RosettaNet.NOF.responder.failParentProcess: Set to true, to set the parent
+process of the NOF responder to failed state. If the value of this property is
+set to false, the parent process of the NOF responder remains in its current
+state. Default value is true.
+
+4. Restart the Integration Server.
+
+After changing the value of any of the above properties, build and upload the
+following process models in the Integration Server_directory\packages\
+WmRosettaNet\ProcessModels folder.
+? PIP0A1 NOF Initiator.process [for Integration Server Version 7.x]
+? PIP0A1 NOF Initiator_8x.process [for Integration Server Version 8.x]
+? PIP0A1 NOF Responder.process [for Integration Server Version 7.x]
+? PIP0A1 NOF Responder_8x.process [for Integration Server Version 8.x]
+
+
+WRN-1155 (RN_7-1_SP2_Fix1)
+
+RosettaNet 7.1 SP2 module picks the wrong document for processing from the
+process model.
+
+In RosettaNet 7.1 SP2, the document from the previous step of the process model
+is picked up for processing, instead of the most recent document.
+
+This issue is resolved.
+
+
+WRN-1159 (RN_7-1_SP2_Fix1)
+
+RosettaNet 7.1 SP2 module calls the getProfile service in Trading Networks
+multiple times, resulting in performance degradation.
+
+During a RosettaNet transaction, RosettaNet 7.1 SP2 calls getProfile service in
+Trading Networks multiple times. Every call to this service goes to the database
+to retrieve profile data. Since profile data does not change often, the multiple
+calls to getProfile service is not adding value to the performance of the
+RosettaNet 7.1 SP2 module.
+
+This issue is resolved. As part of the resolution, RosettaNet 7.1 SP2 module
+calls getProfileSummary service to retrieve cached profile data.
+
+
+WRN-1160 (RN_7-1_SP2_Fix1)
+
+RosettaNet 7.1 SP2 does not verify if the value of the GlobalUsageCode field in
+the incoming message is same as the value of GlobalUsageCode field in the TPA.
+
+In RosettaNet 7.1 SP2, the RosettaNet message gets processed successfully even
+if the value of the field GlobalUsageCode is not valid. The value of
+GlobalUsageCode field in the incoming message must be same as the value of
+GlobalUsageCode field in the TPA.
+
+This issue is resolved. As part of the resolution, RosettaNet module displays
+error if the value of GlobalUsageCode field is not same in the incoming message
+and TPA.
+
+
+
+8.0 Installation
+
+Install using Update Manager. For instructions, see the documentation at
+https://docs.webmethods.io/.
+
+Note: If using the default archive location for archiving the RNOs
+( i.e. \IntegrationServer\packages\WmRosettaNet\archive) or
+somewhere inside the WmRosettaNet package, then before
+installing the fix take a backup of this folder to some
+custom location and then delete the archive folder from the
+WmRosettaNet package. After fix installation the archive folder
+can be put back to the respective location. This is required
+because SUM takes the backup of whole package while fix
+installation. If the size of package is very large the fix
+installation process will take a lot of time.
+
+If not already set, the below configuration instructions
+must be followed for the proper functioning of the IBM webMethods RosettaNet
+Module:
+
+- Confirm that the ProcessInfo/SenderFocalRole and
+  ProcessInfo/ ReceiverFocalRole values are set in the TPA.
+
+- For Integration Server 8.x:
+
+  - To be able to import PIPs successfully in the Integration
+    Server 8.x release, set the following property in the
+    Extended Settings in Integration Server Administrator:
+
+    watt.core.schema.validateIncomingXSDUsingXerces=false
+
+  - Use updated templates that have names ending with "_8x"
+    instead of older templates that end with "_80". For example,
+    use PipOneActionResponderModel_8x.process. These updated
+    templates are valid for 8.0 SP1 as well as 8.2 releases.
+
+- For Integration Server 8.2, to export the PIP successfully set
+  the following property in the Extended Settings in Integration
+  Server Administrator:
+
+  watt.server.http.listRequestVars=always
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently
+installed fix. This action will revert your installation to the previously
+installed fix. You cannot use these instructions to
+uninstall the previously installed fix.
+
+Uninstall using Update Manager. For instructions, see the documentation at
+https://docs.webmethods.io/.
+
+If you have made any changes to WmRosettaNet/config/config.cnf after this fix is
+installed, then retain these changes, and take a backup of this file before
+uninstalling this fix.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

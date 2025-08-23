@@ -1,0 +1,291 @@
+                  IBM webMethods Adapter 9.0 for OFTP Fix 15 readme
+
+                                   July 2025
+
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods Adapter 9.0 for OFTP Fix 15
+
+
+
+2.0 Fix ID
+
+OFT_9.0_Fix15
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+None.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include 
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the 
+release.
+
+OFT-131 
+The OFTP Adapter fails to connect to the rvsEVO server due to the "jdom.jar"
+version upgrade.
+
+After upgrading to Java 17, modification to the "jdom.jar" file located in 
+"<IS_Root>/common/lib/ext" causes the OFTP Adapter to fail to connect to the 
+rvsEVO server.
+
+This issue is now resolved.
+
+OFT-134 (OFTP_9.0_Fix14)
+Updated copyright notes, vendor, and product names for IBM rebranding.
+
+OFT-109 (OFTP_9.0_Fix13)
+In webMethods Adapter for OFTP, the createSendJob service fails as the path
+separator in the file path is different when the webMethods Adapter for OFTP is
+available on one operating system and the rvsEVO Server is available on another
+operating system.
+
+This issue is now resolved.
+
+OFT-83 (OFTP_9.0_Fix12)
+In webMethods Adapter for OFTP, the connection configuration screen in 
+Integration Server Administrator appears distorted for Integration Server 
+10.5 and 10.7 versions.
+
+This issue is now resolved.
+
+OFT-79 (OFTP_9.0_Fix12)
+In webMethods Adapter for OFTP, when the user configures logging level to error,
+the info level messages appear as error level messages in Integration Server
+Administrators' server log.
+
+This issue is now resolved. 
+
+OFT-73 (OFTP_9.0_Fix11)
+In webMethods Adapter for OFTP, Sender ID and Receiver ID are inverted in 
+oftpStatusIn message.
+
+This issue is now resolved.
+
+A new watt property, watt.adapter.OFTP.default.eerp.behavior is introduced 
+to fix this behavior by setting watt property value to false.
+The default value is true. 
+
+OFT-71 (OFTP_9.0_Fix10)
+In webMethods Adapter for OFTP, the ProfileFieldID table keeps on increasing
+with a new entry for activatePartner field after every Integration Server 
+restart.
+
+This issue is now resolved.
+
+OFT-66 (OFTP_9.0_Fix10)
+In webMethods Adapter for OFTP,the password input field is not masked for the 
+service wm.oftp.tn.Startup.registerService
+
+This issue is now resolved.
+
+OFT-56 (OFTP_9.0_Fix9)
+In webMethods Adapter for OFTP, the temporary files are not deleted in outbound 
+working directory.
+
+When deliverOftp service is invoked, the Adapter for OFTP creates two files, 
+one with metadata and another with file content in outbound working directory. 
+If the transaction is success, only the file containing the original content 
+is deleted but not the metadata file. 
+
+This issue is now resolved.
+
+OFT-59 (OFTP_9.0_Fix9)
+webMethods Adapter for OFTP, does not support sending empty content.
+
+Hence, sending empty file results in a failed transaction.
+
+This issue is now resolved. 
+
+OFT-49 (OFTP_9.0_Fix8)
+In webMethods Adapter for OFTP, logs are too verbose.
+
+This issue occurs as Integration Server logs debug log messages too when log 
+level is set to INFO.
+
+This issue is resolved by changing log level from DEBUG to TRACE in adapter.
+
+OFT-50 (OFTP_9.0_Fix8)
+In webMethods Adapter for OFTP, ACL for wm.oftp.tn:deliverOftp is not consistent 
+with other services.
+
+This issue is now resolved.
+
+OFT-52 (OFTP_9.0_Fix8)
+In webMethods Adapter 9.0 for OFTP, the adapter's administrator UI pages does 
+not support the new Administrator screens of Integration Server(IS) 10.1.
+
+This issue is now resolved. Adapter for OFTP now supports the new Administrator 
+screens of IS from version 10.1 and later.  
+
+OFT-45 (OFTP_9.0_Fix7)
+In webMethods Adapter for OFTP, the adapter is unable to recognize any large 
+XML files. 
+
+This issue occurs when the stored file content is in base64 encoded format. 
+Hence, TN cannot recognize the xml content. 
+
+This issue is now resolved. 
+
+A new watt property, watt.adapter.OFTP.uniform.behavior.files is introduced 
+to provide a uniform approach in handling xml and non-xml files. 
+The default value is false.    
+
+OFT-42 (OFTP_9.0_Fix6)
+In webMethods Adapter for OFTP, sending incorrect XML file, TN log message is 
+not appropriate.
+
+This issue is resolved by correcting the TN log message so that it will now 
+show the relationship between failed file and its document Id.
+
+OFT-39 (OFTP_9.0_Fix5)
+In webMethods Adapter for OFTP, sending incorrect XML file, receiveOftp service 
+goes in an infinite loop.
+
+This issue occurs as incorrect XML file is not deleted if service throws 
+exception and service will fetch again this file for processing.
+
+This issue is resolved by moving incorrect XML file to InboundFailedFiles 
+directory.
+
+OFT-37 (OFTP_9.0_Fix4)
+In webMethods Adapter for OFTP, extra characters/bytes are getting appended in 
+the transfer of large file.
+
+This issue occurs as the buffer was not cleared correctly during sending of 
+large files.
+
+This issue is resolved by clearing the buffer correctly during sending of large 
+files.
+
+OFT-34 (OFTP_9.0_Fix3)
+In webMethods Adapter for OFTP, the output parameter of service 
+wm.oftp.tn.Util:send is overridden by the output parameter of service 
+wm.oftp.tn.Util:changeStatus.
+
+This issue occurs when both services contain the same output parameter name.
+
+This issue is resolved by giving a different name to the output parameter of 
+service wm.oftp.tn.Util:changeStatus. 
+
+OFT-31 (OFTP_9.0_Fix3)
+In webMethods Adapter for OFTP, oftpPayload document omits the first 8KB of 
+content in Inbound large files. 
+
+This issue occurs when the first 8KB of content is not written to oftpPayload 
+in receiveOftp service. 
+
+This issue is resolved by writing the 8KB content of Inbound large file to 
+oftpPayload document.
+
+OFT-15 (OFTP_9.0_Fix2)
+If Security Configurations are not defined for the wm.oftp.tn:deliverOftp 
+service, Adapter 9.0 for OFTP does not use the default values defined in 
+the Connection page of Integration Server Administrator. 
+
+OFT-21 (OFTP_9.0_Fix2)
+Large file handling was not supported in case of inbound files. 
+
+Large file handling is supported by making use of TN's large file handling and 
+IS's reservation features. 
+
+This issue is now resolved. 
+
+OFT-17 (OFTP_9.0_Fix2)
+Mapping related to the virtual file name was not supported. 
+
+Input mappings for virtual filename, input format, input code, output code, max 
+record size in the deliverOFTP service were provided. 
+
+Now support has been added to map virtual filename, input format, input code, 
+output code,max record size in the deliverOFTP service. 
+
+This issue is now resolved. 
+
+OFT-18,OFT-19 (OFTP_9.0_Fix2)
+Exceptions were thrown when processing outbound large files. 
+
+While processing outbound files, whole file content used to be read in memory, 
+hence If a file is very large then out of memory, Null pointer exceptions etc 
+were getting thrown. 
+
+This issue is resolved by making use of TN's large file handling and IS's 
+reservation features.Hence heap space outage and other exceptions are avoided 
+by using stream based approach. 
+
+OFT-23 (OFTP_9.0_Fix1)
+webMethods OFTP Adapter support for new Admin screens IS 9.10 onwards. 
+
+webMethods OFTP Adapter Admin UI pages did not support new format of screens 
+developed for IS 9.10. 
+
+This issue is resolved now by modifying the webMethods OFTP Adapter pages. 
+
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the 
+documentation at https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed 
+fix. This action will revert your installation to the previously installed fix. 
+You cannot use these instructions to uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the 
+documentation at https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+ 
+Copyright Super iPaaS Integration LLC, an IBM Company 2025.

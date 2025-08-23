@@ -1,0 +1,132 @@
+                  EntireX Adapter 11.1 Fix 7 readme
+                               07 2025
+
+This file provides important information for applying EntireX 11.1 Fix 7 to
+EntireX Adapter 11.1.
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+7.1   Resolutions included from earlier Fixes
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+
+
+
+1.0   Fix Name
+
+EntireX Adapter 11.1 Fix 7
+
+
+
+2.0   Fix ID
+
+XAI_11.1_Fix7
+
+
+
+3.0   Product(s)/Component(s) Affected
+
+This fix affects EntireX Adapter
+
+
+
+4.0   Requirements and Dependencies
+
+None.
+
+
+5.0   Platform Support
+
+EntireX Adapter 11.1 Fix 7 is supported on the same platforms and operating
+systems and with the same JREs as webMethods Integration Server 11.1.
+
+
+6.0   Cautions and Warnings
+
+None
+
+
+
+7.0   Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+- EXX-16729 EXX_11.1_Fix7:
+   EntireX Adapter RPC Listener fails with NullPointerException when 
+   related service response pipeline contains array with null-value.
+
+   This issue is resolved now.
+
+
+- EXX-16785 EXX_11.1_Fix7:
+   Data lost in EntireX RPC Listener reply on IDL output parameter 
+   'response'.
+   This issue is resolved now.
+
+
+
+
+
+
+7.1   Resolutions included from earlier Fixes
+
+- EXX-16315 XAI_11.1_Fix3:
+   EntireX Adapter: Integration Server log file shows messages like 
+   No method ABC in class XYZ where XYZ are classes from EntireX.
+   This issue is resolved now.
+
+
+- EXX-16585 XAI_11.1_Fix3:
+   Complex Integration Server data (group inside of group-array) is 
+   not mapped correctly to internal EntireX data format, for example 
+   used for IMS Connect request.
+   This may result in RPC Errors like 08000500 reason: 
+   java.lang.IllegalArgumentException: IDataRPCService.getValue(): 
+   illegal argument of type [Ljava.lang.Object]
+   This issue is resolved now.   
+
+
+
+
+
+
+8.0   Installation
+
+Use Command Central to install fixes on multiple machines from a central
+location (9.7 or later products), or Update Manager to install
+fixes on one machine at a time. For instructions, see the documentation at
+https://docs.webmethods.io/.
+
+
+
+9.0   Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action
+will revert your installation to the previously installed fix. You cannot use these instructions to
+uninstall the previously installed fix.
+
+Uninstall using Command Central (9.7 or later) or Update Manager.
+For instructions, see the documentation at
+https://docs.webmethods.io/.
+
+
+
+10.0  Copyright
+
+
+Copyright IBM Corp. 2024, 2025
+
+

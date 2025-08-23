@@ -1,0 +1,199 @@
+           IBM webMethods FIX Module 7.2 Fix 9 readme
+
+                          December 2024
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods FIX Module 7.2 Fix 9
+
+
+
+2.0 Fix ID
+
+FIX_7.2_Fix9
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects IBM webMethods FIX Module.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+
+5.0 Platform Support
+
+Same platforms as the product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+This fix addresses the following issues:
+
+WF-34119
+
+Fix includes security updates with no new features to existing user-facing
+functionalities.
+
+EFF-444 (FIX_7.2_Fix8)
+
+In IBM webMethods FIX Module, the copyright information is updated.
+
+This issue is now resolved.
+
+EFF-421 (FIX_7.2_Fix7)
+
+In the IBM webMethods FIX Module, transactions go to a queued state after an 
+idle time.
+
+This issue is now resolved, where the middleware heartbeat interval sets to 60
+seconds by default. If you need to modify, add the following property
+'middleware.heartbeatinterval' to <Install_Dir>\IntegrationServer\instances\
+<Instance_name>\packages\WmFIX\config\properties.cnf and set the appropriate
+value. Restart the integration server after setting the property value.
+
+
+EFF-403 (FIX_7.2_Fix6)
+
+In IBM webMethods FIX Module, large number of Appia middleware logs were created 
+in WmFIX/log directory. Currently, there is no option to change the log option 
+or disable the logs.
+This issue is now resolved and the appia middleware property
+'com.javtech.appia.javatoolkit.middleware.LogMask' is added in the
+WmFIX/config/properties.cnf file. By default, the value is set to 255 which
+means all the middleware session logs are logged. To disable the logs
+completely, set the value of the property to '0'. For various log options,
+Please refer section 'Change the Logging Options' in Appia Middleware API guide.
+
+
+EFF-404 (FIX_7.2_Fix6)
+
+In IBM webMethods FIX Module, reload of the package creates multiple instances 
+of some of the objects which occupy more memory.
+This issue is now resolved.
+
+
+EFF-393 (FIX_7.2_Fix5)
+
+In IBM webMethods FIX Module, some of the objects created during FIX operations 
+were occupying more memory.
+This issue is now resolved.
+
+
+EFF-388 (FIX_7.2_Fix4)
+
+wm.fix.tn.trp:send service was not creating a TN transaction with the user
+status as 'FIX_SEND_ERROR', when the specified sessionID was not configured in
+the Appia Engine.
+This issue is resolved and the TN transaction is created with user status set
+to FIX_SEND_ERROR.
+
+
+EFF-351 (FIX_7.2_Fix3)
+
+IBM webMethods FIX Module 7.2 does not provide an option to ignore a list of 
+message types and not store them in the Trading Networks database.
+
+In My webMethods: Administration > Integration > B2B > FIX Administration page, 
+all session messages can be ignored but partial list of message types cannot be 
+ignored.
+
+This issue is resolved. The following three built-in services have been added to 
+select a list of message types to be ignored:
+wm.fix.appia.session:addFIXMTsToIgnoreList
+wm.fix.appia.session:getFIXMTsFromIgnoreList
+wm.fix.appia.session:removeFIXMTsFromIgnoreList
+
+For more information, see Appia Connections and Services section in 
+IBM webMethods FIX Module Installation and User's Guide.
+
+
+EFF-334 (FIX_7.2_Fix2)
+
+IBM webMethods FIX Module 7.2 fails with the error 
+"Error sending the FIX message. Detailed message 
+[postOperatorCommand() timed out.]" when the send operation is 
+executed in the same thread as the receive operation. 
+
+Users can define a post action, through the use of a synchronous 
+custom processing rule, for when messages are received by the 
+IBM webMethods FIX Module 7.2. If that action includes sending 
+responses back to the Appia server, the messages get 
+stuck in webMethods Trading Networks with status as FIX_QUEUED. 
+The messages are not delivered to the Appia server. 
+
+This issue is resolved.
+
+
+EFF-341 (FIX_7.2_Fix1)
+
+IBM webMethods FIX Module 7.2 fails with the error 
+"Error sending the FIX message. Detailed message 
+[postOperatorCommand() timed out.]" when the send operation is 
+executed in the same thread as the receive operation. 
+
+Users can define a post action, through the use of a synchronous 
+custom processing rule, for when messages are received by the 
+IBM webMethods FIX Module 7.2. If that action includes sending 
+responses back to the Appia server, the messages get 
+stuck in webMethods Trading Networks with status as FIX_QUEUED. 
+The messages are not delivered to the Appia server. 
+
+This issue is resolved.
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or Update Manager to install fixes on
+one machine at a time. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Uninstall using Command Central (9.7 or later) or Update Manager.
+For instructions, see the documentation at https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Copyright Super iPaaS Integration LLC, an IBM Company 2024.

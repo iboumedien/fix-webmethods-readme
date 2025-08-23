@@ -1,0 +1,839 @@
+   webMethods Integration Server 10.11 WmAdmin Fix 14 readme
+
+                         November 2024                                                      
+
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Integration Server 10.11 WmAdmin Fix 14.
+
+
+
+2.0   Fix ID
+
+IS_10.11_WmAdmin_Fix14
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Integration Server 10.11.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+For language pack requirements, see the Globalization section of 
+the Software AG Empower Product Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+webMethods Integration Server 10.11 WmAdmin Fix 14 is supported 
+on the same platforms and operating systems and with the same 
+JREs as webMethods Integration Server 10.11.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+DTS-2999
+In Integration Server Administrator > Logs > Server, the tooltip entries extend
+beyond the tooltip box for long and continuous text.
+
+This issue is now resolved.
+
+DTS-2814 (IS_10.11_WmAdmin_Fix13)
+Integration Server Administrator uses the browser's local storage to store 
+preferences for individual users and leverages usernames to access an individual's 
+preferences. This poses a security risk.
+
+The issue is resolved. Now, Integration Server Administrator no longer stores 
+preferences for multiple users within individual browsers, and usernames are no 
+longer stored in the browser's local storage.
+
+DTS-2839 (IS_10.11_WmAdmin_Fix13)
+Corrections to server log display in Integration Server Administrator.
+
+The following issues in the Server > Logs > Server page in Integration Server 
+Administrator have been fixed:
+
+- The First line to display list accepts zero (0) as the value and uses 0 as the 
+default. The default (and minimum value) is now 1.
+- Entering a value larger than 65535 in the field Number of entries to display,
+results in Integration Server writing the following error to the server log, 
+possibly multiple times: [ISS.0035.0004E] (tid=<threadID>) Returned 65,535 lines 
+while requested for 500,000 number of lines for error logs. Now, values greater 
+than 65,535 are not accepted.
+- After a refresh interval is set, the logs are not aligned.
+- When the dual vertical scroll bars appear, the tooltip text for lengthy logs 
+may stretch beyond the tooltip borders.
+
+DTS-2889 (IS_10.11_WmAdmin_Fix13)
+Non-administrator users cannot log into API Gateway after 
+watt.server.defaultPackage is set to WmRoot.
+
+After the watt.server.defaultPackage server configuration parameter is set to 
+WmRoot and Integration Server is restarted, a user that does not have 
+Administrator access to API Gateway can no longer log in.
+
+This issue is now resolved.
+
+Note: Only members of the Administrators ACL can log into Integration Server 
+Administrator. This restriction does not apply to API Gateway.
+
+DTS-2900 (IS_10.11_WmAdmin_Fix13)
+By default, Integration Server Administrator displays Server log entries in
+ascending order starting with the earliest log entry.
+
+Log entries in the Logs > Server page are sorted by line number, beginning with
+the lowest number representing the earliest log entry. This causes the most
+recent log entries to appear at the end.
+
+The Logs > Server page now displays server log entries in descending order,
+beginning with the most recent entry. Click the Server Log Entry column name to
+change the sorting.
+
+DTS-2682 (IS_10.11_WmAdmin_Fix12)
+In Integration Server Administrator > Logs > Server, the tooltips for some long
+entries have a display issue where the text extends beyond the background of the 
+tooltip box. 
+
+This issue is now resolved.
+
+DTS-2599 (IS_10.11_WmAdmin_Fix12)
+The Dashboard in Integration Server Administrator shows Cluster status is Off
+even when the status is On, if Statistics Data Collection is disabled in
+Dashboard configuration.
+
+This issue is now resolved. The Cluster Status is displayed as Unknown and a
+message that the statistics data collection is disabled appears if the
+Statistics Data Collection is disabled.
+
+PIE-82499 (IS_10.11_WmAdmin_Fix11)
+The Integration Server Administrator APIs for the alert resource should use the
+POST method instead of PUT for administrative actions. 
+
+The following operations for the alert resource are now deprecated and will not
+appear in the OpenAPI (Swagger) document for the Administrator API. 
+
+PUT /admin/alert
+PUT /admin/alert/id/{id}
+PUT /admin/alert/notifier/{name}
+
+The operations listed above are now supported as:
+
+POST /admin/alert
+POST /admin/alert/id/{id}
+POST /admin/alert/notifier/{name}
+
+PIE-83320 (IS_10.11_WmAdmin_Fix11)
+Integration Server fails to accept a number with a unit of measurement 
+(KB, MB, or GB) for the watt.server.http.interceptor.preprocess.sizeLimit 
+server configuration parameter using the new Integration Server Administrator.
+
+This issue is now resolved. 
+
+PIE-84441 (IS_10.11_WmAdmin_Fix11)
+The /metrics endpoint returns multiple instances of the metrics
+sag_is_service_requests_avg_exec_millis and sag_is_service_requests_total with
+different timestamps. 
+
+Now, the /metrics endpoint returns only a single instance of the
+sag_is_service_requests_avg_exec_millis and sag_is_service_requests_total
+metrics for each IS service. 
+
+Additionally, JVM and server metrics are now based on current data at the time
+the /metrics endpoint is called.  In the past, JVM and server metrics were based
+on aggregated data that could be several minutes old. 
+
+PIE-84960 (IS_10.11_WmAdmin_Fix11)
+The sag_is_server_total_memory_mbytes and sag_is_server_used_memory_mbytes
+metrics incorrectly reported values for the Integration Server JVM heap memory
+instead of the operating system memory. 
+
+Now, these metrics measure operating system memory.
+
+DTS-2515 (IS_10.11_WmAdmin_Fix10)
+In Integration Server Administrator > Logs > Server, the incomplete horizontal
+scroll prevents the user from fully viewing the server logs.
+
+This issue is now resolved.
+
+DTS-2516 (IS_10.11_WmAdmin_Fix10)
+In Monitoring, the Edit pipeline dialog for a service shows empty service
+inputs.
+
+In Integration Server Administrator > Monitoring, the Edit pipeline dialog for
+a service does not display service inputs if the field names or a document name
+in the fields' hierarchy has one or more dots.
+
+This issue is now resolved.
+
+DTS-2532 (IS_10.11_WmAdmin_Fix10)
+The Dashboard and server logs show erroneous error messages when the Statistics
+Data Collector is disabled. 
+
+The Statistics Data Collector gathers metrics displayed in the Dashboard in
+Integration Server Administrator. When the Statistics Data Collector is
+intentionally disabled, Integration Server Administrator and the server log
+display error messages indicating it is disabled. For example, the server log
+contains: 
+
+[ISS.0030.0013E] (tid=###) An exception was encountered while processing an
+administrative request. See the error log for details: [ISS.0030.0385] Search
+request failed. Details: DISABLED 
+
+Integration Server Administrator displays: [ISS.0030.0385] Search request
+failed. Details: DISABLED 
+
+These errors should not be logged or displayed when the Statistics Data
+Collector is intentionally disabled. 
+
+This issue is now resolved.
+
+DTS-2585 (IS_10.11_WmAdmin_Fix10)
+The Statistics Data Collector incorrectly excludes some metrics data in the REST
+resources used in Integration Service Administrator dashboard.
+
+This issue is now resolved.
+
+The Exclude system services check box is now removed from the Integration Server
+Administrators' Dashboard APIs page, resulting in displaying all the data
+returned by the REST service call.
+
+PIE-81502 (IS_10.11_WmAdmin_Fix10)
+The keystore and truststore resources cannot be reloaded using the 
+administrator APIs as they do not have the reload action. 
+
+This issue is now resolved.
+
+PIE-81692 (IS_10.11_WmAdmin_Fix10)
+The Dashboard in Integration Server Administrator displays an invalid value for
+the Uptime field on the Overview tab. 
+ 
+Now, the Uptime field displays the correct value. The Uptime field displays the
+amount of time since Integration Server started. 
+
+PIE-83641 (IS_10.11_WmAdmin_Fix10)
+During Integration Server startup, the Statistics Data Collector skips
+collection of some OS and Integration Server data. 
+
+This issue is now resolved. 
+
+PIE-84373 (IS_10.11_WmAdmin_Fix10)
+Overview tab in Integration Server Administrator Dashboard does not display any
+data but does display a NumberFormatException alert. 
+
+This issue is resolved.
+
+PIE-84389 (IS_10.11_WmAdmin_Fix10)
+Statistics Data Collector incorrectly excludes some statistics for REST APIs.
+
+When the Exclude system services check box is selected on the APIs page of the
+Dashboard in Integration Server Administrator, the REST API metrics incorrectly
+excludes data from automatically generated services. The Exclude system services
+check box was intended to exclude metrics data produced by a service in Wm*
+system package. However, the Statistics Data Collector treats services generated
+automatically when creating assets in Designer as system services. 
+
+To address this issue, the Statistics Data Collector no longer excludes services
+from its metrics gathering for REST APIs. 
+
+Note: This is the server side change for DTS-2588 which removes the Exclude
+system services check box. 
+
+PIE-84568 (IS_10.11_WmAdmin_Fix10)
+Updates to internal resources in the Integration Server Administrator API to
+support the Dashboard. 
+
+DTS-2371 (IS_10.11_WmAdmin_Fix9)
+Occasionally, Integration Server Administrator displays "[ISS.0030.0030] You
+must log in to access the Administrator API."
+
+Integration Server Administrator displays the error momentarily and lets the
+user login.
+
+This issue is now resolved.
+
+DTS-2389 (IS_10.11_WmAdmin_Fix9)
+The pipeline editor in the Monitoring view of Integration Server Administrator
+does not show fields that are not declared in the service signature. 
+
+When using the Edit pipeline feature in the Monitoring view of Integration
+Server Administrator, fields that are not declared in the service signature do
+not appear. Specifically, if a service input signature contains a Document
+variable with undefined content (an open document), the Edit pipeline feature
+does not display any fields that exist in the Document at run time. 
+
+Now, the pipeline editor in the Monitoring view displays the runtime contents of
+the Document. 
+
+DTS-2427 (IS_10.11_WmAdmin_Fix9)
+In Integration Server Administrator > Logs > Server, empty spaces appear at the
+end of the Server log, when "Number of entries to display" exceeds the
+number of entries in the Integration Server log.
+
+This issue is now resolved.
+
+DTS-2434 (IS_10.11_WmAdmin_Fix9)
+In Integration Server Administrator, the "Yes" and "No" buttons in the "Confirm
+dismissal of all notifications" dialog are misaligned.
+
+This issue is now resolved.
+
+DTS-2448 (IS_10.11_WmAdmin_Fix9)
+In the Services page of Monitoring, you cannot simultaneously select all
+services that can be resubmitted. 
+
+The issue is resolved. You can now use the checkbox in the header of the search
+results table to select all services that can be resubmitted. 
+
+PIE-82415 (IS_10.11_WmAdmin_Fix9)
+Updated moment.js library in Integration Server Administrator.
+
+Integration Server Administrator uses the moment.js library to handle dates and
+times. However, the moment.js library version 2.26.0 included in Integration
+Server Administrator has known security vulnerabilities.
+
+Now, Integration Server Administrator includes moment.js version 2.29.4 to
+address the security vulnerabilities.
+
+DTS-2321 (IS_10.11_WmAdmin_Fix8)
+When Integration Server Administrator is idle for a period of time, the session
+timeout notification appears. Clicking the "Stay logged in" in the session
+timeout notification fails to keep the user logged in.
+
+This issue is now resolved.
+
+DTS-2005 (IS_10.11_WmAdmin_Fix7)
+Integration Server Administrator is vulnerable to HTML injection as the HTML
+escapes are not applied to the HTML content in Integration Server Error logs.
+
+This issue is now resolved.
+
+DTS-2237 (IS_10.11_WmAdmin_Fix7)
+When auditing a failed service with Integration Server Administrator >
+Monitoring, you cannot save the service pipeline and use it for
+troubleshooting.
+
+This issue is resolved. In Integration Server Administrator > Monitoring >
+Services, the Service details page now has the "Save pipeline to file" button
+that you use to save the service pipeline to a file.
+
+DTS-2274 (IS_10.11_WmAdmin_Fix7)
+In the Services page of Monitoring, you cannot copy an entire value from a
+truncated field in the services table. 
+
+The issue is resolved. You can now select a truncated field and copy the entire
+value. 
+
+DTS-2152 (IS_10.11_WmAdmin_Fix6)
+After upgrading Integration Server from a lower version to 10.15, Integration
+Server Administrator may not display columns in the Service instances table.
+
+This issue is now resolved.
+
+DTS-2153 (IS_10.11_WmAdmin_Fix6)
+Integration Server Administrator slows down when Integration Server receives
+numerous notifications.
+
+This issue is resolved. Integration Server now receives a maximum of 500
+notifications.
+
+DTS-2184 (IS_10.11_WmAdmin_Fix6)
+When Integration Server runs with the Turkish locale, accessing the new
+Integration Server Administrator sometimes results in the error "License key is
+expired or invalid". 
+
+The issue is now fixed.
+
+PIE-74710 (IS_10.11_WmAdmin_Fix6)
+A GET request for an /alert resources in the Integration Server Administrator 
+API results in an error message when valid values are supplied for startTime and 
+endTime in a URL parameter.
+
+This issue is now fixed. 
+
+DTS-2076 (IS_10.11_WmAdmin_Fix5)
+While viewing individual error messages on the Administration > Logs > Error 
+page, the stack trace columns allow users only a truncated view of lengthy 
+error messages.
+
+This issue is now resolved. A horizontal scrollbar is added to stack trace 
+table columns to enable users to scroll through lengthy error messages.
+
+DTS-2081 (IS_10.11_WmAdmin_Fix5)
+Occasionally, Integration Server Administrator takes longer than expected (up to 
+one minute) to display error logs on the Administration > Logs > Error page. 
+
+This issue is now resolved. 
+
+DTS-2126 (IS_10.11_WmAdmin_Fix5)
+When using Integration Server Administrator on AIX, the login page redirects and
+forces the user to change the password even after a successful password change.
+
+This issue is now resolved. After applying this fix and then successfully
+changing the password, the user can access Integration Server Administrator.
+
+DTS-2127
+In Monitoring, the Edit pipeline dialog for a service shows empty service
+inputs.
+
+In Integration Server Administrator > Monitoring, the Edit pipeline dialog for
+a service does not display service inputs if the field names or a document name
+in the fields' hierarchy has one or more dots.
+
+This issue is now resolved. 
+
+PIE-78271 (IS_10.11_WmAdmin_Fix5)
+Integration Server Administrator throws a java.time.zone.ZoneRulesException.
+
+If the timezone used by Integration Server is set to an invalid value, accessing
+the new Integration Server Administrator results in a
+java.time.zone.ZoneRulesException. 
+
+To resolve this issue, Integration Server captures the
+java.time.zone.ZoneRulesException and uses the timezone set in in the Java
+system property user.timezone instead. 
+
+DTS-1539 (IS_10.11_WmAdmin_Fix4)
+Some minor but essential accessibility best practices are not followed in 
+Integration Server Administrator, such as the use of alternative (alt) for 
+icons, aria-labels, table headers, labels for all UI elements in dialog boxes, 
+and so on.
+
+This issue is now resolved. All identified accessibility gaps in 
+Integration Server Administrator have been fixed. 
+
+DTS-1684 (IS_10.11_WmAdmin_Fix4)
+On navigating to the Integration Server Administrator > Settings > Extended 
+page, the filter watt.show.newSecurity is applied by default, forcing users to 
+clear the filter in order to view all properties.
+
+This issue is now resolved. 
+
+DTS-2004 (IS_10.11_WmAdmin_Fix4)
+In the "Add multiple extended settings" dialog box, clicking the info icon
+displays the tooltip text twice. 
+
+On the Settings > Extended settings page in Integration Server Administrator,
+clicking Batch Add opens the "Add multiple extended settings" dialog. Clicking
+the info icon results in the display of two copies of the tooltip text. 
+
+This issue is now resolved.
+
+DTS-2009 (IS_10.11_WmAdmin_Fix4)
+In Integration Server Administrator, the Monitoring page must display the 
+Custom Context ID column in the Services Executions table by default, instead 
+of hiding the column. 
+
+This issue is now resolved. 
+
+DTS-1815 (IS_10.11_WmAdmin_Fix3)
+Cosmetic change to the Search dialog box for the Messaging log in Integration
+Server Administrator. 
+
+DTS-1944 (IS_10.11_WmAdmin_Fix3)
+Under certain conditions, the WmAdmin package > Integration Server 
+Administrator > Monitoring page fails to display custom context IDs for the 
+listed service executions.
+
+This issue is now resolved.
+
+DTS-1954 (IS_10.11_WmAdmin_Fix3)
+When editing a Cloud account, Integration Server Administrator displays the
+breadcrumbs Administration > Accounts instead of Administration > Accounts >
+Edit Account. 
+
+This issue is now fixed.
+
+PIE-75833 (IS_10.11_WmAdmin_Fix3)
+Changes to the framework of the Integration Server Administrator API to allow
+other Software AG products to deliver their APIs in a package's code/jars
+directory and to unregister their APIs in a package's shutdown service. 
+
+DTS-1655 (IS_10.11_WmAdmin_Fix2)
+Clicking on part of a breadcrumb in Integration Server Administrator might result
+in the error "Unknown service null".
+
+This issue is now fixed. 
+
+DTS-1724 (IS_10.11_WmAdmin_Fix2)
+Service monitoring in the new Integration Server Administrator allows services
+to be resubmitted even when they are not resbumittable. 
+
+The Monitoring > Services page of the new Integration Server Administrator
+indicated that all services were resbumittable even if they were not.
+Consequently, Integration Server Administrator allowed a service to be
+resubmitted even if it was not resbumittable. 
+
+Now, the Monitoring > Services page correctly reflects which services are
+resbumittable. Integration Server Administrator disables the Resubmit button
+when a selected service is not resubmittable. 
+
+DTS-1763 (IS_10.11_WmAdmin_Fix2)
+The Monitoring > Services page of the new Integration Server Administrator
+displays the message "Monitoring service information is not available" even
+though the 4 listed requirements have been met. 
+
+This scenario occurs when the process audit database components are not present.
+Service monitoring requires the process audit components even though process
+runtime (PRT) is not installed. This requirement applies to any RDBMS that
+supports service monitoring. 
+
+To resolve this issue, create the process audit database components and assign
+the process JDBC functions to the appropriate JDBC pool alias. For information,
+see the guide "Installing Software AG Products On Premises". 
+
+The displayed error message now includes the additional requirement about the
+existence of process audit database components. 
+
+DTS-1764 (IS_10.11_WmAdmin_Fix2)
+Inconsistencies related to dates are observed on notifications, logs, dashboard
+and monitoring pages in Integration Server Administrator when the browser's 
+default locale is "English (New Zealand)".
+
+These issues are resolved now. 
+
+DTS-1788 (IS_10.11_WmAdmin_Fix2)
+Integration Server Administrator fails to display a few Integration Server 
+error messages.
+
+The issue is now resolved.
+
+DTS-1791 (IS_10.11_WmAdmin_Fix2)
+Even when the WmCloud package is disabled, the navigation panel in Integration 
+Server Administrator continues to display the enabled webMethods Cloud menu and 
+its related components.
+
+This issue is now resolved. The webMethods Cloud menu is disabled and the 
+related components are not visible.
+
+DTS-1809 (IS_10.11_WmAdmin_Fix2)
+While accessing Integration Server through an HTTPS port that requires client 
+certifcates, Integration Server does not acknowledge the client certificate 
+presented and prompts for entry of user credentials on the home page of the 
+WmAdmin package.
+
+This issue is now resolved. The fix requires installation of 
+IS_10.11_Core_Fix3.
+
+DTS-1827 (IS_10.11_WmAdmin_Fix2)
+In the new Integration Administration user interface, the Server log page does 
+not reflect changes to the extended settings of the watt.server.log.maxEntries 
+parameter.
+
+This issue is now resolved.
+
+PIE-72142 (IS_10.11_WmAdmin_Fix2)
+Users defined in the Common Directory Service central users account cannot be
+given read-only access to the Administrator API. 
+
+To enable users with a common directory services to have read-only access to the
+Administrator API, Integration Server introduces the following administrative
+assets: 
+
+- ReadOnlyAdministrators user group. All members of the ReadOnlyAdministrators
+group have read-only access to the Administrator API. 
+- ReadOnlyAdministrators ACL. Groups that are allowed access to the
+ReadOnlyAdministrators ACL have read-only access to the Administrator API. The
+new group ReadOnlyAdministrstors have access to the ReadOnlyAdministrators ACL. 
+
+To give a local user (a user defined on Integration Server) read-only access to
+the Administrator API, add the user to the ReadOnlyAdministrators group. 
+To give a user in the Central Directory Service read-only access to the API, add
+the group to which the user belongs to the ReadOnlyAdministrators ACL. 
+
+The first time the WmAdmin package loads after applying a fix that includes
+PIE-72142, Integration Server does the following: 
+
+- Creates the ReadOnlyAdministrators user group if it does not exist.
+Adds the users belonging to the group set as the value of the
+watt.adminapi.group.readOnly server configuration parameter to the
+ReadOnlyAdministrators user group. 
+- Deletes the user group specified in the watt.adminapi.group.readOnly
+parameter. 
+- Creates the ReadOnlyAdministrators ACL and adds the ReadOnlyAdministartors
+group to the allowed list for this ACL. 
+- Deletes the watt.adminapi.group.readOnly server configuration parameter as it
+is no longer needed. 
+
+Note: Integration Server allows all users to access the OpenAPI file for a
+product using the GET /admin/swagger/{productName} operation. 
+
+PIE-73267 (IS_10.11_WmAdmin_Fix2)
+Integration Server displays a message stating "[ISS.0030.0200] Logger
+mediatorTransaction is not a valid audit logger name". 
+
+This issue is now resolved.
+
+PIE-74293 (IS_10.11_WmAdmin_Fix2)
+Integration Server does not accept a value of "webMethods" for the
+watt.server.http.returnException configuration parameter but should. 
+
+This issue has been resolved.
+
+PIE-72380 (IS_10.11_WmAdmin_Fix1)
+The new Integration Server Administrator has incorrect titles and breadcrumbs 
+when CSRF Guard is enabled.
+
+These issues are now resolved.
+
+DTS-1569 (IS_10.11_WmAdmin_Fix1)
+When CSRF guard is enabled, many breadcrumbs and dynamic server pages (DSPs) 
+are displaying incorrect information and sometimes extra breadcrumbs are 
+displayed. 
+
+When CSRF guard is enabled, the titles and breadcrumbs for some of the DSP 
+pages are incorrect. The title will be close to correct; for example, the title 
+may be "Licensing details" when it should be "Edit licensing details". The 
+breadcrumbs will also be very close to correct; however, there may be an 
+additional breadcrumb or one less breadcrumb in the list. These problems are 
+not present if CSRF guard is disabled. 
+
+These issues are now resolved.
+
+DTS-1524 (IS_10.11_WmAdmin_Fix1)
+When Integration Server runs inside container with path-based routing, the user 
+cannot login to Integration Server and Integration Sever Administrator does not 
+work. 
+
+This issue is now resolved.
+
+DTS-1292 (IS_10.11_WmAdmin_Fix1)
+OpenID single sign-on does not work when using the new Administration Console. 
+
+When accessing the new Administration Console directly using https://serverHost:
+openid-port/WmAdmin/, OpenID single sign-on does not happen instead a basic 
+login dialog is shown. 
+
+This issue is now resolved. Accessing https://serverHost:openid-port/WmAdmin/ 
+starts the OpenID single sign-on and shows the dashboard at the completion.
+
+DTS-1520 (IS_10.11_WmAdmin_Fix1)
+Some pages in Integration Server Administrator have incorrect titles, 
+breadcrumbs, and links to help topics.
+ 
+These issues are resolved now.
+
+DTS-1527 (IS_10.11_WmAdmin_Fix1)
+Incorrect page titles and breadcrumbs on 'Tenant connections' pages in 
+Integration Server Administrator. 
+
+In Integration Server Administrator > webMethods Cloud > Tenant connections, 
+clicking 'Create Tenant Connection' or an existing tenant connection shows the 
+page title as 'Tenant Connections' and breadcrumb as 'Administration > Tenant 
+connections', which are incorrect. 
+
+The issue is now resolved. Clicking 'Create Tenant Connection' displays the 
+link name as the page title and 'Administration > Tenant connections > Create 
+Tenant Connection' as the breadcrumb. Similarly, clicking an existing tenant 
+connection shows 'Edit Tenant Connection' as the page title and 
+'Administration > Tenant connections > Edit Tenant Connection' as the 
+breadcrumb.
+
+DTS-1537 (IS_10.11_WmAdmin_Fix1)
+If the user is required to create a new password upon first log in and the 
+user's first session expires before the user changes the password, the user is 
+denied access on subsequent attempts to log in. 
+
+When a user is required to create a new password upon initial log in with the 
+default password and the user does not change the password before the session 
+becomes idle (for example, the Change Password dialog box is left open), the 
+session times out on the server. If the user then attempts to change the 
+password, an expired session causes the attempt to fail and the Change Password 
+dialog box remains open. However, the user cannot use the Change Password 
+dialog box to set a new password if the session is expired. The user must close 
+the dialog box and then re-log in with the default password before a new 
+password can be provided. 
+
+Now, Integration Server closes the Change Password dialog after an attempt to 
+change a password fails due to an expired session.
+
+DTS-1570 (IS_10.11_WmAdmin_Fix1)
+A browser displays the native login prompt upon entering incorrect credentials 
+on the Microservices Runtime login page. 
+
+Entering incorrect credentials on the Microservices Runtime login page displays 
+the browser's native login prompt. The user can close the prompt by either 
+cancelling the dialog or entering the login credentials, followed by re-
+entering the login credentials on the underlying page. 
+
+This issue is resolved now.
+
+DTS-1607 (IS_10.11_WmAdmin_Fix1)
+An attempt to shut down or restart Integration Server or view packages or
+updates results in an error when CSRF is enabled.
+
+In Integration Server Administrator, actions such as shutdown or restart, or
+viewing packages or updates on the About page result in an error indicating
+that the CSRF token is invalid.
+
+This issue is now resolved.
+
+DTS-1609 (IS_10.11_WmAdmin_Fix1)
+Clicking the "Try the New Administration Console" link on the legacy 
+Integration Server Administration requires the user to log in again. 
+
+After logging into the legacy Integration Server Administrator, clicking the 
+"Try the New Administration Console" link goes to the login screen and require 
+the user to log in again. 
+
+This issue is now resolved. Clicking the "Try the New Administration Console" 
+link does not prompt the user to log in again to access the new Integration 
+Server Administrator.
+
+DTS-1617 (IS_10.11_WmAdmin_Fix1)
+Some menu items are missing in Integration Server Administrator viewed in 
+Japanese.
+
+Integration Server Administrator does not display the following items in the 
+left navigation menu when viewed in Japanese.
+
+Security > OAuth
+Settings > Clustering
+External servers > Remote servers
+
+This issue is now resolved.
+
+PIE-71357 (IS_10.11_WmAdmin_Fix1)
+The "[ISS.0030.0290] id must be a long" message is displayed for the PUT 
+operation on the "/admin/alert/filter" and "/admin/alert/count" APIs.
+
+For the unsupported PUT operation on the "/admin/alert/filter" and 
+"/admin/alert/count" APIs, Integration Server displays an incorrect validation 
+message.
+
+This issue is resolved now.
+
+PIE-71543 (IS_10.11_WmAdmin_Fix1)
+The "[ISS.0030.0290] id must be a long" message is displayed for PUT operation 
+on the "/admin/alert/notifier" API.
+
+For the unsupported PUT operation on the "/admin/alert/notifier" API, Integration 
+Server displays an incorrect validation message.
+
+This issue is resolved now.
+
+PIE-71991 (IS_10.11_WmAdmin_Fix1)
+Integration Server throws a StringIndexOutOfBoundsException when receiving the 
+request GET /admin/server/setting/{settingName}. 
+
+A client that sends the request GET /admin/server/setting/{settingName} to 
+retrieve the value of a server configuration parameter receives a 
+StringIndexOutOfBoundsException if any system setting is shorter than 4 
+characters. 
+
+This issue is resolved.
+
+PIE-72412 (IS_10.11_WmAdmin_Fix1)
+When CSRF guard is enabled in the old Integration Server Administrator, the
+service link on the Service Usage page does not work as expected after the
+browser is refreshed.
+
+In the old Integration Server Administrator, the administrator enables CSRF
+guard, refreshes the browser or logs out and then logs back in to Integration
+Server Administrator. Now, on clicking a service link on the Server > Service
+Usage page, the administrator expects to see the service details. Currently,
+Integration Server Administrator displays an "Unknown service null" error on
+the service information page.
+
+This issue is now resolved. 
+
+PIE-72420 (IS_10.11_WmAdmin_Fix1)
+The "Return to Packages Management" and "Browse services in <Package name>" 
+links in Integration Server Administrator are missing. 
+
+On the Integration Server Administrator -> Packages -> Management -> <Package 
+name> page,the "Return to Packages Management" and "Browse services in <Package 
+name>" links are missing when the CSRF guard is enabled. 
+
+This issue is now resolved.
+
+PIE-72607 (IS_10.11_WmAdmin_Fix1)
+Integration Server Administrator displays a NullPointerException when the 
+license file does not exist in the license file path. 
+
+This issue is now resolved. Integration Server no longer throws a 
+NullPointerException when the license file does not exist.
+
+DTS-1581 (IS_10.11_WmAdmin_Fix1)
+The 'Extended settings search' window is not optimized to display long key names.
+
+In Integration Server Administrator, the dimensions of the 
+'Extended settings search' window are limited and hence does not display 
+the key name suggestions completely.
+
+This issue is now resolved.
+
+DTS-1662 (IS_10.11_WmAdmin_Fix1)
+The new Integration Server Administrator does not display logs.
+
+On platforms such as macOS, the new Integration Server Administrator 
+does not display logs when the platform's date format is dd/mm/yyyy.
+
+This issue is now resolved.
+
+
+ 
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+
+
+10.0  Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix has
+no globalization impact and can be applied to systems running in any supported 
+locale or configuration.
+
+
+
+11.0 Copyright
+
+Super iPaas Integration LLC, an IBM Company 2024.

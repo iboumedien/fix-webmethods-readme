@@ -1,0 +1,181 @@
+                 Business Rules Assets 10.15 Fix 14 readme
+
+                         March 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Business Rules Assets 10.15 Fix 14
+
+
+
+2.0 Fix ID
+
+WOK_10.15_RuleBuild_Fix14
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Business Rules Assets.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in 
+services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+WOK-18196 (WOK_10.15_RuleBuild_Fix4)
+When using Business Rules to append many objects to a List, the existing appendToList function has 
+adds a reference of that object to the List. This has limitations when trying to create a List with 
+many distinct objects.
+This has been resolved by introducing an appendCopyToList(Object[], Object objToCopy) function 
+which will make a hard copy of an object before adding the copy to the List.
+
+WOK-18200 (WOK_10.15_RuleBuild_Fix4)
+When adding a new rule using the "Add Rule" button, the new rule is empty. Since the RMC does not 
+support working with Actions, n Action cannot be added to this new, empty row.
+This has been resolved by adding a "Copy Rule" button which copies the selected rule along with all 
+content, including actions.
+
+WOK-18274 (WOK_10.15_RuleBuild_Fix4)
+When using the "appendToList" function in the Rules Management Console in My webMethods Server, a 
+wrong "Function mismatched: ..." validation error was shown when attempting to append a complex 
+object to a list of objects.
+This issue has been resolved.
+
+WOK-18797 (WOK_10.15_RuleBuild_Fix11)
+Slow MWS UI performance with large decision tables
+When working with large decision tables, the response times of the Business Rules UI on My 
+webMethods Server can be very slow.
+This issue has been improved by introducing cached validation, an improved decision entity list, 
+improved validation logic and the introduction of a xml cache, resulting in faster UI response 
+times.
+If used in a cluster of My webMethods Server nodes, the newly introduced xml cache requires 
+synchronization between the cluster nodes for proper operation. This required JMS communication can 
+be achieved through Universal Messaging or the My webMethods Server database. Please refer to the 
+"Administering My webMethods Server" documentation, chapters "Considerations When Building a My 
+webMethods Server Cluster", "Configuring the Connection to the Universal Messaging Server" and 
+"Configuring My webMethods Server to use the database for JMS communication" for details.
+
+WOK-18955 (WOK_10.15_RuleBuild_Fix9)
+Insufficient Rules Runtime response times
+In some specific cases, the response times of the Business Rules Runtime were perceived as too high.
+This issue has been resolved by performance improvements in the Business Rules Runtime, which will 
+decrease response times by 30%-40% in these cases.
+
+WOK-19172 (WOK_10.15_RuleBuild_Fix9)
+xmlns: namespace in .decisiontable xml files changes
+On Windows system, when building a rule project in Designer, the Asset Build Environment or the 
+Rules Management Console, .decisiontable, .decisiontree, .eventrule and .externaleventrule xml 
+files are created which may contain changed "xmlns:ns1" etc. attributes without user input. In 
+version control use cases, these changes can lead to unwanted "changed file" situations.
+This issue has been resolved by replacing the "xmlns:ns1" etc. namespaces with fixed "xmlns:dt" 
+etc. namespaces when the file is edited and saved in Designer or the Rules Management Console.
+
+WOK-19521 (WOK_10.15_RuleBuild_Fix10)
+Improved runtime deployment behavior
+When re-deploying a rule project to the Business Rules Runtime, there is a small time period when 
+the rule project is not available and invokes to the runtime fail.
+This issue has been resolved by supporting "zero downtime" deployment of rule projects. If a 
+previously existing rule project archive is deployed into the runtime, ongoing invocations to this 
+rule project will continue to complete without errors. After the new rule project version is fully 
+and successfully deployed, invocations to the rule project will use the newly deployed version, 
+while the old version is removed from the runtime. In case of errors during deployment, the 
+previously existing version of the rule project will remain deployed in the runtime.
+
+WOK-19796 (WOK_10.15_RuleBuild_Fix11)
+Support Java 17 runtime for Business Rules 10.15
+Java 17 runtime was not supported for Business Rules 10.15.
+This issue has been resolved by implementing Java 17 runtime support.
+
+WOK-20354
+ClassCastException when an element of a document list used as DT input is null
+If a decision table uses a document list as one of its inputs and one element of this document list 
+is 'null' at runtime, a ClassCastException may occur when invoking the decision table in the 
+Business Rules Runtime.
+This issue has been resolved. 
+
+                                            
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and 
+includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was tested with non-English configurations and non-ASCII data.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these 
+messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Super iPaaS Integration LLC, an IBM Company 2025

@@ -1,0 +1,817 @@
+
+                          CentraSite 10.5 Fix 32 Readme
+
+                          September 2022
+
+________________________________________________________________________________
+
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+CentraSite 10.5 Fix 32
+
+
+
+2.0 Fix ID
+INM_10.5_Fix32
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects CentraSite 10.5.
+
+
+
+4.0 Requirements
+
+CentraSite Core 10.5 Fix 32 and CentraSite Server Common 10.5 Fix 32  require each
+other.
+
+For language pack requirements, see the Globalization section of the Software AG
+Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+CentraSite 10.5 Fix 32 is supported on the same platforms and  operating  systems
+and with the same JREs as CentraSite 10.5.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also  include
+enhancements to existing functionality and features.  Any  of  these  items  can
+result in new or changed built-in services, APIs, or  configuration  parameters.
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate  of  previous  fixes
+for the release.
+
+
+INM-25744
+Unable to attach swagger neither with URL nor with file
+
+Unable to create a REST service by importing a swagger file after installing
+CentraSite 10.5 Fix 30.
+
+The issue is resolved. 
+
+
+INM-25626 (Fix 30)
+The application does not validate for File Type or Content-Type in the avatar
+field
+
+Server-side validation is added for the file upload functionality in CentraSite.
+The file upload fails if the file size is above the set limit(default 100 MB)
+or the file is a binary (with mime type "application/octet-stream").
+
+The maximum file size limit can be set in one of the config.xml files:
+<CentraSiteInstall_Directory>/cast/cswebapps/BusinessUI/custom/conf/
+centrasite.xml
+<CentraSiteInstall_Directory>/cast/cswebapps/BusinessUI/system/conf/
+centrasite.xml
+
+Add the <FileUploadSettings maxUploadfileSize="" /> inside the UIProperties
+tag.
+
+For example:
+
+<GUIConfiguration>
+    ...
+    <UIProperties>
+        ...
+
+        <FileUploadSettings maxUploadfileSize="104857600" />
+
+        ...
+    </UIProperties>
+    ...
+</GUIConfiguration>
+
+The issue is resolved. 
+
+
+INM-25628
+Vulnerable 3rd party component jQuery used - jQuery v3.3.1
+
+CentraSite web application uses an outdated version of jQuery which can be
+vulnerable.
+
+The issue is resolved. 
+
+
+INM-25620 (Fix 29)
+Unable to promote an asset to the target state
+
+Promoting an asset from a source running on HTTPS to the target running on HTTP
+fails with an error.
+
+The issue is resolved. 
+
+
+INM-25657 (Fix 28)
+HTML Injection Vulnerability in E-Mail
+
+An input field in the report part of Business UI was vulnerable 
+to HTML injection.
+
+This issue is resolved. 
+
+
+INM-25641 (Fix 28)
+Vulnerable 3rd Party Component Apache Commons Beanutils Used
+
+Apache Commons Beanutils jar 1.9.3 had a potential security vulnerability.
+The jar has been upgraded to 1.9.4.
+
+This issue is resolved. 
+
+
+INM-25493 (Fix 27)
+Change Policy from Load Balancer Routing to ST Rounting
+
+Be sure to create a database backup before executing this script.
+
+The tool consists of an executable jar file in the bin folder of the
+CentraSite installation. It can be invoked using the CentraSiteToolbox
+script located in <SAG_Install_Dir>\CentraSite\utilities in the following
+manner:
+
+Usage:
+CentraSiteToolbox.[cmd|sh] CentraSiteVSRoutingAdapter.jar
+            <arg1_CentraSite_DB_URL>
+            <arg2_Administrator_User>
+            <arg3_Administrator_User_Password>
+            <arg4_UUID_of_asset_to_be_Change_policy>
+            <arg5_Straight_Through_Routing_URL>
+
+arg1_CentraSite_DB_URL - (Optional) The URL to connect to CentraSite.
+                                      It should be of the form
+                                      http://hostname:port/CentraSite/CentraSite
+                                      Default value (if not provided)
+                                      http://localhost:53307/CentraSite/CentraSite
+arg2_Administrator_User - The username of the user having the
+                                      CentraSite Administrator role
+arg3_Administrator_User_Password - The password for the Administrator user
+arg4_UUID_of_asset_to_be_Change_policy - The UUID of Virtual Service\Virtual REST Service
+arg5_Straight_Through_Routing_URL - The URL to be used for Straight Through Routing.
+
+Example:
+CentraSiteToolbox.[cmd|sh] CentraSiteVSRoutingAdapter.jar
+"http://hostname:53307/CentraSite/CentraSite" "DOMAIN\admin"
+"p@s$w0rd" "uddi:3fb8dbd0-6122-11e5-933f-e8830d260cc1" "http://www.acme.com"
+
+Runtime Alias - Linux OS
+
+CentraSiteToolbox.[cmd|sh] CentraSiteVSRoutingAdapter.jar
+"http://hostname:53307/CentraSite/CentraSite" "DOMAIN\admin"
+"p@s$w0rd" "uddi:3fb8dbd0-6122-11e5-933f-e8830d260cc1" "\${ESB_DEV}/acme.wsdl"
+
+Runtime Alias - Windows OS
+
+CentraSiteToolbox.[cmd|sh] CentraSiteVSRoutingAdapter.jar
+"http://hostname:53307/CentraSite/CentraSite" "DOMAIN\admin"
+"p@s$w0rd" "uddi:3fb8dbd0-6122-11e5-933f-e8830d260cc1" "${ESB_DEV}/acme.wsdl"
+
+Note : After running this tool, Changes will be reflected after restarting the
+Software AG Runtime 10.5
+
+
+INM-25584 (Fix 26)
+Vulnerable third party component Log4j is used
+
+Severe vulnerabilities affecting multiple versions (2.0 to 2.17.0) of the Apache
+Log4j 2 utility have been publicly disclosed. These vulnerabilities allow
+unauthenticated remote code execution.
+
+The issue is resolved by upgrading Log4j to version 2.17.1.
+
+
+INM-25584 (Fix 25)
+Vulnerable third party component Log4j is used
+
+Highly severe vulnerabilities impacting multiple versions (2.0 to 2.16.0) of the
+Apache Log4j 2 utility was disclosed publicly through the project's GitHub in
+December 2021. This vulnerability allows for unauthenticated remote code
+execution.
+
+The issue is resolved by upgrading Log4j to version 2.17.0.
+
+
+INM-25584 (Fix 24)
+Vulnerable third party component Log4j is used
+
+A highly severe vulnerability (CVE-2021-44228), impacting multiple versions (2.0
+to 2.14.1) of the Apache Log4j 2 utility was disclosed publicly through the
+project's GitHub on December 9, 2021. This vulnerability allows for
+unauthenticated remote code execution.
+
+The issue is resolved.
+
+
+INM-25453 (Fix 22)
+Unable to edit an object
+
+When you edit an object having a dangling reference, it could not be saved due
+to an internal error message.
+
+The issue is resolved.
+
+
+INM-25398 (Fix 22)
+Profiles are added to or removed from asset types
+
+When you change an asset type, under certain circumstances profiles are
+alternately added to or removed from asset types.
+
+Note: Since CentraSite Control is deprecated and is no longer available in
+CentraSite 10.11, asset types should only be maintained using CentraSite
+Business UI.
+
+
+INM-25503 (Fix 22)
+Deploying an asset from CentraSite to API Gateway fails with an error
+
+When you deploy an asset with the "Any Consumers" setting in the throttling
+policy from CentraSite to API Gateway, the deployment fails with an error.
+
+The issue is resolved.
+
+
+INM-25376 (Fix 21)
+Metering check is not working for https access.
+
+The metering check can be disabled.
+
+This issue is resolved.
+
+
+INM-25382 (Fix 21)
+Incorrect HTTP Connection Timeout value appears while publishing virtual service
+to API Gateway
+
+When you create a routing policy, without explicitly setting the HTTP
+Connection Timeout (seconds) value and publish it to API Gateway,
+the HTTP Connection Timeout value is set to 30 seconds automatically.
+
+The issue is resolved.
+
+
+INM-25405 (Fix 21)
+Insecure Direct Object References (IDOR) are observed while accessing
+Asset Navigator.
+
+The issue is resolved.
+
+
+INM-25407 (Fix 20)
+Anonymous users can download reports through forced browsing and no
+authentication is enforced.
+
+The issue is resolved.
+
+
+INM-25272 (Fix 19)
+Performance improvements for add, delete, virtualize, and deploy large OData
+services
+
+The performance for handling large OData objects is improved.
+However, it takes time to save, delete or virtualize services, because of the
+huge amount of objects involved.
+
+It is recommended to increase the Java Heap of CAST when handling large OData
+services.
+You can monitor the progress of CRUD action by configuring log4j and set the
+package com.softwareag.centrasite.api.csom to info.
+
+The problem of aborting internal transactions is resolved.
+
+
+INM-25280 (Fix 18)
+Unable to modify or delete a design time policy
+
+When a design time policy applicable to a policy itself is activated, it cannot
+be deactivated. Consider a design time policy with the scope of Policy type and
+Pre-Update event type and has a policy action that can fail the update of the
+policy itself when executed. After such a policy is activated, it cannot be
+deactivated since the policy itself fails the update or deactivation.
+
+The issue is resolved.
+
+
+INM-25212 (Fix 17)
+Vulnerable 3rd Party Component Odata Used
+
+OData jars 4.0.0 to 4.6.0 had a potential security vulnerability.
+The jars have been upgraded to 4.8.0.
+
+This issue is resolved.
+
+
+INM-25208 (Fix 17)
+Security vulnerability exists in the third-party XmlBeans library.
+Web Services Stack now uses
+XmlBeans 3.1.0, where the vulnerability is fixed.
+
+This issue is resolved.
+
+
+INM-25178 (Fix 17)
+Publishing migrated virtual service from CentraSite 10.5 to API Gateway 10.5
+fails
+
+When a throttling policy enforced on a virtual service that has an application
+associated with it, which is missing, publishing the virtual service fails with
+a random error message.
+
+The issue is resolved.
+
+
+INM-25130 (Fix 16)
+Publishing of migrated service to API Gateway 10.5 fails
+
+When you modify the HTTPAuthentication outbound policy, the deployment to
+API Gateway fails with an error message.
+
+The issue is resolved.
+
+
+INM-24953 (Fix 15)
+API Gateway Information profile is freezing in CentraSite BusinessUI screens
+with low resolution
+
+When a Virtual Service is published to more than one API Gateway, API Gateway
+Information profile freezes in CentraSite BusinessUI screens with low
+resolution.
+
+This issue is resolved.
+
+
+INM-25103 (Fix 15)
+Importing existing VS with ImportArchive.sh not working
+
+When updating virtual service objects with custom programs like changing policy
+objects, the deployment fails due to an internal error.
+
+The issue is resolved.
+
+
+INM-24868 (Fix 15)
+update of OData Service resources are not shown in metadata
+
+When you update an OData native service that has a virtual service using a
+metadata document and then re-virtualize it, the virtual service is not updated.
+
+The issue is resolved.
+
+
+INM-24953 (Fix 15)
+API Gateway Information profile is freezing in CentraSite BusinessUI screens
+with low resolution
+
+When a Virtual Service is published to more than one API Gateway, API Gateway
+Information profile freezes in CentraSite BusinessUI screens with low
+resolution.
+
+This issue is resolved.
+
+
+INM-24867 (Fix 13)
+Unable to attach a wsdl file to an existing SOAP service in CentraSite
+
+When there are more than one schema with the same name or namespace and you
+attach a new wsdl file with schemas, the attachemnt fails with an error
+message.
+
+This issue is resolved.
+
+
+INM-24839 (Fix 12)
+Unable to change the lifecycle state of an asset.
+
+In a specific zone environment, some functions(approval, consumer registrations)
+fail with internal errors.
+
+This issue is resolved.
+
+
+INM-24924 (Fix 12)
+Synchronization error observed while importing an existing Virtual Service
+
+There is no synchronization when you use CentraSite CLi programs to import an
+existing Virtual Service.
+When you use ImportArchive.sh and CentraSiteCommand.sh commands the existing
+virtual services are not replaced with the imported ones.
+
+This issue is resolved.
+
+
+INM-24824 (Fix 12)
+Error after a session time out
+
+When a CentraSite session times out, instead of redirecting to the login page an
+Exception 500 message is displayed.
+
+This issue is resolved.
+
+
+INM-24858 (Fix 12)
+Status of an API is not updated when unpublishing from API Portal
+
+When you unpublish an API from an API Portal instance, the status of the API is not updated accordingly. Therefore, CentraSite still displays outdated details on the API Portal Information page and the API cannot be deleted.
+
+This issue is resolved.
+
+
+INM-24854 (Fix 11)
+Unable to publish SOAP and REST services to API Gateway.
+
+After migration, CentraSite is unable to publish SOAP and REST services to
+API Gateway due to internal lock conflicts at the end phase of a service
+deployment. there might be internal lock conflicts.
+
+This issue is resolved.
+
+
+INM-24822 (Fix 11)
+Issue with upload of yaml specification to REST service type in Centrasite
+
+When users use the "Download Documents" action to download REST services created
+with YAML files as Swagger files, a "No document(s) to download" error appears.
+
+This issue is resolved.
+
+
+INM-24813 (Fix 11)
+Unable to attach a wsdl to an existing soap service in CentraSie.
+
+When multiple schemas have identical names and identical namespaces, a
+NullPointerException occurs while collecting the assets of the schemas.
+
+This issue is resolved.
+
+
+INM-24813 (Fix 10)
+Unable to attach a wsdl to an existing soap service in CentraSie.
+
+When multiple schemas have identical names and identical namespaces, a
+NullPointerException occurs while collecting the assets of the schemas.
+
+This issue is resolved.
+
+
+INM-24707 (Fix9)
+CentraSite instance details not updated in API Gateway
+
+When CentraSite is running behind a DMZ firewall, and if users try to publish
+an asset from CentraSite to API Gateway, so that the CentraSite Destination
+details are updated in the API Gateway Administration screen, an exception
+message is displayed.
+
+This issue is resolved.
+
+
+INM-24746 (Fix9)
+The modification of the custom endpoint prefix is not possible for deployed
+SOAP services.
+
+Now the prefix can be modified within the Virtualize action of the native
+service by selecting the particular virtual service.
+
+This issue is resolved.
+
+
+INM-24719 (Fix9)
+When publishing an API to API Gateway, Centrasite does not always consider the
+alias specification inside an endpoint while associating a service to the alias
+object.
+
+This fix applies automatically to all new virtual
+services. However, you must revirutalize all the existing virtual services
+exhibiting the problem to implement this fix.
+
+This issue is resolved.
+
+
+INM-24707 (Fix8)
+CentraSite instance details not updated in API Gateway
+
+When CentraSite is running behind a DMZ firewall, and if users try to publish
+an asset from CentraSite to API Gateway, so that the CentraSite Destination
+details are updated in the API Gateway Administration screen, an exception
+message is displayed.
+
+This issue is resolved.
+
+
+INM-24719 (Fix8)
+Simple Alias is not being published by CentraSite to Gateway
+When publishing an API to API Gateway, Centrasite does not always consider the
+alias specification inside an endpoint while associating a service to the alias
+object.
+
+This fix applies automatically to all new virtual
+services. However, you must revirutalize all the existing virtual services
+exhibiting the problem to implement this fix.
+
+This issue is resolved.
+
+
+INM-24635 (Fix7)
+Schema error occurs while downloading OpenAPI 3.0 specification file.
+
+When you download the OpenAPI 3.0 specification file for an API in API gateway,
+which was published from CentraSite and when you verify it in an online editor
+(http://editor.swagger.io/), error message is displayed.
+
+This issue is resolved.
+
+
+INM-24611 (Fix7)
+Unable to assign permissions to dependent objects.
+
+When you run Set Instance and Profile Permission policy for a REST service,
+the configured permissions are not assigned to the newly added resources or
+methods.
+
+This issue is resolved.
+
+
+INM-24676 (Fix7)
+Incorrect links in downloaded specification files.
+
+When you define a service using WSDL files or schemas with references to
+xsd:include and xsd:import, and if you export the service definitions from
+Business UI using the 'Download Documents' button, the downloaded ZIP file has
+incorrect links to the schemas.
+
+This issue is resolved.
+
+
+INM-24632 (Fix6)
+The Asset details page is not refreshed after API promotion.
+
+Post API promotion, the Asset Details page is not refreshed.
+
+This issue is resolved.
+
+
+INM-24652 (Fix6)
+API Portal deeplink broken in CentraSite Asset.
+
+CentraSite asset/API is publish into API Portal successfully, CentraSite has API
+Portal information and it has attribute API Details on API-Portal  which has API
+deeplink in API-Portal Product. The link is broken.
+
+Now the issue is fixed.
+
+
+INM-24658 (Fix6)
+API consumption setting changes are not synchronized with  API Gateway  and  API
+Portal.
+
+When you modify the API Consumption Settings of a Virtual service in CentraSite,
+and if you republish the virtual service to API Portal, then those  changes  are
+not reflected in API Gateway and API Portal.
+
+This issue is resolved.
+
+
+INM-24666 (Fix6)
+Deploying of services without applications.
+
+When you disable the runtime functionalities in CentraSite,  then  the  existing
+services are deployed without applications.
+
+This issue is resolved.
+
+
+INM-24635 (Fix5)
+Promote Asset with include Applications does not  promote  the  applications  to
+API Gateway.
+
+When a Virtual Service is promoted from one API Gateway to  another  API Gateway
+with include application option enabled,  CentraSite  promote  action  fails  to
+send applications to API Gateway.
+
+This issue is resolved.
+
+
+INM-24501 (Fix5)
+Unintended update of Native service's WSDL.
+
+When you re-virtualize a virtual service, the WSDL file of the virtual service
+is updated with WSDL of the native service. This, in turn, updates the
+targetNamespace variable in the WSDL file of the native service and makes the
+WSDL file inconsistent.
+
+This issue is resolved.
+
+
+INM-24502 (Fix5)
+Application owner Id not sent to API Gateway.
+
+When you create an application via API Portal and deploy the application in API
+Gateway, the owner ID of the application is not sent to API Gateway during the
+deploying of the application.
+
+This issue is resolved.
+
+
+INM-24542 (Fix4)
+Unintended update of Native service's WSDL.
+
+When you re-virtualize a virtual service, the WSDL file of the virtual service
+is updated with WSDL of the native service. This, in turn, updates the
+targetNamespace variable in the WSDL file of the native service and makes the
+WSDL file inconsistent.
+
+This issue is resolved.
+
+
+INM-24590 (Fix4)
+Application owner Id not sent to API Gateway.
+
+When you create an application via API Portal and deploy the application in API
+Gateway, the owner ID of the application is not sent to API Gateway during the
+deploying of the application.
+
+This issue is resolved.
+
+
+INM-24479 (Fix3)
+Error message not displayed.
+
+When you unpublish an API from Gateway instance through CentraSite,
+which was published from CentraSite through API Gateway to API Portal, a valid
+error message is not displayed. Now, the Gateway instance is
+not listed in Unpublish action.
+
+This issue is resolved.
+
+
+INM-24487 (Fix2)
+Legacy API Portal Unpublish action is now available
+
+CentraSite 10.5 allows you to publish services to API Portal, which were already
+published to Mediator. Now you can also unpublish services that are deployed  to
+API Portal. To activate this feature, perform the following steps:
+1. Open the centrasite.xml file from [INSTALL_DIR]/CentraSite/cast/cswebapps/BusinessUI/system/conf
+2. Add the following line after the line containing string <Action id="LegacyPortalPublishAction":
+   <Action id="LegacyPortalUnpublishAction" inbox="false" bulk="true" group="runtime" icon="images/system/actionbar/legacy_unpublish_32X32.png" class="com.softwareag.centrasite.api.csom.action.runtime.impl.LegacyPortalUnpublishActionImpl">INMCL_ACTION_LEGACY_PORTAL_UNPUBLISH</Action>
+3. Save the configuration file and exit
+4. Restart Software AG Runtime 10.5.
+
+
+INM-24513 (Fix1)
+Unable to publish a service from Centrasite to API Portal using API Gateway
+
+The first publishing of a  service  from  Centrasite  to  API Portal  using  API
+Gateway fails.
+
+This issue is resolved.
+
+
+INM-24520 (Fix1)
+Unable to publish a service with Enable REST policy to API Portal
+
+When you virtualize a SOAP service with Enable REST policy and trying to publish
+the service then to API Portal an error message is displayed.
+
+This issue is resolved.
+
+
+INM-24510 (Fix1)
+Unable to edit the versioned Life Cycle Model in BusinessUI
+
+Once you version a Life Cycle Model, then the fields are marked as read-only.
+
+This issue is resolved.
+
+
+INM-24511 (Fix1)
+Unable to view application from the deep link of Gateway Application asset
+
+When you click the deep link of Gateway Application asset  from  Gateway Details
+page, a blank page is displayed.
+
+This issue is resolved.
+
+
+
+8.0 Installation
+
+Software AG strongly recommends you to take a backup of the internal database in
+which CentraSite's registry and repository data is stored before installing this
+fix.
+
+Install the fix using  Software AG Update Manager.  For  instructions,  see  the
+documentation at http://documentation.softwareag.com.
+
+
+8.1 Post-Installation Steps
+
+It may be required to  start  Software AG  Runtime  and/or  CentraSite  Registry
+Repository after fix installation.
+
+Clear browser cache before starting CentraSite Control.
+
+
+
+9.0 Uninstallation
+
+You cannot uninstall the fixes applied on CentraSite 10.5.
+
+
+
+10.0 Globalization
+
+This  fix  conforms  to the  internationalization  standards  of the  webMethods
+product suite  and includes  support for  operation in  any  country, locale, or
+language as specified  in the Installing  webMethods  Products guide. It was not
+tested with non-English configurations and non-ASCII data. However, this fix has
+no globalization impact and can be applied to systems running  in  any supported
+locale or configuration.
+
+
+10.1 Localization
+
+This  fix  does not  require  an updated  language  pack. It  might  contain new
+messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright � 2022  Software AG, Darmstadt,  Germany and/or Software  AG USA Inc.,
+Reston, VA,  USA, and/or  its subsidiaries  and/or its  affiliates and/or  their
+licensors.
+
+The name Software AG and all Software AG product names are either trademarks  or
+registered trademarks  of Software  AG and/or  Software AG  USA Inc.  and/or its
+subsidiaries and/or  its affiliates  and/or their  licensors. Other  company and
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and  patents owned by Software AG  and/or its
+subsidiaries is located at http://softwareag.com/licenses.
+
+This  software may  include portions  of third-party  products. For  third-party
+copyright  notices, license  terms, additional  rights or  restrictions, please
+refer  to  "License Texts,  Copyright  Notices and  Disclaimers  of Third  Party
+Products". For certain specific  third-party license restrictions, please  refer
+to section E of the Legal Notices available under "License Terms and  Conditions
+for Use of Software AG Products / Copyright and Trademark Notices of Software AG
+Products". These  documents are  part of  the product  documentation, located at
+http://softwareag.com/licenses and/or in the root installation directory of  the
+licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support  contacts can reach  Software AG Global  Support in
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You  can  find  complete  contact  information  in  our  Global  Support Contact
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also  visit our Software  AG Developer Communities  to access additional
+articles,  demos,   and  tutorials,   technical  information,   samples,  useful
+resources, online discussion forums moderated by Software AG professionals,  and
+more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

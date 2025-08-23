@@ -1,0 +1,223 @@
+				Software AG Common Platform 10.11 Fix 20 readme
+
+                    July 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+1.0 Fix Name
+
+Software AG Common Platform 10.11 Fix 20
+
+
+
+2.0 Fix ID
+
+OGI_10.11_Fix20
+
+
+3.0 Product(s)/Component(s) Affected
+
+
+This fix affects OSGi Common Platform 10.11.
+
+
+
+4.0 Requirements
+
+This fix requires any of the products listed in 3.0 Products (s)/Component(s) Affected. 
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install
+the specified fix or later.
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+6.0 Cautions and Warnings
+
+All product profiles that run on top of OSGi runtimes are stopped by
+the IBM webMethods Update Manager and will automatically be started
+after the session completes.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes
+for the release.
+
+OGI-3979
+Software AG Common Platform uses Apache Tomcat, which has 
+security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses
+Apache Tomcat 9.0.105.
+
+OGI-4925
+Common Platform uses the third-party Apache MINA Core 2.2.3, which has
+known security vulnerabilities.
+The issue is resolved. Common Platform now uses the
+stable version Apache MINA Core 2.2.4
+
+OGI-4910
+Common Platform uses Apache MINA Core 2.0.23, which has
+known security vulnerabilities.
+The issue is resolved. Common Platform now uses the
+stable version Apache MINA Core 2.2.3.
+
+OGI-4878
+Software AG Common Platform uses the third-party engine
+Apache velocity 2.3.0, which has security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses
+Apache Velocity 2.4.0.
+
+OGI-4652
+Software AG Common Platform uses the third-party Bouncy Castle library
+v. 1.76.0, which has known vulnerabilities.
+This issue is resolved. Security Infrastructure now uses the stable version Bouncy Castle 1.78.1.
+
+OGI-3925
+Software AG Common Platform uses Apache Shiro-Core 1.12.0, which has
+security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses
+Apache Shiro-Core 1.13.0.
+
+OGI-3911
+Software AG Common Platform uses Apache Tomcat v. 8.5.95, which has security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses Apache Tomcat v. 8.5.96.
+
+OGI-3625
+Software AG Common Platform uses the third-party Apache Mina SSHD
+library v.2.8.0, which has а security vulnerability NVD - CVE-2022-45047.
+This issue is resolved. Software AG Common Platform now uses the stable
+version Apache Mina SSHD 2.10.0.
+
+OGI-3858
+Software AG Common Platform uses Apache Tomcat v. 8.5.91, which has security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses Apache Tomcat v. 8.5.95.
+
+OGI-3816
+Software AG Common Platform uses the third-party Apache Shiro Core framework v. 1.11.0,
+which has security vulnerabilities.
+The issue is resolved. Common Platform now uses Apache Shiro Core v. 1.12.0.
+
+OGI-3785
+Software AG Common Platform uses Apache Tomcat, which has
+security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses
+Apache Tomcat 8.5.91.
+
+OGI-3681
+Software AG Common Platform uses Apache Tomcat, which has
+security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses
+Apache Tomcat 8.5.87.
+
+OGI-3364
+Software AG Common Platform uses Apache Tomcat 8.5.72, which has
+security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses
+Apache Tomcat 8.5.83.
+
+OGI-3493
+Software AG Common Platform uses Entrust Authority Security Toolkit 8.0.33, 
+which throws an exception error when used with Java 11.
+The issue is resolved. Software AG Common Platform now uses 
+Entrust Authority Security Toolkit 8.1.20.
+
+OGI-3617
+Software AG Common Platform uses Apache Tomcat 8.5.83, which has
+security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses
+Apache Tomcat 8.5.85. 
+
+OGI-3621
+Software AG Common Platform uses Apache Shiro 1.10.0, which has
+security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses
+Apache Shiro 1.11.0.
+
+OGI-3325
+Software AG Common Platform uses Apache Shiro 1.8.0, which has
+security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses
+Apache Shiro 1.10.0.
+
+OGI-3359
+Some logs were lost due to undefined log parameters.
+The issue is now resolved.
+
+OGI-3294
+Software AG Common Platform uses Apache MINA 2.0.7, which has known security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses the stable version
+Apache MINA 2.0.23.
+
+OGI-2703
+Software AG Runtime does not support custom java.util.logging 
+handlers in the MQ Adapter.
+This issue is resolved.
+
+OGI-2956
+Software AG Common Platform uses the third-party XmlSec library v.1.5.6, which has ? security vulnerability.
+This issue is resolved.
+
+
+OGI-3163
+In some cases shutdown was performing slower than needed.
+
+The issue is now fixed
+
+OGI-3164
+During startup a superficial error from the component runtime is raised.
+The issue is fixed.
+
+OGI-3163
+In some cases shutdown was performing slower than needed.
+
+The issue is now fixed
+
+CTP-187
+Software AG Common Platform uses Apache Tomcat 8.5.64, which has
+security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses
+Apache Tomcat 8.5.72.
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or IBM webMethods Update Manager to install 
+fixes on one machine at a time. For instructions, see the documentation at
+https://docs.webmethods.io.
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the 
+documentation at https://docs.webmethods.io.
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

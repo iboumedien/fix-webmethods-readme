@@ -1,0 +1,364 @@
+                 webMethods Microgateway 10.7 Fix 30 Readme
+
+                         July 2024
+
+____________________________________________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Microgateway 10.7 Fix 30
+
+
+
+2.0 Fix ID
+
+YAM_10.7_Fix30
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Microgateway 10.7
+
+
+
+4.0 Requirements and Dependencies
+
+None
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+
+YAM-0000 (YAM_10.7_Fix30)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-1765 (YAM_10.7_Fix29)
+Vulnerable third-party component Eclipse jetty is used.
+
+- CVE-2023-44487
+
+This issue is resolved.
+
+
+YAM-0000 (YAM_10.7_Fix28)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-1735 (YAM_10.7_Fix27)
+Vulnerable third-party component Guava being used.
+
+- CVE-2023-2976
+
+This issue is resolved.
+
+
+YAM-0000 (YAM_10.7_Fix26)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-1709 (YAM_10.7_Fix25)
+Microgateway does not support configuring a hostname for the Prometheus metrics.
+
+This issue is resolved. Prometheus metrics for Microgateway now support
+configuring the hostname or IP address in order to display the configured
+hostname or IP address in the Metrics output. You can configure
+'mcgw_prometheus_url_host = <host_name:port/IP_address>' as the environment
+variable in the environment file or include the following properties in the
+Config.yml file:
+prometheus:
+url_host: "host_name:port"
+
+Config.yml file example:
+ports:
+    http: 7077
+api_gateway:
+    url: "myhost:port"
+    user: "myuser"
+    password : "mypwd"
+prometheus:
+    url_host: "host_name:port/IP_address"
+policies:
+    user_auth: "internal"
+
+
+YAM-1674 (YAM_10.7_Fix24)
+Vulnerable third-party json-smart jar is used.
+
+- CVE-2023-1370
+
+This issue is resolved.
+
+
+YAM-1583 (YAM_10.7_Fix23)
+Vulnerable third-party component jettison is used.
+
+ - CVE-2022-45693
+ - CVE-2022-45685
+ - CVE-2022-40150
+
+This issue is resolved.
+
+
+(Fix number 22 omitted intentionally)
+
+
+YAM-1553 (YAM_10.7_Fix21)
+Vulnerable third-party component jackson-databind is used.
+
+This issue is resolved.
+
+YAM-1578 (YAM_10.7_Fix21)
+Vulnerable third-party component snakeyaml is used.
+
+This issue is resolved.
+
+YAM-1588 (YAM_10.7_Fix21)
+Vulnerable third-party component OpenJDK 11 is used.
+
+This issue is resolved.
+
+
+(Fix numbers 19 / 20 omitted intentionally)
+
+
+YAM-1509 (YAM_10.7_Fix18)
+Microgateway fails to start with HTTPS.
+
+When Microgateway is started with the -sp or --https_port option and an
+appropriate keystore, then the startup fails with an IllegalStateException
+"KeyStores with multiple certificates are not supported on the base class
+org.eclipse.jetty.util.ssl.SslContextFactory". This happens only if the
+certificate in the given keystore has a 'SubjectAlternativeName' section with
+multiple host names.
+
+This issue is resolved.
+
+
+(Fix numbers 16 / 17 omitted intentionally)
+
+
+YAM-1395 (YAM_10.7_Fix15)
+Microgateway fails to send events to external Elasticsearch.
+
+When Microgateway is configured with an external Elasticsearch destination, and
+the connection to Elasticsearch is protected by basic authentication, then
+Microgateway fails to send events to Elasticsearch. The Microgateway trace level
+log shows that the HTTP POST request to Elasticsearch fails with the response
+code 401.
+
+This issue is resolved.
+
+
+YAM-1462 (YAM_10.7_Fix15)
+Vulnerable third-party component Spring is used.
+
+This issue is resolved.
+
+
+(Fix number 14 omitted intentionally)
+
+
+YAM-0000 (YAM_10.7_Fix13)
+Synchronize libraries with API Gateway Fix.
+
+
+YAI-23907 (YAM_10.5_Fix12)
+Identified third party Log4j 2.16.0, which have known security vulnerability
+CVE-2021-45105.
+
+The issue is resolved. All Log4j libraries are updated to version 2.17.1.
+
+
+(Fix number 11 omitted intentionally)
+
+
+YAM-1385 (YAM_10.7_Fix10)
+Vulnerable third-party component Log4j is used.
+
+This issue is resolved.
+
+
+(Fix numbers 8 and 9 omitted intentionally)
+
+
+YAM-1331 (YAM_10.7_Fix7)
+Vulnerable third-party component json-smart is used.
+
+This issue is resolved.
+
+
+YAM-0000 (YAM_10.7_Fix6)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-1291 (YAM_10.7_Fix5)
+Vulnerable third-party jetty jars are used.
+
+This issue is resolved.
+
+
+YAM-1230 (YAM_10.7_Fix5)
+Monitor Performance policy with the alert frequency setting set to Alert
+frequency once fails.
+
+Monitor performance policies with the alert frequency setting set to Alert
+frequency once fails to raise an alert occasionally.
+
+This issue is resolved.
+
+YAM-1271 (YAM_10.7_Fix5)
+Vulnerable third-party component is used.
+
+This issue is resolved.
+
+
+YAM-0000 (YAM_10.7_Fix4)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-0000 (YAM_10.7_Fix3)
+Synchronize libraries with API Gateway Fix.
+
+
+(Fix 2 omitted intentionally)
+
+
+YAM-1154 (YAM_10.7_Fix1)
+Throttling global policy does not work.
+
+When starting Microgateway with a throttling global policy the corresponding
+policy is reported in the assets of the given API, but it is also observed to
+send requests against the API the throttling restriction is not applied.
+
+This issue is resolved.
+
+YAM-1159 (YAM_10.7_Fix1)
+Performance degrade observed for native HTTPS services.
+
+When a native HTTPS service is called through Microgateway, and the native
+service requires SSL client authentication, a performance degrade is observed.
+When starting Microgateway with the "-Djavax.net.debug" JVM option
+the error log shows that each HTTP request results in a separate SSL handshake.
+
+This issue is resolved.
+
+YAM-1176 (YAM_10.7_Fix1)
+Calling a native service in AppMesh fails with a response 502.
+
+In an AppMesh deployment after apifying the native service, the native service
+URL can be rewritten using an endpoint alias. In this scenario a call to the
+native service fails with HTTP response code 502.
+
+This issue is resolved.
+
+YAM-1195 (YAM_10.7_Fix1)
+Microgateway registration handles applications wrongly.
+
+When registering itself to API Gateway, Microgateway handles application assets
+wrongly.
+
+This issue is resolved.
+
+YAM-1199 (YAM_10.7_Fix1)
+Vulnerable third-party jackson-databind jar is used.
+
+This issue is resolved.
+
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action
+will revert your installation to the previously installed fix. You cannot use these instructions to
+uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and includes
+support for operation in any country, locale, or language as specified in the Installing webMethods
+Products guide. It was not tested with non-English configurations and non-ASCII data. However, this
+fix has no globalization impact and can be applied to systems running in any supported locale or
+configuration.
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2024 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or registered
+trademarks of Software AG and/or Software AG USA Inc. and/or its subsidiaries and/or its affiliates
+and/or their licensors. Other company and product names mentioned herein may be trademarks of their
+respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries is
+located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party copyright notices,
+license terms, additional rights or restrictions, please refer to "License Texts, Copyright Notices
+and Disclaimers of Third Party Products". For certain specific third-party license restrictions,
+please refer to section E of the Legal Notices available under "License Terms and Conditions for Use
+of Software AG Products / Copyright and Trademark Notices of Software AG Products". These documents
+are part of the product documentation, located at http://softwareag.com/licenses and/or in the root
+installation directory of the licensed product(s).
+

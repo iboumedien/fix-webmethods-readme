@@ -1,0 +1,217 @@
+                   webMethods Central User Management 10.15 Fix 6 readme
+
+                                        January 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Central User Management 10.15 Fix 6
+
+
+2.0 Fix ID
+
+MWS_10.15_CDS_Fix6
+
+
+3.0 Product(s)/Component(s) Affected
+
+- Integration server 10.15
+
+
+4.0 Requirements and Dependencies
+ 
+ 
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+6.0 Cautions and Warnings
+
+If this is the first Common Directory Services fix that you are installing, you must perform
+the following steps to enable calendar administration:
+1. In a text editor, copy and paste the following xml snippet on a single line:
+<?xml version="1.0" encoding="UTF-8"?><CONFIG><executecommand commandName="installComponent"
+componentLocation="class:/is_components/wm_calendar_admin.war" resourceURI=""/></CONFIG>
+2. In Inetgration Server, go to Packages > Management > WmCDS > Browse services in WmCDS and
+locate the wm.cds.services_java:importXml service.
+3. Provide the line from step 1. as input to the service and click Test (with inputs).
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+MWS-37754 (MWS_10.15_CDS_Fix6)
+Pop-up error with message "Principal with DN 'undefined' cannot be found" is displayed when usernavigates to CDS > Users > Edit User. The issue is resolved.
+
+MWS-37373 (MWS_10.15_CDS_Fix5)
+A potential HTTP Response Splitting isssue in WmCDS package has been fixed.
+
+
+
+
+MWS-37493 (MWS_10.15_CDS_Fix5)
+Under certain circumstances when working with users/roles/groups CDS UI in the IS might display
+the following errors: "cannot store to object array because "this.m_pageControls" is null" or
+"cannot store to object array because "this.m_pageControls" is null".
+
+
+
+
+MWS-37666 (MWS_10.15_CDS_Fix5)
+CCE shows a wrong status for WmCDS component. CCE shows a wrong status for WmCDS component and the
+following error is observed at logs: "No subsystem with id WmCDS is found for runtime component
+with id OSGI-IS_5000-WmCDS" The issue is fixed.
+
+
+
+
+MWS-30906 (MWS_10.15_CDS_Fix4)
+When using the administration interfaces for Common Directory Services in Integration Server,
+removing roles from the principal list fails.
+
+The issue is resolved.
+
+
+
+
+MWS-32374 (MWS_10.15_CDS_Fix4)
+The administration interfaces for Common Directory Services in Integration Server do not allow
+saving searches for users, groups, and roles.
+
+The issue is resolved.
+
+
+
+
+MWS-32767 (MWS_10.15_CDS_Fix4)
+When deleting LDAP attributes through the administration pages for Common Directory Services in
+Integration Server the deletion progress dialog box becomes unresponsive without completing the
+action.
+
+The issue is resolved.
+
+
+
+
+MWS-33016 (MWS_10.15_CDS_Fix4)
+When updating user passwords on the he Common Directory Services administration pages in
+Integration Server CDS might fail to validate and store password changes without logging error
+messages.  The issue is resolved.
+
+
+
+
+MWS-31942 (MWS_10.15_CDS_Fix3)
+A security issue with the third-party component moment.js was discovered in the WmCDS and
+WmTaskEngine packages for Integration Server.
+
+The issue is resolved.
+
+
+
+
+MWS-32380 (MWS_10.15_CDS_Fix3)
+The graphical user interfaces for Common Directory Services in Integration Server might display
+placeholder texts instead of field and button labels. This issue occurs when accessing a
+configuration page through a direct URL.
+
+The issue is resolved.
+
+
+
+
+MWS-32470 (MWS_10.15_CDS_Fix3)
+The Common Directory Services configuration pages in Integration Server display an error message
+when you attempt to view the details of a group. This issue occurs when the LDAP directory
+service for the group is configured with the Do Not Cache option.
+
+The issue is resolved.
+
+
+
+
+MWS-31628 (MWS_10.15_CDS_Fix2)
+Common Directory Services logs an NoSuchMethodException error message in the server.log file for
+Integration Server. This issue occurs when you install the WmCDS package on Integration Server
+and create a diagnostic.zip file.
+
+The issue is resolved.
+
+
+
+
+MWS-31576 (MWS_10.15_CDS_Fix1)
+Common Directory Services ignores the keywords you specify when searching for principals in the
+CDS administration pages in Integration Server.
+
+The issue is resolved.
+
+
+
+
+MWS-31728 (MWS_10.15_CDS_Fix1)
+The configuration pages for Common Directory Services in Integration Server do not provide an
+option for configuring a custom password complexity class.
+
+The issue is resolved. The common Directory Services user interfaces are enhanced with an input
+field for entering the name of a custom password complexity class.
+
+
+
+
+MWS-31889 (MWS_10.15_CDS_Fix1)
+Common Directory Services ignores the keywords for filters that you specify when searching for
+principals on the Common Directory Services administration pages in Integration Server.
+
+The issue is resolved.
+
+
+
+
+
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using IBM webMethods. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

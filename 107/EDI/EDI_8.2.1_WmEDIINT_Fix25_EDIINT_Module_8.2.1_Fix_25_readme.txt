@@ -1,0 +1,555 @@
+           IBM webMethods EDIINT Module 8.2.1 Fix 25 readme
+
+                          November 2024
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods EDIINT Module 8.2.1 Fix 25.
+
+
+
+2.0 Fix ID
+
+EDI_8.2.1_WmEDIINT_Fix25
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+IBM webMethods EDIINT Module 8.2.1
+
+
+
+4.0 Requirements and Dependencies
+
+TNS_8.0_SP1_Fix19, TNS_8.2_SP1_Fix15, TNS_8.2_SP2_Fix16, 
+TNS_9.0_SP1_Fix9, TNS_9.5_SP1_Fix12, TNS_9.6_Fix10, 
+TNS_9.7_Fix9, TNS_9.8_Fix7, TNS_9.9_Fix3, TNS_9.10_Fix2, 
+TNS_10.1_Fix7 or the latest equivalent fix.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+This fix includes changes to DSP files. If you have installed language packs on 
+your product, the changes in this fix will not be reflected in the non-English 
+DSP files. Do not install this fix if you already have a language pack 
+installed. Contact Support for a fix that includes additional
+language support.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+WF-34119
+
+Fix includes security updates with no new features to existing user-facing
+functionalities.
+
+EEO-5164
+In IBM webMethods EDIINT Module 8.2.1, the copyright information is updated.
+
+This issue is now resolved.
+
+EEO-4963(EDI_8.2.1_WmEDIINT_Fix23)
+In IBM webMethods EDIINT Module 8.2.1, the fixes were unable to install in 
+11.0 Integration Server release.
+
+EEO-4949(EDI_8.2.1_WmEDIINT_Fix22)
+In IBM webMethods EDIINT Module 8.2.1, the fixes were unable to install in 
+Microservices Runtime from 10.15 Integration Server release.
+
+This issue is now resolved.
+ 
+EEO-4576(EDI_8.2.1_WmEDIINT_Fix21)
+ 
+In IBM webMethods EDIINT Module8.2.1, Partial MDN 
+(Message Disposition Notification) was generating intermittently for Inbound 
+transactions.
+This issue is now resolved and the complete mdn will be generated.
+
+EEO-4443(EDI_8.2.1_WmEDIINT_Fix20)
+
+In IBM webMethods EDIINT Module 8.2.1, we are displaying generic error messages 
+in Activity logs whenever Incoming EDIINT signed/signed encrypted message Fails.
+
+This issue is now resolved.
+
+EEO-4507(EDI_8.2.1_WmEDIINT_Fix20)
+
+In IBM webMethods EDIINT Module 8.2.1, The EDIINT group Extended fields such as 
+Key Encryption Algorithm and Signature Algorithms which is specific to
+IBM WebMethods Integration server 10.1 version was also inserted to other IS 
+versions.
+
+This issue is now resolved.
+
+EEO-4393(EDI_8.2.1_WmEDIINT_Fix19)
+
+In IBM webMethods EDIINT Module 8.2.1, a security issue related to response MDN 
+has now been fixed.
+
+EEO-4309(EDI_8.2.1_WmEDIINT_Fix18)
+
+In AS3 implementation, the payload fails with a delivery error, which reads: 
+[ISS.0086.9063] Missing URI String.
+
+This issue is resolved.
+
+EEO-4362(EDI_8.2.1_WmEDIINT_Fix18)
+
+In webMethods Module 8.2.1 for EDIINT, RSAES-OAEP key encryption
+algorithm and RSASSA-PSS signature algorithm for MIME services
+is not supported.
+
+This functionality is now available with 10.1 TN Fix 7.
+
+EEO-4221(EDI_8.2.1_WmEDIINT_Fix17)
+
+In Asynchronous MDN transactions, the payload is not processed for the duration 
+of the MDN time set in the Wm.EDIINT.waitInSeconds property.
+
+This issue is resolved.
+
+EEO-4266(EDI_8.2.1_WmEDIINT_Fix17)
+
+Sending a file name through customHeader for an EDIINT message 
+over the AS2 application by resubmitting a transaction, the file name is not 
+sent.
+ 
+This issue is resolved.
+
+EEO-4020(EDI_8.2.1_WmEDIINT_Fix16)
+
+In IBM webMethods Integration Server, under the EDIINT Configurations, clear the 
+'Submit payload to TN' checkbox and save. However, the checkbox is not cleared 
+when you get back to the EDIINT Configurations page. 
+
+This issue is resolved
+
+EEO-4109(EDI_8.2.1_WmEDIINT_Fix16)
+
+Sending a 0-byte file to EDIINT Module causes 
+wm.EDIINT.util:getContentPartStream service to fail because of which the user 
+status of EDIINT cannot be changed. There is no error message displayed and the 
+issue is also not logged in the Activity log.
+
+This issue is now resolved.
+
+EEO-4235(EDI_8.2.1_WmEDIINT_Fix16)
+ 
+In IBM webMethods EDIINT Module 8.0 SP1, the wm.EDIINT:send service 
+does not set the correct value for the 'AS1MDNurl' variable.
+ 
+In EDIINT Module, the wm.EDIINT:send service does not set the 
+correct value for the 'AS1MDNurl' variable. This issue occurs 
+because the value of the 'AS1MDNurl' variable is mapped 
+incorrectly. 
+
+This issue is resolved.
+
+EEO-3908 (EDI_8.2.1_WmEDIINT_Fix15)
+
+While validating a signed MDN, the module generates an incorrect
+message digest if the multipart message has the "Date" header, and
+fails with the following error:
+"Digest does not match"
+
+This issue is resolved. The module now handles the "Date" header
+in multipart messages and successfully validates the signed MDN without
+any failure.
+
+Note: For webMethods suite 10.2 installation, you should install
+Trading Networks Server 10.2 Fix 1 or higher.
+
+EEO-3917 (EDI_8.2.1_WmEDIINT_Fix15)
+
+This module generates an MDN with 
+"AS2-Version: %/mimeHeader_Org/AS2-Version%" header for an incoming 
+EDIINT message that has an AS2-Version header in lower-case. For 
+example, "as2-version: 1.1".
+
+This issue occurs due to the case-sensitive checks performed on the 
+AS2-Version headers of the incoming EDIINT messages.
+
+This issue is resolved. The module now handles the incoming EDIINT 
+messages with AS2-Version headers in lower-case or upper-case 
+accordingly and generates an MDN with the correct "AS2-Version" header.  
+
+EEO-3787 (EDI_8.2.1_WmEDIINT_Fix14)
+
+Integration Server Administrator has a new user interface.
+
+The HTML-based utility that administers IBM webMethods EDIINT Module
+has a new user interface. However, the menu and screen locations
+remain unchanged.
+
+EEO-3799 (EDI_8.2.1_WmEDIINT_Fix14)
+
+webMethods Module for EDIINT generates an MDN with AS2-Version header 1.2 
+irrespective of the AS2-Version header in the EDIINT message received.
+
+This issue is resolved. The module now generates an MDN with AS2-Version header 
+that is available in the EDIINT message received.  
+
+EEO-3800 (EDI_8.2.1_WmEDIINT_Fix14)
+
+While sending an EDIINT message, the mandatory "type" parameter is missing in 
+the multipart/related Content-Type header.
+
+This issue is resolved. 
+
+EEO-3883 (EDI_8.2.1_WmEDIINT_Fix14)
+
+The com.wm.util.coder.IDataBinCoder class does not load the EDIINT document 
+type classes.
+
+This issue is resolved. A configuration file is added to the required EDIINT
+document type classes that are whitelisted.  
+
+EEO-3596 (EDI_8.2.1_WmEDIINT_Fix13)
+
+If IBM webMethods Module for EDIINT receives a duplicate EDIINT 
+document and the partner requests for ASYNC MDN, then EDIINT 
+Module incorrectly sets the user status to "ProcessMSG:ERROR" 
+instead of "ProcessMSG:IGNORED" and processes the payload. 
+
+This issue is resolved. The module now sets the user status to 
+"ProcessMSG:IGNORED" for a duplicate EDIINT document and skips 
+the payload processing for both, SYNC and ASYNC MDN requests.
+
+EEO-3601 (EDI_8.2.1_WmEDIINT_Fix13)
+
+IBM webMethods Module for EDIINT startup and shutdown fails with 
+an exception while starting Integration Server or while reloading 
+the EDIINT package. 
+
+This issue occurs when the EDIINT property, wm.EDIINT.receiverURLs, 
+is configured with an URL alias. 
+
+This issue is resolved.
+
+EEO-3383 (EDI_8.2.1_WmEDIINT_Fix12)
+
+In IBM webMethods Module for EDIINT, after migrating the database 
+from 7.x or 8.x to 8.2.1, some field names (for example- Compressed) 
+remain unchanged. 
+
+This issue is resolved.
+
+EEO-3446 (EDI_8.2.1_WmEDIINT_Fix12)
+
+IBM webMethods Module for EDIINT overrides and registers the default 
+content handler or coder for the multipart/related content type 
+in Integration Server. This causes any message using this content 
+type by other modules to send it to EDIINT module by Integration 
+Server. 
+
+This issue is resolved. Now, IBM webMethods Module for EDIINT does 
+not use the multipart/related content type intended for other 
+modules.
+
+EEO-3389 (EDI_8.2.1_WmEDIINT_Fix11)
+
+In IBM webMethods Module for EDIINT, when EDIINT receive service 
+receives the MDN payloads, an exception occurs in the processMDN 
+service and displays the following error message:
+"Object has been closed"
+
+This issue occurs when Trading Networks closes a connection
+before the completion of a query.
+
+This issue is now resolved.
+
+EEO-3268 (EDI_8.2.1_WmEDIINT_Fix10)
+
+IBM webMethods Module for EDIINT does not support TLS 1.1 and TLS 1.2
+for the outbound AS2 delivery.
+
+This issue occurs because the wm.EDIINT.delivery:deliveryDocument 
+service does not use the server property, 
+"watt.net.ssl.client.useJSSE" when you invoke the pub.client:http 
+service.
+
+This issue is now resolved. IBM webMethods Module for EDIINT supports 
+TLS 1.1 and TLS 1.2 based on the server property, 
+"watt.net.ssl.client.useJSSE" for the outbound AS2 delivery.  
+
+EEO-3242 (EDI_8.2.1_WmEDIINT_Fix10)
+
+Integration Server Administrator has a new look and feel.
+
+The HTML-based utility used to administer the IBM webMethods Module
+for EDIINT has a new look and feel. Menu and screen locations
+have not changed. 
+
+EEO-3191 (EDI_8.2.1_WmEDIINT_Fix10)
+
+IBM webMethods Module for EDIINT does not restart the failed outbound
+AS2 delivery when the Restart option is enabled.
+
+This issue is now resolved.  
+
+EEO-3156 (EDI_8.2.1_WmEDIINT_Fix10)
+
+In IBM webMethods Module for EDIINT, the AS2 Restart feature displays 
+the following exception if the Etag value contains double quotes:
+java.io.FileNotFoundException
+
+This issue is now resolved. The AS2 Restart feature does not 
+display an exception if the Etag value contains double quotes. 
+
+EEO-3226 (EDI_8.2.1_WmEDIINT_Fix9)
+
+IBM webMethods Module for EDIINT throws "Digest does not match" error
+while receiving an MDN message.
+
+The issue occurs because Module for EDIINT sets the value of the
+"signed-receipt-micalg" parameter in
+"Disposition-notification-options" of the EDIINT Document to
+"SHA-1". Whereas, older implementations of SMIME agents only
+recognize "sha1". To ensure backward compatibility with older
+SMIME agents, the module must set the value to "sha1" instead of
+"SHA-1".
+
+The issue is resolved. Now, IBM webMethods Module for EDIINT sets the
+value of "signed-receipt-micalg" parameter to "sha1" instead of
+"SHA-1". 
+
+EEO-3222 (EDI_8.2.1_WmEDIINT_Fix9)
+
+In IBM webMethods Module for EDIINT, installing EDIINT 8.2.1 Module
+Fix 1 or later on Integration Server 9.9 using Update
+Manager returns a warning message.
+
+After installing EDIINT 8.2.1 Module Fix 1 or later on
+Integration Server 9.9 using Update Manager,
+a warning message is displayed stating that "IS_CL_8.2_SP2_Fix18"
+is required for the installed fix. This issue occurs because the
+fix packages for IBM webMethods Module 8.2 SP1 for EDIINT depend on
+Integration Server fix IS_CL_8.2_SP2_Fix6 or later.
+
+NOTE: When installing IBM webMethods Module 8.2 SP1 for EDIINT Fix 1
+or later on Integration Server 8.2 SP2, Integration Server fix
+IS_CL_8.2_SP2_Fix6 or later is required.
+
+This issue is resolved. A warning message is no longer displayed
+when installing fixes for Module 8.2 SP1 for EDIINT on
+Integration Server.   
+
+EEO-3194 (EDI_8.2.1_WmEDIINT_Fix8)
+
+In IBM webMethods Module for EDIINT, when receiving an AS2 message
+the following error is displayed:
+"Missing Message-ID"
+
+This issue occurs when AS2 message along with the url query
+parameters are passed in the request. The EDIINT content handler
+cannot not process the AS2 message.
+
+This issue is resolved. Now, the EDIINT content handler processes
+the AS2 messages along with the url query parameters. 
+
+EEO-3164 (EDI_8.2.1_WmEDIINT_Fix7)
+
+In IBM webMethods Module 8.2 for EDIINT, AES-128, AES-192, and
+AES-256 encryption algorithms are not supported.
+
+This issue is resolved. Now, the module supports AES-128,
+AES-192, and AES-256 encryption algorithms. 
+
+EEO-3169 (EDI_8.2.1_WmEDIINT_Fix7)
+
+In IBM webMethods Module 8.2 for EDIINT, SHA-2 HashAlgorithm is not
+supported for signed MDN.
+         
+This issue is resolved. Now, the module supports the
+SHA-2 HashAlgorithms for signed MDN.  
+
+EEO-3134 (EDI_8.2.1_WmEDIINT_Fix6)
+
+In IBM webMethods Module 8.2 for EDIINT, SHA-2 HashAlgorithm is not
+supported.
+
+This issue is resolved. Now, the module supports the SHA-2
+HashAlgorithms, SHA-256, SHA-384, and SHA-512.
+
+EEO-3070 (EDI_8.2.1_WmEDIINT_Fix5)
+
+Interation Server takes a long time to initialize the IBM webMethods 
+Module for EDIINT package. 
+
+This issue is resolved. The EDIINT module is optimized so that 
+Integration Server can initialize the package in lesser time.
+
+EEO-3008 (EDI_8.2.1_WmEDIINT_Fix5)
+
+IBM webMethods Module for EDIINT incorrectly sets optional input 
+parameters as mandatory. 
+
+The optional input parameters for the wm.EDIINT:send and 
+wm.EDIINT:receive services are set as mandatory. 
+  
+This issue is resolved.
+
+EEO-3026 (EDI_8.2.1_WmEDIINT_Fix5)
+
+The wm.EDIINT:receive service throws a NullPointerException when 
+IBM webMethods Module 8.2 SP1 for EDIINT receives a AS1 transaction. 
+
+This issue is resolved.
+
+EEO-3047 (EDI_8.2.1_WmEDIINT_Fix5)
+
+In IBM webMethods Module 8.2 SP1 for EDIINT, the bizdoc attribute 
+"EDIINT Delivery URI" contains security information. 
+
+This issue is resolved. 
+
+EEO-3085 (EDI_8.2.1_WmEDIINT_Fix5)
+
+IBM webMethods Module for EDIINT does not recognize EDIINT messages 
+in XML format if the header tag is missing. 
+
+This issue is resolved. The module now recognizes messages in XML 
+format even if the header tag is missing. 
+
+EEO-2986 (EDI_8.2.1_WmEDIINT_Fix4)
+
+IBM webMethods Module 8.2 SP1 for EDIINT generates irrelevant
+log messages at startup. 
+
+This issue is resolved. IBM webMethods Module 8.2 SP1 for 
+EDIINT no longer generates irrelevant log messages at 
+startup.
+
+EEO-2977 (EDI_8.2.1_WmEDIINT_Fix4)
+
+In IBM webMethods Module for EDIINT, the wm.EDIINT:receive 
+service returns output parameters that are redundant. 
+
+This issue is resolved.
+
+EEO-2934 (EDI_8.2.1_WmEDIINT_Fix3)
+
+In IBM webMethods Module 8.2 SP1 for EDIINT, changing the Execute
+ACL value for the wm.EDIINT:receive service is not possible.
+
+In IBM webmethods module for EDIINT, when you attempt to change the 
+Execute ACL value for the wm.EDIINT:receive service,
+the module returns the following error:
+"WmEDIINT/wm.EDIINT:receive: [ISS.0081.9002]
+Cannot perform operation without Write ACL privileges on
+wm.EDIINT:receive". The issue occurs because the 
+Write ACL of the service has been set as WmPrivate.
+
+The issue is resolved. A new property, 
+wm.EDIINT.receiveExecuteACL,is introduced to change the
+Execute ACL value. Valid values are any valid ACL groups 
+present in the system. There is no default value. 
+
+To configure the property
+
+1. In IBM My webMethods, go to Administration > Integration >
+B2B Settings > Configure Properties.
+
+2. In the Module for EDIINT Configuration Properties panel,
+specify values for the property.
+
+Note: After configuring wm.EDIINT.receiveExecuteACL, you
+must reload the WmEDIINT package to update the Execute ACL value.
+
+
+EEO-2914 (EDI_8.2.1_WmEDIINT_Fix2)
+Duplicate MDN's are being ignored in Module for EDIINT.
+
+For any sent message, the Module for EDIINT always expects a 
+single MDN to be processed, and it ignores any further MDNs 
+for the same message. But some user scenarios require the 
+module to process duplicate MDNs, for example, if an error 
+occurs and the MDN is not processed properly. With this 
+fix, a new property, wm.EDIINT.allowProcessingOfDuplicateMDN, 
+has been introduced to enable the module to handle duplicate 
+MDNs. By default, this property is set to "false". 
+To be able to process the duplicate MDNs, set the property 
+to "true".
+
+After wm.EDIINT.allowProcessingOfDuplicateMDN is set to "true", 
+every incoming duplicate MDN is processed until an MDN is 
+processed successfully (Bizdoc attribute EDIINT MDN Disposition 
+is set to "processed" for incoming MDN). After an MDN is 
+processed successfully, all of the following duplicate MDNs 
+will be ignored. 
+
+
+EEO-2849 (EDI_8.2.1_WmEDIINT_Fix1)
+In IBM webMethods Module 8.2 SP1 for EDIINT, the receive 
+functionality does not work as expected.
+
+In IBM webMethods Module for EDIINT,the receive functionality 
+does not work as expected when the user changes, clones, or
+uses a remote alias for the wm.EDIINT:receive service.
+
+This issue is resolved. When the user uses a URL other than 
+wm.EDIINT:receive, a new property, wm.EDIINT.receiverURLs, 
+must be configured. The new URL(s) must be appended to the 
+value of this property. 
+
+New property reference: 
+wm.EDIINT.receiverURLs A comma-separated list of URLs.
+The default is /invoke/wm.EDIINT/receive.
+Note: The new URLs must be appended to the default URL,
+for example, 
+wm.EDIINT.receiverURLs=/invoke/wm.EDIINT/receive,
+/invoke/EDIINT_AS2/clone_Service
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central
+location (9.7 or later products), or Update Manager to install fixes on
+one machine at a time. For instructions,
+see the documentation at https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Uninstall using Command Central (9.7 or later) or Update Manager.
+For instructions, see the documentation at https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Copyright Super iPaaS Integration LLC, an IBM Company 2024.

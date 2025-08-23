@@ -1,0 +1,143 @@
+                    webMethods Glue 10.15 commonlib Fix 1 readme 
+
+                                        June 2023
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Glue 10.15 commonlib Fix 1.
+
+
+
+2.0 Fix ID
+
+WGL_10.15_CommonLibs_Fix1
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects the Glue libraries installed with the
+10.15 webMethods products.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product 
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+webMethods Glue 10.15 commonlib Fix 1 is supported on 
+the same operating systems and uses the same JREs as webMethods
+Integration Server 10.15.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+WGL-469
+
+My webMethods Server and webMethods Task Engine might reject IPv6 addresses as
+invalid, or fail to connect to servers with IPv6 addresses as the Glue
+component does not support IPv6 addresses.
+
+The issue is now resolved.
+
+
+8.0 Installation
+
+Install the fix using the Software AG Update Manager.
+For instructions, see Using the Software AG Update Manager
+located either in the _documentation directory or on the 
+documentation Web site at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Uninstall the fix using the Software AG Update Manager.
+For instructions, see Using the Software AG Update Manager.
+
+NOTE: This uninstall procedure can only be used to uninstall the
+most recently installed fix. This action will revert your
+installation to the previously installed fix. You cannot apply
+this uninstall procedure to the previously installed fix.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the 
+webMethods product suite and includes support for operation in 
+any country, locale, or language as specified in the webMethods 
+Installation Guide. It was not tested with non-English 
+configurations and non-ASCII data. However, this fix has no 
+globalization impact and can be applied to systems running in 
+any supported locale or configuration.
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages 
+will appear in English.
+
+This fix includes changes to DSP files. It requires these language pack fix(es) when installed on 
+systems with existing language packs:
+
+
+
+11.0 Copyright
+
+Copyright 2023 Software AG, Darmstadt, Germany and/or Software AG USA  Inc.,
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their 
+licensors.
+
+The name Software AG and all Software AG product names are either trademarks 
+or registered trademarks of Software AG and/or Software AG USA Inc. and/or 
+its subsidiaries and/or its affiliates and/or their licensors. Other company 
+and product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its 
+subsidiaries is located at http://softwareag.com/licenses.
+
+Use of this software is subject to adherence to Software AG?s licensing 
+conditions and terms. These terms are part of the product documentation, 
+located at http://documentation.softwareag.com/legal/ and/or in the root
+installation directory of the licensed product(s).
+
+This software may include portions of third-party products. For third-party 
+copyright notices, license terms, additional rights or restrictions, please 
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party 
+Products". For certain specific third-party license restrictions, please 
+refer to section E of the Legal Notices available under "License Terms
+and Conditions for Use of Software AG Products / Copyright and Trademark 
+Notices of Software AG Products". These documents are part of the product 
+documentation, located at http://softwareag.com/licenses and/or in the 
+root installation directory of the licensed product(s).

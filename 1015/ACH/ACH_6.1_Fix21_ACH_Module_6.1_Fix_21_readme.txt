@@ -1,0 +1,469 @@
+             IBM webMethods ACH Module 6.1 Fix 21 readme
+
+                         November 2024
+						 
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods ACH Module 6.1 Fix 21
+
+
+
+2.0 Fix ID																	   	
+
+ACH_6.1_Fix21
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects IBM webMethods ACH Module 6.1.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+This fix addresses the following issues:
+
+WF-34119
+
+Fix includes security updates with no new features to existing user-facing
+functionalities.
+
+ACH-243 (ACH_6.1_Fix20)
+
+In IBM webMethods module for ACH, the copyright information is updated.
+
+This issue is now resolved.
+
+ACH-234 (ACH_6.1_Fix19)
+
+Fixes for IBM webMethods module for ACH do not install in IBM 
+webMethods 11.0 suite release.
+
+This issue is resolved.
+
+ACH-210 (ACH_6.1_Fix18)
+
+The wm.ach.batch:appendEntry service generates a new TRACE NUMBER for each Entry 
+Detail Record. But the service does not update the last 7 digits from the TRACE 
+NUMBER of Entry Detail Record in 'ENTRY DETAIL SEQUENCE NUMBER' field of the 
+associated ADDENDA records. 
+This issue is resolved.
+
+ACH-209 (ACH_6.1_Fix18)
+
+The wm.ach.tn.trp:receive service creates batch record transactions in 
+IBM webMethods Trading Networks even though the data submitted does not have a
+file control record. 
+This issue is resolved.
+
+ACH-199 (ACH_6.1_Fix18)
+
+The wm.ach.batch:createBatch and wm.ach.batch:getBatchControl 
+services do not extract the "Company Identification" field for batches 
+with SEC Code "IAT". 
+This issue is resolved.
+
+ACH-198 (ACH_6.1_Fix18)
+
+The wm.ach.batch:appendEntry service fails when Addenda record for 
+PPD return entries contains the ADDENDA TYPE CODE value as '99'. 
+This issue is resolved.
+
+ACH-197 (ACH_6.1_Fix18)
+
+The wm.ach.batch:getNextEntry service truncates the field ACCOUNT_NUMBER for IAT 
+batches. The Account number field is a "35" character field. 
+However, when wm.ach.batch:getNextEntry service extracts the entries from a 
+batch, it only extracts the first 17 characters of the account number and 
+truncates the rest. 
+This issue is resolved.
+
+ACH-185 (ACH_6.1_Fix17)
+
+The wm.ach.tn.trp:receive service does not submit the COR and TEL batch types to 
+Trading Networks when the batch types contain addenda records. 
+
+This issue is resolved.
+
+ACH-171 (ACH_6.1_Fix16)
+
+The wm.ach.trp:receiveStream service execution for an ACH file containing IAT 
+and TEL ADDENDA record entries fails and displays the following errors 
+respectively: Record format rule not found in ACHMessageRules.xml: IAT_ADDENDA 
+Record format rule not found in ACHMessageRules.xml: TEL_ADDENDA 
+
+This issue is resolved.
+
+ACH-114 (ACH_6.1_Fix15)
+
+The wm.ach.trp:receiveStream service execution for an ACH file containing COR 
+batches fails and displays the following error: 
+"UNDEFINED ACH SEC CODE" 
+
+This issue is resolved.
+
+ACH-115
+
+The errors resulted after executing the wm.ach.batch:appendEntry and 
+wm.ach.batch:getNextEntry services are displayed in the "errors" field. However, 
+this field is named as "errorMessage" in the output pipeline of these services. 
+
+This issue is resolved. The errors resulted after executing the 
+wm.ach.batch:appendEntry and wm.ach.batch:getNextEntry services are now 
+displayed in the "errors" and "errorMessage" fields. 
+
+The wm.ach.batch:createBatch service does not contain the "errors" field in 
+the output pipeline but displays any error after execution of the service in the 
+"errors" field. 
+
+This issue is resolved. The "errors" field is added to the output pipeline of 
+the wm.ach.batch:createBatch service.
+
+ACH-116
+
+The wm.ach.queue:generateACHFile service generates an invalid ACH file when none 
+of the batches are in the QUEUED state. 
+
+This issue is resolved. When none of the batches are in QUEUED state, the 
+wm.ach.queue:generateACHFile service displays the following error message: 
+"No batches in QUEUED state"
+
+ACH-121
+
+The wm.ach.trp:receiveStream service does not report some validation errors for 
+an invalid ACH file. 
+
+This issue is resolved.
+
+ACH-122
+
+The wm.ach.queue:generateACHFile service generates an invalid ACH file for 
+batches with ADV SEC Code. This issue occurs because the 
+wm.ach.queue:generateACHFile service does not contain an input field to specify 
+the generation of an ACH file for batches with ADV SEC Code. 
+
+This issue is resolved. An input field, "isADVFile" is introduced in the input 
+pipeline of the wm.ach.queue:generateACHFile service. This is an optional field. 
+If you want to generate an ACH file for batches with ADV SEC Code, then set 
+"isADVFile" to true or yes.
+
+ACH-123
+
+The wm.ach.trp:receiveStream service execution for an ACH file containing ACK or 
+ATX batches fails and displays an error. 
+
+This issue is resolved.
+
+ACH-124
+
+The wm.ip.persist.store:purgeStore service execution is not functional and 
+displays an exception. 
+
+This issue is resolved. The wm.ip.persist.store:purgeStore service now supports 
+the purge functionality for file persistance. The files present in the 
+"Persistence Folder Name" configuration directory are purged. The 
+wm.ip.persist.store:purgeStore service purges the following files that are 
+created when ACH batches are queued: 
+-- Status files 
+-- Index file 
+-- TXT files 
+
+Note: You can execute the wm.ip.config:getConfig service to obtain the 
+"Persistence Folder Name" configuration value. You must execute the 
+wm.ip.persist.store:purgeStore service only when none of the batches are in 
+QUEUED state or being processed. 
+
+ACH-130
+
+The wm.ach.queue:query and wm.ip.persist.util:query services display the 
+following  exception when fromDate is not specified and toDate is specified: 
+"java.lang.NullPointerException: null" 
+
+This issue is resolved. The wm.ach.queue:query and wm.ip.persist.util:query 
+services work fine when fromDate is not specified and toDate is specified.
+
+ACH-85 (ACH_6.1_Fix14)
+
+The wm.ip.config:setConfig service is vulnerable to an XML
+injection when the ACH configuration parameters are passed
+to the service.
+
+This issue is resolved. The wm.ip.config:setConfig service
+ignores the parameters that are not part of the default ACH
+configuration.
+
+ACH-86
+
+The wm.ach.queue:generateACHFile service duplicates the
+"File ID Modifier" field in the file header record when it is
+invoked from multiple Integration Server services that are in
+a cluster.
+
+This issue is resolved. An optional input parameter, fileIdModifierDirectory
+is added to the wm.ach.queue:generateACHFile service and a shared
+file location is also passed for this parameter. Therefore,
+the other services in a cluster should pass the same file location
+for this parameter when they invoke the wm.ach.queue:generateACHFile
+service.  
+
+ACH-87
+
+The IAT SEC codes are missing in ACH_6.1_Fix13.
+
+This issue is resolved. 
+
+ACH-92
+
+The Integration Server Administrator user interface displays
+some misalignments.
+
+This issue is resolved. 
+
+ACH-81 (ACH_6.1_Fix13)
+
+Integration Server Administrator has a new look and feel.
+
+The HTML-based utility used to administer the IBM webMethods ACH Module has a 
+new look and feel. Menu and screen locations have not changed. 
+
+This issue is resolved.
+
+ACH-75 (ACH_6.1_Fix12)
+
+In IBM webMethods ACH Module 6.1, executing the wm.ach.batch:createBatch public 
+service returns an error. 
+
+In ACH Module, executing the wm.ach.batch:createBatch public service returns a 
+"java.io.FileNotFoundException" error. This issue occurs because ACH Module 
+cannot locate the correct path to the packages directory inside the default 
+Integration Server. 
+
+This issue is resolved.
+
+ACH-70 (ACH_6.1_Fix11)
+
+In ACH Module, when creating the IAT batch header, the wm.ach.batch:createBatch 
+service throws the error, 
+"Field [COMPANY_NAME],value larger than size : [16,16]."
+
+This error occurs because the batch header definition file, ACHMessageRules.xml, 
+omits the definition for mandatory IAT_BATCH_HEADER fields, as defined by the 
+ACH specification.
+
+This issue is resolved. The ACHMessageRules.xml file now contains the required 
+IAT_BATCH_HEADER field definitions and conforms to the ACH specification. 
+
+ACH-57 (ACH_6.1_Fix9)
+
+When ACH files are recieved using TN. batchObject is not present in the pipeline
+when the service routes the ACH batch using TN.
+
+The service wm.ach.trp:receive does not populate batchObject in the pipeline 
+when ACH files are recieved using TN.
+
+This issue is resolved by populating the batchObject when recieving files 
+using TN.
+
+
+ACH-56 (ACH_6.1_Fix8)
+The service wm.ach.batch:getNextEntry does not iterate over the next entry of 
+the batch on subsequent invocation of the service.
+
+The next entry counter of the batch is not being incremented after the 
+invocation of the service.
+
+This issue is resolved by incrementing the batch counter during service 
+invocation.
+
+ACH-51 (ACH_6.1_Fix7)
+
+IBM webMethods ACH Module 6.1 overwrites the Trading Networks bizdoc content of 
+an outbound NACHA file with data from another file.
+
+This issue occurs because of the incorrect implementation of the 
+wm.ach.queue:generateACHFile service. This service places the NACHA data in a 
+temporary file with "ach_<millisecond>.tmp" name, where <millisecond> is the 
+integer epoch time of the computer.
+
+This issue is resolved by correcting the implementation of the 
+wm.ach.queue:generateACHFile service. The wm.ach.queue:generateACHFile service 
+now generates a temporary file with the "ach_<UUID>.tmp" naming format, 
+where UUID is an unique ID generated using the com.wm.util.UUID.generate() 
+service.
+
+1-1UGDKX (ACH_6.1_Fix6)
+IBM webMethods ACH Module 6.1 currently does not provide support for queuing an 
+ACH batch with the user specified index keys.
+
+This limits the ability to distinguish between batches with identical headers, 
+but having different usage. This usage based distinction between batches is 
+required in certain scenarios. For example, an inbound batcth and an outbound 
+batch may have the same header, but these batches need to be treated 
+differently. The wm.ach.queue:query service requires an update to remove the
+current limitation that the query keys must be one of the batch header fields.
+
+This issue is resolved by allowing the user specified key/value pair(s) to 
+index the queued batches. The wm.ach.queue:queueBatch service has been updated 
+to provide this support. The wm.ach.queue:queueBatch service has an additional
+additionalQueryFields input parameter of type IData. The additionalQueryFields 
+parameter can be used to add the user specified indexing information to the 
+batch to be queued. By default, the queues are indexed based on date, message 
+type, sender, and receiver. The user can now add any number of string fields 
+under the additionalQueryFields IData input parameter and set the respective 
+values of these fields. All these additional user specified key/value pairs 
+would be added to the indexing information for the queue to be batched.
+
+1-1TZJ03 (ACH_6.1_Fix5)
+Update IBM webMethods ACH Module to support the changes in NACHA rules 2008.
+
+The NACHA rules have been updated to include International ACH 
+Transactions (IAT). This is a new SEC code that replaces the existing CBR and 
+PBR formats. The IAT SEC code supports the accurate mapping of data between 
+domestic and international payment systems. IBM webMethods ACH Module requires 
+an update to include this change. The details of the NACHA rule changes 2008
+are available at www.nacha.org.
+
+This issue is resolved. The following record definitions have been added to the 
+IBM webMethods ACH Module to support the IAT SEC code:
+
+IAT_BATCH_HEADER
+IAT_BATCH_HEADER_FOR_NOTIFICATIONS_OF_CHANGE
+IAT_RETURNS_BATCH_HEADER
+RETURNS_ENTRY_DETAIL
+DISHONORED_RETURNS_ENTRY_DETAIL
+CONTESTED_DISHONORED_RETURNS_ENTRY_DETAIL
+NOTIFICATION_OF_CHANGE_ENTRY_DETAIL 
+REFUSED_NOTIFICATION_OF_CHANGE_ENTRY_DETAIL
+IAT_NOTIFICATION_OF_CHANGE_ENTRY_DETAIL
+IAT_ADDENDA_RECORD_FOR_NOC_ENTRY
+IAT_RETURNS_ENTRY_DETAIL
+IAT_RETURNS_FIRST_ADDENDA
+IAT_RETURNS_SECOND_ADDENDA
+IAT_RETURNS_THIRD_ADDENDA
+IAT_RETURNS_FOURTH_ADDENDA
+IAT_RETURNS_FIFTH_ADDENDA
+IAT_RETURNS_SIXTH_ADDENDA
+IAT_RETURNS_SEVENTH_ADDENDA
+IAT_RETURNS_EIGHTH_ADDENDA
+IAT_ENTRY_DETAIL
+IAT_FIRST_ADDENDA
+IAT_SECOND_ADDENDA
+IAT_THIRD_ADDENDA
+IAT_FOURTH_ADDENDA
+IAT_FIFTH_ADDENDA 
+IAT_SIXTH_ADDENDA
+IAT_SEVENTH_ADDENDA
+IAT_ADDENDA_RECORD_FOR_REMITTANCE_INFORMATION
+IAT_ADDENDA_RECORD_FOR_CORRESPONDENT_BANK_INFORMATION
+
+1-1SB7MW (ACH_6.1_Fix4)
+In IBM webMethods ACH Module 6.1, after a few transactions, a 
+"FileModifierId out of range" error occurs while invoking the
+wm.ach.queue:generateACHFile service.
+
+In IBM webMethods ACH Module 6.1, after a few transactions, the transactions 
+stop working and generate "FileModifierId out of range" error message. The value 
+of FileModifierId field needs to be reset after the maximum value of 
+FileModifierId is reached.
+
+This issue is resolved. The code is modified to reset the value of 
+FileModifierId field after the maximum value of FileModifierId is reached.
+
+1-1NVRTP (ACH_6.1_Fix3)
+IBM webMethods ACH Module requires an update to support NACHA changes.
+
+The NACHA standard has recently been updated to include several new rules, 
+including BOC (Back-Office-Conversion). 
+
+This issue is resolved. The IBM webMethods ACH Module now supports the recent 
+NACHA standards, and the code "BOC" has been added to the list of standard 
+entry class codes in com.wm.ach.rule.ACHCodeValue.
+
+1-145HDV (ACH_6.1_Fix2)
+wm.ach.converter:convertStringToDoc service fails intermittently on load.
+
+While using the IBM webMethods ACH Module to process the inbound NACHA files, 
+the wm.ach.converter:convertStringToDoc service fails intermittently when it is 
+accessed by multiple concurrent processes, reporting "Success: false" in the 
+server log. This scenario causes a race condition and results in a deadlock. 
+This error situation occurs because the wm.ach.converter:convertStringToDoc 
+service does not properly handle the load.
+
+This issue is resolved, and the wm.ach.converter:convertStringToDoc service 
+now runs successfully under load.
+
+1-110GY2 (ACH_6.1_Fix1)
+The IBM webMethods ACH Module creates an incorrectly formatted header record.
+
+When creating a header record, the ACH Module incorrectly appends a space in 
+columns 2-3 when representing a single digit number. The correct format is to 
+prefix a single digit number with 0 in those columns. Additionally, 
+the ACH Module incorrectly appends a dummy string in the last eight columns 
+of the record.
+
+This issue is resolved, and the ACH Module creates a valid file header record 
+as specified by the NACHA guidelines.
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central
+location (9.7 or later products), or Update Manager to install fixes on
+one machine at a time. For instructions,
+see the documentation at https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Uninstall using Command Central (9.7 or later) or Update Manager.
+For instructions, see the documentation at https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Copyright Super iPaaS Integration LLC, an IBM Company 2024.

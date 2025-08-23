@@ -1,0 +1,304 @@
+				Software AG Common Platform 10.5 Fix 31 readme
+
+                    January 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+1.0 Fix Name
+
+Software AG Common Platform 10.5 Fix 31
+
+
+
+2.0 Fix ID
+
+OGI_10.5_Fix31
+
+
+3.0 Product(s)/Component(s) Affected
+
+
+This fix affects OSGi Common Platform 10.5.
+
+
+
+4.0 Requirements
+
+This fix requires Software AG Common Platform 10.5. 
+Software AG Common Platform 10.5 Fix 31 
+must be installed together with TPS.Glassfish_10.5.0_Fix6 
+if the products for these fixes are installed on the system. 
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install
+the specified fix or later.
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+6.0 Cautions and Warnings
+
+All product profiles that run on top of OSGi runtimes are stopped by
+the IBM webMethods Update Manager and will automatically be started
+after the session completes.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes
+for the release.
+
+OGI-4930
+Common Platform uses the third-party Apache MINA Core 2.0.23, which has
+known security vulnerabilities.
+The issue is resolved. Common Platform now uses the
+stable version Apache MINA Core 2.2.4
+
+OGI-3914
+Software AG Common Platform uses Apache Tomcat v. 8.5.95, which has security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses Apache Tomcat v. 8.5.96.
+
+OGI-3927
+Software AG Common Platform uses the third-party Apache Shiro Core v.1.12.0,
+which has security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses the stable version
+Apache Shiro Core 1.13.0.
+
+OGI-3917
+Software AG Common Platform uses Entrust Authority Security Toolkit 8.0.33.1,
+which throws an exception error when used with Java 8.
+The issue is resolved. Software AG Common Platform now uses
+Entrust Authority Security Toolkit 8.1.20.
+
+OGI-3860
+Software AG Common Platform uses Apache Tomcat v. 8.5.91, which has security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses Apache Tomcat v. 8.5.95.
+
+OGI-3820
+Software AG Common Platform uses the third-party Apache Shiro Core framework v. 1.10.0,
+which has security vulnerabilities.
+The issue is resolved. Common Platform now uses Apache Shiro Core v. 1.12.0.
+
+OGI-3788
+Software AG Common Platform uses Apache Tomcat, which has
+security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses
+Apache Tomcat 8.5.91.
+
+OGI-3555
+Software AG Common Platform uses Apache MINA 2.0.7, which has known security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses the stable version
+Apache MINA 2.0.23.
+
+OGI-3324
+Software AG Common Platform uses Apache Shiro 1.8.0, which has
+security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses
+Apache Shiro 1.10.0.
+
+OGI-3363
+Software AG Common Platform uses Apache Tomcat 8.5.72, which has
+security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses
+Apache Tomcat 8.5.83.
+
+OGI-3243
+Some logs were lost due to undefined log parameters.
+The issue is now resolved.
+
+OGI-3286
+On windows shutdown script might stale waiting.
+
+The issue is now fixed.
+
+OGI-2947
+Software AG Common Platform uses Apache Shiro 1.7.1, which has
+security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses
+Apache Shiro 1.8.0.
+
+OGI-3032
+A security vulnerability exists in the third-party Log4j library.
+This issue is resolved. OSGi Common Platform now uses
+Log4j 2.17.1, where this vulnerability is fixed.
+
+OGI-3011
+A security vulnerability exists in the third-party Log4j library.
+This issue is resolved. OSGi Common Platform now uses
+Log4j 2.16.0, where this vulnerability is fixed.
+
+OGI-2989
+When you add an Apache Tomcat connector dynamically, it might not be 
+immediately available and is marked as failed.
+This issue is resolved.
+
+OGI-2933
+Software AG Common Platform uses the third-party framework
+Eclipse Jersey 2.28.0, which has security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses
+Eclipse Jersey 2.34.0.
+
+OGI-2911
+When the Tomcat HTTPS connector has a correctly configured keystore and
+password the corresponding server port should remain open.
+Tomcat should respond (perhaps with an error page) on that port.
+ 
+
+OGI-2926
+Software AG Common Platform uses Apache Tomcat 8.5.64, which has
+security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses
+Apache Tomcat 8.5.72.
+ 
+
+OGI-2781
+The logging subsystem caused cascading restarts
+of other modules.
+The issue has been resolved.
+
+OGI-2738
+The default number of threads that process task events
+might be insufficient and lead to a deadlock.
+This issue is resolved.
+
+OGI-2720
+Software AG Common Runtime does not support message localization.
+The issue is resolved
+ 
+
+OGI-2698
+Software AG Common Platform uses Apache Tomcat 8.5.61, which has
+security vulnerabilities.
+The issue is resolved. Software AG Common Platform now uses
+Apache Tomcat 8.5.64.
+ 
+
+OGI-2687
+Software AG Runtime does not support custom java.util.logging 
+handlers in the MQ Adapter.
+This issue is resolved.
+ 
+
+OGI-2665
+Software AG Runtime does not support custom java.util.logging handlers.
+This issue is resolved.
+
+OGI-2572
+CCE JMX MBean is sometimes not registered at profile startup.
+
+The issue is resolved.
+ 
+
+
+OGI-2639
+Software AG Common Platform uses Apache Shiro version 1.6.0, which
+has known security vulnerabilities.
+
+The issue is resolved. Apache Shiro has been upgraded to the stable
+version 1.7.1.
+
+
+OGI-2620
+Updated Tomcat to address security vulnerabilities IAVM Notice 2020-A-0465
+
+ 
+OGI-2613
+This fix enables PassMan to use a 256-bit FIPS140-2 AES key from Entrust.
+
+
+OGI-2575
+The Apache Shiro library is upgraded to fix a security vulnerability.
+ 
+
+OGI-2502
+Software AG Common Platform uses versions of Apache Tomcat
+with known security vulnerabilities.
+
+The issue is resolved. Apache Tomcat is upgraded to the
+stable version 8.5.57.
+ 
+
+OGI-2367
+Security vulnerabilities exist in the third-party International Components
+for Unicode for Java.
+This issue is resolved.
+
+
+OGI-2425
+A security vulnerability exists in the third-party Apache Shiro library.
+
+This issue is resolved.
+
+OGI-2444
+Software AG Common Platform uses Log4j 2.0, but the log4j-1.2.16.jar
+still exists in the Platform and causes a security vulnerability.
+This issue is resolved.
+ 
+
+OGI-2314
+Software AG Common Platform uses versions of Apache Tomcat
+with known security vulnerabilities.
+
+The issue is resolved. Apache Tomcat is upgraded to the
+stable version 8.5.51.
+ 
+
+OGI-2279
+Software AG Common Platform uses Apache Shiro version 1.3.2, which 
+has known security vulnerabilities. 
+
+The issue is resolved. Apache Shiro has been upgraded to the stable 
+version 1.4.2. 
+ 
+
+OGI-2258
+Upgrade Platform Tomcat distribution from version 8.5.40 to version 8.5.50, in order to fix found vulnerability.
+ 
+
+OGI-2203
+When running some web applications in Software AG Runtime,
+logging may not work correctly.  
+
+This issue is resolved.
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or Software AG Update Manager to install 
+fixes on one machine at a time. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

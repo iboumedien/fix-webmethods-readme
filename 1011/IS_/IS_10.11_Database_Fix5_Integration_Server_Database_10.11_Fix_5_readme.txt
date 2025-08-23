@@ -1,0 +1,234 @@
+    webMethods Integration Server 10.11 Database Fix 5 readme
+
+                        October 2024 
+
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform/RDBMS Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Integration Server 10.11 Database Fix 5.
+
+
+
+2.0   Fix ID
+
+IS_10.11_Database_Fix5
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Integration Server 10.11.
+
+
+
+4.0 Requirements
+
+For language pack requirements, see the Globalization section of the 
+Software AG Empower Product Support Web site. The Globalization section can 
+be found at:
+
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform/RDBMS Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+PIE-74347
+Integration Server logs the "unique constraint IDX_SVC_MINMAX_CTX violated"
+error intermittently due to a race condition under high load.
+
+The issue is now resolved.
+
+PIE-80228
+Migrating database components in PostgreSQL 14.5 from an earlier
+version to Integration Server 10.15 fails.
+
+This issue is now resolved.
+
+PIE-82644
+Migrating the DistributedLocking component in PostgreSQL from an earlier
+version to Integration Server 10.11 is unsuccessful.
+
+This issue is now resolved.
+
+PIE-86011
+Migrating the Archive component in Integration Server from a lower version
+to a higher version results in the error: "Cannot drop the trigger
+'WMSERVICE_RAIU', because it does not exist"
+
+This issue is now resolved.
+
+PIE-81060 (IS_10.11_Database_Fix4)
+In Cloud Container, database migration fails when migrating components from 10.5
+to 10.7. 
+
+This issue is resolved now.
+
+WMN-8101 (IS_10.11_Database_Fix4)
+When webMethods Monitor uses a Microsoft SQL Server database and there is a race
+condition during services execution, an error message appears in the server.log
+file: 
+"Cannot insert duplicate key row in object 'dbo.WMSERVICE_MIN_MAX' with unique
+index 'IDX_SVC_MINMAX_CTX'." 
+
+The issue is resolved.
+
+PIE-77408 (IS_10.11_Database_Fix3)
+The "wm.server.dispatcher:deleteExpiredUUID" service causes 
+performance degradation in databases while deleting large data sets.
+
+Integration Server uses wm.server.dispatcher:deleteExpiredUUID to 
+remove the expired entries from the WM_IDR_MSG_HST table. 
+However, in some databases, wm.server.dispatcher:deleteExpiredUUID degrades the
+database performance while deleting large data sets. 
+
+This issue is resolved.
+Now, Integration server provides an option to remove the expired 
+entries in batches and to configure the batch size. To limit the 
+batch size, use the watt.server.trigger.delete.expired.uuid.limit server
+configuration parameter. If you set the parameter value to a 
+positive integer, Integration Server uses the value to apply a 
+batching logic to remove the entries. If you are not providing 
+any value, Integration Server retains the old behavior. There is no 
+default value for the watt.server.trigger.delete.expired.uuid.limit 
+parameter. 
+
+You do not need to restart Integration Server for 
+changes to this parameter to take effect. 
+
+PIE-77794 (IS_10.11_Database_Fix3)
+The wm.server.dispatcher:deleteExpiredUUID scheduled service creates infinite
+logs. 
+
+The character length of cloud container hostnames exceed the size of the
+RUNNINGON column in the database, which causes the infinite logs. 
+
+The issue is resolved. Now, the column size is increased to support such cloud
+container hostnames. 
+
+PIE-78146 (IS_10.11_Database_Fix3)
+When using a SQL Server database, the pub.storage:get service occasionally
+encounters a deadlock error. 
+
+The distributed locking table WM_EXCL_DIST_LOCK has a redundant unique index on
+its primary key. The unique index is not needed as primary keys are inherently
+unique. Presence of the redundant index increases the likelihood that a deadlock
+error will occur. 
+
+To resolve this issue, a database migration script has been added to drop the
+redundant index. 
+
+PIE-79708 (IS_10.11_Database_Fix3)
+When migrating the database from an earlier version to 10.11, PostgreSQL throws 
+the "DB migration error: path not found" error message. 
+ 
+A discrepancy in the DB migration directory name causes PostgreSQL to throw the 
+"DB migration error: path not found" error message when migrating the database 
+from an earlier version to 10.11. 
+ 
+The issue is resolved now.
+
+PIE-76966 (IS_10.11_Database_Fix2)
+The IS_OAUTH_SCOPE.SCOPE_DESCRIPTION is missing when migrating from Integration 
+Server 10.5 to 10.11 when the original Integration Server version is 9.12. 
+
+If an Integration Server originally running version 9.12 was migrated to 
+IS_10.5_Core_Fix1 with IS_10.5_EmbeddedDB_Fix1 and then migrated to version 
+10.11, the SCOPE_DESCRIPTION column is not added to the IS_OAUTH_SCOPE table. 
+Integration Server logs a SQLSyntaxError at startup and Integration Server 
+cannot use OAuth. 
+
+This issue is now resolved. The SCOPE_DESCRIPTION column is now added to the 
+IS_OAUTH_SCOPE table.
+
+PIE-74343 (IS_10.11_Database_Fix1)
+A java.sql.SQLSyntaxErrorException occurs because the REQUIRE_PKCE column is
+not added to the IS_OAUTH_CLIENTS table in DB2.
+
+After applying a fix that includes PIE-71960, which introduces the ability to
+require PKCE per OAuth client, Integration Server dynamically adds the
+REQUIRE_PKCE column to the IS_OAUTH_CLIENTS table when the server starts. This
+modification to the IS_OAUTH_CLIENTS table fails for DB2, resulting in a
+java.sql.SQLSyntaxErrorException.
+
+This has been resolved by moving the database table modification for OAuth out
+of Integration Server and into separate SQL scripts that can be executed by the
+Software AG Database Component Configurator.
+
+Important! To complete resolution of PIE-74343, you must install fix 4
+IS_10.11_Database_Fix1 (and higher) and run the Software AG 
+Database Component Configurator before starting Integration Server.
+
+PIE-71412 (IS_10.11_Database_Fix1)
+Creating tables for the ISInternal component on a MySQL 8.0 database throws
+"Specified key was too long; max key length is 3072 bytes".
+
+This issue is now resolved.
+
+PIE-71617 (IS_10.11_Database_Fix1)
+For the ISCoreAudit component, the unique index on contextid column in
+WMSERVICE_MIN_MAX table is missing in MySQL, Oracle, and PostgreSQL databases.
+
+Now, this issue is resolved. The unique index on contextid column in
+WMSERVICE_MIN_MAX table is created for all the database types Integration
+Server supports.
+
+PIE-74000 (IS_10.11_Database_Fix1)
+Upgrading Integration Server from 10.5 to 10.7 fails with "path not found for
+10.5.fix3 MYSQL to 10.7".
+
+While upgrading Integration Server, database schema migration from 10.5 to 10.7
+throws "path not found for 10.5.fix3 MYSQL to 10.7" for MySQL databases. This
+issue occurs while upgrading Integration Server from 10.5 to 10.11 as well.
+
+This issue is now resolved.
+
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. 
+This action will revert your installation to the previously installed fix.
+You cannot use these instructions to uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+10.0 Copyright
+
+Super iPaas Integration LLC, an IBM Company 2024.

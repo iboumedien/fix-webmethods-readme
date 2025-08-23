@@ -1,0 +1,161 @@
+	                       webMethods Monitor 10.15 MWS Fix 5 readme
+
+                                      August 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Monitor 10.15 MWS Fix 5 (Monitor portlets update)
+
+
+
+2.0 Fix ID
+
+MON_10.15_MWS_Fix5
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Monitor 10.15.
+
+
+
+4.0 Requirements and Dependencies
+
+DES_10.15_Process_Fix1
+
+Monitor 10.15 Fix5 or higher. (WmMonitor package update)
+
+Optimize fixes contain updates to shared components used by both IBM webMethods Monitor and IBM webMethods BPM Optimize 
+and are installed even if Optimize is not present on the system.
+
+Note: All Optimize 10.15.0 Fix 1 or higher fixes should be installed even if Optimize is not present on the system.
+
+It is recommended to update to the latest fixes for related BPM products
+such as IBM webMethods Designer, IBM webMethods BPM Process Engine, IBM webMethods BPM Optimize and ESB, and IBM webMethods Business Console.
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods Monitor.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+WMN-8795
+In the Collaboration Processes page of Monitor, the Process window might not render a diagram for the process model.
+
+The issue is resolved.
+
+WMN-8639(MON_10.15_MWS_Fix4) 
+In webMethods Monitor, the Child instances for step window does not show any child process instances 
+when you open it from a call activity step in the Process Diagram window.
+
+The issue is resolved, but the changes introduced in WMN-7700 are now reverted. You can set a default 
+saved search and limit the number of instances displayed on the Process Instances page. 
+For more information on saved searches, see the Monitor documentation.
+
+WMN-8464(MON_10.15_MWS_Fix3)
+In the Process Instances page of Monitor, you cannot limit the advanced search results 
+to a specific date range.
+
+The issue is resolved.
+
+
+WMN-8416(MON_10.15_MWS_Fix2)
+In webMethods Monitor, the Process Diagram window might not display an image of the process 
+model if the model has annotations.
+
+The issue is resolved. 
+
+WMN-8419(MON_10.15_MWS_Fix2)
+In the Process Instances page of Monitor, when you open a Child Instances For Step window, 
+the table width might exceed the window size. The issue occurs when the Custom Process ID of a child process instance is longer than 48 characters.
+ 
+The issue is resolved.
+
+WMN-8392(MON_10.15_MWS_Fix2)
+In webMethods Monitor, when you go to the Process Instances page and open a Child Instances 
+for Step window, the window is empty. The issue occurs when a process step has several 
+child process instances.
+
+The issue is resolved.
+
+WMN-8224(MON_10.15_MWS_Fix2)
+In the Process Instances page of Monitor, when you perform an advanced search 
+with a custom logged field, an error is displayed.
+
+The issue is resolved. 
+
+WMN-8235(MON_10.15_MWS_Fix1)
+webMethods Monitor uses an older version of the jquery-ui.js and jquery-ui.min.js libraries, 
+which have known security vulnerabilities.
+
+The issue is resolved. webMethods Monitor now uses jquery-ui.js 1.13.2 and jquery-ui.min.js 1.13.2.
+
+
+WMN-8125(MON_10.15_MWS_Fix1)
+In webMethods Monitor, when you successfully start the audit data archive procedure, the Archive Audit 
+Page might incorrectly display an error: "An error was encountered when starting archiving 
+for your input criteria.Please verify that you have setup your archive database and JDBC pool correctly.“
+
+The issue is resolved.
+
+
+WMN-8217(MON_10.15_MWS_Fix1)
+webMethods Monitor uses an older version of the Gson library, 
+which has known security vulnerabilities.
+
+The issue is resolved. webMethods Monitor now uses Gson 2.10.1.
+
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a central  location (9.7 or later 
+products), or IBM webMethods Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at https://docs.webmethods.io.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Command Central (9.7 or later) or Update Manager. For instructions, see 
+the documentation at https://docs.webmethods.io.
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

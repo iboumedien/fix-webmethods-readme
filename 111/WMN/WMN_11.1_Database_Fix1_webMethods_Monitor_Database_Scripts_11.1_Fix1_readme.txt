@@ -1,0 +1,84 @@
+                       webMethods Monitor 11.1 Database Fix 1 readme
+
+                                      December 2024
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Monitor 11.1 Database Fix 1.
+
+
+
+2.0 Fix ID
+
+MON_11.1_Database_Fix1
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Monitor Archive components.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods Monitor 11.1.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+WMN-8724
+Database Component Configurator fails to migrate Monitor database components from version 10.15 to 11.1.
+
+The issue is resolved.
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a central  location (9.7 or later
+products), or IBM webMethods Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action
+will revert your installation to the previously installed fix. You cannot use these instructions to
+uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Command Central (9.7 or later) or IBM webMethods Update Manager. For instructions, see
+the documentation at https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Super iPaas Integration LLC, an IBM Company 2024.

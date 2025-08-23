@@ -1,0 +1,350 @@
+                       webMethods Monitor 10.5 Database Fix 8 readme
+
+                                      December 2021
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Monitor 10.5 Database Fix 8.
+
+
+
+2.0 Fix ID
+
+MON_10.5_Database_Fix8
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Monitor Archive components.
+
+
+
+4.0 Requirements and Dependencies
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product 
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods Monitor 10.5
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+WMN-7657
+With webMethods Monitor, duplicate entry error is thrown while executing database process archive procedure.
+
+The issue is resolved.
+
+WMN-7802
+With webMethods Monitor, when you execute the SERVICE_ARCHIVE_START_SERVICEARCHIVE database procedure, 
+a "Duplicate entry" error occurs.
+
+The issue is resolved.
+
+WMN-7734
+With webMethods Monitor, when you execute the serverArchive service for an Oracle database configured 
+in Integration Server, a "numeric or value error: number precision too large" error occurs.
+
+The issue is resolved.
+
+WMN-7927
+With webMethods Monitor, the serverArchive and serviceArchive services cannot be used due to a typo in 
+the PROCESS_ARCHIVE procedure for an Oracle database configured in Integration Server.
+
+The issue is resolved.
+
+
+WMN-7733 (MON_10.5_Database_Fix7)
+With webMethods Monitor, unnecessary files are present in the fix folder.
+
+The issue is resolved. The unnecessary files are now removed.
+
+WMN-7580(MON_10.5_Database_Fix5)
+
+With WebMethods Monitor , Archiving services are not archiving data for different tables for
+MySQL database configured in Integration Server.
+
+The issue is resolved.
+
+WMN-7528(MON_10.5_Database_Fix5)
+With WebMethods Monitor , retention date is not set correctly for archiving services 
+with MySQL database configured in Integration Server. 
+
+The issue is resolved. 
+
+
+WMN-7670(MON_10.5_Database_Fix5)
+With WebMethods Monitor , the Process Archive service throws the 
+"OTHER EXCEPTIONS OCCURRED!-6502ORA-06502: PL/SQL: numeric or value error: number precision too large" 
+error for Oracle databases configured in Integration Server. 
+
+The issue is resolved. 
+
+
+WMN-7658(MON_10.5_Database_Fix5)
+With webMethods Monitor, duplicate entry error is thrown while executing database server archive procedure.
+
+The issue is resolved.
+
+WMN-7592(MON_10.5_Database_Fix5)
+With webMethods Monitor, duplicate entry error is thrown while executing database service archive procedure.
+
+The issue is resolved
+
+
+WMN-7441(MON_10.5_Database_Fix4)
+With WebMethods Monitor,Process Archiving might fail.
+
+Process Archiving fails due to process archive package referring to the
+wrong column "SYSTEM".
+
+The issue is resolved. The column name is now changed to the correct "SYSTEM_".
+
+WMN-7449(MON_10.5_Database_Fix3)
+With webMethods Monitor , Archiving services now support non-dbo schemas in SQL server database.
+
+Archiving services needs to be migrated to latest for non-dbo schema suppport.
+
+An example on how to assign permission for non-dbo schemas:
+Summary of steps for using different database with separate schema for archival in 10.5
+
+1. Create a login with default database as Archive Database.
+2. Create Archive schema in the same database.
+3. Create Archive user for Archive login with default schema as Archive schema.
+4. Add required roles to grant access to Archive user on Process/ISCore schema.
+5. Create Archive user for Archive login in Process/ISCore database.
+
+ Detailed Steps :
+ -------------------------------
+
+ DB Name forISCORE/PROCESS SCHEMA :- MYBPMDB
+ DB Name for Archival :- MYBPMDB_ARCHIVE
+ Is Core Login Name :- MYBPMDB_USER1
+ IS Core User Name :- MYBPMDB_USER1
+ IS Core Schema Name :- dbo
+
+ Archive Login Name :- MYBPMDB_ARCHIVE_LOGIN1
+ Archive User Name :- MYBPMDB_ARCHIVE_USER1
+ Archive schema Name :- MYBPMDB_ARCHIVE_SCHEMA1
+
+ (1) Create login named MYBPMDB_ARCHIVE_LOGIN1 with default database as MYBPMDB_ARCHIVE
+ using MS SQL Studio - your SQL Server - Security - Login - Right click - Add login
+ (2) Create Schema and add user in database MYBPMDB_ARCHIVE for login MYBPMDB_ARCHIVE_LOGIN1
+
+    USE MYBPMDB_ARCHIVE
+    GO
+    CREATE SCHEMA MYBPMDB_ARCHIVE_SCHEMA1
+
+    GO
+
+   CREATE USER [MYBPMDB_ARCHIVE_USER1] FOR LOGIN [MYBPMDB_ARCHIVE_LOGIN1] WITH DEFAULT_SCHEMA=
+   [MYBPMDB_ARCHIVE_SCHEMA1]
+
+    GO
+
+    ALTER AUTHORIZATION ON SCHEMA::MYBPMDB_ARCHIVE_SCHEMA1 TO MYBPMDB_ARCHIVE_USER1
+
+    GO
+
+    ALTER USER MYBPMDB_ARCHIVE_USER1 WITH DEFAULT_SCHEMA = MYBPMDB_ARCHIVE_SCHEMA1
+
+    GO
+
+    GRANT CREATE TABLE TO MYBPMDB_ARCHIVE_USER1
+
+    GO
+
+    GRANT ALTER TO MYBPMDB_ARCHIVE_USER1
+
+    GO
+
+    GRANT CREATE VIEW TO MYBPMDB_ARCHIVE_USER1
+
+    GO
+
+    GRANT CREATE PROCEDURE TO MYBPMDB_ARCHIVE_USER1
+
+    GO
+
+    GRANT EXECUTE TO MYBPMDB_ARCHIVE_USER1 WITH GRANT OPTION
+
+    GO
+
+    GRANT REFERENCES TO MYBPMDB_ARCHIVE_USER1
+
+    GO
+
+(3) Using Database Component Configurator, create Archive component using MYBPMDB_ARCHIVE_LOGIN1
+as User ID in MYBPMDB_ARCHIVE database.
+
+(4) Add archive user in ISCore database so that it can access main DB and grant permission
+
+    USE [MYBPMDB]
+
+    GO
+
+    CREATE USER MYBPMDB_ARCHIVE_USER1 FOR LOGIN MYBPMDB_ARCHIVE_LOGIN1 WITH DEFAULT_SCHEMA=dbo
+
+    GO
+
+    GRANT CONTROL ON SCHEMA::dbo TO MYBPMDB_ARCHIVE_USER1
+
+    GO
+
+    GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA :: dbo TO MYBPMDB_ARCHIVE_USER1;
+
+    GO
+
+    GRANT CREATE TABLE TO MYBPMDB_ARCHIVE_USER1
+
+    GO
+
+    GRANT ALTER TO MYBPMDB_ARCHIVE_USER1
+
+    GO
+
+    GRANT CREATE VIEW TO MYBPMDB_ARCHIVE_USER1
+
+    GO
+
+    GRANT CREATE PROCEDURE TO MYBPMDB_ARCHIVE_USER1
+
+    GO
+
+    GRANT EXECUTE TO MYBPMDB_ARCHIVE_USER1 WITH GRANT OPTION
+
+    GO
+
+    GRANT REFERENCES TO MYBPMDB_ARCHIVE_USER1
+
+    GO
+
+    (5) Update schema names in OPERATION_PARAMETER as below :-
+
+    Run set operation parameter service and set IS core schema and Process schema for example
+    <databasename>.<schemaname>
+
+
+WMN-7387(MON_10.5_Database_Fix2)
+With webMethods Monitor, the archiving services are enhanced to support the MySQL 8.0 database.
+
+
+WMN-7390(MON_10.5_Database_Fix2)
+webMethods Monitor now supports document archiving for the PostgreSQL 10.11 database.
+
+
+WMN-7030(MON_10.5_Database_Fix1) 
+webMethods Monitor does not enable batch archiving by default.
+
+The issue is resolved. The default value of the USE_BATCH_ARCHIVE
+parameter is now set to TRUE to enable batch archiving on Oracle.
+
+
+RGHWPE-4389(MON_10.5_Database_Fix1) 
+PostgreSQL database support is added for Monitor.
+
+
+RGHWPE-4383(MON_10.5_Database_Fix1) 
+When archiving with webMethods Monitor, you can now configure the process
+archive procedure to retain the relationship between parent and child process instances.
+
+To archive a process and keep the parent/child relationship between its instances:
+1/ Enable the "db2set DB2_COMPATIBILITY_VECTOR=08" property on your DB2 instance and
+then restart the instance.
+2/ Set the "RETAIN_PARENT_CHILD_LINK" parameter of the pub.monitor.archive:setOperationParameters
+build-in service to "Y". In this case, Monitor applies the values of the
+PROCESS_STATUS_CRITERIA and PROCESS_DAYS_TO_RETAIN parameters to the parent and
+child instances and archives the parent with its child instances only when all instances meet the 
+specified values.
+
+Usage Notes:
+- When the "RETAIN_PARENT_CHILD_LINK" parameter is set to "Y", you cannot use model Id as a criteria
+to determine when to archive the process instances.
+- When the "RETAIN_PARENT_CHILD_LINK" parameter is set to "N", the process is archived or deleted
+without retaining the relationship between parent and child process instances.
+- You can keep the relationship between parent and child process instances when archiving only when
+using the DB2 database.
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central  location (9.7 or later 
+products), or Software AG Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Command Central (9.7 or later) or Software AG Update Manager. For instructions, see 
+the documentation at http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was not tested with non-English configurations and non-ASCII data. However, this 
+fix has no globalization impact and can be applied to systems running in any supported locale or 
+configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2021 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, and/or 
+its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or registered trademarks of 
+Software AG and/or Software AG USA Inc. and/or its subsidiaries and/or its affiliates and/or their licensors. 
+Other company and product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries is located at 
+http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party copyright notices, license terms, 
+additional rights or restrictions, please refer to 
+"License Texts, Copyright Notices and Disclaimers of Third Party Products". For certain specific third-party 
+license restrictions, please refer to section E of the Legal Notices available under 
+"License Terms and Conditions for Use of Software AG Products / Copyright and Trademark Notices of 
+Software AG Products". These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the licensed product(s). 

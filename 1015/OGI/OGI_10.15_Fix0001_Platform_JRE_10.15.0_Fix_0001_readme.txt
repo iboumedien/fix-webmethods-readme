@@ -1,0 +1,93 @@
+				IBM Webmethods Common Platform JRE 10.15 Fix 1 readme
+
+                    March 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+1.0 Fix Name
+
+Software AG Common Platform JRE 10.15 Fix 1
+
+
+
+2.0 Fix ID
+
+OGI_10.15_JRE_Fix1
+
+
+3.0 Product(s)/Component(s) Affected
+
+
+This fix affects OSGi Common Platform 10.15.
+
+
+
+4.0 Requirements
+
+This fix requires any of the products listed in 3.0 Products (s)/Component(s) Affected. 
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install
+the specified fix or later.
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+6.0 Cautions and Warnings
+
+All product profiles that run on top of OSGi runtimes are stopped by
+the IBM webMethods Update Manager and will automatically be started
+after the session completes.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes
+for the release.
+
+OGI-4939
+IBM webMethods Common Platform does not support the osgi.ee P2 capability for Java 17.
+This issue is now resolved.
+
+
+
+
+
+8.0 Installation
+
+Install using Update Manager.
+For instructions, see the documentation at https://docs.webmethods.io.
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix.
+This action will revert your installation to the previously installed fix.
+You cannot use these instructions to uninstall the previously installed fix.
+
+Uninstall using Update Manager. For instructions, see the documentation at
+https://docs.webmethods.io.
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

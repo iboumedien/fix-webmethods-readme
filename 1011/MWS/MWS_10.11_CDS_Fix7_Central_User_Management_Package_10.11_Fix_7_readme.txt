@@ -1,0 +1,414 @@
+                   webMethods Central User Management 10.11 Fix 7 readme
+
+                                        August 2024
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Central User Management 10.11 Fix 7
+
+
+2.0 Fix ID
+
+MWS_10.11_CDS_Fix7
+
+
+3.0 Product(s)/Component(s) Affected
+
+- Integration server 10.11
+
+
+4.0 Requirements and Dependencies
+ 
+
+MWS_10.11_Fix17
+ 
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product 
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+MWS-30016 (MWS_10.11_CDS_Fix7)
+The Common Directory Services administration interfaces in Integration Server do not provide an
+option for configuring LDAP or database attributes for users and groups.
+
+The issue is resolved.
+
+
+
+MWS-32374 (MWS_10.11_CDS_Fix7)
+The administration interfaces for Common Directory Services in Integration Server do not allow
+saving searches for users, groups, and roles.
+
+The issue is resolved.
+
+
+
+
+MWS-32767 (MWS_10.11_CDS_Fix7)
+When deleting LDAP attributes through the administration pages for Common Directory Services in
+Integration Server the deletion progress dialog box becomes unresponsive without completing the
+action.
+
+The issue is resolved.
+
+
+
+
+MWS-33016 (MWS_10.11_CDS_Fix7)
+When updating user passwords on the he Common Directory Services administration pages inIntegration Server CDS might fail to validate and store password changes without logging errormessages.  The issue is resolved.
+
+MWS-30018 (MWS_10.11_CDS_Fix6)
+The Common Directory Services administration interfaces in Integration Server do not provide an
+option for configuring LDAP or database attributes for users and groups.
+
+The issue is resolved.
+
+
+
+
+MWS-31628 (MWS_10.11_CDS_Fix6)
+Common Directory Services logs an NoSuchMethodException error message in the server.log file for
+Integration Server. This issue occurs when you install the WmCDS package on Integration Server
+and create a diagnostic.zip file.
+
+The issue is resolved.
+
+
+
+
+MWS-31942 (MWS_10.11_CDS_Fix6)
+A security issue with the third-party component moment.js was discovered in the WmCDS and
+WmTaskEngine packages for Integration Server.
+
+The issue is resolved.
+
+
+
+
+MWS-32380 (MWS_10.11_CDS_Fix6)
+The graphical user interfaces for Common Directory Services in Integration Server might display
+placeholder texts instead of field and button labels. This issue occurs when accessing a
+configuration page through a direct URL.
+
+The issue is resolved.
+
+
+
+
+MWS-32470 (MWS_10.11_CDS_Fix6)
+The Common Directory Services configuration pages in Integration Server display an error message
+when you attempt to view the details of a group. This issue occurs when the LDAP directory
+service for the group is configured with the Do Not Cache option.
+
+The issue is resolved.
+
+
+
+
+MWS-32653 (MWS_10.11_CDS_Fix6)
+Modal dialogues on the administration pages for Common Directory Services in Integration Server do
+not get closed when the user session expires.
+
+The issue is resolved.
+
+
+
+
+MWS-31728 (MWS_10.11_CDS_Fix5)
+The configuration pages for Common Directory Services in Integration Server do not provide an
+option for configuring a custom password complexity class.
+
+The issue is resolved. The common Directory Services user interfaces are enhanced with an input
+field for entering the name of a custom password complexity class.
+
+
+
+
+MWS-31576 (MWS_10.11_CDS_Fix4)
+Common Directory Services ignores the keywords you specify when searching for principals in the
+CDS administration pages in Integration Server.
+
+The issue is resolved.
+
+
+
+
+MWS-31889 (MWS_10.11_CDS_Fix4)
+Common Directory Services ignores the keywords for filters that you specify when searching for
+principals on the Common Directory Services administration pages in Integration Server.
+
+The issue is resolved.
+
+
+
+
+MWS-30539 (MWS_10.11_CDS_Fix3)
+The Permissions Management page in Common Directory Services in Integration Server does not
+provide unified user experience with the remaining  configuration interfaces.
+
+The issue is resolved.
+
+
+
+
+MWS-30717 (MWS_10.11_CDS_Fix3)
+Margins and paddings on the configuration pages for Common Directory Services in Integration
+server might not match the overall look and feel of the IS Admin UI.
+
+The issue is resolved.
+
+
+
+
+MWS-30723 (MWS_10.11_CDS_Fix3)
+Table search options on the configuration pages for Common Directory Services in Integration
+server might not match the overall look and feel of the IS Admin UI.
+
+The issue is resolved.
+
+
+
+
+MWS-30766 (MWS_10.11_CDS_Fix3)
+The Permission Management configuration pages for Common Directory Services in Integration Server
+do not provide an option to set permissions for a role.
+
+The issue is resolved.
+
+
+
+
+MWS-30767 (MWS_10.11_CDS_Fix3)
+Saving user or group permissions on the configuration pages for Common Directory Services in
+Integration Server might fail with an error.
+
+The issue is resolved.
+
+
+
+
+MWS-30929 (MWS_10.11_CDS_Fix3)
+The administration interfaces for Common Directory Services in Integration Server do not provide
+an option for configuring custom data sources.
+
+The issue is resolved.
+
+
+
+
+MWS-30986 (MWS_10.11_CDS_Fix3)
+Adding a new data source to Common Directory Services in Integration Server might fail with a
+"POP.004.0206] Failed to connect to database at <db_url>. Verify hostname/port and connection
+credentials." error message, even when the connection to the database is successful.
+
+The issue is resolved.
+
+
+
+
+MWS-31027 (MWS_10.11_CDS_Fix3)
+When using Common Directory Services in Integration Server, updating the name of a data source
+fails.
+
+The issue is resolved.
+
+
+
+
+MWS-31049 (MWS_10.11_CDS_Fix3)
+The administration interfaces for Common Directory Services in Integration Server do not provide
+an option for retrieving and uploading configuration files.
+
+The issue is resolved.
+
+
+
+
+MWS-30652 (MWS_10.11_CDS_Fix2)
+When updating the JMS provider URL in the JMS Configuration page for Common Directory Services in
+Integration Server, Common Directory Services logs a confirmation message that the change is
+applied but fails to record the new value in the cluster.xml configuration file.
+
+The issue is resolved.
+
+
+
+
+MWS-29091 (MWS_10.11_CDS_Fix1)
+The TOTP Configuration page for Common Directory Services in Integration Server does not provide
+validation on all fields.
+
+The issue is resolved.
+
+
+
+
+MWS-29099 (MWS_10.11_CDS_Fix1)
+The Dynamic Attribute list for Roles on the administration pages for Common Directory Services in
+Integration Server displays a single page of results even when the number of attributes exceeds
+the configured limit.
+
+The issue is resolved. Common Directory Services pages now display the current page number, and
+the number of available pages when results exceed the configured limit.
+
+
+
+
+MWS-29228 (MWS_10.11_CDS_Fix1)
+In an installation that includes both My webMethods Server and the administration interfaces for
+Common Directory Services in Integration Server, selecting a user calendar in My webMethods does
+not apply to Common Directory Services, although the calendar configuration is present.
+
+The issue is resolved.
+
+
+
+
+MWS-29747 (MWS_10.11_CDS_Fix1)
+When adding principals to a role using the UI for Common Directory Services in Integration Server,
+searching for users does not return any results.
+
+The issue is resolved.
+
+
+
+
+MWS-29999 (MWS_10.11_CDS_Fix1)
+The accordion menus for Common Directory Services in Integration Server are not consistent with
+the overall product design.
+
+The issue is resolved.
+
+
+
+
+MWS-30010 (MWS_10.11_CDS_Fix1)
+The Directory Services configuration pages for Common Directory Services in Integration Server are
+not consistent with the overall product design.
+
+The issue is resolved.
+
+
+
+
+MWS-30013 (MWS_10.11_CDS_Fix1)
+The user interface pages for Common Directory Services in Integration Server do not provide an
+option to filter table columns.
+
+The issue is resolved.
+
+
+
+
+MWS-30015 (MWS_10.11_CDS_Fix1)
+The administration interfaces for Common Directory Services in Integration Server list both
+administrative and operational pages on the navigation menu.
+
+The issue is resolved. All administrative pages such as JMS, E-mail and One-time password settings
+are now grouped under the Configurations navigation node.
+
+
+
+
+MWS-30240 (MWS_10.11_CDS_Fix1)
+Some of the user interface elements on the configuration pages for Common Directory Services in
+Integration Server display message keys instead of the actual text labels.
+
+The issue is resolved.
+
+
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+If this is the first time you are installing a fix using the Software AG Update Manager, stop 
+My webMethods Server and back up the My webMethods Server database and file system before 
+applying the fix.
+
+
+9.0 Uninstallation
+
+These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+You can only uninstall one My webMethods Server fix at a time. Make sure you backup your server 
+settings before uninstalling My webMethods Server fixes.																								
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was not tested with non-English configurations and non-ASCII data. However, this 
+fix has no globalization impact and can be applied to systems running in any supported locale or 
+configuration.
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages 
+will appear in English.
+
+
+11.0 Copyright
+
+Copyright © 2024 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, and/or 
+its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or registered trademarks
+of Software AG and/or Software AG USA Inc. and/or its subsidiaries and/or its affiliates and/or 
+their licensors. Other company and product names mentioned herein may be trademarks of their 
+respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries is 
+located at http://softwareag.com/licenses.
+
+This software may include portions of third-party products. For third-party copyright notices, 
+license terms, additional rights or restrictions, please refer to "License Texts, Copyright Notices 
+and Disclaimers of Third Party Products". For certain specific third-party license restrictions, 
+please refer to section E of the Legal Notices available under "License Terms and Conditions for 
+Use of Software AG Products / Copyright and Trademark Notices of Software AG Products". These 
+documents are part of the product documentation, located at http://softwareag.com/licenses and/or 
+in the root installation directory of the licensed product(s).

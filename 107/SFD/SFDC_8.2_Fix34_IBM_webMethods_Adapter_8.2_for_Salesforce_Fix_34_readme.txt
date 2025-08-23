@@ -1,0 +1,705 @@
+          IBM webMethods Adapter 8.2 For Salesforce Fix 34 readme
+
+                               September 2024      
+________________________________________________________________________________
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods Adapter 8.2 For Salesforce Fix 34
+
+
+2.0 Fix ID
+
+SFDC_8.2_Fix34
+
+
+3.0 Product(s)/Component(s) Affected
+
+None.
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include 
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the 
+release.
+
+
+WSF-693
+Rebranding for IBM Release - Copyright Update for Salesforce Adapter
+
+WSF-690(SFDC_8.2_Fix33)
+In webMethods Adapter for SalesForce, the jackson-databind library is upgraded to
+version 2.17.0 due to security vulnerabilities found in the previous
+version. 
+
+WSF-666(SFDC_8.2_Fix33)
+In webMethods Adapter for SalesForce, the Jetty libraries are upgraded to
+version 9.4.53.v20231009 due to security vulnerabilities found in the previous
+version. 
+
+WSF-633(SFDC_8.2_Fix32)
+In webMethods Adapter for Salesforce, HTML error responses from Salesforce.com
+is captured.
+
+WSF-624(SFDC_8.2_Fix31)
+In webMethods Adapter for Salesforce, if a network failure occurs while enabling
+the connection, then the connections page displays the exact error. 
+
+WSF-577(SFDC_8.2_Fix31)
+In webMethods Adapter for Salesforce, due to the security vulnerabilities the 
+cometd libraries used in salesforce adapter has been upgraded to version 5.0.12.
+
+WSF-576(SFDC_8.2_Fix30)
+In webMethods Adapter for Salesforce, the CustomQuery operation fails if the
+query contains the MailingAddress field.
+
+This issue is now resolved.
+
+WSF-553(SFDC_8.2_Fix29)
+In webMethods Adapter for Salesforce, HTML error responses from Salesforce.com
+is captured.
+
+WF-22848(SFDC_8.2_Fix29)
+webMethods Adapter for Salesforce now supports API version 53.
+
+WSF-520(SFDC_8.2_Fix28)
+In webMethods Adapter for SalesForce, the Jetty libraries are upgraded to
+version 9.4.43.v20210629 due to security vulnerabilities found in the previous
+version. 
+
+WSF-495(SFDC_8.2_Fix27)
+While installing webMethods Adapter for Salesforce Fix 26, the old libraries are
+not deleted.
+
+The issue is now resolved.
+
+WSF-417(SFDC_8.2_Fix26)
+The webMethods Adapter for Salesforce now supports parallel asset initialization.
+Add the new watt property
+"watt.adapter.salesforce.assets.parallelInitialization=true" to Extended Settings
+screen (Settings > Extended) in Integration Server Administrator to enable
+parallel asset initialization.
+
+Note: The webMethods Adapter for Salesforce supports parallel asset
+initialization only if the Adapter Runtime supports it.
+
+WSF-470(SFDC_8.2_Fix26)
+In webMethods Adapter for Salesforce, while using the sendEmail utility, the
+output parameters, success and SendEmailError are missing from the output
+signature.
+
+This issue is now resolved. 
+
+WSF-452(SFDC_8.2_Fix26)
+In webMethods Adapter for Salesforce, CustomQuery operation fails when the query
+contains a subquery.
+
+The issue is now resolved.  
+
+WSF-446(SFDC_8.2_Fix25)
+In webMethods Adapter for Salesforce, while performing a custom query operation,
+the Output Field is not converted to the Output Field Type specified.
+
+The issue is now resolved. 
+
+WSF-410(SFDC_8.2_Fix24)
+In webMethods Adapter for Salesforce, Ids are queried on an sObject before the
+update operation. The Ids queried are not used and cause an issue when the
+sObject is not queryable.
+
+The issue is resolved. 
+
+WSF-402(SFDC_8.2_Fix23)
+In webMethods Adapter for Salesforce, the batch operation does not consider the
+'Max number of rows per batch' parameter when the file contains more than 8192
+characters.
+
+This issue is now resolved. 
+
+WSF-391(SFDC_8.2_Fix22)
+In webMethods Adapter for Salesforce, PDF files are not fetched properly.
+
+This issue is now resolved. 
+
+WSF-379(SFDC_8.2_Fix22)
+In webMethods Adapter for Salesforce, listener fails to enable and displays the
+following error message:
+Incompatible type 'class com.sforce.soap.partner.QueryResult' specified
+as xsi:type. It must be a subclass of 'class com.sforce.soap.partner.QueryResult'
+
+This issue is now resolved. 
+
+WF-15024(SFDC_8.2_Fix21)
+Latest api version supported by Salesforce adapter is now 47.
+
+WSF-376(SFDC_8.2_Fix21)
+In webMethods Adapter for Salesforce, the PDF files are not getting uploaded.
+
+This issue is now resolved. 
+
+WSF-367(SFDC_8.2_Fix20)
+In webMethods Adapter for Salesforce, if a new line character is present in the
+field value of a CSV file, the batch operation displays an error.
+
+This issue is now resolved.
+
+WSF-358(SFDC_8.2_Fix20)
+In webMethods Adapter for Salesforce, listener fails to get enabled,
+because it tries to authenticate through default SOAP login endpoint instead of
+the instance URL.
+
+This issue is now resolved. 
+
+WSF-356(SFDC_8.2_Fix20)
+In webMethods Adapter for Salesforce, the Create, Upsert, and Update service
+fails to execute with the following error message:
+INVALID_TYPE_ON_FIELD_IN_RECORD
+
+This error occurs because the force-webServiceConnector adds explicit types in
+the SOAP envelope.
+
+This issue is now resolved. 
+
+WSF-342(SFDC_8.2_Fix19)
+In webMethods Adapter for Salesforce, the listener does not select the new
+events published to the Pushtopic after any network failure happens.
+
+This issue is now resolved. 
+
+WF-11428(SFDC_8.2_Fix19)
+Axis(v1.4) dependency is removed from webMethods Adapter for Salesforce for the
+following security vulnerabilities:
+
+1. CVE-2012-5784 - https://nvd.nist.gov/vuln/detail/CVE-2012-5784
+You can locate the issue in the below link:
+https://issues.apache.org/jira/browse/AXIS-2883?jql=text%20~%20%22CVE-2012-5784%22
+
+2. CVE-2014-3596 - https://nvd.nist.gov/vuln/detail/CVE-2014-3596 .
+This issue exists because of an incomplete fix for CVE-2012-5784
+You can locate the issue in the below link:
+https://issues.apache.org/jira/browse/AXIS-2905?jql=text%20~%20%22CVE-2012-5784%22
+
+Now all the functionalities are handled by force-wsc. 
+
+WSF-326(SFDC_8.2_Fix18)
+In webMethods Adapter for Salesforce, Monitor Batch Operation fails for
+Query Operation - Batch Information & Results.
+
+When you select Query Operation - Batch Information & Results in the Select
+Monitor Operation field and the number of rows to fetch are more than 10001,
+Monitor Batch Operation fails.
+
+This issue is resolved. Now, to fetch the desired number of rows, webMethods
+Adapter for Salesforce has a new watt property
+watt.adapter.salesforce.batch.csvReader.maxRowsInFile = <number of rows>.
+Example: watt.adapter.salesforce.batch.csvReader.maxRowsInFile = 11000
+
+WSF-333(SFDC_8.2_Fix18)
+The API version supported by Salesforce adapter is now 44.
+
+WSF-318(SFDC_8.2_Fix18)
+In webMethods Adapter for Salesforce, when you run a batch operation on 
+Integration Server 9.5, SSLHandshakeException exception occurs.  
+
+This issue is now resolved.
+
+WSF-307(SFDC_8.2_Fix17)
+In webMethods Adapter for Salesforce, listener gets disabled if it is in enabled
+state for a long duration.
+
+This issue is now resolved.
+
+WSF-312(SFDC_8.2_Fix17)
+In webMethods Adapter for Salesforce, SOSL support is added in 
+CustomQueryOperation.
+
+WSF-296(SFDC_8.2_Fix16)
+Modification has been done for the article "Upgrade-to-CometD-Version-3-1-0" 
+from Salesforce. This fix only contains the changes related to upgradation
+of cometd(3.1.3) and jetty(9.2.24.v20180105) libraries. 
+
+WSF-286(SFDC_8.2_Fix15)
+In webMethods Adapter for Salesforce, the mechanism listener handshake retry up 
+which is to provide retry limit was only available for initial subscription of 
+pushtopic or on listener initialization.
+
+This issue is resolved. Now, the listener behaves the way it behaves during 
+initialization and if handshake fails on re-subscription(on session expire), it 
+retries to the retry limit provided by the user in IS Admin page. 
+
+WSF-289(SFDC_8.2_Fix15)
+In webMethods Adapter for Salesforce, the fields are not mapped to the type 
+provided in the output field section in CustomQueryOperation.
+
+This issue is now resolved. 
+
+WSF-284(SFDC_8.2_Fix15)
+In webMethods Adapter for Salesforce, sObjects are not visible while using it 
+through proxy server.
+
+This issue is now resolved. 
+
+WSF-290(SFDC_8.2_Fix15)
+In webMethods Adapter for Salesforce, sessionId parameter in Output Signature 
+of the Utility Service > getSessionId is incorrect.
+
+This issue is now resolved. 
+
+WSF-252(SFDC_8.2_Fix14)
+In webMethods Adapter for Salesforce, memory leak is observed for the HttpClient 
+thread references those are not closed.
+
+This issue occurs for those HttpClient threads that are not stopped during the 
+execution. Hence, many HttpClient threads holds the memory even after the 
+service execution.
+
+This issue is now resolved. 
+
+WSF-268(SFDC_8.2_Fix14)
+In webMethods Adapter for Salesforce, the field names gets overriden when you 
+specify a normal field after any lookup field in the output section of Custom 
+Query Operation service.
+
+This issue is now resolved. 
+
+WSF-247(SFDC_8.2_Fix13)
+In webMethods Adapter for Salesforce, exception occurs in Adapter Notification 
+as Salesforce upgraded the encryption protocol from TLS1.0 to TLS1.1 and later.
+
+This issue is now resolved
+
+WSF-237(SFDC_8.2_Fix13)
+In webMethods Adapter for Salesforce, the response in Custom Query Operation 
+service displays incorrectly due to few missing fields in multi object lookup 
+fields.
+
+This issue is resolved now. 
+
+WSF-249(SFDC_8.2_Fix13)
+In webMethods Adapter for Salesforce, when you run the query for date field, it 
+returns the value of the field as type String instead of java.util.Date.
+ 
+This issue is now resolved.
+
+WSF-235(SFDC_8.2_Fix12)
+In webMethods Adapter for Salesforce, a new watt property is introduced which 
+toggles between the old behaviour and the new behaviour in the output result 
+structure of Custom Query Operation service.
+The watt property is-
+"watt.adapter.salesforce.services.customQueryOperation.
+enableMultiObjectBehavior = true"
+
+The following are the changes in the new behaviour,
+
+a-> If you provide any customized output field names in the output section, then 
+you must use the same column name which is defined in Salesforce backend.
+b-> If a query contains multiple object fields, then the output structure 
+displays the output values in a proper documented structure.
+
+Specify the watt property, if you do not want the above changes in the output 
+structure.
+
+
+WSF-230 (SFDC_8.2_Fix12)
+In webMethods Adapter for Salesforce, error occurs while creating an adapter 
+notification.
+
+This issue occurs due to the following reasons,
+a-> Existing connection which is in use gets closed
+b-> Due to an improper document structure 
+However, the following error message is displayed in the error log when trying 
+to create an adapter notification,
+"errorMessage=[ISC.0082.9034] Field is absent, field must exist"
+ 
+This issue is now resolved. 
+
+WSF-226(SFDC_8.2_Fix11)
+In Custom Query Operation, the output values for the same column names override 
+in the output section. 
+
+This issue is resolved.
+
+WSF-231 (SFDC_8.2_Fix11)
+The current name "webMethods Salesforce.com Adapter" of the Salesforce adapter 
+has conflict with trade marks with Salesforce.com. 
+
+The name of the Salesforce adapter is changed from 
+"webMethods Salesforce.com Adapter" to "webMethods Adapter for Salesforce". 
+
+This issue is now resolved.
+
+WSF-224(SFDC_8.2_Fix10)
+webMethods Salesforce.com Adapter 8.2 does not support the new release of 
+Salesforce API WSDL version 38. 
+
+This issue is resolved. Now, the adapter supports Salesforce API WSDL version 
+38.0.
+
+
+WSF-220 (SFDC_8.2_Fix10)
+In Salesforce.com Adapter, reloading the existing upsert services fails. 
+
+This issue occurs when a new field is added in the backend of Salesforce.com 
+adapter, and the existing upsert services are reloaded. 
+
+This issue is now resolved.
+
+WSF-210 (SFDC_8.2_Fix9)
+In Salesforce.com Adapter, It was unable to establish connection with TLSv1.1 
+security protocol.
+ 
+All the adapter connections were disabled in IS having JVM1.7 and below, as 
+Salesforce.com has disabled SSLv3 protocol and enabled TLSv1.1.
+After installing Fix please set property 
+-Dorg.apache.axis.components.net.SecureSocketFactory=
+com.wm.adapter.wmsalesforce.security.SFDCTLSSocketSecureFactory' in 
+<webMethods_directory>/profiles/<instance_name>/configuration/wrapper.conf file.
+ 
+This issue is resolved.
+
+WSF-199 (SFDC_8.2_Fix8)
+In Salesforce.com Adapter, the Custom Query Template shows unexpected behaviour.
+
+When the Output Field entries on the Custom Query Operation tab are defined, the 
+output pane on the Input/Output tab shows the expected fields. But, during the 
+run-time the values in the fields displays invalid data when one or more of the 
+referenced child objects are null. The values of the field moves up, which
+is incorrect.
+
+Also,the adapter is unable to distinguish the fields with the same name but 
+which are from different objects.
+
+This issue is resolved.
+
+WSF-200 (SFDC_8.2_Fix8)
+In Salesforce.com Adapter, the adapter services sends incorrect date to 
+Salesforce.com.
+
+The Create, Update, and Upsert adapter services which accepts the date as an 
+input value to any attribute does not get formatted to the standard date format. 
+Due to this, the adapter service sends an incorrect date value to the 
+Salesforce.com. That is, one day previous date of the date passed as an input.
+
+This issue is resolved.
+
+WSF-194 (SFDC_8.2_Fix7)
+In Salesforce.com Adapter, invalid data is sent to the backend after running 
+services that are migrated from 7.1 to 8.2.
+
+When you run a create or update service that is migrated from 7.1 to 8.2, on a 
+Salesforce object that contains fields with referenced objects, the adapter 
+sends a null value to the backend. At run time, the adapter cannot append the 
+name of the Salesforce object to the field name which causes it to send invalid 
+data to the backend.
+
+This issue is resolved. 
+
+WSF-179 (SFDC_8.2_Fix6)
+In Salesforce.com Adapter, migration from 7.1SP1 to 8.2 fails. 
+
+When running the migration service to migrate from Salesforce.com Adapter 7.1 
+SP1 to 8.2, a NullPointerException occurs and the migration fails. 
+
+This issue is resolved.
+
+WSF-178 (SFDC_8.2_Fix6)
+In Salesforce.com Adapter, the migration service changes the Endpoint URL for 
+adapter connections. 
+
+When migrating from 7.1SP1 to 8.2, the migration service changes the Endpoint 
+URL for adapter connections defined in the package.  The Endpoint URL in the 
+Connection Properties of adapter connections is changed, to point to the Partner 
+WSDL version. 
+
+This issue is resolved. Now, the migration service does not change the Endpoint 
+URL in the Connection Properties of adapter connections. 
+A new watt property, 
+watt.adapter.salesforce.migration.updateEndPointURL is introduced in the adapter. 
+When set to true, the watt property allows the migration service to change the 
+Endpoint URL for adapter connections to point to the Partner WSDL version. 
+The default value is false.
+
+WSF-177 (SFDC_8.2_Fix6)
+In Salesforce.com Adapter, migration from 7.1SP1 to 8.2 fails with a 
+ClassCastException. 
+
+When running the migration service to migrate from Salesforce.com Adapter 7.1 
+SP1 to 8.2, a ClassCastException occurs and the migration fails. 
+
+This issue is resolved.
+
+WSF-176 (SFDC_8.2_Fix6)
+In Salesforce.com Adapter, modifying an adapter service template for an UPSERT 
+service migrated from 7.1 to 8.2, fails. 
+
+When migrating from Salesforce.com Adapter 7.1 SP1 to 8.2, modifying an adapter 
+service template for an UPSERT service fails with an ArrayIndexOutOfBounds 
+exception. 
+
+This issue is resolved.
+
+
+WSF-166  (SFDC_8.2_Fix5)
+In webMethods Salesforce.com Adapter, the custom query service does not return 
+the child elements of a subquery in the output.
+
+When you run a custom query that contains a subquery, the custom query service 
+does not return the child elements of the subquery in the output.
+
+This issue is resolved. The custom query service now returns the child elements 
+of the subquery in the output.
+
+
+WSF-145 (SFDC_8.2_Fix4)
+In webMethods Salesforce.com Adapter, a custom query with dependencies on 
+multiple related objects does not return an output value.
+
+When you run a custom query that is dependent on multiple related objects, the 
+custom query tool does not return the output value of the query.
+
+This issue is resolved. The custom query tool now returns an output value for 
+queries that are dependent on multiple related objects.
+ 
+WSF-146 (SFDC_8.2_Fix4)
+In webMethods Salesforce.com Adapter, the custom query output does not contain 
+all the results for an object that is related to multiple objects.
+
+When you run a custom query for an object that is related to multiple objects, 
+the query returns only one output instead of multiple outputs.
+
+This issue is resolved. A custom query now returns multiple outputs for an 
+object that is related to multiple objects.
+
+WSF-148 (SFDC_8.2_Fix4)
+In webMethods Salesforce.com Adapter, the custom query output is incorrectly 
+mapped to the parameters specified in the query.
+
+When you run a custom query with multiple parameters, there is a mismatch in the 
+query output because the first and second output variables are incorrectly 
+mapped to the first parameter in the query.
+
+This issue is resolved. The query outputs are now correctly mapped to the 
+parameters in the custom query.
+
+WSF-149 (SFDC_8.2_Fix4)
+webMethods Salesforce.com Adapter does not support the new release of Salesforce 
+API WSDL version 30.
+
+This issue is resolved. The adapter now supports Salesforce API WSDL version 
+30.0.
+
+WSF-133 (SFDC_8.2_Fix3)
+The webMethods Salesforce.com Adapter Batch Operation service template does not 
+provide an option to set the concurrency mode.
+
+The Salesforce.com backend allows you to select the concurrency mode, either 
+serial or parallel, when creating a job for a batch operation. However, 
+Salesforce.com Adapter uses the parallel mode (the default) and does not provide 
+an option to change the mode in the Batch Operation adapter service template in 
+Designer.
+
+Now you can set the concurrency mode when configuring a Salesforce.com Adapter 
+Batch Operation service in Designer. Before setting the concurrency mode you 
+must create a Batch Operation adapter service as described in "webMethods
+Salesforce.com Adapter Installation and User's Guide."
+
+To set the concurrency mode:
+1. In Designer, Select the Batch Operation tab of the Batch Operation 
+adapter service.
+2. In the Concurrency Mode field, select one of the following values:
+- Serial
+- Parallel 
+
+WSF-127 (SFDC_8.2_Fix3)
+In webMethods Salesforce.com Adapter, the Batch Upsert Operation adapter service 
+does not execute properly. 
+
+When executing the Batch Upsert Operation adapter service, Salesforce.com 
+Adapter fails to find existing records based on External IDs and inserts new 
+records instead of performing an update operation. The error occurs because by 
+default the adapter uses the ID to find existing records. In addition, the 
+adapter service template provides no option to specify External ID fields to 
+check if a record already exists. 
+
+This issue is resolved. Now you can configure a new parameter, ID Field Name, in 
+the Batch Operation adapter service template in Designer to determine if a 
+record already exists. 
+
+To configure the ID Field Name 
+
+1. From the ID Field Name list, select the field that you want to use to 
+determine whether a record already exists in the Salesforce object. 
+
+2. At run time, pass a value for this field as input into the adapter service. 
+If the value matches an existing record, the adapter service updates the record. 
+If the value does not match an existing record, the adapter service inserts a 
+new record. 
+
+If you do not specify any value at run time, the adapter service neither inserts 
+nor updates the record.
+   
+WSF-116 (SFDC_8.2_Fix3)
+In webMethods Salesforce.com Adapter, the Query Operation service fails when you 
+pass a null value as input. 
+
+When you pass a null value as an input parameter to the Salesforce.com Adapter 
+Query Operation service, the service throws a NullPointerException. 
+   
+This issue is resolved. Now the Query Operation service returns an empty string. 
+
+WSF-118 (SFDC_8.2_Fix3)
+In webMethods Salesforce.com Adapter, the Batch Operation service fails with a 
+remote exception error. 
+
+When executing the Batch Operation adapter service, 
+Salesforce.com Adapter returns the following error: 
+"[ADA.505.1017] Remote Exception occurred during the execution of 
+[BatchOperation]." The error occurs because the connection for the adapter 
+service is not using the registered HTTP/HTTPS proxy servers. 
+
+This issue is resolved.
+
+WSF-109 (SFDC_8.2_Fix3)
+Enabling a webMethods Salesforce.com Adapter OAuth connection fails when the 
+adapter is using configured HTTP/HTTPS proxy servers to establish the connection. 
+
+Enabling a Salesforce.com Adapter OAuth connection fails when the connection is 
+using an HTTP/HTTPS proxy server registered with webMethods Integration Server. 
+The issue occurs because of a problem in the Jetty HttpClient that the adapter 
+uses to post HTTP/HTTPS requests. In addition, the adapter does not set the 
+proxy configuration on the Jetty HttpClient instance. 
+
+This issue is resolved. 
+
+You must replace the jetty bundles provided with Salesforce.com Adapter with 
+jetty bundles 7.6.12 to enable adapter OAuth connections using a proxy server. 
+
+To replace the jetty bundles provided with the adapter 
+
+1. Delete the following jetty bundles from the 
+<Integration Server_directory>\packages\WmSalesforceAdapter\code\
+jars directory: 
+jetty-client-7.4.4.v20110707 
+jetty-http-7.4.4.v20110707 
+jetty-io-7.4.4.v20110707 
+jetty-util-7.4.4.v20110707 
+
+2. Download the jetty-distribution-7.6.12.v20130726 bundles from 
+the Eclipse website. 
+
+3. From the downloaded bundles, copy the following jars to the 
+<Integration Server_directory>\packages\WmSalesforceAdapter\code\
+jars directory: 
+jetty-client-7.6.12.v20130726 
+jetty-http-7.6.12.v20130726 
+jetty-io-7.6.12.v20130726 
+jetty-util-7.6.12.v20130726 
+
+4. Restart Integration Server.
+
+WSF-105 (SFDC_8.2_Fix2)
+webMethods Salesforce.com Adapter returns an error when executing a Create, 
+Update, or Upsert service when multiple record fields refer to the same sObject. 
+
+When executing a Create, Update, or Upsert service, Salesforce.com Adapter 
+retrieves duplicate values when multiple record fields refer to the same sObject 
+and the system throws an error.
+
+This issue is resolved.  
+  
+WSF-106 (SFDC_8.2_Fix2)
+webMethods Salesforce.com Adapter asynchronous listener notifications fail to 
+retrieve events from Salesforce.com.
+
+On executing an asynchronous listener notification, Salesforce.com Adapter fails 
+to publish the notification and retrieve data from Salesforce.com. The issue 
+occurs when you create a push topic with a push topic query that contains field
+names in upper case.
+
+This issue is resolved. The adapter now recognizes push topic query fields in 
+both upper and lower case.  
+
+WSF-94 (SFDC_8.2_Fix1)
+In webMethods Salesforce.com Adapter, when configuring an Upsert Operation 
+adapter service, the "ID Field Name" field does not refresh properly. 
+
+In Salesforce.com Adapter, when you configure an Upsert Operation service in 
+Software AG Designer, the "ID Field Name" field on the "Schema" tab does not 
+display the field names corresponding to the selected sObject.
+
+This issue is resolved. Now, instead of displaying the full list of sObjects on 
+the "Schema" tab, the Upsert Operation service template displays only one row by
+default. When you change the sObject in the row, the "ID Field Name" field 
+refreshes correctly. 
+
+WSF-100 (SFDC_8.2_Fix1)
+After migrating Upsert adapter services to webMethods Salesforce.com Adapter 8.2, 
+all sObjects are displayed on the "Schema" tab in Designer.
+
+In Salesforce.com Adapter, when you migrate an Upsert adapter service, using the 
+wm.adapter.wmsalesforce.migration.Service: migrate_711_To_82 service, the 
+migrated Upsert service displays all sObjects on the "Schema" tab in Designer, 
+and the "ID Field Name" field does not refresh correctly based on the selected 
+sObject.
+
+This issue is resolved. Now, a migrated Upsert adapter service displays only one 
+row on the "Schema" tab. When you change the sObject in the row, the 
+"ID Field Name" field refreshes correctly.
+
+
+8.0 Installation
+
+Install using the Update Manager. For instructions, see the 
+documentation at https://docs.webmethods.io/..
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed 
+fix. This action will revert your installation to the previously installed fix. 
+You cannot use these instructions to uninstall the previously installed fix.
+
+Uninstall using the Update Manager. For instructions, see the 
+documentation at https://docs.webmethods.io/.
+
+
+10.0 Copyright
+
+Copyright Super iPaas Integration LLC, an IBM Company 2024.

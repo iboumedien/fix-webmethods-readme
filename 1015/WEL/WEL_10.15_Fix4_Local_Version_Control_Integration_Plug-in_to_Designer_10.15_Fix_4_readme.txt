@@ -1,0 +1,231 @@
+    webMethods Designer Local Service Development 10.15 Fix 4 readme
+
+                         January 2024
+
+_________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+webMethods Designer Local Service Development 10.15 Fix 4
+
+
+
+2.0 Fix ID
+
+WEL_10.15_Fix4
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Designer Local Service Development 10.15
+
+
+
+4.0 Requirements
+
+- ESB_10.15_Fix4 or the latest fix that supersedes this fix.
+
+For language pack requirements, see the Globalization section of the Software 
+AG Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods Designer Local 
+Service Development 10.15.
+
+
+
+6.0 Cautions and Warnings
+
+Warning: Do not use the "Uninstall" option (from About Eclipse
+SDK > Installation Details > Installed Software tab), as that
+will completely remove a particular feature.
+
+
+
+7.0 Fix Contents
+
+WEL-184
+Designer provides an option to enable local service development in containerized
+Integration Server or Microservices Runtime.
+
+Enabling containerized local service development lets you mount a file volume 
+into the Docker container through Designer and use version control in the 
+Package Navigator.
+
+To use Integration Server or Microservices Runtime inside a Docker container as 
+local development server, ensure the following prerequisites are met:
+- Docker and Designer reside on the same host.
+- Create or pull docker images from the Docker registry. The Microservices 
+  Runtime image is available in Container Registry 
+  https://containers.softwareag.com/. Ensure that the MSR image from the 
+  registry has the functionality you need.
+- Mount the corresponding host directory of local Git repository.
+  Following is a sample for the startup command:
+  docker run -i -t -d --name $[container_name] \
+  -v $[container_named_volume]:[Install_Dir]/IntegrationServer/packages \
+  -v [host_git_project_location]:/[container_git_project_location]
+  -p [host_primary_port:]primary_port [image_name] /bin/bash
+  
+You also have the option to configure multiple git repositories as:
+  -v [host_git_project_location1]:/[container_git_project_location1]
+  -v [host_git_project_location2]:/[container_git_project_location2]
+
+For example, in terminal, enter the following command:
+docker run --name <name> -p 5558:5555 -d 
+  -v C:/Users/foo/git/repo1:/opt/git/repo1 \
+  -v C:/Users/foo/git/repo2:/opt/git/repo2 \
+  -v <volume name>:/opt/softwareag/IntegrationServer/packages \
+  sagcr.azurecr.io/webmethods-microservicesruntime:10.15
+ 
+In Designer, you should add C:/Users/foo/git/repo1 Container Path:/opt/git/repo1
+and C:/Users/foo/git/repo2 Container Path:/opt/git/repo2 in Host Path.
+
+Alternatively, you can use individual repositories as one volume by mounting the
+parent folder.
+
+For example,
+docker run --name <name> -p 5558:5555 -d -v C:/Users/foo/git:/opt/git -v <volume
+ name>:/opt/softwareag/IntegrationServer/packages \
+ sagcr.azurecr.io/webmethods-microservicesruntime:10.15
+
+In Designer, to mount a file volume in Local Service Development, perform the 
+following:
+1. In Designer, select Window > Preferences > Software AG > Service Development 
+   > Local Service Development, select Enable local service development in 
+   containerized Integration Server or Microservices Runtime.
+2. To set the docker volume and port details, click Add. The Add New Volume 
+   dialog box appears.
+3. Enter Host Path, Container Path, and click OK.
+4. Enter the port number in Port.
+5. Click Apply.
+
+After configuring the volume, update the port for the connected server. Then, 
+set up local service development by creating a new project or importing a 
+project into your local workspace.
+
+
+WEL-162 (WEL_10.15_Fix2)
+The local service development feature does not work on
+Virtual Desktop Infrastructure (VDI).
+
+The local service development feature does not work on VDI when
+the repository and workspace are in a network path.
+
+This issue is now resolved by providing an option to enable VDI support.
+To use the local service development feature, start Designer as an Administrator
+user and select the "Enable local service development on virtual desktop 
+infrastructure (Administrator user only)" check box. 
+
+
+WEL-156 (WEL_10.15_Fix1)
+Designer does not identify a project as a local service development project
+if the project is under a shortcut or the soft link for a folder cloned from Git.
+
+The issue is now resolved.
+
+
+8.0 Installation
+
+Install using the Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot apply these instructions to the previously installed 
+fix. 
+
+Uninstall using the Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com. 
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix has 
+no globalization impact and can be applied to systems running in any supported 
+locale or configuration. 
+
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might contain new 
+messages and these messages will appear in English. 
+
+
+
+11.0 Copyright
+
+Copyright © 2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., 
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their 
+licensors. 
+
+The name Software AG and all Software AG product names are either trademarks or 
+registered trademarks of Software AG and/or Software AG USA Inc. and/or its 
+subsidiaries and/or its affiliates and/or their licensors. Other company and 
+product names mentioned herein may be trademarks of their respective owners. 
+
+Detailed information on trademarks and patents owned by Software AG and/or its 
+subsidiaries is located at http://softwareag.com/licenses . 
+
+This software may include portions of third-party products. For third-party 
+copyright notices, license terms, additional rights or restrictions, please 
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party 
+Products". For certain specific third-party license restrictions, please refer 
+to section E of the Legal Notices available under "License Terms and Conditions 
+for Use of Software AG Products / Copyright and Trademark Notices of Software AG 
+Products". These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the 
+licensed product(s). 
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

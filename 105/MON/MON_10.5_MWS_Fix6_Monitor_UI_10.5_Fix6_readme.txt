@@ -1,0 +1,223 @@
+                       webMethods Monitor 10.5 MWS Fix 6 readme
+
+                                      September 2021
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Monitor 10.5 MWS Fix 6 (Monitor portlets update)
+
+
+
+2.0 Fix ID
+
+MON_10.5_MWS_Fix6
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Monitor 10.5.
+
+
+
+4.0 Requirements and Dependencies
+
+Monitor 10.5 Fix 6 or higher.  (WmMonitor package update)
+
+The Optimize fixes contain updates to shared components used by both Monitor and Optimize products, 
+so would be installed even if Optimize product not present on system.
+
+Note:All optimize 10.5.0 Fix 7 or higher fixes should be also installed even if Optimize product not present on system
+
+It is also recommended to update to latest fixes for related BPM products
+such as Designer, Process Engine, Optimize and ESB, and Business Console
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods Monitor.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+WMN-7700
+webMethods Monitor Process Instance UI not honoring all available search options.
+
+Disabling the option "Run selected saved search when window is displayed" has no effect. 
+When this setting is disabled, the default or saved search is always executed 
+when the window is displayed.
+
+The issue is resolved.
+
+WMN-7650(MON_10.5_MWS_Fix5)
+With webMethods Monitor, the Process Instance Details portlet cannot be maximized correctly.
+
+The issue is resolved.
+
+WMN-7760(MON_10.5_MWS_Fix5)
+webMethods Monitor user interface uses vulnerable third party jquery components.
+
+The issue is resolved.
+
+
+WMN-6945(MON_10.5_MWS_Fix4)
+The layout tab is not available in the properties for MWS table.
+
+This issue is now resolved.
+
+WMN-7442(MON_10.5_MWS_Fix3)
+With webMethods Monitor, the process instance details page does not display
+step status and step summary when redirected from the Business Console page.
+
+The issue is resolved.
+
+WMN-6965(MON_10.5_MWS_Fix3)
+The scroll wheel does not work in Process Model Select list in Firefox.
+
+This issue is now resolved.
+
+WMN-6992(MON_10.5_MWS_Fix3)
+Number of items displayed for logged fields was not configurable.
+This issue is now resolved.
+
+WMN-7151(MON_10.5_MWS_Fix3)
+When searching in a custom process instance portlet, webMethods Monitor
+can now display the search results in the same way that the search results
+are displayed for the default process instance portlet.
+
+To change how the search results are displayed for a custom process instance portlet:
+1/ Install the fix.
+2/Log in as sysadmin.
+3/ Open the custom process instance page (Folders > My webMethods Applications >
+Fabric Tasks > Monitoring > {Custom_Process_Name} > Search).
+4/ Open the Properties page by clicking the arrow button of the Search control and change
+the value of the searchResultBar property in the Portlet preferences panel to a variable
+name (for example, "results.test"), instead of "webm.apps.mon.biz.process.instance.list.results".
+5/ Open the custom process instance page (Folders > My webMethods Applications >
+Fabric Tasks > Monitoring > {Custom_Process_Name} > Process Instances)
+6/ Open the Properties page by clicking the arrow button of the Process Instances control and
+go to the Maintenance section and add the variable that was set for
+the searchResultBar property ("results.test" in the example in step 4) as an alias.
+7/Log in as an administrator.
+
+This issue is resolved.
+
+Usage Notes:
+- Use a unique alias for each custom process instance.
+
+WMN-7169(MON_10.5_MWS_Fix3)
+When installing webMethods Monitor user interface, multiple bundle
+exceptions are thrown in the My webMethods log.
+
+The issue is resolved.
+
+WMN-7342(MON_10.5_MWS_Fix2)
+Error installing fixes for Monitor 10.3 via CC template
+
+This issue is resolved now.
+
+
+WMN-7166(MON_10.5_MWS_Fix1)
+In MWS, process instance diagram, correct path was not getting high lighted.
+
+This defect was fixed on the monitor portlet client side(CanvasUtil.java class), 
+need to introduce a new method to fix the same
+
+This issue is resolved now.
+
+
+WMN-6832(MON_10.5_MWS_Fix1)
+Some process images may appear blank in Monitor after migration.
+
+This issue should now be resolved. Browser cache may need to be cleared after 
+installing fix for the new diagram portlet to load.
+
+
+WMN-6919(MON_10.5_MWS_Fix1)
+If transition highlighting is selected, all transitions from a gateway may 
+get highlighted rather than just the traversed transitions.
+
+This issues should now be resolved. Browser cache may need to be erased 
+after installing fix to see the updated diagram.
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central  location (9.7 or later 
+products), or Software AG Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Command Central (9.7 or later) or Software AG Update Manager. For instructions, see 
+the documentation at http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was not tested with non-English configurations and non-ASCII data. However, this 
+fix has no globalization impact and can be applied to systems running in any supported locale or 
+configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2021 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, and/or 
+its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or registered trademarks of 
+Software AG and/or Software AG USA Inc. and/or its subsidiaries and/or its affiliates and/or their licensors. 
+Other company and product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries is located at 
+http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party copyright notices, license terms, 
+additional rights or restrictions, please refer to 
+"License Texts, Copyright Notices and Disclaimers of Third Party Products". For certain specific third-party 
+license restrictions, please refer to section E of the Legal Notices available under 
+"License Terms and Conditions for Use of Software AG Products / Copyright and Trademark Notices of 
+Software AG Products". These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the licensed product(s). 

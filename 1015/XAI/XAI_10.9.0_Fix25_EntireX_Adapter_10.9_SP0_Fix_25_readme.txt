@@ -1,0 +1,293 @@
+                   EntireX Adapter 10.9 Fix 25 readme
+                               06 2025
+
+This file provides important information for applying EntireX 10.9 Fix 25 to
+EntireX Adapter 10.9. 
+          
+            
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+7.1   Resolutions included from earlier Fixes
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+
+
+
+1.0   Fix Name
+
+EntireX Adapter 10.9 Fix 25
+
+
+
+2.0   Fix ID
+
+EXX_10.9_Fix25
+
+
+
+3.0   Product(s)/Component(s) Affected
+
+This fix affects EntireX Adapter
+
+
+
+4.0   Requirements and Dependencies
+None.
+
+
+5.0   Platform Support
+
+EntireX Adapter 10.9 Fix 25 is supported on the same platforms and operating
+systems and with the same JREs as webMethods Integration Server 10.9.
+
+
+
+6.0   Cautions and Warnings
+
+None
+
+
+
+7.0   Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+- EXX-16785 EXX_10.9_Fix25:
+   Data lost in EntireX RPC Listener reply on IDL output parameter 
+   'response'.
+   This issue is resolved now.
+
+
+- EXX-16791 EXX_10.9_Fix25:
+   EntireX Adapter 10.7 created CICS ECI Connections are failing 
+   during update in 10.9 with error 
+   "PassTicketInvalidInputException: Input cannot be empty."
+   This issue is resolved now.
+
+
+
+
+
+
+7.1   Resolutions included from earlier Fixes
+
+- EXX-16729 XAI_10.9_Fix21:
+   EntireX Adapter RPC Listener fails with NullPointerException when 
+   related service response pipeline contains array with null-value.
+
+   This issue is resolved now.
+
+
+- EXX-16585 XAI_10.9_Fix21:
+   Complex Integration Server data (group inside of group-array) is 
+   not mapped correctly to internal EntireX data format, for example 
+   used for IMS Connect request.
+   This may result in RPC Errors like 08000500 reason: 
+   java.lang.IllegalArgumentException: IDataRPCService.getValue(): 
+   illegal argument of type [Ljava.lang.Object]
+   This issue is resolved now.   
+
+
+- EXX-16315 XAI_10.9_Fix19:
+   EntireX Adapter: Integration Server log file shows messages like 
+   "No method ABC in class XYZ" where XYZ are classes from EntireX.
+   This issue is resolved now.
+
+
+- {} XAI_10.9_Fix17:
+   None
+
+
+- EXX-16422 XAI_10.9_Fix17:
+   EntireX Adapter: reply marshalling of empty array group data may 
+   result in error DynamicRPCException: WARNING has illegal type 16
+   This issue is resolved now.
+
+
+- EXX-16304 XAI_10.9_Fix17:
+   EntireX Adapter Listener throws NullPointerException when dealing 
+   with incomplete arrays.
+   This issue is resolved now.
+
+
+- EXX-16352 XAI_10.9_Fix17:
+   With this correction EntireX Adapter supports the webMethods 
+   Integration Server Diagnostic Feature.
+   In Detail:
+    The webMethods Integration help -> About -> Get Diagnostic 
+   collects diagnostic information like log files which can be 
+   downloaded via the Browser.
+   With this correction the generated zip file includes now also the 
+   WmEntireX logs.
+
+
+
+- EXX-16062 XAI_10.9_Fix17:
+   EntireX Adapter: Mapping of array data with one occurrence from 
+   Integration Server to RPC may throw NullPointerException.
+   This issue is resolved now.
+
+
+- EXX-15986 XAI_10.9_Fix17:
+   EntireX Adapter: RPC Listener with scalar output signature 
+   parameter 'response' throws Error 0800 0310: 
+   java.lang.ClassCastException: class java.lang.String cannot be 
+   cast to class java.util.Map
+   This issue is resolved now.
+
+
+- EXX-15875 XAI_10.9_Fix15:
+   RPC Server for IMS Connect or IMS Connect in EntireX Adapter 
+   fails with java.lang.NegativeArraySizeException: -4
+   The Issue is now resolved.
+
+
+- EXX-15867 XAI_10.9_Fix15:
+   IDL unicode data type (U, UV) is not supported for Java-based 
+   COBOL RPC Servers, like EntireX RPC Server for CICS ECI, for CICS 
+   IPIC, for CICS Socket Listener, etc.
+   This restriction is resolved now.
+
+
+- EXX-15822 XAI_10.9_Fix15:
+   IDL Extractor for webMethods IS: The IDL file does not respect 
+   the string length definitions in OpenAPI based REST Consumers.
+   This issue is resolved now.
+
+
+- EXX-15976 XAI_10.9_Fix15:
+   When generating RPC connections using the EntireX Adapter's REST 
+   API (.../wmentirex/createConnection), alias names specified in 
+   the IDL file are ignored. 
+   This issue is now resolved.
+
+
+- EXX-15796 XAI_10.9_Fix13:
+   CICI Socket Listener: Internal protocol mismatch during handshake 
+   disconnects from host and throws java.io.EOFException when data 
+   was send with the reduced protocol. 
+   This issue is resolved now.
+
+
+- EXX-15713 XAI_10.9_Fix11:
+   CICS Socket Listener: Internal protocol mismatch during handshake 
+   disconnects from host, sends data to the disconnected host (CICS 
+   call failed: java.net.SocketException: Socket closed), reconnects 
+   to the host and sends the data again.
+   The issue is solved now and the data will be send with the lower 
+   protocol in the same connection. 
+
+
+- EXX-15698 XAI_10.9_Fix11:
+   IDL Extractor for webMethods IS does not recognize "minItems" and 
+   "maxItems" for Open API array definitions.
+   This issue is resolved now.
+
+
+- EXX-15376 XAI_10.9_Fix7:
+   Null value suppression does not work for the numeric data types 
+   I1, I2, I4, F4, F8.
+   This issue is now resolved.
+
+
+- EXX-15314 XAI_10.9_Fix7:
+   Using openAPI-3 REST services containing a Date / Time field may 
+   fail with 
+   com.softwareag.is.rest.openapi.exception.InvalidDataFormatExceptio
+   on
+   The issue is now resolved.
+
+
+- EXX-15363 XAI_10.9_Fix7:
+   Successful call to REST API does not return expected data.
+   This issue is now resolved.
+
+
+- EXX-15203 XAI_10.9_Fix7:
+   Marshalling array data in groups to RPC can fail with 
+   ArrayStoreException, depending on the Integration Server 
+   pipeline.
+   This issue is resolved now.
+
+
+- EXX-15262 XAI_10.9_Fix7:
+   RPC Call to EntireX Adapter Listener may fail with 
+   IllegalArgumentException.
+   This issue is now resolved.
+
+
+- EXX-14399 XAI_10.9_Fix3:
+   Configure a truststore with certificates in format PKCS12 instead 
+   of format JKS fails because no password can be set for 
+   truststore.
+   This issue is solved now.
+
+
+- EXX-14992 XAI_10.9_Fix3:
+   Certain data type structures, such as arrays, were not marshalled 
+   correctly and produced an exception 
+   (java.lang.ArrayStoreException).
+   This issue is now resolved.
+
+
+- EXX-14892 XAI_10.9_Fix1:
+   When suppressing null values of type date (D), setting 
+   entirex.marshal.date=null resulted in an error.
+   Also, when suppressing null values of numeric/decimal type (I1, 
+   I2, I4, N, P) using the suppression mode "Suppress null elements 
+   and trim array cells at end containing null elements and zero 
+   numbers", zeros in structures/groups or as simple elements were 
+   not suppressed.
+   These issues are now resolved.
+
+
+- EXX-14268 XAI_10.9_Fix1:
+   The CVM mapping is unable to resolve the correct client program 
+   name resulting in an empty program name. This may cause invalid 
+   RPC call results.
+   This issue is now resolved.
+
+
+
+
+
+
+8.0   Installation
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or Update Manager to install 
+fixes on one machine at a time. For instructions, see the documentation at
+https://docs.webmethods.io/.
+
+
+
+9.0   Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Command Central (9.7 or later) or Update Manager. 
+For instructions, see the documentation at
+https://docs.webmethods.io/.
+
+
+
+10.0  Copyright
+
+Copyright IBM Corp. 2024, 2025
+
+
+

@@ -1,0 +1,517 @@
+                       webMethods Monitor 10.5 Fix 11 readme
+
+                                      September 2021
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Monitor 10.5 Fix 11 (WmMonitor package update)
+
+
+
+2.0 Fix ID
+
+MON_10.5_Fix11
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Monitor 10.5.
+
+
+
+4.0 Requirements and Dependencies
+
+Optimize 10.5 Fix 12 or higher is required. Optimize fixes contain updates to shared components, 
+used by both Monitor and Optimize products, so Optimize optimizeSharedLib 10.5.0 Fix 12 should be installed even if 
+Optimize is not present on the machine.
+
+It is also recommended to update to the latest fix level for related BPM products
+such as Designer, Process Engine, Optimize and ESB, and Business Console.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product 
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods Monitor.
+
+
+
+6.0 Cautions and Warnings
+
+1. For RGHWPE-4389 PostgreSQL database support for Monitor.
+Set Default archiving parameter in the OPERATION_PARAMETER table: 
+        PostgreSQL: Process Audit Log schema name
+
+2. BPM Archival for PostgreSQL database only supports multiple schemas with single db only.
+For E.g:
+
+CREATE DATABASE bpmarchive(db name);
+ \c bpmarchive;(connect to database)
+
+CREATE SCHEMA processbpm(process schema name);
+SET search_path TO processbpm;
+
+-- create user now --
+CREATE USER processbpmuser (process schema user);
+ALTER USER processbpmuser WITH ENCRYPTED PASSWORD 'manage';
+ALTER USER processbpmuser SET search_path = processbpm;
+
+--grant permissions --
+GRANT CONNECT ON DATABASE bpmarchive TO processbpmuser;
+GRANT USAGE, CREATE ON SCHEMA processbpm TO processbpmuser;
+GRANT ALL ON SCHEMA processbpm TO processbpmuser;
+--below grants are needed to make sure if user creates new objects in future , grants are 
+available for them too
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON TABLES TO processbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON SEQUENCES TO processbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON FUNCTIONS TO processbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON TYPES TO processbpmuser;
+
+--create archive schema now --
+CREATE SCHEMA archiveprocessbpm(archive schema name);
+SET search_path TO archiveprocessbpm;
+
+-- create user now --
+CREATE USER archiveprocessbpmuser(archive schema user) ;
+ALTER USER archiveprocessbpmuser WITH ENCRYPTED PASSWORD 'manage';
+ALTER USER archiveprocessbpmuser SET search_path = archiveprocessbpm;
+
+--grant permissions --
+GRANT CONNECT ON DATAB		ASE bpmarchive TO archiveprocessbpmuser;
+GRANT USAGE, CREATE ON SCHEMA archiveprocessbpm TO archiveprocessbpmuser;
+GRANT USAGE, CREATE ON SCHEMA processbpm TO archiveprocessbpmuser;
+GRANT ALL ON SCHEMA archiveprocessbpm TO archiveprocessbpmuser;
+GRANT ALL ON SCHEMA processbpm TO archiveprocessbpmuser;
+
+--below grants are needed to make sure if user creates new objects in future , grants are 
+available for them too --
+ALTER DEFAULT PRIVILEGES IN SCHEMA archiveprocessbpm GRANT ALL ON TABLES TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA archiveprocessbpm GRANT ALL ON SEQUENCES TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA archiveprocessbpm GRANT ALL ON FUNCTIONS TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA archiveprocessbpm GRANT ALL ON TYPES TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON TABLES TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON SEQUENCES TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON FUNCTIONS TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON TYPES TO archiveprocessbpmuser;
+GRANT ALL ON ALL TABLES IN SCHEMA processbpm TO archiveprocessbpmuser;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA processbpm TO archiveprocessbpmuser;
+GRANT ALL ON ALL FUNCTIONS IN SCHEMA processbpm TO archiveprocessbpmuser;
+
+
+
+7.0 Fix Contents
+
+WMN-7732
+When webMethods Monitor is configured to use a MySQL 5 database, a MySQLSyntaxErrorException exception is thrown when you open Business Console.
+
+The issue is resolved.
+
+WMN-7841
+With webMethods Monitor, resubmitting one or more process instances from the process list might fail with an error. This issue occurs when executing the "Resubmit Closest" or "Rebsubmit Earliest" actions.
+
+The issue is resolved.
+
+WMN-7845
+With webMethods Monitor, the getStepDetails service returns the input pipeline regardless of the status specified in the service inputs. In addition, the audit timestamp returned by the getStepDetails service is incorrect for the requested status.
+
+The issue is resolved. The optional input parameter stepInputPipeline has been added to the getStepDetails service.
+
+New parameter reference:
+  stepInputPipeline
+
+Valid values are:
+  false - When stepInputPipeline is set to false, all data returned by the getStepDetails service is
+  specific to the requested status.
+  true - Default value for stepInputPipeline. When stepInputPipeline is set to true, the
+  getStepDetails service returns the input pipeline with the correct audit timestamp.
+
+WMN-7846
+With webMethods Monitor, the getInstanceListWithFilter service fails when the logged field contains "and" in the name.
+
+The issue is resolved
+
+WMN-7668
+With WebMethod Monitor, performance of the pub.monitor.process.instance:getPagedInstanceList
+service needs to be improved.
+
+The issue is resolved. A new parameter, isExactMatch, is added to imrove the service performance.
+
+New parameter reference:
+isExactMatch
+This parameter is used to specify whether the query uses UPPER and LIKE function for instance ID.
+Valid values are:
+- true - the query will not use UPPER and LIKE function for instanceID.
+Complete instanceID needs to be provided for the query to function properly.
+- false (default) - the query uses UPPER and LIKE function for instanceID.
+
+WMN-7679
+With webMethods Monitor, the pipeline might not be visualized properly.
+
+Pipeline documents that contain tables or two dimensional arrays fail to render properly in the Edit Pipeline view. When this issue occurs an ArrayIndexOutOfBoundsException can be found in the server log.
+
+This issue is resolved.
+
+WMN-7699
+With WebMethods Monitor, the getInstanceSteps service is not able to retrieve information
+about all steps that are executed within a process instance.
+
+This issue is resolved.
+
+WMN-7754
+With webMethods Monitor, search query performance needs to be improved.
+
+The issue is resolved. To improve search query performance on a MySQL database configured in Integration Server, the wm.monitor.useExactMatch parameter is added to the monitor.cnf configuration file.
+
+New parameter reference:
+  useExactMatch
+
+  This parameter allows you to control whether a search by keyword query performed from the
+  Process Instance Detail page will use the UPPER and LIKE functions for instanceID and
+  parentinstanceID.
+
+Valid values are:
+  false - Default value for useExactMatch. The search query will use the UPPER and LIKE
+  functions for instanceID and parentinstanceID.
+  true - If you set useExactMatch to True, the search query will not use the UPPER and LIKE
+  functions for instanceID and parentinstanceID. The search query will return only those results
+  which exactly match your search term.
+
+WMN-7589
+With WebMethods Monitor, not all steps are displayed in the step summary portlet and a wrong
+image is displayed when inspecting the details of a process instance on the user interface.
+
+The issue is resolved.  
+
+WMN-7701(MON_10.5_Fix10)
+With WebMethod Monitor, the pub.monitor.process.instance:getInstanceListWithFilter service 
+does not return all process instances because of a time zone issue.
+
+This issue is resolved.
+
+WMN-7705(MON_10.5_Fix10)
+With webMethods Monitor, the wm.monitor.jdbcArchive=true property is still present in the
+monitor.cnf file.
+
+The issue is resolved. The wm.monitor.jdbcArchive=true property is now removed.
+
+WMN-7617(MON_10.5_Fix10)
+With webMethods Monitor, the My webMethods Server user interface does not
+show activity messages on steps that are inside a sub-process.
+
+The issue is resolved.
+
+WMN-7563(MON_10.5_Fix9)
+With webMethods Monitor, a NumberFormatException occurs with PostgreSQL 10.14 in the Business Console Page.
+
+The issue is resolved.
+
+WMN-7596(MON_10.5_Fix9)
+With webMethods Monitor, the settings of some watt.server.http properties may be violated.
+
+The issue is resolved.
+
+WMN-7503(MON_10.5_Fix9)
+With webMethods Monitor, the pub.monitor.process.instance services signature/field name have differences
+after migration from versions 9.7 and 10.5.
+
+This issue is resolved.
+
+WMN-7588(MON_10.5_Fix8)
+webMethods Monitor fails to fall back to local alias during resubmission.
+
+Resubmitting a service instance fails when there is no appropriate remote server alias
+defined or the remote Integration Server is not available. The expected behavior is that
+the service resubmission would be performed on the local Integration Server.
+
+The issue is resolved.
+
+
+WMN-7337(MON_10.5_Fix8)
+The document search in Monitor can cause Integration Server to exceed its allocated memory.
+
+webMethods Monitor allows unconstrained document queries when the "No maximum" option is selected in the
+search options. If the range isn't constrained or there is a large number of documents, this can cause an 
+out of memory error in Integration Server.
+
+This issue is resolved.
+
+WMN-7177(MON_10.5_Fix8)
+With webMethods Monitor, an error might occur during the archiving of audit data
+when the Japanese language pack is installed and the preferred language is set to Japanese.
+
+The issue is resolved.
+
+WMN-7429(MON_10.5_Fix7)
+webMethods Monitor doesn't display fields with null values on edit pipeline page
+
+When viewing the pipeline some or all of the document fields will fail to render if the fields contain null values.
+
+This issue has been resolved.
+
+WMN-7476(MON_10.5_Fix6)
+Restarting IS in the cluster may result in an increased number of scheduled tasks for wm.monitor.admin:imageclean service.
+Note: The many times created services for: wm.monitor.admin:imageClean need to be removed manually.
+
+This issue should now be resolved.
+
+
+WMN-7464(MON_10.5_Fix5)
+The Process Instance Advanced search for process instances keyword with process instance select does not work properly.
+
+The issue is resolved.
+
+
+WMN-7347(MON_10.5_Fix5)
+The Process Instance Advanced search for Failed status might not work properly.
+
+This issue is resolved.
+
+
+WMN-7323(MON_10.5_Fix4)
+webMethods Monitor displays a misleading status on resubmit.
+
+When resubmitting a process with no steps enabled for resubmission, Monitor returns a 
+successful status for the operation with no indication that the process could not be resubmitted.
+A message is written to the log, but it is only visible when the log level is set to debug.
+
+The issue is resolved.
+
+WMN-7185(MON_10.5_Fix4)
+With webMethods Monitor, services might be slower when fetching data.
+
+The SQL query used to fetch processes for the
+pub.monitor.process.instance:getInstanceList service might take a long time.
+The issue is resolved. The Process Audit database component should be migrated
+to latest.
+
+WMN-7387(MON_10.5_Fix3)
+In webMethods Monitor, the archiving services are enhanced to support the MySQL 8.0 database.
+
+
+WMN-7390(MON_10.5_Fix3)
+webMethods Monitor now supports document archiving for the PostgreSQL 10.11 database.
+
+
+WMN-7400(MON_10.5_Fix3)
+With webMethods Monitor ,executing the pub.monitor.process.instance:getInstanceListCustomDataSet 
+service with customTable provided does not return any data.
+
+
+WMN-7231(MON_10.5_Fix3)
+The Process Instance Details page in My webMethods loads the details for a process instance with a 
+number of subprocesses very slowly.
+
+
+WMN-7238(MON_10.5_Fix2)
+Monitor UI may display a success message erroneously.
+
+If a process instances is in a started state, but the runtime data is missing 
+through some error, it cannot be cancelled. If MWS Monitor UI is used to stop 
+the process instance a misleading success message is shown in the UI.
+
+The issue is resolved.
+
+
+WMN-7186(MON_10.5_Fix2)
+The Process Instance search version filter does not work properly.
+
+The issue is resolved.
+
+
+WMN-7341(MON_10.5_Fix2)
+With webMethods Monitor, the query limit might be out of range.
+
+The Monitor service query sets an out of range limit under MySQL, which results in an SQL exception.
+
+This issue is resolved.
+
+
+WMN-7240(MON_10.5_Fix2)
+With webMethods Monitor, incorrect search results are displayed when using DLS and max results.
+
+In the Service Monitoring UI, the application of the "max rows" setting can affect the visibility 
+of data when DLS is enabled.
+
+The issue is resolved.
+
+
+WMN-7331(MON_10.5_Fix2)
+[Upgrade] Process Instances Advanced search fails in MWS.
+
+This issue is resolved.
+
+
+RGHWPE-4383(MON_10.5_Fix1)
+When archiving with webMethods Monitor, you can now configure the process
+archive procedure to retain the relationship between parent and child process instances.
+
+To archive a process and keep the parent/child relationship between its instances:
+1/ Enable the "db2set DB2_COMPATIBILITY_VECTOR=08" property on your DB2 instance and
+then restart the instance.
+2/ Set the "RETAIN_PARENT_CHILD_LINK" parameter of the pub.monitor.archive:setOperationParameters
+build-in service to "Y". In this case, Monitor applies the values of the
+PROCESS_STATUS_CRITERIA and PROCESS_DAYS_TO_RETAIN parameters to the parent and
+child instances and archives the parent with its child instances only when all instances meet the 
+specified values.
+
+Usage Notes:
+- When the "RETAIN_PARENT_CHILD_LINK" parameter is set to "Y", you cannot use model Id as a criteria
+to determine when to archive the process instances.
+- When the "RETAIN_PARENT_CHILD_LINK" parameter is set to "N", the process is archived or deleted
+without retaining the relationship between parent and child process instances.
+- You can keep the relationship between parent and child process instances when archiving only when
+using the DB2 database.
+
+
+RGHWPE-4389(MON_10.5_Fix1)
+PostgreSQL database support is added for Monitor.
+
+The PostgreSQL DB configuration details for BPM ARCHIVE are described in 6.0 "Cautions and Warnings"
+
+
+WMN-6070(MON_10.5_Fix1)
+The pub.monitor.integrationProcessLogging:createStepInstance service may result in audit errors 
+and step info, and it may not get added to pra_process_step table.
+
+The issue is resolved.
+
+
+WMN-6810(MON_10.5_Fix1)
+It may not be possible to log error messages to the error table for integration 
+processes using the pub.monitor.integrationProcessLogging:createProcessError service.
+
+The issue is resolved.
+
+
+WMN-6958(MON_10.5_Fix1)
+Error "Error querying steps: java.lang.NullPointerException" might be logged in the 
+error log while viewing certain nested subprocess process instances.
+
+The issue is resolved.
+
+
+WMN-7018(MON_10.5_Fix1)
+The pub.monitor.process.instance:getInstanceList service might return incorrect results when 
+using date range in certain timezones.
+
+The issue is resolved.
+
+
+WMN-7090(MON_10.5_Fix1)
+Process Archive service returns improper result message.
+
+The pub.monitor.archive:processArchive service returns a successful message
+even when an error occurs during archiving.
+
+The issue is resolved.
+
+
+WMN-7141(MON_10.5_Fix1)
+With webMethods Monitor, the pipeline might not be visualized properly.
+
+Complex documents that contain mutiple records or values of the same name fail to render properly 
+in the Edit Pipeline view.
+
+This issue is now resolved. Complex documents that contain mutiple records or values of the same 
+name are now rendered as array types and are displayed properly in the user interface.
+
+
+WMN-7158(MON_10.5_Fix1)
+The pub.monitor.process.instance:getInstanceCustomData service throws "Maximum cursor 
+exceeded" error when it has to loop and process huge number of process instance.
+
+The problem occurs, because each processing prepared statement object was 
+constructed but was not getting closed.
+
+The issue is resolved.
+
+
+WMN-6832(MON_10.5_Fix1)
+Some process images may appear blank in Monitor after migration.
+
+This issue should now be resolved. Browser cache may need to be cleared after installing fix for 
+the new diagram portlet to load.
+
+
+WMN-7167(MON_10.5_Fix1)
+getInstanceCustomData returns values with wrong encoding, starting with MON_10.1_Fix7.
+
+The issue is resolved.
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central  location (9.7 or later 
+products), or Software AG Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Command Central (9.7 or later) or Software AG Update Manager. For instructions, see 
+the documentation at http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was not tested with non-English configurations and non-ASCII data. However, this 
+fix has no globalization impact and can be applied to systems running in any supported locale or 
+configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2021 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, and/or 
+its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or registered trademarks of 
+Software AG and/or Software AG USA Inc. and/or its subsidiaries and/or its affiliates and/or their licensors. 
+Other company and product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries is located at 
+http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party copyright notices, license terms, 
+additional rights or restrictions, please refer to 
+"License Texts, Copyright Notices and Disclaimers of Third Party Products". For certain specific third-party 
+license restrictions, please refer to section E of the Legal Notices available under 
+"License Terms and Conditions for Use of Software AG Products / Copyright and Trademark Notices of 
+Software AG Products". These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the licensed product(s). 

@@ -1,0 +1,309 @@
+		Software AG Command Central 10.15 Fix 10 readme
+
+                                        August 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Software AG Command Central 10.15 Fix 10
+
+
+2.0 Fix ID
+
+CCE_10.15_Core_Fix10
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Software AG Command Central 10.15.
+
+
+
+4.0 Requirements and Dependencies
+
+Software AG Command Central Plug-in to Platform Manager 10.15 Fix 10
+Software AG Platform Manager Shared 10.15 Fix 10
+
+
+5.0 Platform Support
+
+The fix is supported on all platforms supported by 
+Software AG Command Central 10.15.
+
+
+
+6.0 Cautions and Warnings
+
+On a Windows operating system, if you uninstall Fix 6 or higher to downgrade to Fix 5 or higher, you must re-register the Command Central Windows service before starting it. 
+For more information, see section 9.0 Uninstallation. 
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+CCE-9359 (CCE_10.15_Core_Fix10)
+Command Central might take a long time to validate a composite template.
+
+The issue is resolved. To improve performance, Command Central reduces the number
+of SSH connection requests during the validation process.
+
+
+CCE-9290 (CCE_10.15_Core_Fix9)
+Command Central might time out and fail to validate, apply, or create a layer definition if you use a
+large template.
+
+This issue is resolved.
+
+
+CCE-9286 (CCE_10.15_Core_Fix9)
+When you update a configuration from the Command Central web user interface, Platform Manager
+removes properties from the custom_wrapper.conf file that it incorrectly detects as duplicate.
+The issue occurs when the custom_wrapper.conf file includes multiple properties with the same
+Java option.
+
+The issue is resolved. You can now configure Platform Manager to retain Java options,
+such as "--add-opens", even if they appear multiple times in the configuration file. Use the new
+"com.softwareag.platform.management.configuration.wrapper.allow.duplicates.for" Java system property
+to specify a comma-separated list of options. Default is "--add-opens".
+
+
+CCE-9111 (CCE_10.15_Core_Fix9)
+Opening a License key in Command Central that has empty Metering data might result in LicenseKeyNotFoundException.
+The issue is resolved. License files are loaded and opened successfully.
+
+
+CCE-9143 (CCE_10.15_Core_Fix9)
+When applying new fixes to an existing Command Central installation, the cc.properties file located 
+at <UserDir>\.sag\cc.properties is overwritten by the default version of the file.
+
+This issue is resolved. Installing fixes no longer overwrites existing cc.properties files.
+
+
+CCE-9054 (CCE_10.15_Core_Fix9)
+Мigrating Command Central to version 10.15 fails if Command Central is configured to use an LDAP server and the configuration contains a path to a JKS truststore.
+
+The issue is now resolved.
+
+
+CCE-8461 (CCE_10.15_Core_Fix6)
+When you export an instance which contains a database component with a null 
+tablespace, Command Central generates a template which excludes all database 
+components which have valid tablespace names.
+
+The issue is resolved.
+
+
+CCE-8357 (CCE_10.15_Core_Fix6)
+Software AG Command Central uses version 2.9.2 of the Apache Mina SSHD library 
+which has known security vulnerabilities.
+
+The issue is resolved. Command Central now uses the stable version 2.10.0 of 
+Apache Mina SSHD.
+
+
+SPM-5609 (CCE_10.15_Core_Fix5)
+Software AG Command Central now uses version 3.5.53 of the Java Service Wrapper. 
+Uninstalling this fix reverts the Tanuki wrapper version to 3.5.50.
+
+
+CCE-8406 (CCE_10.15_Core_Fix5)
+In the Command Central web user interface, when you click Refresh on the Proxy 
+Configuration page of an Integration Server instance, Command Central does not 
+display proxy servers which you have recently created from the Integration Server 
+Administrator interface.
+
+The issue is resolved.
+
+
+CCE-8353 (CCE_10.15_Core_Fix5)
+Software AG Command Central uses an outdated version of the
+third party component Apache Xmlgraphics batik, which has known security vulnerabilities.
+
+The issue is resolved. The Apache Xmlgraphics batik jar is migrated to the stable version 1.17. 
+
+
+CCE-8308 (CCE_10.15_Core_Fix5)
+Attempting to add an infrastructure layer in a stack using an exported Platform Manager 
+template fails with an error. The issue occurs because the "nodes" parameter is missing 
+in the exported template.
+
+The issue is resolved. The "nodes" parameter is now included in the exported Platform Manager 
+template and you can use the template to add an infrastructure layer. 
+
+
+CCE-8313 (CCE_10.15_Core_Fix4)
+Command Central might fail to connect to Platform Manager over an HTTPS connection. 
+The issue occurs because of a defect in the JDK that Command Central uses.
+The issue is resolved. Now Command Central is updated with the workaround 
+described in the JDK-8160347 issue.
+
+
+CCE-8292 (CCE_10.15_Core_Fix4)
+When bootstrapping Platform Manager on a remote machine that has an SSH server, 
+the operation fails because the SSH connection timeout is exceeded.
+
+The issue is resolved. The default SSH connection timeout value is now increased 
+to 10 seconds. Furthermore, you can now configure custom timeout values for the 
+SSH connection and the shell commands executed on the remote SSH machine 
+(during the remote bootstrap) by setting the following Java system properties:
+
+com.softwareag.platform.management.client.remoteaccess.ssh.connection.timeout.seconds
+Configure for OSGI-CCE. The time interval in seconds, for which Command Central waits when
+connecting to a remote SSH server before the job fails.
+Default: 10
+
+com.softwareag.platform.management.client.remoteaccess.shellcommand.timeout.seconds
+Configure for OSGI-CCE. The time interval in seconds, for which Command Central waits when
+executing shell commands while bootstrapping on a remote SSH server before the job fails.
+Default: 60 
+
+
+CCE-8257 (CCE_10.15_Core_Fix4)
+The contents of the installation report that can be generated through the 
+Licensing > Reports tab on the Command Central web user interface are updated as 
+follows: The report now includes the license key expiration date and status (valid, 
+invalid, expired, or expiring within 30 days) for product instances that require a license.
+The report no longer includes the maximum heap size because this information is not 
+relevant to licensing.
+
+
+CCE-8077 (CCE_10.15_Core_Fix3)
+Software AG Command Central uses an outdated version of the third party component 
+Apache Batik, which has known security vulnerabilities. 
+
+The issue is resolved. The Apache Batik jars are migrated to the stable version 1.16.0. 
+
+
+CCE-8068 (CCE_10.15_Core_Fix3)
+Command Central uses the third party Apache Mina SSHD library, which has known security 
+vulnerabilities.
+
+This issue is resolved. Command Central now uses the stable version Apache Mina SSHD 2.9.2. 
+
+
+CCE-8064 (CCE_10.15_Core_Fix3)
+Command Central uses an outdated version of the third party component Apache XmlGraphics 
+Commons, which has known security vulnerabilities. 
+
+The issue is resolved. The Apache XmlGraphics Commons jar is migrated to the stable 
+version 2.8.0. 
+
+
+CCE-8054 (CCE_10.15_Core_Fix3)
+The Command Central logs contain exception errors, related to failed requests 
+for opening URLs. The issue occurs because Command Central provides incorrect 
+URLs after refreshing configuration data.
+
+The issue is resolved. Command Central logs no longer contain exception errors 
+due to incorrect URLs. 
+
+
+CCE-7830 (CCE_10.15_Core_Fix3)
+When you install Platform Manager on the local machine using the "sag-spm-boot-local" 
+template either through the Stacks view of the Command Central web user interface, 
+or through the Command Central CLI, the installation is successful but a null pointer 
+exception error is logged in the Command Central default.log.
+
+The issue is resolved. 
+
+
+CCE-7971 (CCE_10.15_Core_Fix2)
+Upgrading Command Central to version 10.15 fails if the source Command
+Central has been modified to use the Entrust encryption.
+
+The issue is resolved. You can now upgrade a source Command Central that 
+uses the Entrust encryption to version 10.15. The required libraries for 
+the Entrust encryption are now added to the migration framework in Command Central.
+
+
+CCE-7805 (CCE_10.15_Core_Fix2)
+Running an installation with Command Central templates takes a long time in
+large environments.
+
+The issue occurs in large environments because the handle of runtimes status
+for previous layers is done for every node from the previous layer.
+
+The issue is resolved. The handle of runtimes status for previous layers is now
+done only for nodes that are part of the current layer.
+
+
+CCE-7558 (CCE_10.15_Core_Fix2)
+With Command Central, uninstalling fixes might fail when more than one
+version of the same fix has been installed.
+
+The issue occurs when the fixes that are being uninstalled are passed as artifact
+names containing only Fix ID and Platform Manager is restarted during the operation.
+
+The issue is resolved. The fix deprovision job now runs successfully.
+
+
+CCE-7822 (CCE_10.15_Core_Fix1)
+In the Command Central web user interface, when creating a new layer in a stack and 
+you switch to the credentials properties, the create layer operation fails. The new product 
+instance with the selected properties is added in the Installations > Instances, but the 
+corresponding layer is not created in the stack. 
+
+Тhe issue is now resolved.
+
+
+CCE-7829 (CCE_10.15_Core_Fix1)
+With Command Central, bootstrapping a remote Platform Manager with invalid SSH 
+connectivity credentials results in a misleading error message.
+
+The issue is resolved. The error message now states that the authentication 
+to the remote host is unsuccessful.
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a central location (9.7 or later), 
+or IBM webMethods Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at https://www.ibm.com/docs/en/products.
+
+
+
+9.0 Uninstallation
+
+If you are running Command Central on a Windows operating system, and you uninstall Fix 6 or higher to downgrade to Fix 5 or higher, Command Central might fail to start. 
+The issue occurs because the Tanuki Java Service Wrapper reverts from version 3.5.53 to version 3.5.50. 
+Fix 5 or higher of Command Central reference should reference the newer version of the wrapper, while Fix 4 and lower should reference reference the older version.
+Re-registering the Command Central Windows service ensures that Command Central references the correct version of the Tanuki wrapper.
+To re-register the Command Central Windows service:
+1.Open a command prompt, navigate to the [Software AG_directory]\profiles\CCE\bin directory and run the following command to remove the Command Central service:
+service.bat -remove
+3.Run the following command to register the Windows service for Command Central:
+service.bat -install
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+
+Uninstall using IBM webMethods Command Central (9.7 or later) or IBM webMethods Update Manager. For instructions, see 
+the documentation at https://www.ibm.com/docs/en/products.
+
+
+10.0 Copyright
+
+Copyright IBM Corporation 2025

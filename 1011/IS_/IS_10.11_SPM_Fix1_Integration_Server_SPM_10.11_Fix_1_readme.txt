@@ -1,0 +1,220 @@
+                    webMethods Integration Server 10.11 SPM Fix 1 readme
+
+                                   January 2023 
+                                                   
+____________________________________________________________________________________________________
+
+Contents:
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Integration Server 10.11 SPM Fix 1.
+
+
+
+2.0 Fix ID
+
+IS_10.11_SPM_Fix1
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Integration Server 10.11.
+
+
+
+4.0 Requirements and Dependencies
+
+IS_10.11_Core_Fix7
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product 
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+webMethods Integration Server 10.11 SPM Fix 1 is supported on the 
+same platforms and operating systems and with the same JREs as webMethods 
+Integration Server 10.11.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+PIE-68030
+Updates to packages deployed on a cloud environment are not visible. 
+
+When packages and configuration assets for an existing solution are deployed to 
+a cloud environment through Designer, the changes are not displayed in the 
+cloud environment as the deployment fails intermittently. However, Designer 
+does not display the status of the deployment, which is misleading. 
+
+This issue is now resolved by including additional deployment logs to explain 
+the cause.
+
+PIE-71790
+Changes to the Command Central for setting the password when creating a new
+instance. 
+
+The screen for creating a new Integration Server instance via Command Central
+has the following changes: 
+
+- The value for the Password for Administrator user field is now masked.
+- The option to require the user to change the Administrator password on initial
+log in now displays the list of possible values Yes and No. Previously, this
+field was a check box and the result of selecting/clearing the check box was not
+obvious. 
+- The tool tip messages for the fields now indicate the correct default values.
+
+PIE-72589
+When Platform Manager and Integration Server run together, executing the 
+command to stop Integration Server terminates Platform Manager instead. 
+
+When Platform Manager is started as a Windows application using start-up 
+scripts, executing the command on the Command Central CLI to stop Integration 
+Server terminates Platform Manager instead of Integration Server, which 
+continues to run despite executing the stop command. However, this issue does 
+not occur when Platform Manager runs as a Windows service. 
+
+The issue is resolved now.
+
+PIE-75029
+Adding or updating MWS roles to an Integration Server ACL through Command
+Central 
+results in an exception.
+
+Adding or updating the "Allowed" or "Denied" list of an ACL with MWS roles
+through the Command Central user interface or the CLI results in the
+"Allow or Deny Group names are not valid." exception.
+
+This issue is now resolved.
+
+PIE-75462
+Command Central cannot connect to the IP address configured in the 
+"watt.server.inetaddress" parameter in Integration Server. 
+
+In Integration Server Administrator, when the watt.server.inetaddress is set to 
+an IP address on which Integration Server listens to incoming requests, the 
+server is not visible on Command Central. 
+
+This issue is now resolved. 
+
+PIE-77197
+Migration log is not visible on the Command Central Jobs page.
+
+This issue is now resolved.
+
+PIE-77316
+When the Command Central web interface is used to create an Integration 
+Server instance, no properties are displayed on the user interface.
+
+This issue is resolved now.
+
+PIE-77625
+In Command Central, clicking the Overview or Configuration tab for the Monitor 
+component in "Home > Instances > ALL > [instance_name] > Monitor" incorrectly 
+throws the "Unexpected component status" although the Monitor component is 
+online. 
+
+This issue is now resolved.
+
+PIE-79972
+
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+
+
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. 
+This action will revert your installation to the previously installed fix.
+You cannot use these instructions to uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, 
+or language as specified in the webMethods Installation Guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix 
+has no globalization impact and can be applied to systems running in any 
+supported locale or configuration.
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages 
+and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright @ 2023  Software AG, Darmstadt, Germany and/or Software AG USA  Inc.,
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their 
+licensors.
+
+The name Software AG and all Software AG product names are either trademarks 
+or registered trademarks of Software AG and/or Software AG USA Inc. and/or 
+its subsidiaries and/or its affiliates and/or their licensors. Other company 
+and product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its 
+subsidiaries is located at http://softwareag.com/licenses.
+
+Use of this software is subject to adherence to Software AG's licensing 
+conditions and terms. These terms are part of the product documentation, 
+located at http://documentation.softwareag.com/legal/ and/or in the root
+installation directory of the licensed product(s).
+
+This software may include portions of third-party products. For third-party 
+copyright notices, license terms, additional rights or restrictions, please 
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party 
+Products". For certain specific third-party license restrictions, please 
+refer to section E of the Legal Notices available under "License Terms
+and Conditions for Use of Software AG Products / Copyright and Trademark 
+Notices of Software AG Products". These documents are part of the product 
+documentation, located at http://softwareag.com/licenses and/or in the 
+root installation directory of the licensed product(s).

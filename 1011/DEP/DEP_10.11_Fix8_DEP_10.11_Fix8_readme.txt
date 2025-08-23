@@ -1,0 +1,301 @@
+      webMethods Deployer 10.1 Fix 2 readme
+
+                    June 2018   
+
+_________________________________________________________________
+
+This file provides important information for applying
+DEP_10.1_Fix2 to webMethods Deployer 10.1.
+For additional information about webMethods Deployer
+10.1, see the readme file in the _documentation directory of
+your Software AG installation (if installed) or on the Empower
+Web site at https://empower.softwareag.com.
+
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Fix Requirements
+5.0   Fix Contents
+6.0   Platform Support
+7.0   Cautions and Warnings
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+webMethods Deployer 10.1 Fix 2
+
+
+
+2.0   Fix ID
+
+DEP_10.1_Fix2
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Deployer 10.1.
+
+
+
+4.0 Fix Requirements
+
+For language pack requirements, see the Globalization section
+of the Software AG Empower Product Support Web site. The
+Globalization section can be found at:
+
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Fix Contents
+
+WDY-5385
+
+Deployer shows inconsistent dependencies while deploying to a
+target group.
+
+This issue is resolved. Now all dependencies are shown as
+unresolved in the target group as Deployer gets the data from
+the cache, and does not update the cache until the target group
+or deployment map is deleted.
+
+WDY-5448
+
+Missing node.ndf in the selected Web Service Descriptor component 
+causes a NullPointerException during Web Service Descriptor 
+deployment. This issue occurs because Deployer does not select 
+the .ndf file for the Web Service Descriptor when selecting the 
+components in runtime based deployment, and when the Integration 
+Server locale is set to a non-English language (for example, 
+Japanese).
+
+This issue is resolved. 
+
+WDY-5455
+
+When rolling back a BPM process during runtime based deployment, 
+incorrect version information of the process is sent by Deployer 
+to the target servers leading to a rollback failure.
+
+This issue is now resolved.
+
+WDY-5362
+
+When a Deployer project that contains Java services is
+created with Project Automator, the Java shared code is not
+included in the build.
+
+This issue is resolved. You can now include or exclude the Java
+shared code for selected Java services. In the exported XML
+file, add the new attribute "selectAllFiles" for the
+"JavaService" element to include or exclude the Java
+shared code as shown in following example:
+<JavaService name="testDeployPkg.javaSvc:javaSvc" package=
+"testDeployPkg" srcAlias="ISSource" selectAllFiles="true"/>
+Set "selectAllFiles" to "true" to include the Java shared code.
+The default value is "false". 
+
+WDY-5204 (DEP_10.1_Fix1)
+
+Deployment fails after applying v9.12 Fix 1.
+
+After applying Fix 1, variable substitution values could
+not be imported and deployment fails. This is because the
+XML tag "DeploementSet" in the varsub file was changed to
+"DeploymentSet".
+
+This issue is resolved. Now both "DeploementSet" and
+"DeploymentSet" are supported in the varsub file. 
+
+WDY-5301 (DEP_10.1_Fix1)
+
+Deployer displays the following error message for some assets
+in a repository-based deployment scenario: "Comparison method
+violates its general contract!".
+
+While creating the Checkpoint for some assets in a
+repository-based deployment scenario, or when transactional
+deployment is enabled, Deployer displays the "Comparison
+method violates its general contract!" error message.
+
+This issue is resolved. 
+
+WDY-5313 (DEP_10.1_Fix1)
+
+In a repository-based deployment scenario, Deployer fails to
+enable Integration Server ports due to incorrect deployment
+sequence of isconfiguration.
+This issue is resolved. Deployer now deploys IS configuration
+assets after packages are deployed. 
+
+WDY-5342 (DEP_10.1_Fix1)
+
+Compilation fails if a package contains Java deprecated APIs.
+Compilation fails if you select the "Compile Java Services"
+option in the "Packages" area on the "Settings" page, and
+the services contain deprecated APIs.
+This issue is resolved. Deployment is now successful
+without any errors. 
+
+WDY-5391 (DEP_10.1_Fix1)
+
+When using webMethods Deployer, deployment of adapter connection 
+to a target Integration Server fails and the Deployer displays 
+the following error: "The target server is Integration Server, 
+which does not support this feature.” This issue occurs only when 
+variable substitution is performed on adapter connection.
+
+This issue is now resolved. 
+
+WDY-5392 (DEP_10.1_Fix1)
+
+webMethods Deployer does not list the available ACLs and the 
+options available for "Select Authorization" when authorizing a 
+project.
+
+This issue is now resolved. 
+
+WDY-5200 (DEP_10.1_Fix1)
+
+Variable substitutions cannot be performed with empty values.
+ 
+While importing variable substitutions with properties that
+have empty values, Deployer ignores the empty values and
+takes the original or default values.
+
+This issue is resolved. A new property "allowEmptyValues" has
+been added as a part of the variable substitution schema.
+The default value is "false". If you set "allowEmptyValues"
+to "true" in the variable substitution file (.vs), and if an
+empty value is present for any property, then Deployer
+maintains the empty value for that property. You can also
+achieve this from the user interface by enabling the
+"Allow Empty Values" option in the "Target Substitutions
+and Source Values" pane. 
+
+WDY-5058 (DEP_10.1_Fix1)
+
+Dependency resolution is not working properly in runtime-based
+deletion sets.
+
+When entire Integration Server packages are selected for
+deletion in runtime-based projects and if there are
+referenced assets in the packages, the "Remove" option does
+not remove the selected assets from the packages.
+
+This issue is resolved. 
+
+6.0 Platform Support
+
+webMethods Deployer 10.1 Fix 2 is supported on
+the same platforms and operating systems and with the same JREs
+as webMethods Deployer 10.1.
+
+
+
+7.0 Cautions and Warnings
+
+None.
+
+
+
+8.0 Installation
+
+Install the fix using the Software AG Update Manager.
+For instructions on using Update Manager, see 'Using the Software 
+AG Update Manager,' available at http://documentation.softwareag.com.
+
+1.After applying DEP_10.1_Fix1 or a later fix, which comes 
+after DEP_10.1_Fix1, you must recreate the indexes of 
+repository aliases created earlier.
+
+9.0 Uninstallation
+
+Before uninstalling DEP_10.1_Fix2, back up the following 
+directories to a different location:
+<Software AG_directory>\IntegrationServer\packages\WmDeployer\persist
+<Software AG_directory>\IntegrationServer\packages\WmDeployer\pub\projects
+<Software AG_directory>\IntegrationServer\packages\WmDeployer\config
+After installing the new fix, restore the backed up directories to the 
+original location.
+
+Uninstall the fix using the Software AG Update Manager.
+For instructions on using Update Manager, see 'Using the Software 
+AG Update Manager,' available at http://documentation.softwareag.com.
+
+NOTE: This uninstall procedure can only be used to uninstall the
+most recently installed fix. This action will revert your
+installation to the previously installed fix. You cannot apply
+this uninstall procedure to the previously installed fix. 
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the
+webMethods product suite and includes support for operation in
+any country, locale, or language as specified in the Installing
+webMethods Products guide. It was tested with non-English
+configurations and non-ASCII data.
+
+
+10.1 Localization
+
+None.
+
+
+
+11.0 Copyright
+
+Copyright © 2004 - 2016  Software AG, Darmstadt, Germany and/or
+Software AG USA, Inc., Reston, VA, United States of America,
+and/or their licensors.
+
+Detailed information on trademarks and patents owned by
+Software AG and/or its subsidiaries is located at
+http://documentation.softwareag.com/legal/.
+
+Use of this software is subject to adherence to Software AG?s
+licensing conditions and terms. These terms are part of the
+product documentation, located at
+http://documentation.softwareag.com/legal/ and/or in the root
+installation directory of the licensed product(s).
+
+This software may include portions of third-party products.  For
+third-party copyright notices and license terms, please refer to
+"License Texts, Copyright Notices and Disclaimers of Third Party
+Products." This document is part of the product documentation,
+located at http://documentation.softwareag.com/legal/ and/or in
+the root installation directory of the licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG
+Global Support in the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support
+Contact Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to
+access additional articles, demos, and tutorials, technical
+information, samples, useful resources, online discussion forums
+moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

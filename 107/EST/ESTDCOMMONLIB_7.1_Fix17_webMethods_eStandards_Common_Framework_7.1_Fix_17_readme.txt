@@ -1,0 +1,397 @@
+        IBM webMethods eStandards Common Framework 7.1 Fix 17 readme    
+                               
+                          September 2024                             
+_________________________________________________________________
+
+Contents:
+
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+
+
+
+1.0 Fix Name	
+
+IBM webMethods eStandards Common Framework 7.1 Fix 17.
+
+
+
+2.0 Fix ID
+
+ESTDCOMMONLIB_7.1_Fix17
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects IBM webMethods eStandards Common Framework.
+
+
+
+4.0 Requirements and Dependencies
+
+-  IS_7.1.2_Core_Fix27 or higher or IS 7.1.3
+   (required for Rosettanet issue WRN-862, provides
+   MD5 support for RNIF 1.1)
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+
+ECF-475
+In IBM webMethods eStandards Common Framework, the copyright information
+is updated.
+
+This issue is now resolved.
+
+ECF-55 (EstdCommonLib_7.1_Fix16)
+
+Performance degradation observed in processing of the eStandards common
+framework.
+
+This issue is resolved.
+As CachedXPathAPI performs better when compared with XPathAPI,
+CachedXPathAPI is included in IBM webMethods eStandards common framework
+to enhance the performance. 
+
+ECF-38(EstdCommonLib_7.1_Fix15)
+Performance of all IBM webMethods eStandards modules is degraded. 
+This issue occurs because the eStdCommonLib module unnecessarily 
+calls string conversion APIs, even when debugging is disabled.
+
+This issue is resolved. 
+
+ECF-39(EstdCommonLib_7.1_Fix14)
+In Integration Server 9.5, the IBM webMethods eStandards Common
+Framework Fix fails to install.
+
+In webMethods Integration Server 9.5, the IBM webMethods eStandards
+Common Framework Fix EstdCommonLib_7.1_Fix13 fails to install.
+This issue occurs because a missing jar file prevents the
+IBM webMethods eStandards Common Framework
+Fix EstdCommonLib_7.1_Fix13 from installing.
+
+This issue is resolved. 
+
+
+WRN-1187(EstdCommonLib_7.1_Fix13)
+The compareCertificates java service invocation gives wrong result.
+
+compareCertificates java service, part of the estdcommonlib 
+is functioning incorrectly. Hence, the certificate comparisons 
+results in error.
+
+This issue is resolved.
+
+
+WRN-1162(EstdCommonLib_7.1_Fix12)
+Performance of eStandards modules is impacted as WmEstdCommonLib 
+module calls Java’s getStackTrace() method unnecessarily. 
+
+The getStacktrace() method is called by WmEstdCommonLib module,
+even when the log trace is not logged in the serverLog. As a 
+result, the overall performance of eStandards modules is 
+impacted. 
+
+This issue is resolved. As part of the resolution, a check is 
+made to confirm if the trace is really required to be logged 
+into the server log. 
+
+ECF-26(EstdCommonLib_7.1_Fix11)
+Under load conditions, some eStandards Modules may experience 
+failed transactions or message loss. 
+
+During periods of heavy I/O load, Chem Module and RosettaNet 
+Module may experience failed transactions and message loss. For 
+example, Receipt Acknowledgements (RAs) that are sent by
+partners are received and the module sends the correct http
+response for the ACK, but the documents appear to be missing
+from the process instance and Trading Networks Console. This
+behavior occurs on HP-UX platforms when threads in the common
+library thread pool are interrupted, causing the module to stop
+any pending processes. 
+
+This issue is resolved.
+
+
+ECF-23(EstdCommonLib_7.1_Fix10)
+Output signature of the wm.estd.common.util:invokeTrap service
+is incorrect. 
+
+The $trappedError output parameter of the 
+wm.estd.common.util:invokeTrap service is defined as a String 
+type, but the actual output is a Document type. This difference 
+leads to mapping errors. 
+
+The issue is resolved. The $trappedError parameter is now a 
+Document type. 
+
+
+WRN-968 (EstdCommonLib_7.1_Fix9)
+The wm.estd.common.util:addAttachment service is unable 
+to add an attachment when the incoming attachment file 
+is read as a stream.
+ 
+Rosettanet module uses the wm.estd.common.util:addAttachment 
+service to add attachments to a Rosettanet business message. 
+When the incoming attachment file was read as a stream, 
+the service was not generating the attachment in the document 
+output.
+ 
+The issue is resolved. The wm.estd.common.util:addAttachment 
+service now correctly adds the attachment when the incoming 
+file is read as a stream. You must set the extended properties 
+of watt.server.tspace.location, watt.server.tspace.max, and 
+watt.server.tspace.timeToLive within Integration Server in order 
+to use the streaming option for attaching documents.
+
+
+WRN-936 (EstdCommonLib_7-1_Fix8)
+Incorrect conversation ID is generated if the focal role
+specified in the TPA contains a hyphen in a particular PIP. 
+
+Focal roles typically do not contain any non-alphanumeric
+characters. However, in older versions of some PIPs, role titles
+contain hyphens ("-"), such as "Self-Billing Invoice Provider."
+In those cases, the conversation ID is incorrectly generated. 
+
+This issue is fixed. The conversation ID is now internally
+generated in the format "Initiator DUNS-%%-UniqueID-%%-FocalRole"
+and RosettaNet Module only includes the "UniqueID" portion in
+the RosettaNet XML message.
+
+ECF-15(EstdCommonLib_7-1_Fix8)
+The service wm.estd.common.cm:getConversationScript 
+does not generate conversation IDs correctly.
+
+The wm.estd.common.cm:getConversationScript service is changed 
+to accommodate the change in conversation ID format, similar to 
+the way in which IBM webMethods RosettaNet Module formats conversation 
+IDs.
+
+This issue is resolved. If focal roles are provided as part of 
+the wm.estd.common.cm:getConversationScript service's input signature, 
+the service generates the conversation ID in the 
+format "SenderID-%%-UniqueID-%%-FocalRole", where "SenderID" 
+is the process initiator's DUNS ID. If focal roles are not provided, 
+the service returns the conversation ID in the default 
+format "SenderID-FinID". 
+
+Important: As a result of Process Engine changes, 
+wm.estd.common.cm:getConversationScript is now deprecated and 
+should not be used on Integration Server 8.x. Because this service 
+duplicates the functionality already exposed by RosettaNet Module, 
+use RosettaNet Module public services such as 
+pub.estd.rosettaNet:processDocument instead.
+
+WRN-849 (EstdCommonLib_7-1_Fix7)
+Large document handling in IBM webMethods RosettaNet Module 
+fails when invoked through the TN gateway service. 
+
+IBM webMethods RosettaNet Module fails to handle large 
+documents when document processing is invoked through TN 
+gateway services such as wm.tn:receive, when the service 
+wm.estd.common.cm:getConversationScript generates the 
+conversation ID, and when the pub.estd.rosettaNet:processDocument
+service is called in RosettaNet. There were multiple 
+issues related to conversation ID and failure of processes, 
+outbound maps, and small document processing in a large 
+doc process model. 
+
+These issues related to large document processing are now 
+resolved, and conversation IDs are now generated in the 
+following format: DUNS-unique ID-Focal Role. 
+
+EFM-117 (EstdCommonLib_7-1_Fix6)
+In IBM webMethods SWIFT Module 7.1, running the 
+wm.fin.dev:importFINItems service results in error. 
+
+When you run the SWIFT Module 7.1 wm.fin.dev:importFINItems 
+service, it throws the following exception: 
+'com.wm.app.b2b.server.ServiceException: importFINItems: 
+Exception - com.wm.app.b2b.services.DocumentToRecordService.bind
+(Lcom/wm/lang/xml/Node;)Ljava/lang/Object;' 
+The error occurs because of an incorrect class definition for the 
+Document class passed as a parameter to the bind method of the 
+com.wm.app.b2b.services.DocumentToRecordService service. 
+
+The issue is resolved. The bind method is now invoked using 
+reflection.  
+
+1-1YWWLB (EstdCommonLib_7-1_Fix5)
+Update the WmEstdCommonLib package to resolve some issues in 
+IBM webMethods RosettaNet Module.
+
+To resolve the following issues in RosettaNet Module, the 
+WmEstdCommonLib package must be updated:
+
+-  IncompatibleClassChange error is thrown when RosettaNet 
+   Module handles large documents.
+-  Incorrect indentation of service header tags in webMethods 
+   Trading Networks Console.
+
+This update now resolves the issues in RosettaNet Module.
+
+1-1XBZ8N (EstdCommonLib_7-1_Fix4)
+After migrating from the earlier versions of RosettaNet Module 
+to the 7.1 version of RosettaNet Module, the built-in service 
+wm.estd.common.cm:processDocument is not available. 
+
+The built-in service, wm.estd.common.cm:processDocument 
+(known as wm.ip.common.cm:processDocument in the earlier 
+versions) from the WmEstdCommonLib package is not available 
+after migrating from the earlier versions to the 7.1 version of
+RosettaNet Module. Due to this, no option to process the SWIFT
+documents is available.
+
+This issue is now resolved. The service 
+wm.estd.common.cm:processDocument in the WmEstdCommonLib package
+is available. This service processes the SWIFT documents. It 
+performs the following tasks:
+
+-  Recognizes the incoming document. 
+-  Finds the matching Process Engine script if the value you 
+   specify for the input parameter "cid" is null. 
+-  Saves the incoming document to the Trading Networks database.
+-  Submits the recognized document (bizdoc) to the
+   wm.tn.cm:processDocument service. 
+
+Input Parameters:
+-  cid
+   String (optional). The ID of the conversation that the 
+   document is a part of. If the document is not currently part 
+   of a conversation, leave cid null.
+
+-  input
+   Document. The IData object from the pipeline, for example, 
+   input/Pip3A4PurchaseOrderRequest, that contains the actual 
+   incoming document that must be processed as part of a 
+   conversation.
+
+Output Parameters:
+None.
+
+1-1WUIBP (EstdCommonLib_7-1_Fix4)
+Integration Server logs display many error messages during 
+RosettaNet transactions.
+
+During RosettaNet transactions, the following error message 
+appears repeatedly in the server log: 
+"[ISU.0000.9999E] java.util.MissingResourceException: Can't 
+find resource for bundle 
+com.wm.estd.rosettaNet.RosettaNetResourceBundle, 
+key ESIPRT.000010.000001."
+
+This issue is now resolved. Now, RosettaNet transactions run 
+without creating any error messages in the server logs related 
+to resource bundles.
+
+1-1W9EVU (EstdCommonLib_7-1_Fix3)
+Additional schema-based elements are generated in the payload
+documents that lead to validation failure.
+
+For example, in PIP 3B2 documents, an additional tns element
+is generated in the payload document that leads to TPA related
+validation failure. 
+
+This issue is now resolved.
+
+1-1UPANR (EstdCommonLib_7-1_Fix2)
+IBM webMethods RosettaNet Module sometimes does not process HTTP 
+requests.
+
+In general, the WmEstdCommonLib package installed with 
+RosettaNet Module clones the Invoke State in the Integration 
+Server for reuse in a different thread. However, the package 
+does not clone the ProtocolInfoIf object in the Invoke State 
+resulting in the issue. Because the ProtocolInfoIf object is not 
+cloned, IBM webMethods RosettaNet Module leaves the Invoke State in 
+an invalid state for the next incoming HTTP request. 
+This issue occurs only for connections that are kept open using 
+the HTTP status code ?Expect: 100-continue?. 
+This issue is now resolved. The ProtocolInfoIf object will now 
+be cloned along with the Invoke State.
+
+1-1VIZFT (EstdCommonLib_7-1_Fix2)
+Incorrect input and output document reference in the 
+wm.estd.common.profile:getPreferredDelivery service.
+
+The input and output document reference in the 
+wm.estd.common.profile:getPreferredDelivery service is 
+?wm.ip.rec:Delivery? instead of ?wm.estd.common.rec:Delivery?. 
+This issue occurs only after you migrate from webMethods 6.5 
+version to webMethods 7.1 version.
+
+This issue is now resolved.
+
+1-1UE2NL (EstdCommonLib_7-1_Fix1)
+The resolution of some issues in IBM webMethods RosettaNet Module 
+and IBM webMethods Chem Module requires an update in the 
+WmEstdCommonLib package.
+
+The shared common library WmEstdCommonLib supports the modules 
+such as RosettaNet and Chem Modules. In RosettaNet and Chem 
+Modules, there have been issues with UTF-8 encoding, free-form 
+text in receipt acknowledgement XML documents, and namespaces in 
+the RosettaNet object. To resolve these issues, the 
+WmEstdCommonLib package has been updated.
+
+This update now resolves the issues in RosettaNet and Chem 
+Modules.
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central  
+location (9.7 or later products), or Update Manager to install fixes on one 
+machine at a time. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Command Central (9.7 or later) or Update Manager. For 
+instructions, see the documentation at https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Copyright Super iPaaS Integration LLC, an IBM Company 2024.

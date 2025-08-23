@@ -1,0 +1,266 @@
+        IBM webMethods Universal Messaging webMethods EnterpriseManager 10.15 SP0 Fix 24 Readme
+    
+                                  December 2024
+
+________________________________________________________________________________
+
+This file provides important information for applying IBM webMethods Universal Messaging 
+EnterpriseManager 10.15 SP0 Fix 24 to IBM webMethods Universal Messaging 10.15 SP0 installations. 
+For additional information about IBM webMethods Universal Messaging, see the index.html file in the 
+docs directory of your installation. 
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings 
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization 
+11.0  Copyright
+
+
+
+1.0 Fix Name
+
+IBM webMethods Universal Messaging webMethods EnterpriseManager 10.15 SP0 Fix 24
+
+
+
+2.0 Fix ID
+
+NUM_10.15_wM_EnterpriseManager_Fix24
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+IBM webMethods Universal Messaging webMethods EnterpriseManager 10.15 SP0
+
+
+
+4.0 Requirements
+
+None.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+ 	
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+NUM-23707 (NUM_10.15_wM_EnterpriseManager_Fix24)
+
+The display names of the fix packages that deliver updates to the Java Service Wrapper for Linux, 
+AIX, and macOS operating systems have been changed to better indicate their purpose.
+
+NUM-23466 (NUM_10.15_wM_EnterpriseManager_Fix24)
+
+Universal Messaging uses the Protobuf library version 3.21.12, which has a security vulnerability.
+The issue is resolved. The Protobuf library has been updated to version 3.25.5.
+
+NUM-22840 (NUM_10.15_wM_EnterpriseManager_Fix19)
+
+Universal Messaging now supports both Java 17 and Java 11 as a runtime for the server, client, and 
+sample applications components.
+
+NUM-22582 (NUM_10.15_wM_EnterpriseManager_Fix18)
+
+The Cluster Status panel of the Universal Messaging Enterprise Manager and the ClusterState 
+command-line tool display long values for ?Broadcast Time" and "Response Time" instead of dates.
+The issue is resolved. Besides showing a correct date value, the "Broadcast Time" and "Response 
+Time" properties have been renamed to "Last Broadcast Time" and "Last Response Time".
+
+NUM-20696 (NUM_10.15_wM_EnterpriseManager_Fix13)
+
+When you try to modify the JNDI settings for a UM realm server, Enterprise Manager does not load the 
+settings on the JNDI tab correctly.
+During the hostname resolution if Enterprise Manager cannot reach the resolved host and port, the 
+JNDI settings on the JNDI tab are not loaded correctly. The issue occurs when you are using a 
+firewall, VPN, or you have an issue with the DNS.
+The issue is now resolved.
+
+NUM-20613 (NUM_10.15_wM_EnterpriseManager_Fix12)
+
+Universal Messaging now uses the Java Service Wrapper version 3.5.53 on Linux, AIX, and macOS 
+operating systems.
+A script will modify and switch any existing Universal Messaging server instances running on Linux, 
+AIX, and macOS to the Java Service Wrapper version 3.5.53.
+
+NUM-20269 (NUM_10.15_wM_EnterpriseManager_Fix11)
+
+? new realm ACL permission, Override Connection Count, has been added to the Security > ACL tab for 
+a realm in the Enterprise Manager.
+The Override Connection Count permission allows a user with an admin connection to connect to a 
+realm even when the connection limit set in the MaxNoOfConnections and 
+MaxNoOfConnectionsPerUserName realm configuration properties is exceeded. 
+
+NUM-19810 (NUM_10.15_wM_EnterpriseManager_Fix9)
+
+Before the fix, user is unable to create/Delete the site in Enterprise Manager -> Cluster -> Sites 
+tab. Site tab did not display the Site details if the sites are already present.
+After this fix, User will be able to create/delete the Site from Enterprise Manager. The Site 
+details will also be displayed in Enterprise Manager Site panel if the site details are present
+
+NUM-19293 (NUM_10.15_wM_EnterpriseManager_Fix6)
+
+Creation of an interface when there is an existing interface with the same port was allowed.
+This issue is resolved.
+
+NUM-19410 (NUM_10.15_wM_EnterpriseManager_Fix5)
+
+Universal Messaging now supports defining the number of concurrent connections per user.
+You can use a new realm configuration property, "MaxNoOfConnectionsPerUserName", part of the 
+"Connection Config" group in the Enterprise Manager, to specify the number of concurrent 
+connections per user. The default is -1, which means no limit is set on the number of connections. 
+Valid values range between -1 and 2147483647. When you set a limit, if connections exceed the 
+specified number, the client will get an nSecurityException. However, admin connections with the 
+"Realm Override Connection Count" permission are still allowed to connect to the realm server.
+In addition, the existing "MaxNoOfConnections" property, controls the total number of concurrent 
+connections to the server. When you set a limit on the total number, connections that exceed the 
+limit are rejected if they are non-admin connections or if they do not have the "Realm Override 
+Connection Count" permission. The default is -1, which means no limit is set on the number of 
+connections. Valid values range between -1 and 2147483647.
+
+NUM-19125 (NUM_10.15_wM_EnterpriseManager_Fix3)
+
+The Universal Messaging TraceStores realm configuration property in Enterprise Manager is not 
+updated correctly.
+You cannot remove the names of all the stores specified in the TraceStores configuration property. 
+At least one store that you cannot delete remains specified.
+The issue is resolved.
+
+NUM-19116 (NUM_10.15_wM_EnterpriseManager_Fix3)
+
+When we are deleting the durable, we are deregistering and removing all the viewers and panels 
+attached to a nDurable object, before deleting the actual object.
+
+NUM-18812 (NUM_10.15_wM_EnterpriseManager_Fix2)
+
+An additional console opens when you start Universal Messaging Enterprise Manager.
+The issue is resolved.
+
+NUM-18412 (NUM_10.15_wM_EnterpriseManager_Fix2)
+
+The close button of the "Retry Connection" in Enterprise Manager does not prevent the message from 
+showing up.
+The close button of the "Retry Connection" in Enterprise Manager does not act the same as if the 
+"No" button is clicked. The "Retry Connection" message window keeps showing up although the close 
+button has been clicked. 
+The issue is resolved.
+
+NUM-18456 (NUM_10.15_wM_EnterpriseManager_Fix1)
+
+When you export a realm configuration in an xml file using Enterprise Manager, Universal Messaging 
+wrongly appends "@" at the end of a join destination.
+The issue occurs when the source channel in a join has a namespace.
+This issue is now resolved. 
+
+
+8.0 Installation
+
+If you are installing a Universal Messaging server fix, please shut down any running Universal
+Messaging server instances before installing.
+In case the Universal Messaging server instance is a member of a cluster, please apply the
+procedure for installing rolling cluster updates described below(*).
+
+If you are installing a Universal Messaging client fix, please shut down any applications such as
+Integration server or Enterprise Manager which are using client libraries.
+
+If you are installing a Universal Messaging Enterprise Manager fix, you do not need to shut down the
+Universal Messaging server.
+
+Install using the Software AG Update Manager or Command Central (9.5 or later). For instructions,
+see the corresponding documentation at http://documentation.softwareag.com.
+
+(*) Universal Messaging cluster is supporting rolling updates for its nodes.
+There is a strong recommendation to start applying the new fixes on the Slave nodes and leave the
+Master node to be the last one.
+
+For each single node that is part of the cluster the customer needs to follow the steps:
+1) Shutdown the node. The node will be disconnected from the cluster.
+2) Apply the specific fix
+3) Start the node. It will be connected back again to the cluster and will be operational
+4) Apply the same procedure from 1-3 steps on the next node
+
+In order to have truly no downtime, the client that talks to the Universal Messaging cluster should
+also be implemented in a way that it tolerates brief connection loss. A rolling update in a cluster
+still means that:
+a) When the node that a client is connected to is brought down for maintenance, the connection to
+this server, and respectively the cluster, will be lost and has to be re-established. The client
+should be able to handle this seamlessly.
+b) When the master node of the cluster is brought down for maintenance, the cluster will briefly
+go offline until a new master is elected. This is usually a very short time window, but still,
+similarly to point a). The client applications should be able to handle it in order to have truly
+no downtime from the point of view of the end user.
+
+
+
+9.0 Uninstallation
+
+If you are uninstalling a Universal Messaging server fix,
+please note that any running Universal Messaging server
+instances will be automatically shutdown before installing.
+
+If you are uninstalling a Universal Messaging client fix, 
+please shut down any applications such as Integration Server 
+or Enterprise Manager which are using client libraries.
+
+If you are uninstalling a Universal Messaging Enterprise Manager 
+fix, you do not need to shut down the Universal Messaging server.
+
+Uninstall using the Software AG Update Manager or 
+Command Central (9.5 or later). For instructions, see the 
+corresponding documentation 
+at http://documentation.softwareag.com.
+
+Note: These instructions can only be used to uninstall the 
+most recently installed fix. This action will revert your 
+installation to the previously installed fix. You cannot 
+apply these instructions to the previously installed fix.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix has
+no globalization impact and can be applied to systems running in any supported 
+locale or configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might contain new 
+messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Super iPaas Integration LLC, an IBM Company 2024.

@@ -1,0 +1,241 @@
+          IBM webMethods Adapter 10.3 for OPC Fix 9 readme
+
+                        November 2024       
+
+_______________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+
+________________________________________________________________________________
+
+
+
+1.0 Fix Name
+
+IBM webMethods Adapter 10.3 for OPC Fix 9
+
+
+
+2.0 Fix ID
+
+OPC_10.3_Fix9
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+None.
+
+
+
+4.0 Requirements and Dependencies
+
+This fix requires the installation of the IBM webMethods Adapter Runtime 
+fix and Service Development plug-ins to Designer. Install the latest fix of both 
+the products.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+
+
+
+5.0 Platform Support
+
+Same platforms as product release. 
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include 
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the 
+release.
+
+
+OPC-267
+Upgraded log4j dependencies to 2.17.1 due to security vulnerabilities found in
+the earlier versions
+
+OPC-290
+Removed the copyright from the headline in the adapters About tab
+
+OPC-264 (OPC_10.3_Fix8)
+Updated copyright notes, vendor, and product names for IBM rebranding
+
+WF-21873 (OPC_10.3_Fix7)
+webMethods Adapter for OPC now supports Prosys driver version 4.9.0-43.
+
+OPC-209 (OPC_10.3_Fix6)
+webMethods Adapter for OPC now supports OPC data type Structure.
+
+OPC-178 (OPC_10.3_Fix5)
+In webMethods Adapter for OPC, DataChange Notification generates incorrect 
+timestamp values intermittently. 
+
+This issue is now resolved. 
+
+OPC-159 (OPC_10.3_Fix4)
+In webMethods Adapter for OPC, the Namespace Index used in NodeId changes
+after the server restarts or a connection is reestablished. The NodeIds added
+in the OPC Adapter services or notifications become invalid and the service
+executions fail.
+
+The issue is resolved. A new field Extended Node Id has been introduced. The
+field Extended Node Id has the following format:
+nsu =<namespace uri>;<id type>=<node value>.
+
+The Extended Node Id is used instead of NodeId to identify and perform
+operations on the appropriate node in the OPC server.
+
+OPC-157 (OPC_10.3_Fix4)
+In webMethods Adapter for OPC, DataChange Notification cannot be enabled if the
+field Deadband Type is set to None.
+
+This issue is now resolved.
+
+OPC-145 (OPC_10.3_Fix3)
+Node Id and namespace URI has been added to the DataChange notification
+publishable document to differentiate the notifications that are generated from
+the nodes having same display names.
+
+OPC-139 (OPC_10.3_Fix3)
+In webMethods Adapter for OPC, after modifying the Server Uri of an existing 
+connection, the connection is not getting enabled.
+
+This issue is now resolved.
+
+OPC-134 (OPC_10.3_Fix3)
+In webMethods Adapter for OPC, the Bouncy Castle JAR file is now upgraded to fix
+the security issue in version 1.54.
+
+OPC-133 (OPC_10.3_Fix3)
+In webMethods Adapter for OPC, listeners do not sync with each other after 
+restarting Integration Server when Integration Server is configured in 
+Clustered environment.
+
+This issue is now resolved.
+
+OPC-100 (OPC_10.3_Fix3)
+In webMethods Adapter for OPC, the name of the filter appears in the Filters
+field even after the filter is deleted in the data change notification.
+
+This issue is now resolved.
+
+OPC-126 (OPC_10.3_Fix2)
+In webMethods Adapter for OPC, Prosys jars are now supported.
+
+OPC-116 (OPC_10.3_Fix2)
+In webMethods Adapter for OPC, custom data types are now supported. 
+
+OPC-108 (OPC_10.3_Fix2)
+In webMethods Adapter for OPC, the adapter sends duplicate notification 
+documents.
+
+This issue occurs in DataChange Notification where some notifications get
+published two times. Therefore, the client receives a duplicate notification
+document for a single event.
+
+This issue is now resolved.
+
+OPC-94 (OPC_10.3_Fix1)
+In webMethods Adapter for OPC, the signature to write the Filter query in
+the Event Notification template is modified.
+
+For more information, see Adapter for OPC Installation and User's guide. 
+
+OPC-96 (OPC_10.3_Fix1)
+In webMethods Adapter for OPC, the Deadband Value field in the DataChange 
+Notification template does not accept values containing a decimal point.
+
+This issue is now resolved. 
+
+OPC-74 (OPC_10.3_Fix1)
+In webMethods Adapter for OPC, when Integration Server's are configured in
+Cluster Mode, Listeners becomes Cluster-Aware. 
+
+OPC-69 (OPC_10.3_Fix1)
+webMethods Adapter for OPC now supports complex data types.
+Refer to webMethods Adapter for OPC Installation and User's Guide for detailed 
+information. 
+
+OPC-70 (OPC_10.3_Fix1)
+webMethods Adapter 10.3 for OPC now supports read, write of multiple nodes
+value using Batch Read, Batch Write Service.
+You can refer to webMethods Adapter for OPC Installation and User's Guide for
+detailed information. 
+
+OPC-71 (OPC_10.3_Fix1)
+In webMethods Adapter for OPC, the Read service now supports Node Id input at
+run-time.
+You can refer to webMethods Adapter for OPC Installation and User's Guide for
+more information. 
+
+OPC-73 (OPC_10.3_Fix1)
+webMethods Adapter for OPC now shows error messages in the Tree View, when
+you select an invalid node. 
+
+OPC-88 (OPC_10.3_Fix1)
+In webMethods Adapter for OPC, exception occurs if the selected NodeId contains
+a value greater than maximum integer value.
+
+This issue is now resolved. 
+
+OPC-67 (OPC_10.3_Fix1)
+In webMethods Adapter for OPC, DataChange Notification generates only the latest
+message when there is a time difference between sampling and publishing interval.
+
+This issue is resolved. Now, all the generated messages are notified during the
+time interval. 
+
+OPC-72 (OPC_10.3_Fix1)
+In webMethods Adapter for OPC, there is a change in the behavior of Sampling 
+mode type in Monitoring mode.
+
+The event notifications are published even if the Monitoring Modes are disabled
+for Sampling mode type.
+
+This issue is now resolved. 
+
+
+8.0 Installation
+
+Install using Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Copyright Super iPaas Integration LLC, an IBM Company 2024.

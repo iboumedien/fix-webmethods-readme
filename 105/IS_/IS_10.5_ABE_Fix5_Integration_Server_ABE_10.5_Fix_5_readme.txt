@@ -1,0 +1,213 @@
+                      Integration server Asset Build Environment 10.5 Fix 5 readme
+
+				                           May 2022
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Integration server Asset Build Environment 10.5 Fix 5
+
+
+
+2.0 Fix ID
+
+IS_10.5_ABE_Fix5
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+Integration server Asset Build Environment 10.5
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+PIE-73712
+Repository-based deployment for file polling ports does not include the File
+Name Filter value. 
+
+This issue is now resolved. A substitution value named fileNameFilter can now be
+set as part of deploying a file polling port. 
+
+
+PIE-70263 (IS_10.5_ABE_Fix3)
+Using Asset Build Environment (ABE) for building single packages ends with a 
+failed build.
+
+A previous change to deployment to allow system Access Control Lists to be 
+deployed resulted in the inability of ABE to successfully build single packages 
+for export.
+
+This issue is now resolved.
+
+PIE-68986 (IS_10.5_ABE_Fix2)
+Pre-defined access control lists (ACLs) cannot be deployed.
+
+Now, Deployer and Asset Build Environment (ABE) can deploy a pre-defined ACL 
+when that ACL contains a group that is not one of the pre-defined groups.
+
+PIE-64508 (IS_10.5_ABE_Fix2)
+Integration Server now supports deployment of email notification settings.
+
+The Email Notification settings on the Settings > Resources page of 
+Integration Server Administrator specify the email address to which notifications 
+about critical issues on Integration Server are sent. Previously, 
+this asset was not deployable.
+
+The asset type ID is: isemailnotification
+
+Email Notification settings have the following substitution values:
+
+SMTP Server (smtpServer) - Server name or IP address of the SMTP 
+server to use to send the messages
+Port (smtpPort ) - Port that Integration Server connects to 
+on the specified SMTP server.
+Transport Layer Security (transportSecurity) - Whether any transport 
+layer security is to be used when communicating with the SMTP port. 
+Possible values are: none, explicit, implicit
+Truststore Alias (trustStoreAlias) -Alias for the truststore that 
+contains the list of certificates that Integration Server uses to 
+validate the trust relationship.
+Internal Email (internalEmail) - Email address to use for critical log entries.
+Service Email (serviceMail)- Email address to use for service failures.
+Default Email Charset (defaultCharset) - The default character set.
+Username (userName) - The username for the account that Integration 
+Server uses to connect to the SMTP server.
+Password (password) - Password for the account.
+
+PIE-69217 (IS_10.5_ABE_Fix2)
+Asset Build Environment (ABE) builds fail.
+
+ABE builds fail because of missing dependency declaration introduced with 
+the multi-tenant feature for webMethods Cloud (PIE-68485).
+
+Now, the missing dependency has been added and ABE builds finish correctly.
+
+PIE-67009 (IS_10.5_ABE_Fix2)
+Running the Asset Build Environment (ABE) on an Integration Server 
+that does not have the features.cnf file results in a NoClassDefFoundError,
+
+To resolve this issue, the jackson-core.jar has been added to the 
+Integration Server classpath.
+
+Now, the missing dependency has been added and ABE builds finish correctly.
+
+PIE-63597 (IS_10.5_ABE_Fix1)
+Integration Server throws an error indicating that the 'java.library.path' 
+property value is missing in the Asset Build Environment (ABE) build.xml file.
+
+This issue occurs only when Integration Server attempts to establish a 
+JDBC connection to the database from ABE using Integrated Security.
+
+To resolve this issue, a new property is added to the ABE build.xml file.
+
+PIE-62727 (IS_10.5_ABE_Fix1)
+Deployer renames ACLs during deployment.
+
+Deployer removes the word "local" from an ACL name, for example the 
+"local/Administrators" is changed to "Administrators". As a result, 
+resources that use the ACLs are inaccessible.
+
+This issue is resolved.
+
+
+
+8.0 Installation
+
+Install the fix using the Software AG Update Manager. For instructions, see 
+Using the Software AG Update Manager located either in the _documentation 
+directory or on the documentation Web site at 
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. 
+This action will revert your installation to the previously installed fix.
+You cannot use these instructions to uninstall the previously installed fix.
+
+Uninstall the fix using the Software AG Update Manager. For instructions, see 
+Using the Software AG Update Manager.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, 
+or language as specified in the webMethods Installation Guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix 
+has no globalization impact and can be applied to systems running in any 
+supported locale or configuration.
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages 
+and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright @ 2022  Software AG, Darmstadt, Germany and/or Software AG USA  Inc.,
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their 
+licensors.
+
+The name Software AG and all Software AG product names are either trademarks 
+or registered trademarks of Software AG and/or Software AG USA Inc. and/or 
+its subsidiaries and/or its affiliates and/or their licensors. Other company 
+and product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its 
+subsidiaries is located at http://softwareag.com/licenses.
+
+Use of this software is subject to adherence to Software AG's licensing 
+conditions and terms. These terms are part of the product documentation, 
+located at http://documentation.softwareag.com/legal/ and/or in the root
+installation directory of the licensed product(s).
+
+This software may include portions of third-party products. For third-party 
+copyright notices, license terms, additional rights or restrictions, please 
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party 
+Products". For certain specific third-party license restrictions, please 
+refer to section E of the Legal Notices available under "License Terms
+and Conditions for Use of Software AG Products / Copyright and Trademark 
+Notices of Software AG Products". These documents are part of the product 
+documentation, located at http://softwareag.com/licenses and/or in the 
+root installation directory of the licensed product(s).

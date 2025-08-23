@@ -1,0 +1,331 @@
+                   Integration Server Asset Build Environment 10.11 Fix 6 readme
+
+				                           June 2023
+
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Integration Server Asset Build Environment 10.11 Fix 6
+
+
+
+2.0 Fix ID
+
+IS_10.11_ABE_Fix6
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+Integration Server Asset Build Environment 10.11
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+After applying the IS 10.11 ABE Fix4, IS 10.11 Core Fix9 needs to be installed 
+as PIE-77771 introduces mavericks jar to ABE environment, which is required for 
+successful building of ABE assets.
+
+
+
+7.0 Fix Contents
+
+PIEAR-2571
+In Asset Build Environment(ABE), a null pointer exception is shown when a package
+containing a newly created unscheduled polling notification is built.
+
+The issue is now resolved.
+
+PIE-87446
+The SFTP Version 2 client in Integration Server does not support Public key 
+authentication with ED25519 keys.
+
+The maverick JAR used in Integration Server for the SFTP Version 2 client is now 
+upgraded from 1.7.34 to 1.7.55
+
+PIE-75291(IS_10.15_ABE_Fix3)
+Repository-based package deployments reset the existing ACL configurations to
+"Default" on the target Integration Server.
+
+This issue is now resolved.
+
+PIE-82180((IS_10.11_ABE_Fix5)
+Building assets for an Integration Server package that contains Cloudstreams 
+connections and services fails due to the missing cs-bundle.jar in 
+the <Install_Dir>\common\AssetBuildEnvironment\IS\lib directory.
+
+This issue is now resolved by including the cs-bundle JAR in the path. The 
+update is available through IS_10.11_ABE_Fix5.
+
+PIEAR-2244 (IS_10.11_ABE_Fix4)
+In Asset Build Environment(ABE), building a webMethods Integration Server package
+which contains an updated webMethods Adapter for SAP connection, fails with a null
+value exception.
+
+The issue is now resolved.
+
+PIE-75291 (IS_10.11_ABE_Fix4)
+Repository-based package deployments reset the existing ACL configurations to
+"Default" on the target Integration Server.
+
+This issue is now resolved.
+
+PIE-77771 (IS_10.11_ABE_Fix4)
+Integration Server throws the following error while connecting to an SFTP 
+server: "com.wm.app.b2b.server.sftp.client.SFTPClientException: 
+com.sshtools.publickey.InvalidPassphraseException: 
+com.maverick.ssh.SshIOException". 
+
+Consider that Integration Server uses the newer SFTP client (version 2) and the 
+ED25519 type SSH key pair to connect to an SFTP server. The connection fails 
+with SFTPClientException as the maverick-client-1.7.23.jar used by the SFTP 
+client lacks support for the ED25519 key signature and SFTP servers that 
+support crypto policy. 
+
+This issue is resolved. Applying the fix upgrades the maverick-client-
+1.7.23.jar to 1.7.34, which supports the ED25519 key signature. However, the 
+upgraded SFTP client does not support authentication keys in the SSH2 format. 
+Additionally, the hmac-sha256, hmac-sha256@ssh.com, hmac-sha512, hmac-
+sha512@ssh.com, hmac-ripemd160, hmac-ripemd160@openssh.com, hmac-ripemd160-
+etm@openssh.com MAC algorithms are not supported. Therefore, for an existing 
+server alias, exclude the unsupported MAC algorithms, fetch the host key, and 
+save the changes. 
+
+The newer SFTP client (version 2) supports OpenSSH format host keys, and the 
+existing key may be in the unsupported SSH2 format. Therefore, testing the 
+server alias may throw an error. To avoid the error, regenerate the host key in 
+the OpenSSH format, and use the "Get Host Key" button to get the regenerated 
+key for the server alias. Similarly, fetch the latest host key if you are 
+migrating from an older version of Integration Server, or updating a server 
+alias in Integration Server Administrator. 
+
+Once the server alias is successfully created or updated, test whether the user 
+alias works with the host key. If testing the user alias results in 
+java.security.NoSuchProviderException, add the 
+org.bouncycastle.jce.provider.BouncyCastleProvider security provider class in 
+Integration Server Administrator > Security > Keystore > Add Security Provider.
+
+PIE-79351 (IS_10.11_ABE_Fix3)
+As part of this fix, Integration Server supports OAuth based authentication for 
+email notifications.
+
+Procedure
+
+1. Log on to Integration Server Administrator.
+2. Go to Settings > Resources.
+3. Click Edit Resource Settings and enter the following details to configure  
+   OAuth based authentication for email notifications. 
+
+- Username - Type the e-mail address of the account that Integration Server uses 
+to connect to the SMTP server.
+- Authentication - Specify the type of authentication that Integration Server
+should use to connect to the specified e-mail server. 
+	- Select Basic Authentication if you want to authenticate the user on the 
+      specified e-mail server with only login credentials (username and password). 
+	- Select OAuth to authenticate the user on the specified e-mail server using 
+      the credentials issued by the OAuth server.
+Note: Only the Authorization Code grant type is supported for OAuth.
+To obtain the OAuth credentials for Integration Server, you must first register 
+Integration Server with the OAuth Server. For details about registering an 
+application and obtaining the OAuth credentials, see your authorization server's 
+documentation.
+- Password - Type the password associated with the username that identifies you 
+on the SMTP server. This field applies only to Basic Authentication.
+- Auth URL - Specify the URL of the email provider or endpoint that Integration 
+Server uses to request authorization code. This field applies only to OAuth.
+- Client ID - Specify the unique public identifier that the OAuth server 
+generates for Integration Server during registration. This field applies only to 
+OAuth.
+- Client Secret - Specify a unique string that the OAuth server provides to 
+Integration Server. It is known only to Integration Server and the authorization 
+server. This field applies only to OAuth.
+- Scope - Specify the mail server access permissions configured for Integration 
+Server during registration. You can specify multiple scopes separated by a
+space. This field applies only to OAuth.
+- Access Token URL - Specify the URL that Integration Server must use to request 
+an access token from the OAuth server. This field applies only to OAuth.
+- Redirect URL - Specify the URL that the OAuth server uses to send
+authentication responses to Integration Server. This field applies only to OAuth.
+- If you access Integration Server locally, enter the redirect URL in one of 
+the applicable formats:
+        "http://localhost:{port}/WmRoot/security-oauth-get-authcode.dsp"
+        "https://localhost:{port}/WmRoot/security-oauth-get-authcode.dsp"
+         - If you access Integration Server remotely, use 
+"https://{ISHostName}:{port}/WmRoot/security-oauth-get-authcode.dsp" 
+- Get Authorization Code - Click Get Authorization Code to receive a unique
+string from the OAuth Server that Integration Server requires to request an access 
+token. A new window prompts for user credentials. After a successful login, an 
+authorization code is sent to the redirect URL.
+Alternatively, you can obtain the authorization code manually in scenarios that 
+do not allow you to obtain the authorization code through Integration Server 
+Administrator.
+To obtain the authorization code manually, send a request through a browser in 
+the format:
+<URL of an
+emailprovider>/<TenantID>/oauth2/authorize?response_type=code&prompt=login& 
+redirect_uri="http://host:port/WmRoot/securityoauth-get-authcode.dsp&client_id= 
+    <clientID>&scope=<scope>"
+Here, response_type is set to code to inform the OAuth server that Integration 
+Server expects an authorization code as the response at the mentioned 
+redirect_uri.
+Note: Since the code generated is valid only for one-time usage, get the 
+authorization code each time you update the OAuth relevant fields.
+- Access Token Expiry Time - This field is displayed specifying the time until 
+when an access token issued to Integration Server is valid. This field applies 
+only to OAuth. This is a read-only field displayed based on the access token. 
+- Token Refresh Interval - Specifies the time interval in minutes at which 
+the cron job is scheduled to fetch a new access token. The access token and the 
+refresh token are issued the first time you save the settings for email 
+notifications. Thereafter, the scheduled cron job refreshes and fetches the 
+access token using the refresh token, ensuring that a valid access token is used 
+to send mails. The default is 15 minutes.
+Note: If the access token expires, the user needs to give consent again using 
+login credentials and regenerate the tokens by editing the Email Notification 
+Settings.
+- Click Save Changes to update the server with the new or changed email 
+notification settings. Your changes take effect immediately, and you start 
+receiving emails in case of any errors. In addition, the Access Token Expiry
+Time is displayed.
+
+Alternatively, you can set all the email notification parameters using the 
+following new server configuration parameters.
+You do not need to restart Integration Server for changes to these parameters to
+take effect.
+
+- watt.server.smtp.authentication.type - Specifies the type of authentication 
+that Integration Server should use to connect to the specified e-mail server. 
+Select Basic Authentication or OAuth.
+- watt.server.smtp.oauth.accessTokenURL - Specifies the URL that Integration 
+Server must use to request an access token from the OAuth server.
+- watt.server.smtp.oauth.authorizationCode - Specifies the authorization code 
+used to get an access token manually in scenarios where browser support is 
+unavailable.
+- watt.server.smtp.oauth.authURL - Specifies the URL of the email provider or 
+endpoint that Integration Server uses to request authorization code.
+- watt.server.smtp.oauth.clientID - Specifies the unique public identifier the 
+OAuth server generates for Integration Server during registration.
+- watt.server.smtp.oauth.clientSecret - Specifies a unique string that the OAuth 
+server provides to Integration Server while registering Integration Server as 
+an application. It is known only to Integration Server and the authorization 
+server.
+- watt.server.smtp.oauth.redirectURL - Specifies the URL that the OAuth server 
+uses to send authentication responses to Integration Server.
+- watt.server.smtp.oauth.token.refreshInterval - Specifies the time interval in 
+minutes the cron job is scheduled to fetch a new access token. The default is 
+15 minutes to fetch a new access token by using the refresh token and setting 
+it for email notification settings.
+- watt.server.smtp.oauth.scope - Specifies the mail server access permissions 
+configured for Integration Server during registration. You can specify multiple 
+scopes separated by a space.
+
+PIE-78262 (IS_10.11_ABE_Fix2)
+When building design-time assets, Asset Build Environment (ABE) ignored the JVM
+version for the asset itself and instead used the JVM version from the ABE
+environment. 
+
+This is now fixed. The correct JVM version is used for the asset in the
+manifest.rel file created by ABE. 
+
+PIE-73712 (IS_10.11_ABE_Fix1)
+Repository-based deployment for file polling ports does not include the File
+Name Filter value.
+
+This issue is now resolved. A substitution value named fileNameFilter can now
+be set as part of deploying a file polling port.
+
+
+
+8.0 Installation
+
+Install the fix using the Software AG Update Manager. For instructions, see 
+Using the Software AG Update Manager located either in the _documentation 
+directory or on the documentation Web site at 
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. 
+This action will revert your installation to the previously installed fix.
+You cannot use these instructions to uninstall the previously installed fix.
+
+Uninstall the fix using the Software AG Update Manager. For instructions, see 
+Using the Software AG Update Manager.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, 
+or language as specified in the webMethods Installation Guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix 
+has no globalization impact and can be applied to systems running in any 
+supported locale or configuration.
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages 
+and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright @2023 Software AG, Darmstadt, Germany and/or Software AG USA  Inc.,
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their 
+licensors.
+
+The name Software AG and all Software AG product names are either trademarks 
+or registered trademarks of Software AG and/or Software AG USA Inc. and/or 
+its subsidiaries and/or its affiliates and/or their licensors. Other company 
+and product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its 
+subsidiaries is located at http://softwareag.com/licenses.
+
+Use of this software is subject to adherence to Software AG's licensing 
+conditions and terms. These terms are part of the product documentation, 
+located at http://documentation.softwareag.com/legal/ and/or in the root
+installation directory of the licensed product(s).
+
+This software may include portions of third-party products. For third-party 
+copyright notices, license terms, additional rights or restrictions, please 
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party 
+Products". For certain specific third-party license restrictions, please 
+refer to section E of the Legal Notices available under "License Terms
+and Conditions for Use of Software AG Products / Copyright and Trademark 
+Notices of Software AG Products". These documents are part of the product 
+documentation, located at http://softwareag.com/licenses and/or in the 
+root installation directory of the licensed product(s).

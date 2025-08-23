@@ -1,0 +1,298 @@
+               Universal Messaging webMethods EnterpriseManager 10.11 SP0 Fix 14 Readme
+            
+                                  May 2023
+
+________________________________________________________________________________
+
+This file provides important information for applying Universal Messaging EnterpriseManager 10.11 
+SP0 Fix 14 to Universal Messaging 10.11 SP0 installations. For additional information about 
+Universal Messaging, see the index.html file in the docs directory of your installation. 
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings 
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization 
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+Universal Messaging webMethods EnterpriseManager 10.11 SP0 Fix 14 Build ***BUILD_NUMBER***
+
+
+
+2.0 Fix ID
+
+NUM_10.11_wM_EnterpriseManager_Fix14
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+Universal Messaging webMethods EnterpriseManager 10.11 SP0
+
+
+
+4.0 Requirements
+
+None.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+ 	
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+NUM-19535 (NUM_10.11_wM_EnterpriseManager_Fix13)
+
+After exporting a Universal Messaging realm configuration with several joins that connect a channel 
+to channel/queue within the same realm, the joins do not get recreated correctly when imported in a 
+realm: only the first join is recreated successfully in the target realm.
+The issue is resolved.
+
+NUM-19292 (NUM_10.11_wM_EnterpriseManager_Fix13)
+
+Creation of an interface when there is an existing interface with the same port was allowed.
+This issue is resolved.
+
+NUM-19128 (NUM_10.11_wM_EnterpriseManager_Fix12)
+
+When we are deleting the durable, we are deregistering and removing all the viewers and panels 
+attached to a nDurable object, before deleting the actual object.
+
+NUM-19065 (NUM_10.11_wM_EnterpriseManager_Fix11)
+
+The Universal Messaging TraceStores realm configuration property in Enterprise Manager is not 
+updated correctly.
+You cannot remove the names of all the stores specified in the TraceStores configuration property. 
+At least one store that you cannot delete remains specified.
+The issue is resolved.
+
+NUM-18812 (NUM_10.11_wM_EnterpriseManager_Fix10)
+
+An additional console opens when you start Universal Messaging Enterprise Manager.
+The issue is resolved.
+
+NUM-18456 (NUM_10.11_wM_EnterpriseManager_Fix7)
+
+When you export a realm configuration in an xml file using Enterprise Manager, Universal Messaging 
+wrongly appends "@" at the end of a join destination.
+The issue occurs when the source channel in a join has a namespace.
+This issue is now resolved. 
+
+NUM-18351 (NUM_10.11_wM_EnterpriseManager_Fix7)
+
+The WarningThreshold realm configuration parameter is missing from Enterprise Manager.
+The issue is resolved. The WarningThreshold has been added back to Enterprise Manager. You can 
+configure the parameter as part of the Basic Configuration category on the Config tab.
+
+NUM-18198 (NUM_10.11_wM_EnterpriseManager_Fix6)
+
+The Top Channel Usage tab in Enterprise Manager does not display the rate of consumed and published 
+events.
+Instead, the tab displays only the total number of consumed and published events.
+The issue is resolved. The tab now displays both the rate and total number of consumed and published 
+events.
+
+NUM-14794 (NUM_10.11_wM_EnterpriseManager_Fix6)
+
+Newly added servers to an existing Universal Messaging cluster cannot establish
+inter-realm communication between each other.
+In Enterprise Manager, when you add more than one realm server to an existing Universal Messaging 
+cluster at the same time, the newly added servers cannot establish
+inter-realm communication between each other.
+The issue is resolved.
+
+NUM-17547 (NUM_10.11_wM_EnterpriseManager_Fix4)
+
+EM was showing internal session ID related information as connection key in the durable tab for 
+indexed durables. This prevented end users from finding potentially slow or stuck consumers to 
+bounce. The fix is to display IP:Port SessionID formatted key instead of internal session ID info 
+so that client connections could be identified in EM and bounced. 
+
+NUM-17502 (NUM_10.11_wM_EnterpriseManager_Fix4)
+
+Protobuf descriptor missing after channel edit
+When editing the storage properties of a store, the protobuf properties might get lost in the 
+process.
+The issue is resolved
+
+NUM-17698 (NUM_10.11_wM_EnterpriseManager_Fix3)
+
+Universal Messaging Enterprise Manager might not update the Filter field for a durable.
+When you edit the filter for a durable, Enterprise Manager might not display the updated value in 
+the Filter field in the Durables table. The correct value is displayed only after you restart 
+Enterprise Manager.
+The issue is resolved.
+
+NUM-17476 (NUM_10.11_wM_EnterpriseManager_Fix2)
+
+The following enhancements have been added to the Universal Messaging ExportProtobufDefinitions 
+command-line tool:
+ - The name format of the exported Protobuf descriptors has been changed to 
+descriptor_{id}_{descriptorName}. For an unnamed descriptor, the format is descriptor_{id}.
+ - The tool now checks if the exported file name is valid. If the name contains an invalid symbol, 
+the exported file is named "InvalidName".
+ - When you export Protobuf descriptors for a store, the tool creates a folder that has the same 
+name as the store, if such a folder does not exist. If the folder already exists, it must be empty. 
+The tool will fail to export the descriptors if the folder has any content.
+
+
+8.0 Installation
+
+If you are installing a Universal Messaging server fix, please shut down any running Universal
+Messaging server instances before installing.
+In case the Universal Messaging server instance is a member of a cluster, please apply the
+procedure for installing rolling cluster updates described below(*).
+
+If you are installing a Universal Messaging client fix, please shut down any applications such as
+Integration server or Enterprise Manager which are using client libraries.
+
+If you are installing a Universal Messaging Enterprise Manager fix, you do not need to shut down the
+Universal Messaging server.
+
+Install using the Software AG Update Manager or Command Central (9.5 or later). For instructions,
+see the corresponding documentation at http://documentation.softwareag.com.
+
+(*) Universal Messaging cluster is supporting rolling updates for its nodes.
+There is a strong recommendation to start applying the new fixes on the Slave nodes and leave the
+Master node to be the last one.
+(*) Starting with 10.11 Fix 3, Universal Messaging provides updated versions of security libraries with 
+the Universal Messaging realm server fixes, if any of these libraries has been updated. You can find 
+the libraries in the UniversalMessaging\lib folder.
+
+For each single node that is part of the cluster the customer needs to follow the steps:
+1) Shutdown the node. The node will be disconnected from the cluster.
+2) Apply the specific fix
+3) Start the node. It will be connected back again to the cluster and will be operational
+4) Apply the same procedure from 1-3 steps on the next node
+
+In order to have truly no downtime, the client that talks to the Universal Messaging cluster should
+also be implemented in a way that it tolerates brief connection loss. A rolling update in a cluster
+still means that:
+a) When the node that a client is connected to is brought down for maintenance, the connection to
+this server, and respectively the cluster, will be lost and has to be re-established. The client
+should be able to handle this seamlessly.
+b) When the master node of the cluster is brought down for maintenance, the cluster will briefly
+go offline until a new master is elected. This is usually a very short time window, but still,
+similarly to point a). The client applications should be able to handle it in order to have truly
+no downtime from the point of view of the end user.
+
+
+
+9.0 Uninstallation
+
+If you are uninstalling a Universal Messaging server fix,
+please note that any running Universal Messaging server
+instances will be automatically shutdown before installing.
+
+If you are uninstalling a Universal Messaging client fix, 
+please shut down any applications such as Integration Server 
+or Enterprise Manager which are using client libraries.
+
+If you are uninstalling a Universal Messaging Enterprise Manager 
+fix, you do not need to shut down the Universal Messaging server.
+
+Uninstall using the Software AG Update Manager or 
+Command Central (9.5 or later). For instructions, see the 
+corresponding documentation 
+at http://documentation.softwareag.com.
+
+Note: These instructions can only be used to uninstall the 
+most recently installed fix. This action will revert your 
+installation to the previously installed fix. You cannot 
+apply these instructions to the previously installed fix.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix has
+no globalization impact and can be applied to systems running in any supported 
+locale or configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might contain new 
+messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright (c) 2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., 
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their 
+licensors.
+
+The name Software AG and all Software AG product names are either trademarks or 
+registered trademarks of Software AG and/or Software AG USA Inc. and/or its 
+subsidiaries and/or its affiliates and/or their licensors. Other company and 
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its 
+subsidiaries is located at http://softwareag.com/licenses.
+
+This software may include portions of third-party products. For third-party 
+copyright notices, license terms, additional rights or restrictions, please 
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party 
+Products". For certain specific third-party license restrictions, please refer 
+to section E of the Legal Notices available under "License Terms and Conditions 
+for Use of Software AG Products / Copyright and Trademark Notices of Software AG
+Products". These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the 
+licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+  
+  E-mail: empower@softwareag.com
+  
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

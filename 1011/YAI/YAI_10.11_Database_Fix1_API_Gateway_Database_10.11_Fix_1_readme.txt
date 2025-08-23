@@ -1,0 +1,140 @@
+			API Gateway Database 10.11 Fix 1 readme
+
+				 June 2022
+
+________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform/RDBMS Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+11.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+API Gateway Database 10.11 Fix 1
+
+
+
+2.0 Fix ID
+
+YAI_10.11_Database_Fix1
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+API Gateway Database 10.11
+
+
+
+
+4.0 Fix Requirements
+
+None.
+
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+YAI-24196 (Fix 1)
+The Column with the type 'timestamp' is missing in the 'AGW_EVENT_AUDITLOGS'
+table.
+
+API Gateway creates the following table 'AGW_EVENT_AUDITLOGS' to store the audit
+logs. Since the Column with type 'timestamp' is missed in the table, the
+partitioning of the table is not possible.
+
+This issue is resolved by creating a new column 'EVENT_CREATE_TS' of type
+'TIMESTAMP' in the 'AGW_EVENT_AUDITLOGS' table.
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+
+
+10.0 Copyright
+
+Copyright 2022  Software AG, Darmstadt, Germany and/or 
+Software AG USA, Inc., Reston, VA, USA, and/or its subsidiaries 
+and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either 
+trademarks or registered trademarks of Software AG and/or Software AG
+USA Inc. and/or its subsidiaries and/or its affiliates and/or their 
+licensors. Other company and product names mentioned herein may be 
+trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG 
+and/or its subsidiaries is located at http://softwareag.com/licenses.
+
+This software may include portions of third-party products. For 
+third-party copyright notices, license terms, additional rights or 
+restrictions, please refer to "License Texts, Copyright Notices and 
+Disclaimers of Third Party Products". For certain specific third-party 
+license restrictions, please refer to section E of the Legal Notices 
+available under "License Terms and Conditions for Use of Software AG 
+Products / Copyright and Trademark Notices of Software AG Products". 
+These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory 
+of the licensed product(s).
+
+
+11.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

@@ -1,0 +1,311 @@
+                 webMethods Trading Networks 10.15 Fix 15 readme
+
+                         May 2025
+
+_________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+webMethods Trading Networks 10.15 Fix 15
+
+
+
+2.0 Fix ID
+
+TNS_10.15_Fix15
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Trading Networks 10.15.
+
+
+
+4.0 Requirements
+
+Integration Server Core 10.15 Fix 13 or the latest fix that supersedes this.
+Java Package Core 10.15 Fix 354 or the latest fix that supersedes this.
+Trading Networks Database 10.15 Fix 1 or the latest fix that supersedes this.
+
+For language pack requirements, see the Globalization section of the Software 
+AG Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+6.0 Cautions and Warnings
+
+Usage Notes:
+ Lock wait timeout  errors are caused by the TPA module, where B2B 
+attempts to acquire locks on TPAs that are neither in AGREED nor 
+IMMUTABLE statuses, including those that are disabled. 
+To avoid such scenarios, change the TPA status accordingly.
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes 
+for the release.
+
+OTN-29303
+EDI schemas were missing on Integration Server after deploying the code.
+This issue is now resolved.
+
+OTN-28952(TNS_10.15_Fix14)
+Trading Networks - wm.tn.archive:extendedArchive does not delete 
+transaction content. This issue has now been resolved.
+
+OTN-29033(TNS_10.15_Fix13)
+DB key violation errors in server.log
+This issue has now been resolved.
+
+OTN-28949(TNS_10.15_Fix12)
+When importing or deploying partner profiles and delivery settings 
+to a node in a clustered environment, delivery settings passwords 
+were intermittently missing for certain partners on some nodes. 
+This issue has now been resolved, and passwords no longer go missing.
+
+OTN-28896(TNS_10.15_Fix11)
+In the server log, whenever two threads are trying to print 
+any exception while calling getMessage(), a race condition occurs 
+with an ArrayIndexOutOfBound exception.
+This issue is now resolved.
+
+OTN-29096(TNS_10.15_Fix11)
+If MWS instance is in different location then installation of 
+Trading Networks Server 10.15 Fix 10 is failed.
+This issue is now resolved.
+
+OTN-29097(TNS_10.15_Fix11)
+Encountering a problem with installing Trading Networks Server 10.15 fix 10.
+This issue is now resolved.
+
+OTN-28770(TNS_10.15_Fix11)
+Vulnerable 3rd Party Component com.squareup.okhttp3:okhttp found.
+This feature is completed.
+
+OTN-28772(TNS_10.15_Fix11)
+Vulnerable 3rd Party Component com.squareup.okio:okio found.
+This feature is completed.
+
+OTN-28945(TNS_10.15_Fix11)
+The issue is because the client environment has two Trading Network jars. 
+This has occurred when the client has installed a Fix4, which has been later 
+redacted to avoid this same issue. The extra jar will now be removed automatically 
+by the fix deployment. This issue is now resolved.
+
+WF-32180(TNS_10.15_Fix9)
+TN webMethods 10.15 products to support Azul JDK Java 17 runtime version with their products. 
+This entails that we test all third party libraries along with the products and ensure they 
+work with Java 17 runtime.
+This feature is completed.
+
+OTN-24020(TNS_10.15_Fix8)
+Whenever the service wm.tn.enumerate:nth is invoked and threadRunning=false, 
+a valid number of totalPages is returned as a service output.
+This issue is resolved.
+
+OTN-23685(TNS_10.15_Fix8)
+Invoking a service with a pipeline data causes null pointer exception in 
+Unit Test Framework.
+This issue is resolved.
+
+OTN-23809(TNS_10.15_Fix7)
+When a document type which has sender id extraction configured with an IDType 
+which is not in the system, an improper error message appears on importing 
+the document.
+This issue is fixed. 
+
+OTN-23634 (TNS_10.15_Fix6)
+In the Extended Criteria of a processing rule, support for the Beginswith 
+operator for the string attribute is fixed. And for the StringList attribute, the 
+Begins with and Contains operator will be deprecated in the upcoming release.
+
+OTN-23659 (TNS_10.15_Fix6)
+In WebMethods Trading Networks, invoking the wm.tn.task:removeTask displayed an 
+error for all scenarios. This caused the flow service to break and result in 
+failures.
+The issue is fixed and the error appears only during actual error scenarios.
+
+OTN-23469 (TNS_10.15_Fix6)
+When importing TPA with a lot of TPA data, if the total TPA audit log message 
+exceeds the Activity Log Full Message column size, the import operation does not 
+end. In addition, the following log message is added:
+'..Continued from previous activity log record, continued in next activity log 
+record..' in the Activity log table every 10 seconds.
+This issue is resolved and the import operation completes successfully.
+
+OTN-23497 (TNS_10.15_Fix5)
+The following error appears several times in the Trading Networks server.log 
+file: "Configure B2B_PAYLOAD_STORE environment variable properly". 
+No functionality is impacted by this error message.
+This issue is now fixed.
+
+OTN-23359 (TNS_10.15_Fix4)
+In webMethods Trading Networks, an "Queue Not Found" error occurs after 
+importing a queue successfully.
+
+This issue is resolved.
+
+OTN-23403 (TNS_10.15_Fix4)
+In webMethods Trading Networks, when you change the status of Preferred Protocol
+in Partner Profiles > Delivery Settings, the activity log does not update.
+
+This issue is resolved.
+
+OTN-23419 (TNS_10.15_Fix3)
+When using the TripleDES encryption algorithm, the data encrypted with the 
+wm.tn.mime:createEncryptedData and wm.tn.mime:createSignedAndEncryptedData services 
+in webMethods Trading Networks fails to decrypt.
+
+This issue occurs when the Entrust Toolkit updates to 8.1.20.
+This issue is now resolved.
+
+OTN-23226 (TNS_10.15_Fix2)
+In webMethods Trading Networks, an error occurs when webMethods does not allow 
+serialization and deserialization of classes that are not part of the 
+whitelistclasses.xml file. Now the DataStoreException class is added in the 
+whitelistclasses.xml file to resolve the issue.
+
+This issue is resolved.
+
+OTN-23227 (TNS_10.15_Fix2)
+In webMethods Trading Networks, an error message "[ISU.0000.9999E] com.wm.app.tn.
+db. DatastoreException: BizDocStore.updateAttributes(0) java.lang.
+IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss
+[.fffffffff]" displays when the DateTime format is not JDBC DateTime format.
+
+This issue is resolved.
+
+OTN-23241 (TNS_10.15_Fix2)
+In webMethods Trading Networks, wm.tn.mime:createEncryptedData and
+wm.tn.mime:createSignedAndEncryptedData services fail when using the
+DES (Data Encryption Standard) or TripleDES encryption algorithm.
+This issue occurs when the Entrust Toolkit updates to 8.1.20.
+
+This issue is resolved.
+
+OTN-23241 (TNS_10.15_Fix1)
+
+EDIINT MIME error
+This issue is now resolved.
+
+
+
+8.0 Installation
+
+Install using the Software AG Update Manager or Command Central (9.7 or later). 
+For instructions, see the corresponding documentation at
+http://documentation.softwareag.com.
+
+After installation is complete, please perform the below step :
+
+1. If Integration Server contains wMDeployer installation along with Trading Networks,
+then delete the tncore.jar file under
+%INSTALL_DIR%\IntegrationServer\instances\default\packages\WmDeployer\code\jars\static.
+
+2. Start Integration Server. 
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action reverts your installation to the previously 
+installed fix. You cannot apply these instructions to the previously 
+installed fix.
+
+Uninstall using the Software AG Update Manager or Command Central (9.7 or later). 
+For instructions, see the corresponding documentation at
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was tested
+with non-English configurations and non-ASCII data.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new 
+messages and these messages appears in English.
+
+
+
+11.0 Copyright
+
+Copyright   2024 Software AG, Darmstadt, Germany and/or 
+Software AG USA Inc., Reston, VA, USA, and/or its subsidiaries and/or its
+affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or
+registered trademarks of Software AG and/or Software AG USA Inc. and/or its
+subsidiaries and/or its affiliates and/or their licensors. Other company and
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its
+subsidiaries is located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party
+copyright notices, license terms, additional rights or restrictions, please
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party
+Products". For certain specific third-party license restrictions, please refer
+to section E of the Legal Notices available under "License Terms and Conditions
+for Use of Software AG Products / Copyright and Trademark Notices of
+Software AG Products". These documents are part of the product documentation,
+located at http://softwareag.com/licenses and/or in the root installation
+directory of the licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

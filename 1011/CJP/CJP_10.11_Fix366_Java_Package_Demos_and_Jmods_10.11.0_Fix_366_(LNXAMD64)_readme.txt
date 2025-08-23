@@ -1,0 +1,234 @@
+                     Common Java Package 10.11 Fix 366 readme
+
+                                    April 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Common Java Package 10.11 Fix 366
+
+
+
+2.0 Fix ID
+
+CJP_10.11_Fix366
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Common Java Package.
+
+
+
+4.0 Requirements and Dependencies
+
+If offered by IBM webMethods Update Manager or IBM webMethods Command Central,
+please install also the following fixes (or newer):
+- Integration Server Core 10.11 Fix 7: IS_10.11_Core_Fix7
+- Branding and Naming Plug-in to Designer 10.11 Fix 6: SDF_10.11_Fix6
+- Platform 10.11.0 Fix 0007: OGI_10.11_Fix0007
+- My webMethods Server 10.11 Fix 13: MWS_10.11_Fix13
+
+There are no further explicit fix requirements, but it is strongly 
+recommended that you install all available product fixes at the same time as Common Java Package 10.11 Fix 366.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+
+
+5.0 Platform Support
+
+This fix is supported on Windows, Linux, AIX, zLinux, Mac and Solaris Sparc operating systems.
+
+
+
+6.0 Cautions and Warnings
+
+*  Since Fix 148: If you plan to use the Installer to add components or 
+   products to the existing installation folder, please don't deploy this fix.
+
+*  Since release: All files in the "<installDir>/jvm/jvm" folder will be set to original vendor content.
+   Manual changes in the "<installDir>/jvm/jvm" folder need to be redone after the fix install.
+   The old files can be found for reference in the "<installDir>/jvm/jvmXXX.bck" folder.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+
+CJP-696 (CJP_10.11_Fix366)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu 11.80.22 (January 2025 Update (OpenJDK 11.0.27)) for Windows, MacOS, Linux x64 and Solaris Sparc.
+*  IBM Semeru Java 11.0.27.0 for zLinux and AIX.
+
+CJP-691 (CJP_10.11_Fix364)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu 11.78 (January 2025 Update (OpenJDK 11.0.26)) for Windows, MacOS, Linux x64 and Solaris Sparc.
+*  IBM Semeru Java 11.0.26.0 for zLinux and AIX.
+
+CJP-670 (CJP_10.11_Fix362)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu 11.76 (October 2024 Update (OpenJDK 11.0.25)) for Windows, MacOS, Linux x64 and Solaris Sparc.
+*  IBM Semeru Java 11.0.24.1 for zLinux and AIX.
+
+CJP-642 (CJP_10.11_Fix358)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu JDK 11.74 (openjdk version "11.0.24") for Windows, Linux x86_64 and MacOS
+*  IBM Semeru Java 11.0.23 for AIX and zLinux
+
+CJP-611 (CJP_10.11_Fix156)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu JDK 11.72  (April 2024 Update (OpenJDK 11.0.23)) for Windows, Linux x86_64 and MacOS
+
+CJP-596 (CJP_10.11_Fix154)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu JDK 11.70 (January 2024 Update (OpenJDK 11.0.22)) for Windows, Linux x86_64 and  MacOS
+*  IBM Semeru Java 11.0.21 for AIX
+
+CJP-570 (CJP_10.11_Fix152)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu JDK 11.68 (October 2023 Update (OpenJDK 11.0.21)) for Windows, Linux x86_64 and MacOS
+
+CJP-550 (CJP_10.11_Fix151)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  IBM Semeru Java 11.0.19.0 for AIX.   
+
+CJP-546 (CJP_10.11_Fix150)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu JDK 11.64 (April 2023 Update (OpenJDK 11.0.19)) for Windows, Linux x86_64 and MacOS
+
+CJP-531 (CJP_10.11_Fix148)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu JDK 11.62 (January 2023 Update (OpenJDK 11.0.18)) for Windows, Linux x86_64 and MacOS
+*  IBM Semeru Java 11.0.18 for AIX           
+
+CJP-522 (CJP_10.11_Fix146)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu JDK 11.60 (October 2022 Update (OpenJDK 11.0.17)) for Windows, Linux x86_64 and MacOS
+
+CJP-517 (CJP_10.11_Fix145)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu JDK 11.58 (August 2022 Update (OpenJDK 11.0.16.1)) for Windows, Linux x86_64 and MacOS
+*  IBM Semeru Java 11.0.16.1 for AIX 
+
+CJP-508 (CJP_10.11_Fix144)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu JDK 11.58 (July 2022 Update (OpenJDK 11.0.16)) for Windows, Linux x86_64 and MacOS
+
+CJP-498 (CJP_10.11_Fix143)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  IBM Semeru Java 11.0.15 for AIX and Linux s390x
+
+CJP-494 (CJP_10.11_Fix142)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu JDK 11.56  (April 2022 Update (OpenJDK 11.0.15)) for Windows, Linux x86_64 and MacOS
+
+CJP-473 (CJP_10.11_Fix140)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu JDK 11.54  (Jan/Feb 2022 Update (OpenJDK 11.014.1)) for Windows, Linux x86_64 and MacOS
+*  IBM Semeru Java 11.0.14.1 for AIX and Linux s390x
+
+CJP-446 (CJP_10.11_Fix138)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu JDK 11.52 (October 2021 Update (OpenJDK 11.0.13)) for Windows, Linux x86_64 and MacOS
+
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a central location (9.7 or later), 
+or IBM webMethods Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at https://docs.webmethods.io.
+
+If you are using IBM webMethods Command Central, follow the steps below.
+
+1. Manually shut down all running products in the product directory that are not
+   managed by Command Central. Keep the Platform Manager in the product
+   directory running.
+2. Install Common Java Package 10.11 Fix 366 in the product directory.
+3. Start the products.
+
+If you are using Update Manager, Update Manager is located in a different
+directory (e.g. C:\SoftwareAGSUM) than the product directory
+(e.g. C:\SoftwareAG). Follow the steps below.
+
+1. Shut down all running products in the product directory (e.g. "C:\SoftwareAG").
+2. Use the Update Manager (e.g. in "C:\SoftwareAGSUM") to install
+   Common Java Package 10.11 Fix 366 in the product directory
+   (e.g. "C:\SoftwareAG").
+3. Start the products.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using the Update Manager or Command Central.
+For instructions, see the corresponding documentation at
+https://docs.webmethods.io/.
+
+If you are using IBM webMethods Command Central, follow the steps below.
+
+1. Manually shut down all running products in the product directory that are not
+   managed by Command Central. Keep the Platform Manager in the product
+   directory running.
+2. Uninstall Common Java Package 10.11 Fix 366 from the product directory.
+3. Start the products.
+
+If you are using Update Manager, Update Manager is located in a different
+directory (e.g. from "C:\SoftwareAGSUM") than the product directory
+(e.g. from "C:\SoftwareAG"). Follow the steps below.
+
+1. Shut down all running products in the product directory (e.g. "C:\SoftwareAG").
+2. Use the Update Manager (e.g. in "C:\SoftwareAGSUM") to uninstall
+   Common Java Package 10.11 Fix 366 from the product directory
+   (e.g. from "C:\SoftwareAG").
+3. Start the products.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

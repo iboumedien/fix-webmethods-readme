@@ -1,0 +1,411 @@
+      webMethods Deployer 10.5 Fix 8 readme
+
+                    June 2024   
+
+_________________________________________________________________
+
+This file provides important information for applying
+DEP_10.5_Fix8 to webMethods Deployer 10.5.
+For additional information about webMethods Deployer
+10.5, see the readme file in the _documentation directory of
+your Software AG installation (if installed) or on the Empower
+Web site at https://empower.softwareag.com.
+
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Fix Requirements
+5.0   Fix Contents
+6.0   Platform Support
+7.0   Cautions and Warnings
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+webMethods Deployer 10.5 Fix 8
+
+
+
+2.0   Fix ID
+
+DEP_10.5_Fix8
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Deployer 10.5.
+
+
+
+4.0 Fix Requirements
+
+For language pack requirements, see the Globalization section
+of the Software AG Empower Product Support Web site. The
+Globalization section can be found at:
+
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Fix Contents
+
+WDY-6246
+
+In Deployer, when a runtime-based project gets exported to Project Automator, 
+the "type" attribute is set for the "alias" element, which is nested in the "TargetGroup" element in the exported XML file. 
+This behavior is not correct and causes a failure when running the exported file in Project Automator.
+The issue is now resolved
+
+WDY-6142
+
+Running Project Automator fails with an error when the Project Automator XML file contains assets that have dashes in the name.
+The issue is resolved.
+
+WDY-6177
+
+After you update Deployer with fix DEP_10.3_Fix12, Project Automator fails with an exception when creating a deletion set.
+
+WDY-6020
+
+During the partial deployment of a package, the Project Automator script takes over 2 hours to complete the script execution, which results in memory issues.
+The issue is resolved. 
+
+WDY-6349
+
+
+WDY-6038 (DEP_10.5_Fix7)
+
+Deploying a project that contains an email port fails with an exception.
+The issue is now resolved.
+
+WDY-6096 (DEP_10.5_Fix7)
+
+Project Automator fails with a SAXParseException, when the exported 
+Project Automator XML file contains target groups.
+This issue is resolved.
+
+WDY-6059 (DEP_10.5_Fix7)
+
+When the trigger thread is locked by a process instance during the 
+execution of a runtime deployment, the deployment report is generated 
+without content and a timestamp.
+The issue is now resolved.
+
+WDY-6083 (DEP_10.5_Fix7)
+
+When a flow service that requires an ACL is added to a deployment 
+project (with "Add" selected as the option to resolve the dependencies 
+for the ACL) the deployment simulation fails with an error. The issue 
+occurs when audit logging is enabled.
+This issue is resolved.
+
+WDY-5965 (DEP_10.5_Fix6) 
+
+After a message trigger gets deleted, Deployer does not delete the 
+durable associated with the trigger from a Universal Messaging (UM) 
+deployment set when deploying packages to a target Integration Server. 
+You can only delete the UM durables manually.
+
+The issue is resolved. Now you can configure a new package property, 
+named "Delete Universal Messaging Durable" to control whether 
+Deployer deletes durables from UM deployment sets automatically.
+To configure the new package property, go to Deployment Sets > Packages 
+and click the name of the package. In the "<package_Name> properties" 
+area, set "Package Type" to "Full" and "Action After Deployment" to 
+"Activate". The "Delete Universal Messaging Durable" radio button will 
+then show in the "Package Deployment Options" area. The default value 
+is "No" and indicates that Deployer does not delete the UM durables. 
+To configure Deployer to delete UM durables, set the value to "Yes".
+Note that if "Package Type" and "Action After Deployment" are set to 
+any other value, the new property does not show in the "Package 
+Deployment Options" area.
+
+WDY-6046 (DEP_10.5_Fix6) 
+
+The Deployer.{sh|bat} script fails to run in a webMethods Microservices 
+Runtime environment.
+The issue is now resolved.
+
+WDY-6035 (DEP_10.5_Fix6) 
+
+When simulating a deployment or deploying a project with multiple 
+servers defined in the IS target group, Deployer does not generate a 
+report in the deployment history.
+This issue is resolved.
+
+WDY-5971 (DEP_10.5_Fix6) 
+
+When deploying a project with more than two deployment sets, only a 
+subset of the packages get deployed to the target server.
+The issue is resolved.
+
+WDY-5903 (DEP_10.5_Fix5) 
+
+After deployment, Deployer overwrites the start time and overdue 
+settings of the Integration Server (IS) scheduled tasks.
+The issue is resolved. Now Deployer takes the start time and overdue
+settings from the source IS server and the task is executed based on 
+these settings.
+
+WDY-5912 (DEP_10.5_Fix5) 
+
+In runtime-based deployment, the deployment of a project fails with a 
+NullPointerException. The issue occurs because the node.ndf file is 
+missing in the selected packages for the project, but this is not clear 
+from the exception.
+The issue is resolved. Now the NullPointerException is replaced with an 
+error message that clearly indicates that the node.ndf file is missing.
+
+WDY-5964 (DEP_10.5_Fix5) 
+
+When creating the Deployer builds with Project Automator, Deployer 
+creates too many sessions.
+This issue is resolved.
+
+WDY-5971 (DEP_10.5_Fix5) 
+
+When deploying a project with more than two deployment sets, only a 
+subset of the packages get deployed to the target server.
+The issue is resolved.
+
+WDY-5967 (DEP_10.5_Fix5) 
+
+In a repository-based deployment project, Deployer attempts to set up 
+a file polling port before the related package is installed, which is not 
+the correct order of deploying.
+The issue is now resolved.
+
+WDY-5968 (DEP_10.5_Fix5) 
+
+After updating Deployer with the required fixes, the WmDeployer folder has 
+two tncore.jar files, one of which is an old jar file.
+The issue is resolved. Now when a Deployer fix is applied, the old jar files 
+get deleted.
+
+WDY-5938 (DEP_10.5_Fix5) 
+
+When deploying to target Integration Servers, the Integration Server port 
+might stop responding, because several of the deployed packages get reloaded.
+The issue is resolved. When the "Reload Packages" setting for runtime-based 
+deployment is set to "Yes", Deployer sends an additional parameter in the 
+pipeline ("reloadPackage=true") and the "packagesReload" service is not called.
+
+WDY-5954 (DEP_10.5_Fix5) 
+
+The Deployer user interface now has a new icon, from which you can access the 
+new Integration Server asset type for the Email SMPT Server resource.
+
+WDY-5917 (DEP_10.5_Fix4)
+
+The package dependencies defined for a repository-based deployment 
+set are ignored when deployng the packages. After installing the 
+DEP_10.5_Fix2 fix, Deployer does not follow the dependencies of the 
+packages in the deployment set and deploys them out of order.
+
+This issue is resolved.
+
+WDY-5920 (DEP_10.5_Fix4)
+
+Deployer fails to connect to the Broker server version 10.5, even 
+though a connection to the Broker server is configured in Deployer.
+
+This issue is now resolved.
+
+WDY-5902 (DEP_10.5_Fix4)
+
+When specifying secure ports (HTTPS) in the Project Automator XML file,
+the script fails with an error.
+
+The issue is resolved. You can now create a project with secure ports 
+for servers with the new '-useSSL' command line parameter. To configure 
+secure ports, use the following syntax for the Project Automator 
+command: {projectAutomator.bat|projectAutomatorUnix.sh|
+projectAutomatorMac.sh} full_path_to_XML_file -useSSL
+
+WDY-5916 (DEP_10.5_Fix4)
+
+Deployer fails to connect to the AgileApps 10.13 version target server.
+This issue is resolved.
+
+WDY-5904 (DEP_10.5_Fix3)
+
+When the XML file of Project Automator contains an API Gateway 
+configuration with a password handle, the Project Automator creates 
+the API Gateway server with an invalid password.
+
+The issue is now resolved.
+
+WDY-5860 (DEP_10.5_Fix3)
+
+Deployer fails to export the variable substitution for a project that 
+has the same IS package in the deployment and deletion sets and 
+returns the following error message: 'Unable to export variable 
+substitution information.'
+
+This issue is resolved.
+
+WDY-5858 (DEP_10.5_Fix3)
+
+Deployer displays the following error message for some assets
+in a repository-based deployment scenario: "Comparison method
+violates its general contract!". Deployer returns the error message 
+when creating the Checkpoint for some assets in a repository-based
+deployment scenario, or when transactional deployment is enabled.
+
+This issue is resolved.
+
+WDY-5869 (DEP_10.5_Fix2)
+
+When simulating a deployment or deploying composites with the same
+name, the message "Artifacts delivered successfully" is skipped for
+some of the assets in the simulation/deployment report.
+This issue is resolved.
+
+WDY-5854 (DEP_10.5_Fix2)
+
+After updating Deployer with the required fixes, the server log gets
+flooded with the "Versions of the WmDeployer and WmDeployerResource
+package are found to be different." error message. The issue occurs
+because this message is logged with each call to Deployer.
+The issue is resolved.
+
+WDY-5775 (DEP_10.5_Fix1)
+
+When exporting project properties in Deployer, the export operation
+is vulnerable to XSS attacks. The issue is resolved. Now the 
+properties export operation does not open a browser window. 
+
+WDY-5817 (DEP_10.5_Fix1)
+
+The progress report in the Deploy tab of the Deployer UI is empty.
+This issue is resolved.
+
+WDY-5654 (DEP_10.5_Fix1)
+
+In the Deployer user interface, the audit log on the Log > Audit 
+screen is not displayed with proper formatting.
+The issue is resolved.
+
+WDY-5661 (DEP_10.5_Fix1)
+
+When importing an empty build and creating a checkpoint with the 
+Deployer CLI, the operations are successful and the exit state is 
+(0). The behavior is incorrect, because Deployer does not indicate
+in any way that the imported build is empty.
+This issue is resolved. Now Deployer returns an error when 
+importing an empty build.
+
+6.0 Platform Support
+
+webMethods Deployer 10.5 Fix 7 is supported on
+the same platforms and operating systems and with the same JREs
+as webMethods Deployer 10.5.
+
+
+
+7.0 Cautions and Warnings
+
+None.
+
+
+
+8.0 Installation
+
+Install the fix using the Software AG Update Manager.
+For instructions on using Update Manager, see 'Using the Software 
+AG Update Manager,' available at http://documentation.softwareag.com.
+
+1.After applying DEP_10.5_Fix7 or a later fix, which comes 
+after DEP_10.5_Fix7, you must recreate the indexes of 
+repository aliases created earlier.
+
+9.0 Uninstallation
+
+Before uninstalling DEP_10.5_Fix7, back up the following 
+directories to a different location:
+<Software AG_directory>\IntegrationServer\packages\WmDeployer\persist
+<Software AG_directory>\IntegrationServer\packages\WmDeployer\pub\projects
+<Software AG_directory>\IntegrationServer\packages\WmDeployer\config
+After installing the new fix, restore the backed up directories to the 
+original location.
+
+Uninstall the fix using the Software AG Update Manager.
+For instructions on using Update Manager, see 'Using the Software 
+AG Update Manager,' available at http://documentation.softwareag.com.
+
+NOTE: This uninstall procedure can only be used to uninstall the
+most recently installed fix. This action will revert your
+installation to the previously installed fix. You cannot apply
+this uninstall procedure to the previously installed fix. 
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the
+webMethods product suite and includes support for operation in
+any country, locale, or language as specified in the Installing
+webMethods Products guide. It was tested with non-English
+configurations and non-ASCII data.
+
+
+10.1 Localization
+
+None.
+
+
+
+11.0 Copyright
+
+Copyright ©2021 Software AG, Darmstadt, Germany and/or
+Software AG USA, Inc., Reston, VA, United States of America,
+and/or their licensors.
+
+Detailed information on trademarks and patents owned by
+Software AG and/or its subsidiaries is located at
+http://documentation.softwareag.com/legal/.
+
+Use of this software is subject to adherence to Software AG?s
+licensing conditions and terms. These terms are part of the
+product documentation, located at
+http://documentation.softwareag.com/legal/ and/or in the root
+installation directory of the licensed product(s).
+
+This software may include portions of third-party products.  For
+third-party copyright notices and license terms, please refer to
+"License Texts, Copyright Notices and Disclaimers of Third Party
+Products." This document is part of the product documentation,
+located at http://documentation.softwareag.com/legal/ and/or in
+the root installation directory of the licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG
+Global Support in the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support
+Contact Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to
+access additional articles, demos, and tutorials, technical
+information, samples, useful resources, online discussion forums
+moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

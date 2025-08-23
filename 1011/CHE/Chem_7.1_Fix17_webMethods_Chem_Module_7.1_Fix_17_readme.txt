@@ -1,0 +1,608 @@
+             IBM webMethods Chem eStandards Module 7.1 Fix 17 readme
+
+                                  September 2024
+
+________________________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+
+
+
+1.0 Fix Name
+
+IBM webMethods Chem eStandards Module 7.1 Fix 17
+
+
+
+2.0 Fix ID
+
+Chem_7.1_Fix17
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+IBM webMethods Chem eStandards Module 7.1
+
+
+
+4.0 Requirements and Dependencies
+
+EstdCommonLib_7-1_Fix9 or higher.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+This fix includes changes to DSP files. If you have installed language packs on
+your product, the changes in this fix will not be reflected in the non-English
+DSP files. Do not install this fix if you already have a language pack
+installed.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can
+result in new or changed built-in services, APIs, or configuration parameters.
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes
+for the release.
+
+CHS-249
+In IBM webMethods module for Chem, the copyright information is updated.
+
+This issue is resolved.
+
+
+CHS-234(Chem_7-1_Fix16)
+Fixes for IBM webMethods module for Chem do not install in IBM webMethods 11.0 
+suite release.
+
+This issue is resolved.
+
+CHS-220 (Chem_7-1_Fix15)
+Integration Server Administrator has a new user interface.
+
+The HTML-based utility that administers IBM webMethods Chem Module
+has a new user interface. However, the menu and screen locations
+remain unchanged.
+
+CHS-211 (Chem_7-1_Fix14)
+Integration Server Administrator has a new look and feel.
+
+The HTML-based utility used to administer the IBM webMethods Chem eStandards 
+Module has a new look and feel. Menu and screen locations have not changed.
+
+This issue is now resolved.
+
+CHS-205 (Chem_7-1_Fix13)
+In IBM webMethods Chem Module 7.1, Chem transactions are failing and messages 
+are not sent to the trading partner.
+
+The module cannot connect to the trading partner if CA Root certificate is not
+configured on the host Integration Server.
+
+This issue is resolved. Now, the module can connect to the trading partner even
+if CA Root certificate is not configured on the host Integration Server.
+
+
+CHS-193(Chem_7-1_Fix12)
+Incorrect ExternalID extracted from the sender profile by Chem eStandards
+Module.
+
+Chem eStandards Module always extracts the first ExternalID of the  senderï¿½s
+profile instead of extracting the correct ExternalID from the senderï¿½s
+profile.
+
+This issue is resolved.
+
+CHS-183(Chem_7-1_Fix11)
+To improve performance, Chem eStandards Module stores trading partner and
+agreement related information, and some information related to inbound and
+outbound message processing in Oracle Coherence ecache.
+
+With Integration Server 8.2 SP2, IBM webMethods Chem eStandards Module 7.1 is
+supported for use with Terracotta and Ehcache technologies. As of Integration
+Server 8.2 SP2, both Oracle Coherence and Terracotta are supported as caching
+and clustering solutions. The steps to configure which solution you want to use
+vary according to whether you are using Chem eStandards Module in a clustered
+or non-clustered Integration Server environment.
+
+In Integration Server 8.2 SP2, Terracotta Ehcache is the default caching
+solution. If you are currently using Coherence caching and want to continue
+using Coherence, you must explicitly define it.
+
+Caching Without Clustering
+To choose your caching solution, complete the following steps:
+1. In Integration Server Administrator, select Settings > Extended.
+2. Click "Edit Extended Settings."
+3. Specify Coherence or Terracotta Ehcache as the caching solution by typing
+one of the following:
+   watt.server.cluster.cacheType=coherence or
+   watt.server.cluster.cacheType=ehcache
+4. Click "Save Changes."
+
+Integration Server updates the watt.server.cluster.cacheType property in the
+server.cnf file in the <Integration_Server_directory>\config\ directory.
+
+Caching With Clustering
+To choose the caching with clustering solution, complete the following steps:
+1. In Integration Server Administrator, select Settings > Clustering.
+2. Click "Edit Cluster Settings."
+3. Click "Enable Cluster."
+4. Select the Cache Type as "Coherence" or "Terracotta."
+5. Enter the values as appropriate in the other fields.
+6. Click "Save Settings."
+
+Integration Server updates the watt.server.cluster.cacheType property in the
+server.cnf file in the <Integration_Server_directory>\config\ directory.
+
+The "Time to Live" parameter in the "Cache Configuration" controls the amount
+of time an entry can remain in the cache before Chem eStandards Module removes
+it. The default value for this parameter is "172800 seconds" (approximately two
+days). Consequently, transactions that run longer than two days may be
+adversely affected. It is recommended that you change this value to
+reflect your longer running transactions.
+
+For complete information about configuring Ehcache on Integration Server, see
+Administering webMethods Integration Server. For complete information about
+clustering, see Integration Server Clustering Guide.
+
+CHS-176 (CHEM_7-1_Fix10)
+The process model templates provided with IBM webMethods Chem eStandards Module 
+7.1 are not working as expected since the release of webMethods 8.2.
+
+The latest release of webMethods 8.2 modified the underlying libraries that the
+Chem eStandards Module process model templates use. As a result, the process
+models are no longer completing as designed.
+
+This issue is resolved. Process model templates now reflect the changes
+introduced by webMethods 8.2. Updated templates are located in the
+\packages\WmChem\ProcessModels\ folder, ending with the name, "_8x."
+
+CHS-173 (CHEM_7-1_Fix10)
+In Chem Module, the links for "PIP Import" and "Sample Import" are not working
+as expected for the webMethods 8.2 release.
+
+The method of storing data for selection boxes on DSP pages was modified in the
+latest release of webMethods 8.2. When the user makes a single selection of a
+.par file or a sample file, the import fails without returning an error.
+
+This issue is resolved. Chem Module now reflects the changes resulting from
+webMethods 8.2. The links for importing files work again, as intended.
+
+CHS-148 (Chem_7.1_Fix9)
+Failure of Chem transactions on IBM webMethods Chem Module 7.1 that uses the
+webMethods 8.0 suite.
+
+When Chem transactions are running on IBM webMethods Chem 7.1 Module that uses 
+the webMethods 8.0 suite, the process models fail with the 
+com.wm.app.prt.ProcessException exception.
+
+This issue is now resolved. To successfully run IBM webMethods Chem Module 7.1 
+on the webMethods 8.0 suite, do the following:
+
+1. After you install this fix, in the Integration Server Administrator page, in
+Extended Settings, set the following property:
+
+   watt.core.schema.validateIncomingXSDUsingXerces=false
+
+   This property allows you to import the required PARs so that Chem eStandards
+Module can work with the webMethods 8.0 suite.
+
+2. Install the sample file "Chem 7.1 Create Order 8x Sample.zip"  to have the
+latest samples to use with Chem eStandards Module    on webMethods 8.0. The
+sample files are available on the Empower Web site.
+
+Note: If Chem Module is installed on the webMethods 7.x.x versions, you do not
+need to complete the steps listed above. For Chem eStandards Module to run on
+webMethods 8.0, you must install Chem eStandards Module 7.1 Fix 9 or higher.
+
+CHS-121 (was 1-1Z1SO0) (Chem_7-1_Fix8)
+Incorrect DOCTYPE tag in the payload of RNIF messages.
+
+The DOCTYPE tag in the payload of RNIF messages contains an invalid character
+"@version" instead of the payload document root tag, for example, <!DOCTYPE
+@version SYSTEM "abc.dtd">.
+
+This issue is resolved.
+
+CHS-120 (was 1-1YA9C1) (Chem_7-1_Fix8)
+The inbound validation of Chem Module transactions fail with an error message
+when the external ID of the partner exceeds 9 characters.
+
+The error message is as follows: <FreeFormText>
+com.wm.estd.chemical.rnif11.mime. RNIF11ValidationException: Found a header at
+ServiceHeader: ServiceHeader/ProcessControl/
+ProcessIdentity/initiatingPartner/GlobalBusinessIdentifier; with invalid
+length. The invalid header value in the incoming stream is: ;604793278D&#39;.
+Valid length is between: 9 - 9. </FreeFormText></reason>
+
+The validation fails because, as per the RNIF specifications, the DUNS external
+ID must be of 9 character length.
+
+This issue is resolved. The new parameter
+"RosettaNet.disableGlobalBusinessIdentifier.validation" defines whether Chem
+Module must validate the service header for external IDs or not. You set the
+parameter as follows:
+
+- To enable the validation of Service Header, set the parameter as:
+RosettaNet.disableGlobalBusinessIdentifier.validation=false
+
+- To disable the validation of Service Header, set the parameter as:
+RosettaNet.disableGlobalBusinessIdentifier.validation=true
+
+CHS-114 (was 1-1WA305) (Chem_7-1_Fix7)
+In a clustered environment, process models fail while trying to send the
+receipt acknowledgement.
+
+In a clustered environment, the information required to generate the receipt
+acknowledgement is not appropriately shared across the cluster nodes. Due to
+this, the generation of the receipt acknowledgement fails, resulting in the
+failure of the process models.
+
+This issue is resolved. Now, the cache shared across the cluster nodes is
+updated correctly and the information is shared appropriately.
+
+CHS-116 (was 1-1X7KEA) (Chem_7-1_Fix7)
+Sending and receiving documents between partners fails when IBM webMethods Chem
+Module 7.1 participates in a hub scenario for document exchange.
+
+In a hub scenario for document exchange one partner acts as the hub or mediator
+for sending and receiving documents. When Chem Module participates in a
+document exchange between Partners A, B, and C, where Partner A acts as the
+hub, the partners are unable to send or receive documents. When the hub
+(Partner A) sends a document to the fulfiller (Partner B) impersonating the
+sender (Partner C), Chem Module fails to recognize the response from the
+fulfiller (Partner B). The issue occurs because the initiator (Partner A) is
+different from the receiver (Partner C) and the ConversationID assigned to the
+response document is not associated with the running process instance.
+
+The issue is resolved. Chem Module 7.1 associates the response document with
+the running process instance by generating the correct ConversationID. When
+Chem Module is part of a hub scenario, in the config file located at
+IntegrationServer\packages\WmChem, set the property RosettaNet.isHub=true. The
+default value for this property is false.
+
+CHS-115 (was 1-1WT9DN) (Chem_7-1_Fix7)
+In Chem eStandards Module 7.1, there are multiple issues with validation and
+exception handling for RNIF 1.1.
+
+When validating RNIF 1.1 documents, Chem eStandards Module 7.1 does not handle
+exceptions properly.
+
+This issue is resolved. Chem eStandards Module 7.1 now uses strict data
+validation and has improved exception handling.
+
+CHS-72 (was 1-1S85ZJ) (Chem_7-1_Fix6)
+Errors are thrown when executing the pub.estd.chem:migrate service.
+
+While executing the pub.estd.chem:migrate service during IBM webMethods Chem 
+Module migration, errors indicating that the service is unknown are thrown. This
+happens because of incorrect service mapping.
+
+This issue is resolved.
+
+CHS-95 (was 1-1TJIH7) (Chem_7-1_Fix6)
+Sending an acknowledgement to a partner fails with a null pointer exception.
+
+This issue occurs only while sending an acknowledgment for documents that were
+received successfully.
+
+This issue is resolved.
+
+CHS-101 (was 1-1UM8IN) (Chem_7-1_Fix6)
+When using IBM webMethods Chem eStandards Module, the value of the
+VersionIdentifier field in the ReceiptAcknowledgement service header is
+incorrect.
+
+The VersionIdentifier field value must be the version number of the message
+guideline of the business action. However, the value is incorrectly displayed
+as the version of RNIF.
+
+This issue is resolved.
+
+CHS-102 (was 1-1UM8OW) (Chem_7-1_Fix6)
+The receipt acknowledgment that Chem eStandards Module generates contains both
+ActionControl and SignalControl sections in the service header.
+
+According to the Chem standards, Chem eStandards Module must generate only
+SignalControl section in the receipt acknowledgment service header.
+
+This issue is resolved.
+
+CHS-103 (was 1-1UM8RQ) (Chem_7-1_Fix6)
+In the ReceiptAcknowledgement service header, the field,
+GlobalPartnerRoleClassificationCode, contains an incorrect value.
+
+The GlobalPartnerRoleClassificationCode field must contain the OrderResponse
+value.
+
+This issue is now resolved.
+
+CHS-104 (was 1-1UMAVN) (Chem_7-1_Fix6)
+The FreeFormText field is not available in the ReceiptAcknowledgement
+implementation.
+
+The FreeFormText field is available in Chem eStandards Module 6.0.1, however it
+is not available in Chem eStandards Module 7.1.
+
+This issue is resolved.
+
+CHS-105 (was 1-1UMAWY) (Chem_7-1_Fix6)
+In ReceiptAcknowledgement, the CommunicationsNumber element is blank.
+
+The CommunicationsNumber element must pick the value that you provide in the
+Telephone field in the Contacts tab. You provide the value in the Telephone
+field when defining the partner profile.
+
+This issue is resolved.
+
+CHS-106 (was 1-1UMB2I) (Chem_7-1_Fix6)
+In ReceiptAcknowledgement, the EmailAddress element is blank.
+
+The EmailAddress element must pick the value that you provide in the email
+field in the Contacts tab. You provide the value in the email field when
+defining the partner profile.
+
+This issue is now resolved.
+
+CHS-107 (was 1-1UPKA1) (Chem_7-1_Fix6)
+Incorrect value in the GlobalDigestAlgorithmCode field of
+ReceiptAcknowledgement.
+
+The value in the GlobalDigestAlgorithmCode field must be SHA1 instead the value
+is SHA-1.
+
+This issue is resolved.
+
+CHS-108 (was 1-1UPKB8) (Chem_7-1_Fix6)
+Incorrect value in the GlobalPartnerClassificationCode field of the
+ReceiptAcknowledgement.
+
+The value of the GlobalPartnerClassificationCode field in
+ReceiptAcknowledgement must be picked from the OrderCreate or OrderResponse
+transaction. However, these values are picked from the TPA that has incorrect
+values.
+
+This issue is resolved. In the TPA, update the SenderClassification and
+ReceiverClassification with the correct values.
+
+CHS-109 (was 1-1UPKBV) (Chem_7-1_Fix6)
+In ReceiptAcknowledgement, the GlobalPartnerClassificationCode element value
+appears blank.
+
+Even after providing the required values in SenderClassification and
+ReceiverClassification fields in the TPA, the GlobalPartnerClassificationCode
+element value appears blank.
+
+This issue is resolved.
+
+CHS-110 (was 1-1UPKCE) (Chem_7-1_Fix6)
+GlobalSupplyChainCode element does not get populated with the default value.
+
+In ReceiptAcknowledgement, if the value of the element, GlobalSupplyChainCode,
+is blank, then it must automatically be populated with the default value.
+However, the element continues to remain blank.
+
+This issue is resolved. Now, when the GlobalSupplyChainCode element is blank,
+it is automatically populated with the default value "Electronic Components."
+
+CHS-94 (was 1-1T29LE) (Chem_7-1_Fix5)
+In IBM webMethods Chem Module 7.1, the business document does not get dropped 
+after the document processing completes.
+
+When the pub.estd.chem:processDocument service is invoked, the processDocument
+service does not drop the business document after processing is complete. The
+wm.ip.cm:processDocument service of Chem Module 6.0.1 always drops the business
+document after processing.
+
+This issue is resolved. The business document is now dropped by the service
+pub.estd.chem:processDocument after processing is complete.
+
+CHS-75 (was 1-1SMGNZ) (Chem_7-1_Fix4)
+Activity Messages for IBM webMethods Chem Module are not displayed on My 
+webMethods Server 7.1.
+
+My webMethods Server 7.1 does not display the Activity Messages for Chem
+Module, whereas My webMethods Server 6.0.1 displays the Activity Log
+information for Chem Module.
+
+This issue is resolved. The My webMethods Server 7.1 Activity Messages section
+contains the Chem Module messages.
+
+CHS-77 (was 1-1SN8GZ) (Chem_7-1_Fix4)
+Service wm.ip.chem:receive in IBM webMethods Chem Module 7.1 sends response 
+status of HTTP 202 where Chem Module 6.0.1 sends response status of HTTP 200.
+
+When a Trading Partner posts a document to the wm.ip.chem:receive service, Chem
+Module responds with an HTTP status code. In Chem Module 6.0.1, the service
+returned code HTTP 200 (which indicates a successful response from the server).
+But in Chem Module 7.1, the service returns code HTTP 202, which is used for
+asynchronous messages and indicates that a message has been received, but
+processing is not complete. Some customers recognize code HTTP 202 as an
+unacceptable response because processing could still result in the document
+being rejected based on content.
+
+This issue is resolved. The service wm.ip.chem:receive, which is deprecated in
+IBM webMethods Chem Module 7.1, now correctly sends status code HTTP 200. Also, 
+the service pub.estd.chem:receive, replaces the deprecated service sends the 
+status code HTTP 200.
+
+CHS-78 (was 1-1SRRXC) (Chem_7-1_Fix4)
+IBM webMethods Chem Module 7.1 audit log does not display the HTTP Status Code.
+
+HTTP Status Code for any outbound document can be either 200 (for a successful
+delivery) or 400 (for an error during delivery) according to RNIF11
+Specifications. This status code is not displayed in the audit log of Chem
+Module 7.1.
+
+This issue is resolved. Chem Module 7.1 now displays the HTTP Status Code that
+it recieves from the trading partner, in the audit log.
+
+CHS-79 (was 1-1SRRY4) (Chem_7-1_Fix4)
+IBM webMethods Chem Module 7.1 returns incorrect tags for Receipt 
+Acknowledgement.
+
+After initiating a Create Order process, the Receipt Acknowledgement
+information displayed on Trading Networks Console displays incorrect tags, that
+is two tags in the form of <from> <Role> and <To><Role> instead of a
+corresponding single tag <fromRole> and <ToRole>. Also, the structure of the
+XML tags is not maintained in the acknowledgement.
+
+This issue is resolved. Chem Module 7.1 now sends the tags as <fromRole> and
+<ToRole> for Receipt Acknowledgement on Trading Networks Console. The structure
+of the XML tags is also maintained.
+
+CHS-80 (was 1-1SRRYM) (Chem_7-1_Fix4)
+Communication fails between Trading Partners when using IBM webMethods Chem 
+Module 7.1.
+
+The header information of Chem Module 7.1 messages comprises Message-ID,
+MIME-Version, Content-ID (only for RNIF 2.0 specifications), and RNSubType. For
+outbound messages, the values of Message-ID and MIME-Version are null. Also
+Content-ID which must not be available for RNIF11 specifications, is available
+in the header information and RNSubType which is expected to be listed before
+Content-Description, is listed after Content- Description.
+
+The issue is resolved. Message-ID and MIME-Version are not null and are
+consistent with the Chem Module 6.0.1 setup. Content-ID does not exist and
+RNSubType is listed before Content- Description.
+
+CHS-82 (was 1-1SYIXC) (Chem_7-1_Fix4)
+When IBM webMethods Chem Module 7.1 is running in a clustered
+environment, the transactions that involve multiple nodes fail.
+
+The data stored for Process Engine is not available to other Integration Server
+nodes in a cluster. As this data is not available across all the nodes, the
+transactions that involve more than one node will fail.
+
+This issue is resolved. Chem Module 7.1 uses shared cache to store the common
+Process Engine data required for a Chem transaction. Other Integration Server
+nodes can now access the Process Engine data from the shared cache and all the
+transactions in a process model are completed successfully.
+
+CHS-90 (was 1-1T0DC1) (Chem_7-1_Fix4)
+In IBM webMethods Chem Module 7.1, the value of GlobalBusinessIdentifier tag in 
+the <ToRole> of outbound Receipt Acknowledgement does not display the correct
+information.
+
+Chem Module 7.1 was sending the GlobalBusinessIdentifier information of the
+Sender in the <ToRole> of Receipt Acknowledgement instead of the Receiver
+information.
+
+This issue is resolved. Chem Module 7.1 now sends the value of the
+GlobalBusinessIdentifier of the Receiver in the <ToRole> tag of Receipt
+Acknowledgement.
+
+CHS-91 (was 1-1T0DCN) (Chem_7-1_Fix4)
+IBM webMethods Chem Module 7.1 is unable to identify a
+ReceiptAcknowledgementException document.
+
+Chem Module 7.1 designates a process version of 1.1 for a
+ReceiptAcknowledgement document and expects the same process version for a
+ReceiptAcknowledgementException document as well. Since the process version was
+not set for the ReceiptAcknowledgementException, Chem Module 7.1 is unable to
+identify the ReceiptAcknowledgementException.
+
+This issue is resolved. The process version of 1.1 is now set for the
+ReceiptAcknowledgementException document and Chem Module 7.1 can identify the
+ReceiptAcknowledgementException document.
+
+CHS-92 (was 1-1T0DD8) (Chem_7-1_Fix4)
+Outbound messages in IBM webMethods Chem Module 7.1 return corrupted data.
+
+Outbound messages with special characters, undergo an internal conversion from
+Input Stream to String and String to Input Stream using byte array. This
+conversion was not using the "UTF-8" encoding. Therefore the conversion
+returned corrupted data.
+
+This issue is resolved. The internal conversion from Input Stream to String and
+String to Input Stream using byte array now uses "UTF-8" encoding. All special
+characters are now encoded and displayed correctly.
+
+CHS-73 (was 1-1SAZ00) (Chem_7-1_Fix2)
+The pub.estd.chem:processDocument service fails with a
+com.wm.lang.xml.WMDocumentException.
+
+If the value in any of the XML tags in a document that is passed to the
+pub.estd.chem:processDocument service contains special characters (for example
+&), the service fails and throws a com.wm.lang.xml.WMDocumentException in the
+server log. This error occurs because the service does not correctly process
+documents with values that contain special characters like & or <.
+
+This issue is resolved. The pub.estd.chem:processDocument service correctly
+processes documents with XML tag values that contain special characters.
+
+CHS-145 (was 1-1SJI3R) (Chem_7-1_Fix2)
+Sending non-valid outbound documents from IBM webMethods Chem Module fails even
+though validation is turned off.
+
+In the case where it is necessary to send non-valid documents to trading
+partners, the ValidateOutput TPA parameter is set to No. When these documents
+reach the Chem Module service for outbound processing, the service rejects the
+document due to invalid values. This error occurs because the Chem Module is
+validating the document even though validation is turned off.
+
+This issue is resolved. IBM webMethods Chem Module now correctly validates 
+outbound business documents based on the setting of the ValidateOutput parameter.
+
+CHS-53 (was 1-1QQQH6) (Chem_7-1_Fix1)
+Chem eStandards Module 6.0.1 is unable to exchange signed business documents
+with Chem eStandards Module 7.1.
+
+Due to an interoperability issue, the users of Chem eStandards Module 6.0.1 are
+unable to exchange signed business documents with users of Chem eStandards
+Module 7.1, whereas users of Chem eStandards Module 7.1 can exchange signed
+business documents with users of Chem eStandards Module 6.0.1.
+
+This issue is resolved. Chem eStandards Module 6.0.1 users can now exchange
+signed business documents with Chem eStandards Module 7.1.
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central  
+location (9.7 or later products), or Update Manager to install fixes on one 
+machine at a time. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Command Central (9.7 or later) or Update Manager. For 
+instructions, see the documentation at https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Copyright Super iPaas Integration LLC, an IBM Company 2024.

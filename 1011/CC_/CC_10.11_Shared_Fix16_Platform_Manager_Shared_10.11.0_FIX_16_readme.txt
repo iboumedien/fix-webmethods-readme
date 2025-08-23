@@ -1,0 +1,102 @@
+		Software AG Platform Manager Shared 10.11 Fix 17 readme
+
+                                        August 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Software AG Platform Manager Shared 10.11 Fix 17
+
+
+
+2.0 Fix ID
+
+CC_10.11_Shared_Fix17
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Software AG Platform Manager 10.11.
+
+
+
+4.0 Requirements and Dependencies
+
+Shared Bundles Glassfish 10.11 Fix 9
+
+
+5.0 Platform Support
+
+The fix is supported on all platforms supported by 
+Software AG Command Central 10.11.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+SPM-5489 (CC_10.11_Shared_Fix9)
+When Command Central is installed on a Solaris system, the Command Central logs 
+contain the following exception error: "Too many open files".
+
+The issue is resolved. The exception error no longer appears when Command Central 
+runs on Solaris. 
+
+
+CCE-7548(CC_10.11_Shared_Fix3)
+With Software AG Command Central, you cannot update a mirror repository created to have 
+LATEST to ALL fixes.
+
+The issue is resolved. You can update a mirror repository with the artifacts=ALL parameter 
+and it will contain all available fixes in the source repositories.
+
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a central location (9.7 or later), 
+or IBM webMethods Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at https://www.ibm.com/docs/en/products.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+
+Uninstall using IBM webMethods Command Central (9.7 or later) or IBM webMethods Update Manager. For instructions, see 
+the documentation at https://www.ibm.com/docs/en/products.
+
+
+10.0 Copyright
+
+Copyright IBM Corporation 2025

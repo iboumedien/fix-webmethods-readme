@@ -1,0 +1,331 @@
+                       webMethods Process Engine 10.5 Fix 12 readme
+
+                                      JULY 2022
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Process Engine 10.5 Fix 12.
+
+
+
+2.0 Fix ID
+
+PRT_10.5_Fix12
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Process Engine 10.5.
+
+
+
+4.0 Requirements and Dependencies
+
+PRT 10.5 DBS Fix 6 or higher is required ,
+OPT 10.5 Fix 13 or higher is required ,
+IS 10.5 Core Fix 13 or higher is required .
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods Process Engine 10.5.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+WPE-5136
+With webMethods Process Engine, an error may be seen during startup.
+
+After installation of PRT_10.5_Fix10, the following error is seen in error log when WmPRT package is loaded:
+java.lang.NoSuchMethodError: com.wm.app.b2b.broker.UMUtil.syncPRTDocs([Lcom/wm/lang/ns/NSRecord;)
+
+The issue is resolved.
+
+WPE-4993 (PRT_10.5_Fix10)
+With webMethods Process Engine, when you execute the pub.prt.admin:suspendProcesses and pub.prt.admin:resumeProcesses services for process models with multiple versions, a "Cannot close latch" error message might appear in the server log.
+
+The issue is resolved.
+
+WPE-4491 (PRT_10.5_Fix10)
+With webMethods Process engine, logged field is incorrectly truncated.
+
+Logged field values of type String were truncated to 512 bytes instead of 1024 bytes which the database allowed.
+
+This issue is now resolved. Process engine now supports logging of upto 2000 bytes.
+Note: ProcessAudit database component should be migrated to version 81.2
+
+WPE-4909 (PRT_10.5_Fix9)
+With webMethods Process Engine, a deadlock may occur under load.
+
+A deadlock may occur with webMethods Process Engine when one of the
+threads is executing handleRestartCommand while another thread is
+executing the changeProcessStatus service.
+
+This issue is resolved.
+
+WPE-4819 (PRT_10.5_Fix9)
+With webMethods Process Engine, process instances containing a Join Timeout transition
+type might fail to transit to the next step once the timeout expires.
+
+The issue is resolved.
+
+WPE-4864 (PRT_10.5_Fix9)
+With webMethods Process Engine, an exception may be logged
+during startup.
+
+[BPM.0101.0002E] (tid=1726) Exception: com.pcbsys.nirvana.client.nSecurityException
+
+The issue is resolved. This fix requires IS_10.5_Core_Fix8
+
+WPE-4858 (PRT_10.5_Fix8)
+With webMethods Process Engine, custom ID may not be present
+in the EDA events.
+
+In long running processes, if Integration Server is restarted in between, the process EDA events
+may contain no Custom ID though it was set correctly.
+
+The issue is resolved.
+
+WPE-4811 (PRT_10.5_Fix7)
+With webMethods Process Engine, the Process tracker may not process control operations correctly.
+
+The Process tracker may not process control operations correctly when communicating with Optimize
+and the process ID is missing.
+
+The issue resolved. Process Engine now communicates with an updated Optimize MAPI interface.
+
+WPE-4831 (PRT_10.5_Fix7)
+The "operator does not exist: smallint = text" error occurs when running the Storage Cleaner procedure
+with PostreSQL 13 due to not finding the storage procedure.
+
+The issue is resolved.
+
+WPE-4792(PRT_10.5_Fix6)
+With webMethods Process Engine, Process wide error handler step may execute twice.
+
+A process instance that transitions to process wide error handler step is executed twice
+after a join timeout occurs at an intermediate message event step.
+
+The issue is resolved.
+
+
+WPE-4788(PRT_10.5_Fix6)
+With webMethods Process Engine, a process instance may fail to execute normally.
+
+A process instance may stop abruptly if the Task Engine notification failed for any reason.
+
+The issue is resolved.
+
+WPE-4716(PRT_10.5_Fix5)
+With webMethods Process Engine, some process instances may not be upgraded.
+
+When a new model version is enabled and the option is used to upgrade running
+instances to that version, instances that were started prior to server restart
+do not get upgraded to the enabled version.
+
+The issue is resolved.
+
+WPE-4659(PRT_10.5_Fix5)
+With webMethods Process Engine, triggers are reloaded after WmPRT package is loaded.
+
+The WmPRT package startup service synchronizes internal documents to Universal Messaging.
+As a result, the BPM triggers that have references to these documents are reloaded.
+
+The issue is resolved. The startup service now synchronizes internal document to Universal Messaging
+only when the corresponding Universal Messaging channel is not found.
+
+WPE-4614(PRT_10.5_Fix4)
+With webMethods Process Engine, Storage Cleaner logs its execution at INFO level.
+
+The issue is resolved.
+A new property, "watt.prt.suppressStorageCleanerlog", is added to allow you to suppress the storage cleaner logging
+when set to "true". When the Storage cleaner is suppressed, logging is done at Debug level.
+
+New Property Reference:
+watt.prt.suppressStorageCleanerlog
+Used to configure whether the Storage Cleaner logging is suppressed.
+Valid values are:
+- true - Storage Cleaner logging is suppressed. Logging is done at Debug level.
+- false (default) - Storage Cleaner logging is not suppressed. Logging is done at INFO level.
+
+
+WPE-4685(PRT_10.5_Fix4)
+MYSQL 8 database support is added for Monitor.
+
+
+WMDPD-9889(PRT_10.5_Fix3)
+With webMethods Designer Process Development, after the deployment of a BPM project, the step settings changed
+in My webMethods Server are lost.
+
+When the QoS step settings are changed on the source server from the My webMethods Server user interface, the
+changes are not visible on the target server after rebuilding and redeploying the process model.
+This occurs when only the process model is deployed. When the deployment set contains the associated
+Integration Server packages, the QoS settings are applied and visible on the target environment immediately.
+
+The issue is resolved.
+
+
+WPE-4618(PRT_10.5_Fix3)
+With webMethods Process Engine, the status of a process instance
+might be incorrect.
+
+When a failed step inside an inline subprocess is resubmitted, the parent
+instance status does not change.
+
+The issue is resolved.
+
+
+WPE-4587(PRT_10.5_Fix3)
+Error may be thrown when suspending processes.
+
+Suspending and resuming of process instances with
+long name may cause database error.
+
+The issue is resolved.
+
+
+WPE-4590(PRT_10.5_Fix2)
+With webMethods Process Engine, duplicate tasks might be created after suspending instances.
+
+Completing a user task that belongs to a suspended process instance and
+restarting Integration Server might cause a duplicate user task instance to be created.
+
+The issue is resolved. A new property, watt.prt.enableRestartTrigger can be
+added in prt.cnf config file. Set the property to false before restarting
+Integration Server so that Process Engine does not enable the trigger during package loading.
+If the property is not defined or set to true, Process Engine enables the restart trigger.
+
+New Property Reference:
+watt.prt.enableRestartTrigger
+Used to configure whether the restart trigger is enabled.
+Valid values are:
+- True (default) - Process Engine enables the restart trigger during package loading.
+- False - Process Engine does not enable the restart trigger during package loading.
+
+
+WPE-4582(PRT_10.5_Fix2)
+Process instance status might be different from the user task status.
+
+With webMethods Process Engine, when a process instance is cancelled while My webMethods Server is down,
+the process instance status and user task status are out of sync.
+
+The issue is resolved. An exception is now thrown when the task status cannot be modified.
+
+
+RGHWPE-4389(PRT_10.5_Fix2)
+PostgreSQL database support is added for Process engine.
+
+
+RGHWPE-4580(PRT_10.5_Fix2)
+With webMethods Process Engine, an error might be found in the database
+logs during package startup.
+
+Process Engine issues a select query on PRTQUEUE when a package is loaded.
+If the table was not present, which is expected in most environments, an error message
+is logged in the database logs.
+
+The issue is resolved.
+
+
+WPE-4567(PRT_10.5_Fix1)
+Task comments may be lost between process and subprocess.
+
+After PRT_10.1_Fix4, there was a change of the process instances ID
+associated in a task inside of a subprocess.
+
+This issue is now resolved. 'RootInstanceID' parameter will be included in queueTask request pipeline.
+
+
+WPE-4545 (PRT_10.5_Fix1)
+With webMethods Process Engine, pub.prt.admin:suspendProcesses
+may thrown exception in some situations.
+
+An exception may be thrown while a completed child instance tries to join its parent that was in suspended status.
+
+This issue is now resolved.
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central  location (9.7 or later
+products), or Software AG Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action
+will revert your installation to the previously installed fix. You cannot use these instructions to
+uninstall the previously installed fix.
+
+Uninstall using Command Central (9.7 or later) or Software AG Update Manager. For instructions, see
+the documentation at http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and includes
+support for operation in any country, locale, or language as specified in the Installing webMethods
+Products guide. It was not tested with non-English configurations and non-ASCII data. However, this
+fix has no globalization impact and can be applied to systems running in any supported locale or
+configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright Â© 2022 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, and/or
+its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or registered trademarks of
+Software AG and/or Software AG USA Inc. and/or its subsidiaries and/or its affiliates and/or their licensors.
+Other company and product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries is located at
+http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party copyright notices, license terms,
+additional rights or restrictions, please refer to
+"License Texts, Copyright Notices and Disclaimers of Third Party Products". For certain specific third-party
+license restrictions, please refer to section E of the Legal Notices available under
+"License Terms and Conditions for Use of Software AG Products / Copyright and Trademark Notices of
+Software AG Products". These documents are part of the product documentation, located at
+http://softwareag.com/licenses and/or in the root installation directory of the licensed product(s).

@@ -1,0 +1,145 @@
+                     Common Java Package 10.5 Fix 156 readme
+
+                                    December 2024
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Common Java Package 10.5 Fix 156
+
+
+
+2.0 Fix ID
+
+CJP_10.5_Fix156
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Common Java Package.
+
+
+
+4.0 Requirements and Dependencies
+
+If offered by Update Manager or Command Central,
+please install also the following fixes (or newer):
+
+There are no further explicit fix requirements, but it is strongly 
+recommended that you install all available product fixes at the same time as Common Java Package 10.5 Fix 156.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+
+
+5.0 Platform Support
+
+This fix is supported on Windows, Linux x86_64 and Solaris operating systems.
+
+
+
+6.0 Cautions and Warnings
+
+*  Since release: All files in the "<installDir>/jvm/jvm" folder will be set to original vendor content.
+   Manual changes in the "<installDir>/jvm/jvm" folder need to be redone after the fix install.
+   The old files can be found for reference in the "<installDir>/jvm/jvmXXX.bck" folder.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+
+CJP-679 (CJP_10.5_Fix156)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+* Azul Zulu 8.82 (December 2024 Update (OpenJDK 8.0.432)) for Windows, Linux x86_64 and Solaris.
+
+CJP-597 (CJP_10.5_Fix154)
+
+Common AG Java Package (folder "<installDir>/jvm/jvm"), including: 
+* Azul Zulu JDK 8.76 (openjdk version "1.8.0_402") for Windows, Linux x86_64 and Solaris
+
+
+
+8.0 Installation
+
+Install using the Update Manager or Command Central (11 or later).
+For instructions, see the corresponding documentation at
+https://docs.webmethods.io/.
+
+If you are using Command Central, follow the steps below.
+
+1. Manually shut down all running products in the product directory that are not
+   managed by Command Central. Keep the Platform Manager in the product
+   directory running.
+2. Install Common Java Package 10.5 Fix 156 in the product directory.
+3. Start the products.
+
+If you are using Update Manager, Update Manager is located in a different
+directory (e.g. C:\SoftwareAGSUM) than the product directory
+(e.g. C:\SoftwareAG). Follow the steps below.
+
+1. Shut down all running products in the product directory (e.g. "C:\SoftwareAG").
+2. Use the Update Manager (e.g. in "C:\SoftwareAGSUM") to install
+   Common Java Package 10.5 Fix 156 in the product directory
+   (e.g. "C:\SoftwareAG").
+3. Start the products.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using the Update Manager or Command Central.
+For instructions, see the corresponding documentation at
+https://docs.webmethods.io/.
+
+If you are using Command Central, Update Manager is located in the same
+directory as the products. Follow the steps below.
+
+1. Manually shut down all running products in the product directory that are not
+   managed by Command Central. Keep the Platform Manager in the product
+   directory running.
+2. Uninstall Common Java Package 10.5 Fix 156 from the product directory.
+3. Start the products.
+
+If you are using Update Manager, Update Manager is located in a different
+directory (e.g. from "C:\SoftwareAGSUM") than the product directory
+(e.g. from "C:\SoftwareAG"). Follow the steps below.
+
+1. Shut down all running products in the product directory (e.g. "C:\SoftwareAG").
+2. Use the Update Manager (e.g. in "C:\SoftwareAGSUM") to uninstall
+   Common Java Package 10.5 Fix 156 from the product directory
+   (e.g. from "C:\SoftwareAG").
+3. Start the products.
+
+
+
+10.0 Copyright
+
+Copyright Super iPaas Integration LLC, an IBM Company 2024.

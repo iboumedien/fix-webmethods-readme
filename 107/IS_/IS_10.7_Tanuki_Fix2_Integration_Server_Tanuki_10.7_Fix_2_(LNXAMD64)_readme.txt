@@ -1,0 +1,191 @@
+﻿				     webMethods Integration Server 10.7 Tanuki Fix 2 readme
+
+                                        January 2023
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Integration Server 10.7 Tanuki Fix 2 
+
+
+
+2.0 Fix ID
+
+IS_10.7_Tanuki_Fix2
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects the common extended libraries installed with the 10.7 webMethods products.
+
+This fix upgrades the Tanuki Service Wrapper libraries to version 3.5.50.
+
+
+
+4.0 Requirements and Dependencies
+
+TPS_10.7_Tanuki_Fix2
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product 
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+PIE-80416
+With this fix, Java Service Wrapper v3.5.50 is now available in the directory: common/lib/tw-3.5.50
+
+PIE-74133 (IS_10.7_Tanuki_Fix1)
+With this fix, Java Service Wrapper v3.5.48 is now available in the directory: common/lib/tw-3.5.48
+
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+After installing this fix, perform the following steps on each Integration Server instance:
+
+1.  Shut down Integration Server.
+
+2.  Back up the following file:
+
+    <SAG_install_dir>/profiles/IS_<instance>/bin/sagis107
+
+3.  Open sagis107 in a text editor.
+
+4.  Search all the occurrences of 3.5.X and replace text with 3.5.50
+
+5.  Save your changes and close the text editor.
+
+6.  Back up the following file:
+
+    <SAG_install_dir>/profiles/IS_<instance>/configuration/wrapper.conf
+
+7.  Open wrapper.conf in a text editor.
+
+8.  Remove the following text:
+    wrapper.java.classpath.1=
+    <SAG_install_dir>/common/lib/tw-3.5.X/wrapper.jar
+   
+    Add the following text:
+    wrapper.java.classpath.1=
+    <SAG_install_dir>/common/lib/tw-3.5.50/wrapper.jar
+
+9.  Remove the following text:
+    wrapper.java.library.path.1=
+    <SAG_install_dir>/common/lib/tw-3.5.X
+   
+    Add the following text:
+    wrapper.java.library.path.1=
+    <SAG_install_dir>/common/lib/tw-3.5.50
+   
+10. Save your changes and close the text editor.
+
+11. Start Integration Server.
+
+
+
+9.0 Uninstallation
+
+Uninstall the fix using the Software AG Update Manager.
+For instructions, see Using the Software AG Update Manager.
+
+After uninstalling the fix, perform the following steps on each Integration Server instance
+to restore the wrapper.conf to the state it was in prior to applying the fix:
+
+1. Shut down Integration Server.
+
+2. Replace the following files with the backup created while
+   installing the fix:
+
+  <SAG_install_dir>/profiles/IS_<instance>/bin/sagis107
+  <SAG_install_dir>/profiles/IS_<instance>/configuration/wrapper.conf
+
+3. Start Integration Server.
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was not tested with non-English configurations and non-ASCII data. However, this 
+fix has no globalization impact and can be applied to systems running in any supported locale or 
+configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, and/or
+its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or registered trademarks
+of Software AG and/or Software AG USA Inc. and/or its subsidiaries and/or its affiliates and/or their
+licensors. Other company and product names mentioned herein may be trademarks of their respective
+owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries is
+located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party copyright notices,
+license terms, additional rights or restrictions, please refer to "License Texts, Copyright Notices
+and Disclaimers of Third Party Products". For certain specific third-party license restrictions,
+please refer to section E of the Legal Notices available under "License Terms and Conditions for
+Use of Software AG Products / Copyright and Trademark Notices of Software AG Products". These
+documents are part of the product documentation, located at http://softwareag.com/licenses and/or
+in the root installation directory of the licensed product(s).

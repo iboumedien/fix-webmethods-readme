@@ -1,0 +1,263 @@
+         IBM webMethods OnRamp 3.5.1 for Commerce One MarketSite Fix 14 readme
+
+                          October 2024      
+________________________________________________________________________________
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods OnRamp 3.5.1 for Commerce One MarketSite Fix 14
+
+
+2.0 Fix ID
+
+C1O_3.5.1_Fix14
+
+
+3.0 Product(s)/Component(s) Affected
+
+None.
+
+
+4.0 Requirements and Dependencies
+
+IS 10.1 Core Fix 30 or later.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include 
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the 
+release.
+
+POC-320
+Updated copyright notes, vendor, and product names for IBM rebranding.
+
+POC-236 (C1O_3.5.1_Fix11)
+In webMethods Adapter for Commerce One OnRamp, on applying the fix on Integration
+Server 10.11, the WmMarketConnect package is not installed.
+
+This issue is now resolved.  
+
+POC-230 (C1O_3.5.1_Fix10)
+Trading Networks is unable to recognize the documents after upgrading from older
+version to 10.1 version of Integration Server.
+
+This issue is now resolved.
+
+WF-10581 (C1O_3.5.1_Fix9)
+In webMethods OnRamp for Commerce One MarketSite 3.5.1, the following services 
+are added to support xCBL 4.0 document: 
+
+wm.marketconnect.xcbl:xCBL4_GenerateRecords 
+wm.marketconnect.xcbl:xCBL4_RegisterTNDocTypes 
+wm.marketconnect.xcbl:xCBL4_DeleteTNDocType
+
+POC-221 (C1O_3.5.1_Fix8)
+Pub file changes for issue POC-208 has been updated to use with Integration 
+Sever version 9.10 and later. 
+
+POC-216 (C1O_3.5.1_Fix8)
+In webMethods OnRamp for Commerce One MarketSite adapter, error occurs in the
+error log while adding Alias to OnRamp for Commerce One MarketSite.
+
+This issue is now resolved. 
+
+POC-210 (C1O_3.5.1_Fix7)
+In webMethods CommerceOne On Ramp, the password entered is not masked for 
+WmPartners Package services.
+
+This issue is resolved. The password entered is now masked. 
+
+POC-211 (C1O_3.5.1_Fix7)
+In webMethods CommerceOne On Ramp, the adapter's administrator UI pages does not
+support the new Administrator screens of Integration Server(IS) 10.1.
+
+This issue is resolved. webMethods CommerceOne On Ramp now supports the new 
+Administrator screens of IS from version 10.1 and later. 
+
+POC-203 (C1O_3.5.1_Fix7)
+In OnRamp for Commerce One MarketSite, the following error message is displayed 
+in the error log when the adapter service is incorrectly mapped:
+pub.flow:setResponse is using the value from parameter "response" because no 
+value specified for "responseString" or "responseBytes".
+
+This warning message occurs in the pub.flow:setResponse flow service when any 
+adapter service maps the input parameter "response" instead of "responseString".
+
+This issue is now resolved.
+
+POC-197 (C1O_3.5.1_Fix6)
+In webMethods OnRamp for Commerce One MarketSite, 
+wm.marketconnect.cbl:recordToDocumentString service generates the response 
+message in an invalid format, if Integeration Server is restarted multiple 
+times.
+
+This issue is now resolved.
+
+POC-196 (C1O_3.5.1_Fix5)
+webMethods OnRamp for Commerce One MarketSite support for new Admin screens 
+IS 9.10 onwards. 
+
+webMethods OnRamp for Commerce One MarketSite Admin UI pages did not support new
+format of screens developed for IS 9.10. 
+
+This issue is resolved now by modifying the webMethods OnRamp for Commerce One 
+MarketSite pages.
+
+POC-182 (C1O_3.5.1_Fix4)
+In webMethods OnRamp for Commerce One MarketSite adapter, running the service, 
+wm.marketconnect.tn.delivery:getProfileDirectAlias does not return the Alias 
+of the intended trading partner.
+
+The input to the
+wm.marketconnect.tn.delivery:getProfileDirectAlias service is changed from 
+C1OnRamp group to Delivery group. As a result, the service cannot retrieve the 
+Alias of the trading partner.
+
+This issue is resolved. Now, the C1OnRamp group provides the input to the 
+wm.marketconnect.tn.delivery:getProfileDirectAliasservice. 
+
+POC-179 (C1O_3.5.1_Fix4)
+In webMethods OnRamp for Commerce One MarketSite adapter, the errorRecorder 
+document for the service wm.marketconnect.xdk.reply:createError contains a null 
+value.
+
+The errorRecorder document is missing the reference to the document, 
+wm.marketconnect.xdk.reply:Error.
+
+This issue is resolved. Now, the errorRecorder document contains the reference 
+to wm.marketconnect.xdk.reply:Error document. 
+
+POC-175 (C1O_3.5.1_Fix4)
+In webMethods OnRamp for Commerce One MarketSite adapter, changes to Alias 
+paramters are not applied to the MarketSite Alias.
+
+When you edit the Alias parameters of a MarketSite Alias in Integration Server 
+Administrator and click Test Sync, the new values are not applied to the 
+MarketSite Alias until Integration Server is restarted.
+
+This issue is resolved. After you install the OnRamp for Commerce One MarketSite
+3.5.1 Fix 4, you must delete the "errors.xml" file located at,
+<Integration Server_directory>\instances\default\packages\WmMarketConnect\config 
+directory. Restart Integration Server. 
+
+POC-152 (C1O_3.5.1_Fix3)
+webMethods OnRamp for Commerce One MarketSite Adapter returns an "Out of memory"
+error if an error occurs when the adapter writes an exception in the C1 OnRamp 
+Errors Log. 
+
+C1 OnRamp Adapter returns an "Out of memory" error if an error occurs when the 
+adapter writes an exception in the C1 OnRamp Errors Log (the error.xml file). 
+The issue occurs because if an error occurs when C1OnRamp Adapter records an 
+exception, the adapter tries to record this error in the error.xml file as well.
+This behavior causes an infinite loop that results in an "Out of memory" error. 
+
+This issue is resolved. Now if a read/write error occurs when the C1OnRamp 
+Adapter writes an exception in the C1 OnRamp Errors Log, the error is logged 
+into the C1OnRamp log file.
+
+POC-159 (C1O_3.5.1_Fix2)
+The "pub.marketconnect.transport:sendEnvelope" service of the webMethods OnRamp 
+for Commerce One MarketSite Adapter always uses fixed HTTP content type. 
+
+The "pub.marketconnect.transport:sendEnvelope" service always uses 
+"application/x-www-form-urlencoded" as the HTTP content type when sending an 
+envelope to the specified MarketSite alias. To configure the "sendEnvelope" 
+service at runtime, the service should take content type as a separate input. 
+
+The issue is resolved. The 'pub.marketconnect.transport:sendEnvelope' service 
+has a new parameter: "contentType" String. Optional. The HTTP content type to 
+use when sending an envelope to a specified MarketSite alias. If you do not 
+specify a value  for the "contentType" parameter, C1 OnRamp Adapter uses the 
+content type specified for the MarketSite alias. To specify the HTTP content 
+type when defining a MarketSite alias: 
+1. In Integration Server Administrator, go to 
+Adapters > C1 OnRamp > Aliases > Add Alias. 
+2. Specify a value in the "MarketSite Content-Type" field. The default value is 
+"application/x-www-form-urlencoded". 
+3. Click "Submit Changes". 
+
+For more information about defining a MarketSite alias, see 
+"webMethods OnRamp for Commerce One MarketSite Adapter Installation and User's 
+Guide".
+
+POC-158 (C1O_3.5.1_Fix2)
+In webMethods OnRamp for Commerce One MarketSite Adapter, a deleted MarketSite 
+alias reappears on the Aliases page in Integration Server Administrator after 
+you restart Integration Server. 
+
+After you delete a MarketSite alias from the C1OnRamp Adapter's Aliases page in 
+Integration Server Administrator, the alias is removed from the list of aliases 
+on the page. However, when you restart Integration Server, the deleted alias 
+appears again on the Aliases page. 
+
+This issue is now resolved. When you delete a C1OnRamp Adapter MarketSite alias 
+in Integration Server Administrator, the alias is permanently removed from the 
+system.
+
+POC-151 (C1O_3.5.1_Fix1)
+When the WmMarketConnect package of Integration Server is enabled and an error 
+occurs in webMethods OnRamp for Commerce One MarketSite Adapter, Integration 
+Server generates a huge number of redundant log entries.
+
+When the WmMarketConnect package is enabled, for each exception case in C1 
+OnRamp Adapter, improper exception entries were added to the server log file. 
+The number of entries added erronously is substantial and can cause the host 
+server to run out of space.
+
+This issue is resolved. Now a C1 OnRamp Adapter error does not create 
+unnecessary entries in the server log file.
+
+
+
+8.0 Installation
+
+Install using Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Copyright Super iPaas Integration LLC, an IBM Company 2024.

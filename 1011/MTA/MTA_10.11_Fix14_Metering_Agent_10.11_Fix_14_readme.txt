@@ -1,0 +1,210 @@
+			webMethods Metering 10.11 Fix 14 readme
+
+					January 2025
+
+____________________________________________________________________________________________________
+
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+1.0 Fix Name
+
+webMethods Metering 10.11 Fix 14
+
+
+
+2.0 Fix ID
+
+MTA_10.11_Fix14
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+
+This fix affects MTA 10.11.
+
+
+
+4.0 Requirements
+
+This fix requires any of the products listed in 3.0 Products (s)/Component(s) Affected. 
+
+Official fixes are cumulative. Therefore, you can install the specified fix or later.
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported
+by webMethods Product Suite 10.11.
+
+
+
+6.0 Cautions and Warnings
+
+All product profiles that run on top of OSGi runtimes are stopped by
+the IBM webMethods Update Manager and will automatically be started
+after the session completes.
+
+The webMethods products that use webMethods Мetering might not work if
+the metering license is not present. If you cannot start the webMethods
+product, you can temporarily revert its license to the previous version.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+MTA-1847
+In webMethods Metering, after PC time synchronization, usage data collection might stop or return incorrect values.
+This issue is now resolved.
+
+ MTA-1771
+When generating logs, the Software AG Metering Agent might throw a ZoneRulesException error.
+The issue is resolved.
+
+MTA-1724
+The logs of Metering Agent are revisited and updated.
+ MTA-1119
+When Software AG Metering collects data for a product that has more than two profiles
+or instances, the Metering Agent might throw a NoSuchFileException error.
+This issue is resolved.
+
+MTA-1093
+Software AG Metering's diagnostic fails when
+the storage directory is not yet created.
+This is fixed now.
+ MTA-1067
+In Software AG Metering, obsolete usage measurement files are kept in the metering
+storage directory.
+The issue is resolved. Obsolete usage measurement files are now automatically deleted from
+the metering storage directory.
+ MTA-1033
+In Software AG Metering, the runtime alias does not support double quotes
+and backslash characters.
+This issue is resolved. You can now use double quotes and backslash characters
+when you configure a runtime alias.
+ MTA-1021
+With Software AG Metering, when the underlying network setup does not allow the retrieval
+of the fully quilified domain name (FQDN) or the same FQDN is assigned to different product
+instances, the same runtime ID might be assigned to these product instances.
+
+This issue is resolved. All product instances that are deployed on a system with a unique
+hostname now have unique runtime IDs that are listed in the corresponding wrapper.log files.
+For details on finding the runtime ID of a product instance, see the Software AG Infrastructure
+Administrator’s Guide.
+ MTA-817
+During graceful shutdown, the Software AG Metering Agent might throw a NullPointerException error.
+The issue is resolved.
+
+MTA-813
+We added logs that show if shutdown actions that include reporting measurements to the cloud are executed.
+
+MTA-774
+During validation of the measurement files, 
+the Software AG Metering Agent Diagnostic Tool might disrupt 
+the reporting of collected usage data.
+The issue is resolved.
+ MTA-725
+The Software AG Metering Agent does not support proxy with authentication.
+This issue is resolved. You can now do one of the following to configure
+a proxy username and password:
+
+Use the metering.proxy.user and metering.proxy.pass properties
+in the metering.agent.properties file
+Use metering.proxy.user and metering.proxy.pass as Java System properties
+Use METERING_PROXY_USER and METERING_PROXY_PASS as environment variables
+
+MTA-731
+MTA-616
+
+In rare cases if migration had failed, it was possible to remove backup file even if restore failed
+
+The issue is now fixed
+
+ MTA-671
+The WebMethods Metering Agent throws an error: "NoClassDefFoundError".
+This issue is resolved.
+ MTA-622
+Set minimum accumulation period to 5 seconds
+
+MTA-638
+The WebMethods Metering Agent Migration Utility does not migrate
+the measurements of an old product installation.
+This issue is resolved. The Migration Utility now migrates all measurements in the
+common/metering/storage directory to the new installation.
+For details on how to use the Metering Agent Migration Utility,
+see the Installation and Upgrade guide.
+
+MTA-534
+When you run the webMethods Metering Agent Diagnostic Tool, the diagnostic fails
+with a statement that the measurements are not valid.
+This issue is resolved.
+
+MTA-485
+The Software AG Metering Agent uses a version of Apache Log4j 2
+that has known vulnerabilities.
+This issue is resolved. The Software AG Metering Agent now uses
+the stable version Apache Log4j 2.17.1.
+
+MTA-471
+The Software AG Metering Agent throws a NullPointerException error in the wrapper.log file.
+This issue is resolved.
+
+MTA-434
+When you change the host name or the installation path of a product instance,
+the Software AG Metering Agent does not include the cached usage measurements
+in the report.
+This issue is resolved.
+
+MTA-398
+Fixing access denied exceptions thrown by the MTA agent
+
+MTA-463
+The Software AG Metering Agent uses a version of Apache Log4j 2
+that has known vulnerabilities.
+This issue is resolved. The Software AG Metering Agent now uses
+the stable version Apache Log4j 2.16.0.
+
+MTA-449
+The WebMmethods Metering Agent Migration Utility does not work with a zip file
+that contains the Metering Agent properties of the old product installation.
+This issue is resolved. For details on how to use the Metering Agent Migration
+Utility, see the Installation and Upgrade guide.
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+9.0 Uninstallation
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

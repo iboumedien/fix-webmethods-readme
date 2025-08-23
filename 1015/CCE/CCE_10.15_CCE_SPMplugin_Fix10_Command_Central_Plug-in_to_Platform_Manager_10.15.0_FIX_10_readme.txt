@@ -1,0 +1,99 @@
+		Software AG Command Central Plug-in to Platform Manager 10.15 Fix 10 readme
+
+                             August 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Software AG Command Central Plug-in to Platform Manager 10.15 Fix 10
+
+
+2.0 Fix ID
+
+CCE_10.15_CCE_SPMplugin_Fix10
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Software AG Command Central 10.15.
+
+
+
+4.0 Requirements and Dependencies
+
+Platform Manager 10.15 Fix 10
+
+
+5.0 Platform Support
+
+The fix is supported on all platforms supported by 
+Software AG Command Central 10.15.
+
+
+
+6.0 Cautions and Warnings
+
+On a Windows operating system, if you uninstall Fix 6 or higher to downgrade to Fix 5 or higher, you must re-register the Command Central Windows service before starting it. 
+For more information, see section 9.0 Uninstallation. 
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+None.
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a central location (9.7 or later), 
+or IBM webMethods Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at https://www.ibm.com/docs/en/products.
+
+
+
+9.0 Uninstallation
+
+If you are running Command Central on a Windows operating system, and you uninstall Fix 6 or higher to downgrade to Fix 5 or higher, Command Central might fail to start. 
+The issue occurs because the Tanuki Java Service Wrapper reverts from version 3.5.53 to version 3.5.50. 
+Fix 5 or higher of Command Central reference should reference the newer version of the wrapper, while Fix 4 and lower should reference reference the older version.
+Re-registering the Command Central Windows service ensures that Command Central references the correct version of the Tanuki wrapper.
+To re-register the Command Central Windows service:
+1.Open a command prompt, navigate to the [Software AG_directory]\profiles\CCE\bin directory and run the following command to remove the Command Central service:
+service.bat -remove
+3.Run the following command to register the Windows service for Command Central:
+service.bat -install
+
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+
+Uninstall using IBM webMethods Command Central or IBM webMethods Update Manager. For instructions, see 
+the documentation at https://www.ibm.com/docs/en/products.
+
+
+10.0 Copyright
+
+Copyright IBM Corporation 2025

@@ -1,0 +1,387 @@
+              Universal Messaging webMethods TemplateApplications 10.11 SP0 Fix 19 Readme
+          
+                                  June 2024
+
+________________________________________________________________________________
+
+This file provides important information for applying Universal Messaging TemplateApplications 10.11 
+SP0 Fix 19 to Universal Messaging 10.11 SP0 installations. For additional information about 
+Universal Messaging, see the index.html file in the docs directory of your installation. 
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings 
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization 
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+Universal Messaging webMethods TemplateApplications 10.11 SP0 Fix 19 Build ***BUILD_NUMBER***
+
+
+
+2.0 Fix ID
+
+NUM_10.11_wM_TemplateApplications_Fix19
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+Universal Messaging webMethods TemplateApplications 10.11 SP0
+
+
+
+4.0 Requirements
+
+None.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+ 	
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+NUM-21714 (NUM_10.11_wM_TemplateApplications_Fix19)
+
+Running the Universal Messaging runUMTool CreateJMSTopic command-line tool does not enable a JMS 
+engine for the newly created topic, which can lead to high CPU usage and memory issues.
+Instead, the tool creates a topic with a default channel engine.
+The issue is resolved. The CreateJMSTopic tool now creates a topic with a JMS engine
+
+NUM-21519 (NUM_10.11_wM_TemplateApplications_Fix19)
+
+Some options are missing from the Universal Messaging runUMTool command-line tool when you have only 
+the UM Template Applications installed.
+The issue occurs because several jar files are missing from the lib directory although they are 
+present in the runUMTool classpath.
+The issue is resolved.
+
+NUM-21516 (NUM_10.11_wM_TemplateApplications_Fix19)
+
+Some options are missing from the Universal Messaging runUMTool command-line tool when you have only 
+the UM Template Applications installed.
+The issue occurs because several jar files are missing from the lib directory although they are 
+present in the runUMTool classpath.
+The issue is resolved.
+
+NUM-20773 (NUM_10.11_wM_TemplateApplications_Fix17)
+
+runUMTool options' are loaded in the presence of their dependencies. Since TA only installation 
+onboards only client_fix_jars, the missing jars caused a few options in runUMTool to not load up 
+and therefore missing from the list.
+Including org.json and all other jars in the TA's runUMTool's classpath was done as part of this 
+ticket.
+
+NUM-20132 (NUM_10.11_wM_TemplateApplications_Fix16)
+
+Universal Messaging uses the Guava library version 30.1.1, which has a security vulnerability.
+The issue is resolved. The Guava library has been updated to version 32.1.1.
+
+NUM-20080 (NUM_10.11_wM_TemplateApplications_Fix16)
+
+NA
+
+NUM-19817 (NUM_10.11_wM_TemplateApplications_Fix14)
+
+When a Universal Messaging cluster is part of a zone, events that are already acknowledged and 
+consumed might accumulate on the channels of the zone.
+These zone channels have a last acknowledged EID of -1 on the clustered join, which causes the 
+backlog of events. In addition, zone channels that are deleted and then recreated can cause the 
+clustered join to be ahead of the channel's own last EID. In this situation, events can go missing 
+if further publishes are performed through the clustered join.
+The issue is resolved. The Universal Messaging server has been modified to correct for such issues. 
+In addition, the healthchecker tool of the Realm Information Collector has been enhanced to 
+identify joins that are ahead of the channel's last EID.
+
+NUM-19808 (NUM_10.11_wM_TemplateApplications_Fix14)
+
+The healthchecker collector of the RealmInformationCollector command-line tool executes slowly in a 
+Universal Messaging cluster with many channels and durables.
+The issue is resolved.
+
+NUM-19748 (NUM_10.11_wM_TemplateApplications_Fix14)
+
+The runUMTool ClusterState tool does not give information about offline nodes in a UM server 
+cluster.
+ClusterState tool is modified for including the information of nodes that are offline or not 
+connected to the active cluster nodes.
+Also, ClusterTool is enhanced with some additional information of the cluster members.
+
+NUM-19301 (NUM_10.11_wM_TemplateApplications_Fix13)
+
+When Integration Server uses Universal Messaging as a JMS provider, it might stop responding when 
+you try to enable or disable JMS triggers.
+The issue is resolved.
+
+NUM-18313 (NUM_10.11_wM_TemplateApplications_Fix10)
+
+The package com.google.code.gson:gson before 2.8.9 are vulnerable to Deserialization of Untrusted 
+Data via the writeReplace() method in internal classes, which may lead to DoS attacks.
+https://nvd.nist.gov/vuln/detail/CVE-2022-25647
+Base Score: 7.5 HIGH
+The issue is now resolved.
+
+NUM-16652 (NUM_10.11_wM_TemplateApplications_Fix10)
+
+In Legion of the Bouncy Castle BC before 1.61, attackers can obtain sensitive information about a 
+private exponent because of Observable Differences in Behavior to Error Inputs. This occurs in 
+org.bouncycastle.crypto.encodings.OAEPEncoding. Sending invalid ciphertext that decrypts to a short 
+payload in the OAEP Decoder could result in the throwing of an early exception, potentially leaking 
+some information about the private exponent of the RSA private key performing the encryption.
+https://nvd.nist.gov/vuln/detail/CVE-2020-26939
+CVSS Score: 5.3 Medium
+
+NUM-16651 (NUM_10.11_wM_TemplateApplications_Fix10)
+
+A temp directory creation vulnerability exists in all versions of Guava, allowing an attacker with 
+access to the machine to potentially access data in a temporary directory created by the Guava API 
+com.google.common.io.Files.createTempDir(). By default, on unix-like systems, the created directory 
+is world-readable (readable by an attacker with access to the system). The method in question has 
+been marked @Deprecated in versions 30.0 and later and should not be used.
+https://nvd.nist.gov/vuln/detail/CVE-2020-8908
+CVSS Score: 3.3 Low
+The issue is now resolved.
+
+NUM-18602 (NUM_10.11_wM_TemplateApplications_Fix8)
+
+Running the AdminToolsConf collector that is part of the Universal Messaging Realm Information 
+Collector tool fails with a ?Directory doesn't exist? error.
+The issue occurs when the \UniversalMessaging\java\umserver\bin folder or the conf files in the bin 
+folder do not exist.
+This issue is resolved.
+
+NUM-17829 (NUM_10.11_wM_TemplateApplications_Fix6)
+
+When you use the nInstanceManager tool to create a Universal Messaging realm instance, the instance 
+gets created, but the tool returns warning messages.
+The nInstanceManager tool returns the following messages:
+- WARNING: An illegal reflective access operation has occurred
+- WARNING: Illegal reflective access by com.sun.xml.bind.v2.runtime.reflect.opt.Injector
+(file:/opt/softwareag/1011/UniversalMessaging/lib/jaxb-impl-2.3.0.jar) to method
+java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int).
+The issue is now resolved.
+
+NUM-15197 (NUM_10.11_wM_TemplateApplications_Fix6)
+
+The Universal Messaging RealmInformationCollector tool fails to run in a Docker container.
+When you try to start the RealmInformationCollector in a Docker container, the tool returns
+the following error: 'Universal Messaging realm server component not present in the current
+installation directory (/opt/softwareag/UniversalMessaging/tools/runner/./../../..). 
+So this operation is not applicable.' 
+This issue is now resolved.
+
+NUM-17415 (NUM_10.11_wM_TemplateApplications_Fix2)
+
+Restarting Universal Messaging fails with a file I/O error.
+The issue might occur when the server tries to load a shared or serial durable with a
+selector that has an event buffer size of more than 10 000 symbols. In this case,
+Universal Messaging writes the following error in the nirvana.log file:
+"Server shutdown initiated due to fatal file I/O error occurred: Unable to load the durable
+from, corruption detected...Input exceeded input buffer size."
+The issue is resolved. You can now create durables with selectors that have an input event buffer 
+size of more than 10 000 symbols.
+
+NUM-17174 (NUM_10.11_wM_TemplateApplications_Fix2)
+
+The Universal Messaging RealmInformationCollector diagnostic tool might fail while
+collecting information about the operating system.
+The issue occurs due to failure in the old Oshi library that the tool uses.
+The issue is resolved. The Oshi-Core, JNA, and JNA-Platform libraries have been upgraded to the 
+latest version.
+
+NUM-17015 (NUM_10.11_wM_TemplateApplications_Fix2)
+
+Universal Messaging Template Applications fixes are not available for Solaris operating systems.
+The issue is resolved. You can now install a common Template Applications fix on both Solaris and 
+AIX using Software AG Update Manager.
+
+NUM-16890 (NUM_10.11_wM_TemplateApplications_Fix1)
+
+The IdentifyLargeDurableOutstandingEvents command line tool reports information about all channels 
+with durables. The behavior is incorrect because the tool must report only the channels that 
+contain durables with a number of outstanding events above the defined threshold.
+The issue is resolved. 
+
+NUM-16777 (NUM_10.11_wM_TemplateApplications_Fix1)
+
+The ExportEventsFromOfflineMemFile and RepublishEventsFromOfflineFile tools might not export or 
+import the last batch of events from or into the mem file if the number of events in that batch is 
+less than the specified batch size and the mem file contains empty events at the end.
+The issue is now resolved. 
+
+NUM-15346 (NUM_10.11_wM_TemplateApplications_Fix1)
+
+The Universal Messaging DeleteJoin command-line tool cannot find an inter-cluster join between two 
+cluster-wide channels.
+This issue is now resolved.
+
+NUM-15233 (NUM_10.11_wM_TemplateApplications_Fix1)
+
+The output of the Universal Messaging HealthChecker command-line administration tool has been 
+improved. The tool now offers:
+- Better output readability
+- Clearer durable warnings
+- Warnings for queue build-up
+In addition, the DurableSubscriberLargeStorageCheck prints the channel size.
+
+
+8.0 Installation
+
+If you are installing a Universal Messaging server fix, please shut down any running Universal
+Messaging server instances before installing.
+In case the Universal Messaging server instance is a member of a cluster, please apply the
+procedure for installing rolling cluster updates described below(*).
+
+If you are installing a Universal Messaging client fix, please shut down any applications such as
+Integration server or Enterprise Manager which are using client libraries.
+
+If you are installing a Universal Messaging Enterprise Manager fix, you do not need to shut down the
+Universal Messaging server.
+
+Install using the Software AG Update Manager or Command Central (9.5 or later). For instructions,
+see the corresponding documentation at http://documentation.softwareag.com.
+
+(*) Universal Messaging cluster is supporting rolling updates for its nodes.
+There is a strong recommendation to start applying the new fixes on the Slave nodes and leave the
+Master node to be the last one.
+(*) Starting with 10.11 Fix 3, Universal Messaging provides updated versions of security libraries with 
+the Universal Messaging realm server fixes, if any of these libraries has been updated. You can find 
+the libraries in the UniversalMessaging\lib folder.
+
+For each single node that is part of the cluster the customer needs to follow the steps:
+1) Shutdown the node. The node will be disconnected from the cluster.
+2) Apply the specific fix
+3) Start the node. It will be connected back again to the cluster and will be operational
+4) Apply the same procedure from 1-3 steps on the next node
+
+In order to have truly no downtime, the client that talks to the Universal Messaging cluster should
+also be implemented in a way that it tolerates brief connection loss. A rolling update in a cluster
+still means that:
+a) When the node that a client is connected to is brought down for maintenance, the connection to
+this server, and respectively the cluster, will be lost and has to be re-established. The client
+should be able to handle this seamlessly.
+b) When the master node of the cluster is brought down for maintenance, the cluster will briefly
+go offline until a new master is elected. This is usually a very short time window, but still,
+similarly to point a). The client applications should be able to handle it in order to have truly
+no downtime from the point of view of the end user.
+
+
+
+9.0 Uninstallation
+
+If you are uninstalling a Universal Messaging server fix,
+please note that any running Universal Messaging server
+instances will be automatically shutdown before installing.
+
+If you are uninstalling a Universal Messaging client fix, 
+please shut down any applications such as Integration Server 
+or Enterprise Manager which are using client libraries.
+
+If you are uninstalling a Universal Messaging Enterprise Manager 
+fix, you do not need to shut down the Universal Messaging server.
+
+Uninstall using the Software AG Update Manager or 
+Command Central (9.5 or later). For instructions, see the 
+corresponding documentation 
+at http://documentation.softwareag.com.
+
+Note: These instructions can only be used to uninstall the 
+most recently installed fix. This action will revert your 
+installation to the previously installed fix. You cannot 
+apply these instructions to the previously installed fix.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix has
+no globalization impact and can be applied to systems running in any supported 
+locale or configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might contain new 
+messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright (c) 2024 Software AG, Darmstadt, Germany and/or Software AG USA Inc., 
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their 
+licensors.
+
+The name Software AG and all Software AG product names are either trademarks or 
+registered trademarks of Software AG and/or Software AG USA Inc. and/or its 
+subsidiaries and/or its affiliates and/or their licensors. Other company and 
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its 
+subsidiaries is located at http://softwareag.com/licenses.
+
+This software may include portions of third-party products. For third-party 
+copyright notices, license terms, additional rights or restrictions, please 
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party 
+Products". For certain specific third-party license restrictions, please refer 
+to section E of the Legal Notices available under "License Terms and Conditions 
+for Use of Software AG Products / Copyright and Trademark Notices of Software AG
+Products". These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the 
+licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+  
+  E-mail: empower@softwareag.com
+  
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

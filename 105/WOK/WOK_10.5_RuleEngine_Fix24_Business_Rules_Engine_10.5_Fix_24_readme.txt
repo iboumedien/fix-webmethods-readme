@@ -1,0 +1,222 @@
+                 Business Rules Engine 10.5 Fix 24 readme
+
+                         April 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Business Rules Engine 10.5 Fix 24
+
+
+
+2.0 Fix ID
+
+WOK_10.5_RuleEngine_Fix24
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Business Rules Engine.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in 
+services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes 
+for the release.
+
+WOK-13949 (WOK_10.5_RuleEngine_Fix1)
+The WmBusinessRules package on Integration Server does not remove created threads when a rule 
+project is undeployed.
+This issue has been resolved by removing open threads when a rule project is undeployed, a rule 
+project is redeployed or the WmBusinessRules package is restarted.
+
+WOK-14075 (WOK_10.5_RuleEngine_Fix8)
+Unable to use database auditing in MSR / Docker environment
+When starting Microservices Runtime with database auditing turned on, the startup of 
+WmBusinessRules package fails with an "java.lang.ClassNotFoundException: 
+com.softwareag.eda.webm.rules.auditing._2_0.BaseEventType" exception.
+
+This issue is resolved now.
+
+WOK-14116 (WOK_10.5_RuleEngine_Fix3)
+No error visible when rule project assembly fails
+If an error occurs during the assembly of a rule project that contains Action definitions in either 
+Asset Build Environment, Designer or the Business Rules UI in My webMethods Server, the error will 
+not be visible to the user.
+This issue has been resolved.
+
+WOK-14340 (WOK_10.5_RuleEngine_Fix12)
+Cannot deploy outdated rule project with functions to Rules engine
+When deploying a rule project, which contains functions and has been created with an older version 
+of Business Rules, to a Business Rules runtime on Integration Server, the deployment fails with an 
+com.softwareag.rules.common.RulesValidationFailedException: 
+java.util.concurrent.ExecutionException: java.lang.NoClassDefFoundError: 
+org/eclipse/jdt/core/JavaCore exception.
+This issue has been resolved.
+
+WOK-14683 (WOK_10.5_RuleEngine_Fix6)
+The service "pub.businessrules.client:invoke" was only accessible with a WOKAA license.
+This was changed so that "pub.businessrules.client:invoke" is now accessible with a WOK or WOKAA 
+license.
+
+WOK-14975 (WOK_10.5_RuleEngine_Fix8)
+Support MSR configuration templates with Business Rules runtime 10.5
+A Business Rules runtime running on Microservices Runtime did not offer the capability to be 
+configured through MSR configuration templates.
+This issue is resolved.
+
+WOK-14979 (WOK_10.5_RuleEngine_Fix8)
+CommonLoggingHandler does not allow to log without message key
+Some debug log messages were not properly written to the Integration Server log.
+This issue is now resolved.
+
+WOK-14984 (WOK_10.5_RuleEngine_Fix8)
+Support a remote Process runtime with Business Rules runtime 10.5
+
+Previously, if using Process Actions in Business Rules, the rule engine would call the process 
+engine on the same host.
+
+Now, the rule engine will call a process engine on the Integration Server Remote Server Alias 
+"processruntime", if such an alias is configured. If this alias is not configured the rule engine 
+will continue to call the process engine on the same host.
+
+WOK-15328 (WOK_10.5_RuleEngine_Fix11)
+Cloud Deployment support
+The Business Rules Development perspective in Designer now supports "Deploy to Cloud" to a Cloud 
+Container solution.
+This issue has been resolved.
+
+WOK-15528 (WOK_10.5_RuleEngine_Fix13)
+Deployment of business rules fails with java.lang.ClassNotFoundException: 
+com.softwareag.rules.runtime.pool.EnginePoolStore$Lambda$172
+When deploying a business rules project to one or more Integration Servers, through Hot Deployment 
+from My WebMethods Server, or through Deployer, sometimes the deployment fails on one or more 
+Integration Servers. The Integration Server error log shows a java.lang.ClassNotFoundException: 
+com.softwareag.rules.runtime.pool.EnginePoolStore$Lambda$172.
+This issue has been resolved by replacing the sometimes problematic lambda expression with a 
+concrete anonymous class.
+
+WOK-15663 (WOK_10.5_RuleEngine_Fix15)
+NullPointerException during rule project builds
+When building a rule project with the Asset Build Environment, the build would fail with
+java.lang.NullPointerException
+at com.wm.lang.ns.NSRecordRef.getNSRecord(NSRecordRef.java:245)
+This issue is now resolved.
+
+WOK-15788 (WOK_10.5_RuleEngine_Fix13)
+Duplicate JARs in WmBusinessRules installation
+After installation, two versions of the BusinessRulesPackage-10.*.*.jar and 
+deployer-common-acdl*.jar are present in the WmBusinessRules package.
+This issue has been resolved.
+
+WOK-16333 (WOK_10.5_RuleEngine_Fix17)
+Jackson library v2.12.3 causes com.fasterxml.jackson.databind.exc.InvalidDefinitionException
+When using Jackson library version 2.12.3, reading Business Rules auditing information from the 
+database results in a com.fasterxml.jackson.databind.exc.InvalidDefinitionException.
+This issue has been resolved.
+
+WOK-16517 (WOK_10.5_RuleEngine_Fix20)
+businessrulestargetruntime.isOnline=0 after initial start of WmBusinessRules package
+When starting up the WmBusinessRules package for the first time on an Integration Server which 
+connects to a MySQL database, the BUSINESSTARGETRUNTIMES.ISONLINE column wrongly contains the value 
+0 instead of 1. This can cause Business Rules Hot Deployment to this Integration Server to fail.
+This issue is now resolved.
+
+WOK-16873 (WOK_10.5_RuleEngine_Fix21)
+Business Rules support for MySQL version 8.x Community edition
+Business Rules 10.5 did not MySQL version 8.x Community edition.
+This issue has been resolved.
+
+WOK-18920
+Sporadic Cannot find rule set with name [XXXX] RuleSetDoesNotExistException
+In the Integration Servers server.log there appears the following message randomly: A business 
+rules exception occurred. Cannot find rule set with name [XXXX]. 
+com.softwareag.rules.runtime.exception.RuleSetDoesNotExistException: Cannot find rule set with name 
+[XXXX].
+This issue has been resolved.
+
+                                            
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and 
+includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was tested with non-English configurations and non-ASCII data.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these 
+messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Super iPaaS Integration LLC, an IBM Company 2025

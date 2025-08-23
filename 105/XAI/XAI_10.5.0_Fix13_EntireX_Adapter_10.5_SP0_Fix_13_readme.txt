@@ -1,0 +1,316 @@
+                   EntireX Adapter 10.5 Fix 13 readme
+                               08 2022
+
+This file provides important information for applying EntireX 10.5 Fix 13 to
+EntireX Adapter 10.5. For additional information about EntireX 10.5, see the 
+readme file on the Empower website at https://empower.softwareag.com.
+          
+            
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+7.1   Resolutions included from earlier Fixes
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+
+
+
+1.0   Fix Name
+
+EntireX Adapter 10.5 Fix 13
+
+
+
+2.0   Fix ID
+
+XAI_10.5_Fix13
+
+
+
+3.0   Product(s)/Component(s) Affected
+
+This fix affects EntireX Adapter
+
+
+
+4.0   Requirements and Dependencies
+
+For language pack requirements, see the Globalization section of the Software AG
+Empower Product Support website. The Globalization section can be found at: 
+
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0   Platform Support
+
+EntireX Adapter 10.5 Fix 13 is supported on the same platforms and operating
+systems and with the same JREs as webMethods Integration Server 10.5.
+
+
+
+6.0   Cautions and Warnings
+
+None
+
+
+
+7.0   Fix Contents
+
+- EXX-14648 XAI_10.5_Fix13:
+   EntireX Adapter: Copy and Paste of Broker ID from and into 
+   connections containing double back slashes will replace them at 
+   runtime with double forward slashes.  This may cause errors like 
+   "Wrong argument to Broker constructor: Invalid Broker ID"
+   This issue is resolved now.
+
+
+
+- EXX-14730 XAI_10.5_Fix13:
+   Passwords are printed to the console in encrypted form.
+   With this correction the (encrypted) password is no longer 
+   displayed
+
+
+- EXX-13802 XAI_10.5_Fix13:
+   EntireX Application Monitoring Data Collector
+   entirex.appmondc.filesperday=yes is specified.
+   The new log file was started with a delay and data of the new day 
+   was included in the log file of the previous day. No data from 
+   the next day should be included in the file for the previous day.
+
+   This issue is now resolved. 
+
+
+
+
+
+
+7.1   Resolutions included from earlier Fixes
+
+Fix 11:
+
+- EXX-14251 XAI_10.5_Fix11:
+   A call to a listener connection with at least one output 
+   parameter of type Date leads into the error : EXX 0800 0310 
+   "Unsupported field: YearOfEra".
+   The issue is now resolved
+
+
+- EXX-14346 XAI_10.5_Fix11:
+   url-style BrokerID starting with uppercase protocol (like SSL://, 
+   HTTP:// etc.) was not accepted by validation process. The 
+   application hit the error "Invalid Broker ID".
+   This is resolved now.
+   With this correction the protocol part of url-style BrokerID can 
+   be written now case-insensitive.
+
+
+Fix 9:
+
+- EXX-12482 XAI_10.5_Fix9:
+   High CPU usage on Mainframe Broker when EntireX Adapter Listener 
+   is started by two threads at the same time (standard package 
+   reload by WmART and customer service) and reliable listeners are 
+   used. This may end up in a loop were the Listener sends calls to 
+   the Broker. 
+   This issue is now resolved.
+
+
+- EXX-13064 XAI_10.5_Fix9:
+   The Broker ID used for SSL communication may contain a password. 
+   The format may look like
+   ssl://ipaddress:port?trust_store=trust.jks&key_store=key.jks&key_p
+   passwd=thepassword
+   How to encrypt the password associated with the key in the config 
+   files?
+   
+   With this correction the Broker ID is checked. If it contains the 
+   key_passwd, the password will be encrypted and added to Broker ID 
+   with key_passwd_e. In this case key_passwd will be removed.
+
+
+
+- EXX-13081 XAI_10.5_Fix9:
+   Field messageID was included in pipeline of every service.
+   With this fix only fields of the signature will be included to 
+   the pipeline.
+
+
+- EXX-13133 XAI_10.5_Fix9:
+   Multithreading scenarios dealing with date values may transform 
+   RPC data sporadically into wrong dates. 
+   This issue is now resolved. 
+
+
+- EXX-13467 XAI_10.5_Fix9:
+   Editing the date and time patterns on the configuration web page 
+   of the EntireX Adapter could add unwanted blanks to these 
+   patterns which leads to DateTimeParseExceptions. 
+   This issue is resolved now. 
+
+
+- EXX-13539 XAI_10.5_Fix9:
+   RPC Call may fail with 
+   com.softwareag.entirex.dynamicrpc.DynamicRPCException: Wrong Date 
+   parameter
+   The issue is now resolved
+
+
+- EXX-13302 XAI_10.5_Fix9:
+   EntireX Adapter: Calling a COBOL program fails if last parameter 
+   has datatype AV
+   The issue is now resolved
+
+
+Fix 6:
+
+- EXX-13007 XAI_10.5_Fix6:
+   Appmon CSV files generated every one second: When the maximum 
+   number of lines per CSV file - defined in the Application 
+   Monitoring DataCollector configuration - is reached for the first 
+   time then CSV files were generated nearly every second with a 
+   small amount of lines. 
+   This issue is now resolved, the generated CSV files contain now 
+   the number of lines defined in the configuration.
+
+
+- EXX-12644 XAI_10.5_Fix6:
+   When using the "Adabas Replication Service for webMethods 
+   Integration Server" the before image for update commands was not 
+   provided. 
+   
+   With this fix the functionality is enhanced the functionality 
+   that the before image of the data is also available.
+
+
+Fix 4:
+
+- EXX-12437 XAI_10.5_Fix4:
+   Generating a REST Resource fails with "Failed to create/update 
+   connection <connection>. Reason: FormatBufferException: no 
+   programinfo found (Illegal metadata for program ...).
+   
+   This problem happens only if an alias name is specified for a 
+   program in the IDL file.
+   
+   This issue is now resolved. 
+
+
+- EXX-12447 XAI_10.5_Fix4:
+   Running an Adapter service may fail with "program <name> not 
+   found in metadata (available programs=)" when a program alias 
+   name is used.
+   
+   This problem happens if an alias name is specified for a program 
+   in the IDL file where the alias and program name differ only in 
+   lower/upper case.
+   For example: program 'INFO':'info'
+   
+   This issue is now resolved. 
+
+
+- EXX-12450 XAI_10.5_Fix4:
+   A new property "User Transaction Id" has been added to the CICS 
+   Socket Listener Connection,
+   If a name (maximum length is 4 bytes) is specified the CICS 
+   program is executed in a separate transaction with this name. The 
+   transaction name can also be specified dynamically when calling 
+   the Adapter Service. 
+   
+   This new functionality requires EXP105P004 for z/OS or above.
+   For z/VSE a Fix for EXP above Fix 27 is required
+
+
+Fix 1:
+
+- EXX-12200 XAI_10.5_Fix1:
+   EntireX Adapter: the URL templates in the generated RestResources 
+   do not start with a "/".
+   
+   This issue is now resolved. 
+
+
+- EXX-12210 XAI_10.5_Fix1:
+   IMS Connect: Instead of 2011 0014 "Transformation error on reply: 
+   null" the Adapter should throw the error 2011 0013 "Message 
+   received from server does not fit buffer.".
+   
+   This issue is now resolved.
+
+
+
+- EXX-12219 XAI_10.5_Fix1:
+   Direct RPC returns error 0400 0010 "Command Service error: 
+   illegal command 8" because it does not support the Shutdown 
+   Service command.
+   
+   This issue is now resolved.
+
+
+- EXX-12213 XAI_10.5_Fix1:
+   The Shutdown Server action in the Direct RPC Administration GUI 
+   results in the error message "No user found for puid".
+   
+   This issue is now resolved. 
+
+
+
+
+
+
+8.0   Installation
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or Software AG Update Manager to install 
+fixes on one machine at a time. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+9.0   Uninstallation
+
+Uninstall using Command Central (9.7 or later) or Software AG Update Manager. 
+For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+10.0  Copyright
+
+Copyright (c) 2022 Software AG, Darmstadt,
+Germany and/or Software AG USA Inc., Reston, VA, USA, and/or its
+subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either
+trademarks or registered trademarks of Software AG and/or
+Software AG USA Inc. and/or its subsidiaries and/or its
+affiliates and/or their licensors. Other company and product
+names mentioned herein may be trademarks of their respective
+owners.
+
+Detailed information on trademarks and patents owned by Software
+AG and/or its subsidiaries is located at 
+http://softwareag.com/licenses. 
+
+This software may include portions of third-party products. For
+third-party copyright notices, license terms, additional rights
+or restrictions, please refer to "License Texts, Copyright
+Notices and Disclaimers of Third Party Products". For certain
+specific third-party license restrictions, please refer to
+section E of the Legal Notices available under "License Terms
+and Conditions for Use of Software AG Products / Copyright and
+Trademark Notices of Software AG Products". These documents are
+part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation
+directory of the licensed product(s).
+
+
+

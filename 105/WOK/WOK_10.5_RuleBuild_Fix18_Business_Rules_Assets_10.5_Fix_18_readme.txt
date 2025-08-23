@@ -1,0 +1,186 @@
+                 Business Rules Assets 10.5 Fix 18 readme
+
+                         September 2021
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Business Rules Assets 10.5 Fix 18
+
+
+
+2.0 Fix ID
+
+WOK_10.5_RuleBuild_Fix18
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Business Rules Assets.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+In order to prevent issue WOK-16252, users will need to manually adjust the
+"<sag-installation>\common\AsseBuildEnviroment\master_build\build.properties" file and add a line
+"RULES.skip.clean=true" for the newly supported configuration parameter.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in 
+services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+WOK-14116 (WOK_10.5_RuleBuild_Fix3)
+No error visible when rule project assembly fails
+If an error occurs during the assembly of a rule project that contains Action definitions in either 
+Asset Build Environment, Designer or the Business Rules UI in My webMethods Server, the error will 
+not be visible to the user.
+This issue has been resolved.
+
+WOK-15328 (WOK_10.5_RuleBuild_Fix11)
+Cloud Deployment support
+The Business Rules Development perspective in Designer now supports "Deploy to Cloud" to a Cloud 
+Container solution.
+This issue has been resolved.
+
+WOK-15639 (WOK_10.5_RuleBuild_Fix12)
+Duplicate libraries in Asset Build Environment\RULES
+The Asset Build Environment\RULES installation wrongly contains the following files:
+    ...\AssetBuildEnvironment\RULES\abe-10.5.0.xx-vxxx-sources.jar
+    ...\AssetBuildEnvironment\RULES\lib\abe-10.5.0.xx-vxxx.jar
+In order to avoid potential issues, these files have been removed.
+
+WOK-15663 (WOK_10.5_RuleBuild_Fix15)
+NullPointerException during rule project builds
+When building a rule project with the Asset Build Environment, the build would fail with
+java.lang.NullPointerException
+at com.wm.lang.ns.NSRecordRef.getNSRecord(NSRecordRef.java:245)
+This issue is now resolved.
+
+WOK-16172 (WOK_10.5_RuleBuild_Fix16)
+Missing dependency checks when deploying to Cloud Container
+When using Designer to deploy rule projects to Cloud Container,
+dependencies to External Event Rules, Process Actions and Predictive Analytics Actions were not 
+checked and deployment of such rule projects was not prevented; dependencies to service actions 
+were not checked and user was not informed of missing dependencies; dependencies to internal rules 
+assets were declared.
+This issue has been resolved.
+
+WOK-16252
+Deploying rule projects deletes existing projects on Cloud Container
+When using the Asset Build Environment to deploy Business Rules assets to Cloud Container 
+solutions, previously deployed Business Rules assets are deleted and only the newly deployed 
+Business Rules assets are available.
+This issue is now resolved by adding a "RULES.skip.clean=false|true" parameter to the 
+"<sag-installation>\common\AsseBuildEnviroment\master_build\build.properties" file.
+
+                                            
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and 
+includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was tested with non-English configurations and non-ASCII data.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these 
+messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright 
+© 2021 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston,
+VA, USA, and/or its subs
+idiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG pro
+duct names are either trademarks or registered
+trademarks of Software AG and/or Software AG USA Inc.
+ and/or its subsidiaries and/or its
+affiliates and/or their licensors. Other company and product nam
+es mentioned herein may be
+trademarks of their respective owners.
+
+Detailed information on trademark
+s and patents owned by Software AG and/or its subsidiaries is
+located at http://softwareag.com/licen
+ses .
+
+This software may include portions of third-party products. For third-party copyright notices
+,
+license terms, additional rights or restrictions, please refer to "License Texts, Copyright Notice
+s
+and Disclaimers of Third Party Products". For certain specific third-party license restrictions,
+p
+lease refer to section E of the Legal Notices available under "License Terms and Conditions for
+Use 
+of Software AG Products / Copyright and Trademark Notices of Software AG Products". These
+documents 
+are part of the product documentation, located at http://softwareag.com/licenses and/or
+in the root 
+installation directory of the licensed product(s).

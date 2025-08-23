@@ -1,0 +1,426 @@
+          IBM webMethods Adapter 6.0 SP3 for Siebel Fix 15 readme
+
+                         October 2024
+                          
+________________________________________________________________
+
+This file provides important information for applying IBM webMethods Adapter 6.0
+SP3 for Siebel Fix 15 to IBM webMethods Adapter 6.0 for Siebel. 
+For additional information about IBM webMethods Adapter for Siebel, see 
+the readme in the directory in which you installed IBM webMethods Adapter for
+Siebel.
+ 
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+
+
+1.0 Fix Name	
+
+IBM webMethods Adapter 6.0 SP3 for Siebel Fix 15.
+
+
+
+2.0 Fix ID
+
+SBL_6.0_SP3_Fix15
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects IBM webMethods Adapter for Siebel.
+
+
+
+4.0 Fix Requirements
+
+IBM webMethods Adapter 6.0 SP3 for Siebel must be installed prior to
+installing this fix.
+
+
+
+5.0 Platform Support
+
+This fix is supported on all the platforms supported by the
+IBM webMethods Adapter 6.0 SP3 for Siebel and the EAI webMethods
+Transports component of the IBM webMethods Adapter 6.0 SP3 for Siebel running
+on Windows.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+
+SBL-379
+Updated copyright notes, vendor and product names for IBM rebranding.
+
+SBL-366(SBL_6.0_SP3_Fix14)
+In webMethods Siebel Adapter, the adapter connections cannot be
+enabled on Integration Server 9.7 running on Linux operating system.
+
+This issue occurs because Integration Server 9.7 for Linux does
+not contian the WmWin32 package.
+
+This issue is resolved. The adapter now provides classes from the
+WmWin32 package that are required to enable adapter connections
+on Integration Server 9.7 for Linux. 
+
+1-1Z8JDK (SBL_6-0_SP3_Fix12)
+EAI webMethods Transports intermittently throw an error when 
+there is high load on the Siebel Server.
+
+When EAI webMethods Transports are used for Siebel-to-webMethods 
+communication, JNI calls to create the JVM fail intermittently 
+with the error "Can't create JVM". This error eventually causes 
+the Siebel Object Manager to crash.
+
+The issue is resolved. JNI calls to create a JVM complete 
+successfully. wmISTransport.dll has been modified so that before 
+invoking a JVM, a check is made if a JVM is already loaded 
+within the current process, using the JNI call 
+"JNI_GetCreatedJavaVMs". If a JVM is already loaded, it is used. 
+It also checks for system resources before making JNI Call 
+"JNI_CreateJavaVM".
+
+This issue is now resolved.
+
+1-1RMZUR (SBL_6-0_SP3_Fix11)
+webMethods Siebel Adapter cannot query records for business
+component.
+
+When a Siebel business component and additional business
+components are linked via an intersection table, the Siebel
+Adapter Query service cannot query the parent to retrieve the
+child based on the context set at the parent level.
+
+This issue is resolved. You can now configure a Query service
+that successfully navigates from the parent business object to
+the child business components that are linked via an
+intersection table.
+
+1-1RH8N8 (SBL_6-0_SP3_Fix10)
+The webMethods Siebel Adapter returns incorrect value for the
+fields of type DTYPE_MVG (java.lang.object).
+
+On the Siebel Server, if the data type of any field is not
+defined, webMethods Siebel Adapter considers such fields as
+DTYPE_MVG. When you retrieve data from the Siebel Server, the
+Siebel Adapter services return incorrect values from DTYPE_MVG
+type fields.
+
+This issue is now resolved. The Siebel Adapter returns
+appropriate values from the DTYPE_MVG type fields.
+
+1-1QVVOX (SBL_6-0_SP3_Fix10)
+webMethods Siebel Adapter does not retrieve the system fields
+other than the ID field.
+
+In the Search Tab of the Siebel Adapter service, the webMethods
+Siebel Adapter retrieves only the ID field and does not retrieve
+the Created, Created By, Updated, Updated By, Mod ID, and
+Conflict ID fields.
+
+This issue is now resolved.
+
+1-1QG98B (SBL_6-0_SP3_Fix9)
+Out-of-memory error received with EAI webMethods Transport
+service.
+
+When you are using the EAI webMethods Transports on Siebel
+server and invoke the SyncISInvokeG business service method, the
+SyncISInvokeG method intermittently throws an error:
+"InvokeStatusMsg: JVM Out-Of-Memory."
+
+
+1-1OXVIP (SBL_6-0_SP3_Fix8)
+Error when importing Siebel transport sif file to Siebel 8.0.
+
+While importing wmISTransport.sif to Siebel 8.0, Siebel throws
+the error: "<field> is a required field, please enter value for
+<field>." This error occurs because Siebel 8.0 introduced some
+new required fields for their project that were optional in
+previous versions.
+
+This issue is resolved. Now the wmISTransport.sif file contains
+default values for all new required fields.
+
+1-1OXVI9 (SBL_6-0_SP3_Fix8)
+For some business objects and business components, the Siebel
+Adapter throws a non-fatal exception that says
+setRepositoryContext() cannot be called on certain business
+components/objects.
+
+Because setRepositoryContext is only valid for repository
+business components, any BC that is not in the repository will
+cause this error.
+
+This issue is resolved. The Siebel Adapter now handles this
+condition internally.
+
+1-1OXVIP(SBL_6-0_SP3_Fix8)
+Error when importing Siebel transport sif file to Siebel 8.0.
+
+While importing wmISTransport.sif to Siebel 8.0, Siebel throws
+the error: "<field> is a required field, please enter value for
+<field>." This error occurs because Siebel 8.0 introduced some
+new required fields for their project that were optional in
+previous versions.
+
+This issue is resolved. Now the wmISTransport.sif file contains
+default values for all new required fields.
+
+1-1OXVFR (SBL_6-0_SP3_Fix8)
+Siebel Adapter throws an error while creating a connection with
+Siebel 8.0.
+
+The errors are as follows and indicates an issue with Siebel
+Server 8.0:
+
+<Exception>
+<Major No.>256</Major No.><Minor No.>22055</Minor No.><Message>
+An end of file error has occurred. Please continue or ask your
+systems administrator to check your application configuration if
+the problem persists.(SBL-DAT-00393)</Message><DetailedMessage>
+Unknown<DetailedMessage>
+</Exception>
+
+To resolve this issue, the customer must install a Siebel fix
+QF0008 which is attached with SR 38-3320061241 and CR 12-1J0HCWP
+in Siebel Support. Installing the Siebel fix on Siebel Server 8.0
+resolves this issue with the Siebel Adapter.
+
+1-1MJQW1 (SBL_6-0_SP3_Fix7)
+Error thrown while inserting a record that has its first field
+value as null.
+
+Siebel Adapter throws an error when inserting a record that has
+its first field value as null. This happens because it
+incorrectly assumes that the first field of a record always
+contains a definite value.
+
+This issue is now resolved.
+
+1-1K9ZFV (SBL_6-0_SP3_Fix6)
+In WmISTransport, when you execute syncISInvoke function on
+Siebel Server 7.7.2.3 and above, where "EnableCSIScripting=True",
+the WmISTransport throws the following error:
+"ISTransport.syncISInvoke() :
+ErrorType(com.wm.app.b2b.server.ServiceException) :
+java.lang.NumberFormatException: null".
+
+In Siebel server 7.7.2.3 and above, Siebel introduces a new
+feature called "Engine Settings" which can be enabled by adding
+this entry "EnableCLIScripting=TRUE" in the tools.cfg file. When
+"EnableCLIScripting=TRUE" some functions of EAI webMethods
+Transport will not work and the WmISTransport throws an error.
+
+This issue is now resolved.
+
+1-1ISC6B (SBL_6-0_SP3_Fix5)
+After migrating Siebel Adapter 6.0 SP2 to SP3, the user
+credential fields that override the connection at run time,
+appear incorrectly.
+
+The password field appears as Password while the username field
+does not appear at all.
+
+This issue is now resolved. Now, the password field appears
+correctly whereas for the username field to appear, you need to
+reload the values.
+
+1-1HGPWX (SBL_6-0_SP3_Fix5)
+Error thrown when processing data in a multiple repository
+context wherein, one repository has a field definition with a
+picklist while the other repository has a field definition
+without a picklist.
+
+Consider you have a repository R1 with a field definition NX BOD
+without a picklist, and another repository R2 with a field
+definition with the same name NX BOD with a picklist. Now, if you
+try to process data in the field NX BOD in R1, an error as below
+is thrown:
+
+"Unable to find PickList 'NX BOD'"
+
+This happens because the Siebel Adapter incorrectly considers
+that the field definition in R1 is with a picklist.
+
+This issue is now resolved.
+
+1-1GTGIL (SBL_6-0_SP3_Fix4)
+In webMethods Siebel Adapter, an error is thrown when you select
+the default value or null value for a field that has a pick list.
+
+This happens because at run time Siebel Adapter fails to pick the
+default value or the null value assigned to the field.
+
+This issue is now resolved.
+
+1-1HR84R (SBL_6-0_SP3_Fix4)
+In webMethods Siebel Adapter, while running multiple services at
+a time, the user credentials of some of the services get
+overridden by the user credentials of other services running at
+the same time.
+
+This happens because Siebel Adapter creates only one variable
+instance for all the services. This leads to the overriding of
+the credentials for some services, at run time.
+
+This issue is now resolved.
+
+1-1DM5O4 (SBL_6-0_SP3_Fix3)
+The webMethods Siebel Adapter does not retrieve the system fields
+other than the ID field.
+
+In the Output Mapping Tab of an adapter service, the webMethods
+Siebel Adapter retrieves only the ID field and does not retrieve
+the fields Created, Created By, Updated, Updated By, Mod ID, and
+Conflict ID.
+
+This issue is now resolved.
+
+1-1E2S3E (SBL_6-0_SP3_Fix3)
+When IS debug level is set to 3, the Siebel adapter logs large
+number of debug messages.
+
+When IS debug level is set to 3 and any Siebel operation is
+performed, Siebel adapter logs hundreds of debug messages.
+
+This issue is now resolved. Now if IS debug level is set to 3,
+only relevant debug messages will be logged.
+
+1-154ETT (SBL_6-0_SP3_Fix1)
+In webMethods Siebel Adapter 6.0 SP3, bounded and unbounded pick
+lists throw errors when the values have special characters.
+
+Bounded and unbounded pick lists throw errors when the values
+have special characters. Also, unbounded pick lists do not allow
+the insertion of a new value in the business component.
+
+This issue is now resolved.
+
+1-15DCXR (SBL_6-0_SP3_Fix1)
+In webMethods Siebel Adapter, the destroy connection method
+always calls the garbage collection method.
+
+The destroy connection method in the webMethods Siebel Adapter
+always invokes the JVM garbage collection method, resulting in a
+performance issue. The garbage collection is now performed by the
+JVM.
+
+This issue is now resolved.
+
+
+
+
+8.0 Installation
+
+Install the fix using the Update Manager.
+For instructions, see Using the Update Manager
+located either in the _documentation directory or on the
+documentation Website at https://docs.webmethods.io/.
+
+NOTE:
+To install EAI webMethods Transports (Windows only) on the Siebel Server (backend):
+
+1. Create a backup of the following before installing the fix.
+   
+   a. <SiebelServerDirectory>\BIN\wmISTransport.dll file.
+   
+   b. <SiebelServerDirectory>\BIN\wmTransport folder.
+
+2. If you are doing a fresh installation of WmISTransport, use 
+   the files available in the following compressed folder:
+   
+   <Integration_Server_directory>/WmSiebelAdapter/backEnd/
+   WmISTransportWin_6-0_SP3_Fix12.zip
+    
+   For more information, see the instructions described in the 
+   IBM webMethods Adapter for Siebel Installation Guide.
+
+3. If you are upgrading an existing installation:
+
+   a. Stop Siebel server if it is running.
+
+   b. Extract the contents of: 
+   
+      <Integration_Server_directory>/WmSiebelAdapter/backEnd/
+      WmISTransportWin_6-0_SP3_Fix12.zip
+      
+      into the following directory:
+      
+      <SiebelServerDirectory>\BIN\
+      
+      Ensure that you create a backup as mentioned in Step 1
+      before extracting the files.
+      
+   c. Configure the following file:
+   
+      <SiebelServerDirectory>\BIN\wmTransport\
+      wmISTransportCfg.txt 
+      
+      For more information, see the webMethods Siebel Adapter
+      Installation Guide.
+
+   d. Use Siebel Tools to do the following:
+   
+      i.  Import the wmISTransport.sif file to replace the 
+          existing definition of the EAI webMethods Transports 
+          Business Service.
+          
+      ii. Compile the Business Service.
+
+4. Set the environment variable IST_MEM_CHK_FACTOR to 2.
+
+5. Restart Siebel server.
+
+
+
+9.0 Uninstallation
+
+Uninstall the fix using the Update Manager.For instructions, see Using the 
+Update Manager at https://docs.webmethods.io/.
+
+NOTE: This procedure can only be used to uninstall the most
+recently installed fix. This action will revert your installation
+to the previously installed fix. You cannot use this procedure to
+uninstall a previously installed fix.
+
+1. Stop Siebel server if it is running.
+   
+2. Restore the backup of the wmISTransport.dll file, and  
+   wmTransport folder by copying them back to their original 
+   locations.
+
+3. Use Siebel Tools to do the following:
+
+   i.  Import the wmISTransport.sif file to replace the 
+       existing definition of the EAI webMethods Transports 
+       Business Service.
+       
+   ii. Compile the Business Service.
+
+4. Restart Siebel server.
+
+
+
+10.0 Copyright
+
+Copyright Super iPaaS Integration LLC, an IBM Company 2024.

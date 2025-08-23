@@ -1,0 +1,390 @@
+                 webMethods Microgateway 10.11 Fix 28 Readme
+
+                         October 2024
+
+____________________________________________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Microgateway 10.11 Fix 28
+
+
+
+2.0 Fix ID
+
+YAM_10.11_Fix28
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Microgateway 10.11
+
+
+
+4.0 Requirements and Dependencies
+
+None
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+
+YAM-0000 (YAM_10.11_Fix28)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-0000 (YAM_10.11_Fix27)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-0000 (YAM_10.11_Fix26)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-1818 (YAM_10.11_Fix25)
+The parameter strictResourceMatching does not work on Microgateway.
+
+Microgateway does not recognize the strictResourceMatching parameter and
+returns a 404 response.
+
+This issue is resolved.
+
+
+YAM-1739 (YAM_10.11_Fix24)
+Error connection pool shut down on Microgateway pods.
+
+Due to server internal error (for example, OutOfMemory) it might happen that the
+'connection pool shutdown' message displays over and over again. After this
+incident, there is an attempt to re-establish the internal connection pool that
+further requests have a chance to go through. However, when the server errors
+are logged (in error log), more resources (for example, Heap space) have to be
+provided.
+
+This issue is resolved.
+
+
+YAM-1764 (YAM_10.11_Fix24)
+Vulnerable 3rd Party Component jetty is used.
+
+- CVE-2023-44487
+
+This issue is resolved.
+
+
+YAM-1768 (YAM_10.11_Fix24)
+Microgateway error log does not have any timestamp.
+
+This issue is resolved. Moreover, trace stacks are refined in case of errors.
+
+
+YAM-0000 (YAM_10.11_Fix23)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-1736 (YAM_10.11_Fix22)
+Vulnerable third party component Guava being used.
+
+CVE-2023-2976
+
+This issue is resolved.
+
+
+YAM-0000 (YAM_10.11_Fix21)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-1676 (YAM_10.11_Fix20)
+Vulnerable third-party json-smart jar is used.
+
+- CVE-2023-1370
+
+This issue is resolved.
+
+
+YAM-1671 (YAM_10.11_Fix20)
+Vulnerable third-party woodstox-core jar is used.
+
+- CVE-2022-40152
+
+This issue is resolved.
+
+
+YAM-1687 (YAM_10.11_Fix20)
+Vulnerable 3rd Party Component Eclipse-jetty is used.
+
+- CVE-2023-26049
+
+This issue is resolved.
+
+
+YAM-1650 (YAM_10.11_Fix20)
+Microgateway does not support configuring a hostname for the Prometheus metrics.
+
+This issue is resolved.
+Prometheus metrics for Microgateway now support configuring the hostname or
+IP address in order to display the configured hostname or IP address in the
+Metrics output. You can configure
+'mcgw_prometheus_url_host = <host_name:port/IP_address>' as the environment
+variable in the environment file or include the following properties in the
+Config.yml file:
+prometheus:
+url_host: "host_name:port"
+
+Config.yml file example:
+ports:
+    http: 7077
+api_gateway:
+    url: "myhost:port"
+    user: "myuser"
+    password : "mypwd"
+prometheus:
+    url_host: "host_name:port/IP_address"
+policies:
+    user_auth: "internal"
+
+
+YAM-0000 (YAM_10.11_Fix19)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-0000 (YAM_10.11_Fix18)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-1629 (YAM_10.11_Fix17)
+Microgateway accepts HTTP TRACE method.
+
+Microgateway responds to the HTTP TRACE method with HTTP response code 200
+instead of rejecting the method.
+Related vulnerabilities: CVE-2004-2320, CVE-2010-0386.
+
+This issue is resolved.
+
+
+YAM-1604 (YAM_10.11_Fix17)
+Vulnerable third-party component OpenJDK 11 is used.
+
+ - CVE-2021-2163
+ 
+ This issue is resolved.
+ 
+
+YAM-1585 (YAM_10.11_Fix17)
+Vulnerable 3rd Party Component jettison is used.
+
+ - CVE-2022-45693
+ - CVE-2022-45685
+ - CVE-2022-40150
+
+This issue is resolved.
+
+
+YAM-1580 (YAM_10.11_Fix16)
+Vulnerable third-party component snakeyaml is used.
+
+This issue is resolved.
+
+
+YAM-1555 (YAM_10.11_Fix16)
+Vulnerable third-party component jackson-databind is used.
+
+This issue is resolved.
+
+
+YAM-1525 (YAM_10.11_Fix15)
+Microgateway uses the JRE truststore to connect to the OAuth servers
+
+When an OAuth server is configured using the HTTPS port, Microgateway uses the
+JRE truststore to connect to the OAuth server for token introspection.
+
+This issue is resolved. Microgateway now uses its own keystore
+from config/truststore.jks.
+
+
+YAM-0000 (YAM_10.11_Fix14)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-1490 (YAM_10.11_Fix13)
+Vulnerable third-party spring jars are used.
+
+This issue is resolved.
+
+
+YAM-1502 (YAM_10.11_Fix13)
+Microgateway fails to start with HTTPS.
+
+When Microgateway is started with the -sp or --https_port option and an
+appropriate keystore, then the startup fails with an IllegalStateException
+"KeyStores with multiple certificates are not supported on the base class
+org.eclipse.jetty.util.ssl.SslContextFactory". This happens only if the
+certificate in the given keystore has a 'SubjectAlternativeName' section with
+multiple host names.
+
+This issue is resolved.
+
+
+YAM-0000 (YAM_10.11_Fix12)
+Synchronize libraries with API Gateway Fix.
+
+YAM-0000 (YAM_10.11_Fix11)
+Synchronize libraries with API Gateway Fix.
+
+(Fix number 10 omitted intentionally)
+
+YAM-1472 (YAM_10.11_Fix9)
+Microgateway to API Gateway connection fails while using HTTPS protocol.
+
+The proxy host and port settings, which can be specified with the -jvmopt
+option, do not work.
+
+This issue is resolved. Proxy settings are now supported with all HTTP requests
+from Microgateway.
+
+YAM-1459/YAM-1460 (YAM_10.11_Fix8)
+Vulnerable third-party component Spring is used.
+
+This issue is resolved.
+
+YAM-1424 (YAM_10.11_Fix7)
+Microgateway fails to send events to external Elasticsearch.
+
+When Microgateway is configured with an external Elasticsearch destination, and
+the connection to Elasticsearch is protected by basic authentication, then
+Microgateway fails to send events to Elasticsearch. The Microgateway trace level
+log shows that the HTTP POST request to Elasticsearch fails with the response
+code 401.
+
+This issue is resolved.
+
+YAM-1368 (YAM_10.11_Fix7)
+Microgateway not reachable from API Gateway.
+
+Microgateway not reachable from API Gateway because Microgateway endpoints are
+not resolvable from API Gateway.
+
+This issue is resolved.
+A new parameter --accessUrl is introduced and is provided while creating a
+Kubernetes file. This parameter provides an accessible address so that
+API Gateway is able to reach Microgateway. This is because by default if
+Microgateway runs as container in a pod, the pod name is transferred to
+API Gateway at registration.
+
+YAM-0000 (YAM_10.11_Fix6)
+Synchronize libraries with API Gateway Fix.
+
+YAI-23906 (YAM_10.11_Fix5)
+Identified third party Log4j 2.16.0, which have known security vulnerability
+CVE-2021-45105.
+
+The issue is resolved. All Log4j libraries are updated to version 2.17.1.
+
+(Fix number 4 omitted intentionally)
+
+YAM-1388 (YAM_10.11_Fix3)
+Vulnerable third-party component Log4j is used.
+
+This issue is resolved.
+
+(Fix number 2 omitted intentionally)
+
+YAM-0000 (YAM_10.11_Fix1)
+Synchronize libraries with API Gateway Fix.
+
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action
+will revert your installation to the previously installed fix. You cannot use these instructions to
+uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and includes
+support for operation in any country, locale, or language as specified in the Installing webMethods
+Products guide. It was not tested with non-English configurations and non-ASCII data. However, this
+fix has no globalization impact and can be applied to systems running in any supported locale or
+configuration.
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2024 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
+and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or registered
+trademarks of Software AG and/or Software AG USA Inc. and/or its subsidiaries and/or its affiliates
+and/or their licensors. Other company and product names mentioned herein may be trademarks of their
+respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries is
+located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party copyright notices,
+license terms, additional rights or restrictions, please refer to "License Texts, Copyright Notices
+and Disclaimers of Third Party Products". For certain specific third-party license restrictions,
+please refer to section E of the Legal Notices available under "License Terms and Conditions for Use
+of Software AG Products / Copyright and Trademark Notices of Software AG Products". These documents
+are part of the product documentation, located at http://softwareag.com/licenses and/or in the root
+installation directory of the licensed product(s).
+

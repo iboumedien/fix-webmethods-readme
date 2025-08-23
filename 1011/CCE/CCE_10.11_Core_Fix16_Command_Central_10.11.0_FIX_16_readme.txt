@@ -1,0 +1,439 @@
+		Software AG Command Central 10.11 Fix 16 readme
+
+                           July 2024
+
+_________________________________________________________________
+
+This file provides important information for applying Software AG
+Command Central 10.11 Fix 16 to Software AG Command Central 10.11. 
+For additional information about Software AG Command Central 10.11, 
+see the readme file in the _documentation directory of your 
+Software AG installation (if installed) or on the Empower website at 
+https://empower.softwareag.com.
+
+
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+Software AG Command Central 10.11 Fix 16
+
+
+
+2.0 Fix ID
+
+CCE_10.11_Core_Fix16
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Software AG Command Central 10.11.
+
+
+
+4.0 Fix Requirements
+
+Software AG Command Central Plug-in to Platform Manager 10.11 Fix 16
+Software AG Platform Manager Shared 10.11 Fix 16
+
+For language pack requirements, see the Globalization section of the 
+Software AG Empower Product Support website at
+
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+The fix is supported on all platforms supported by 
+Software AG Command Central 10.11.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+CCE-8353
+Software AG Command Central uses an outdated version of the
+third party component Apache Xmlgraphics batik, which has known security vulnerabilities.
+
+The issue is resolved. The Apache Xmlgraphics batik jar is migrated to the stable version 1.17.
+
+
+CCE-8226
+You can now reduce the Command Central cache by updating the disk compaction 
+policy that Command Central uses. For more information, see 
+the "Command Central Cache Takes too Much Disk Space" topic in the Command Central help.
+
+SPM-5555
+Command Central and Platform Manager might stop working after installing the 
+following fix for the webMethods Shared Third Party Bundles: wMFix.TPS.XMLTools_10.5.0.0002.
+
+The issue is resolved. 
+
+
+CCE-8202
+Upgrading Command Central to version 10.11 might fail if the source Command Central 
+has been modified to use the Entrust encryption.
+
+The issue is resolved. You can now upgrade a source Command Central that uses the 
+Entrust encryption to version 10.11. The required libraries for the Entrust encryption 
+are now added to the migration framework in Command Central. 
+
+
+CCE-8077
+Software AG Command Central uses an outdated version of the 
+third party component Apache XML Graphics, which has known security vulnerabilities. 
+
+The issue is resolved. The Apache XML Graphics jar is migrated to the stable version 1.16. 
+
+
+CCE-8064
+Command Central uses an outdated version of the 
+third party component Apache XmlGraphics Commons, which has known security vulnerabilities. 
+
+The issue is resolved. The Apache XmlGraphics Commons jar is migrated to the stable 
+version 2.8.0. 
+
+
+CCE-7849
+With Command Central, when bootstrapping a remote Platform Manager with missing 
+SSH connectivity credentials, the validation job fails with a NullPointerException.
+
+The issue is resolved. The correct message is now displayed in the validation log. 
+
+
+CCE-7805
+Running an installation with Command Central templates takes a long time in 
+large environments.
+
+The issue occurs in large environments because the handle of runtimes status 
+for previous layers is done for every node from the previous layer.
+
+The issue is resolved. The handle of runtimes status for previous layers is now 
+done only for nodes that are part of the current layer.
+
+
+CCE-7752
+With Command Central, when bootstrapping a remote Platform Manager with invalid 
+substitute user credentials, the job wrongly shows that the operation execution 
+was a success instead of a failure.
+
+The issue is resolved. The job now displays an error and states that the remote 
+bootstrap operation failed.
+
+
+CCE-7558
+With Command Central, uninstalling fixes might fail when more than one 
+version of the same fix has been installed. 
+
+The issue occurs when the fixes that are being uninstalled are passed as artifact 
+names containing only Fix ID and Platform Manager is restarted during the operation.
+
+The issue is resolved. The fix deprovision job now runs successfully. 
+
+
+CCE-7732
+Running an installation with Command Central templates takes a long time in large environments.
+The issue occurs in large environments because the handle of runtimes status for every layer 
+and every node is executed sequentially.
+
+The issue is resolved. Handling runtimes status is now executed in parallel for every node that 
+is part of a layer.
+
+
+CCE-7697
+With Command Central, adding nodes to a new stack might fail with an error when the stack 
+has no layer members.
+
+The issue is resolved. 
+
+
+CCE-7562
+MWS migration via Side-by-Side Stack Upgrade is failing with inappropriate message, if the db password 
+is an empty string or encrypted string which actual value is an empty string.
+
+The issue is resolved from CC side. When we provide an empty string or encrypted string which actual 
+value is an empty string, then these parameters are not passed to the migration utility. 
+The migration utility also requires changes which will be handled in some of the future fixes.
+
+
+CCE-7621
+When listing the dependencies of a fix in а repository from the Command Central Web User Interface, 
+the fix dependencies for the fix fail to load with an exception.
+
+The issue is resolved. Аfter you select the operating system, the Show Dependencies 
+dialog loads the fix dependencies correctly.
+
+
+CCE-7679
+With Command Central Web User Interface, adding an Integration Server instance fails 
+with an error while waiting to apply fixes.
+
+The issue is resolved. The job now ends with a warning status in case Platform Manager 
+is stopped and an appropriate warning message is given.
+
+
+CCE-7659
+With Command Central, creating an Installation Report in PDF format fails with an error when a 
+managed installation contains a Broker instance.
+
+The issue is resolved. The PDF Installation Report is successfully created and downloaded.
+
+
+CCE-7652
+With Software AG Command Central, creating an instance using a template might fail.
+Creating an instance using a template fails without a descriptive message when the template does not 
+have a fixes section.
+
+The issue is resolved.
+
+CCE-7486
+With Software AG Command Central, installing assets fails with different error messages for each version 
+when the varSubFile argument is not provided.
+
+The issue is now resolved.
+
+
+CCE-7548
+With Software AG Command Central, you cannot update a mirror repository created to have 
+LATEST to ALL fixes.
+
+The issue is resolved. You can update a mirror repository with the artifacts=ALL parameter 
+and it will contain all available fixes in the source repositories.
+
+
+CCE-7511
+With Software AG Command Central, importing a license key file that contains special characters 
+may fail with an invalid license key error.
+
+The issue is resolved. License key files with special characters can now be imported and validated.
+
+
+CCE-7502
+When using Software AG Command Central Side-by-Side migration to upgrade a stack from 
+version 10.5 to version 10.11, the upgrade fails with an error.
+
+The issue is resolved.
+
+
+CCE-7342
+Command Central fails with an error when a new remote installation is added from the Web 
+user interface using SSH Private Key connectivity credentials.
+
+When executing a remote Platform Manager bootstrap using SSH private key credentials, 
+the execution fails with an error that the provided private key does not exist.
+
+The issue is resolved. Platform Manager is now installed successfully on a remote machine 
+when using SSH private key credentials.
+
+
+SPM-5356
+Installing fixes with Software AG Command Central might fail with an error.
+
+When installing fixes over an HTTPS connection, Command Central fails to connect to 
+Platform Manager. The issue occurs because of a defect in the JDK that Command Central uses.
+
+The issue is resolved. The workaround described in the JDK-8160347 issue is now 
+implemented in Command Central.
+
+
+CCE-7148
+Executing a cross-host migration in Command Central fails at the "Archive source node
+directory" step when the source installation contains one or more directories with spaces in the
+filepath. For example, the issue occurs when migrating an installation containing a Universal
+Messaging instance.
+
+The issue is resolved. Now Command Central successfully executes cross-host migrations on
+installations containing directories with spaces.
+
+
+CCE-7144
+When upgrading Command Central, if you provide a password value for the "-p" argument 
+that is different from the administrator user password of the source Command Central, 
+the upgrade operation fails with an error message that does not describe what has caused the failure. 
+The issue occurs because you should provide the administrator user password 
+of the source Command Central using the "-p" argument.
+
+The issue is resolved. Now the error message states the cause of the failure correctly.
+
+
+CCE-7143
+In the Jobs view of the Command Central web user interface, in some cases Platform Manager 
+provisioning jobs with status COMPLETED have their progress bar at 95%.
+
+The issue is resolved. Now Command Central shows a correct progress of 100% for completed Platform
+Manager provisioning jobs.
+
+
+CCE-7093
+When you try to get a non-existing installation report by name in CC CLI, 
+you get a 500 Internal Server Error instead of 404 Not Found.
+
+The issue is now resolved.
+
+
+CCE-7165
+With Command Central, when creating a layer in a stack that contains a node belonging to
+another stack, the older stack gets deleted.
+
+The issue is resolved.
+
+
+CCE-7243
+When using stacks to do a Crosshost migration, the user interface is unclear 
+whether the Platform Manager is source or target.
+
+The issue is resolved.
+
+
+CCE-7169
+After the bootstrapping of a Platform Manager installation on a remote host fails, 
+you cannot view the logs for the bootstrap job in the Jobs view in Command Central.
+
+The issue is resolved.
+
+
+CCE-7163
+When refreshing the configuration cache, 
+Command Central retrieves unnecessary data from the Platform Manager nodes.
+
+The issue is resolved.
+
+
+CCE-7164
+When refreshing the configuration cache for several Platform Manager nodes in parallel, 
+Command Central makes redundant requests to the Platform Manager nodes, which causes a data race.
+
+The issue is resolved.
+
+
+CCE-7233
+Installing fixes using Command Central fails, because Command Central requires a password 
+for the ADMINISTRATOR credential alias.
+The issue is resolved. Command Central does not require a password 
+for the ADMINISTRATOR credentials alias when installing fixes.
+
+
+CCE-7018
+When using stacks to do an overinstall migration, the migration might fail when the 
+stack name and the alias of the Platform Manager node are long.
+
+The issue is resolved.
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or Software AG Update Manager to install 
+fixes on one machine at a time. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot apply these instructions to the previously 
+installed fix.
+
+Uninstall using Command Central (9.7 or later) or Software AG Update Manager. 
+For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the
+webMethods product suite and includes support for operation in
+any country, locale, or language as specified in the Installing
+webMethods Products guide. It was not tested with non-English
+configurations and non-ASCII data. This fix may have some
+globalization impact.
+
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might
+contain new messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright ©2021 Software AG, Darmstadt, Germany and/or Software AG USA Inc., 
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks 
+or registered trademarks of Software AG and/or Software AG USA Inc. and/or its 
+subsidiaries and/or its affiliates and/or their licensors. Other company and 
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or 
+its subsidiaries is located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. 
+For third-party copyright notices, license terms, additional rights or restrictions, 
+please refer to "License Texts, Copyright Notices and Disclaimers of Third Party Products". 
+For certain specific third-party license restrictions, please refer to section E of the 
+Legal Notices available under "License Terms and Conditions for Use of Software AG Products / 
+Copyright and Trademark Notices of Software AG Products". 
+These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

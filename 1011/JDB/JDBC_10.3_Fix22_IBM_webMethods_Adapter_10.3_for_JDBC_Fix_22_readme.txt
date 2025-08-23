@@ -1,0 +1,846 @@
+                IBM webMethods Adapter 10.3 For JDBC Fix 22 readme
+
+                          July 2025
+
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods Adapter 10.3 For JDBC Fix 22.
+
+
+
+2.0 Fix ID
+
+JDBC_10.3_Fix22
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+None.
+
+
+
+4.0 Requirements and Dependencies
+
+This fix requires the installation of the latest Integration Server Core fix.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include 
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the 
+release.
+
+JDB-4177
+While connecting to a PostgreSQL database using mTLS from JDBC, the default 
+PostgreSQL SSL settings were getting applied and the user was not able to set 
+sslmode property for mTLS. Changes have been made and now default PostgreSQL SSL
+settings are only applied if the user has not already provided their own.
+
+JDB-4004
+NVARCHAR data type is handled by a generic handler which internally uses setString
+to set the column data resulting in incorrect implicit data type conversion.
+
+This issue is now resolved.
+
+JDB-4007
+In webMethods Adapter for JDBC, an error is displayed when running an OData
+service if the database name, schema name, or table name are specified in camel
+case, indicating that the schema and table do not exist.
+
+This issue is now resolved.
+
+JDB-3992
+In webMethods Adapter for JDBC, a NullPointerException error appears when
+creating an adapter service connecting to a DB2 database.
+
+This issue is now resolved.
+
+JDB-3848
+When an SSL connection using the truststore file path and DataDirect libraries is
+enabled, the exception "No more data available to read" occurs. This issue is now
+resolved.
+
+This issue is now resolved.
+
+JDB-4111 (JDBC_10.3_Fix21)
+Updated copyright notes, vendor and product names for IBM rebranding.
+
+JDB-3977 (JDBC_10.3_Fix21)
+In webMethods Adapter for JDBC, an error is displayed when running an adapter
+service if the database name is specified in camel case in the connection,
+indicating that the database is not found.
+
+This issue is now resolved.
+
+JDB-4029 (JDBC_10.3_Fix21)
+webMethods Adapter for JDBC now supports key-pair authentication for the
+Snowflake database.
+
+JDB-4003 (JDBC_10.3_Fix21)
+In webMethods Adapter for JDBC, the adapter service execution fails if the
+database name in the PostgreSQL database is in upper case, even if the
+connection property postgresql.casesensitive is set to true.
+
+This issue is now resolved.
+
+JDB-3897 (JDBC_10.3_Fix20)
+In webMethods Adapter for JDBC, the ODataGet service displays the timestamp in GMT.
+
+This issue is now resolved.
+
+In Integration Server Administrator, Settings > Extended page set
+watt.adapter.JDBC.timezone.useGMT property to true to display the time in GMT or
+false to display the time in the local timezone.
+
+JDB-3889 (JDBC_10.3_Fix20)
+In webMethods Adapter for JDBC, the ordered notification for the SAP HANA database
+fails if the field Base Name contains the '/' special character.
+
+JDB-3829 (JDBC_10.3_Fix20)
+In webMethods Adapter for JDBC, the pub.jdbcAdapter:createConnectionNodes built-in
+service which receives an XML file as an input parameter, now supports
+heartBeatInterval field. The heartBeatInterval field indicates the interval in
+seconds that the connection pool checks for the connectivity of the idle connection.
+
+JDB-3853 (JDBC_10.3_Fix19)
+In webMethods Adapter for JDBC, names for notification resources such as buffer
+table, sequence, and trigger cannot have custom prefixes.
+
+This issue is now resolved. webMethods Adapter for JDBC provides the
+"watt.adapter.JDBC.notification.useBaseNameAsPrefix" parameter to customize the
+names of notification resources.
+
+Set "watt.adapter.JDBC.notification.useBaseNameAsPrefix" to true to use the
+Base Name of a notification as a prefix for notification resources such as
+buffer table, sequence and trigger. The parameter applies only to SAP HANA.
+
+JDB-3667 (JDBC_10.3_Fix19)
+In webMethods Adapter for JDBC, a new service wm.adapter.wmjdbc.admin.service:update
+is provided which can be used to update the adapter service's metadata such as table
+names.
+
+JDB-3724 (JDBC_10.3_Fix18)
+Response to OData query with $skip parameter is delayed.
+
+This issue is now resolved.
+
+Native SQL is used to implement $skip and $top parameters.
+
+JDB-3715 (JDBC_10.3_Fix18)
+Response to OData query with $top parameter is delayed.
+
+This issue is now resolved.
+
+The parameter maxRows is set with $top value in the JDBC Statement before
+executing the SQL query.
+
+JDB-3713 (JDBC_10.3_Fix18)
+In webMethods Adapter for JDBC, in Software AG Designer, the currentSchema field
+cannot be selected if Tibero is the connected database.
+
+This issue is now resolved.
+
+JDB-3605 (JDBC_10.3_Fix17)
+In webMethods Adapter for JDBC, the StoredProcedureWithSignature service is slow
+when the schema and procedure name is fetched from the database.
+
+This issue is now resolved.
+
+The StoredProcedureWithSignature service provides a new Configuration tab. You can
+enable or disable the auto-population of the schema name and procedure name by
+configuring the parameters Schema Name and Procedure Name respectively in the
+Configuration tab. The default behavior is to perform a lookup on the database.
+
+JDB-3612 (JDBC_10.3_Fix16)
+In webMethods Adapter for JDBC, if the connected database is PostgreSQL, then
+enabling a disabled Basic Polling Notification which is updated, fails with an
+error.
+
+This issue is now resolved.
+
+JDB-3535 (JDBC_10.3_Fix16)
+In webMethods Adapter for JDBC, if the connected database is PostgreSQL, then the
+Basic Polling Notification fails with an error if the schema name is in uppercase.
+
+This issue is now resolved.
+
+
+JDB-3522 (JDBC_10.3_Fix16)
+In webMethods Adapter for JDBC, the Select, Insert, Update, Delete, BatchInsert,
+and BatchUpdate adapter services fail when the PostgreSQL schema name is not in
+lower case.
+
+This issue is now resolved.
+
+The schema name is enclosed in quotes if not in lower case for the PostgreSQL
+database. 
+
+JDB-3525 (JDBC_10.3_Fix16)
+In webMethods Adapter for JDBC, if the connected database is SAP HANA, then the
+SEQUENCE DB object for ordered polling notification is not dropped by the
+pub.pollingNotificationUtils:dropDatabaseObjects service.
+
+This issue is now resolved.
+
+JDB-3519 (JDBC_10.3_Fix16)
+In webMethods Adapter for JDBC, if the connected database is PostgreSQL, then the
+tables under the <current schema> are not listed in the webMethods Software AG
+Designer.
+
+This issue is now resolved. 
+
+JDB-3496 (JDBC_10.3_Fix16)
+In webMethods Adapter for JDBC, the table used to maintain the sequence number
+for a polling notification in DB2 on AS400, is unable to handle concurrent
+requests.
+
+This issue is now resolved.
+
+The polling notification in webMethods Adapter for JDBC is enhanced to use a
+SEQUENCE object for DB2 on AS400.
+
+JDB-3386 (JDBC_10.3_Fix15)
+In webMethods Adapter for JDBC, the adapter services fail to execute for the
+PostgreSQL database if the table names, column names, and procedure names are
+defined in lower case in the database but are defined in upper case or camel case
+in the service templates.
+
+This issue is now resolved.
+
+Set the postgresql.casesensitive connection property to true or false in the
+Other Properties field. Possible values are:
+true. Default. The table names, column names, and procedure names are enclosed in
+quotes if the values are in upper case or camel case.
+false. The table names, column names, and procedure names are not enclosed in
+quotes if the values are in upper case or camel case. 
+
+JDB-3367 (JDBC_10.3_Fix15)
+webMethods Adapter for JDBC now supports NCLOB data type.
+
+JDB-3440 (JDBC_10.3_Fix15)
+In webMethods Adapter for JDBC, the adapter service execution throws a
+NullPointerException for Oracle database if the output result contains
+a null value for an output field of JDBC type SQLXML and Field type
+java.lang.String.
+
+This issue is now resolved. 
+
+JDB-3378 (JDBC_10.3_Fix14)
+webMethods Adapter for JDBC fails to load if the oracle driver library
+xmlparsev2.jar is present in the WmJDBCAdapter package. This issue occurs in
+webMethods Adapter for JDBC Fix 12 and higher.
+
+This issue is now resolved. 
+
+JDB-3374 (JDBC_10.3_Fix14)
+In webMethods Adapter for JDBC, stored procedure services that contain a field
+of JDBC Type BOOLEAN and input field of type java.lang.String, are unable to
+process 0 and 1 as boolean value false and true respectively.
+
+This issue is now resolved.
+
+Set the watt property watt.adapter.JDBC.setBooleanAsBitString to true.
+The watt property watt.adapter.JDBC.setBooleanAsBitString enables the adapter to
+process 0 and 1 as boolean value false and true respectively in the following
+conditions:
+1. In stored procedure adapter services where JDBC Type is BOOLEAN, and Input
+Field Type is java.lang.String
+2. In adapter services where JDBC Type is BIT, and Input Field Type or Output
+Field Type is java.lang.String
+
+JDB-3372 (JDBC_10.3_Fix14)
+A new field "Driver Group" is added to Connection Properties for JDBC Connection,
+and JDBC SSL Connection. JDBC Connections can be configured to use different
+versions of the same JDBC driver by selecting the appropriate Driver Group.
+
+The field Driver Group, lists all the folders in Integration Server_directory/
+instances/<instance_name>/WmJDBCAdapter/code/jars.
+The Default Driver Group represents the JDBC driver JARs located in the folder
+Integration Server_directory/instances/<instance_name>/WmJDBCAdapter/code/jars.
+You must create a new folder in Integration Server_directory/instances/
+<instance_name>/WmJDBCAdapter/code/jars and copy the JDBC driver JARs to this
+folder, to create a new Driver Group.
+
+JDB-2990 (JDBC_10.3_Fix14)
+In webMethods Adapter for JDBC, when multiple requests are sent to create an
+adapter connection using Kerberos authentication, only one request succeeds and
+the remaining fail with JAAS authentication error.
+
+This issue is now resolved.
+
+This fix extends PIE-64956, making it possible for adapter connections made by
+webMethods Adapter for JDBC adapter to use Kerberos authentication.
+
+JDB-3006 (JDBC_10.3_Fix13)
+In webMethods Adapter for JDBC, the StoredProcedureWithSignature service that
+has an input parameter with JDBC Type as TINYINT and Input Field Type as
+java.lang.Integer, fails to execute if the input parameter value is greater than
+127. This issue occurs in webMethods Adapter for JDBC while using MS-SQL database
+with data direct driver.
+
+This issue is now resolved.
+
+JDB-2951 (JDBC_10.3_Fix13)
+The webMethods Adapter for JDBC now supports parallel asset initialization. Add
+the new watt property "watt.adapter.JDBC.assets.parallelInitialization=true" to
+Extended Settings screen (Settings > Extended) in Integration Server
+Administrator to enable parallel asset initialization.
+Note: The webMethods Adapter for JDBC supports parallel asset initialization
+only if the Adapter Runtime supports it.
+
+JDB-3024 (JDBC_10.3_Fix12)
+On migrating the webMethods Adapter for JDBC from 9.0 to 10.3, the
+StoredProcedureWithSignature service that has an output parameter with SQL Type
+as Bit and JDBC Type as BOOLEAN, returns true or false instead of 1 or 0 if the
+Output Field Type is java.lang.String.
+
+This issue is now resolved.
+
+In Integration Server Administrator, select Settings > Extended > Edit
+Extended Settings, and set the watt property
+watt.adapter.JDBC.setBooleanAsBitString to true.
+
+JDB-2989 (JDBC_10.3_Fix12)
+In webMethods Adapter for JDBC, where clause parameter table is not getting 
+populated for non select adapter templates.
+
+The issue is now resolved.  
+
+JDB-2987 (JDBC_10.3_Fix12)
+In webMethods Adapter for JDBC, a new java service 
+wm.adapter.wmjdbc.utils:objectToDocList is added to map input parameter of type
+Object to Document List.
+
+JDB-2981 (JDBC_10.3_Fix12)
+In webMethods Adapter for JDBC, when the "currentSchema" property is provided
+in the connection's "Other Properties" field in the Integration Server
+Administrator user interface, the current schema is not populated in the
+"Adapter Tree Chooser" in the Software AG Designer user interface for the
+DB2(LUW) database.
+
+This issue is resolved. 
+
+JDB-2972 (JDBC_10.3_Fix12)
+In webMethods Adapter for JDBC, StoredProcedureWithSignature execution is
+failing for Oracle database. This occurs if the procedure is inside the package
+in the database and the data direct driver is used in the adapter.
+
+This issue is resolved. 
+
+JDB-2500 (JDBC_10.3_Fix12)
+In webMethods Adapter for JDBC, the keystore and trust store passwords do not 
+support password encryption.
+
+This issue is resolved. Now, a new connection type for JDBC SSL provides password
+encryption for keystore and trust password fields. 
+
+JDB-2926 (JDBC_10.3_Fix11)
+In webMethods Adapter for JDBC, domain types are not supported for Postgres Plus
+Advanced Server PostgreSQL .
+
+The issue is now resolved. 
+
+
+JDB-2910 (JDBC_10.3_Fix11)
+In webMethods Adapter for JDBC, JDBC type value appears blank for DB2 UDB's
+column types DECIMAL and CLOB in the StoredProcedureWithSignature service.
+
+The issue is now resolved.
+
+JDB-2901 (JDBC_10.3_Fix11)
+In webMethods Adapter for JDBC, Microsoft SQL scalar functions are not invoked 
+with stored procedure adapter templates.
+
+The issue is now resolved. 
+
+JDB-2895 (JDBC_10.3_Fix11)
+In webMethods Adapter for JDBC, for Microsoft SQL Server the ordered
+notification cannot be enabled if the column name starts with a special
+character.
+
+The issue is now resolved.
+
+WF-15738 (JDBC_10.3_Fix11)
+In webMethods Adapter for JDBC, Input/output parameters of Stored Procedure which
+are of type Oracle's Object(User-Defined) type is not supported.
+
+This enhancement is now supported.
+
+WF-15360 (JDBC_10.3_Fix11)
+In webMethods Adapter for JDBC, there is no way to override JDBC type mapping
+definitions declared in type mapping configuration files.
+
+This enhancement is now supported.
+
+JDB-2848(JDBC_10.3_Fix10)
+In webMethods Adapter for JDBC, the SSL connection with transaction type
+XA_TRANSACTION is not getting enabled for the SAP HANA database.
+
+This issue is now resolved. 
+
+JDB-2842(JDBC_10.3_Fix10)
+In webMethods Adapter for JDBC, if a column name of a table has one of the 4
+special characters (_, #, @ and $), the corresponding input or output field name
+is enclosed within double quotes in all the services or notification templates.
+
+Also, if a stored procedure name has one of the 4 special characters
+(_, #, @ and $), the stored procedure name is enclosed within double quotes in the
+Procedure Name drop-down of service or notification templates.
+
+This issue is resolved now.
+
+JDB-2841(JDBC_10.3_Fix10)
+In webMethods Adapter for JDBC, Input/output parameters are not getting
+populated if stored procedure of Oracle package has under score
+characters in its name for StoredProcedureWithSignature template.
+
+This issue is now resolved.
+
+JDB-2787(JDBC_10.3_Fix10)
+In webMethods Adapter for JDBC, the polling notifications are not getting
+supported for the SAP HANA database.
+
+This issue is now resolved. 
+
+JDB-2820(JDBC_10.3_Fix10)
+In webMethods Adapter for JDBC, the service templates do not support NCLOB, TEXT
+and BINTEXT datatypes of SAP HANA database.
+
+This issue is now resolved.  
+
+JDB-2662 (JDBC_10.3_Fix9)
+webMethods Adapter for JDBC now supports the connectivity to MariaDB with MariaDB 
+connector/J version 2.5.4 and earlier. 
+
+JDB-2800 (JDBC_10.3_Fix9)
+In webMethods Adapter for JDBC, adapter connections and services are not working
+for the Cloud Spanner database.
+
+This issue is now resolved.
+
+JDB-2799 (JDBC_10.3_Fix9)
+In webMethods Adapter for JDBC 9.0, currentFunctionPath property does not work 
+for zOS DB2 connection.
+
+In StoredProcedureWithSignature service template, the Procedure Name dropdown 
+contains the name of the procedures with schema name as its prefix which is an 
+unexpected behavior.
+
+This issue is resolved. Now the currentFunctionPath property works for zOS DB2 
+connection.
+
+JDB-2771 (JDBC_10.3_Fix9)
+In webMethods Adapter for JDBC, a table name or a procedure name does not support
+special characters or the characters in lowercase.
+
+This issue is now resolved.
+
+JDB-2769 (JDBC_10.3_Fix9)
+In webMethods Adapter for JDBC, the latest version of ngdbc.jar is not supported
+for the SAP HANA database.
+
+This issue is now resolved.    
+
+JDB-2752 (JDBC_10.3_Fix8)
+In webMethods Adapter for JDBC, the Select service fails, if the service contains
+a function or a column name without any alias in the Expression field.
+
+This issue is now resolved.
+
+JDB-2737 (JDBC_10.3_Fix8)
+In webMethdods Adapter for JDBC, when a name of the stored procedure is
+enclosed within quotation marks, the StoredProcedureWithSignature service 
+displays the following error message for MSSQL database:
+
+"Could not find stored procedure"
+
+This issue is now resolved. Now, the quotation marks are removed and the services
+run successfully.
+
+JDB-2697 (JDBC_10.3_Fix8)
+In webMethods Adapter for JDBC, you cannot enable the adapter connections when
+the value in the password field contains the following scenarios:
+ 
+1-> if you have the parenthesis "{" as the initial character and "}" as the
+final character.
+2-> if you either have the parenthesis "{" as the initial character or "}" as
+the final character.
+
+This issue is now resolved.
+
+JDB-2639 (JDBC_10.3_Fix8)
+In webMethods Adapter for JDBC, when an empty string value is passed to a
+database numeric field, the StoredProcedureWithSignature service cannot be
+executed.
+ 
+This issue is now resolved. 
+
+JDB-2695 (JDBC_10.3_Fix8)
+In webMethdods Adapter for JDBC, an incorrect SQL query is getting generated if
+a table name, a procedure name, or a column name contains letters in uppercase.
+
+This issue is now resolved.
+
+JDB-2654 (JDBC_10.3_Fix5)
+In webMethods Adapter for JDBC, the format of Float field value differs with 6.5
+version of Adapter
+
+This issue is now resolved.
+
+JDB-2637 (JDBC_10.3_Fix5)
+If connection pooling is enabled and when the when the minimum pool size is more 
+than zero, the connection pool checks the connectivity of the connections that 
+are idle for the value of Heart Beat Interval. If the idle connection is stale 
+then the connection pool is reset.
+
+The value for Heart Beat Interval is in seconds. 
+The default value for Heart Beat Interval is zero
+
+For example, if the value of Heart Beat Interval is 25 seconds, 
+connection pool looks for connection that are idle for 25 seconds. 
+If the connection is stale then the connection pool is reset
+
+JDB-2631 (JDBC_10.3_Fix5)
+webMethods Adapter for JDBC now supports StoredProcedure and Notification for 
+Tibero v6 database.
+
+JDB-2614 (JDBC_10.3_Fix5)
+In webMethods Adapter for JDBC, the StoredProcedureWithSignature service does not
+support the SQLXML datatype.
+
+This issue occurs on providing input values containing the SQLXML datatype for
+the StoredProcedureWithSignature service.
+
+This issue is now resolved.
+
+JDB-2632 (JDBC_10.3_Fix5)
+In Adapter Tree Chooser, any table or view name with a dot (.) character displays
+an error.
+
+This issue occurs because the tables or the view names in Hana Database can
+contain dot(.) character.
+
+This issue is now resolved. 
+
+JDB-2617 (JDBC_10.3_Fix5)
+In webMethods Adapter for JDBC, if dbConfig.xsd file is missing, a recursive
+exception stacktrace is generated in wrapper.log. Also, webMethods Adapter for
+JDBC is not visible in IS Admin UI. 
+
+This issue is now resolved. 
+
+JDB-2599 (JDBC_10.3_Fix5)
+In webMethods Adapter for JDBC, polling notifications are not working for MS SQL 2000. 
+
+This issue is resolved.
+
+JDB-2585 (JDBC_10.3_Fix5)
+In webMethods Adapter for JDBC, the Null pointer exception occurs when the date
+retrieved from AS400 database is null.
+
+This issue is now resolved. 
+
+JDB-2260 (JDBC_10.3_Fix4)
+In webMethods Adapter for JDBC, only the adapter's version 6.5 supports the 
+java.sql.Timestamp as Output Field Type for DATE column type in the Select 
+service. 
+
+This issue is resolved. Now, the adapter's version 10.3 also supports the 
+java.sql.Timestamp as Output Field Type for DATE column type in Oracle database.
+
+JDB-2478 (JDBC_10.3_Fix3)
+The wm.adapter.wmjdbc.admin:migrate migration service is not visible in Designer 
+as the ACL privileges of the service is set to Private. 
+
+This issue is now resolved. Now, the wm.adapter.wmjdbc.admin:migrate migration 
+service is visible in Designer.
+
+JDB-2459 (JDBC_10.3_Fix3)
+In webMethods Adapter for JDBC,<current schema> option is not getting listed in 
+table name selection while creating adapter services for AS400 database.
+
+This issue is now resolved.
+
+JDB-2450 (JDBC_10.3_Fix3)
+Security issue of Path traversal through 
+'pub.jdbcAdapter:createConnectionNodes' service has been resolved.
+
+JDB-2205 (JDBC_10.3_Fix3)
+In webMethods Adapter for JDBC the DateTimeOffset is 
+populated as JDBC Type for Column Type, when you add an entry corresponding to 
+column type DATE NOT NULL. This issue occurs in SelectSQL and InsertSQL 
+services of Oracle database. 
+
+This issue is now resolved.
+
+JDB-2182 (JDBC_10.3_Fix3)
+In webMethods Adapter for JDBC an error occurs while creating a 
+notification for a table having forward slash in its tablename. 
+
+This is an Oracle driver issue, you are recommended not to have such characters 
+in tablenames. 
+
+This issue is now resolved.  
+
+JDB-2177 (JDBC_10.3_Fix3)
+In webMethods Adapter for JDBC, the Input Field details of WHERE tab 
+does not auto-populate when you apply the to_date function on a table column in  
+the Column field. 
+
+This issue is now resolved.
+
+JDB-2162 (JDBC_10.3_Fix3)
+In webMethods Adapter for JDBC, Adapter services are not working for the Hive,
+Spark and Impala bigdata drivers
+
+This issue is resolved now.
+
+JDB-2144 (JDBC_10.3_Fix3)
+In webMethods Adapter for JDBC, during the migration service, there is a 
+garbage collector overhead limit exceeded error. 
+
+This issue occurs when the migration service tries to load the nodes of a large 
+package from the file system instead of the memory. 
+
+This issue is resolved now.
+
+JDB-2125 (JDBC_10.3_Fix3)
+In webMethods Adapter for JDBC, clicking the reload button causes the custom SQL
+template to display an exception. 
+
+webMethods Adapter for JDBC displays an exception when either the SQL provided 
+is invalid or the column names' and their cases do not match. 
+
+This issue is resolved. Now, webMethods Adapter for JDBC has a new watt property,
+watt.adapter.JDBC.customsql.validateSQL.
+When the watt property is set to false, the validation on custom SQL will be 
+disabled.
+
+JDB-2099 (JDBC_10.3_Fix3)
+In webMethods Adapter for JDBC, the Date field evaluates timestamp for the 
+SetAsString type.
+
+This issue is resolved. The Date field evaluates timestamp only for the String
+type.
+
+JDB-2081 (JDBC_10.3_Fix3)
+In webMethods Adapter for JDBC, password is not masked in the service
+pub.jdbcAdapter.updateConnectionPassword
+
+This issue is now resolved. 
+
+JDB-2056 (JDBC_10.3_Fix3)
+In webMethods Adapter for JDBC, when you enable polling ordered notification an 
+error occurs while creating a trigger. 
+
+This issue occurs when you enable the polling notifications for MSSQL database, 
+for a table which contains a column defined with Identity property. 
+
+This issue is resolved. 
+
+JDB-2048 (JDBC_10.3_Fix3)
+In webMethods Adapter for JDBC, DATETIMEOFFSET is not supported as JDBC 
+Type. 
+
+This issue is now resolved. DATETIMEOFFSET can now be used as JDBC type. 
+
+JDB-2028 (JDBC_10.3_Fix3)
+In webMethods Adapter for JDBC,Unable to create external entity type in OData 
+service for MYSQL Database.
+
+This issue is now resolved.
+
+JDB-2185 (JDBC_10.3_Fix2)
+In webMethods Adapter for JDBC, the StoredProcedure adapter service cannot 
+operate on DB2, if Procedure Name field does not contain the schema name.
+
+This issue is now resolved.
+
+JDB-2102 (JDBC_10.3_Fix2)
+In webMethods Adapter for JDBC, for OData service, Adapter for JDBC allows
+a negative value for the scale to be set to an entity property.
+
+This issue occurs when column precision or scale is not specified explicitly
+while creating a table. It is related to number type in Oracle database.
+
+This issue is now resolved. If JDBC driver returns scale < 0 or precision <=0,
+it ignores scale or precision for OData entity properties.
+
+JDB-2082 (JDBC_10.3_Fix1)
+In webMethods Adapter for JDBC, the output of the stored procedure adapter
+service was mapped incorrectly with configured output parameters. 
+
+You can resolve this issue by setting the watt property: 
+watt.adapter.JDBC.StoredProcedure.customRSColNames to false.
+
+JDB-2107(JDBC_10.3_Fix1)
+In webMethods Adapter for JDBC, for MySQL on Linux platforms, a connection is
+not enabled.
+
+This issue is now resolved. 
+
+7.1 Database Application in Integration Cloud
+
+JDB-4255
+Database connector now supports Databricks version v15.4 LTA in IBM webMethods Integration.
+
+JDB-4163
+At times, the Database connector becomes unresponsive while adding an input to a
+field in the Cosmos DB for Postgres. Changes have been made to resolve this issue.
+
+JDB-4009
+A null pointer exception appears when a polling notification is created without
+selecting a table.
+
+JDB-3995
+Logging is enhanced in webMethods Adapter for JDBC to track the service execution
+performance in webMethods.io Integration environment.
+
+JDB-4092
+The listener that committed changes at the file system level has been 
+removed and replaced with an explicit commit mechanism. Consequently, 
+the new commit API has been updated to save the driver.
+
+JDB-3943
+Adapter service execution in the edge runtime environment fails with the message
+"Cannot execute the service. $dbUser cannot be null if $dbPassword is not null".
+
+This issue is now resolved.
+
+JDB-3811
+In webMethods Adapter for JDBC, private IP validation is removed for webMethods.io
+Integration Database application.
+
+JDB-3708
+Three pre-bundled driver groups are supported in WMIO:
+    - "Progress® DataDirect®" for Microsoft SQL Server, Oracle.
+    - "Microsoft JDBC Driver for SQL Server" for Microsoft SQL Server.
+    - "PostgreSQL JDBC Driver" for PostgreSQL.
+One pre-bundled driver group is supported in origin:
+    - "Progress® DataDirect®" for Microsoft SQL Server, Oracle.
+
+JDB-3357
+Database Application supports the following databases:
+1. SAP HANA
+2. Amazon Redshift
+3. Snowflake
+4. Heroku PostgreSQL
+5. Teradata
+6. Vertica 
+
+JDB-3350
+In the Database Application for JDBC, the template descriptions are updated
+
+JDB-3327
+Database Application now supports Dynamic SQL template. You can use Dynamic SQL
+to perform database operation where a complete or a part of SQL query can be set
+at run time. You can pass the SQL query at runtime using {<input_field_name>} 
+as the SQL query placeholder for each SQL query as input. 
+
+JDB-2983
+Template Descriptions are updated.
+
+JDB-2492
+In Integration Cloud Database Application, The Truststore alias can 
+be configured in the Connections page to facilitate One way SSL.
+Database server certificate can be added to the truststore and the 
+Truststore alias can be configured in Connection. Now, the connections 
+can configure the truststore alias. 
+
+JDB-2216 
+In Integration Cloud Database Application, the Insert operation does not work 
+when you use ORACLEFIXED_CHAR data type. 
+
+The issue is now resolved.
+
+JDB-2313 
+In Integration Cloud Database Application, you cannot upload multiple JDBC 
+drivers with the same driver name. 
+
+This issue is now resolved.
+
+JDB-2402 
+Database Application now supports pre-bundled DataDirect and Postgre SQL drivers
+
+JDB-2381 
+In Integration Cloud Database Application, the DataSource to connect to MSSQL 
+database using DataDirect driver appears incorrect. 
+
+This issue is now resolved.
+
+JDB-2556
+The Database Application in webMethods Integration Cloud, you are allowed 
+to upload multiple driver jars for the same Group Name through multiple requests. 
+
+This issue is resolved. Now, you cannot upload multiple driver jars for the same 
+Group Name through multiple requests
+
+JDB-2600
+webMethods Integration cloud now supports MariaDB database in Database 
+Application.
+
+JDB-2645
+webMethods Integration Cloud now supports Tibero v6 database in Database 
+Application.
+
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a central location (9.7 or later), 
+or IBM webMethods Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at https://docs.webmethods.io.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using IBM webMethods Command Central (9.7 or later) or IBM webMethods Update Manager. 
+For instructions, see the documentation at https://docs.webmethods.io.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

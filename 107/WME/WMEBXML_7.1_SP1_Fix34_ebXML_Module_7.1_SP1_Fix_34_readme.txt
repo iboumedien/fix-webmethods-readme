@@ -1,0 +1,1097 @@
+       IBM webMethods ebXML Module 7.1 SP1 Fix 34 readme
+
+                         July 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods ebXML Module 7.1 SP1 Fix 34 readme
+
+
+
+2.0 Fix ID
+
+WMEBXML_7.1_SP1_Fix34
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects IBM webMethods ebXML Module 7.1 SP1.
+
+
+
+4.0 Requirements and Dependencies
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+SCG_7.1.3_Entrust_Fix5 or later for Integration Server 7.1.3
+SCG_8.0_SP2_Entrust_Fix3 or later for Integration Server 8.0.2
+SCG_8.2_SP2_Entrust_Fix2 or later for Integration Server 8.2.2
+Latest WmTN fix
+
+If you are on WEBXML_7.1_SP1_Fix13, follow the below steps before
+installing the fix 'IBM webMethods ebXML Module 7.1 SP1 Fix 16' using
+Update Manager:
+
+1. Go to <Integration Server_directory>/packages/WmebXML
+directory.
+
+2. Open the manifest.v3 file.
+
+3. Set value of parameter version as 7.1.1.0.48
+
+4. Restart Integration Server.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+WEX-865
+
+Fix includes security updates with no new features to existing user-facing
+functionalities.
+
+WEX-861
+
+In IBM webMethods module for ebXML 7.1 SP1, the ebXML Acknowledgment (ACK) 
+message is intermittently missing during transmission.
+
+This issue is resolved.
+
+WEX-854(WMEBXML_7.1_SP1_Fix33)
+
+Fix includes security updates with no new features to existing user-facing
+functionalities.
+
+
+WEX-851(WMEBXML_7.1_SP1_Fix32)
+
+In the IBM webMethods ebXML Module 7.1 SP1, the copyright information is updated.
+
+This issue is now resolved.
+
+WEX-815(WMEBXML_7.1_SP1_Fix31)
+
+In the IBM webMethods ebXML Module, when you execute find references for 
+Integration Server document "ErrorMsg" in designer, it displays "1 reference 
+found" due to a corrupted node file and not showing references in the output.
+
+This issue is now resolved.
+
+WEX-809(WMEBXML_7.1_SP1_Fix30)
+
+When installing ebXML Module 7.1 SP1 Fix 29 using the central command, the fix 
+automatically selects the Extended Maintenance fixes for the installation, 
+resulting in installation errors.
+
+This issue is now resolved.
+
+WEX-803(WMEBXML_7.1_SP1_Fix30)
+
+ebXML Module 7.1 SP1 fails to read certificate expiration date with error
+"Unparseable date".
+
+This issue is now resolved.
+
+WEX-794(WMEBXML_7.1_SP1_Fix29)
+
+pub.mime.getEnvelopeStream service fails with error Invalid Object type = class
+java.io.ByteArrayInputStream. XmlDCH can only convert DataSource or Source to
+xml. after wm.ip.ebxml.MSH service executions.
+
+This issue occurs because IBM webMethods ebXML Module 7.1 Fix 1 fails to
+address resetting content handlers registered by SAAJ in certain scenarios.
+
+This issue is now resolved.
+
+WEX-785(WMEBXML_7.1_SP1_Fix28)
+
+While installing ebXML Module 7.1 SP1 Fix 27(wMFix.EbXMLCore_7.1.1.0027-0003),
+Fix 27 automatically selects EM Fixes for installation which resulted in
+installation errors for customer who did not install EM.
+This issue is now resolved and on installation EM Fixes will not be selected
+automatically.
+
+WEX-782(WMEBXML_7.1_SP1_Fix28)
+
+Secondary certificates was used for verification and/or decryption only when
+Primary certificate is expired, On the receiver's end.
+
+This issue is now resolved. Secondary certificate is used every-time when
+Primary certificate fails to verify and/or decrypt.
+
+WEX-773(WMEBXML_7.1_SP1_Fix28)
+
+ebXML Module 7.1 SP1 was not sending acknowledgement for the duplicate messages.
+
+This issue is resolved and a new property "wm.estd.ebxml.sendAckForDuplicate" is
+added to the config.cnf file present in the
+...\packages\WmebXML\config directory. Set this property to "true" for sending
+the acknowledgement for duplicate message. The default value for this property
+is "false".
+
+WEX-756(WMEBXML_7.1_SP1_Fix27)
+
+wm.ip.ebxml.MSH:receive generates MessageError with 'Invalid Action' error for
+the inbound message if PartyInfo/PartyId parameter is having multiple values 
+and message contains any value other then 0th index value.
+
+This issue is resolved now. 
+
+WEX-743(WMEBXML_7.1_SP1_Fix26)
+
+Querying the Trading Networks database for existing business document
+information in a multi-hop environment results in high CPU usages.
+
+This issue is resolved. 
+
+WEX-732(WMEBXML_7.1_SP1_Fix25)
+
+Some of the ebXML threads in java.util.WeakHashMap.get(WeakHashMap.java:403) 
+method get blocked in a multi-threaded environment. This results in creating 
+infinite loops and thereby, causing high CPU usages.
+
+This issue is resolved.
+
+WEX-718(WMEBXML_7.1_SP1_Fix24)
+
+IBM webMethods ebXML Module jars do not support Java 9. 
+                                                           
+This issue is resolved. The ebXML Module dependant jars are now upgraded to 
+support Java 9.
+
+NOTE: Ensure that you delete the ...\IntegrationServer\ 
+instances\<instance_name>\packages\WmebXML\code\jars\saaj-impl-1.3.jar 
+from the WmebXML package for all the instances. 
+
+WEX-717(WMEBXML_7.1_SP1_Fix24)
+
+The com.wm.util.coder.IDataBinCoder class does not load the ebXML schema classes.
+
+This issue is resolved. A configuration file is added to the required ebXML 
+schema classes that are whitelisted. 
+
+WEX-706(WMEBXML_7.1_SP1_Fix23)
+
+The total number of spawned threads that are present in the 
+thread pool cannot be monitored using the 
+wm.ip.ebxml.util:getThreadPoolDetails service. 
+
+A new output parameter, currentPoolSize is added 
+to the wm.ip.ebxml.util:getThreadPoolDetails service. You can 
+now monitor the total number of spawned threads.
+
+
+WEX-702(WMEBXML_7.1_SP1_Fix22)
+
+When the wm.ebxml.task.queueSize configuration value is set 
+to 0, an IllegalArgumentException occurs. 
+
+This issue is resolved.
+
+
+WEX-686 (WMEBXML_7.1_SP1_Fix23)
+
+In IBM webMethods ebXML Module, querying a Trading Networks database 
+with large number of entries takes a long time.
+
+The module takes a long time to return the results after querying
+a Trading Networks database with large number of entries. 
+
+This issue is resolved. The module is now optimized to return the
+results of a query in lesser time.  
+
+
+WEX-677 (WMEBXML_7.1_SP1_Fix22)
+
+IBM webMethods ebXML Module fails to send an acknowledgement to the 
+trading partner when an SSL connection is enabled.
+
+When an SSL connection is enabled, the module fails to send an 
+acknowledgement to the trading partner because the module uses 
+the wrong certificates.
+
+This issue is resolved. The module now uses the correct 
+certificates to send an acknowledgement when an SSL connection 
+is enabled.
+
+
+WEX-680 (WMEBXML_7.1_SP1_Fix21)
+
+The 'from party Id' of the acknowledgement header gets modified 
+at the hub instead of bypassing the Ack.
+
+In IBM webMethods ebXML Module, the receiving partner generates the 
+acknowledgement and routes it via the hub to the sender of the 
+message. However the ?from party ID? gets modified at the hub 
+instead of bypassing the Ack.
+  
+The issue is resolved. When the 'actor' attribute of the ack 
+is set to ?toPartyMSH?,the  hub will by-pass the ack without  
+modifying it.
+
+
+WEX-672(WMEBXML_7.1_SP1_Fix20)
+
+In IBM webMethods ebXML Module, the module does not process rules 
+for custom ebXML TN document types.
+
+This issue is resolved. 
+
+
+WEX-661 (WMEBXML_7.1_SP1_Fix19)
+
+IBM webMethods ebXML Module 7.1 SP1 does not generate a payload 
+message header containing a RefToMessageId element.
+
+In ebXML Module, when a value is given for the RefToMessageID 
+parameter of the wm.ip.ebxml.MSH:sendUsingTPA service, the module 
+does not generate a payload message containing a 
+MessageHeader/MessageData/RefToMessageId element with a value 
+equivalent to the RefToMessageID value.
+
+This issue is resolved.
+
+
+WEX-654 (WMEBXML_7.1_SP1_Fix18)
+
+IBM webMethods ebXML Module 7.1 SP1 returns an error while processing
+the signature verification for a message.
+
+When the ds:Reference URI attribute value does not match the
+xlink:href URI value of the corresponding Manifest/Reference
+element for that payload object in a message, IBM webMethods exXML
+Module 7.1 SP1 returns the following error: <eb:Error
+eb:codeContext="http://www.ebxml.org/messageServiceErrors"
+eb:errorCode="SecurityFailure" eb:location="/SOAP-
+ENV:Envelope/SOAP- ENV:Header/ds:Signature" eb:severity="Error">
+<eb:Description xml:lang="en-US"> Security Checks Failed. Reason :
+com.wm.estd.ebXML.security.EbSecurityException:
+java.lang.NullPointerException</eb:Description></eb:Error>
+
+This issue is resolved.
+
+WEX-649 (WMEBXML_7.1_SP1_Fix17)
+
+The Signature element generated by IBM webMethods ebXML module for
+2.0 messages is not as per the Message Service Specification
+Version 2.0.
+
+The XPath value part of the Signature element specified for the
+second Transform element within the Reference Transforms element
+is incorrect. As per Message Service Specification Version 2.0,
+the XPath element value must be as follows: <Transform
+Algorithm="http://www.w3.org/TR/1999/REC-xpath-19991116"> <XPath>
+not (ancestor-or-self::node()
+[@SOAP:actor="urn:oasis:names:tc:ebxml-msg:actor:nextMSH"] |
+ancestor-or-self::node()[@SOAP:actor="
+http://schemas.xmlsoap.org/soap/actor/next"] ) </XPath>
+</Transform>
+
+This issue is resolved.
+
+
+WEX-645 (WMEBXML_7.1_SP1_Fix16)
+
+Routing failure not reported by IBM webMethods ebXML module
+7.1 SP1.
+
+If an intermediate MSH fails to forward a message, the MSH does
+not report the failure to the previous MSH. Hence, the previous
+MSH is not informed about cause of routing failure.
+
+This issue is resolved.
+
+WEX-638 (WMEBXML_7.1_SP1_Fix16)
+
+IBM webMethods ebXML module 7.1 SP1 does not persist an
+inbound message under some error conditions.
+
+When acting as a receiver MSH, if there is a failure to retrieve
+any one of the partner profiles, or the trading partner agreement
+required to process an inbound message, the 7.1 SP1 ebXML module
+reports an error to the sender MSH, but fails to persist the
+message in Trading Networks. As a result, there is no way to refer
+to the received content.
+
+This issue is resolved. The ebXML module persist all successfully
+parsed inbound messages even if there are errors linked to absence
+of a trading profile or trading partner agreement at the receiver
+MSH. Also, a new Document Type 'ebXML Unknown' is added to handle
+a scenario where the Documnet Type cannot be determined at the
+time of persisting.
+
+WEX-621 (WMEBXML_7.1_SP1_Fix16)
+
+Cannot monitor the outbound task queue and thread pool
+using IBM webMethods ebXML 7.1 SP1 module.
+
+IBM webMethods ebXML 6.0 module uses the Trading Networks queue and
+threadpool for execution of outbound tasks. As a result, the
+Trading Networks service, wm.tn.admin:getThreadQueueConfig was
+available to retrieve the runtime statistics for outbound tasks.
+In IBM webMethods ebXML 7.1 SP1, the outbound queue and threadpool
+implementation is independent of Trading Networks. Hence, there is
+no existing service to retrieve the usage details of outbound
+tasks at runtime.
+
+This issue is resolved. As part of resolution, a new service
+wm.ip.ebxml.util:getThreadPoolDetails is added. This service
+returns details about number of threads running tasks and number
+of queued tasks. Detailed input/output information of
+wm.ip.ebxml.util:getThreadPoolDetails is as follows:
+
+
+
+Input - None Output - running : String, indicating the number of
+threads that are running tasks. - queued : String, indicating the
+number of tasks that are waiting in the queue. - queueSize :
+String, indicating the size of the queue. - poolSize : String,
+indicating the number of threads in the pool. - maxPoolsize :
+String, indicating the maximum number of threads in the pool.
+
+WEX-620 (WMEBXML_7.1_SP1_Fix16)
+
+IBM webMethods ebXML module 7.1 SP1 provides only limited support for
+custom processing of message payloads at an intermediate MSH.
+
+In ebXML 6.0.1, the implementation is mostly flow based, and it is
+possible to insert custom logic for processing the message at an
+intermediate MSH without a "Via" element on the message, and as a
+result, modify the routing logic. In IBM webMethods ebXML module 7.1
+SP1, the intermediate MSH functionality is mostly restricted to
+routing of messages. There is only limited support for custom
+processing for a 1.0 message, and this support is provided using
+the optional "Via" element. But, the message routing functionality
+cannot be modified by the results of custom processing. This
+prevents hub solutions based on 6.0.1 from migrating to 7.1 SP1.
+
+This issue is resolved. As part of the resolution, you can invoke
+custom logic at an intermediate MSH by specifying required value
+for the wm.ebxml.payloadProcessSvc property, part of the
+config.cnf file located in the WmebXML\config directory. If an
+exception is reported by the custom logic, the message routing
+will be aborted.
+
+WEX-592 (WMEBXML_7.1_SP1_Fix16)
+
+In IBM webMethods ebXML 7.1 SP1 module, acknowledgment and error
+messages at an intermediate MSH are handled differently, as
+compared to IBM webMethods ebXML 6.0.1 module.
+
+With IBM webMethods ebXML 6.0.1 module, when an intermediate MSH
+receives a version 1.0 payload message with "ackRequested"
+attribute set, the MSH does not generate an Acknowledgement to be
+sent to the preceding MSH. But, with IBM webMethods ebXML 7.1 SP1
+module, when an intermediate MSH receives a version 1.0 payload
+message with "ackRequested" attribute set, the MSH generates an
+Acknowledgement to be sent to the preceding MSH. Additionally,
+with ebXML 6.0.1 module, an intermediate MSH forwards all the
+acknowledgement and error messages it receives. But, with ebXML
+7.1 SP1 module, an intermediate MSH processes or consumes all
+acknowledgement and error messages it receives. Though the
+behavior of IBM webMethods ebXML 7.1 SP1 is as per the ebMS v1.0
+specification, it makes it difficult to upgrade the existing
+business solutions from ebXML 6.0.1 to ebXML 7.1 SP1.
+
+This issue is resolved. As part of resolution, the existing config
+property "wm.ebxml.autoAckSend" in the
+<Integration_Server_directory>\packages\WmebXML\config\config.cnf
+file is modified. Set the value of wm.ebxml.autoAckSend=false at
+the intermediate MSH, to ensure that acknowledgement is not
+generated when the MSH receives a version 1.0 payload message with
+"ackRequested" attribute set. Also, an intermediate MSH will
+forward all messages, including acknowledgement and error messages
+that it receives, if the message contains TraceHeaderList element.
+
+WEX-580 (WMEBXML_7.1_SP1_Fix16)
+
+Message signature verification and re-signing functionality is not 
+executed at an intermediate MSH when using IBM webMethods ebXML module
+7.1 SP1.
+
+The default behavior of IBM webMethods ebXML 6.0.1 includes the
+verification of message signature of signed inbound message.
+Additionally, the existing signature of the signed message is
+removed and the message is re-signed before being forwarded to the
+next MSH in the routing path. In IBM webMethods ebXML 7.1 SP1, as per
+the ebXML specification, any signed message received by an
+intermediate MSH is forwarded without verifying or modifying
+existing signature on the message.
+
+This issue is resolved. As part of resolution, to verify the
+signature and re-sign any signed inbound message, set the value of
+"nonreupidationOfOrigin" parameter as "true" in the TPAs between
+all the intermediate MSHs processing the message.
+
+WEX-636 (WMEBXML_7.1_SP1_Fix15) 
+
+IBM webMethods ebXML module reports error when using
+wm.ip.ebxml.MSH:sendAck service to send an acknowledgement
+referencing messages greater than 40 KB.
+
+When there is no value set for the tn.BigDocThreshold property in
+Trading Networks, IBM webMethods ebXML module assumes a default
+threshold of 40 KB for persisting messages as large documents.
+However, as value is not set for tn.BigDocThreshold property, the
+same document is treated as a small document at the time of
+retrieval from Trading Networks, for the purpose of sending
+acknowledgement.
+
+This issue is resolved. As part of resolution, IBM webMethods ebXML
+module only uses the value set for tn.BigDocThreshold to determine
+whether an incoming document should be processed as a large
+document. If the tn.BigDocThreshold property value is not set,
+IBM webMethods ebXML module treats all incoming documents as regular
+documents.
+
+WEX-611(WMEBXML_7.1_SP1_Fix15) 
+
+The signature verification functionality of IBM webMethods ebXML
+module 7.1 SP1 fails after installing the Common Library fix,
+SCG_7.1.3_Entrust_Fix4.
+
+After installing the Common Library fix, SCG_7.1.3_Entrust_Fix4,
+ebXML module 7.1 SP1 reports the following error at the time of
+signature verification for a signed message. Security Checks
+Failed. Reason : com.wm.estd.ebXML.security.EbSecurityException:
+com.wm.estd.ebXML.security.EbSecurityException:
+iaik.ixsil.exceptions.VerifierException: Could not create Verifier
+object from specified XML document. This error occurs as the ebXML
+Module utilizes some of the settings in the Entrust toolkit
+libraries, and these Entrust toolkit libraries were modified as of
+Entrust toolkit 7.2 SP2, made available via
+SCG_7.1.3_Entrust_Fix4.
+
+This issue is resolved.
+
+WEX-616(WMEBXML_7.1_SP1_Fix14)
+
+Acknowledgements are incorrectly sent to receiver itself, when
+ebXML caching is enabled.
+
+When caching is enabled by setting wm.ebxml.caching=true in the
+config file, the ACK is delivered to the receiver itself, instead
+of being delivered to the sender of the message. This occurs for
+every alternate message.
+
+This issue is resolved.
+
+WEX-604(WMEBXML_7.1_SP1_Fix13) 
+
+The wm.ip.ebxml.TN:getPayloads service does not return Payload as
+the output.
+
+The output parameter for wm.ip.ebxml.TN:getPayloads is missing in
+IBM webMethods ebXML Module 7.1 SP1.
+
+This issue is resolved.
+
+WEX-601 (WMEBXML_7.1_SP1_Fix12)  
+
+IBM webMethods ebXML module 7.1 SP1 does not allow to turn off
+addition of References to the Acknowledgement element of an
+acknowledgement message.
+
+According to ebXML specification, adding the Acknowledgement
+Reference element is optional for a v1.0 signed/unsigned and v2.0
+unsigned acknowledgement message. It is mandatory to add
+Acknowledgement Reference element only for a signed v2.0
+acknowledgement message.
+
+This issue is resolved. As part of the resolution, a new property
+"wm.ebxml.ack.addReferences" is added to the config.cnf file
+present in the <IntegrationServer_directory>
+\packages\WmebXML\config directory. Set
+wm.ebxml.ack.addReferences=false to send the v1.0 signed/unsigned
+or v2.0 unsigned acknowledgement message without adding Reference
+Elements to the acknowledgement message.
+
+WEX-595 (WMEBXML_7.1_SP1_Fix12)  
+
+IBM webMethods ebXML Module 7.1 SP1 picks up the reliable delivery
+parameters from the incorrect TPA.
+
+The reliable delivery parameters are picked up from the TPA
+between the sender and the first-hop MSH instead of from the TPA
+between the sender and the final recipient of the message at the
+sender side.
+
+This issue is resolved.
+
+WEX-585 (WMEBXML_7.1_SP1_Fix11) 
+
+Performance of ebXML module is impacted when IBM webMethods ebXML
+Module 7.1 SP1 is configured for reliable delivery.
+
+When ebXML Module 7.1 SP1 is configured for reliable delivery, if
+an error message is received for an outbound message with
+Processing Status as "WAITING FOR ACK",by default,the Processing
+Status of the task is marked as "DONE".No further retries are
+executed on the task. Subsequently, to match the error message to
+the original message,ebXML queries the Trading Networks database
+for retrieving all error messages. For each of the retrieved error
+message, the referenced outbound message is retrieved and the
+status is updated.This process can take long if there are many
+error messages in the database. Also, it may result in various
+errors during load conditions.
+
+This issue is resolved.As part of the resolution,a new
+configurable property wm.ebxml.abortRetryOnError is added to the
+config.cnf file present in directory <IntegrationServer_directory>
+\packages\WmebXML\config.To ignore the error messages
+corresponding to the retrying tasks, set the value of the property
+as "false".By default,value of the property is set as "true".
+
+WEX-586 (WMEBXML_7.1_SP1_Fix11)  
+
+Sending moderate-sized payloads through IBM webMethods ebXML Module
+results in SOAPException.
+
+When sender uses the ebXML Module 7.1 SP1 to send a payload of
+size greater than 50KB, the transaction fails. After receiving
+acknowledgement from the receiver, the ebXML module retrieves and
+reconstructs the original message referenced by the
+acknowledgement. Exception occurs at this point.
+
+This issue is resolved.
+
+WEX-574 (WMEBXML_7.1_SP1_Fix9,WMEBXML_7.1_SP1_Fix10)
+ 
+IBM webMethods ebXML Module 7.1 SP1 throws an error when an
+acknowledgement is received at the last retry for the transaction.
+
+When ebXML Module receives an acknowledgment just before its last
+retry, the module processes the acknowledgment, but during the
+last retry the module discards the acknowledgment and throws an
+error in the error log saying "done with errors."
+
+This issue is resolved. ebXML Module now correctly processes the
+received acknowledgment just before the last retry.
+
+WEX-573 (WMEBXML_7.1_SP1_Fix9,WMEBXML_7.1_SP1_Fix10)
+
+IBM webMethods ebXML Module 7.1 SP1 does not try to resend messages if
+Integration Server is restarted before the retry limit is reached.
+
+If ebXML Module is configured to use Trading Networks processing
+rules (that is, the wm.ebxml.bypassRoutingRule configuration
+property is set to "false") and to use reliable messaging as
+defined by the parameters, ReliableMessaging:Retries and
+ReliableMessaging:RetryInterval, in the Trading Partner Agreement
+(TPA)),ebXML Module attempts to resend a message to a trading
+partner when no response is returned within the allotted time.
+However, if Integration Server restarts before ebXML Module
+reaches the message retry limit, the retry routine is interrupted
+and ebXML Module incorrectly updates the processing status of the
+message to "Done." Therefore, when Integration Server restarts,
+ebXML Module does not continue executing unfinished retry
+routines, resulting in lost messages that are never sent to the
+trading partner.
+
+This issue is resolved. The retry routine now executes as designed
+if Integration Server is restarted during message processing.
+
+WEX-569 (WMEBXML_7.1_SP1_Fix9,WMEBXML_7.1_SP1_Fix10)
+ 
+IBM webMethods ebXML Module 7.1 SP1 does not allow users to configure
+custom Message ID and Conversation ID for messages sent using the
+wm.ip.ebxml.MSH:pingUsingTPA and wm.ip.ebxml.MSH:statusUsingTPA
+services. Additionally, it also does not allow customizing the
+Message ID for the response messages.
+
+ebXML Module 6.0.1 allowed users to specify a custom message ID
+and conversation ID for the messages generated by the pingUsingTPA
+and statusUsingTPA services. This feature provided users more
+flexibility in creating their own unique identifiers of
+concatenated keys to assign to messages. Users have requested a
+similar feature in ebXML Module 7.1 SP1.
+
+This issue is resolved. Two new input parameters have been added
+to the services wm.ip.ebxml.MSH:pingUsingTPA and
+wm.ip.ebxml.MSH:statusUsingTPA. Also, to specify a custom
+MessagedID for the response messages, a new configuration property
+(wm.ebxml.getMessageIdSvc) and a new specification
+(wm.ip.ebxml.rec:getMessageId) have been added. These changes are
+described as follows:
+
+The message ID and/or the conversation ID for the messages
+generated by the wm.ip.ebxml.MSH:pingUsingTPA service and the
+wm.ip.ebxml.MSH:statusUsingTPA service can now be customized using
+two new input parameters:
+
+ConversationId   String  (Optional) ConversationId value for the
+		 generated ebXML message. MessageId -      String
+		 (Optional) MessageId value for the generated
+		 ebXML message.
+
+NOTE: The wm.ip.ebxml.MSH:sendUsingTPA service already provides
+these parameters.
+
+If you need to customize the message ID for the response messages
+that ebXML Module generates:
+
+1. Implement a service that generates the custom message ID. You
+   can use the newly added specification,
+   wm.ip.ebxml.rec:getMessageID, as a reference template for
+   implementing such a service. The specification is located in
+   the WmebXML/wm/ip/ebxml/rec folder.
+
+2. Add the new wm.ebxml.getMessageIdSvc property, as follows:
+
+   a. Open the config.cnf file located in the directory,
+      <Integration_Server_directory>\packages\WmebXML\config\.
+
+   b. Add the wm.ebxml.getMessageIdSvc property, as follows:
+
+      wm.ebxml.getMessageIdSvc=<custom_service_name>
+
+         where <custom_service_name> is the name of the service
+	 you implemented that generates the custom response
+	 message ID.
+
+      Note: The property name is case sensitive.
+
+   c. Save the file.
+
+   d. Restart Integration Server for the changes to take effect.
+
+WEX-556 (WMEBXML_7.1_SP1_Fix8) 
+
+In ebXML Module 7.1 SP1, processing an inbound message where the
+service element content is not a URI and the "type" attribute of
+the service element is undefined, generates the following error,
+"Inconsistent: Service without a type attribute must be a URI."
+
+If the same message is processed by previous versions of ebXML
+Module, the message is processed without error. This error may
+occur for users of ebXML Module 7.1 SP1 who are working with
+partners who are using ebXML Module 6.0.1, because the previous
+version of the module did not validate the service element value.
+ebXML Module 7.1 SP1 validates the value of the service element,
+as per emXML Specification Version 2.
+
+This issue is resolved. To support backward compatibility, users
+experiencing this issue can bypass validation of the service
+element by configuring the new parameter,
+wm.ebxml.bypassServiceTypeValidation, as follows:
+
+1. Open the config.cnf file located in the directory,
+   <Integration_Server_directory>\packages\WmebXML\config\.
+
+2. Define the wm.ebxml.bypassServiceTypeValidation parameter, as
+   follows:
+
+      wm.ebxml.bypassServiceTypeValidation=<value>
+
+    where <value> is true or false.
+
+    - Set the parameter to true if you want ebXML Module to bypass
+       service validation.
+
+    - Set the parameter to false if you want ebXML Module to
+       perform service validation. This is the default value for
+       normal processing.
+
+   Note: If this parameter does not exist, add it to the
+   configuration file.
+
+3. When you are finished, save the file.
+
+4. Restart Integration Server for the changes to take effect.
+
+WEX-557 (WMEBXML_7.1_SP1_Fix8) 
+
+ebXML Module 7.1 SP1 continues to send messages after receiving an
+acknowledgement.
+
+When ebXML Module is configured to use Reliable Messaging, the
+module will attempt to send a message until it receives an
+acknowledgment from the receiving system or the module reaches the
+maximum retry interval. (The number of retry attempts is
+determined by the "RetryInterval" parameter defined in the
+corresponding TPA.) Currently, even if ebXML Module receives an
+acknowledgment after re-sending the message, the module continues
+re-sending the message until it reaches the maximum retry
+interval.
+
+This issue is resolved. ebXML Module now correctly recognizes
+message acknowledgments.
+
+WEX-551(WMEBXML_7.1_SP1_Fix7) 
+
+To improve performance, ebXML Module stores trading partner and
+agreement related information, and some information related to
+inbound and outbound message processing in Oracle Coherence cache.
+Caching is optional for ebXML Module, but is recommended to
+optimize performance.
+
+With Integration Server 8.2 SP2, IBM webMethods ebXML Module 7.1 SP1
+is supported for use with Terracotta and Ehcache technologies. As
+of Integration Server 8.2 SP2, both Oracle Coherence and
+Terracotta are supported as caching and clustering solutions. The
+steps to configure which solution you want to use vary according
+to whether you are using ebXML Module in a clustered or non-
+clustered Integration Server environment.
+
+In Integration Server 8.2 SP2, Terracotta Ehcache is the default
+caching solution. If you are currently using Coherence caching and
+want to continue using Coherence, you must explicitly define it.
+
+Caching Without Clustering
+
+To choose your caching without clustering solution, complete the
+following steps.
+
+1. Enable caching in ebXML Module:
+
+   a. Open the config.cnf file from the directory
+      <Integration_Server_directory>\packages\WmebXML\config\.
+
+   b. Verify that the following parameter is set:
+
+      wm.ebxml.caching property=true
+
+   c. When you are finished, save the file.
+
+   d. Reload the WmebXML package for the changes to take effect.
+
+2. Define the caching solution in Integration Server:
+
+   a. In Integration Server Administrator, select Settings >
+      Extended.
+
+   b. Click "Edit Extended Settings."
+
+   c. Specify Coherence or Terracotta Ehcache as the caching
+      solution by typing one of the following:
+
+       watt.server.cluster.cacheType=coherence or
+       watt.server.cluster.cacheType=ehcache
+
+   d. Click "Save Changes."
+
+  Integration Server updates the watt.server.cluster.cacheType
+  property in the server.cnf file in the
+  <Integration_Server_directory>\config\ directory.
+
+Caching With Clustering
+
+To choose the caching with clustering solution, complete the
+following steps:
+
+1. Enable caching in ebXML Module:
+
+   a. Open the config.cnf file from the directory
+      <Integration_Server_directory>\packages\WmebXML\config\.
+
+   b. Verify that the following parameter is set:
+
+      wm.ebxml.caching property=true
+
+   c. When you are finished, save the file.
+
+   d. Reload the WmebXML package for the changes to take effect.
+
+2. Define the caching with clustering solution in Integration
+   Server:
+
+   a. In Integration Server Administrator, select Settings >
+      Clustering.
+
+   b. Click "Edit Cluster Settings."
+
+   c. Click "Enable Cluster."
+
+   d. Select the Cache Type as "Coherence" or "Terracotta."
+
+   e. Enter the values as appropriate in the other fields.
+
+   f. Click "Save Settings."
+
+   Integration Server updates the watt.server.cluster.cacheType
+   property in the server.cnf file in the
+   <Integration_Server_directory>\config\ directory.
+
+Clustering Without Caching
+
+To choose the clustering without caching solution, complete the
+following steps:
+
+1. Disable caching in ebXML Module:
+
+   a. Open the config.cnf file from the directory
+      <Integration_Server_directory>\packages\WmebXML\config\.
+
+   b. Verify that the following parameter is set:
+
+      wm.ebxml.caching property=false
+
+   c. When you are finished, save the file.
+
+   d. Reload the WmebXML package for the changes to take effect.
+
+2. Define the clustering solution in Integration Server:
+
+   a. In Integration Server Administrator, select Settings >
+      Clustering.
+
+   b. Click "Edit Cluster Settings."
+
+   c. Click "Enable Cluster."
+
+   d. Select the Cache Type as "Coherence" or "Terracotta."
+
+   e. Enter the values as appropriate in the other fields.
+
+   f. Click "Save Settings."
+
+   Integration Server updates the watt.server.cluster.cacheType
+   property in the server.cnf file in the
+   <Integration_Server_directory>\config\ directory.
+
+For complete information about configuring Ehcache on Integration
+Server, see Administering webMethods Integration Server. For
+complete information about clustering, see Integration Server
+Clustering Guide.
+
+WEX-541 (WMEBXML_7.1_SP1_Fix6) 
+
+ebXML partners do not receive the Acknowledgement and send the
+same messages continuously, resulting in duplicate messages.
+
+When IBM webMethods ebXML Module 7.1 SP1 uses synchronous mode of
+message exchange over HTTP, while returning the response message
+the module does not set any explicit value for the "Content-type"
+transport header. The module assumes that the content-type of the
+response message will be determined by the "Content-type" MIME
+header of the ebXML response message envelope. However, some
+partner implementations fail to process the synchronous response
+message sent by ebXML Module.
+
+This issue is resolved. IBM webMethods ebXML Module 7.1 SP1 now
+explicitly sets the value for the HTTP transport header "Content-
+type" as the "Content-type" MIME header of the response envelope.
+
+WEX-542 (WMEBXML_7.1_SP1_Fix6) 
+
+In IBM webMethods ebXML Module 7.1 SP1, importing a CPA document with
+a null "CanSend" field generates the following error,
+"/tns:CollaborationProtocolAgreement/tns:PartyInfo[1]
+/tns:CollaborationRole[0]/tns:ServiceBinding[0]/tns:CanSend Field
+is absent, field must exist."
+
+This error occurs because the IS document,
+com.wm.estd.ebXML.documents.CPA2:cpa_2, incorrectly defines the
+"CanSend" field as required. According to the Collaboration-
+Protocol Profile and Agreement Specification, Version 2.0, the
+CanSend field is optional.
+
+This issue is resolved. The IS document,
+com.wm.estd.ebXML.documents.CPA2:cpa_2 now correctly defines the
+CanSend field as optional and processes the CPA accordingly.
+
+WEX-544 (WMEBXML_7.1_SP1_Fix6)
+ 
+IBM webMethods ebXML Module 7.1 SP1 returns a "NullpointerException"
+when the SOAP actor attribute is not defined in an acknowledgement
+message.
+
+The ebMS 2.0 specification defines the actor attribute as
+optional, however ebXML Module requires a value for this field to
+successfully process the acknowledgement. This error occurs
+because ebXML Module is not using the default value for the actor
+when the field is null in the acknowledgement.
+
+This issue is resolved. ebXML Module now uses the default value,
+"toPartyMSH" for the actor when the field is null in the
+acknowledgement.
+
+WEX-537 (WMEBXML_7.1_SP1_Fix4) 
+
+When IBM webMethods ebXML Module 7.1 SP1 sends a message using the
+SMTP transport, the Module incorrectly specifies the "from"
+address as the email address of the receiver instead of email
+address of the sender.
+
+ebXML Module uses the Integration Server pub.client:smtp built-in
+service to send a message via SMTP. When setting the values for
+the relevant input parameters of this service, ebXML Module
+specifies the "from" parameter as the email address configured for
+the receiver Trading Partner profile instead of as the email
+address of the sender Trading Partner profile.
+
+This issue is resolved. ebXML Module now sets the "from" parameter
+correctly to the Email address configured for the sender Trading
+Partner profile.
+
+WEX-534 (WMEBXML_7.1_SP1_Fix3) 
+
+IBM webMethods ebXML Module 7.1 SP1 configured for reliable delivery
+does not abort the retry attempts to resend a message when it
+receives an error message from the recipient of the sent message.
+
+On the sender side, if ebXML Module does not receive an ebXML
+Acknowledgment message from the recipient of a delivered message,
+ebXML Module continues to retry sending the message until the
+retry attempts configured in the TPA are exhausted. This behavior
+is by design.
+
+However, in implementations where the recipient responds with an
+ebXML error message (instead of an ebXML Ack), indicating some
+problem with the received message, the sender continues resending
+the same message that was sent earlier. In this case, the
+recipient treats subsequent messages as duplicates, which adds
+unnecessary load to the server. Even though the ebMS
+specifications do not contain any text specific to processing of
+error messages in reliable configuration, erroneously resending a
+message that results in extra processing load on the server at the
+recipient end can be considered unnecessary.
+
+This issue is resolved. IBM webMethods ebXML Module 7.1 SP1 now aborts
+the retry attempts to resend a message when it receives an error
+message, indicating that the message sent earlier was processed
+with errors at the receiver's end. The user can check the Activity
+log of the sent message bizdoc to confirm if the retry attempts
+for the message have been aborted.
+
+WEX-529 (WMEBXML_7.1_SP1_Fix2) 
+
+IBM webMethods ebXML Module 7.1 SP1 fails to process an inbound
+message in which the xlink:href attribute for the Manifest element
+is a cid (content-id) style reference without the "cid:" prefix.
+
+When ebXML Module receives an ebXML message with the xlink:href
+attribute in the Manifest entry specified as content-id uri and
+the value does not have a "cid:" prefix, ebXML Module returns the
+following error message to the sender: ERROR: MimeProblem: A
+manifest entry refers to non-existent payload.
+
+This error occurs because ebXML Module treats the "cid:" prefix as
+mandatory for content-id uris.
+
+This issue is resolved. ebXML Module now successfully processes
+any inbound message with the Manifest, xlink:href attribute
+content-id entry without the "cid:" prefix.
+
+WEX-520 (WMEBXML_7.1_SP1_Fix1) 
+
+Outbound signed RosettaNet Objects are corrupted intermittently
+when posted using pub.estd.chem:processDocument service.
+
+If reliable messaging has been configured for any of the ebXML
+trading partners, at start up, ebXML Module 7.1 scans the user
+status for all the outbound ebXML documents persisted in Trading
+Networks to check for any undelivered messages. If an undelivered
+message is found, the module reconstructs the original message
+from the corresponding bizdoc persisted in Trading Networks and
+resumes the transmission. This is a separate path of execution as
+compared to regular wm.ip.ebxml.MSH service executions, but it
+also affects the registration of content handlers by SAAJ. ebXML
+Module 7.1 Fix 14 does not have any effect if the registration is
+triggered by the described scenario. If a IBM webMethods Chem
+eStandaards Module (or any other module that uses Trading Networks
+MIME APIs) transaction follows, it would fail with the same error
+as reported in WEX-504. This behavior occurs because IBM webMethods
+ebXML Module 7.1 Fix 14 fails to address the issue of Trading
+Networks constructing incomplete and garbled MIME messages
+(WEX-504) in certain scenarios.
+
+This issue is resolved. The configuration setting
+wm.ebxml.resetContentHandlers=true, in the
+<IntegrationServer_directory>\packages\WmebXML\config\config.cnf
+file will reset the content handler to the one that Trading
+Networks expects for MIME message handling for all the scenarios.
+
+Note: The wm.ebxml.resetContentHandlers configuration property was
+introduced with IBM webMethods ebXML Module 7.1 Fix 14 to resolve
+WEX-504.
+
+WEX-514 (WMEBXML_7.1_SP1_Fix1) 
+
+ebXML Module processes ebXML payloads larger than 40KB as large
+documents when the tn.BigDocThreshold property in Trading Networks
+has not been defined.
+
+ebXML Module uses the Trading Networks configuration property
+tn.BigDocThreshold to determine the size at which to process
+payloads as large documents (using the large document handling
+feature of Trading Networks). This is an optional configuration
+property, and therefore, not always defined. If this property has
+not been configured, ebXML Module automatically processes any
+ebXML payload larger than 40KB as a large document. Instead, ebXML
+Module should only process payloads as large documents if a value
+has been defined for the tn.BigDocThreshold property in Trading
+Networks and the message size matches or exceeds the defined
+value.
+
+This issue is resolved. Now, ebXML Module always uses the
+definition of the tn.BigDocThreshold property to determine whether
+to use large document handling to process ebXML payloads. If the
+tn.BigDocThreshold property in Trading Networks is not configured,
+ebXML Module will not treat any message as a large document,
+regardless of its size. Ideally, Trading Networks should be
+deployed instead of ebXML Module for proper message processing.
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or Update Manager to install fixes on one 
+machine at a time. For instructions, see the documentation at
+https://www.ibm.com/docs/en/products.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Command Central (9.7 or later) or Update Manager. For 
+instructions, see the documentation at https://www.ibm.com/docs/en/products.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corporation 2025

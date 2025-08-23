@@ -1,0 +1,104 @@
+			Metering Agent 11.1 Fix 3 readme
+
+					February 2025
+
+____________________________________________________________________________________________________
+
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+1.0 Fix Name
+
+Metering Agent 11.1 Fix 3
+
+
+
+2.0 Fix ID
+
+MTA_11.1_Fix3
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+
+This fix affects MTA 11.1.
+
+
+
+4.0 Requirements
+
+This fix requires any of the products listed in 3.0 Products (s)/Component(s) Affected. 
+
+Official fixes are cumulative. Therefore, you can install the specified fix or later.
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported
+by webMethods Product Suite 11.1.
+
+
+
+6.0 Cautions and Warnings
+
+All product profiles that run on top of OSGi runtimes are stopped by
+the IBM webMethods Update Manager and will automatically be started
+after the session completes.
+
+The webMethods products that use webMethods Мetering might not work if
+the metering license is not present. If you cannot start the webMethods
+product, you can temporarily revert its license to the previous version.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+MTA-1868
+Changing exception messages to have information
+where to go if the client has issues.
+ MTA-1848
+In webMethods Metering, after PC time synchronization, usage data collection might stop or return incorrect values.
+This issue is now resolved.
+ MTA-1826
+Bring back Metering.
+Metering Agent is now working as previous releases, which use licenses, 
+but now is also working with the new configurations.
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+9.0 Uninstallation
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

@@ -1,0 +1,266 @@
+    webMethods Designer Service Development 10.11 Fix 7 readme
+
+                         November 2024
+
+_________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+webMethods Designer Service Development 10.11 Fix 7
+
+
+
+2.0 Fix ID
+
+ESB_10.11_Fix7
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Designer Service Development 10.11
+
+
+
+4.0 Requirements
+
+None
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods 
+Designer Service Development 10.11.
+
+
+
+6.0 Cautions and Warnings
+
+Warning: Do not use the "Uninstall" option (from About Eclipse
+SDK > Installation Details > Installed Software tab), as that
+will completely remove a particular feature.
+
+
+
+7.0 Fix Contents
+
+WED-10446
+In Designer, caching of missing or non-exist nodes is missing.
+
+ Large number of getNode and nodeExists service calls from a MAP when referenced document doesn't exist while loading the pipeline impacting the rendering of the pipeline UI.
+
+The issue is resolved with the cache Null Nodes feature to prevent frequent service calls for non-existent nodes with-in the specified cache expiry time under Service Development -> Package Navigator -> Cache.
+
+WED-10334 (ESB_10.11_Fix6)
+Despite setting the Indentation tab policy to 'spaces only' in the Designer
+preferences, the Java service editor allows tab characters in formatted code.
+
+This fix includes changes to ensure that the Java service editor
+exclusively uses spaces for indentation, eliminating all tab characters from the left indentation of formatted code when the Indentation tab policy
+is 'spaces only' for a profile in Window > Preferences > Java > Code Style >
+Formatter.
+
+Additionally, this fix resolves the formatting issues encountered while enabling or disabling Indented elements > Empty lines for Indentation in Window > Preferences >Java > Code Style > Formatter.
+
+
+WED-10346 (ESB_10.11_Fix6)
+The Java service editor in Designer shows code indentation issues after
+saving any changes.
+
+Modifying Java service source code in the Java service editor and saving the
+file or asset in Designer results in an unexpected left indentation of some
+lines in the code, especially for the nested lines.
+
+This issue is now resolved. 
+
+
+WED-10267 (ESB_10.11_Fix5)
+Designer throws a compilation error while updating a Java service that uses
+an old service signature.
+
+In Designer, under Window > Preferences > Java > Code Style > Formatter,
+if "Indentation size" is set to 2 in the active custom profile, a compilation
+error occurs while updating a Java service that uses an old service signature 
+because Designer duplicates the code for the primary Java service method.
+ 
+This issue is now resolved. 
+
+
+WED-10023/WED-10074/WED-10216/WED-10177/WED-10157/WED-10292 (ESB_10.11_Fix5)
+At times, Designer 10.11 does not display pipeline contents instantly.
+
+During flow service development or debugging, Designer displays the pipeline
+contents for an element with a slight delay of one second or less. Typically,
+the delay occurs when the pipeline has multiple document references and
+transformers in the mappings.
+
+This issue is now resolved. 
+
+
+WED-10059 (ESB_10.11_Fix4)
+Designer for macOS does not resize the Result view correctly.
+
+When you run a service in Designer, Designer displays
+compressed Name and Value columns for the Pipeline tab in the
+Results view. Hence, you must manually resize the Result view to
+see the results.
+
+This issue is now resolved. 
+
+
+WED-9982 (ESB_10.11_Fix4)
+In Designer, lines of code disappear while editing a flow service.
+
+In Designer, consider a flow service with multiple steps such as MAP,
+INVOKE, and so on under steps such as SEQUENCE and REPEAT. While
+editing the flow service using operations such as Move Left and
+Move Right, Designer throws an exception that results in missing code.
+
+This issue is now resolved.
+
+
+WED-9899 (ESB_10.11_Fix3)
+During Cloud deployment, Designer throws the "Unhandled event
+loop exception" error while selecting assets with recursive dependency.
+
+The issue is resolved.
+
+
+WED-9852 (ESB_10.11_Fix2)
+In Designer, debugging a Java service with a test harness throws
+java.lang.ClassNotFoundException.
+
+In Designer, debugging a Java service using the generated test harness
+results in the java.lang.ClassNotFoundException: javax.xml.soap.Node
+exception. The exception is due to a missing library in the
+auto-generated service development project.
+
+This issue is now resolved.
+
+Note:
+As part of the post-installation steps, use a new workspace for Designer
+or remove the existing auto-generated projects from the disk before
+generating the code for debugging a Java service. 
+
+
+WED-9719 (ESB_10.11_Fix1)
+In Designer, creating an OData service is slow.
+
+Creating an OData service from external entities is slow after selecting 
+the JDBC connection alias as Designer takes time to render the tables 
+fetched from the JDBC connection.
+
+This issue is resolved by selecting "Use grouping in tree browser" in 
+Window > Preferences > Software AG > Service Development > 
+Adapter Service / Notification Editor.
+
+
+WED-9639 (ESB_10.11_Fix1)
+Creating a provider REST API Descriptor from a Swagger document fails with 
+"NullPointerException".
+
+This issue is now resolved.
+
+
+WEL-139 (ESB_10.11_Fix1)
+The Java service editor fails to recognize the external library references in
+packages.
+
+Designer excludes the external libraries in the project classpath.
+Hence, the Java service editor fails to recognize the external library
+references in the packages opened locally for service development.
+
+This issue is now resolved. 
+
+
+WED-9412 (ESB_10.11_Fix1)
+Switching between the Pipeline and Data Mapper views applies smart
+mapping recommendations to a flow service without the user's acceptance.
+
+While using smart mapping recommendations for a flow service, switching between
+the Pipeline and Data Mapper views applies the recommendations even though the
+user does not click "Accept selected" or "Accept All".
+
+This issue is now resolved. 
+
+
+8.0 Installation
+
+Install using the Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot apply these instructions to the previously installed 
+fix. 
+
+Uninstall using the Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com. 
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix has 
+no globalization impact and can be applied to systems running in any supported 
+locale or configuration. 
+
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might contain new 
+messages and these messages will appear in English. 
+
+
+
+11.0 Copyright
+
+Super iPaas Integration LLC, an IBM Company 2024. 
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

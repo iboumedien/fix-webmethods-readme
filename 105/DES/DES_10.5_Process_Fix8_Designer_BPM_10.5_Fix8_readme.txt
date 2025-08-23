@@ -1,0 +1,367 @@
+    webMethods Designer Process Development 10.5 Fix8
+
+                 Sept 2022
+______________________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Designer Process Development 10.5 Fix 8
+
+
+
+2.0 Fix ID
+
+DES_10.5_Process_Fix8
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Designer Process Development 10.5.
+
+
+
+4.0 Requirements and Dependencies
+
+For language pack requirements, see the Globalization section
+of the Software AG Empower Product Support Web site. The
+Globalization section can be found at:
+
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods
+Designer Process Development.
+
+
+
+6.0 Cautions and Warnings
+
+- You should restart Eclipse at least once with -clean parameter after fix installation
+e.g.:
+
+eclipse.exe -clean
+
+- Do not use the Overinstall parameter supplied with Update
+Manager. This can lead to problems with further updates within
+Eclipse.
+
+
+
+7.0 Fix Contents
+
+WMDPD-10262
+PRT Error when Complex Join is used
+
+In Designer, when step is configured to use complex join, the join expression may contain an extra brace.
+The issue is resolved.
+
+
+WMDPD-10212
+Trigger error: Selector string parser error:Lexical error at line 1, column 3. Encountered: "%" (37), after : ""
+Based on mutual agreement with UM team the UM filter string has been modified to remove '%' and replace '/' with a '.'
+
+The issue is resolved. 
+
+
+WMDPD-10212(DES_10.5_Process_Fix7)
+Trigger error: Selector string parser error:Lexical error at line 1, column 3. Encountered: "%" (37), after : ""
+Based on mutual agreement with UM team the UM filter string has been modified to remove '%' and replace '/' with a '.'.
+
+The issue is resolved.
+
+
+WMDPD-10067(DES_10.5_Process_Fix6)
+With webMethods Monitor, process diagrams cannot be manually saved.
+
+The process diagram cannot be manually saved as a JPG and/or SVG file
+and upload the images with the process metadata.
+
+The issue is resolved. Support for manually exported images is now
+included for the build and upload tool delivered with Designer, the
+Asset Build Environment and Deployer.
+
+
+WMDPD-10067(DES_10.5_Process_Fix5)
+
+The value of new option "Abort build/upload when trigger threads are actively processing documents" is not retained when Designer is restarted.
+
+The issue is now resolved.
+
+WMDPD-10096(DES_10.5_Process_Fix5)
+
+webMethods Designer may fail to connect to MySQL when running on a Linux environment.
+
+The issue is resolved. 
+
+
+WMDPD-10069(DES_10.5_Process_Fix4)
+
+Fix of Process Simulator in Software AG Designer wasn't updated automatically. Fix instructions have been updated.
+
+The issue is now resolved. 
+
+
+WMDPD-10044(DES_10.5_Process_Fix4)
+
+Vulnerable 3rd party Apache Xerces component is upgraded with latest version of 2.12
+
+The issue is now resolved.
+
+
+WMDPD-9997(DES_10.5_Process_Fix4)
+
+A new option "Abort build/upload when trigger threads are actively processing documents", is now added
+in Designer Build and Upload preferences, to abort build/upload when trigger threads are actively processing documents.
+
+Valid values are:
+always - displays alert dialog and aborts build/upload if the trigger's activeThreadCount is greater than zero and trigger
+  will be suspended and needs to be enabled in Integration Server.
+never(default)- build/upload is not aborted when trigger threads are actively processing documents.
+
+The issue is resolved. 
+
+
+WMDPD-9656(DES_10.5_Process_Fix4)
+
+Display error in "New Process Action wizard", in case there is failure to get ProcessData doc (and services) from the connected IS.
+
+
+WMDPD-8133(DES_10.5_Process_Fix4)
+With webMethods Process Development, renaming a decision table might result in
+search results not properly displaying data model references from the workspace.
+
+The issue is resolved.
+
+
+WMDPD-9820(DES_10.5_Process_Fix4)
+
+The webMethods BPM and CAF CentraSite Metadata Designer Help is deprecated for versions 10.3 and higher.
+
+This help will no longer be included in the Designer Help content.
+
+
+WMDPD-9726(DES_10.5_Process_Fix4)
+
+Runtime settings in the process model like Quality Of Service (QOS) section is being stored in both the .process file and .config file which may get out of sync and cause confusion to the users.
+This issue should now be resolved. The process model should be re-saved in Designer after applying fix and going forward the settings would only be placed in the .config file.
+
+
+WMDPD-9264(DES_10.5_Process_Fix4)
+
+If multiple processes are placed in same deployment project, the simulation report may only simulate deployment of 1 process.
+
+This issue should now be resolved.
+
+
+WMDPD-8814(DES_10.5_Process_Fix4)
+
+If complex doctypes are used in process model, EDA generation can result in StackOverflowException during build & upload.
+
+This issue should now be resolved. A new property called "Generate Event Types" is provided on the process Runtime settings tab that can be disabled as needed.
+
+
+WMDPD-9102(DES_10.5_Process_Fix4)
+
+If Rules step is used and process model version is incremented, it may not be possible to re-build and upload process model. IS Error "node already exists" may be observed.
+
+This could be caused due to Rule step re-generation.
+
+This issue should now be resolved.
+
+
+WMDPD-9702(DES_10.5_Process_Fix4)
+
+Importing a process from 9.x to 10.x may cause some input/output documents to appear missing.
+This could be caused if the process file had been created in an earlier version 9.x Designer which did not use the default namespace.
+This issue should now be resolved. A re-import of the process to the 10.x Designer would need to be performed after applying the fix. 
+
+
+WMDPD-9958(DES_10.5_Process_Fix3)
+webMethods Designer Process Development 10.5 is now tested and certified to support MySQL 8.x Community Edition
+
+
+WMDPD-7815(DES_10.5_Process_Fix3)
+
+When using a boundary error, you may observe the warning 'Input for task/event has not been created as an output of any upstream task/event. This data may not be available to the task/event at runtime.'
+
+This warning is not necessary for boundary events, as entire pipeline is available for boundary error handler.
+
+This issue is now resolved. The warning is now suppressed for such transitions.
+
+
+WMDPD-9533(DES_10.5_Process_Fix3)
+
+If a custom Generated Service Name is used for a User Task, duplicate mappings may get created for both the service name and User task label.
+
+This issue should now be resolved. The previously generated InputMapService may need to be deleted prior to re-building the process model. 
+
+
+WMDPD-9196 (DES_10.5_Process_Fix2)
+If multiple sub-processes contain None Start Event, error "There can only be one None 
+Start Event in a process" may occur.
+
+This issue should now be resolved.
+
+
+WMDPD-9908 (DES_10.5_Process_Fix2)
+Intermittently, Subscription filter for BizDoc is wrongly generated.
+
+This issue is resolved.
+
+
+WMDPD-9922 (DES_10.5_Process_Fix2)
+Importing a process from 9.x to 10.x may cause some input/output documents to appear missing.
+This could be caused if the process file had been created in an earlier version 9.x Designer which did not use the default namespace.
+This issue should now be resolved. A re-import of the process to the 10.x Designer would need to be performed after applying the fix
+
+
+RGHWPE-4389 (DES_10.5_Process_Fix1)
+PostgreSQL database support is added for Process engine.
+
+
+WMDPD-9889 (DES_10.5_Process_Fix1)
+With webMethods Designer Process Development, after the deployment of a BPM project, the step settings changed
+in My webMethods Server are lost.
+
+When the QoS step settings are changed on the source server from the My webMethods Server user interface, the
+changes are not visible on the target server after rebuilding and redeploying the process model.
+This occurs when only the process model is deployed. When the deployment set contains the associated
+Integration Server packages, the QoS settings are applied and visible on the target environment immediately.
+
+The issue is resolved.
+
+
+WMDPD-9886 (DES_10.5_Process_Fix1)
+With Designer Process Development, enabling a process for analysis might
+fail with an error.
+
+When a new version of a process model is deployed, an error occurs when
+enabling the process for analysis.
+
+The issue is resolved.
+
+
+8.0 Installation
+
+1. Shut down Designer
+
+2. Install the fix using the Software AG Update Manager.
+For instructions, see Using the Software AG Update Manager
+located either in the _documentation directory or on the
+documentation Web site at http://documentation.softwareag.com.
+
+Fix should appear in Update Manager as:
+
+Designer > Process Development > Designer BPM Fix
+
+3. Verify new BPM feature versions are installed by going to
+Help > About Software AG Designer > Installation Details >
+Features tab > Feature Id sort field
+
+you should see for example:
+
+webMethods Process Development 10.5.0.0001-....
+com.webmethods.designer.process.feature
+
+
+
+9.0 Uninstallation
+
+Uninstall the fix using the Software AG Update Manager.
+For instructions, see Using the Software AG Update Manager.
+
+NOTE: This uninstall procedure can only be used to uninstall the
+most recently installed fix. This action will revert your
+installation to the previously installed fix if the prior fix was
+installed using Software AG Update Manager, otherwise Eclipse
+will be reverted to the BPM 10.5 GA version of the plugins
+(10.5.0.0000-....)
+
+You cannot apply this uninstall procedure to the previously
+installed fix.
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the
+webMethods product suite and includes support for operation in
+any country, locale, or language as specified in the webMethods
+Installation Guide.It was not tested with non-English
+configurations and non-ASCII data. However, this fix has no
+globalization impact and can be applied to systems running in any
+supported locale or configuration.
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might
+contain new messages and these messages will appear in English.
+
+
+
+10.2 Copyright
+
+Copyright @ 2022  Software AG, Darmstadt, Germany and/or
+Software AG USA, Inc., Reston, VA, United States of America,
+and/or their licensors.
+
+Detailed information on trademarks and patents owned by
+Software AG and/or its subsidiaries is located at
+http://documentation.softwareag.com/legal/.
+
+Use of this software is subject to adherence to Software AG?s
+licensing conditions and terms. These terms are part of the
+product documentation, located at
+http://documentation.softwareag.com/legal/ and/or in the root
+installation directory of the licensed product(s).
+
+This software may include portions of third-party products.  For
+third-party copyright notices and license terms, please refer to
+"License Texts, Copyright Notices and Disclaimers of Third Party
+Products." This document is part of the product documentation,
+located at http://documentation.softwareag.com/legal/ and/or in
+the root installation directory of the licensed product(s).
+
+
+
+11.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG
+Global Support in the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support
+Contact Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to
+access
+additional articles, demos, and tutorials, technical information,
+samples, useful resources, online discussion forums moderated by
+Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/in
+dex.htm

@@ -1,0 +1,194 @@
+    webMethods Designer Process Development 10.15 Fix3
+                 June 2024
+______________________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Designer Process Development 10.15 Fix 3
+
+
+
+2.0 Fix ID
+
+DES_10.15_Process_Fix3
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Designer Process Development 10.15.
+
+
+
+4.0 Requirements and Dependencies
+
+For language pack requirements, see the Globalization section
+of the Software AG Empower Product Support Web site. The
+Globalization section can be found at:
+
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods
+Designer Process Development.
+
+
+
+6.0 Cautions and Warnings
+
+- You should restart Eclipse at least once with -clean parameter after fix installation
+e.g.:
+
+eclipse.exe -clean
+
+- Do not use the Overinstall parameter supplied with Update
+Manager. This can lead to problems with further updates within
+Eclipse.
+
+
+
+7.0 Fix Contents
+
+WMDPD-10440
+Designer uses an older version of the Batik library, which has known security vulnerabilities.
+The issue is resolved. Designer now uses Batik 1.17.
+
+WMDPD-10741
+Designer uses an older version of the batik-transcoder library, which has known security vulnerabilities.
+The issue is resolved. Designer now uses batik-transcoder 1.17.
+
+WMDPD-10556
+Designer uses an older version of the batik-bridge library, which has known security vulnerabilities.
+The issue is resolved. Designer now uses batik-bridge 1.17.
+
+WMDPD-10518
+Designer uses an older version of the batik-script library, which has known security vulnerabilities.
+The issue is resolved. Designer now uses batik-script 1.17.
+
+WMDPD-10504
+Designer uses an older version of the batik-svgrasterizer library, which has known security vulnerabilities.
+The issue is resolved. Designer now uses batik-svgrasterizer 1.17.
+
+WMDPD-10759
+With designer for process, some vulnerable batik jars were shipped.
+This issue is resolved. Now the safer version 1.17 are shipped.
+
+WMDPD-10397
+Business process is not initiated created in MWS admin page. Product issue.
+The issue is resolved.
+  
+WMDPD-10302
+Designer Process Development 10.11 â€“ â€˜Process Inputsâ€™ tab appear empty on Debug Configuration
+The issue is resolved.
+
+WMDPD-10324
+Vulnerable 3rd party component Apache Xmlgraphics batik used
+The issue is resolved.
+
+WMDPD-10346
+CLONE - Error when using data type as logged field
+The issue is resolved.
+
+WMDPD-10372
+Vulnerable 3rd party component Xalan used
+The issue is resolved.
+
+
+Now the issue is resolved.
+
+8.0 Installation
+
+1. Shut down Designer
+
+2. Install the fix using the Software AG Update Manager.
+For instructions, see Using the Software AG Update Manager
+located either in the _documentation directory or on the
+documentation Web site at http://documentation.softwareag.com.
+
+Fix should appear in Update Manager as:
+
+Designer > Process Development > Designer BPM Fix
+
+3. Verify new BPM feature versions are installed by going to
+Help > About Software AG Designer > Installation Details >
+Features tab > Feature Id sort field
+
+you should see for example:
+
+webMethods Process Development 10.15.0.0001-....
+com.webmethods.designer.process.feature
+
+
+
+9.0 Uninstallation
+
+Uninstall the fix using the Software AG Update Manager.
+For instructions, see Using the Software AG Update Manager.
+
+NOTE: This uninstall procedure can only be used to uninstall the
+most recently installed fix. This action will revert your
+installation to the previously installed fix if the prior fix was
+installed using Software AG Update Manager, otherwise Eclipse
+will be reverted to the BPM 10.15 GA version of the plugins
+(10.15.0.0000-....)
+
+You cannot apply this uninstall procedure to the previously
+installed fix.
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the
+webMethods product suite and includes support for operation in
+any country, locale, or language as specified in the webMethods
+Installation Guide.It was not tested with non-English
+configurations and non-ASCII data. However, this fix has no
+globalization impact and can be applied to systems running in any
+supported locale or configuration.
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might
+contain new messages and these messages will appear in English.
+
+
+
+11 Copyright
+
+Copyright Â© 2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc.,
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or 
+registered trademarks of Software AG and/or Software AG USA Inc. and/or its subsidiaries 
+and/or its affiliates and/or their licensors. Other company and product names mentioned 
+herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries 
+is located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party copyright notices, 
+license terms, additional rights or restrictions, please refer to "License Texts, Copyright Notices 
+and Disclaimers of Third Party Products". For certain specific third-party license restrictions, 
+please refer to section E of the Legal Notices available under "License Terms and Conditions for 
+Use of Software AG Products / Copyright and Trademark Notices of Software AG Products". These documents 
+are part of the product documentation, located at http://softwareag.com/licenses and/or in the 
+root installation directory of the licensed product(s).

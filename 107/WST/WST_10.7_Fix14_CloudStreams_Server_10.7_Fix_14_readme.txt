@@ -1,0 +1,1324 @@
+    webMethods CloudStreams Server 10.7 Fix 14 readme
+                         
+				October 2024
+________________________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+1.0 Fix Name
+
+webMethods CloudStreams Server 10.7 Fix 14
+
+
+2.0 Fix ID
+
+WST_10.7_Fix14
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods CloudStreams Server 10.7
+
+
+4.0 Requirements
+
+This fix requires the latest available fixes to be installed 
+in advance. In addition, follow the post install instructions.
+
+For language pack requirements, see the Globalization section of 
+the Software AG Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+5.0 Platform Support
+webMethods CloudStreams Server 10.7 Fix 14 is supported on 
+all platforms supported by webMethods CloudStreams Server 
+10.7.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents 
+
+WST-8088 (WST_10.7_Fix14)
+
+While a listener is running, if there are runtime issues on the 
+client-side and the listener recovery fails, the configured error 
+callback service is not invoked.
+
+This issue is now resolved.
+
+WST-8213 (WST_10.7_Fix14)
+ 
+Users encountered a SignatureDoesNotMatch error in the Amazon S3 
+connector when the "x-amz-copy-source" header contained special 
+characters used in operations such as "put object copy" and 
+"upload part copy".
+ 
+This issue is now resolved.
+
+WST-8244 (WST_10.7_Fix14)
+ 
+Users encountered an issue where the port number was removed 
+from the request header "host" in AWS connectors.
+ 
+This issue is now resolved.
+
+WST-8329 (WST_10.7_Fix14)
+
+When the Salesforce listener encounters client-side issues, it 
+continuously tries to re-establish its connection with the backend. 
+Occasionally, these issues persist, leading the listener to repeatedly 
+attempt reconnection. During such times, the listener remains active 
+but is unable to receive events from the backend.
+
+This issue is now resolved. The listener will now attempt to reconnect 
+up to five times. If these attempts fail, the listener will enter a 
+suspended state, and a callback service will be triggered. Users can 
+configure the callback service to receive notifications if the listener 
+goes down.
+
+WST-7883 (WST_10.7_Fix14)
+
+The message associated with the key '0550.0178' was incorrectly 
+formatted, leading to a runtime exception when printing the log statement. 
+
+This issue is now resolved.
+
+WST-7692 (WST_10.7_Fix14)
+
+If special characters are used in the parameters while using amazon S3 
+connector resource. The Backend does not authenticate and sends 
+SignatureDoesNotMatch exception.
+
+This issue is resolved.
+
+WST-7625 (WST_10.7_Fix14)
+
+For a connector that normally expects and process backend
+response in json, can sometime receive a response
+in any other format other than json causing
+a parsing error to happen. This error is directly
+shown to the end user. As the error is directly shown to
+the end user it reveals implementation details that should
+never be revealed as it can open up security issues.
+
+This issue is resolved now.
+
+WST-7587 (WST_10.7_Fix14)
+
+In salesforce connector, a service is used to update the salesforce 
+connection url during start-up sequence.
+Invoking this service was failing due to some class serialization issue.
+
+This issue is resolved now.
+
+WST-8204 (WST_10.7_Fix14)
+
+When using Basic Authentication with a username and password, the 
+correct user credentials are initially securely saved in the backend 
+upon creating the connection. However, an issue was observed during 
+subsequent edits to the connection properties. Specifically, if only 
+the "username" field was modified without changing the password and 
+the connection was saved again, the "password" field in the backend 
+would unexpectedly update with masked characters (*****), which were 
+placeholders designed to hide the original value.
+This behavior was due to an additional feature that attempted to unmask 
+the password field whenever the username field was changed.
+
+This issue is now resolved.
+
+WST-7033 (WST_10.7_Fix13)
+
+Issue with deploying CloudStreams listener assets in an enabled 
+state.
+
+The problem occurred because CloudStreams attempted to deploy 
+and enable the listener in the target environment before the 
+connection was enabled. This issue is now resolved.
+
+WST-7242 (WST_10.7_Fix13)
+
+webMethods CloudStreams uses jquery-ui.min.js of version v1.13.0 
+library, which have known security vulnerabilities.
+
+The issue is resolved. CloudStreams now uses safer version 1.13.2 
+of jquery-ui.min.js library.
+
+WST-7538 (WST_10.7_Fix13)
+
+Integration Server swamped with a large volume of the following 
+CloudStreams error: CLS.0050.0404W
+
+This issue was observed due to the missing content-type header in 
+the response. In a few scenarios where there is no response body, 
+certain responses may not include a content-type header. The logger 
+level was set to "WARNING" for the response content-type header check.
+
+This issue is resolved. The logger level has been changed to DEBUG.
+
+WST-7343 (WST_10.7_Fix12)
+
+Updated warning message for no chunking during 
+large file upload operations.
+
+Failed to perform chunking on the request payload 
+because the chunking option is disabled [pr.useChunking={0}] 
+for connection ''{1}''. 
+
+Heap space errors may appear while sending the large 
+binary stream to the backend which does not support
+HTTP chunking, even if large data handling is enabled in 
+CloudStreams. 
+
+If you want to send a large binary stream to the backend which 
+supports HTTP chunking, it is recommended to set the 
+Transport Protocol group field 'Use Chunking' to true 
+on the Connection Configuration page.
+
+WST-7233 (WST_10.7_Fix12)
+
+During Integration Server startup, a few listener event-based 
+flow executions were failing with the following error: No deployed 
+Axis service for this name.
+
+This issue is now resolved.
+
+WST-7295 (WST_10.7_Fix12)
+
+When the Integration Server is shut down, the running listeners 
+are not unsubscribed from the back end, which can sometimes result 
+in the logs showing "Pool state error":
+2023-05-22 15:51:42 IST [CLS.0504.9999W] (tid=1968) Pool state error 
+in SF_Enterprise:SF_Enterprise_ConnA. Cannot process request., 
+error code: 118 javax.resource.ResourceException: Pool state 
+error in SF_Enterprise:SF_Enterprise_ConnA. Cannot process request., 
+error code: 118
+
+The backend ends the session due to inactivity.
+
+This issue is resolved.
+
+WST-6084 (WST_10.7_Fix12)
+
+While importing a Provider Archive Package, if the ZIP package had 
+issues, an incorrect error message was displayed.
+
+The issue is resolved. We have now improved the error handling 
+mechanism.
+
+WST-7228 (WST_10.7_Fix12)
+
+During failover, duplicate processing failed due to multiple 
+package reloads in WMIO. The inflight transactions during the 
+package reloads are now tracked to filter for duplicates, thereby 
+avoiding duplicate processing.
+
+WST-6807 (WST_10.7_Fix12)
+
+When a non-recoverable error occurs, the following status message 
+is passed to callbackService: "disabling of listener initiated".
+Ideally, disabling of a listener doesn't happen programmatically.
+
+This issue is resolved. The error message has been modified to 
+indicate the Suspended status of the listener, ensuring an improved 
+error handling mechanism.
+
+WST-6953 (WST_10.7_Fix12)
+
+During enable, if Salesforce returns error that we have sent invalid 
+replayID, we confirm whether the error needs to be corrected or not. 
+If it needs to be corrected, then we switch replay option to ALL and 
+continue. If it doesn't need to be corrected, then we ignore and return 
+error to user.
+
+WST-6916 (WST_10.7_Fix11)
+
+Existing and newly created Amazon S3 services 
+fail to work correctly.  
+
+The default value "https://s3.amazonaws.com/" for 
+AWS S3 connection has a forward slash (“/”) placed 
+at the end of the Server URL. During service execution, 
+an additional forward slash (“/”) gets appended from 
+the resource URI, which creates an invalid URI, 
+something like this - "https://s3.amazonaws.com//". 
+
+Due to this, service execution fails with an 
+invalid signature. This issue may also cause 
+service failure with null error for resources 
+with only forward slash (“/”) in the path. 
+
+This issue is resolved. We now normalize URI and 
+replace multiple consecutive slashes in the 
+Server URL with a single slash. 
+
+WST-6966 (WST_10.7_Fix11)
+
+While enabling the listeners, configuration for the 
+ReplayID option is missing for the connectors other 
+than Salesforce CRM SOAP. 
+
+This issue is resolved now.
+
+WST-6591 (WST_10.7_Fix11)
+
+In the error log, users were confused to observe 
+the following error message: OAuth token aliases file
+[/opt/softwareag/IntegrationServer/instances/default/
+packages/WmCloudStreams/config/auth/cls-oauthDetails.xml]
+could not be found! Could not load alias information
+into CloudStreams.
+
+The cls-oauthDetails.xml file is generated only if 
+OAuth tokens are defined in a global way and 
+this kind of OAuth token definition is currently 
+not used by any OOB connectors.
+
+This issue is resolved.
+The error related to cls-oauthDetails.xml is now 
+removed from the error log and added to the Debug log.
+
+WST-5434 (WST_10.7_Fix11)
+
+Validation was added to ensure that Server Redirect 
+Field does not allow input with negative values.
+
+WST-6995 (WST_10.7_Fix11)
+
+CloudStreams fails to add the Content-Type Header 
+for BatchUpsert requests
+
+The issue was observed because CloudStreams skipped the 
+custom headers added by OData connector service handlers 
+to avoid overriding user inputs from the service 
+node default value.
+
+This issue is resolved. 
+CloudStreams now overrides default values appropriately.
+
+WST-6937 (WST_10.7_Fix11)
+
+Salesforce CometD-based listeners fail to get disabled or 
+unsubscribed intermittently.
+Due to this issue, a dangling listener gets created, 
+which keeps listening to events even when the listener was 
+disabled. 
+
+And when the listener was enabled again, there were
+two listeners listening to events, resulting in 
+duplicate events from the backend.
+
+This issue is now resolved.
+
+WST-6897 (WST_10.7_Fix11)
+
+The value of the 'cause' field in the Listener error 
+callback service payload is displayed as 'null' sometimes.
+
+This issue occurs when no value is specified in the 
+'cause' field.
+
+This issue is resolved.
+Now, if no value is specified in the 'cause' field, 
+the field will not appear in the callback service payload.
+
+WST-6642 (WST_10.7_Fix11)
+
+Processing of event fails if error occurs while 
+storing the event.
+
+This issue is resolved.
+
+WST-6483 (WST_10.7_Fix11)
+
+While using a connector, when users try to enable 
+'Publish performance metrics to database',
+the following error message is displayed: 
+"Error while running com.softwareag.pg.pgmen.processors
+.PerformanceDataDeployer task.
+Cause: java.lang.NullPointerException null 
+java.lang.NullPointerException: null."
+
+This issue is not observed in the Standalone Integration 
+Server setup but is reproducible in the Clustered Integration 
+Server setup while enabling 'Publish performance metrics to 
+database' with the WmMicrosoftAzureStorageProvider package 
+installed in the environment.
+
+This issue is resolved.
+
+WST-6437 (WST_10.7_Fix11)
+
+CloudStreams does not support multiple comma-separated 
+values for the "Accept" header.
+
+CloudStreams does not parse the response correctly when 
+multiple comma-separated values are specified for the "Accept" 
+header with the request. 
+
+This issue is observed because CloudStreams currently 
+uses the "Accept" value to parse the response when the 
+Accept header is specified with the request.
+
+This issue is resolved.
+CloudStreams now uses the response Content-Type header 
+value to parse the response for a given request.
+
+WST-6982 (WST_10.7_Fix11)
+
+Updated warning message for no chunking during 
+large file upload operations.
+
+Failed to perform chunking on the request payload 
+because the chunking option is disabled [pr.useChunking={0}] 
+for connection ''{1}''. 
+
+Heap space errors may appear while sending the large 
+binary stream to the backend which does not support
+HTTP chunking, even if large data handling is enabled in 
+CloudStreams. 
+
+If you want to send a large binary stream to the backend which 
+supports HTTP chunking, it is recommended to set the 
+Transport Protocol group field 'Use Chunking' to true 
+on the Connection Configuration page.
+
+WST-6875 (WST_10.7_Fix11)
+
+Salesforce connection not able to enable
+
+CloudStreams uses classes from Entrust jar 
+in the socket creation flow. 
+
+The recent changes committed in the IS client replaced 
+the "KeyAndCert" with its own instance "ISKeyAndCert".
+
+This issue is resolved. 
+We have now updated CloudStreams code as per the 
+Integration Server wm-isclient changes.
+
+WST-6831 (WST_10.7_Fix11)
+
+If the password or access token of the Salesforce connector 
+account associated with a disabled listener has expired and 
+the custom package is reloaded, and users try to enable the listener, 
+the following error message is displayed: 
+"Unable to initialize the connection factory associated with 
+alias '<Connection_Alias>'.,
+ 
+error code: Connection configuration alias '<Connection_Alias>' 
+already registered. Original config was replaced with alias 
+'<Connection_Alias>'".
+
+The actual cause of the error is unclearly specified 
+in the error message.
+
+The issue is resolved. 
+This fix ensures an improved error handling mechanism.
+
+WST-6794 (WST_10.7_Fix11)
+
+If persistence of events fails, processing of 
+events was failing.
+
+A config was introduced which customers had to manually 
+enter in wst-config.properties, inorder to take 
+solution to effect.
+
+This fix is reverting these changes.
+
+WST-6770 (WST_10.7_Fix11)
+
+If the password or access token of the Salesforce connector 
+account associated with a disabled listener has expired, 
+and users try to enable the listener, the following error message 
+is displayed: "Assertion error during connection request from pool 
+<ConnectionPool>, error code: 105".
+
+The actual cause of the error is unclearly specified 
+in the error message.
+
+The issue is resolved.
+This fix ensures an improved error handling mechanism.
+
+WST-6669 (WST_10.7_Fix11)
+
+In the logs, Integration Server errors were observed while 
+building assets using Asset Build Environment (ABE), 
+indicating an issue with the Build process. 
+
+However, the errors were observed due to parsing 
+exception on an empty file.
+
+This issue is now resolved.
+
+WST-7022 (WST_10.7_Fix11)
+
+For a few URLs, when the Integration Server property 
+“watt.net.ssl.client.hostnameverification” is set to “true”, 
+CloudStreams throws a hostname verification error.
+
+This issue is now resolved.
+
+WST-6829 (WST_10.7_Fix11)
+
+Unable to generate an access token for the Jira provider 
+from OAuth 2.0 Authorization Code Flow dialog.
+
+This issue is observed because of a recent change implemented 
+in the Jira API.
+
+The 'scope' and 'audience' parameters are required input fields 
+in the authorization step. The Jira connector also requires an
+update to work seamlessly.
+
+This issue is resolved. 
+It is recommended that you use the Jira connector 10.5 version 
+build greater than #0033 or 10.7 version build greater than #0003.
+
+WST-6711 (WST_10.7_Fix11)
+
+An error occurred during OAuth token refresh when proxy 
+is enabled to route requests in webMethods Integration Server.
+This issue was observed because of the deprecation 
+of the HttpClient library since v4.3.
+
+The implementation of the deprecated getParams() method 
+in HttpClient is now removed and it throws "Unsupported Operation" 
+exception from the v4.5.5 release onwards.
+Due to this exception, the OAuth token refresh gets blocked, 
+causing the access token to expire and the connection to break.
+
+This issue is resolved.
+
+WST-6607 (WST_10.7_Fix10)
+
+Configuring empty callback service for listeners.
+Errors were observed if you configured an empty callback service for listeners.
+This issue is resolved. You can now configure an empty callback service for a listener.
+
+WST-6608 (WST_10.7_Fix10)
+
+If a listener encounters an error, CloudStreams error handler tries recovering
+the listener by making a total of 5 retry attempts without waiting between attempts.
+
+This issue is resolved. We have now implemented the increasing backoff technique, 
+which means that the error handler will try recovering the listener with an increasing
+wait time after every consecutive retry attempt.
+
+WST-6609 (WST_10.7_Fix10)
+
+The list API, which allows you to list a specific listener along with its alias
+by passing the 'searchListenerAlias' parameter, is not working as expected.
+
+This issue is now resolved.
+
+WST-6671 (WST_10.7_Fix10)
+
+When users try to create a connection for Salesforce Marketing Cloud on Integration
+Server version 10.5 and CloudStreams, the following error message is displayed:
+"Missing required fields - Authorization Server URL. Authentication Server URL."
+
+This issue is observed because of a change that was implemented as a part of WST-5261 fix.
+The Authorization Server URL and Authentication Server URL fields were shown with
+generic endpoint values in OAuth Access Token generation modal window.
+
+The Authentication Server URL and Authorization Server URL are required fields. 
+The OAuth Access Token generation modal window fetches default values configured 
+in the connection group for a connector. However, a few connectors failed to 
+declare the URL values in the connection group, due to which, the input values 
+for the Authentication Server URL and Authorization Server URL fields were left empty.
+
+This issue is resolved. We now skip the validation for Authorization Server URL 
+and Authentication Server URL fields. The Generate Access Token modal handles 
+validation to the fields during the access token generation.
+
+
+WST-6600 (WST_10.7_Fix9)
+
+Terracotta connectivity issues were observed while receiving 
+an event. Due to which, the processing of the event was prevented.
+
+This issue is now resolved. While configuring, when a user sets the
+wst.listener.persist.onError.process property in wst-config.properties 
+to true, the event processing occurs, even though the terracotta 
+connectivity fails, upon event reception.
+
+Please note that, it could lead to duplicate processing, since the 
+persistence of event is unsuccessful.
+
+WST-6485 (WST_10.7_Fix9)
+
+In the "Microsoft Azure Storage" connector - "putBlob" operation, 
+configuring the blob name with special characters slash ('/') is 
+not allowed.
+
+Apache HttpClient has released a breaking change in RequestConfig 
+class (HTTPCLIENT-1968) from version 4.5.8 onwards to support URI 
+normalization enabled by default. This change ensures splitting of 
+path component into path segments when digesting a URI. And during 
+this process, it eliminates multiple leading slashes in the URI.
+
+This issue is resolved. We have now preserved the old behavior by 
+disabling the Normalize URI option.
+
+WST-6487 (WST_10.7_Fix9)
+
+While working with the CometD listener, if a network connectivity 
+issue occurs, the TimeoutException may arise. As a result, the 
+listener will retry the handshake with the backend. If the network 
+connectivity issue still persists, then the listener goes intoan 
+infinite retry cycle. During this time, if users try to enable the 
+listener, the page keeps reloading, making them wait for indefinite 
+amount of time.
+
+This issue is resolved. We have now implemented a limit on the number
+of retry attempts the listener will make to re-establish the connection
+upon TimeoutException. The maximum retry count is set to 5.
+
+WST-6548 (WST_10.7_Fix9)
+
+While working with the listener, if users encounter a Salesforce error,
+only the error message is displayed. However, sometimes along with the 
+error message, Salesforce also returns the error response and the reason 
+that explained the failure cause.
+
+As a fix for this issue, we will now display the reason that explains the 
+failure cause that is returned by Salesforce along with the error message.
+
+WST-6426 (WST_10.7_Fix9)
+
+For a few Salesforce errors and authentication-related issues, 
+it was observed that, the listener was disconnected.
+
+This issue is resolved. Scenarios like these are now handled by 
+providing an error handling mechanism where the listener will 
+retry up to five times before getting disconnected.
+
+WST-5568 (WST_10.7_Fix9)
+
+ESB Services were not getting invoked after arrival of events 
+due to an internal error. The error is fixed and ESB Services 
+are now correctly invoked like processors.
+
+This issue is resolved.
+
+WST-6245 (WST_10.7_Fix8)
+
+While creating a cloud connector service for the Oracle 
+FSCM connector, when a user tries to retrieve the list 
+of all available operations by clicking the operation 
+listing icon, the following error message is displayed 
+in the server.log: "Exception while populating the abstract 
+definition for operation: InvoiceService. 
+Details: createInterfaceLine
+java.lang.NullPointerException: null"
+
+This issue is resolved.
+
+WST-6168 (WST_10.7_Fix8)
+
+While deploying CloudStreams assets by using repository-based 
+deployment for the “Salesforce CRM REST” connector in 
+version 51, the following exception is displayed: 
+"The cloud service '*Service_Name*' needs to be migrated first 
+before running the update". Since the source and the target
+are the same, Migration is not required. Hence, this is 
+an unexpected behavior.
+
+This behavior is observed when the connector XML file has 
+style="REST"' for resource(example Query, Query-All). 
+During this time, the flow flags it for Migration.
+
+This behavior was not observed earlier because the 
+“Salesforce CRM REST” connector in all versions had 
+'style="SOAP"', which did not flag for Migration.
+
+This issue is now resolved.
+
+WST-5797 (WST_10.7_Fix8)
+
+OpenAPI_3.0 specification parsing for resource's multipart 
+with required objects was not working.
+
+This issue was observed because while parsing the 
+specification file for resource's multipart handling, 
+the "required" field being present inside the "schema" 
+field was looked in the "properties" field under "schema". 
+This caused the Null Pointer exception, due to which, 
+we were unable to select the specification file to 
+create the provider.
+
+This issue is now resolved.
+
+WST-6322 (WST_10.7_Fix8)
+
+If the "Lazy Asset Loading" mode is turned on, CloudStreams do
+not enable the connection immediately. Rather it moves the
+connection in suspend state and only during very first usage
+of that connection, it will enable that. If the enable call
+fails for some reason, CloudStreams used to mark both
+runtime and persistent connection state as disabled.
+With this behaviour, the connection would be marked as disabled
+forever and cannot be used at all without human intervention.
+
+This issue is resolved.
+
+WST-6372 (WST_10.7_Fix8)
+
+The space character is a reserved character and has to 
+be be encoded as "%20".
+
+The issue is with the URI method being used to calculate 
+the AWS signature.The engine gets the path of the resource 
+URI instead of the raw path. The URI method getRawPath() 
+returns the exact value of the string as provided by users 
+whereas the getPath() function decodes the sequence of escaped 
+octets, if any. Due to this, CloudStreams calculated the 
+wrong signature with decoded space even when users provided 
+an encoded space (%20) in the input value.
+
+The issue is resolved. The engine now uses raw path as 
+specified in the user input to calculate signatures.
+
+WST-6275 (WST_10.7_Fix8)
+
+When a listener encounters the "403::Unknown Client" error 
+from Salesforce, the listener gets disabled intermittently.
+
+This issue is resolved
+
+WST-6276 (WST_10.7_Fix8)
+
+At times, listeners encounter the "Invalid replayID" error 
+from Salesforce. In such scenarios, the configured replay 
+option is "LAST_RECEIVED". 
+
+This issue is now resolved. The runtime now ensures to 
+recover listeners by implicitly retrying with the replay 
+option "ALL".
+
+WST-6010 (WST_10.7_Fix7)
+
+While generating a microservice runtime template, 
+CloudStreams connections are not included in the 
+'application.properties' file.
+
+The CloudStreams connections that are imported from 
+another system are not included in the template because of 
+password retrieval issues. The passman store of the current 
+system fails to have an entry for the passman handles 
+of the imported connection.
+
+CloudStreams now includes a dummy value for such password 
+fields.
+
+This issue is resolved.
+
+WST-5573 (WST_10.7_Fix7)
+
+The operation execution with inline connection failing.
+
+The operation execution failed because of the missing encrypted 
+field values. The encrypted field values stored in the passman 
+store, for that package name is used. 
+And while retrieving values same package name is required. 
+There was mismatch in package name due to alias node provided 
+in the input.
+
+This issue is resolved.
+
+WST-6077 (WST_10.7_Fix7)
+
+While importing a ZIP package, if the package is not in a correct 
+format or is corrupted, CloudStreams displayed an incorrect 
+error message.
+
+Furthermore, even if the package was not successfully imported, 
+it appeared in Service Development, which is not the expected 
+behavior, and cleanup did not happen accordingly.
+
+The issues are now resolved.
+
+WST-5417 (WST_10.7_Fix7)
+
+The expires_in value returned from Adobe was in milliseconds. 
+But according to OAuth specification the expiration time unit 
+should be in seconds. Adobe has fixed this and now the 
+expires_in value is coming in seconds. This required a 
+change in the conversion of units.
+
+Now the CloudStreams handles all expires_in value as 
+seconds according to specification.
+
+WST-6200 (WST_10.7_Fix7)
+
+A new input field named "customFields" is introduced to add data 
+that is required to refresh the token or pass global connection 
+fields used in API calls.
+
+This provision allows users to pass custom inputs in scenarios 
+where the refresh implementation requires inputs other than 
+those defined by the specification.
+
+Custom fields prefixed with "oauth_v20.cx." will be made 
+available to the pipeline of the implementing service.
+
+WST-5883 (WST_10.7_Fix7)
+
+The GET operation in Google Cloud Storage fails with an error 
+"400 Bad Request" when "enableCompression" is set to "true".
+
+When "enableCompression" is set to "true", GZIP encryption start 
+and end bytes were sent in the Request Body which is not an 
+expected behavior.
+
+CloudStreams now skips the Request Body for GET requests 
+and avoids empty Content Body.
+
+This issue is resolved.
+
+WST-5911 (WST_10.7_Fix7)
+
+Empty content with GZIP content encoding causes NullPointerException 
+in response.
+
+No bytes in the response content caused this issue. 
+Passing empty bytes to GZIP stream causes NullPointerException 
+while reading. Input needs to be sanitized based on
+the content encoding and content length in the response.
+
+We have now passed valid input stream for response handling.
+
+This issue is resolved.
+
+WST-6173 (WST_10.7_Fix7)
+
+The request URI in the Magento connector has optional parameters 
+"apiType" and "storeCode", which can be empty during service 
+execution. CloudStreams target URI has these optional parameters 
+removed but has trailing and leading slashes remains. 
+
+This causes the OAuth signature to miscalculate with 
+redundant slashes in the context URI but during the execution,
+CloudStreams removes the extra slashes in the URI. 
+When backend calculates the signature at the server end, 
+it throws an invalid signature error. 
+
+This is because the OAuth includes the extra slashes in the 
+URI during signature calculation.
+
+This issue is resolved. We have now replaced multiple trailing 
+and leading slashes in the context URI with a single slash.
+
+WST-6174 (WST_10.7_Fix7)
+
+Oracle FSCM connector's WSDL cache key does not contain 
+connector version.
+
+Oracle FSCM connector caches WSDL while creating first 
+cloud service for any given service. During the 
+cloud service creation, the WSDL is being fetched dynamically
+and cached into the WSDL cache. 
+
+CloudStreams engine builds the cache key by appending 
+connection alias, service name, and the connector 
+version appended by an underscore.
+
+This issue is resolved.
+
+WST-5857 (WST_10.7_Fix6)
+
+Whenever a connection for a particular service was invoked, 
+the following log message was repeatedly generated at the 
+Info level: "Detected the session as alive for the connection 
+\"" + cloudConnectionDataNode.getNodeName() + "\" and will be
+expired in " + sessionManager.getSessionExpiryTime()".
+
+This log message has now been moved from the Info level 
+to the Debug level.
+
+This issue is resolved.
+
+WST-5897 (WST_10.7_Fix6)
+
+It was observed that the listener gets disabled when a 
+user encounters the "403::Unknown Client" error.
+
+Automatic recovery is now performed by the underlying 
+CometD layer.
+
+This issue is resolved.
+
+WST-5793 (WST_10.7_Fix6)
+
+While enabling a Listener, if users provide an invalid 
+Replay ID, the CloudStreams page becomes unresponsive for 
+sometime after which the Listener gets enabled.
+
+CloudStreams now ensures that the Listener is disabled 
+if an invalid Replay ID is provided.
+
+This issue is resolved.
+
+WST-5622 (WST_10.7_Fix6)
+
+During the refresh of an authorization header, when users 
+populate requests for a listener communication, 
+the system becomes unresponsive.
+
+We have now modified the approach of refreshing the 
+authorization headers. This will ensure that the system does 
+not become unresponsive and works as expected.
+
+This issue is resolved.
+
+WST-5821 (WST_10.7_Fix6)
+
+The RetryCount property in Listener Error Recovery is reset 
+immediately for every successful response.
+
+After a successful meta handshake, the retry count is reset to zero. 
+However,if meta subscription fails, the error recovery process 
+starts again. Due to this,each time the retry count is set to zero, 
+CloudStreams attempts to recover error continuously, 
+even though the maximum number of retry attempts should be up to 3.
+
+CloudStreams now ensures that the listener is disabled after the
+maximum retry attempts has reached.
+
+WST-5703 (WST_10.7_Fix6)
+
+Mapper service arguments not listing properly.
+
+Arguments added for mapper service not shown in the arguments list.
+Mapper service arguments listing key should be "args".
+
+This issue resolved.
+
+WST-5648 (WST_10.7_Fix5)
+The MSR template fails to show encrypted values for the fields 
+of AWS authentication group.
+
+CloudStreams now supports adding the encrypted values for 
+all the authentication
+group's encrypt fields into template.
+
+This issue is resolved.
+
+
+WST-5394 (WST_10.7_Fix5)
+Session Timeout field should be disabled when Session Management 
+is set to "None" in connection configure page.
+
+In Coupa, OAuth 2.0 connection Session Timeout (min) field is enabled 
+by default even though Session Management is set to "none" due to missing 
+connection management fields. This is causing validation errors and 
+blocking creation of connection.
+
+The issue is fixed. Handled the removed connection management fields 
+and fixed validation errors.
+
+
+WST-5692 (WST_10.7_Fix5)
+In a Server-Side Request Forgery (SSRF) attack, an attacker can 
+abuse functionality on the server to read or update internal resources.
+
+If a user redirects to the localhost or any of its resources by 
+hiding the localhost using http://[::]:5555 or http://[::]:25 format, 
+the localhost can be accessed and it can be vulnerable to SSRF attack.
+
+This issue is resolved.
+
+
+WST-5037 (WST_10.7_Fix5)
+In AWS SQS (Single Queue Service), performing the delete operation to remove
+certain messages fail randomly while invoking the operation concurrently.
+
+The following error message appears while executing multiple delete operation
+concurrently
+403 "Signature does not match"
+
+This issue occurs when the same signature is shared across threads during
+simultaneous execution.
+
+This issue is resolved. Now, CloudStreams Sever is synchronized with the
+Activate method, to calculate the signature for each request.
+
+
+WST-5188 (WST_10.7_Fix5)
+INVALID_SESSION_ID error observed during parallel execution of Salesforce
+OAuth based APIs using CloudStreams connector services.
+
+While starting multiple parallel executions of Salesforce OAuth-based API using
+CloudStreams connector services, a few executions fail with INVALID_SESSION_ID.
+
+This error occurs when the OAuth access token is refreshed and the new access token is
+available for the execution thread that uses the connection which triggered the token
+refresh flow.
+
+The remaining connections in the pool are oblivious to this updated token. As a result,
+executions that operate with a connection other than the one that serviced the
+refreshing flow fails as they continue to operate with the older OAuth access token.
+
+This issue is resolved.
+
+
+WST-5234 (WST_10.7_Fix5)
+CloudStreams Server fails to execute "Get Object" or "Put Object" operations of AWS 
+S3 when bucket name is the same as object name.
+
+When the AWS S3 bucket name is the same as object name for AWS S3 "Get Object" or 
+"Put Object" operations
+(E.g., bucket name is "cstreams" and object name is "test/cstreams/logo.png" ),
+the underlying operation fails with the following error: "Location header is not found for
+the redirected response. org.apache.http.ProtocolException: Location header is not 
+found for the redirected response."
+
+This issue is resolved and CloudStreams Server is now capable of 
+successfully handling AWS S3 "Get Object" or "Put Object" operations with 
+bucket name same as object name.
+
+
+WST-5292 (WST_10.7_Fix5)
+The parameters with mapping always considers the mapped value and ignores 
+pipeline data irrespective of isFixed property
+
+For mappings the isFixed property is not handled at runtime and because 
+this always considered mapped value and ignored pipeline values.
+But when we set isFixed=false and if there is a value in the pipeline 
+for respective parameter then consider the pipeline value.
+
+This issue is resolved.
+
+
+WST-5307 (WST_10.7_Fix5)
+CloudStreams Server does not handle response content of type JSON for 
+status code 300 correctly.
+
+CloudStreams Server fails to extract response content of type JSON for 
+status code 300. As a result, the response for an upsert operation, 
+which results in status code 300, is not displayed correctly in the signature.
+
+This issue is resolved and the response content of type JSON for status
+code 300 is now displayed correctly against the signature.
+
+
+WST-5337 (WST_10.7_Fix5)
+Listener debug logs are not enabled even after logging settings are updated
+
+The logging settings are applied at the time of enabling a listener.
+If user modifies logging settings after enabling listener, the logging 
+settings do not get honoured. This fix will ensure that logging settings 
+will get honored instantaneously.
+
+This issue is resolved.
+
+
+WST-5585 (WST_10.7_Fix5)
+After reloading or updating a package, listeners get Disabled and then Re-enabled
+automatically. During the time the status was 'Disabled', NullPointerException
+was observed.
+
+This issue is resolved and we do not observe NullPointerException when listeners
+are Disabled.
+
+
+WST-5600 (WST_10.7_Fix5)
+When a particular user is selected in a popup window, the name of the user was 
+not auto-filled in the "Run As User" input field in the Listener configuration page.
+
+This issue is resolved and we now see the name of the selected user in the "Run As User"
+input field in the Listener configuration page.
+
+
+WST-5609 (WST_10.7_Fix5)
+Few back-ends expect percent-encoding of reserved characters in the URI.
+
+When a URI-based parameter value, containing a reserved character, has a special
+meaning (a "reserved purpose") and the URI scheme has a different meaning or purpose
+of the reserved character, then the reserved character must be percent-encoded. 
+An error occurs if an URI with a reserved character is not handled properly.
+
+This issue is resolved. To see the reflected changes, please create a 
+new Cloud Connector Service (CCS) or edit the existing CCS.
+
+
+WST-5301 (WST_10.7_Fix5)
+MSR template does not show encrypted values for the encrypt fields of 
+auth groups other than credential group.
+
+We have added support for adding the encrypted values for all the 
+auth group's encrypt fields into template.
+
+This issue resolved.
+
+
+WST-5303 (WST_10.7_Fix5)
+The env variables are not substituted for the CloudStreams connection 
+properties.
+
+The values retrieved from the application.properties file should be 
+processed further to retrieve values from env variables. Dynamic variables 
+processor provides the utility to fetch values from env properties.
+
+This issue is resolved.
+
+
+WST-5432 (WST_10.7_Fix5)
+Even if 'Follow Server Redirects' is disabled, server redirects were still allowed.
+
+This issue is resolved. Server redirects are now blocked if 'Follow Server
+redirects' is disabled.
+
+
+WST-5472 (WST_10.7_Fix5)
+The connection node used for creating cloud service can be deleted at anytime.
+ And inline connection properties does not show if the connection is not available.
+
+To overcome the dependency on the connection node, added check for connection existence. 
+If node does not exist then get the connection configuration from ConnectorID.
+
+This issue is resolved.
+
+
+WST-5555 (WST_10.7_Fix5)
+Multiparts does not go in the order of creation.
+
+When a user runs a cloud service having multiple parts into its attachment section,
+the parts does not get transferred over the wire in the same order as created.
+
+This issue is resolved.
+
+
+WST-5583 (WST_10.7_Fix5)
+The look up details provided in the REST connector descriptor for any 
+resource are not added to the node-hints of the cloud connector service.
+
+The resource metadata was not passed to the implementation where the 
+node-hints created for cloud connector service. Updated implementation 
+to provide metadata while creating node-hints.
+
+This issue is resolved.
+
+
+WST-5599 (WST_10.7_Fix5)
+For any resource, mappings that are returned can vary based on connectionType. 
+It is expected that right set of mappings are returned for a specific 
+authentication scheme based on the input provided in connectionType.
+ 
+However, while initializing the connectionType, if the providerName is not provided
+in the input, mappings for the default connectionType are returned.
+ 
+This issue is resolved.
+
+
+WST-5377 (WST_10.7_Fix5)
+Workday WSDL validation stops cloud service-creation-flow if any operation is missing
+in WSDL.
+
+When you list the operation while creating the cloud service, the CloudStreams engine
+performs a certain set of validation in terms of containment of the interactions in
+the WSDL file.
+For the given functional area it checks if all the interactions listed in that
+functional area are present in the corresponding WSDL file or not. If the validation
+fails, then the cloud service-creation-flow stops and you cannot create a cloud service.
+
+The issue is now resolved.
+
+
+WST-5449 (WST_10.7_Fix5)
+Although only one listener encountered an error, error handling logs were created
+for all the listeners.
+
+This issue is resolved and we now see the error handling logs for only listeners
+that have encountered an error.
+
+
+WST-5484 (WST_10.7_Fix5)
+In webMethods CloudStreams Server, the model reader object and the resource name
+are set incorrectly in the login sequence.
+
+This isssue is resolved. Now, the correct values are updated in the login
+sequence.
+
+
+WST-5249 (WST_10.7_Fix1)
+
+Existing listeners does not get enabled with 107 build.
+
+From 107 GA release CloudStreams has added additional support
+for Replay options like replaying events from last received event's
+replay Id or from a pre computed replay Id. WIth all these
+enhancements in place the existing salesforce listner
+does not get enabled.
+
+This issue is resolved.
+
+WST-5247 (WST_10.7_Fix1)
+
+Listeners unable to reconnect after the connection timeout.
+
+After meta_connect receives the timeout, the listener stops. However,
+to maintain connectivity with Streaming Server, CloudStreams listener performs a
+re-handshake after the timeout of meta_connect.
+
+This issue is resolved.
+
+
+
+8.0 Installation
+
+Step 1: Install using the Software AG Update Manager. For 
+instructions on using Update Manager, see "Using the Software 
+AG Update Manager" at http://documentation.softwareag.com.
+
+Note: If you have migrated your connector services from a version
+prior to CloudStreams 9.7 and impacted by WST-2213, and you are
+yet to run the migration utility as suggested in WST-2213, go to
+Step 2, else skip Step 2. If you have created your connector 
+services with a CloudStreams 9.7 or later version, you do not 
+need to run the migration utility
+
+Step 2: Run the CloudStreams migration utility
+(pub.cloudstreams.migration:migrate) to migrate your old
+CloudStreams artifacts to the latest version.
+For more information on the migration utility, see the 
+Integration Server upgrade section in the "Upgrading Software 
+AG Products" guide.
+
+Step 3: In Integration Server, under Settings > Extended > 
+Extended Settings, add "watt.net.ssl.client.useJSSE=true" to 
+use the latest TLS versions.
+Note: Restart Integration Server after applying the above 
+property. In most cases, only this property is required for 
+SaaS providers like Salesforce.
+In some cases, where you want to force usage of any other 
+protocols, for example, SSLv3 or a particular version of TLS 
+properties, use the following properties:
+ - watt.net.jsse.client.enabledProtocols
+ - watt.net.ssl.client.handshake.minVersion
+See the webMethods Integration Server Administrator Guide 
+for the desired values of these properties.
+
+Step 4: For a few SaaS back ends, the underlying JVM trust store 
+may have the required certificates and you may not need to 
+follow this step. But for back ends which have certificates 
+that are not part of the JVM trust store, create and apply a 
+new trust store in Integration Server with the certificates 
+of the SaaS back end. This is a standard practice 
+for setting up secure exchange of certificates. If the trust 
+store is not present, in such cases, certificate related 
+errors will appear.
+To set up secure exchange of certificates, create a JKS trust 
+store with the certificates of the SaaS back end. The trust 
+store should contain all the certificates present in the 
+certificate chain. Apply the trust store in the Integration 
+Server administration page at the "Security > Keystore" 
+section and use that trust store alias in your CloudStreams 
+connection in the "Trust Store" field.
+To know more about creating trust stores and applying them in 
+Integration Server, see the "Securing Communications with the 
+Server" section in the webMethods Integration Server 
+Administrator Guide. Also see the relevant CloudStreams 
+Provider document to find the connection's advanced property 
+"Trust store Alias", for applying the trust store in the 
+connection.
+Note: You can also create trust stores using a publicly 
+available tool, for example, Keytool or KeyStore Explorer.
+
+Step 5: If the Integration Server version is 10.0, 
+and if you are impacted by WST-3082, then
+manually edit the manifest.v3 file located under the
+WmCloudStreams package to include the following entry:
+
+<value name="classloader">package</value>
+
+Restart Integration Server.
+
+
+
+9.0 Uninstallation
+
+Uninstall using the Software AG Update Manager. For 
+instructions on using Update Manager, see 'Using the Software
+AG Update Manager' at http://documentation.softwareag.com.
+
+Note: These instructions can only be used to uninstall the 
+most recently installed fix. This action will revert your 
+installation to the previously installed fix. You cannot 
+apply these instructions to the previously installed fix.
+
+1. After uninstallation, remove the 
+"watt.net.ssl.client.useJSSE=true" property in Integration 
+Server under "Settings > Extended > Extended Settings".
+
+2. Remove the trust store alias from your connection if 
+created, and also the trust store alias entry from 
+Integration server.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the
+webMethods product suite and includes support for operation in
+any country, locale, or language as specified in the Installing
+webMethods Products guide. It was tested with non-English
+configurations and non-ASCII data.
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might
+contain new messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright Super iPaaS Integration LLC, an IBM Company 2024.
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG
+Global Support in the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support
+Contact Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to
+access additional articles, demos, and tutorials, technical 
+information, samples, useful resources, online discussion forums
+moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public
+/index.html

@@ -1,0 +1,531 @@
+		Software AG Command Central 10.5 Fix 14 readme
+
+                           August 2022
+
+_________________________________________________________________
+
+This file provides important information for applying Software AG
+Command Central 10.5 Fix 14 to Software AG Command Central 10.5. 
+For additional information about Software AG Command Central 10.5, 
+see the readme file in the _documentation directory of your 
+Software AG installation (if installed) or on the Empower website at 
+https://empower.softwareag.com.
+
+
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+Software AG Command Central 10.5 Fix 14
+
+
+
+2.0 Fix ID
+
+CCE_10.5_Core_Fix14
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Software AG Command Central 10.5.
+
+
+
+4.0 Fix Requirements
+Common Landscape Asset Registry 10.5 Fix 3
+
+For language pack requirements, see the Globalization section of the 
+Software AG Empower Product Support website at
+
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+The fix is supported on all platforms supported by 
+Software AG Command Central 10.5.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+
+SPM-5356 (Software AG Command Central 10.5 Fix 14)
+Installing fixes with Software AG Command Central might fail with an error.
+
+When installing fixes over an HTTPS connection, Command Central fails to connect to 
+Platform Manager. The issue occurs because of a defect in the JDK that Command Central uses.
+
+The issue is resolved. The workaround described in the JDK-8160347 issue is now 
+implemented in Command Central.
+
+
+CCE-7040 (Software AG Command Central 10.5 Fix 12)
+
+The dynamic configuration of Git repositories added in Command Central exposes clear text passwords.
+
+The issue is resolved. Now Command Central encrypts all passwords when adding a Git repository.
+However, if you have added Git repositories in Command Central before installing this fix, you must
+complete the following steps for each repository to make sure no clear text passwords are exposed:
+1. Navigate to <Software AG_directory>\profiles\CCE\configuration\
+com.softwareag.platform.config.propsloader and open the
+"com.softwareag.repository.git.pid-<repository_name>.properties" file in a text editor.
+2. Add "@secure." in front of each property name that has a password value. For example:
+@secure.password=mypassword
+3. Save the file.
+
+
+CCE-6455 (Software AG Command Central 10.5 Fix 10)
+In Command Central 10.5, when you supply invalid credentials for the master 
+repository, or have not accepted the product license agreement, the connection 
+to the repository fails, but the error message does not describe the error properly.
+
+The issue is resolved. 
+Command Central now displays the following error message:
+CCEREPE0050: Cannot connect to the repository
+Explanation: The repository does not accept the credentials.
+Action: Check if you have supplied valid credentials and accepted the license agreement 
+for the specified credentials. The troubleshooting steps are described 
+in the Command Central documentation. 
+
+
+SUM-4413 (Software AG Command Central 10.5 Fix 9)
+When install fixes with Software AG Command Central always latest fixes
+are installed even if older fix versions are selected.
+
+The issue is resolved. 
+
+
+CCE-5965 (Software AG Command Central 10.5 Fix 8)
+Installing Platform Manager using the zip archive bootstrapper file fails.
+
+The issue is resolved. Now you successfully install Platform Manager using the zip archive
+bootstrapper file. 
+
+
+CCE-6200 (Software AG Command Central 10.5 Fix 8)
+When using the Command Central CLI to create a fix mirror repository, if you specify a source
+repository that is not registered in Command Central, the command fails with an exception. However,
+the exception does not indicate the reason for the failure.
+
+The issue is resolved. Now the exception message specifies that one of the provided source
+repositories is not registered in Command Central. 
+
+
+CCE-6187 (Software AG Command Central 10.5 Fix 8)
+After executing database administration operations in Command Central, some of the messages logged
+in the Platform Manager logs include the database password in clear text.
+
+The issue is resolved. Now the database password is not included in clear text in the Platform
+Manager logs.
+
+
+CCE-6158 (Software AG Command Central 10.5 Fix 7)
+When an SSH server is configured to terminate idle sessions and Command Central 
+runs a long-running  operation on a remote machine, the SSH connection might 
+terminate before the operation is completed. To keep the SSH connection open, 
+you can set the following Java system property:
+com.softwareag.platform.management.client.remoteaccess.keepaliveperiodsec=<time-interval-in-seconds>
+Property reference:
+Default: 0 – Indicates not to send keep-alive messages.
+Description: The time interval in seconds between keep-alive messages send from the host server to 
+the remote server. To send keep-alive messages, set a positive integer greater than zero. The 
+keep-alive interval should be smaller than the terminate idle sessions interval, configured on the 
+remote SSH server. For example, if the SSH server terminates idle sessions after 180 seconds, set 
+the keep-alive property to 150 seconds.
+
+
+WF-15615 (Software AG Command Central 10.5 Fix 7) 
+In an infrastructure micro template or a composite template that you use to bootstrap Platform 
+Manager on a remote machine, you can define:
+-	a user that connects over SSH to the remote machine and copies the bootstrapper on the machine
+-	a substitute user to install and start Platform Manager
+To use a substitute user, you must consider the following requirements:
+-	The remote machine must have a POSIX-compliant operating system. This function is not supported 
+    on Windows operating systems.
+-	The substitute user must have read permissions for the home directory of the SSH connection user.
+-	The SSH user must have read permissions for the home directory of the substitute user. 
+You can use the template with the substitute user to create new installations or migrate existing 
+installations.
+
+To define a substitute user, add the "substituteUserCredentials:" section in the 
+nodes/default/default/bootstrapInfo section of the template. You can add the substitute user 
+credentials as “userName:” and “password:” parameters or map the substitute user to a credentials 
+alias, for example “substituteUserCredentials: ${subst.credentials.alias}”. The following example 
+shows a sample template snippet with a “substituteUserCredentials:” section that includes
+“userName:” and “password:” parameters:
+
+environments:
+  default:
+    install.dir: /opt/softwareag
+    bootstrapper: cc-def-10.5-milestone-lnxamd64.sh
+    subst.username: substituteUser
+    subst.password: substitutePass
+    conn.username: SSHUser
+    conn.password: SSHPass
+...
+nodes:
+  default:
+    default:
+      port: 8093   # Default Platform Manager HTTPS port.
+      secure: true # Indicates that the connection will be over SSL.
+      bootstrapInfo:
+        installDir: ${install.dir}  # The installation directory.
+        installer: ${bootstrapper}  # Name of Command Central bootstrapper to use.
+        substituteUserCredentials:  # Substitute user credentials. 
+          userName: ${subst.username}
+          password: ${subst.password}
+        credentials:                # SSH connection credentials.
+          userName: ${conn.username}
+          password: ${conn.password}
+...
+
+
+CCE-6166 (Software AG Command Central 10.5 Fix 7)
+In Command Central, after exporting a product instance, the generated run-time 
+micro template has a product instance section for each run-time component listed 
+in the “products:” section of the inline template. 
+The behavior is incorrect, because the run-time micro template must have only 
+one product instance section, generated for the exported product.
+
+The issue is resolved. 
+The generated run-time micro template now has only one product instance
+section, generated for the exported product. 
+
+
+CCE-5755 (Software AG Command Central 10.5 Fix 5)
+Before, the uimetadata template section included only three attributes - 
+displayName, data_type and isSecure. 
+ 
+Now it can have a fourth attribute - format, to denote the date format 
+in the case of data_type having the value 'datetime'.
+
+
+CCE-5953 (Software AG Command Central 10.5 Fix 5)
+After you register a Git asset repository in Command Central and run the 
+"sagcc exec templates composite import assetRepoName" CLI command to import 
+templates from the repository, the command fails with the following message:
+"415 Unsupported Media Type"
+
+The issue is resolved. 
+Now you can successfully import templates from a Git asset repository.
+
+
+CCE-5886 (Software AG Command Central 10.5 Fix 4)
+If a database layer in a product stack maps to a node that is part of the 
+default environment and one user-defined environment, the connection to 
+the database fails. The behavior occurs because of a shared secret handling issue.
+
+The issue is resolved. 
+
+
+CCE-5816 (Software AG Command Central 10.5 Fix 4)
+In Command Central, when executing a composite template, in some cases 
+a child job applying an inline template might fail. The behavior occurs 
+if the template fails to list the inline templates that are stored 
+on the file system.
+
+The issue is resolved. 
+Now the templates always list all inline templates stored on the file system
+and Command Central applies them successfully. 
+
+
+CCE-5813 (Software AG Command Central 10.5 Fix 4)
+When applying a template with “environment.mode=migration”, if a password 
+property for a product instance has an encrypted value, Platform Manager 
+does not decrypt the password and does not migrate the product instance successfully.
+
+The issue is resolved. 
+Now when migrating with a template, Platform Manager decrypts the encrypted
+values of the password properties successfully. 
+
+
+CCE-5877 (Software AG Command Central 10.5 Fix 4)
+Migrating Command Central fails if the source custom_wrapper.conf file references 
+a file that does not exist on the target installation.
+
+The issue is resolved. 
+Now Command Central tansforms and migrates the referenced file path even
+when the file does not exist. 
+
+
+CCE-5523 (Software AG Command Central 10.5 Fix 3)
+The "artifacts" argument of the 'sagcc exec repository products export' 
+command supports the "ALL" value, but the value is not documented 
+in the Command Central Help and the CLI help.
+
+The issue is resolved. 
+The Command Central Help and CLI help for the 'sagcc exec repository products export' 
+command are now updated to include "artifacts=ALL" as supported value.
+
+
+CCE-5716 (Software AG Command Central 10.5 Fix 3)
+In the Command Central web user interface, the Installations page might 
+load slowly if the hosts of some installations are shut down or unknown.
+
+The issue is resolved. 
+Command Central has been optimized to deal properly with hosts that are 
+shut down or unknown, and the Installations page loads without delay.
+
+
+CCE-5676 (Software AG Command Central 10.5 Fix 3)
+If an instruction in a template generated by Command Central is longer 
+than 128 characters, the instruction line starts with the "?" symbol. 
+This behavior results in a valid, but less human-friendly YAML syntax.
+
+The issue is resolved. 
+The YAML syntax of long lines in a generated template 
+is now uniform with the rest of the template.
+
+
+CCE-5488 (Software AG Command Central 10.5 Fix 3)
+Adding a new installation in Command Central takes a long time 
+when the installation is not running.
+
+The issue is resolved. 
+
+
+CCE-5706 (Software AG Command Central 10.5 Fix 3)
+When setting up the "com.softwareag.platform.management.client.template.composite.skip.restart.for"
+server system property, you can now specify the run-time component IDs using a regular expression.
+For example, if you specify:
+"com.softwareag.platform.management.client.template.composite.skip.restart.for=TES-(.*)"
+At the end of a template application, Command Central will not restart the run-time components,
+which have an ID starting with "TES-". 
+
+
+CCE-5491 (Software AG Command Central 10.5 Fix 2)
+In some cases, after you connect to the default templates repository on 
+GitHub using the Command Central web user interface, the repository disappears, 
+and the following error message is displayed when you navigate 
+to the Repositories > Assets tab: “Internal Error processing the request.”
+
+The issue is resolved. 
+
+
+CCE-5383 (Software AG Command Central 10.5 Fix 2)
+In the Command Central web user interface, if you connect to the default templates 
+repository on GitHub for the second time using the same repository name, 
+all default templates imported into Command Central when you first 
+connected to the repository get replaced with the latest templates on GitHub.
+
+The issue is resolved. 
+Now you see a notification that the default templates will be 
+re-imported and you can choose to cancel the operation. 
+
+
+CCE-5651 (Software AG Command Central 10.5 Fix 2)
+When you try to configure a layer definition that references a micro template 
+that is not imported in Command Central, the layer definition gets created 
+successfully. This behavior is incorrect.
+
+The issue is now resolved. 
+Command Central validates if the specified micro template is imported 
+before creating a layer definition for the template.
+
+
+CCE-5611 (Software AG Command Central 10.5 Fix 2)
+When exporting the product instance of a product that does not support 
+instance management to a micro template, if you select to include only 
+the instance properties, the inline template is generated without a 
+product instance. As a result, Command Central will fail to create a 
+layer that uses the layer type definition for the generated template, 
+because it cannot associate the layer with a product instance.
+
+The issue is resolved. 
+Now the inline template in the generated micro template includes a product
+instance and the name of the product instance is the run-time component ID 
+of the exported product instance. 
+
+
+CCE-5538 (Software AG Command Central 10.5 Fix 2)
+In the Command Central web user interface, if the infrastructure 
+layer definition that you use to create a new infrastructure layer 
+has a "nodes" parameter with a variable, the layer does not have 
+any run-time components.
+
+The issue is resolved. 
+Command Central now registers OSGI-SPM as the infrastructure layer run-time. 
+
+
+CCE-5484 (Software AG Command Central 10.5 Fix 2)
+The job description of the database action jobs has been streamlined. 
+
+
+CCE-5380 (Software AG Command Central 10.5 Fix 2)
+In the Command Central web user interface, the Installations page might 
+load slowly if the hosts of some installations are shut down or unknown.
+
+The issue is resolved. 
+Command Central has been optimized to deal properly with hosts that are 
+shut down or unknown, and the Installations page loads without delay. 
+
+
+CCE-5642 (Software AG Command Central 10.5 Fix 2)
+When applying a template in migration mode, if a product instance section 
+in the template includes the "install.service: true" property, 
+Command Central does not pass the property to the product migration utility. 
+As a result, you cannot indicate in the template whether to migrate a product
+instance as a Windows service.
+
+The issue is resolved. Now when the “install.service: true” instance property 
+is included in thetemplate, Command Central passes the property to 
+the product migration utility. 
+
+
+CCE-5595 (Software AG Command Central 10.5 Fix 1)
+When Command Central is migrated from older release and the source Command Central 
+had nodes containing assets, the target Command Central is not operational 
+due to corrupted cache.
+
+The issue is now resolved. 
+
+CCE-5379 (Software AG Command Central 10.5 Fix 1)
+After refreshing the contents of a fix repository in the Command Central web user interface, 
+it does not pick up fixes for operating systems you added in the product mirror repository, 
+which you use for the fix mirror repository. For example, if you add a new OS in the product 
+mirror repository, the fix mirror repository is not updated with the fixes for the OS you added.
+
+The issue is resolved. 
+Command Central successfully refreshes the contents of a fix mirror repository with fixes for 
+operating systems added in the product mirror repository used by the fix mirror repository. 
+
+CCE-5557 (Software AG Command Central 10.5 Fix 1)
+Log entries are missing after migrating Command Central.
+After you migrate Command Central using the Command Central migration utility or the Command Central
+bootstrap installer the SoftwareAG_directory/CommandCentral/install/logs/migrationLog log does not
+have any log entries.
+
+The issue is resolved. 
+
+CCE-5489 (Software AG Command Central 10.5 Fix 1)
+When you add the default templates from the repository on GitHub using the "Local templates ZIP file"
+repository type in the wizard and browse to a local ZIP file of the default templates, Command
+Central does not find and import the templates from the specified ZIP file.
+
+The issue is resolved. 
+
+CCE-5521 (Software AG Command Central 10.5 Fix 1)
+In the Command Central web user interface, when you use the Install Product wizard to install
+products on an existing node, it might not be possible to select an "Install from" repository even
+when several product repositories are registered in Command Central.
+
+The issue is resolved. 
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or Software AG Update Manager to install 
+fixes on one machine at a time. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot apply these instructions to the previously 
+installed fix.
+
+Uninstall using Command Central (9.7 or later) or Software AG Update Manager. 
+For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the
+webMethods product suite and includes support for operation in
+any country, locale, or language as specified in the Installing
+webMethods Products guide. It was not tested with non-English
+configurations and non-ASCII data. This fix may have some
+globalization impact.
+
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might
+contain new messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright ©2021 Software AG, Darmstadt, Germany and/or Software AG USA Inc., 
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks 
+or registered trademarks of Software AG and/or Software AG USA Inc. and/or its 
+subsidiaries and/or its affiliates and/or their licensors. Other company and 
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or 
+its subsidiaries is located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. 
+For third-party copyright notices, license terms, additional rights or restrictions, 
+please refer to "License Texts, Copyright Notices and Disclaimers of Third Party Products". 
+For certain specific third-party license restrictions, please refer to section E of the 
+Legal Notices available under "License Terms and Conditions for Use of Software AG Products / 
+Copyright and Trademark Notices of Software AG Products". 
+These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

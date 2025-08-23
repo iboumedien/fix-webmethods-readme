@@ -1,0 +1,460 @@
+                         CentraSite 10.11 Fix 28 Readme
+
+                                  February 2025
+
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+________________________________________________________________________________
+
+
+
+1.0 Fix Name
+
+CentraSite 10.11 Fix 28
+
+
+
+2.0 Fix ID
+
+INM_10.11_Fix28
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects CentraSite 10.11.
+
+
+
+4.0 Requirements and Dependencies
+
+CentraSite Core 10.11 Fix 28  and  CentraSite Server Common 10.11 Fix 28 require
+each other.
+
+
+
+5.0 Platform Support
+
+CentraSite 10.11 Fix 28 is supported on the same platforms and operating systems
+and with the same JREs as CentraSite 10.11.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also  include
+enhancements to existing functionality and features.  Any  of  these  items  can
+result in new or changed built-in services, APIs, or  configuration  parameters.
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate  of  previous  fixes
+for the release.
+
+
+INM-26591 (INM_10.11_Fix27)
+Simultaneous validation of API key and OAuth2 token
+
+API Gateway generally allows simultaneous validation  of  API  keys  and  OAuth2
+tokens. CentraSite now supports passing this  AND  combination  to  API Gateway.
+Passing on the OR combination was previously possible without any problems.
+
+This issue is resolved.
+
+
+INM-26577 (INM_10.11_Fix25)
+Unable to publish any new API.
+
+This issue is resolved.
+The errors in the log files that contributed to the issue are fixed.
+
+
+INM-26572 (INM_10.11_Fix25)
+Unable to update asset owner for REST service
+
+The owner of the dependent objects cannot be changed, preventing the  update  of
+the REST service owner.
+
+The issue is resolved.
+
+
+INM-25918 (INM_10.11_Fix24)
+Unable to revert state change
+
+Users in a group with CentraSite Administrator permissions could not execute the
+Revert function.
+
+The issue is resolved.
+
+
+INM-25915 (INM_10.11_Fix24)
+Unable to open API consumption settings
+
+A NullPointerException occurs when checking  the API consumption settings for  a
+specific virtual service.
+
+The issue is resolved.
+
+
+INM-25911 (INM_10.11_Fix24)
+Unable to Open/enable/delete design time policies
+
+A   NullPointerException   occurs  when   opening,   deleting,  activating,   or
+deactivating design time policies.
+
+The issue is resolved.
+
+
+INM-25904 (INM_10.11_Fix23)
+Issues exporting and importing assets in CS
+
+During import,  the system  will adjust  the operation  object references to the
+proper ones, as they currently reference invalid objects.
+
+The issue is resolved.
+
+
+INM-25895 (INM_10.11_Fix22)
+Unable to modify API key approval policies
+
+Saving a previously modified policy with invalid  policy  actions  results  in a
+NullPointerException.
+
+The issue is resolved.
+
+After installing the fix, please clear the browser cache.
+
+
+INM-25885 (INM_10.11_Fix21)
+Set the HTTP header "Referrer-Policy" to "No-Referrer".
+
+The Referrer-Policy header actively controls the inclusion of information  about
+the referring URL in the HTTP headers when a user navigates from one website  to
+another. This helps in protecting user's privacy and security.
+
+Therefore, the HTTP header "Referrer-Policy" is set to "No-Referrer".
+
+The issue is resolved.
+
+
+INM-25844 (INM_10.11_Fix20)
+CentraSite Search performance issues
+
+The user's login  experience is enhanced,  and the login  times can be  assessed
+using the log4j settings.
+
+The issue is resolved.
+
+
+INM-25871 (INM_10.11_Fix19)
+Unable to view approval logs
+
+Unable to open approval logs due to null pointer exceptions.
+
+The issue is resolved.
+
+
+INM-25866 (INM_10.11_Fix19)
+Unable to access assets
+
+Under certain circumstances, a NullPointerException is displayed when  accessing
+virtual service of existing REST services.
+
+The issue is resolved.
+
+
+INM-25853 (INM_10.11_Fix18)
+API Key approval policy has an issue
+
+A ClassNotFoundException is displayed under certain conditions when approving an
+API.
+
+The issue is resolved.
+
+
+INM-25851 (INM_10.11_Fix18)
+There were references to Approval-API.jar in CentraSite jar files.
+
+Approval-API.jar  may  not  be  present  in  some  circumstances,  resulting  in
+ClassNotFoundExceptions. The references are removed.
+
+The issue is resolved.
+
+
+INM-25848 (INM_10.11_Fix17)
+The search  filter panel  fields in  the CentraSite  Business UI are unreachable
+when new search criteria are added to the search filters.
+
+The issue is resolved.
+
+
+INM-25835 (INM_10.11_Fix16)
+Organization overview throws NPE
+
+A NullPointerException occurs if the sort  attributes of a saved search are  not
+clearly defined.
+
+The issue is resolved.
+
+
+INM-25817 (INM_10.11_Fix16)
+Side panel fields are unreachable in browse page
+
+The search  filter panel  fields in  the CentraSite  Business UI are unreachable
+when new search criteria are added to the search filters.
+
+The issue is resolved.
+
+
+INM-25754 (INM_10.11_Fix16)
+Slower performance in Centrasite 10.11
+
+The  approval  workflow  in LDAP  authentication  takes  longer duration  during
+specific circumstances such as multiple LDAP logins.
+
+This issue is resolved by reducing the approval workflow time.
+
+
+INM-25724 (INM_10.11_Fix15)
+Unable to approve consumer registrations and state changes
+
+When the limits are  exceeded, the approval flow  is aborted due to  timeouts or
+permission issues.
+
+The issue is resolved.
+
+Additionally, enhancements  are made  to the  error handling  and log4j logging,
+resulting in improved performance and reliability.
+
+
+INM-25794 (INM_10.11_Fix14)
+Bulk deploy functionality is not working as expected
+
+CentraSiteCommand bulk deploy functionality is running in a loop and no APIs are
+deployed.
+
+The issue is resolved.
+
+
+INM-25780 (INM_10.11_Fix13)
+The bulk deploy feature is not working as expected
+
+The  CentraSite  servlet  experienced  an  infinite  loop  as  a  result  of   a
+NullPointerException, which kept CentraSiteCommand from reaching the end.
+
+The issue is resolved.
+
+
+INM-25773 (INM_10.11_Fix12)
+Import of archive failing from Business UI
+
+Importing an archive file fails because uploading archive files was not  allowed
+by the server.
+
+The issue is resolved.
+
+
+INM-25771 (INM_10.11_Fix12)
+Import archive command failing
+
+The    Import    archive     command    (ImportArchive[.sh|cmd])    throws     a
+java.lang.NoClassDefFoundError exception.
+
+This issue is resolved.
+
+
+INM-25768 (INM_10.11_Fix12)
+The bulk deploy feature is not working as expected
+
+The  CentraSite  servlet  experienced  an  infinite  loop  as  a  result  of   a
+NullPointerException, which kept CentraSiteCommand from reaching the end.
+
+The issue is resolved.
+
+
+INM-25658 (INM_10.11_Fix11)
+HTML Injection Vulnerability in E-Mail
+
+The name and description  input fields in the  schedule report interface of  the
+CentraSite Business UI was vulnerable to HTML injection.
+
+The issue is resolved.
+
+
+INM-25717 (INM_10.11_Fix11)
+The application does not  validate for File Type  or Content-Type in the  avatar
+field
+
+Server-side validation is added for the file upload functionality in CentraSite.
+The file upload fails if the file size is above the set limit(default 100 MB) or
+the file is a binary (with mime type "application/octet-stream").
+
+The maximum file size limit can be set in one of the config.xml files:
+<CentraSiteInstall_Directory>/cast/cswebapps/BusinessUI/custom/conf/centrasite.xml
+<CentraSiteInstall_Directory>/cast/cswebapps/BusinessUI/system/conf/centrasite.xml
+
+Add the <FileUploadSettings maxUploadfileSize="" /> inside the UIProperties tag.
+
+For example:
+
+<GUIConfiguration>
+    ...
+    <UIProperties>
+        ...
+
+        <FileUploadSettings maxUploadfileSize="104857600" />
+
+        ...
+    </UIProperties>
+    ...
+</GUIConfiguration>
+
+The issue is resolved.
+
+
+INM-25730 (INM_10.11_Fix11)
+Unpublish Gateway from Dev Portal in CentraSite does not work
+
+The error "INVALID_PORTAL_PUBLISH" is displayed when unpublishing an API Gateway
+instance from the Developer Portal through CentraSite.
+
+The issue is resolved.
+
+
+INM-25684 (INM_10.11_Fix10)
+Vulnerable 3rd party component jQuery used - jQuery v3.3.1
+
+CentraSite  web application  uses an  outdated version  of jQuery  which can  be
+vulnerable.
+
+The issue is resolved.
+
+
+INM-25729 (INM_10.11_Fix9)
+DevPortal communities not visible in CentraSite
+
+When you  publish a  virtual service  from API  Gateway to  Developer Portal  in
+CentraSite, the communities are not visible on the publish screen.
+
+The issue is resolved.
+
+
+INM-25682 (INM_10.11_Fix9)
+Life cycle state change is not happening for an asset
+
+When changing  the lifecycle  state, sometimes  the corresponding  asset is  not
+updated in the global cache.
+
+The issue is resolved.
+
+
+INM-25692 (INM_10.11_Fix8)
+Error after a session timeout
+
+When a CentraSite session times out, instead of redirecting to the login page an
+Exception 500 message is displayed.
+
+The issue is resolved.
+
+
+INM-25687 (INM_10.11_Fix7)
+CentraSite Repository crashes after migration from 10.5 to 10.11
+
+The LDAP configuration files are not unpacked by the sbsImport script.
+
+The issue is resolved.
+
+
+INM-25645 (INM_10.11_Fix5)
+Enabling ARIS Integration displays an error
+
+The  classpath for  the scripts  EnableARISIntegration.[cmd|sh] is  expanded to
+include the activation.jar.
+
+The issue is resolved.
+
+
+INM-25587 (INM_10.11_Fix4)
+Vulnerable third party component Log4j is used
+
+Severe vulnerabilities affecting multiple versions (2.0 to 2.17.0) of the Apache
+Log4j  2  utility  have been  publicly  disclosed.  These vulnerabilities  allow
+unauthenticated remote code execution.
+
+The issue is resolved by upgrading Log4j to version 2.17.1.
+
+
+INM-25587 (INM_10.11_Fix4)
+Vulnerable third party component Log4j is used
+
+Highly severe vulnerabilities impacting multiple versions (2.0 to 2.16.0) of the
+Apache Log4j 2  utility was disclosed  publicly through the  project's GitHub in
+December  2021.  This  vulnerability  allows  for  unauthenticated  remote  code
+execution.
+
+The issue is resolved by upgrading Log4j to version 2.17.0.
+
+
+INM-25587 (INM_10.11_Fix2)
+Vulnerable third party component Log4j is used
+
+A highly severe vulnerability (CVE-2021-44228), impacting multiple versions (2.0
+to 2.14.1)  of the  Apache Log4j  2 utility  was disclosed  publicly through the
+project's  GitHub   on  December   9,  2021.   This  vulnerability   allows  for
+unauthenticated remote code execution.
+
+The issue is resolved.
+
+
+INMLP-583 (INM_10.11_Fix1)
+UIs are not displayed in the target language.
+
+CentraSite  installation  shows  an  error  message  when  installing CentraSite
+Language Packs.
+
+This error is resolved.
+
+
+
+8.0 Installation
+
+IBM strongly recommends you to take a backup of the internal database  in  which
+CentraSite's registry and repository data is stored before installing this fix.
+
+Install  using  IBM  webMethods  Update  Manager.  For  instructions,  see   the
+documentation at https://docs.webmethods.io/.
+
+
+8.1 Post-Installation Steps
+
+It may be required  to  start  CentraSite  Runtime  and/or  CentraSite  Registry
+Repository after fix installation.
+
+Clear browser cache before starting CentraSite BusinessUI.
+
+
+
+9.0 Uninstallation
+
+You cannot uninstall the fixes applied on CentraSite 10.11.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025.

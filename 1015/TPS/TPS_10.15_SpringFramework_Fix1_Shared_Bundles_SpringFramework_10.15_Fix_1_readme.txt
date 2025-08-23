@@ -1,0 +1,105 @@
+                   webMethods Shared Bundles SpringFramework 10.15 Fix 1 readme
+
+                                        July 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Shared Bundles SpringFramework 10.15 Fix 1
+
+
+
+2.0 Fix ID
+
+TPS_10.15_SpringFramework_Fix1
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects the common extended libraries installed with the 10.15 webMethods products.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+
+TPS-4737 (TPS_10.15_SpringFramework_Fix1)
+
+webMethods Shared Bundles contains outdated versions of the third party Spring Framework libraries.
+
+The issue is resolved. The following Spring Framework libraries are now updated:
+The spring-aop library is updated from version 5.3.18.1 to version 5.3.26.1.
+The spring-beans library is updated from version 5.3.18.1 to version 5.3.26.1.
+The spring-context library is updated from version 5.3.18.1 to version 5.3.26.1.
+The spring-core library is updated from version 5.3.18.1 to version 5.3.26.1.
+The spring-expression library is updated from version 5.3.18.1 to version 5.3.26.1.
+The spring-jdbc library is updated from version 5.3.18.1 to version 5.3.26.1.
+The spring-jms library is updated from version 5.3.18.1 to version 5.3.26.1.
+The spring-test library is updated from version 5.3.18.1 to version 5.3.26.1.
+The spring-transaction library is updated from version 5.3.18.1 to version 5.3.26.1.
+The spring-orm library is updated from version 5.3.18.1 to version 5.3.26.1.
+The spring-web library is updated from version 5.3.18.1 to version 5.3.26.1.
+The spring-context-support library is updated from version 5.3.18.1 to version 5.3.26.1.
+
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

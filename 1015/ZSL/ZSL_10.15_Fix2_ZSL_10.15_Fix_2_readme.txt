@@ -1,0 +1,94 @@
+    Central Security Library 10.15 Fix 2 readme
+
+                          April 2025
+
+_________________________________________________________________
+
+This file provides important information for applying
+Central Security Library 10.15 SP1 Fix 2 to Central Security 
+Library 10.15 SP2.  For additional information about
+Central Security Library 10.15 SP2, see the readme file
+in the _documentation directory of your IBM installation
+(if installed) or on the Empower Web site at
+https://empower.softwareag.com.
+
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Product(s)/Component(s) Affected
+3.0   Fix Contents
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Globalization
+
+
+
+1.0 Fix Name
+
+Central Security Library 10.15 Fix 2
+
+
+
+2.0 Product(s)/Component(s) Affected
+
+This fix affects Central Security Library 10.15
+
+3.0 Fix Contents
+
+ZSL-292 (ZSL_10.15_Fix2)
+
+ZSL contains the third party ESAPI v2.5.2.0 which has been reported as vulnerable.
+
+The issue is resolved. Following libraries have been updated to a newer version:
+esapi is updated from v2.5.2.0 to v2.6.0.0
+commons-io is updated from v2.11.0 to v2.18.0
+
+ZSL-153 (ZSL_10.15_Fix1)
+
+ZSL contains the third party ESAPI v2.4.0.0 which has been reported as vulnerable.
+
+The issue is resolved. Following libraries have been updated to a newer version:
+esapi is updated from v2.4.0.0 to v2.5.2.0
+commons-fileupload is updated from v1.4.0 to v1.5.0
+
+ZSL-142 (ZSL_10.15_Fix1)
+
+ZSL contains the third party Apache Tika Core v1.22.0, which has been reported as vulnerable. 
+
+The issue is resolved. Following libraries have been updated to a newer version:
+org.apache.tika.core is updated from v1.22.0 to v2.8.0
+
+ZSL-140 (ZSL_10.15_Fix1)
+
+ZSL contains the third party Apache POI v4.1.2, which has been reported as vulnerable. 
+
+The issue is resolved. Following libraries have been updated to a newer version:
+org.apache.poi is updated from v4.1.2 to v5.2.2
+
+5.0 Platform Support
+
+Central Security Library 10.15 Fix 1 is supported on
+the same platforms and operating systems and with the same JREs
+as Central Security Library 10.15.
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Globalization
+
+This fix conforms to the internationalization standards of the
+webMethods product suite and includes support for operation in
+any country, locale, or language as specified in the Installing
+webMethods Products guide. It was tested with non-English
+configurations and non-ASCII data.
+
+
+8.0 Localization
+
+None.
+

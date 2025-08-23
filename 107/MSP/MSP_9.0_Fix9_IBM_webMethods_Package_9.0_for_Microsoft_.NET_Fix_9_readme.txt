@@ -1,0 +1,211 @@
+      IBM webMethods Package for Microsoft .NET 9.0 Fix 9 readme
+
+                       October 2024
+                          
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0	  Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods Package for Microsoft .NET 9.0 Fix 9.
+
+
+2.0 Fix ID
+
+MSP_9.0_Fix9
+
+
+3.0 Product(s)/Component(s) Affected
+
+None.
+
+
+4.0 Requirements and Dependencies
+
+This fix requires the installation of the latest Integration Server Core fix.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+
+In addition to including resolutions to product defects, a fix may also include 
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the 
+release.
+
+MIP-213
+Updated copyright notes, vendor and product names for IBM rebranding.
+
+MIP-212
+Webmethods Integration Server - Cross-Site Scripting (Reflected)
+
+MIP-208
+Pre-installation steps has been updated in the fix readme. 
+
+MIP-183(MSP_9.0_Fix8)
+In webMethods Package for Microsoft .NET, there is no lower limit set for the
+value of Manage Monitoring Options > Refresh Interval.
+
+This issue is resolved. Now, the minimum limit of the refresh interval value is
+10.  
+
+MIP-195(MSP_9.0_Fix8)
+webMethods Add-in for Microsoft Visual Studio 2012 does not connect to
+Integration Server 10.x.
+
+This issue is now resolved. 
+
+MIP-198(MSP_9.0_Fix8)
+In webMethods Package for Microsoft .NET, an error occurs when running the
+service wm.dotnet.ServiceUtil:hostNameFromIP.
+
+When running wm.dotnet.ServiceUtil:hostNameFromIP, the error message displayed
+is: addr is of illegal length at wm.dotnet.ServiceUtil.hostNameFromIP.
+
+This issue is now resolved.
+
+WF-9545 (MSP_9.0_Fix7)
+Extensions/Add-ins are added for VisualStudio 2015, 2017.
+
+MIP-179 (MSP_9.0_Fix6)
+The Fix Install and Uninstall for webMethods Microsoft Package Adapter, are not 
+supported for Integration Server (IS) version 10.2. 
+
+This issue is now resolved. 
+
+MIP-178 (MSP_9.0_Fix6)
+In webMethods Microsoft Package Adapter, the adapter's administrator UI pages 
+does not support the new Administrator screens of Integration Server(IS) 10.1. 
+
+This issue is resolved. webMethods Microsoft Package Adapter now supports the 
+new Administrator screens of IS from version 10.1 and later.
+
+MIP-173 (MSP_9.0_Fix5)
+Adapter Fix Install and Uninstall was not Supported for IS 10.0 and 10.1
+
+This issue is now resolved.
+
+MIP-164 (MSP_9.0_Fix4)
+After applying the IS Core fix that resolves the iTrac number: PIE-34925, the 
+.NET services are not getting executed. 
+
+This issue is now resolved. Now, the Execute ACL of web service connectors for 
+the consumer web service descriptor is set to Anonymous. 
+
+While you perform un-installation for this fix, you should manually remove the 
+following entries from aclmap_sm.cnf, if they are present: 
+<value name="wm.dotnet.admin.wsdConsumer:proxy">Anonymous</value> 
+<value name="wm.dotnet.admin.wsdConsumer.proxy_.connectors"> 
+Anonymous</value> 
+
+MIP-156 (MSP_9.0_Fix3)
+Log files are created when local or global trace parameter is disabled. 
+
+When resolving the relative path specified in the assembly path, logging the 
+relative path occurs, if local or global trace parameter is disabled. 
+
+This issue is now resolved. Logging occurs only when local or global trace 
+parameter is enabled.
+
+MIP-163 (MSP_9.0_Fix3)
+webMethods Package for Microsoft .NET support for new Admin screens IS 9.10 
+onwards. 
+
+webMethods Package for Microsoft .NET Admin UI pages did not support new format 
+of screens developed for IS 9.10. 
+
+This issue is resolved now by modifying the webMethods Package for Microsoft 
+.NET pages.
+
+MIP-148 (MSP_9.0_Fix1)
+In webMethods Package for Microsoft .NET, exceptions in .NET assemblies are not 
+logged. 
+
+The Integration Server error logs do not contain the details of the exceptions 
+in .NET assemblies. 
+
+This issue is resolved. The Integration Server error logs now contain the 
+detials of the exceptions in .NET assemblies.
+
+MIP-140 (MSP_9.0_Fix1)
+Setting a relative assembly path for webMethods Package for Microsoft .NET 
+services is not possible. 
+
+Package for Microsoft .NET does not allow you to use a relative assembly path 
+for a .NET service. You can only specify a full path. 
+
+The issue is resolved. Now you can provide a relative path in the assembly path 
+of a .NET service. The relative path specified in the assembly path will be 
+resolved from the <Software AG_directory>\DotNetHost directory. 
+
+
+
+8.0 Installation
+
+Steps to install the fix: 
+1. Stop the webMethods Package for Microsoft .NET windows service if running.
+2. Create a copy of the existing <Integration Server Installation Directory >
+/DotNetHost/wmSystem.exe.config file to an alternate location.
+3. Install the fix. Use Command Central to install fixes on multiple machines 
+from a central location (9.7 or later products), or Update Manager 
+to install fixes on one machine at a time. For instructions, see the 
+documentation at https://docs.webmethods.io.
+4. Move the relocated wmSystem.exe.config file to the original location.
+5. Start the webMethods Package for Microsoft .NET windows service.
+
+Note: When using webMethods Package for Microsoft .NET with Integration Server 
+8.2 and later, this fix will appear in the list of updates that have been 
+applied to the adapter. The list of updates appears in the Updates field on the 
+adapter's About page in Integration Server Administrator. Adapter fixes and
+updates that were installed before the release of Integration Server 8.2 will 
+not appear in the Updates field.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Steps to uninstall the fix: 
+1. Stop webMethods Package for Microsoft .NET windows service if running.
+2. Uninstall using Command Central (9.7 or later) or Update Manager. 
+For instructions, see the documentation at https://docs.webmethods.io..
+3. Start the webMethods Package for Microsoft .NET windows service.
+
+
+
+10.0 Copyright
+
+
+Copyright Super iPaas Integration LLC, an IBM Company 2024.

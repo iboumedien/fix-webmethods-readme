@@ -1,0 +1,181 @@
+                       webMethods Process Engine CDC 10.11 Fix 4 readme
+
+                                      OCTOBER 2024
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Process Engine CDC 10.11 Fix 4.
+
+
+
+2.0 Fix ID
+
+WPECDC_10.11_Fix4
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Process Engine.
+
+
+
+4.0 Requirements and Dependencies
+
+DC 10.11 DBS Fix 1 or higher is required.  
+
+Process Engine 10.11 Fix 4 or higher is required.
+
+It is recommended to update to the latest fix level for related BPM products
+such as Designer, Process Engine, Optimize and ESB, and Business Console.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product 
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods Monitor.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+WPE-5151
+The inline subprocess instances that are interrupted when the parent instance reaches terminal status, are not cleaned by Storage Cleaner.
+
+The issue is now resolved.
+
+WPE-5215
+In webMethods Monitor, when Integration Server uses a PostgreSQL database, if you click on the Conversation ID of a RosettaNet document, the Transactions page displays an error: “9999:wm.tn.portal.actions:getProcessInformation encountered execution error. wm.tn.portal.actions:getProcessInformation can not get instance information.”
+
+The issue is resolved.
+
+WPE-5219
+In webMethods Monitor, when Integration Server uses a MySQL database, if you click on the Conversation ID of a RosettaNet document, the Transactions page displays an error: “9999:wm.tn.portal.actions:getProcessInformation encountered execution error. wm.tn.portal.actions:getProcessInformation can not get instance information.”
+
+The issue is resolved.
+
+WPE-5197
+In webMethods Process Engine, the custom process ID is not updated when using an Oracle database.
+The issue occurs when the watt.prt.auditLogProcessAtRest property located in the prt.cnf file is set to "true".
+
+The issue is resolved.
+
+WPE-5242
+With webMethods Process engine, timeouts processing may be delayed.
+
+This issue is now resolved. Database column type has been changed for
+SQL Server to accurately store the expiry timestamp of timeouts.
+
+WPE-5006 (WPECDC_10.11_Fix2)
+With webMethods Process Engine, Database Component Configurator fails to migrate database components from an older installation to a 10.7 installation.
+
+The issue is resolved.
+
+WMN-7831 (WPECDC_10.11_Fix1)
+When webMethods Monitor is migrated from 9.12 to 10.5, there is performance degradation when you open the Business Process or Process Instance pages.
+
+The issue is resolved.
+
+WPE-4491 (WPECDC_10.11_Fix1)
+With webMethods Process engine, logged field is incorrectly truncated.
+
+Logged field values of type String were truncated to 512 bytes instead of 1024 bytes which the database allowed.
+
+This issue is now resolved. Process engine now supports logging of upto 2000 bytes. 
+Note: ProcessAudit database component should be migrated to version 81.2
+
+WPE-4941 (WPECDC_10.11_Fix1)
+During the run of MySQL database procedure "PESTORAGECLEANER" observed some of locking on "PRTPROCESS" table update queries and that can be decreased after the change.
+
+The issue is resolved.
+
+WPE-5063 (WPECDC_10.11_Fix1)
+During the migration the 10.3 ProcessAudit database component to 10.11, the script was failing due to missing check of current schema and column name.Modified script to handle the scenario.
+
+The issue has been now resolved.
+
+WPE-4973 (WPECDC_10.11_Fix1)
+In SQL Server by design , writes and reads lock each other and has created a lots of contention issues with SQL server in high workload environment.. So the code is modified to use batching instead of bulk DELETE to let SQL server release locks more frequently.
+
+The issue is now resolved.
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central  location (9.7 or later 
+products), or Software AG Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Command Central (9.7 or later) or Software AG Update Manager. For instructions, see 
+the documentation at http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was not tested with non-English configurations and non-ASCII data. However, this 
+fix has no globalization impact and can be applied to systems running in any supported locale or 
+configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, and/or 
+its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or registered trademarks of 
+Software AG and/or Software AG USA Inc. and/or its subsidiaries and/or its affiliates and/or their licensors. 
+Other company and product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries is located at 
+http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party copyright notices, license terms, 
+additional rights or restrictions, please refer to 
+"License Texts, Copyright Notices and Disclaimers of Third Party Products". For certain specific third-party 
+license restrictions, please refer to section E of the Legal Notices available under 
+"License Terms and Conditions for Use of Software AG Products / Copyright and Trademark Notices of 
+Software AG Products". These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the licensed product(s). 

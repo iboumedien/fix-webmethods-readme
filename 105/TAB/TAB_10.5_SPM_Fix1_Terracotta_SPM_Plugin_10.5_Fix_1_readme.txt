@@ -1,0 +1,213 @@
+
+            Terracotta SPM Plugin 10.5 Fix 1 readme
+    
+                        September 2020
+________________________________________________________________
+
+This file provides important information for applying Terracotta SPM Plugin 10.5 Fix1
+
+
+Contents:
+
+1.0 Fix Name
+2.0 Fix ID
+3.0 Product(s)/Component(s) Affected
+4.0 Requirements
+5.0 Platform Support
+6.0 Cautions and Warnings
+7.0 Fix Contents
+8.0 Installation
+9.0 Uninstallation
+10.0 Globalization
+11.0 Copyright
+12.0 Contacting Us
+
+
+1.0 Fix Name
+
+Terracotta SPM Plugin 10.5 Fix1
+
+
+2.0 Fix ID
+
+TAB_10.5_SPM_Fix1
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects:
+
+  Software AG Platform Manager 10.5
+  Software AG Command Central 10.5
+
+
+4.0 Requirements
+
+None.
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+6.0 Cautions and Warnings
+
+None
+
+
+7.0 Fix Contents
+
+TAB-7751
+
+Code in com.softwareag.platform.management.plugins.tc.lifecycle.BasicLifecycleImpl.exec records neither stderr/stdout
+information nor the return code from a failing script execution. This makes it quite difficult to diagnose a failure
+in the field.
+
+Both the return code and the stderr/stdout content (both available from the ProcessExecutionResult instance returned
+from the execution should be included in the thrown exception and/or logged appropriately.
+
+This issue has been resolved.
+
+
+TAB-7765
+
+The MonitoringImpl implementation of the SPM plugin has unrestricted network interaction via URL/URLConnection.
+It needs to utilize URLConnection.setConnectTimeout(connectTimeout) and URLConnection.setReadTimeout(readTimeout)
+
+This issue has been resolved.
+
+
+TAB-7797
+
+A NullPointerException reported by the SPM plugin for BigMemory was linked to another problem that was encountered.
+The logging around this should be improved so that it does not distract from the root problem in the future.
+
+This issue has been resolved.
+
+
+TAB-7837
+
+Additional logging in SPM plugin.
+
+It is possible to configure logging for the Terracotta SPM plugin by editing the log4j2.properties file, located in \profiles\SPM\configuration\logging
+
+Add the lines below:
+
+logger.99.name=com.softwareag.platform.management.plugins.tc
+logger.99.level=TRACE
+logger.99.appenderRef.tes-spm.ref=TES-SPM
+
+appender.tes-spm.name=TES-SPM
+appender.tes-spm.type=RollingFile
+appender.tes-spm.fileName=${logsDir}/tes-spm.log
+appender.tes-spm.filePattern=${logsDir}/tes-spm.log.%i
+appender.tes-spm.layout.type=PatternLayout
+appender.tes-spm.layout.pattern=${fullAppenderPatternLayout}
+appender.tes-spm.policies.type=Policies
+appender.tes-spm.policies.size.type=SizeBasedTriggeringPolicy
+appender.tes-spm.policies.size.size=10MB
+appender.tes-spm.strategy.type=DefaultRolloverStrategy
+appender.tes-spm.strategy.max=10
+
+
+TAB-7842
+
+Terracotta logs tab shows empty on CC web. CC CLI has the same result. Weird thing is that server logs go under
+`server-data` directory, which seems wrong. Possible that server logs location changed in the config, and thus the
+plugin isn't able to find those logs.
+
+This issue has been resolved.
+
+
+TAB-7876
+
+When a user updates the server name from cce/web all the keys present in custom_wrapper.conf file are lost. Only the
+keys concerned with the server name are left.
+
+This issue has been resolved.
+
+
+TAB-7877
+
+Introduce a common utility class which handles all IO operations to custom_wrapper.conf file
+
+This issue has been resolved.
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central
+location (9.7 or later products), or Software AG Update Manager to install
+fixes on one machine at a time. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently
+installed fix. This action will revert your installation to the previously
+installed fix. You cannot apply these instructions to the previously installed
+fix.
+
+Uninstall using Command Central (9.7 or later) or Software AG Update Manager.
+For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+10.0 Globalization
+
+None
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might 
+contain new messages and these messages will appear in English.
+
+
+11.0 Copyright
+
+Copyright © 2019 Software AG, Darmstadt, Germany and/or Software AG USA Inc.,
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their
+licensors.
+
+The name Software AG and all Software AG product names are either trademarks
+or registered trademarks of Software AG and/or Software AG USA Inc. and/or
+its subsidiaries and/or its affiliates and/or their licensors. Other company
+and product names mentioned herein may be trademarks of their respective
+owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or
+its subsidiaries is located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party
+copyright notices, license terms, additional rights or restrictions, please
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party
+Products". For certain specific third-party license restrictions, please refer
+to section E of the Legal Notices available under "License Terms and Conditions
+for Use of Software AG Products / Copyright and Trademark Notices of Software
+AG Products". These documents are part of the product documentation, located
+at http://softwareag.com/licenses and/or in the root installation directory of
+the licensed product(s).
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html
+

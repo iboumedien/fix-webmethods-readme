@@ -1,0 +1,294 @@
+			webMethods Metering 10.5 Fix 15 readme
+
+					August 2024
+
+____________________________________________________________________________________________________
+
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+1.0 Fix Name
+
+webMethods Metering 10.5 Fix 15
+
+
+
+2.0 Fix ID
+
+MTA_10.5_Fix15
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+
+This fix affects MTA 10.5.
+
+
+
+4.0 Requirements and Dependencies
+
+This fix requires any of the products listed in 3.0 Products (s)/Component(s) Affected. 
+
+Official fixes are cumulative. Therefore, you can install the specified fix or later.
+
+For language pack requirements, see the Globalization section of the Software AG
+Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported
+by webMethods Product Suite 10.5.
+
+
+
+6.0 Cautions and Warnings
+
+All product profiles that run on top of OSGi runtimes are stopped by
+the Software AG Update Manager and will automatically be started
+after the session completes.
+
+The webMethods products that use webMethods Мetering might not work if
+the metering license is not present. If you cannot start the webMethods
+product, you can temporarily revert its license to the previous version.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+MTA-1770
+When generating logs, the Software AG Metering Agent might throw a ZoneRulesException error.
+The issue is resolved.
+
+MTA-1722
+The logs of Metering Agent are revisited and updated.
+ MTA-1118
+When Software AG Metering collects data for a product that has more than two profiles
+or instances, the Metering Agent might throw a NoSuchFileException error.
+This issue is resolved.
+
+MTA-1095
+Software AG Metering's diagnostic fails when
+the storage directory is not yet created.
+This is fixed now.
+ MTA-1065
+In Software AG Metering, obsolete usage measurement files are kept in the metering
+storage directory.
+The issue is resolved. Obsolete usage measurement files are now automatically deleted from
+the metering storage directory.
+ MTA-1035
+In Software AG Metering, the runtime alias does not support double quotes
+and backslash characters.
+This issue is resolved. You can now use double quotes and backslash characters
+when you configure a runtime alias.
+ MTA-1016
+With Software AG Metering, when the underlying network setup does not allow the retrieval
+of the fully quilified domain name (FQDN) or the same FQDN is assigned to different product
+instances, the same runtime ID might be assigned to these product instances.
+
+This issue is resolved. All product instances that are deployed on a system with a unique
+hostname now have unique runtime IDs that are listed in the corresponding wrapper.log files.
+For details on finding the runtime ID of a product instance, see the Software AG Infrastructure
+Administrator’s Guide.
+ MTA-818
+During graceful shutdown, the Software AG Metering Agent might throw a NullPointerException error.
+The issue is resolved.
+
+MTA-815
+We added logs that show if shutdown actions that include reporting measurements to the cloud are executed.
+ MTA-773
+During validation of the measurement files, 
+the Software AG Metering Agent Diagnostic Tool might disrupt 
+the reporting of collected usage data.
+The issue is resolved.
+ MTA-727
+The Software AG Metering Agent does not support proxy with authentication.
+This issue is resolved. You can now do one of the following to configure
+a proxy username and password:
+
+Use the metering.proxy.user and metering.proxy.pass properties
+in the metering.agent.properties file
+Use metering.proxy.user and metering.proxy.pass as Java System properties
+Use METERING_PROXY_USER and METERING_PROXY_PASS as environment variables
+
+MTA-624
+Set minimum accumulation period to 5 seconds
+ MTA-470
+The Software AG Metering Agent throws a NullPointerException error in the wrapper.log file.
+This issue is resolved.
+
+MTA-478
+When you change the host name or the installation path of a product instance,
+the Software AG Metering Agent does not include the cached usage measurements
+in the report.
+This issue is resolved.
+
+MTA-494
+When you run the webMethods Metering Agent Diagnostic Tool, the diagnostic fails
+with a statement that the measurements are not valid.
+This issue is resolved.
+ MTA-368
+When webMethods Metering is unable to dispose a log page, the error message
+in the wrapper.log file does not contain the path to the log page file.
+This issue is resolved.
+
+MTA-396
+Fixing access denied exceptions thrown by the MTA agent
+ 
+
+MTA-301
+The webMethods Metering Agent does not verify the integrity of the data before
+sending it to the webMethods Metering Server.
+
+This issue is resolved.
+
+MTA-235
+webMethods Metering now supports the configuring of a runtime alias.
+ 
+
+MTA-170
+The webMethods Metering Agent does not connect to an on-premise webMethods
+Metering Server through HTTPS, unless you specify a truststore for the agent.
+
+This issue is resolved.
+
+MTA-173
+The webMethods Metering Agent stops sending data if
+there are connectivity issues.
+This issue is resolved.
+ 
+
+MTA-147
+webMethods Metering sends to the server the aggregated usage data
+for the configured report period as a single payload. This might cause
+slow response time and network load.
+This issue is resolved. webMethods Metering now splits the payload
+into chunks and sends them separately to the server.
+
+MTA-149
+webMethods Metering now supports the configuring of a proxy server.
+ 
+
+MTA-38
+You cannot reinstall webMethods Metering on new instances
+of Software AG products for which data is measured.
+This issue is resolved.
+
+MTA-69
+webMethods Metering requires an additional metering license
+that is installed manually.
+This issue is resolved. webMethods Metering now uses only the
+license of the Software AG product for which data is measured.
+
+MTA-2
+The fix contains webMethods Metering.
+
+
+8.0 Installation
+
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or Software AG Update Manager to install 
+fixes on one machine at a time. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+To install webMethods Metering, install webMethods Metering 10.5 Fix 15.
+To enable webMethods Metering for a specific webMethods product, you might
+need an additional fix and an updated license for the product.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was tested
+with non-English configurations and non-ASCII data.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new 
+messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2024 Software AG, Darmstadt, Germany and/or Software AG USA Inc.,
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks
+or registered trademarks of Software AG and/or Software AG USA Inc. 
+and/or its subsidiaries and/or its affiliates and/or their licensors.
+Other company and product names mentioned herein may be trademarks
+of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries
+is located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. 
+For third-party copyright notices, license terms, additional rights or restrictions,
+please refer to "License Texts, Copyright Notices and Disclaimers of Third Party Products".
+For certain specific third-party license restrictions, please refer to section E of 
+the Legal Notices available under "License Terms and Conditions for Use of Software AG Products /
+Copyright and Trademark Notices of Software AG Products". 
+These documents are part of the product documentation, located at
+http://softwareag.com/licenses and/or in the root installation directory of the licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

@@ -1,0 +1,114 @@
+          webMethods Integration Server 10.11 EmbeddedDB Fix 5 readme
+
+                              October 2024 
+
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform/RDBMS Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Integration Server 10.11 EmbeddedDB Fix 5.
+
+
+
+2.0   Fix ID
+
+IS_10.11_EmbeddedDB_Fix5
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Integration Server 10.11.
+
+
+
+4.0 Requirements and Dependencies
+
+For language pack requirements, see the Globalization section of the 
+Software AG Empower Product Support Web site. The Globalization section can 
+be found at:
+
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform/RDBMS Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+
+PIE-80727 (IS_10.11_EmbeddedDB_Fix4)
+Database components in Integration Server fail to work after migrating
+Integration Server from 10.3 to 10.11.
+
+When migrating Integration Server from 10.3 to 10.11, the embedded database is
+not updated with new tables. Hence, the database components fail to work.
+
+The issue is resolved now.
+
+PIE-77794 (IS_10.11_EmbeddedDB_Fix3)
+The wm.server.dispatcher:deleteExpiredUUID scheduled service creates infinite
+logs. 
+
+The character length of cloud container hostnames exceed the size of the
+RUNNINGON column in the database, which causes the infinite logs. 
+
+The issue is resolved. Now, the column size is increased to support such cloud
+container hostnames. 
+
+PIE-79708 (IS_10.11_EmbeddedDB_Fix3)
+When migrating the database from an earlier version to 10.11, PostgreSQL throws 
+the "DB migration error: path not found" error message. 
+ 
+A discrepancy in the DB migration directory name causes PostgreSQL to throw the 
+"DB migration error: path not found" error message when migrating the database 
+from an earlier version to 10.11. 
+ 
+The issue is resolved now.
+
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. 
+This action will revert your installation to the previously installed fix.
+You cannot use these instructions to uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+10.0 Copyright
+
+Super iPaas Integration LLC, an IBM Company 2024.

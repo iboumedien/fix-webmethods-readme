@@ -1,0 +1,230 @@
+						WmDesigner 10.5 Fix 9 for Deployer readme
+
+                                       October 2022
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+WmDesigner 10.5 Fix 9 for Deployer
+
+
+
+2.0 Fix ID
+
+DES_Deployer_10.5_Fix9
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Designer Process Development for Deployer (WmDesigner package).
+
+
+
+4.0 Requirements and Dependencies
+
+PRT_10.5_Fix3
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product 
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+This fix is supported on the same platforms as webMethods Designer Process Development 
+Deployer 10.5 (WmDesigner package).
+
+
+
+6.0 Cautions and Warnings
+
+This fix needs to be installed on all servers hosting the WmDesigner package, including 
+the Deployer source and target servers.
+
+
+
+7.0 Fix Contents
+
+WMDPD-10277
+The following Process Simulation JAR files are now removed from the WmDesigner package:
+- Simprocess.jar
+- SPInterface.jar
+- SPRemote.jar
+- Modelfit.jar
+- jh.jar
+
+The issue is resolved.
+
+WMDPD-9864(DES_Deployer_10.5_Fix8)
+Deploying several process models with webMethods Deployer might fail.
+
+When deploying several process models with webMethods Deployer, a database connection
+with a pending transaction might be prematurely released back to the pool. When this occurs
+a new connection starts, which creates a lock contention on the original transaction.
+
+The issue is resolved.
+
+WMDPD-9865(DES_Deployer_10.5_Fix8)
+With webMethods Monitor, process diagrams cannot be manually saved.
+
+The process diagram cannot be manually saved as a JPG and/or SVG file
+and upload the images with the process metadata.
+
+The issue is resolved. Support for manually exported images is now
+included for the build and upload tool delivered with Designer, the
+Asset Build Environment and Deployer.
+
+DES_10.5_Deployer_Fix8, ABE_10.5_BPM_Fix3 and DES_10.5_Process_Fix6
+should be installed together to resolve this issue.
+
+WMDPD-10061(DES_Deployer_10.5_Fix8)
+Process Audit connection may not be returned to the pool after deployment
+
+After deploying process models from a repository based project with webMethods Deployer 
+the active database connection may not be returned to the JDBC pool. 
+This causes the pooled connection to remain active and the physical connection to remain open.
+
+The issue is resolved.
+
+WMDPD-10151(DES_Deployer_10.5_Fix8)
+In Process Deployer build of BPM deployment set will fail when the set contains task assets.
+
+This issue is resolved.
+
+WMDPD-10095(DES_Deployer_10.5_Fix7)
+When writing data to PostgreSQL DB, Deployer fails with the following error:
+Error writing data to the database: com.wm.app.b2b.server.ServiceException: java.sql.SQLDataException:
+[SoftwareAG][PostgreSQL JDBC Driver]The hexadecimal string is invalid
+
+The issue is resolved.
+
+
+WMDPD-10079(DES_Deployer_10.5_Fix6)
+Software AG Designer Process Development uses an outdated version of the
+third party component Xbean, which has known security vulnerabilities.
+
+The issue is resolved. The Xbean jar is migrated to the stable version 3.1.0.
+
+
+WMDPD-9959(DES_Deployer_10.5_Fix5)
+webMethods Deployer BPM plug-in fails to handle database error during deployment.
+
+During deployment, if a database error is encountered while inserting metadata into
+the process definition table, the error is written to the wrapper.log but processing
+continues. The deployment is reported as successful, but the metadata table data becomes
+out of sync. This causes subsequent deployments to fail with a duplicate key violation.
+
+The issue is resolved.
+
+
+WMDPD-9905(DES_Deployer_10.5_Fix5)
+BPM Process Model deployment might fail with the following error message:
+"Error writing data to the database: null".
+
+The issue is resolved
+
+
+WMDPD-9949(DES_Deployer_10.5_Fix4)
+With webMethods Deployer, the deployment of an asset-based process 
+model might fail.
+
+The issue is resolved.
+
+
+WMDPD-9889 (DES_Deployer_10.5_Fix3)
+With webMethods Designer Process Development, after the deployment of a 
+BPM project, the step settings changed in My webMethods Server are lost.
+When the QoS step settings are changed on the source server from the 
+My webMethods Server user interface, the changes are not visible on 
+the target server after rebuilding and redeploying the process model.
+This occurs when only the process model is deployed. When the deployment 
+set contains the associated Integration Server packages, the QoS settings 
+are applied and visible on the target environment immediately.
+
+The issue is resolved.
+
+
+RGHWPE-4389(DES_Deployer_10.5_Fix2)
+PostgreSQL database support is added for Process engine.
+
+
+WMDPD-9856 (DES_Deployer_10.5_Fix1)
+The deployment of Process models fails with MySQL Community Edition.
+
+The issue is resolved.
+
+
+
+8.0 Installation
+
+This fix should appear in Update Manager under Integration Server > WmDesigner Fix
+
+Use Command Central to install fixes on multiple machines from a central  location (9.7 or later 
+products), or Software AG Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Command Central (9.7 or later) or Software AG Update Manager. For instructions, see 
+the documentation at http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was not tested with non-English configurations and non-ASCII data. However, this 
+fix has no globalization impact and can be applied to systems running in any supported locale or 
+configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2022 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, and/or 
+its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or registered trademarks of 
+Software AG and/or Software AG USA Inc. and/or its subsidiaries and/or its affiliates and/or their licensors. 
+Other company and product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries is located at 
+http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party copyright notices, license terms, 
+additional rights or restrictions, please refer to 
+"License Texts, Copyright Notices and Disclaimers of Third Party Products". For certain specific third-party 
+license restrictions, please refer to section E of the Legal Notices available under 
+"License Terms and Conditions for Use of Software AG Products / Copyright and Trademark Notices of 
+Software AG Products". These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the licensed product(s). 

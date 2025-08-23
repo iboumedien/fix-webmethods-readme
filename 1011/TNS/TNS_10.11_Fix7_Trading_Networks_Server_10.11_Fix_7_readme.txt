@@ -1,0 +1,299 @@
+                 webMethods Trading Networks 10.11 Fix 7 readme
+
+                         November 2023
+
+_________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+webMethods Trading Networks 10.11 Fix 7
+
+
+
+2.0 Fix ID
+
+TNS_10.11_Fix7
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Trading Networks 10.11.
+
+
+
+4.0 Requirements
+
+WebMethods Metering Agent 10.11 Fix 1 or the latest fix that supersedes this.
+Integration Server Core 10.11 Fix 1 or the latest fix that supersedes this.
+Trading Networks Database 10.11 Fix 2 or the latest fix that supersedes this.
+
+For language pack requirements, see the Globalization section of the Software 
+AG Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes 
+for the release.
+OTN-23869
+After Fix installation, whitelistclass.xml file entries have been removed from the 
+WmTN package configuration. However, we have noticed that every time if there is any 
+fix installation were performed on TN related components, these entries getting removed.
+This issue is now resolved.
+
+OTN-23634 (TNS_10.11_Fix6)
+In the Extended Criteria of a processing rule, support for the Beginswith 
+operator for the string attribute is fixed. And for the StringList attribute, the 
+Begins with and Contains operator will be deprecated in the upcoming release.
+
+OTN-23659 (TNS_10.11_Fix6)
+In WebMethods Trading Networks, invoking the wm.tn.task:removeTask displayed an 
+error for all scenarios. This caused the flow service to break and result in 
+failures.
+The issue is fixed and the error appears only during actual error scenarios.
+
+OTN-23469 (TNS_10.11_Fix6)
+When importing TPA with a lot of TPA data, if the total TPA audit log message 
+exceeds the Activity Log Full Message column size, the import operation does not 
+end. In addition, the following log message is added:
+'..Continued from previous activity log record, continued in next activity log 
+record..' in the Activity log table every 10 seconds.
+This issue is resolved and the import operation completes successfully.
+
+OTN-23403 (TNS_10.11_Fix5)
+In webMethods Trading Networks, when you change the status of Preferred Protocol
+in Partner Profiles > Delivery Settings, the activity log does not update.
+
+This issue is resolved.
+
+OTN-23419 (TNS_10.11_Fix5)
+When using the TripleDES encryption algorithm, the data encrypted with the 
+wm.tn.mime:createEncryptedData and wm.tn.mime:createSignedAndEncryptedData services 
+in webMethods Trading Networks fails to decrypt.
+
+This issue occurs when the Entrust Toolkit updates to 8.1.20.
+This issue is now resolved.
+
+OTN-23241 (TNS_10.11_Fix4)
+In webMethods Trading Networks, wm.tn.mime:createEncryptedData and
+wm.tn.mime:createSignedAndEncryptedData services fail when using the
+DES (Data Encryption Standard) or TripleDES encryption algorithm.
+This issue occurs when the Entrust Toolkit updates to 8.1.20.
+
+This issue is resolved.
+
+OTN-22949 (TNS_10.11_Fix3)
+The warning message "WARN net.sf.ehcache.config.CacheConfiguration - Cache:
+This might lead to performance degradation or OutOfMemoryError at Terracotta
+client.From Ehcache 2.0 onwards this has been changed to mean a store with no
+capacity limit. Set it to 1 if you want no elements cached in memory" appears in
+echache.log file.
+
+The issue is now resolved. To ignore cache elements in memory and refer the TN admin guide to add the TN properties.
+
+OTN-23226 (TNS_10.11_Fix3)
+In webMethods Trading Networks, an error occurs when webMethods does not allow 
+serialization and deserialization of classes that are not part of the 
+whitelistclasses.xml file. Now the DataStoreException class is added in the 
+whitelistclasses.xml file to resolve the issue.
+
+This issue is resolved. 
+
+
+OTN-23227 (TNS_10.11_Fix3)
+In webMethods Trading Networks, an error message "[ISU.0000.9999E] com.wm.app.tn.
+db. DatastoreException: BizDocStore.updateAttributes(0) java.lang.
+IllegalArgumentException: Timestamp format must be yyyy-mm-dd hh:mm:ss
+[.fffffffff]" displays when the DateTime format is not JDBC DateTime format.
+
+This issue is resolved.
+
+OTN-22854 (TNS_10.11_Fix2)
+In Trading Networks, TN_RUNTIMETABLES_DELETE takes longer to execute.
+
+This issue is resolved. Now, the performance of this procedure is improved.
+
+OTN-22694 (TNS_10.11_Fix2)
+In Trading Networks, the Transaction status appears as 'Done With Errors' when a 
+transaction fails initially but succeeds during the retry.
+
+This issue is now resolved.
+
+OTN-22894 (TNS_10.11_Fix2)
+Execution of tn.profile.create:newExtendedFields service
+displays two improper EDIINT extended fields.
+
+This issue is now fixed.
+
+OTN-22521 (TNS_10.11_Fix1)
+When installing the webMethods Trading Networks Server fix (FIX12) and while
+creating a partner profile, getting an SQLException:
+[SoftwareAG][Oracle JDBC Driver][Oracle]ORA-00936: missing expression error.
+This issue is now resolved.
+
+OTN-22663 (TNS_10.11_Fix1)
+When running IS Migration Utility, Trading Networks data migration fails with
+NPE under the following conditions:
+1. TN JDBC pool (source environment) uses the NTLM authentication method.
+2. Migration does not migrate passwords from the password store (passman).
+3. Migration uses a live database.
+
+This issue is now resolved.
+
+OTN-22705 (TNS_10.11_Fix1)
+The wm.tn.task:restartTask service throws an exception when Trading Networks 
+restarts the task successfully.
+
+This issue is now resolved.
+
+OTN-22789 (TNS_10.11_Fix1)
+In trading networks, when executing wm.tn.doc:updateAttributes service multiple
+times for the same transaction, an entry 'Document attributes updated' adds to a
+transaction's activity logs numerous times.
+
+This issue is now resolved by removing the 'Document attributes updated' in the
+transaction's activity log.
+
+OTN-22643 (TNS_10.11_Fix1)
+In webMethods Trading Networks, Import of an existing field definition using 
+tnimport utility fails with java.sql.SQLIntegrityConstraintViolationException. 
+
+This issue is now resolved.
+
+
+OTN-22754 (TNS_10.11_Fix1)
+In trading networks, the host field value truncates when this field has more
+than 64 characters in Delivery Settings for a partner.
+
+This issue is resolved. Now, the host field has a maximum of 512 characters.
+
+
+
+8.0 Installation
+
+Install using the Software AG Update Manager or Command Central (9.7 or later). 
+For instructions, see the corresponding documentation at
+http://documentation.softwareag.com.
+
+After installation is complete, please perform the below step :
+
+1. If Integration Server contains wMDeployer installation along with Trading Networks,
+then delete the tncore.jar file under
+%INSTALL_DIR%\IntegrationServer\instances\default\packages\WmDeployer\code\jars\static.
+
+2. Start Integration Server. 
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action reverts your installation to the previously 
+installed fix. You cannot apply these instructions to the previously 
+installed fix.
+
+Uninstall using the Software AG Update Manager or Command Central (9.7 or later). 
+For instructions, see the corresponding documentation at
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was tested
+with non-English configurations and non-ASCII data.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new 
+messages and these messages appears in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2023 Software AG, Darmstadt, Germany and/or 
+Software AG USA Inc., Reston, VA, USA, and/or its subsidiaries and/or its
+affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or
+registered trademarks of Software AG and/or Software AG USA Inc. and/or its
+subsidiaries and/or its affiliates and/or their licensors. Other company and
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its
+subsidiaries is located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party
+copyright notices, license terms, additional rights or restrictions, please
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party
+Products". For certain specific third-party license restrictions, please refer
+to section E of the Legal Notices available under "License Terms and Conditions
+for Use of Software AG Products / Copyright and Trademark Notices of
+Software AG Products". These documents are part of the product documentation,
+located at http://softwareag.com/licenses and/or in the root installation
+directory of the licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

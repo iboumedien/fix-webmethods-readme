@@ -1,0 +1,170 @@
+                   IBM webMethods Installer Shared component Installer Bundles 10.5.0 Fix 11 readme
+
+                                        May 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Installer Bundles 10.5.0 Fix 11
+
+
+
+2.0 Fix ID
+
+WIS_10.5_InstallationProvisioning_Fix11
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects IBM webMethods Platform Manager 10.5.0 10.5.0
+
+
+
+4.0 Requirements and Dependencies
+
+OGI_10.5_Fix0019
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+WIR-15211 (WIS_10.5_InstallationProvisioning_Fix11)
+IBM webMethods Installer Shared component Provisioning Application is not able to use IBM account for authentication and entitlement check.
+
+
+WIR-13894 (WIS_10.5_InstallationProvisioning_Fix10)
+With IBM webMethods Command Central installation of products on node with version 10.5 
+might fail when a mirror repository for version 10.5 is created by
+IBM webMethods Command Central with version higher than 10.5.
+
+The issue is resolved.
+
+EXX-13084 (WIS_10.5_InstallationProvisioning_Fix9)
+With IBM webMethods Command Central when mirror repository is updated
+IBM webMethods Installer client may not be replaced with the newer one.
+
+The issue is resolved.
+
+WIR-13110 (WIS_10.5_InstallationProvisioning_Fix8)
+With IBM webMethods Command Central installation of fixes might fail, because of certificate mismatch.
+
+The issue is resolved.
+
+WIR-13031 (WIS_10.5_InstallationProvisioning_Fix7)
+With IBM webMethods Command Central some products might not be reported as
+installed.
+
+The issue is resolved.
+
+WIR-13020 (WIS_10.5_InstallationProvisioning_Fix6)
+With IBM webMethods Command Central installation from image repository might 
+fail sporadically.
+
+The issue is resolved. 
+
+WIR-12963 (WIS_10.5_InstallationProvisioning_Fix5)
+With IBM webMethods Command Central installation from mirror repository might 
+fail when SPM alias for HTTPS configuration is changed
+
+The issue is resolved. 
+
+WIR-12840 (WIS_10.5_InstallationProvisioning_Fix4)
+With IBM webMethods Command Central export of image from a mirror repository
+might fail if this mirror repository is created out of another mirror repository.
+
+The issue is resolved.
+
+WIR-12835 (WIS_10.5_InstallationProvisioning_Fix3)
+With IBM webMethods Command Central creation of mirror repository
+from image/images might be fail because of corrupted metadata.
+
+The issue is resolved.
+
+WIR-12357 (WIS_10.5_InstallationProvisioning_Fix2)
+With IBM webMethods Command Central validate of repository content might fail.
+Using IBM webMethods Command Central to install products with composite template
+on Windows operating system intallation might fail. 
+The reported error will indicate missing products, but
+the they are not actually missing.
+
+The issue is resolved.
+
+WIR-12340
+With IBM webMethods Command Central connecting to empower repository
+might be fail.
+
+The issue is resolved.
+
+WIR-12321 
+With IBM webMethods Command Central publish of fix or product
+repository might be delayed or fail. 
+
+The issue is resolved.
+
+WIR-12274 (WIS_10.5_InstallationProvisioning_Fix1)
+With IBM webMethods Command Central when mirror repository for
+certain platforms and certain products is created,
+listing of the repository may fail because of corrupted metadata.
+
+The issue is resolved.
+
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a central location (9.7 or later), 
+or IBM webMethods Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at https://docs.webmethods.io.
+
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Command Central (9.7 or later) or IBM webMethods Update Manager. For instructions, see 
+the documentation at https://docs.webmethods.io.
+
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

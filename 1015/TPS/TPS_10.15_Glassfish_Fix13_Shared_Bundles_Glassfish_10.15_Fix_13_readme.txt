@@ -1,0 +1,238 @@
+                   webMethods Shared Bundles Glassfish 10.15 Fix 13 readme
+
+                                        May 2024
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Shared Bundles Glassfish 10.15 Fix 13
+
+
+
+2.0 Fix ID
+
+TPS_10.15_Glassfish_Fix13
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects the common extended libraries installed with the 10.15 webMethods products.
+
+
+
+4.0 Requirements and Dependencies
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product 
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+
+TPS-3423 (TPS_10.15_Glassfish_Fix13)
+
+webMethods Shared Libraries contains the outdated third party library Jackson Databind with version 2.15.3.
+
+The issue is resolved. The following Jackson libraries are now updated:
+The jackson-core library is updated from version 2.15.3 to version 2.16.1.
+The jackson-annotations library is updated from version 2.15.3 to version 2.16.1.
+The jackson-databind library is updated from version 2.15.3 to version 2.16.1.
+The jackson-dataformat-yaml library is updated from 2.15.3 to version 2.16.1.
+The jackson-dataformat-cbor library is updated from version 2.15.3 to version 2.16.1.
+The jackson-module-jaxb-annotations library is updated from version 2.15.3 to version 2.16.1.
+The jackson-module-jsonschema library is updated from version 2.15.3 to version 2.16.1.
+The jackson-datatype-jsr310 library is updated from version 2.15.3 to version 2.16.1.
+The jackson-jaxrs-base library is updated from version 2.15.3 to version 2.16.1.
+The jackson-jaxrs-json-provider library is updated from version 2.15.3 to version 2.16.1.
+
+TPS-2560 (TPS_10.15_Glassfish_Fix12)
+
+webMethods Shared Libraries contains the outdated third party library Jackson Databind with version 2.15.2.
+
+The issue is resolved. The following Jackson libraries are now updated:
+The SnakeYAML library is now updated from version 2.0.0 to version 2.2.0.
+The jackson-core library is updated from version 2.15.2 to version 2.15.3.
+The jackson-annotations library is updated from version 2.15.2 to version 2.15.3.
+The jackson-databind library is updated from version 2.15.2 to version 2.15.3.
+The jackson-dataformat-yaml library is updated from 2.15.2 to version 2.15.3.
+The jackson-dataformat-cbor library is updated from version 2.15.2 to version 2.15.3.
+The jackson-module-jaxb-annotations library is updated from version 2.15.2 to version 2.15.3.
+The jackson-module-jsonschema library is updated from version 2.15.2 to version 2.15.3.
+The jackson-datatype-jsr310 library is updated from version 2.15.2 to version 2.15.3.
+The jackson-jaxrs-base library is updated from version 2.15.2 to version 2.15.3.
+The jackson-jaxrs-json-provider library is updated from version 2.15.2 to version 2.15.3.
+
+TPS-2336 (TPS_10.15_Glassfish_Fix11)
+
+webMethods Shared Bundles contains the third party library Jackson Databind with version 2.15.0-rc1, which causes unexpected issues.
+
+The issue is resolved. The following Jackson libraries are now updated:
+The jackson-core library is updated from version 2.15.0-rc1 to version 2.15.2.
+The jackson-annotations library is updated from version 2.15.0-rc1 to version 2.15.2.
+The jackson-databind library is updated from version 2.15.0-rc1 to version 2.15.2.
+The jackson-dataformat-yaml library is updated from 2.15.0-rc1 to version 2.15.2.
+The jackson-dataformat-cbor library is updated from version 2.15.0-rc1 to version 2.15.2.
+The jackson-module-jaxb-annotations library is updated from version 2.15.0-rc1 to version 2.15.2.
+The jackson-module-jsonschema library is updated from version 2.15.0-rc1 to version 2.15.2.
+The jackson-datatype-jsr310 library is updated from version 2.15.0-rc1 to version 2.15.2.
+The jackson-jaxrs-base library is updated from version 2.15.0-rc1 to version 2.15.2.
+The jackson-jaxrs-json-provider library is updated from version 2.15.0-rc1 to version 2.15.2.
+The fastdoubleparser library has been removed as it is no longer required by jackson-core
+
+TPS-2197 (TPS_10.15_Glassfish_Fix10)
+
+webMethods Shared Bundles contains the third party library Jettison with version 1.5.3.38-0010,
+which has known security vulnerabilities.
+
+The issue is resolved. The Jettison library is now updated to version 1.5.4.17-0012.
+
+TPS-2193 (TPS_10.15_Glassfish_Fix9)
+
+Fixed an issue that prevents Internal Data Store 10.15 Fix1 from installing.
+
+TPS-2136 (TPS_10.15_Glassfish_Fix8)
+
+webMethods Shared Bundles contains the third party library SnakeYAML with version 1.33,
+which has known security vulnerabilities.
+
+The issue is resolved. The SnakeYAML library is now updated to version 2.0.
+
+TPS-2118 (TPS_10.15_Glassfish_Fix7)
+
+webMethods Shared Bundles contains the third party jettison with version 1.2.0.0014-0001, which has known security vulnerabilities:
+[CVE-2022-40149]
+
+The issue is resolved. The following library has been updated:
+> jettison is updated from v1.2.0.0014-0001 to v1.5.3.38-0010
+
+TPS-2091 (TPS_10.15_Glassfish_Fix6)
+
+The previous fix has introduced a version downgrade in jakarta-mail. The issue is resolved, the library has been upgraded to the correct version.
+
+TPS-2059 (TPS_10.15_Glassfish_Fix5)
+
+TPS Woodstox-core and stax-api bundles are duplicated
+The issue is resolved. Fix instructions have been changed to remove any duplicates.
+
+TPS-2038 (TPS_10.15_Glassfish_Fix4)
+
+wMFix.MFTServer fix fails to install because of a missing package from jakarta-mail.
+
+The issue is resolved.
+The following library has been updated and the package has been added:
+> jakarta-mail is updated from v1.6.7 to v1.6.7.1
+
+TPS-2000 (TPS_10.15_Glassfish_Fix2)
+
+webMethods Shared Bundles contains the third party woodstox-core with version 6.1.1, which has known security vulnerabilities:
+[CVE-2022-40156], [CVE-2022-40156], [CVE-2022-40155], [CVE-2022-40154], [CVE-2022-40153].
+
+The issue is resolved. The following library has been updated:
+> woodstox-core is updated from v6.1.1 to v6.4.0
+> stax2-api is updated from v4.2.0 to v4.2.1
+
+TPS-1964 (TPS_10.15_Glassfish_Fix1)
+
+webMethods Shared Bundles contains the third-party Jackson Databind with version 2.13.2.2 and SnakeYAML with version 1.30, which have known security vulnerabilities:
+[CVE-2022-42003], [CVE-2022-42004], [CVE-2022-25857].
+
+The issue is resolved. The following libraries have been updated:
+> jackson-core is updated from v2.13.2 to v2.14.0-rc2
+> jackson-annotations is updated from v2.13.2 to v2.14.0-rc2
+> jackson-databind is updated from v2.13.2.2 to v2.14.0-rc2
+> jackson-dataformat-yaml is updated from v2.13.2 to v2.14.0-rc2
+> jackson-module-jaxb-annotations is updated from v2.13.2 to v2.14.0-rc2
+> jackson-dataformat-cbor is updated from v2.13.2 to v2.14.0-rc2
+> jackson-jaxrs-base is updated from v2.13.2 to v2.14.0-rc2
+> jackson-jaxrs-json-provider is updated from v2.13.2 to v2.14.0-rc2
+> jackson-module-jsonschema is updated from v2.13.2 to v2.14.0-rc2
+> snakeyaml is updated from v1.30.0 to v1.33.0 
+
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was not tested with non-English configurations and non-ASCII data. This fix may 
+have some globalization impact.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2024 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, and/or
+its subsidiaries and/or its affiliates and/or their licensors. The name Software AG and all Software AG 
+product names are either trademarks or registered trademarks of Software AG and/or Software AG USA Inc. 
+and/or its subsidiaries and/or its affiliates and/or their licensors. Other company and product names 
+mentioned herein may be trademarks of their respective owners. Detailed information on trademarks and patents 
+owned by Software AG and/or its subsidiaries is located at http://softwareag.com/licenses. This software may
+include portions of third-party products. For third-party copyright notices, license terms, additional rights
+or restrictions, please refer to "License Texts, Copyright Notices and Disclaimers of Third Party Products". 
+For certain specific third-party license restrictions, please refer to section E of the Legal Notices available 
+under "License Terms and Conditions for Use of Software AG Products / Copyright and Trademark Notices of Software 
+AG Products". These documents are part of the product documentation, located at http://softwareag.com/licenses 
+and/or in the root installation directory of the licensed product(s).

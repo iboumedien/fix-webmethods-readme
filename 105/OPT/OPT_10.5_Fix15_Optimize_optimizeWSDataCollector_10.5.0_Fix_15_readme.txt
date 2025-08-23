@@ -1,0 +1,497 @@
+          webMethods Optimize optimizeWSDataCollector 10.5.0 Fix 15 readme
+
+                          June 2022                           
+
+_________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+webMethods Optimize optimizeWSDataCollector 10.5.0 Fix 15
+
+
+
+2.0 Fix ID
+
+OPT_10.5_Fix15
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects:
+
+- Web Service Data Collector 10.5
+
+
+4.0 Requirements
+
+For language pack requirements, see the Globalization section
+of the Software AG Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+For Optimize environments, the fix version of the Optimize component fixes must
+be the same as the fix version of Optimize shared components fixes
+(wMFix.OPT.optimizeSharedLib and wMFix.OPT.optimizeSharedUI).
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+6.0 Cautions and Warnings
+
+1. Attempting to apply the Optimize Fix to an installation where
+ MWS is configured to use the embedded Derby database will fail.
+ There will be an error reported in the Software AG Update Manager
+ log. For all other supported Relational Database Management Systems
+ configured for MWS, the fix can be applied successfully.
+
+ There is no workaround at this time.
+
+
+ 2. You cannot uninstall this fix using Software AG Update Manager.
+
+ To be able to restore your Optimize installation, before you install
+ the fix you must back up the Optimize database and your file system.
+
+
+7.0 Fix Contents
+
+
+OBE-12160 (OPT_10.5_Fix15)
+In an Optimize environment, when you drop the Analysis database component, all Business Activity Monitoring runtime created tables remain in the database.
+
+The issue is resolved.
+
+OBE-12134 (OPT_10.5_Fix15)
+webMethods Optimize uses an older version of the Bouncy Castle Crypto package, which has known security vulernabilities.
+
+The issue is resolved. webMethods Optimize now uses Bouncy Castle Crypto 1.69.
+
+
+
+OBE-11987 (OPT_10.5_Fix14)
+During fix installation, OPT_10.5_Fix12 extracts the latest database SQL scripts in incorrect directory locations. This may cause failures when you create or migrate databases using Database Component Configurator.
+
+The issue is now resolved.
+
+
+
+OBE-12020 (OPT_10.5_Fix13)
+In an Optimize environment, when you configure Analytic Engine, you cannot set a Mail Server password longer than 40 characters.
+
+The issue is resolved. The maximum length of the Mail Server password is now 200 characters.
+
+
+
+WMN-7754 (OPT_10.5_Fix12)
+"With webMethods Monitor, search query performance needs to be improved.
+
+The issue is resolved. To improve search query performance on a MySQL database configured in Integration Server, the wm.monitor.useExactMatch parameter is added to the monitor.cnf configuration file.
+
+New parameter reference:
+  useExactMatch
+
+  This parameter allows you to control whether a search by keyword query performed from the
+  Process Instance Detail page will use the UPPER and LIKE functions for instanceID and
+  parentinstanceID.
+
+Valid values are:
+  false - Default value for useExactMatch. The search query will use the UPPER and LIKE
+  functions for instanceID and parentinstanceID.
+  true - If you set useExactMatch to True, the search query will not use the UPPER and LIKE
+  functions for instanceID and parentinstanceID. The search query will return only those results
+  which exactly match your search term."
+
+WMN-7668 (OPT_10.5_Fix12)
+With WebMethod Monitor, performance of the pub.monitor.process.instance:getPagedInstanceList
+service needs to be improved.
+
+The issue is resolved. A new parameter, isExactMatch, is added to improve the service performance.
+
+New parameter reference:
+isExactMatch
+This parameter is used to specify whether the query uses UPPER and LIKE function for instance ID.
+Valid values are:
+- true - the query will not use UPPER and LIKE function for instanceID.
+Complete instanceID needs to be provided for the query to function properly.
+- false (default) - the query uses UPPER and LIKE function for instanceID.
+
+OBE-11834 (OPT_10.5_Fix12)
+In the Define Environments page of Optimize, you cannot delete an environment which uses a PostgreSQL database. When you open the Edit Environment page of such an environment, you cannot use the Map All function more than once.
+
+This issue is resolved.
+
+OBE-11829 (OPT_10.5_Fix12)
+In an Optimize environment, Analytic Engine begins to use a lot of memory and CPU resources whenever process/step control data cannot be processed. This results in degraded performance which might lead to a potential crash.
+
+The issue is resolved.
+
+OBE-11958 (OPT_10.5_Fix12)
+In an Optimize environment, creating a database for MySQL 8 CE using Database Component Configurator fails.
+
+The issue is resolved.
+
+
+
+WMN-7586 (OPT_10.5_Fix11)
+With webMethods Monitor, Process Audit JDBC connections may become inactive.
+The ResultSet was not closed which caused the corresponding connection to be inactive. 
+
+The issue is resolved.
+
+OBE-11807 (OPT_10.5_Fix11)
+In an Optimize environment, the Rule List page might display the same rule twice.
+
+The issue is resolved.
+
+
+
+OBE-11796 (OPT_10.5_Fix10)
+In an Optimize environment, Internet Explorer 11 cannot display the graphs in the KPI Instance Detail area.
+
+The issue is resolved.
+
+
+
+OBE-11735 (OPT_10.5_Fix9)
+Process tracker could not process control operations.
+
+In Optimize cluster environment AddInfo and Error control operations could not be process because parent process Id was missing.
+
+The issue is resolved.
+
+OBE-11763 (OPT_10.5_Fix9)
+Optimize fills up the dead letter queue with unprocessed JMS messages.
+
+Optimize might fail to process some JMS messages and might send them to the dead letter queue. As a 
+result, the dead letter queue might fill with JMS messages. The issue occurs when the JMS message is 
+longer than the maximum allowed length.
+To disable publishing EDA process_model events, please add the following line to wrapper.conf file:
+wrapper.java.additional.41=-Dpublish.process.meta=false
+
+The issue is resolved.
+
+OBE-11743 (OPT_10.5_Fix9)
+Process tracker could not process controll operations.
+
+In Optimize environment process and error control operations could not be processed because of a wrong time sequence.
+
+The issue is resolved.
+
+OBE-11772 (OPT_10.5_Fix9)
+Optimize violates -watt.server.http.X-Content-Type-Options=nosniff 
+
+In an Optimize environment, when you configure the "-watt.server.http.X-Content-Type-Options=" header to "nosniff", the configuration
+page is displayed incorrectly and you cannot submit new data in some of the user interface fields.
+
+The issue is resolved.
+
+OBE-11704 (OPT_10.5_Fix9)
+Analytic Engine and Web Service Data Collector cannot run behind a load balancer.
+
+The issue is resolved. You can enable Analytic Engine or Web Service Data Collector to work behind a load balancer, by doing the following:
+1. Install the OPT_10.5_Fix9 fix.
+2. Open the EndpointRegistry.xml file located in:
+For Analytic Engine: <sag_install_dir>/optimize/analysis/conf/system/
+For Web Service Data Collector: <sag_install_dir>/optimize/dataCollector/conf/system/
+3. Add a new endpoint for the load balancer configuration to each EndpointRegistry.xml file you want to modify:
+<endpoint host="HOSTNAME" name="LB Registry" path="PATH" port="PORT" protocol="PROTOCOL"/>, where:
+<host> is the IP address or hostname of the load balancer.
+For the <name> parameter, specify "LB Registry".
+<path> is the routing path for the listener.
+<port> is the port on which to access the load balancer.
+<protocol> is the communication protocol to use with the load balancer, for example HTTP or HTTPS.
+
+Important: You must perform the above steps after each deployment of an environment configuration from the user interface, because the EndpointRegistry.xml file is overwritten.
+
+
+
+OBE-11652 (OPT_10.5_Fix8)
+Sometimes Analytic Engine does not recover properly after a
+database session timeout. This causes repeating error messages to
+appear in the Optimize log files.
+
+The issue is resolved.
+
+OBE-11655 (OPT_10.5_Fix8)
+Optimize fills up the dead letter queue with unprocessed JMS messages.
+
+Optimize might fail to process some JMS messages and might send them to the dead letter queue. As a 
+result, the dead letter queue might fill with JMS messages. The issue occurs when the JMS message is 
+longer than the maximum allowed length.
+
+The issue is resolved.
+
+OBE-11632 (OPT_10.5_Fix8)
+Optimize does not support non-dbo schemas for SQL Server databases.
+
+The issue is resolved. 
+
+
+OBE-11692 (OPT_10.5_Fix8)
+You might not be able to select Broker Server as a logical server in your
+Optimize environment.
+
+On the Design Servers tab in the Edit Environment page in My webMethods, when
+you click Add to select a logical server, Optimize shows an incomplete list of
+the supported versions of Broker Server. As a result, you might not be able to
+add a Broker Server to the environment.
+
+The issue is resolved.
+
+WMN-7429 (OPT_10.5_Fix8)
+webMethods Monitor doesn't display fields with null values on edit pipeline page
+
+When viewing the pipeline some or all of the document fields will fail to render if the fields contain null values.
+
+This issue has been resolved.
+
+
+
+OBE-11616 (OPT_10.5_Fix7)
+The Optimize Process Instance Detail page might not display all available information about a 
+process instance.
+
+On the Analytics page in the Business Console, when you click the process instance ID to access the 
+Process Instance Detail page in My webMethods, Optimize does not display the contents of the Process 
+Instance Information pane. As a result, you cannot view the additional information about the process 
+instance.
+
+The issue is resolved.
+
+
+
+OBE-11545 (OPT_10.5_Fix6)
+Optimize now uses JavaScript to display the graphics and charts in the Optimize user interface, as  
+the support of Adobe Flash for all browsers will stop in December 2020.
+
+
+
+OBE-11526 (OPT_10.5_Fix5)
+Optimize Analytic Engine fails to start after configuring the Log4j2 logger settings.
+
+On the Edit Environment page in My webMethods, when you configure the Log4j2 logger settings, deploy 
+the environment, and attempt restarting Analytic Engine, the following error occurs:
+"org.apache.logging.log4j.core.config.ConfigurationException: No type attribute provided for
+component size". This error causes all subsequent attempts to start Analytic Engine to fail.
+
+The issue is resolved.
+
+
+OBE-11554 (OPT_10.5_Fix5)
+After you install Shared Libraries Loggers 10.5 Fix 1, Analytic Engine stops logging information in 
+the log files. 
+
+The issue is resolved.
+
+
+
+OBE-11468 (OPT_10.5_Fix4)
+Live Purge might fail on PostgreSQL databases.
+
+When Optimize uses a PostgreSQL database, attempting to perform the Live Purge operation might fail 
+with the following error:
+"Invalid Connection URL".
+The issue occurs when you use the Live Purge Standalone tool to perform Live Purge.
+
+The issue is resolved.
+
+OBE-11481 (OPT_10.5_Fix4)
+Windows might display an incorrect status for the Analytic Engine and Web Service Data Collector
+services. The issue occurs when you start Analytic Engine or Web Service Data Collector using the 
+command line user interface or Command Central. 
+
+The issue is resolved.
+
+
+
+OBE-11427 (OPT_10.5_Fix3)
+Analytic Engine might fail to monitor KPI data from Infrastructure Data 
+Collector and Monitor. The issue occurs when the Optimize environment is 
+configured to use different schemas in the same PostgreSQL database.
+
+The issue is resolved.
+
+OBE-11418 (OPT_10.5_Fix3)
+The content of the emails from the Analytics tab in webMethods Business Console 
+might not be readable. The issue occurs with emails that contain non-Latin 
+characters, even when the Optimize environment uses the correct mail encoding 
+settings.
+
+The issue is resolved.
+
+WMN-7240 (OPT_10.5_Fix3)
+With webMethods Monitor, incorrect search results are displayed when using 
+DLS and max results.
+
+In the Service Monitoring UI, the application of the "max rows" setting 
+can affect the visibility of data when DLS is enabled.
+
+The issue is resolved.
+
+
+OBE-11279 (OPT_10.5_Fix2)
+Downloading and installing fixes for Optimize Shared Libraries 
+(wMFix.OPT.optimizeSharedLib) might fail. The issue occurs when you use other 
+Software AG products and have not installed Optimize in your environment.
+
+The issue is resolved. The fix dependencies are removed.
+
+OBE-11263 (OPT_10.5_Fix2)
+Attempting to start Web Service Data Collector might fail with an error. The 
+issue occurs when you install Web Service Data Collector, but you do not install 
+Analytic Engine.
+
+The issue is resolved. 
+
+OBE-11309 (OPT_10.5_Fix2)
+In My webMethods, loading the KPI Instance Detail page might fail with an error. 
+The issue occurs for Runtime KPIs.
+ 
+The issue is resolved.
+
+
+OBE-11214 (OPT_10.5_Fix1)
+When Process Engine sends data for subprocesses to Optimize, a discrepancy of 
+the control operations might occur. As a result, the CPU usage of Optimize might 
+rise to 100 %.
+
+The issue is resolved. 
+
+OBE-11221 (OPT_10.5_Fix1)
+The size of the Optimize Analytic Engine log files might become very large.
+
+The Analytic Engine log files become very large when Analytic Engine cannot 
+connect to the database. The issue occurs because the Analytic Engine logs start 
+filling with the following exception:
+"Database connection is down".
+
+The issue is resolved.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8.0 Installation
+
+Install using the Software AG Update Manager. For
+instructions, see the documentation
+at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+You cannot uninstall this fix using Software AG Update Manager.
+
+
+10.0 Globalization 
+
+This fix conforms to the internationalization standards of the
+webMethods product suite and includes support for operation in
+any country, locale, or language as specified in the Installing
+webMethods Products guide. It was not tested with non-English
+configurations and non-ASCII data. However, this fix has no
+globalization impact and can be applied to systems running in
+any supported locale or configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might
+contain new messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2021 Software AG, Darmstadt, Germany and/or Software 
+AG USA Inc., Reston, VA, USA, and/or its subsidiaries and/or its 
+affiliates and/or their licensors. 
+
+The name Software AG and all Software AG product names are 
+either trademarks or registered trademarks of Software AG and/or 
+Software AG USA Inc. and/or its subsidiaries and/or its 
+affiliates and/or their licensors. Other company and product 
+names mentioned herein may be trademarks of their respective 
+owners. 
+
+Detailed information on trademarks and patents owned by Software 
+AG and/or its subsidiaries is located at 
+http://softwareag.com/licenses . 
+
+This software may include portions of third-party products. For 
+third-party copyright notices, license terms, additional rights 
+or restrictions, please refer to "License Texts, Copyright 
+Notices and Disclaimers of Third Party Products". For certain 
+specific third-party license restrictions, please refer to 
+section E of the Legal Notices available under "License Terms 
+and Conditions for Use of Software AG Products / Copyright and 
+Trademark Notices of Software AG Products". These documents are 
+part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation 
+directory of the licensed product(s). 
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG
+Global Support in the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support
+Contact Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to
+access additional articles, demos, and tutorials, technical 
+information, samples, useful resources, online discussion forums
+moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

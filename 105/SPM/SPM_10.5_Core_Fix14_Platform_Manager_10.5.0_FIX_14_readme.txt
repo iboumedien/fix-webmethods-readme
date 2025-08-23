@@ -1,0 +1,291 @@
+		Software AG Platform Manager 10.5 Fix 14 readme
+
+                           August 2022
+
+_________________________________________________________________
+
+This file provides important information for applying Software AG
+Platform Manager 10.5 Fix 14 to Software AG Platform Manager 10.5. 
+For additional information about Software AG Platform Manager 10.5, 
+see the readme file in the _documentation directory of your 
+Software AG installation (if installed) or on the Empower website at 
+https://empower.softwareag.com.
+
+
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+Software AG Platform Manager 10.5 Fix 14
+
+
+
+2.0 Fix ID
+
+SPM_10.5_Core_Fix14
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Software AG Platform Manager 10.5.
+
+
+
+4.0 Fix Requirements
+
+Software AG Platform Manager Shared 10.5 Fix 14
+Webmethods Installer Shared component SUM API 10.5.0 FIX 5
+ 
+For language pack requirements, see the Globalization section of the 
+Software AG Empower Product Support website at
+
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+The fix is supported on all platforms supported by 
+Software AG Command Central 10.5.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+
+CCE-6437 (Software AG Platform Manager 10.5 Fix 10)
+Platform Manager might fail to report a run-time component as installed 
+in the rare case of using stale metadata.
+
+The issue is now resolved.
+
+
+SUM-4413 (Software AG Platform Manager 10.5 Fix 9)
+When install fixes with Software AG Command Central always latest fixes
+are installed even if older fix versions are selected.
+
+The issue is resolved.
+
+
+CCE-6187 (Software AG Platform Manager 10.5 Fix 8)
+After executing database administration operations in Command Central, some of the messages logged
+in the Platform Manager logs include the database password in clear text.
+
+The issue is resolved. Now the database password is not included in clear text in the Platform
+Manager logs. 
+
+
+SPM-5180 (Software AG Platform Manager 10.5 Fix 8)
+Installing fixes from a mirror repository fails when the Platform Manager machine hosting the
+repository is set as a non-proxy host and the Platform Manager connecting to the Software AG
+repository is configured to connect through a proxy server.
+
+The issue is resolved. You can now successfully install fixes from a mirror repository located on
+a non-proxy host. 
+
+
+CCE-5952 (Software AG Platform Manager 10.5 Fix 6)
+When you specify the fix ID of a fix in the "sagcc list repository fixes dependencies" 
+command, the command does not return the fix dependencies.
+
+The issue is resolved. 
+You can now specify the fix ID of a fix in the command. In the example, the
+command will list the dependencies for the fix with fix ID "SPM_10.5_Core_Fix4":
+sagcc list repository fixes dependencies repo1 SPM_10.5_Core_Fix4 
+
+
+CCE-6096 (Software AG Platform Manager 10.5 Fix 6)
+Generating a fix image repository using the "sagcc exec repository fixes export" 
+CLI command fails when a fix listed in the "artifacts" argument requires a 
+specific operating system.
+
+The issue is resolved. 
+Now Command Central successfully generates a fix image repository even when
+fixes require a specific operating system. 
+
+
+SPM-5143 (Software AG Platform Manager 10.5 Fix 5)
+In some cases when installing a fix using the "Install Fixes" wizard 
+of the Command Central web user interface, Command Central displays an 
+error and disables the selection of the fix. 
+The behavior occurs when the fix you are installing has a dependency 
+on a fix of a product that is not installed in the installation.
+
+The issue is resolved. 
+Now Command Central does not display an error and keeps the fix selection
+enabled. 
+
+
+CCE-5930 (Software AG Platform Manager 10.5 Fix 5)
+Command Central stops applying a template if a product configuration 
+included  in the template fails to apply, because the configuration 
+does not support the Update operation.
+
+The issue is resolved. 
+Now if a product configuration fails to apply because it does not support
+the Update operation, Command Central continues processing the template.
+
+
+CCE-5727 (Software AG Platform Manager 10.5 Fix 3)
+Command Central might not come online after starting up.
+In some cases when Command Central is starting, it cannot discover the 
+OSGI-CCE-ENGINE run-time component and Command Central does not come online. 
+The issue occurs because of an JMX error.
+
+The issue is now resolved. 
+
+
+CCE-5721 (Software AG Platform Manager 10.5 Fix 3)
+Command Central reports an ONLINE status for a run-time component 
+before establishing a connectionto the JMX port that is open for the component.
+
+The issue is resolved. 
+Command Central now reports a STARTING status of the run-time component when
+the JMX port is open and updates the status to ONLINE after connecting to 
+the open JMX port of thecomponent.
+
+
+CCE-5660 (Software AG Platform Manager 10.5 Fix 2)
+After you add a new product mirror repository, Command Central 
+does not list its contents. The issue occurs when you add a 
+product mirror repository, delete it, and then add a product mirror 
+repository with the same name, but in different case. For example, 
+the deleted repository is named "productMirror" and the new repository 
+you add is "productmirror". Command Central does not list 
+the contents of "productmirror".
+
+The issue is now resolved. 
+Command Central lists the contents of new product mirror repositories successfully.
+
+
+SPM-5077 (Software AG Platform Manager 10.5 Fix 1)
+The reason was that the "restartRequired" flag was checked on already installed 
+assets as opposed to checking it on the assets about to be installed.
+
+This is now fixed.
+
+CCE-5513 (Software AG Platform Manager 10.5 Fix 1)
+In some cases when deploying assets to Integration Cloud, 
+the “Restart Required” KPI, is displayed when you are viewing instances in the 
+Command Central web user interface. This KPI is only used for monitoring run-time 
+components with pending changes that require restart.
+
+This issue is resolved. The “Restart Required” KPI is no longer displayed 
+in the Command Central web user interface. 
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or Software AG Update Manager to install 
+fixes on one machine at a time. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot apply these instructions to the previously 
+installed fix.
+
+Uninstall using Command Central (9.7 or later) or Software AG Update Manager. 
+For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the
+webMethods product suite and includes support for operation in
+any country, locale, or language as specified in the Installing
+webMethods Products guide. It was not tested with non-English
+configurations and non-ASCII data. This fix may have some
+globalization impact.
+
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might
+contain new messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright ©2021 Software AG, Darmstadt, Germany and/or Software AG USA Inc., 
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks 
+or registered trademarks of Software AG and/or Software AG USA Inc. and/or its 
+subsidiaries and/or its affiliates and/or their licensors. Other company and 
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or 
+its subsidiaries is located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. 
+For third-party copyright notices, license terms, additional rights or restrictions, 
+please refer to "License Texts, Copyright Notices and Disclaimers of Third Party Products". 
+For certain specific third-party license restrictions, please refer to section E of the 
+Legal Notices available under "License Terms and Conditions for Use of Software AG Products / 
+Copyright and Trademark Notices of Software AG Products". 
+These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

@@ -1,0 +1,249 @@
+                   Integration Server Asset Build Environment 10.15 Fix 4 readme
+
+				                           June 2024
+
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Integration Server Asset Build Environment 10.15 Fix 4
+
+
+
+2.0 Fix ID
+
+IS_10.15_ABE_Fix4
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+webMethods Integration Server Asset Build Environment 10.15
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+
+5.0 Platform Support
+
+webMethods Integration Server Asset Build Environment 10.15 Fix 2 is supported 
+on the same platforms and operating systems and with the same JREs as webMethods 
+Integration Server Asset Build Environment 10.15.
+
+
+
+6.0 Cautions and Warnings
+
+To fully resolve PIE-77771, you must also install webMethods Integration Server 
+10.15 Core Fix 3 (IS_10.15_Core_Fix3). Carefully review the PIE-77771 description 
+for information about resolving issues that may appear after applying PIE-77771 
+as it upgrades the maverick-client-1.7.23.jar to 1.7.34.
+
+To avoid unnecessary errors, you must install the latest Integration Server 
+10.15 Core Fix along with this fix.
+
+
+
+7.0 Fix Contents
+
+PIEAR-2571
+In Asset Build Environment(ABE), a null pointer exception is shown when a package
+containing a newly created unscheduled polling notification is built.
+
+The issue is now resolved.
+
+PIE-87446
+The SFTP Version 2 client in Integration Server does not support Public key 
+authentication with ED25519 keys.
+
+The maverick JAR used in Integration Server for the SFTP Version 2 client is now 
+upgraded from 1.7.34 to 1.7.55
+
+PIE-75291(IS_10.15_ABE_Fix3)
+Repository-based package deployments reset the existing ACL configurations to
+"Default" on the target Integration Server.
+
+This issue is now resolved.
+
+PIE-82709(IS_10.15_ABE_Fix3)
+As part of this fix, Integration Server supports creating global variables at 
+the server level or package level. All services in Integration Server have
+access to a server-level global variable, while a package-level global variable 
+is only accessible by services within the package that has the global variable 
+defined.
+
+You can create global variables using Integration Server Administrator. In 
+Settings > Global variables, add a package to which you can save the global 
+variable definition. If you specify a package, Integration Server creates a 
+package-level global variable; else Integration Server creates a server-level 
+global variable. 
+
+The location where Integration Server saves a global variable depends on 
+whether it is a server-level or package-level global variable.
+
+For server-level global variables, the variable definition is saved in:
+Integration Server_directory\instances\instance_name\config\globalVariables.cnf
+
+For package-level global variables, the variable definition is saved in the 
+package in:
+Integration
+Server_directory\instances\instance_name\packages\package_name\config\ 
+globalVariables.cnf
+When Integration Server encounters global variable substitution during service 
+execution, Integration Server first looks for the global variable defined at the 
+package level. If not found, Integration Server looks for the global variable 
+at the server level. 
+
+However, you can override this default behavior by specifying whether the 
+service must use a server-level or a package-level global variable. To use 
+a server-level global variable, prefix the variable name like this: 
+%server:variablename%. To use a package-level global variable, prefix the 
+variable name like this: %package:variablename%.
+
+The server-level or package-level global variables can be created or edited 
+using the configuration variables template. The assets and property names that 
+correspond to the key names in the template are as follows:
+
+Asset: Global Variable (Package-Level)
+Property: Value, Key Name: globalvariable.packageName.globalVariableName.value
+Property: Is Password?, Key Name:
+globalvariable.packageName.globalVariableName.isSecure 
+Set to true to indicate the global variable is secure or a password. 
+Asset: Global Variable (Server-Level)    
+Property: Value, Key Name: globalvariable.globalVariableName.value
+Property: Is Password?, Key Name: globalvariable.globalVariableName.isSecure
+           Set to true to indicate the global variable is secure or a password.
+
+PIEAR-2244(IS_10.15_ABE_Fix3)
+In Asset Build Environment(ABE), building a webMethods Integration Server
+package, which contains an updated webMethods Adapter for SAP connection, fails 
+with a null value exception.
+
+The issue is now resolved.
+
+PIE-77771 (IS_10.15_ABE_Fix2)
+Integration Server throws the following error while connecting to an SFTP 
+server: "com.wm.app.b2b.server.sftp.client.SFTPClientException: 
+com.sshtools.publickey.InvalidPassphraseException: 
+com.maverick.ssh.SshIOException". 
+
+Consider that Integration Server uses the newer SFTP client (version 2) and the 
+ED25519 type SSH key pair to connect to an SFTP server. The connection fails 
+with SFTPClientException as the maverick-client-1.7.23.jar used by the SFTP 
+client lacks support for the ED25519 key signature and SFTP servers that 
+support crypto policy. 
+
+This issue is resolved. Applying the fix upgrades the maverick-client-
+1.7.23.jar to 1.7.34, which supports the ED25519 key signature. However, the 
+upgraded SFTP client does not support authentication keys in the SSH2 format. 
+Additionally, the hmac-sha256, hmac-sha256@ssh.com, hmac-sha512, hmac-
+sha512@ssh.com, hmac-ripemd160, hmac-ripemd160@openssh.com, hmac-ripemd160-
+etm@openssh.com MAC algorithms are not supported. Therefore, for an existing 
+server alias, exclude the unsupported MAC algorithms, fetch the host key, and 
+save the changes. 
+
+The newer SFTP client (version 2) supports OpenSSH format host keys, and the 
+existing key may be in the unsupported SSH2 format. Therefore, testing the 
+server alias may throw an error. To avoid the error, regenerate the host key in 
+the OpenSSH format, and use the "Get Host Key" button to get the regenerated 
+key for the server alias. Similarly, fetch the latest host key if you are 
+migrating from an older version of Integration Server, or updating a server 
+alias in Integration Server Administrator. 
+
+Once the server alias is successfully created or updated, test whether the user 
+alias works with the host key. If testing the user alias results in 
+java.security.NoSuchProviderException, add the 
+org.bouncycastle.jce.provider.BouncyCastleProvider security provider class in 
+Integration Server Administrator > Security > Keystore > Add Security Provider.
+
+PIE-78262 (IS_10.15_ABE_Fix1)
+When building design-time assets, Asset Build Environment (ABE) ignored the JVM
+version for the asset itself and instead used the JVM version from the ABE
+environment. 
+
+This is now fixed. The correct JVM version is used for the asset in the
+manifest.rel file created by ABE. 
+
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. 
+This action will revert your installation to the previously installed fix.
+You cannot use these instructions to uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, 
+or language as specified in the webMethods Installation Guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix 
+has no globalization impact and can be applied to systems running in any 
+supported locale or configuration.
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages 
+and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright @ 2023  Software AG, Darmstadt, Germany and/or Software AG USA  Inc.,
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their 
+licensors.
+
+The name Software AG and all Software AG product names are either trademarks 
+or registered trademarks of Software AG and/or Software AG USA Inc. and/or 
+its subsidiaries and/or its affiliates and/or their licensors. Other company 
+and product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its 
+subsidiaries is located at http://softwareag.com/licenses.
+
+Use of this software is subject to adherence to Software AG's licensing 
+conditions and terms. These terms are part of the product documentation, 
+located at http://documentation.softwareag.com/legal/ and/or in the root
+installation directory of the licensed product(s).
+
+This software may include portions of third-party products. For third-party 
+copyright notices, license terms, additional rights or restrictions, please 
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party 
+Products". For certain specific third-party license restrictions, please 
+refer to section E of the Legal Notices available under "License Terms
+and Conditions for Use of Software AG Products / Copyright and Trademark 
+Notices of Software AG Products". These documents are part of the product 
+documentation, located at http://softwareag.com/licenses and/or in the 
+root installation directory of the licensed product(s).

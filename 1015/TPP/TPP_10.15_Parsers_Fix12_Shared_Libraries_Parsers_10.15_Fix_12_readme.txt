@@ -1,0 +1,211 @@
+                   webMethods Shared Libraries Parsers 10.15 Fix 12 readme
+
+                                        January 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Shared Libraries Parsers 10.15 Fix 12
+
+
+
+2.0 Fix ID
+
+TPP_10.15_Parsers_Fix12
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects the common extended libraries installed with the 10.15 webMethods products.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+
+TPS-4633 (TPP_10.15_Parsers_Fix12)
+
+webMethods Shared Libraries contains an outdated version of the third party library XML APIs.
+
+The issue is resolved. The XML APIs library has been updated from version 1.4.1 to version 1.4.2.1.
+
+TPS-3422 (TPP_10.15_Parsers_Fix10)
+
+webMethods Shared Libraries contains the outdated third party library Jackson Databind with version 2.15.3.
+
+The issue is resolved. The following Jackson libraries are now updated:
+The jackson-core library is updated from version 2.15.3 to version 2.16.1.
+The jackson-annotations library is updated from version 2.15.3 to version 2.16.1.
+The jackson-databind library is updated from version 2.15.3 to version 2.16.1.
+The jackson-dataformat-yaml library is updated from 2.15.3 to version 2.16.1.
+The jackson-dataformat-cbor library is updated from version 2.15.3 to version 2.16.1.
+The jackson-module-jaxb-annotations library is updated from version 2.15.3 to version 2.16.1.
+The jackson-module-jsonschema library is updated from version 2.15.3 to version 2.16.1.
+The jackson-datatype-jsr310 library is updated from version 2.15.3 to version 2.16.1.
+The jackson-jaxrs-base library is updated from version 2.15.3 to version 2.16.1.
+The jackson-jaxrs-json-provider library is updated from version 2.15.3 to version 2.16.1.
+
+TPS-2559 (TPP_10.15_Parsers_Fix9)
+
+webMethods Shared Libraries contains the outdated third party library Jackson Databind with version 2.15.2.
+
+The issue is resolved. The following Jackson libraries are now updated:
+The jackson-core library is updated from version 2.15.2 to version 2.15.3.
+The jackson-annotations library is updated from version 2.15.2 to version 2.15.3.
+The jackson-databind library is updated from version 2.15.2 to version 2.15.3.
+The jackson-dataformat-yaml library is updated from 2.15.2 to version 2.15.3.
+The jackson-dataformat-cbor library is updated from version 2.15.2 to version 2.15.3.
+The jackson-module-jaxb-annotations library is updated from version 2.15.2 to version 2.15.3.
+The jackson-module-jsonschema library is updated from version 2.15.2 to version 2.15.3.
+The jackson-datatype-jsr310 library is updated from version 2.15.2 to version 2.15.3.
+The jackson-jaxrs-base library is updated from version 2.15.2 to version 2.15.3.
+The jackson-jaxrs-json-provider library is updated from version 2.15.2 to version 2.15.3.
+
+TPS-2335 (TPP_10.15_Parsers_Fix8)
+
+webMethods Shared Libraries contains the third party library Jackson Databind with version 2.15.0-rc3, which causes unexpected issues.
+
+The issue is resolved. The following Jackson libraries are now updated:
+The jackson-core library is updated from version 2.15.0-rc3 to version 2.15.2.
+The jackson-annotations library is updated from version 2.15.0-rc3 to version 2.15.2.
+The jackson-databind library is updated from version 2.15.0-rc3 to version 2.15.2.
+The jackson-dataformat-yaml library is updated from 2.15.0-rc3 to version 2.15.2.
+The jackson-dataformat-cbor library is updated from version 2.15.0-rc3 to version 2.15.2.
+The jackson-module-jaxb-annotations library is updated from version 2.15.0-rc3 to version 2.15.2.
+The jackson-module-jsonschema library is updated from version 2.15.0-rc3 to version 2.15.2.
+The jackson-datatype-jsr310 library is updated from version 2.15.0-rc3 to version 2.15.2.
+The jackson-jaxrs-base library is updated from version 2.15.0-rc3 to version 2.15.2.
+The jackson-jaxrs-json-provider library is updated from version 2.15.0-rc3 to version 2.15.2.
+The fastdoubleparser library has been removed as it is no longer required by jackson-core
+
+TPS-2268 (TPP_10.15_Parsers_Fix7)
+
+The xalan-serializer library is now updated from version 2.7.2 to version 2.7.3.
+
+TPS-2215 (TPP_10.15_Parsers_Fix6)
+
+webMethods Shared Libraries contains outdated versions of Jackson libraries.
+
+The issue is resolved. The following Jackson libraries are now updated:
+The jackson-core library is updated from version 2.15.0-rc1 to version 2.15.0-rc3.
+The jackson-annotations library is updated from version 2.15.0-rc1 to version 2.15.0-rc3.
+The jackson-databind library is updated from version 2.15.0-rc1 to version 2.15.0-rc3.
+The jackson-dataformat-yaml library is updated from version 2.15.0-rc1 to version 2.15.0-rc3.
+The jackson-dataformat-cbor library is updated from version 2.15.0-rc1 to version 2.15.0-rc3.
+The jackson-module-jaxb-annotations library is updated from version 2.15.0-rc1 to version 2.15.0-rc3.
+The jackson-module-jsonschema library is updated from version 2.15.0-rc1 to version 2.15.0-rc3.
+
+TPS-2168 (TPP_10.15_Parsers_Fix5)
+
+contains the third party library Xalan-Java with version 2.7.2,
+which has known security vulnerabilities.
+
+The issue is resolved.
+The xalan-java library is now updated from version 2.7.2 to version 2.7.3.
+
+TPS-2135 (TPP_10.15_Parsers_Fix4)
+
+webMethods Shared Libraries contains outdated versions of Jackson libraries.
+
+The issue is resolved. The following Jackson libraries are now updated:
+The jackson-core library is updated from v2.14.0-rc2 to v2.15.0-rc1.
+The jackson-annotations library is updated from v2.14.0-rc2 to v2.15.0-rc1.
+The jackson-databind library is updated from v2.14.0-rc2 to v2.15.0-rc1.
+The jackson-dataformat-yaml library is updated from v2.14.0-rc2 to v2.15.0-rc1.
+The jackson-dataformat-cbor library is updated from v2.14.0-rc2 to v2.15.0-rc1.
+The jackson-module-jaxb-annotations library is updated from v2.14.0-rc2 to v2.15.0-rc1.
+The jackson-module-jsonschema library is updated from v2.14.0-rc2 to v2.15.0-rc1.
+
+TPS-2011 (TPP_10.15_Parsers_Fix3)
+
+webMethods Shared Libraries contains the third party xercesImpl with version 2.12.1, which has known security vulnerabilities:
+[CVE-2022-23437].
+
+The issue is resolved. The following library has been updated:
+> xercesImpl is updated from v2.12.1 to v2.12.2
+
+TPS-2001 (TPP_10.15_Parsers_Fix2)
+
+webMethods Shared Libraries contains the third party woodstox-core with version 6.1.1, which has known security vulnerabilities:
+[CVE-2022-40156], [CVE-2022-40156], [CVE-2022-40155], [CVE-2022-40154], [CVE-2022-40153].
+
+The issue is resolved. The following library has been updated:
+> woodstox-core is updated from v6.1.1 to v6.4.0
+> stax2-api is updated from v4.2.0 to v4.2.1
+
+TPS-1966 (TPP_10.15_Parsers_Fix1)
+
+webMethods Shared Libraries contains the third-party Jackson Databind with version 2.13.2.2, which has known security vulnerabilities:
+[CVE-2022-42003], [CVE-2022-42004].
+
+The issue is resolved. The following Jackson libraries have been updated:
+> jackson-core is updated from v2.13.2 to v2.14.0-rc2
+> jackson-annotations is updated from v2.13.2 to v2.14.0-rc2
+> jackson-databind is updated from v2.13.2.2 to v2.14.0-rc2
+> jackson-dataformat-yaml is updated from v2.13.2 to v2.14.0-rc2
+> jackson-dataformat-cbor is updated from v2.13.2 to v2.14.0-rc2
+> jackson-module-jaxb-annotations from v2.13.2 to v2.14.0-rc2
+> jackson-module-jsonschema from v2.13.2 to v2.14.0-rc2
+
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

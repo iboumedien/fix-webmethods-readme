@@ -1,0 +1,216 @@
+                   webMethods Shared Libraries Parsers 10.5 Fix 9 readme
+
+                                        October 2022
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Shared Libraries Parsers 10.5 Fix 9
+
+
+
+2.0 Fix ID
+
+TPP_10.5_Parsers_Fix9
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects the common extended libraries installed with the 10.5 webMethods products.
+
+
+
+4.0 Requirements and Dependencies
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product 
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+
+TPS-1971 (TPP_10.5_Parsers_Fix9)
+
+webMethods Shared Libraries contains the third-party Jackson Databind with version 2.13.2.2, which has known security vulnerabilities:
+[CVE-2022-42003], [CVE-2022-42004].
+
+The issue is resolved. The following Jackson libraries have been updated:
+> jackson-core is updated from v2.13.2 to v2.14.0-rc2
+> jackson-annotations is updated from v2.13.2 to v2.14.0-rc2
+> jackson-databind is updated from v2.13.2.2 to v2.14.0-rc2
+> jackson-dataformat-yaml is updated from v2.13.2 to v2.14.0-rc2
+> jackson-dataformat-cbor is updated from v2.13.2 to v2.14.0-rc2
+> jackson-module-jaxb-annotations from v2.13.2 to v2.14.0-rc2
+
+TPS-1735 (TPP_10.5_Parsers_Fix8)
+
+The problem is that under common/lib/ext the older versions of Jackson*.jar are installed and not the once from TTP Parsers Fix 4.
+This happens e.g. when installing API Gateway 10.5 Fix 25 on a system that did not have other fixes installed before (like new installation).
+
+The released API Gateway 10.5 Fix 25 requires TPP.Parsers fix 4.
+Earlier API Gateway fixes required TppParsers fix 1.
+Due to this, the released API Gateway fix 25 manifest file has currently two TPP entries in the Require-Fix section, which are:
+
+wMFix.tppParsers;version=10.5.0.0001 and
+wMFix.TPP.Parsers;version=10.5.0.0004
+
+After release of API Gateway Fix 25 some tests started failing, indicating issues with fasterxml.jackson.dataformat
+Now we found that both TPP fixes are writing to the same location (common/lib/ext), replacing each other.
+Unfortunately it seems that under certain circumstances TPP Fix4 gets installed first, then its files get replaced by the TPP fix 1 files.
+
+The issue is fixed now by removing the wMFix.tppParsers;version=10.5.0.0001 fix as a dependency from API Gateway fix 26 and installing the
+latest wMFix.TPP.Parsers;version=10.5.0.0008 fix, which will provide the latest Jackson versions.
+
+TPS-1645 (TPP_10.5_Parsers_Fix5)
+
+webMethods Shared Libraries contains the third party Jackson Databind with version 2.13.1, which has known security vulnerabilities.
+
+The issue is resolved. The following Jackson libraries have been updated:
+> jackson-core is updated from v2.13.1 to v2.13.2
+> jackson-annotations is updated from v2.13.1 to v2.13.2
+> jackson-databind is updated from v2.13.1 to v2.13.2.2
+> jackson-dataformat-yaml is updated from v2.13.1 to v2.13.2
+> jackson-dataformat-cbor is updated from v2.13.1 to v2.13.2
+> jackson-module-jaxb-annotations is updated from v2.13.1 to v2.13.2
+> jackson-jaxrs-base is updated from v2.13.1 to v2.13.2
+> jackson-jaxrs-json-provider is updated from v2.13.1 to v2.13.2
+
+TPS-1441 (TPP_10.5_Parsers_Fix4)
+
+webMethods Shared Libraries contains the third party Jackson Databind with version 2.12.3, which has known security vulnerabilities.
+
+The issue is resolved. The following Jackson libraries have been updated:
+> jackson-core is updated from v2.12.3 to v2.13.1
+> jackson-annotations is updated from v2.12.3 to v2.13.1
+> jackson-databind is updated from v2.12.3 to v2.13.1
+> jackson-dataformat-yaml is updated from v2.12.3 to v2.13.1
+> jackson-dataformat-cbor is updated from v2.12.3 to v2.13.1
+> jackson-module-jaxb-annotations from v2.12.3 to v2.13.1
+
+TPS-1192 (TPP_10.5_Parsers_Fix3)
+
+webMethods Shared Libraries contains the third party Jackson Dataformat with version 2.11.0, which
+has known security vulnerabilities.
+
+The issue is resolved. Following Jackson libraries have been updated:
+> jackson-core is updated from v2.11.0 to v2.12.3
+> jackson-annotations is updated from v2.11.0 to v2.12.3
+> jackson-databind is updated from v2.11.0 to v2.12.3
+> jackson-dataformat-yaml is updated from v2.11.0 to v2.12.3
+> jackson-module-jaxb-annotations from v2.11.0 to v2.12.3
+> jackson-dataformat-cbor from v2.11.0 to v2.12.3
+
+TPS-1081 (TPP_10.5_Parsers_Fix2)
+
+webMethods Shared Libraries contains the third party Jackson Databind with version 2.10.1, which
+has known security vulnerabilities.
+
+The issue is resolved. Following Jackson libraries have been updated:
+> jackson-core is updated from v2.10.1 to v2.11.0
+> jackson-annotations is updated from v2.10.1 to v2.11.0
+> jackson-databind is updated from v2.10.1 to v2.11.0
+> jackson-dataformat-yaml is updated from v2.10.1 to v2.11.0
+> jackson-module-jaxb-annotations from v2.10.1 to v2.11.0
+> jackson-dataformat-cbor from v2.10.1 to v2.11.0
+
+TPS-741 (TPP_10.5_Parsers_Fix1)
+
+webMethods Shared Libraries contains the third party Jackson Databind with version 2.9.9, which
+have known security vulnerabilities.
+
+The issue is resolved. Following Jackson libraries have been updated:
+> jackson-core is updated from v2.9.9 to v2.10.1
+> jackson-annotations is updated from v2.9.9 to v2.10.1
+> jackson-databind is updated from v2.9.9 to v2.10.1
+> jackson-dataformat-yaml is updated from v2.9.9 to v2.10.1
+> jackson-module-jaxb-annotations from v2.9.9 to v2.10.1
+> jackson-dataformat-cbor from v2.9.9 to v2.10.1
+
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was not tested with non-English configurations and non-ASCII data. This fix may 
+have some globalization impact.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2022 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, and/or
+its subsidiaries and/or its affiliates and/or their licensors. The name Software AG and all Software AG 
+product names are either trademarks or registered trademarks of Software AG and/or Software AG USA Inc. 
+and/or its subsidiaries and/or its affiliates and/or their licensors. Other company and product names 
+mentioned herein may be trademarks of their respective owners. Detailed information on trademarks and patents 
+owned by Software AG and/or its subsidiaries is located at http://softwareag.com/licenses. This software may
+include portions of third-party products. For third-party copyright notices, license terms, additional rights
+or restrictions, please refer to "License Texts, Copyright Notices and Disclaimers of Third Party Products". 
+For certain specific third-party license restrictions, please refer to section E of the Legal Notices available 
+under "License Terms and Conditions for Use of Software AG Products / Copyright and Trademark Notices of Software 
+AG Products". These documents are part of the product documentation, located at http://softwareag.com/licenses 
+and/or in the root installation directory of the licensed product(s).

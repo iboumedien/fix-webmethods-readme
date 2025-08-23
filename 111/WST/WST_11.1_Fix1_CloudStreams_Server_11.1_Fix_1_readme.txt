@@ -1,0 +1,255 @@
+    webMethods CloudStreams Server 11.1 Fix 1 readme
+                         
+				May 2025
+________________________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+
+
+
+1.0 Fix Name
+
+IBM webMethods CloudStreams Server 11.1 Fix 1
+
+
+
+2.0 Fix ID
+
+WST_11.1_Fix1
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects IBM webMethods CloudStreams Server 11.1
+
+
+
+4.0 Requirements and Dependencies
+
+This fix requires the latest available fixes to be installed 
+in advance. In addition, follow the post install instructions.
+
+
+5.0 Platform Support
+IBM webMethods CloudStreams Server 11.1 Fix 1 is supported on 
+all platforms supported by IBM webMethods CloudStreams Server 
+10.15.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents 
+
+WST-8629 (WST_11.1_Fix1)
+
+If a user clicks the "Help" link on the "About" page in 
+CloudStreams, it previously led to a blank page. This 
+issue is now resolved.
+
+WST-8761 (WST_11.1_Fix1)
+
+Previously, when creating a REST connector using a Swagger 
+V2.0 file, parameters of type "application/x-www-form-urlencoded" 
+were being skipped. This issue is now resolved.
+
+
+WST-8675 (WST_11.1_Fix1)
+
+Session tokens in webMethods Integration are automatically 
+refreshed during service execution for all CloudStreams-based 
+accounts when the session is detected as expired, based on 
+the session timeout configuration. However, the refresh call 
+does not respect the response timeout defined in the account 
+configuration. Consequently, if the token refresh request is 
+delayed or stuck, the main service execution thread is also 
+blocked, leading to a hang.
+
+This issue is now resolved. 
+
+WST-8829 (WST_11.1_Fix1)
+
+While creating a REST connector by importing a Swagger file, 
+the "Accept" header was not being mapped correctly. Additionally, 
+neither the "Content-Type" nor the "Accept" header was being 
+mapped when importing an OpenAPI V3 file.
+
+This issue is now resolved.
+
+WST-8779 (WST_11.1_Fix1)
+
+Previously, when creating a REST connector using an OpenAPI 
+file, the request JSON body for a resource was not generated 
+correctly. This issue is now resolved. 
+
+Let me know if you have any questions.
+
+WST-8766 (WST_11.1_Fix1)
+
+Previously, when creating a REST connector using a Swagger 
+V2.0 file, no resources were generated if the file did not 
+contain "definitions". This issue is now resolved. In such 
+cases, an empty document will be created along with the resources.
+
+Let me know if you have any questions. 
+
+WST-8637 (WST_11.1_Fix1)
+
+If the input data for a CloudStreams service execution 
+is very large, enabling trace-level logging may result 
+in an "Out of Memory" error. This issue is now resolved.
+
+To avoid potential issues, it is recommended to refrain 
+from enabling trace logging when working with large input data.
+
+WST-8735 (WST_11.1_Fix1)
+
+When a Salesforce listener encountered the "Buffering 
+capacity XXXX exceeded" error during runtime, it would 
+repeatedly re-subscribe to the backend, eventually 
+exhausting the daily event transaction limit in Salesforce.
+
+This issue is now resolved. If the error occurs again, 
+the listener will be suspended automatically.
+
+WST-8993 (WST_11.1_Fix1)
+
+The following issues were encountered when adding 
+the Start Sequence action:
+
+The ListDependents service did not return the correct 
+results when populating data for each dependent.
+A Null Pointer Exception (NPE) occurred due to an 
+unnecessary declaration of the ModelReaderWriter 
+object in a child class, even though it was already 
+declared and initialized in the parent class.
+
+Both issues have now been resolved.
+
+WST-9081 (WST_11.1_Fix1)
+
+Users encountered a 403 Forbidden error while enabling 
+a Jira basic connection. The error occurred because the 
+system was sending an HTTP GET request with an empty 
+body but with an XML header.
+
+The issue is now resolved by updating the logic to 
+attach the XML header only when a payload exists.
+
+
+8.0 Installation
+
+Step 1: Install using the IBM webMethods Update Manager. For instructions,
+see the documentation at https://docs.webmethods.io.
+
+Note: If you have migrated your connector services from a version
+prior to CloudStreams 9.7 and impacted by WST-2213, and you are
+yet to run the migration utility as suggested in WST-2213, go to
+Step 2, else skip Step 2. If you have created your connector 
+services with a CloudStreams 9.7 or later version, you do not 
+need to run the migration utility
+
+Step 2: Run the CloudStreams migration utility
+(pub.cloudstreams.migration:migrate) to migrate your old
+CloudStreams artifacts to the latest version.
+For more information on the migration utility, see the 
+Integration Server upgrade section in the "Upgrading Software 
+AG Products" guide.
+
+Step 3: In Integration Server, under Settings > Extended > 
+Extended Settings, add "watt.net.ssl.client.useJSSE=true" to 
+use the latest TLS versions.
+Note: Restart Integration Server after applying the above 
+property. In most cases, only this property is required for 
+SaaS providers like Salesforce.
+In some cases, where you want to force usage of any other 
+protocols, for example, SSLv3 or a particular version of TLS 
+properties, use the following properties:
+ - watt.net.jsse.client.enabledProtocols
+ - watt.net.ssl.client.handshake.minVersion
+See the webMethods Integration Server Administrator Guide 
+for the desired values of these properties.
+
+Step 4: For a few SaaS back ends, the underlying JVM trust store 
+may have the required certificates and you may not need to 
+follow this step. But for back ends which have certificates 
+that are not part of the JVM trust store, create and apply a 
+new trust store in Integration Server with the certificates 
+of the SaaS back end. This is a standard practice 
+for setting up secure exchange of certificates. If the trust 
+store is not present, in such cases, certificate related 
+errors will appear.
+To set up secure exchange of certificates, create a JKS trust 
+store with the certificates of the SaaS back end. The trust 
+store should contain all the certificates present in the 
+certificate chain. Apply the trust store in the Integration 
+Server administration page at the "Security > Keystore" 
+section and use that trust store alias in your CloudStreams 
+connection in the "Trust Store" field.
+To know more about creating trust stores and applying them in 
+Integration Server, see the "Securing Communications with the 
+Server" section in the webMethods Integration Server 
+Administrator Guide. Also see the relevant CloudStreams 
+Provider document to find the connection's advanced property 
+"Trust store Alias", for applying the trust store in the 
+connection.
+Note: You can also create trust stores using a publicly 
+available tool, for example, Keytool or KeyStore Explorer.
+
+Step 5: If the Integration Server version is 10.0, 
+and if you are impacted by WST-3082, then
+manually edit the manifest.v3 file located under the
+WmCloudStreams package to include the following entry:
+
+<value name="classloader">package</value>
+
+Restart Integration Server.
+
+Step 6: If the Integration Server version is 10.15,
+and if you are impacted by WST-6720, then manually 
+edit the wst-config.properties file located under the
+<SAG-Installation-directory>\IntegrationServer\instances
+\default\packages\WmCloudStreams\config\resources to include 
+the following entry: wst.allow.301.redirect=true
+
+Restart Integration Server.
+
+
+9.0 Uninstallation
+
+Uninstall using IBM webMethods Update Manager. For instructions, 
+see the documentation at https://docs.webmethods.io.
+
+Note: These instructions can only be used to uninstall the 
+most recently installed fix. This action will revert your 
+installation to the previously installed fix. You cannot 
+apply these instructions to the previously installed fix.
+
+1. After uninstallation, remove the 
+"watt.net.ssl.client.useJSSE=true" property in Integration 
+Server under "Settings > Extended > Extended Settings".
+
+2. Remove the trust store alias from your connection if 
+created, and also the trust store alias entry from 
+Integration server.
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

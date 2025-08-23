@@ -1,0 +1,343 @@
+          webMethods Optimize OBEcdc 10.11.0 Fix 10 readme
+
+                        November 2024                         
+
+_________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+webMethods Optimize OBEcdc 10.11.0 Fix 10
+
+
+
+2.0 Fix ID
+
+OPT_10.11_Fix10
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects:
+
+- Analytic Engine 10.11
+
+
+4.0 Requirements
+
+For language pack requirements, see the Globalization section
+of the Software AG Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+For Optimize environments, the fix version of the Optimize component fixes must
+be the same as the fix version of Optimize shared components fixes
+(wMFix.OPT.optimizeSharedLib and wMFix.OPT.optimizeSharedUI).
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+6.0 Cautions and Warnings
+
+1. Attempting to apply the Optimize Fix to an installation where
+ MWS is configured to use the embedded Derby database will fail.
+ There will be an error reported in the Software AG Update Manager
+ log. For all other supported Relational Database Management Systems
+ configured for MWS, the fix can be applied successfully.
+
+ There is no workaround at this time.
+
+
+ 2. Software AG does not recommend uninstalling this fix because 
+ Optimize or other webMethods products might not work properly.
+
+ To be able to restore your Optimize installation, before you install
+ the fix you must back up the Optimize database and your file system.
+
+
+7.0 Fix Contents
+
+
+OBE-12648 (OPT_10.11_Fix10)
+In webMethods Optimize, you cannot set a new value for the service.address parameter in the GlueServiceRegistryProperties.xml file.
+
+The issue is resolved.
+
+WMN-8671 (OPT_10.11_Fix10)
+In the Process Instance page of webMethods Monitor, the Resubmit Closest button does not resubmit a process instance in which the failed step is contained in a subprocess.
+
+The issue is resolved.
+
+
+
+WMN-8475 (OPT_10.11_Fix9)
+In webMethods Monitor, the My webMethods Server settings might override the Task Client settings.
+
+The issue is resolved.
+
+WMN-8362 (OPT_10.11_Fix9)
+In webMethods Monitor, several API queries consume a lot of memory.
+
+The issue is resolved. The following services are modified so that the wm.monitor.useExactMatch parameter in monitor.cnf applies to them.
+
+pub.monitor.process.instance:getInstanceList
+pub.monitor.process.instance:getInstanceListWithFilter
+pub.monitor.process.instance:getInstanceListCustomDataSet
+pub.monitor.process.instance:getInstanceListCustomData
+pub.monitor.process.instance:getPagedInstanceList
+
+If you set useExactMatch to True, your search query will return only those INSTANCEID,
+PARENTINSTANCEID, and CUSTOMID results which exactly match your search term. An isExactMatch input parameter is also added to these services. isExactMatch works like the useExactMatch parameter, but takes priority over it.
+
+New parameter reference:
+  isExactMatch
+  
+  This parameter allows you to control whether your search query will use the UPPER and LIKE
+  conditions for INSTANCEID, PARENTINSTANCEID, and CUSTOMID.
+  
+Valid values are:
+  false - Default value for isExactMatch. The search query will use the UPPER and LIKE
+  conditions for INSTANCEID, PARENTINSTANCEID, and CUSTOMID.
+  true - If you set isExactMatch to True, the search query will not use the UPPER and LIKE
+  conditions for INSTANCEID, PARENTINSTANCEID, and CUSTOMID. The query will return only those
+  results which exactly match your search term.
+
+
+
+OBE-12549 (OPT_10.11_Fix8)
+In webMethods Optimize, when you deploy an Optimize environment, a PostgreSQL error might appear in the error log.
+
+The issue is resolved.
+
+
+
+OBE-12489 (OPT_10.11_Fix7)
+webMethods Optimize uses an older version of the JSON library, which has known security vulnerabilities.
+
+The issue is resolved. webMethods Optimize now uses JSON version 20230227.
+
+OBE-12465 (OPT_10.11_Fix7)
+The Analytic Engine starts using the Entrust-toolkit library from <SAG_INSTALL_DIR>\optimize\analysis\lib.
+ Also the version of the lib is updated to 8.1.20
+
+
+
+OBE-12404 (OPT_10.11_Fix6)
+When you uninstall an Optimize fix, Software AG Update Manager incorrectly deletes files from the Software AG_directory\common\runtime\bundles directory.
+
+The issue is resolved.
+
+WMN-8269 (OPT_10.11_Fix6)
+With webMethods Monitor the Step Details Error section displays a unexpected exception.
+
+This issue is resolved.
+
+
+WMN-8164 (OPT_10.11_Fix6)
+In webMethods Monitor, the statement cache begins to use a lot of memory resources. This might result in degraded performance.
+
+The issue is resolved.
+
+OBE-12440 (OPT_10.11_Fix6)
+In the Business Data page of Optimize, when you expand Intrinsic Process Metrics and open one of the event maps, the Edit Event Map page displays multiple exceptions.
+ 
+The issue is resolved.
+
+
+
+WMN-8163 (OPT_10.11_Fix5)
+In webMethods Monitor, you cannot resubmit a process instance using the Resubmit Closest button. The issue occurs when the process contains intermediate events.
+
+The issue is resolved. The Process Instances page now displays the correct process status and the Integration Server log contains a warning message.
+
+
+
+WMN-8129 (OPT_10.11_Fix4)
+In webMethods Monitor, the Scheduled Event Administration page displays multiple duplicates of the Process Model Image Cleanup event.
+
+The issue is resolved.
+
+OBE-12246 (OPT_10.11_Fix4)
+In an Optimize environment, when you define a MySQL Community Edition database connection pool and select the Test button, the Database Pool Configuration page displays an error: "Server: com.mysql.jdbc.Driver cannot be found."
+
+The issue is resolved.
+
+OBE-12233 (OPT_10.11_Fix4)
+webMethods Optimize uses an older version of the Hibernate Validator package, which has known security vulnerabilities.
+
+The issue is resolved. webMethods Optimize now uses Hibernate Validator 7.0.4.
+
+
+
+OBE-12209 (OPT_10.11_Fix3)
+webMethods Optimize uses an older version of the Gson library, which has known security vulnerabilities.
+
+The issue is resolved. webMethods Optimize now uses gson-2.9.0.
+
+WMN-8058 (OPT_10.11_Fix3)
+In webMethods Monitor, after you restart Integration Server, the Scheduler page displays a number of scheduled tasks with the imageCleanup service.
+
+The issue is resolved.
+
+WMN-7958 (OPT_10.11_Fix3)
+In webMethods Monitor, when you terminate an Oracle Database archive service and start a new service, a message for a successful operation appears, but no data is archived.
+
+The issue is resolved. To archive data, grant SELECT privilege to the Archive User:
+1. Install the MON_10.7_Database_Fix3 fix.
+2. Open Oracle Database and log in as a SYS user.
+3. Execute the "GRANT SELECT ON V_$SESSION TO <archive_user>;" SQL procedure, where <archive_user> is the user used to log in to the Archive database.
+
+
+
+WMN-7996 (OPT_10.11_Fix2)
+In webMethods Monitor, the setArchiveStatusToError service fails with an error: "Unknown Key: [119.329]".
+
+The issue is resolved.
+
+WMN-7953 (OPT_10.11_Fix2)
+With webMethods Monitor, search query performance needs to be improved.
+
+The issue is resolved. To improve search query performance on an SQL Server database configured in Integration Server, the wm.monitor.useExactMatch parameter is added to the monitor.cnf configuration file.
+
+New parameter reference:
+  useExactMatch
+
+  This parameter allows you to control whether a search by keyword query performed from the
+  Process Instance Detail page will use the UPPER and LIKE functions for instanceID and
+  parentinstanceID.
+
+Valid values are:
+  false - Default value for useExactMatch. The search query will use the UPPER and LIKE
+  functions for instanceID and parentinstanceID.
+  true - If you set useExactMatch to True, the search query will not use the UPPER and LIKE
+  functions for instanceID and parentinstanceID. The search query will return only those results
+  which exactly match your search term.
+
+
+OBE-12109 (OPT_10.11_Fix2)
+Analytic Engine does not start in an Optimize environment that has a Universal Messaging cluster.
+
+The issue is resolved.
+
+WMN-7841 (OPT_10.11_Fix2)
+With webMethods Monitor, resubmitting one or more process instances from the process list might fail with an error. This issue occurs when executing the "Resubmit Closest" or "Rebsubmit Earliest" actions.
+
+The issue is resolved.
+
+OBE-12143 (OPT_10.11_Fix2)
+In an Optimize environment, when you drop the Analysis database component, all Business Activity Monitoring runtime created tables remain in the database.
+
+The issue is resolved.
+
+WMN-8034 (OPT_10.11_Fix2)
+In webMethods Monitor, the getListCustomData service fails when you execute it with multiple input parameters.
+
+The issue is resolved.
+
+
+
+OBE-11989 (OPT_10.11_Fix1)
+During fix installation, OPT_10.5_Fix12 extracts the latest database SQL scripts in incorrect directory locations. This may cause failures when you create or migrate databases using Database Component Configurator.
+
+The issue is now resolved.
+
+OBE-12032 (OPT_10.11_Fix1)
+During startup, Optimize Analytic Engine performs configuration of Universal Messaging channels, which results in duplicate connection factories.
+
+The issue is resolved.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8.0 Installation
+
+Install using the Software AG Update Manager. For
+instructions, see the documentation
+at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Software AG does not recommend uninstalling this fix because 
+Optimize or other webMethods products might not work properly.
+
+
+10.0 Globalization 
+
+This fix conforms to the internationalization standards of the
+webMethods product suite and includes support for operation in
+any country, locale, or language as specified in the Installing
+webMethods Products guide. It was not tested with non-English
+configurations and non-ASCII data. However, this fix has no
+globalization impact and can be applied to systems running in
+any supported locale or configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might
+contain new messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Super iPaas Integration LLC, an IBM Company 2024.
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG
+Global Support in the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support
+Contact Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to
+access additional articles, demos, and tutorials, technical 
+information, samples, useful resources, online discussion forums
+moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

@@ -1,0 +1,113 @@
+                   webMethods Shared Bundles XMLTools 10.15 Fix 4 readme
+
+                                        January 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Shared Bundles XMLTools 10.15 Fix 4
+
+
+
+2.0 Fix ID
+
+TPS_10.15_XMLTools_Fix4
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects the common extended libraries installed with the 10.15 webMethods products.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+
+TPS-4634 (TPS_10.15_XMLTools_Fix4)
+
+webMethods Shared Bundles contains an outdated version of the third party library XML APIs.
+
+The issue is resolved. The XML APIs library has been updated from version 1.4.1 to version 1.4.2.1.
+
+TPS-2267 (TPS_10.15_XMLTools_Fix3)
+
+The xalan-serializer library is now updated from version 2.7.2 to version 2.7.3.
+
+TPS-2167 (TPS_10.15_XMLTools_Fix2)
+
+webMethods Shared Bundles contains the third party library Xalan-Java with version 2.7.2,
+which has known security vulnerabilities.
+
+The issue is resolved.
+The xalan-java library is now updated from version 2.7.2 to version 2.7.3.
+
+TPS-2094 (TPS_10.15_XMLTools_Fix1)
+
+webMethods Shared Bundles contains the third party xercesImpl with version 2.12.1, which has known security vulnerabilities:
+[CVE-2022-23437].
+
+The issue is resolved. The following library has been updated:
+> xercesImpl is updated from v2.12.1 to v2.12.2 
+
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

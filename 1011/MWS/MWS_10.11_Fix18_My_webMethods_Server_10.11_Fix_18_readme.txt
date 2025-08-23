@@ -1,0 +1,2715 @@
+                   My webMethods Server MWS 10.11 Fix 18 readme
+
+                                      December 2024
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+My webMethods Server 10.11 Fix 18.
+
+
+
+2.0 Fix ID
+
+MWS_10.11_Fix18
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+- Task Engine 10.11
+
+
+4.0 Requirements and Dependencies
+
+My webMethods Server Database Scripts 10.11 Fix 2
+webMethods Shared Bundles Loggers 10.11 Fix 2
+Shared Bundles Glassfish 10.11 Fix 4
+Universal Messaging Shared Bundles 10.11 Fix 7
+Shared Bundles ApacheCommons 10.11 Fix 4
+Shared Bundles DataModelling 10.11 Fix 4
+Platform 10.11 Fix 7
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product 
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+1. Back up the My webMethods Server database and file system before installing this fix.								     
+
+2. Before starting a fix installation shut down all My webMethods Server cluster nodes. 
+   Software AG Update Manager will shut down and restart My webMethods Server during fix 
+   installation. Software AG Update Manager waits for a preconfigured time of 300000 ms (5 mins) 
+   for My webMethods Server to shut down and restart. If a particular My webMethods Server 
+   instance takes more time for shutdown and restart, you can configure the wait time by setting
+   the following system property for Software AG Update Manager:
+   -Dmws.shutdown.waittime = <time_in_ms>
+   
+3. If multiple nodes exist in one SAG installation directory, the Software AG Update Manager will 
+   install the fix on all the nodes.																		  								  
+   
+4. If the cluster nodes are on different installation/machines, the fix installation should be done 
+   sequentially for each My webMethods Server cluster node. Wait for Software AG Update Manager to 
+   complete the fix installation on one My webMethods Server installation before installing the fix to 
+   another cluster node installation/machine.
+
+5. If you have a webMethods product that runs outside of the current webMethods installation 
+   directory (the directory in which you installed this fix) and uses any of the files in
+   <webMethods_directory>/common/lib, then apply this fix to the other product installation
+   
+6. Applying a fix reverts the MWS\server\default\bin\server.properties.[bat|sh],
+   MWS\bin\setenv.[bat|sh], MWS\bin\mws.[bat|sh], MWS\server\default\config\wrapper.conf files to
+   their default contents.
+   If you made changes to these files, create a backup of these files before installing the fix, 
+   and change the required values again after the fix installation completes.
+   
+7. This fix requires manual modifications to the jetty.xml configuration file for My webMethods Server.
+   After installing this fix, retrieve the jetty.xml file from the server database and substitute 
+   the <Ref id="Contexts" attributes with <Ref refid="Contexts".
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+MWS-33528 (MWS_10.11_Fix18)
+A security issue with the third-party commons-compress in My webMethods Server. The
+commons-compress distribution is now upgraded to a more secure version. The issue is resolved.
+
+
+
+
+MWS-37158 (MWS_10.11_Fix18)
+Customer discovered an issue where task operations stop working after some time requiring the
+server to be restarted for operations to continue.
+
+The issue has been resolved.
+
+
+
+
+MWS-37169 (MWS_10.11_Fix18)
+In LDAP Configuration if Base DN, Group DN or User DN fields contains special characters and they
+were escaped. The MWS was removing the escaping.  The issue is now resolved.
+
+
+
+
+MWS-37286 (MWS_10.11_Fix18)
+Sometimes My webMethods Server fix installation may fail with reference to failed Jetty feature
+update or Log4J-related error during packaging of custom OSGI bundles during instance update.
+These issues are resolved.
+
+
+
+
+MWS-37307 (MWS_10.11_Fix18)
+A security issue with the third-party library TinyMCE 6.8.2 was discovered in My webMethods Server.
+
+The issue is resolved. TinyMCE is upgraded to the more secure version 6.8.4.
+
+
+
+
+MWS-37308 (MWS_10.11_Fix18)
+A security vulnerability was uncovered based on the documented CWE-284: Improper Access Control .
+The issue is resolved.
+
+
+
+
+MWS-37314 (MWS_10.11_Fix18)
+Potential XML Entity vulnerabilities with XML parser fixed.
+
+
+
+
+MWS-37315 (MWS_10.11_Fix18)
+My webMethods Server might fail to retrieve proper group membership information for specific users
+and groups. This issue occurs sporadically, even when the Group Across Directory Service option
+is enabled.
+
+The issue is resolved.
+
+
+
+
+MWS-37371 (MWS_10.11_Fix18)
+A security issue with potential client-side validation bypass was discovered in My webMethods
+Server.
+
+The issue is resolved.
+
+
+
+
+MWS-37375 (MWS_10.11_Fix18)
+A security issue with potential stored cross-site scripting vulnerability was discovered in the
+WmCDS package for Common Directory Services.
+
+The issue is resolved.
+
+
+
+
+MWS-37387 (MWS_10.11_Fix18)
+A security issue with client-side validation for CAF Input Textbox controls was discovered in My
+webMethods Server.
+
+The issue is resolved. The client-side validation for CAF Input Textbox controls is enhanced to no
+longer allow entering invalid e-mails and prevent backtracking. In addition, the server-side
+validation is enhanced to be more strict in accordance with the RFC standards for e-mail naming.
+
+
+
+
+MWS-37394 (MWS_10.11_Fix18)
+My webMethods Server might fail to initialize when configured to use different values for node
+name and server name.
+
+The issue is resolved.
+
+
+
+
+MWS-37419 (MWS_10.11_Fix18)
+A security issue with potential bypass  of the business logic was discovered in My webMethods
+Server.
+
+The issue is resolved.
+
+
+
+
+MWS-37471 (MWS_10.11_Fix18)
+A security issue with XML eXternal Entities was discovered in My webMethods Server.
+
+The issue is resolved.
+
+
+
+
+MWS-37476 (MWS_10.11_Fix18)
+MWS-29685 (MWS_10.11_Fix17)
+<Remove me from the official fix readme>
+
+
+
+
+MWS-33301 (MWS_10.11_Fix17)
+MWS doesn't support configuring LDAP DB Url
+
+Added support for LDAP data source lookup feature for DataDirect Oracle JDBC driver. The issue is
+resolved.
+
+
+
+
+MWS-33567 (MWS_10.11_Fix17)
+A security issue with the third-party Jetty webserver distribution was discovered in My webMethods
+Server.
+
+The issue is resolved. The Jetty distribution is now upgraded to a more secure version. For the
+fix to take effect, you must modify the jetty.xml configuration file for My webMethods Server and
+substitute the <Ref id="Contexts" attributes with <Ref refid="Contexts". For more information
+about working with the jetty.xml file, see Administering My webMethods Server.
+
+
+
+
+MWS-33627 (MWS_10.11_Fix17)
+A security issue with unrestricted access to the CDS API endpoint was discovered in My webMethods
+Server.
+
+The issue is resolved.
+
+
+
+
+MWS-33633 (MWS_10.11_Fix17)
+Special characters in group member names were not displayed properly in the My WebMethods Server
+UI. This issue has now been resolved.
+
+
+
+
+MWS-33810 (MWS_10.11_Fix17)
+A security issue with the third-party library logback-core was discovered in My webMethods Server.
+
+The issue is resolved. The library is removed and log4j is used instead.
+
+
+
+
+MWS-34231 (MWS_10.11_Fix17)
+A security issue with the third-party library logback-classic was discovered in My webMethods
+Server.
+
+The issue is resolved. The library is removed and log4j is used instead.
+
+
+
+
+MWS-35470 (MWS_10.11_Fix17)
+When using User authentication might fail with an "Error resetting connection"" error message in
+the Integration Server log. This issue occurs when using an LDAP directory service in My
+webMethods Server, and the LDAP connection gets closed or reset.
+
+The issue is resolved.
+
+
+
+
+MWS-36573 (MWS_10.11_Fix17)
+User tasks, that contain an assignment rule based on a decision table in Business Rules, fail
+immediately after creation with a NullPointerException. The issue is resolved
+
+
+
+
+MWS-37207 (MWS_10.11_Fix17)
+Logging for CDS & TE inside of IS was different. CDS did not create any logging files and ended up
+logging wherever Log4j was setup. Where as TaskEngine@IS created it's own te.log.
+
+To streamline both product's logging inside of IS a common _full_.log(similar to MWS) is
+introduced inside the Integration Server's logging directory.
+
+
+
+
+MWS-37285 (MWS_10.11_Fix17)
+My webMethods Server fix contains excessive libraries
+
+In one of the last fixes a feature delivered by My webMethods Server was updated to contain
+libraries which should not be delivered by this product fix and may interfere with the fix
+lifecycle of other fixes, TPS fixes in particular.
+
+The issue is resolved.
+
+
+
+
+MWS-31326 (MWS_10.11_Fix16)
+<Remove me from the official fix readme>
+
+
+
+
+MWS-33138 (MWS_10.11_Fix16)
+Task Engine might fail to process and load settings, configured with an xmlImport file. This issue
+occurs when the xmlImport file includes passwords in plain text.
+
+The issue is resolved.
+
+
+
+
+MWS-33238 (MWS_10.11_Fix16)
+Adding Update UUIDCommand. This was the Update UUID that can be automated by using CCE Templates
+as this command can be invoked via xmlImport.
+
+
+
+
+MWS-33435 (MWS_10.11_Fix16)
+Upgrading My webMethods Server from version 10.7 to version 10.11 fails when attempting to migrate
+the Entrust Toolkit library from the source version.
+
+The issue is resolved.
+
+
+
+
+MWS-33595 (MWS_10.11_Fix16)
+<Remove me from the official fix readme>
+
+
+
+
+MWS-33628 (MWS_10.11_Fix16)
+A security issue with unauthenticated access to About page was discovered in My webMethods Server.
+
+The issue is resolved.
+
+
+
+
+MWS-33647 (MWS_10.11_Fix16)
+My webMethods Server might fail to start after migration and log an NullPointerException error
+message.
+
+The issue is resolved.
+
+
+
+
+MWS-33651 (MWS_10.11_Fix16)
+The Role Management page in My webMethods might take a long time to display the members of the
+selected role when opened for the first time after a server restart.
+
+The issue is resolved.
+
+
+
+
+MWS-33660 (MWS_10.11_Fix16)
+After fix installation, Task Engine logs a "Critical error during deployment:
+java.lang.NoClassDefFoundError: com/webmethods/te/hpstra/HPSTRAException ClassNotFoundException"
+error message  during the My webMethods Server start up.
+
+The issue is resolved.
+
+
+
+
+MWS-29479 (MWS_10.11_Fix15)
+Web service calls from My webMethods Server to Integration Server might fail. This issue occurs
+when using a Glue webservice connector with hybrid authentication.
+
+The issue is resolved.
+
+
+
+
+MWS-30770 (MWS_10.11_Fix15)
+The instance management commands for My webMethods Server do not provide an option for installing
+the latest available fixes when creating or recreating a new server instance, or the OSGi profile
+for a server instance.
+
+The issue is resolved. The instance management scripts are enhanced to support the creation of
+instances, patched to the latest fix level available in the configured fix repository. Now the
+CLI utility for My webMethods Server will invoke Software AG Update Manager and install the latest
+available fixes each time you issue one of the following commands:
+
+mws new - to create a new server instance; mws create-osgi-profile - to create an OSGi profile for
+a server instance. By default The CLI utility for My webMethods Serve looks for Software AG
+Update Manager in the same installation directory as your My webMethods Server installation. You
+can specify a different Update Manager location, and further customize the Update Manager
+behavior by adding a sum.properties file in <Software AG_installation_directory>/MWS/bin. The
+sum.properties file can contain the following parameters:
+
+sum.install.dir=<dir> - Full path to the Update Manager installation directory. Optional. If empty
+or not specified, the default is <Software AG_installation_directory>/SAGUpdateManager.
+sum.image.location=<path> - Full path to an existing fix image. Optional. sum.empower.user=<user>
+- The Update Manager user. Optional. sum.empower.pass=pass_or_pass_file> - The Update Manager
+password. Optional. Valid values are: plain text, encypted password, or a password file. Specify
+the password file as a fully qualified URI as in
+sum.empower.pass=file:/C:/my_files/my_pass_file/sum_pass.txt. Encrypt the pasword using the
+procedure, documented in Administering My webMethods Server. In addition, the CLI utility for My
+webMethods Server will attempt to call Software AG Update Manager and refresh the metadata it
+stores for a server instance each time you issue the delete or delete-osgi-profile commands.
+
+
+
+
+MWS-32776 (MWS_10.11_Fix15)
+<Remove me from the official fix readme>
+
+
+
+
+MWS-32872 (MWS_10.11_Fix15)
+When using My webMethods server with a PostgreSQL database server, session-scoped temporary tables
+with stale data might remain undeleted and cause the database server to become unresponsive.
+
+The issue is resolved. Now the temporary tables are dropped after use to prevent unnecessary
+memory usage per session on the database server side.
+
+
+
+
+MWS-33178 (MWS_10.11_Fix15)
+Task Engine might fail to apply round-robin distribution for initial task assignments. This issue
+occurs for LDAP users that have not logged in to the hosting My webMethods Server.
+
+The issue is resolved.
+
+
+
+
+MWS-33284 (MWS_10.11_Fix15)
+A security issue with the third-party library TinyMCE 4.8.4 was discovered in My webMethods Server.
+
+The issue is resolved. TinyMCE is upgraded to the more secure version 6.8.2.
+
+
+
+
+MWS-33384 (MWS_10.11_Fix15)
+Task Engine might recreate the task database tables during startup. This issue occurs when a fix
+that includes changes to database tables is installed, even if Task Engine is disabled.
+
+The issue is resolved.
+
+
+
+
+MWS-33453 (MWS_10.11_Fix15)
+Creating a My webMethods Server instance fails with an "Invalid CEN header" error message. This
+issue occurs when installing a My webMethods Server fix to an installation that already includes
+Software AG Java Package 17 Fix 152.
+
+The issue is resolved.
+
+
+
+
+MWS-33476 (MWS_10.11_Fix15)
+In certain conditions, the LDAP connection pool might fill up and My webMethods Server might fail
+to obtain an LDAP connection. This issue is resolved.
+
+
+
+
+MWS-33486 (MWS_10.11_Fix15)
+<Remove me from the official fix readme>
+
+
+
+
+MWS-33508 (MWS_10.11_Fix15)
+Custom CAF applications running on My webMethods Server might stop functioning correctly. This
+issue occurs with applications that consist of multiple OSGi bundles, when a bundle fragment gets
+refreshed.   The issue is resolved.
+
+
+
+
+MWS-30916 (MWS_10.11_Fix14)
+<Remove me from the official fix readme>
+
+
+
+
+MWS-32707 (MWS_10.11_Fix14)
+A security issue with the third-party component Apache Jackrabbit was discovered in My webMethods
+Server. The issue is resolved. The Apache Jackrabbit component is upgraded to a more secure
+version.
+
+
+
+
+MWS-32964 (MWS_10.11_Fix14)
+Submitting forms in custom Composite Application Framework portlets might fail. This issue occurs
+when using a disjoint form inside the include section of a Toggletable portlet.
+
+The issue is resolved.
+
+
+
+
+MWS-32999 (MWS_10.11_Fix14)
+In certain conditions custom task applications running on Task Engine might stop functioning
+correctly. This issue occurs after the upgrade to JSF 2.3.9.
+
+The issue is resolved.
+
+
+
+
+MWS-33034 (MWS_10.11_Fix14)
+Setting security permissions for My webMethods Server using the setSecurityRealm command in an
+xmlImport file might fail. This issue occurs due to previous modifications of the security realms
+configuration.
+
+The issue is resolved.
+
+
+
+
+MWS-33185 (MWS_10.11_Fix14)
+When attempting to access My webMethods Server through an invalid URL the server might return
+status OK instead of a 404 error code.
+
+The issue is resolved.
+
+
+
+
+MWS-33187 (MWS_10.11_Fix14)
+Attempting to log in to My webMethods with an Active Directory user name that includes non-ASCII
+characters fails with an error.
+
+The issue is resolved.
+
+
+
+
+MWS-33188 (MWS_10.11_Fix14)
+Task Engine might fail to parse e-mails and perform automated actions for custom task
+applications. This issue occurs when Task Engine runs on My webMethods Server.
+
+The issue is resolved.
+
+
+
+
+MWS-33262 (MWS_10.11_Fix14)
+The migration utility for My webMethods Server does not substitute some of the jetty.xml tags
+properly during upgrade.
+
+The issue is resolved.
+
+
+
+
+MWS-33287 (MWS_10.11_Fix14)
+In certain conditions My webMethods Server might return a 500 HTTP response code instead of the
+more appropriate code 400.  The issue is resolved.
+
+
+
+
+WTN-5935 (MWS_10.11_Fix14)
+When using the Task Engine REST API in My webMethods Server to create or update a task with the a
+value in the expiryDate field, the server might set an incorrect expiry date.
+
+The issue is resolved.
+
+
+
+
+MWS-32674 (MWS_10.11_Fix13)
+My webMethods Server might take a significant amount of time to initialize.
+
+When configured to use a slow database, My webMethods Server might require more than an hour to
+start up. The issue is resolved.
+
+
+
+
+MWS-32762 (MWS_10.11_Fix13)
+My webMethods Server users might get invalid session error messages when they re-log in after
+their session has expired. This issue occurs primarily for custom login applications that access
+http session data.
+
+The issue is resolved.
+
+
+
+
+MWS-32924 (MWS_10.11_Fix13)
+Building a Microservices Runtime image that also includes Common Directory Services fails with an
+error.
+
+The issue is resolved.
+
+
+
+
+MWS-33049 (MWS_10.11_Fix13)
+My webMethods Server might close LDAP connections intermittently, causing attempts to log on to My
+webMethods Server might fail with an error. This issue occurs when a user attempts to log in with
+an LDAP account.
+
+The issue is resolved.
+
+
+
+
+MWS-33077 (MWS_10.11_Fix13)
+<Remove me from the official fix readme>
+
+
+
+
+MWS-33115 (MWS_10.11_Fix13)
+<Remove me from the official fix readme>
+
+
+
+
+MWS-31976 (MWS_10.11_Fix12)
+My webMethods Server might ignore some of the settings on the E-mail Servers Configuration page,
+or support only part of the available configurations for Microsoft Graph authentication.
+
+The issue is resolved.
+
+
+
+
+MWS-32550 (MWS_10.11_Fix12)
+A security issue with cross-site scripting was discovered in My webMethods Server.  The issue is
+resolved.
+
+
+
+
+MWS-32825 (MWS_10.11_Fix12)
+In certain conditions the searchTasks built-in service for Task Engine might log a
+java.rmi.UnmarshalException: java.io.IOException: java.lang.IllegalArgumentException:
+java.lang.ClassCastException error message.
+
+The issue is resolved.
+
+
+
+
+MWS-32853 (MWS_10.11_Fix12)
+In certain conditions My webMethods Server might return partially rendered user interfaces instead
+of the expected 404 error page.
+
+The issue is resolved.
+
+
+
+
+MWS-32863 (MWS_10.11_Fix12)
+My webMethods Server might fail to reconnect to the Active Directory server and log an "Error
+resetting the connection." error message.
+
+The issue is resolved.
+
+
+
+
+MWS-32870 (MWS_10.11_Fix12)
+My webMethods Server returns incorrect results when searching for certificates using a date range
+condition for a current or following period of time, for example This week/year/month or Next
+week/year/month.
+
+The issue is resolved.
+
+
+
+
+MWS-32884 (MWS_10.11_Fix12)
+A security issue with the third-party Jetty webserver distribution was discovered in My webMethods
+Server.
+
+The issue is resolved. The Jetty distribution is now upgraded to a more secure version. For the
+fix to take effect, you must modify the jetty.xml configuration file for My webMethods Server and
+substitute the <Ref id="Contexts" attributes with <Ref refid="Contexts". For more information
+about working with the jetty.xml file, see Administering My webMethods Server.
+
+
+
+
+MWS-32894 (MWS_10.11_Fix12)
+When listing role members, My webMethods Server might fail to find any entries and log an error
+message. This issue occurs when the role members that fulfill the search criteria are LDAP users.
+
+The issue is resolved.
+
+
+
+
+MWS-32935 (MWS_10.11_Fix12)
+My webMethods Server might fail to parse the search query when searching for users and groups if
+the user/group name or the LDAP GroupObject/UserObject filter contain special characters.
+
+The issue is resolved.
+
+
+
+
+WTN-5909 (MWS_10.11_Fix12)
+The Task Engine SOAP API in My webMethods Server does not allow resetting the task expiry date
+field.
+
+The default deserializer in My webMethods Server ignores null values and does not allow clearing
+the task expiry date field using the Task Engine SOAP API.
+
+This issue is resolved. The default deserializer now accepts null values for the task expiry date
+field.
+
+
+
+
+WTN-5910 (MWS_10.11_Fix12)
+When under heavy load, Task Engine might fail to update a task and log a "[POP.017.0015] You don't
+have permissions to modify task info" error message.
+
+The issue is resolved.
+
+
+
+
+MWS-31344 (MWS_10.11_Fix11)
+<Remove me from the official fix readme>
+
+
+
+
+MWS-32322 (MWS_10.11_Fix11)
+My webMethods Server might accept security realms configurations for fabric folders that render
+some server assets accessible to all users and groups, regardless of the configured permissions,
+and stop allowing further customization of the user permissions.
+
+The issue is resolved. My webMethods Server is enhanced to display a permissions health indicator
+on the Permissions Management page, together with a Fix Permissions button for automatic
+resolution of permissions issues.
+
+
+
+
+MWS-32614 (MWS_10.11_Fix11)
+The Composite Application Framework HTML Editor control might fail to render and log the following
+Javascript  error message in the browser console: tinymce.min.js:2 Uncaught TypeError: Cannot
+read properties of undefined (reading 'reset').
+
+The issue is resolved.
+
+
+
+
+MWS-32941 (MWS_10.11_Fix11)
+When deploying modules that have dependent OSGI components, My webMethods Server might encounter
+classloader issues due to missing rewiring. This issue occurs after installing a fix for
+MWS-31772, which changes the default behavior for bundle rewiring at deploy time.
+
+The issue is resolved. The default behavior of My webMethods Server has been restored as in
+versions before the fix for MWS-31772. If My webMethods Server encounters startup issues related
+to bundle refresh, add the following system property to the custom_wrapper.conf file for My
+webMethods Server: allow.refresh.bundles=false. For more information about adding properties to
+the custom_wrapper.conf file, see Administering My webMethods Server.
+
+
+
+
+MWS-31075 (MWS_10.11_Fix10)
+The /api/task/ API endpoint for Task Engine on My webMethods Server displays a 500 Internal Server
+Error and a stack trace instead of a 401 HTTP code for unauthorized requests.
+
+The issue is resolved.
+
+
+
+
+MWS-31388 (MWS_10.11_Fix10)
+A security issue with the third-party library cometd-java-oort was discovered in My webMethods
+Server.
+
+The issue is resolved. The vulnerable cometd-java-oort library is removed from My webMethods Server.
+
+
+
+
+MWS-31772 (MWS_10.11_Fix10)
+My webMethods Server might encounter issues with bundle wiring and fail to start up after fix
+uninstallation.
+
+The issue is resolved. To avoid unpredictable issues and premature server shutdown, the bundle
+re-wiring at deploy time is now disabled by default. To revert to the legacy bundle wiring
+behavior when deploying new components, add the following system property to the
+custom_wrapper.conf file for My webMethods Server: allow.refresh.bundles=true. For more
+information about adding properties to the custom_wrapper.conf file, see Administering My
+webMethods Server.
+
+
+
+
+MWS-31941 (MWS_10.11_Fix10)
+A security issue with the third-party library felix-webconsole was discovered in My webMethods
+Server. The issue is resolved. The felix-webconsole library is now upgraded to a more secure
+version.
+
+
+
+
+MWS-31957 (MWS_10.11_Fix10)
+A security issue with the third-party library jsoup was discovered in My webMethods Server.
+
+The issue is resolved. The jsoup library is upgraded to the more secure version 1.15.4.
+
+
+
+
+MWS-32002 (MWS_10.11_Fix10)
+The Common Directory Services and Task Engine components in Integration Server disregard the
+quiesce mode of the server and make modifications to the database.
+
+The issue is resolved. The components are enhanced to detect when Integration Server is started in
+quiesce mode and do not attempt to write to the database.
+
+
+
+
+MWS-32018 (MWS_10.11_Fix10)
+When you attempt to access a server resource without authentication, My webMethods Server might
+return different responses, depending on the resource existence, or type, which poses security
+risks.
+
+The issue is resolved. To prevent anonymous scanning for the existence of possibly vulnerable
+resources, My webMethods Server now returns a uniform response to unauthenticated requests,
+regardless whether a resource exists.
+
+
+
+
+MWS-32324 (MWS_10.11_Fix10)
+The JMS message producers in My webMethods Server might encounter a racing condition and cause
+unexpected results in multithreaded operations for web service calls that search for tasks.
+
+The issue is resolved.
+
+
+
+
+MWS-32356 (MWS_10.11_Fix10)
+My webMethods Server might log a Jetty-related error message about failed startup of the root
+context and become inaccessible.
+
+This issue occurs when My webMethods Server attempts dual initialization of the
+WebSocketUpgradeFilter component.  The issue is resolved, and the filter configuration of the
+root context is updated. In addition, the number of logged errors related to components that are
+no longer present in the installation is reduced.
+
+
+
+
+MWS-32377 (MWS_10.11_Fix10)
+My webMethods Server might fail to start or restart after fix installation. This issue occurs when
+a fix includes a component, associated with a database table and the fix installation updates the
+component, without updating the database table. On subsequent server starts, My webMethods Server
+attempts to install the component and fails due to the unexpected state of the database table
+structure.
+
+The issue is resolved. When updating associated database tables, My webMethods Server now takes
+into account the actual table structure.
+
+
+
+
+MWS-32381 (MWS_10.11_Fix10)
+My webMethods Server might disregard the non-default quality of protection settings for Kerberos
+authentication and fail to connect to the LDAP server via Kerberos. This issue occurs when the
+quality of protection is set to auth-int or auth-conf.
+
+The issue is resolved.
+
+
+
+
+MWS-32385 (MWS_10.11_Fix10)
+My webMethods Server instances with a custom node name configuration might fail to start. This
+issue occurs when the instance uses a database which was initialized by the Common Directory
+Services component in Integration Server.
+
+The issue is resolved.
+
+
+
+
+MWS-32422 (MWS_10.11_Fix10)
+Task Engine might log a NullPointerException error message in the full.log for My webMethods
+Server when you delete a task.
+
+The issue is resolved.
+
+
+
+
+MWS-32445 (MWS_10.11_Fix10)
+A security issue with the third-party Jetty webserver distribution was discovered in My webMethods
+Server.
+
+The issue is resolved. The Jetty distribution is now upgraded to a more secure version.
+
+
+
+
+MWS-32462 (MWS_10.11_Fix10)
+When under heavy load the CAF MessageRenderer might log an IndexOutOfBoundsException error message
+in the in full.log for My webMethods Server.
+
+The issue is resolved.
+
+
+
+
+MWS-32571 (MWS_10.11_Fix10)
+My webMtehods Server installations include duplicate Google Guava libraries with different versions.
+
+The issue is resolved.
+
+
+
+
+MWS-32576 (MWS_10.11_Fix10)
+Task Audit view in My webMethods might fail to display audit information for some task instances.
+
+This issue occurs on an installation that uses an Oracle database and has a large number of task
+instances.
+
+The issue is resolved.
+
+
+
+
+MWS-32584 (MWS_10.11_Fix10)
+When using the database as a JMS provider, My webMethods Server might fail to recover the provider
+connection after the connection to the database is lost and gets restored and display a
+Temporarily Down for Maintenance message.
+
+The issue is resolved.
+
+
+
+
+MWS-32599 (MWS_10.11_Fix10)
+Depending on the firewall settings My webMethods Server might take a very long time to start up.
+
+The issue is resolved.
+
+
+
+
+WTN-5853 (MWS_10.11_Fix10)
+Task Engine on Integration Server might fail to queue task instances. This issue occurs when you
+attempt to start Task Engine before running all required database scripts, and prepare the
+database subsequently and restart Task Engine.
+
+The issue is resolved.
+
+
+
+
+MWS-29947 (MWS_10.11_Fix9)
+The built-in password complexity policies for My webMethods Server allow using a user password
+with more than three sequential characters.
+
+The issue is resolved.
+
+
+
+
+MWS-30583 (MWS_10.11_Fix9)
+Task Engine might fail to return results when searching for task with a search query that pages
+the results from or to a specific index. This issue occurs when using Task Engine with a MySQL
+database.
+
+The issue is resolved.
+
+
+
+
+MWS-31281 (MWS_10.11_Fix9)
+When you install a My webMethods Server fix that includes an updated version of the jsoup library,
+the fix also delivers the previous library version to the /MWS/bin/migrate/lib directory after a
+new installation.
+
+The issue is now resolved. My webMethods Server fixes now include only the most current compatible
+version of the jsoup library.
+
+
+
+
+MWS-31294 (MWS_10.11_Fix9)
+My webMethods Server has increased response times when performing web service calls to Integration
+Server using Web Services Stack.
+
+The issue is resolved.
+
+
+
+
+MWS-31501 (MWS_10.11_Fix9)
+My webMethods Server might fail to resolve JSF expressions for managed beans, referenced via
+annotations in Composite Application Framework projects until server restart. This issue occurs
+when you add or update an annotation in a CAF project and redeploy the project from Designer.
+
+The issue is resolved.
+
+
+
+
+MWS-31533 (MWS_10.11_Fix9)
+A security issue with anonymous file upload in the server temp folder was discovered with My
+webMethods Server.
+
+The issue is resolved.
+
+
+
+
+MWS-31914 (MWS_10.11_Fix9)
+My webMethods Server might fail to load skin images on the Skin Editor pallete.
+
+The issue is resolved.
+
+
+
+
+MWS-31938 (MWS_10.11_Fix9)
+A security issue with the third-party library Commons-net was discovered in My webMethods Server.
+
+The issue is resolved. The Commons-net library is upgraded to the more secure version 3.9.0.
+
+
+
+
+MWS-31951 (MWS_10.11_Fix9)
+A security issue with the third-party library JSF 2.2.10 was discovered in My webMethods Server.
+
+The issue is resolved. The library is updated to the more secure version 2.3.9 with an additional
+customization that fixes CVE-2019-17091.
+
+
+
+
+MWS-31954 (MWS_10.11_Fix9)
+A security issue with the third-party library Tika was discovered in My webMethods Server.
+
+The issue is resolved. The Tika library is upgraded to the more secure version 1.28.5.
+
+
+
+
+MWS-31960 (MWS_10.11_Fix9)
+A security issue with the third-party library Jempbox was discovered in My webMethods Server.
+
+The issue is resolved. The Jempbox  library is upgraded to the more secure version 1.8.17.
+
+
+
+
+MWS-31965 (MWS_10.11_Fix9)
+In certain conditions a task instance might fail to transition to status Completed and report back
+its status to the parent process.
+
+This issue is resolved.
+
+
+
+
+MWS-32012 (MWS_10.11_Fix9)
+My webMethods Server fails to return results to API calls to the
+http://host:port/api/users/{userID} endpoint.
+
+The issue is resolved.
+
+
+
+
+MWS-32064 (MWS_10.11_Fix9)
+A security issue with the third-party library pdfbox was discovered in My webMethods Server.
+
+The issue is resolved. The pdfbox library is upgraded to the more secure version 2.0.27.
+
+
+
+
+MWS-32209 (MWS_10.11_Fix9)
+My webMethods Server can only connect to Microsoft Exchange using basic authentication, and the
+basic authentication flow is no longer supported by Exchange.
+
+The issue is resolved. My webMethods Server now uses OAuth authentication for the SMTP, POP, and
+IMAP protocols when connecting to Microsoft Exchange. The configuration pages for
+inbound/outbound e-mails and exchange calendars now include new fields that allow configuring OAuth.
+
+
+
+
+MWS-32258 (MWS_10.11_Fix9)
+My webMethods Server components use the entrust library from a deprecated location.
+
+The issue is resolved. My webMethods Server now delivers and uses the entrust library from the
+following location: MWS\lib\entrust\enttoolkit.jar.
+
+
+
+
+WMC-5188 (MWS_10.11_Fix9)
+A security issue with the third-party library chart.js was discovered in My webMethods Server.
+
+The issue is resolved.
+
+
+
+
+WTN-5248 (MWS_10.11_Fix9)
+REST calls to Task Engine services might fail with a 500 Internal Server Error message. This issue
+occurs when the My webMethods Server on which Task Engine is installed is configured to use the
+database as a JMS provider (useDbJms="true"), or is a single non-clustered instance.
+
+The issue is resolved.
+
+
+
+
+WTN-5777 (MWS_10.11_Fix9)
+The task reindexing operation in Task Engine does not provide enough details about the tasks being
+reindexed, or enough information about reindexing errors in the logs.
+
+The issue is resolved. The runtime status reporting and logging details of the task reindexing are
+enhanced to provide more information.
+
+
+
+
+WTN-5816 (MWS_10.11_Fix9)
+Task Engine might fail to create a task instance when the task data field indexes are not defined
+correctly.
+
+The issue is resolved.
+
+
+
+
+MWS-31886 (MWS_10.11_Fix8)
+Deleting task attachments might leave orphan data in the database. This issue occurs when you
+delete task attachments, added through a Task Client service.
+
+The issue is resolved.
+
+
+
+
+MWS-31897 (MWS_10.11_Fix8)
+My webMethods Server might log incomplete error messages. This issue occurs when an error message
+text contains an unescaped apostrophe character.
+
+The issue is resolved.
+
+
+
+
+MWS-31925 (MWS_10.11_Fix8)
+The dbintegrity check command-line diagnostic tool for My webMethods Server might fail with a
+"java.lang.NoSuchMethodError:
+org.apache.logging.log4j.spi.LoggerContextFactory.isClassLoaderDependet()" error message after
+fix installation.
+
+The issue is resolved.
+
+
+
+
+MWS-32008 (MWS_10.11_Fix8)
+When deploying the Events Collector component, the database tables that the component requires are
+not created and My webMethods Server logs an "relation "tblweventtypes" does not exist." error
+message. This issue occurs when using a MySQL database.
+
+The issue is resolved. The Events Collector component is now updated to run with a MySQL database.
+
+
+
+
+MWS-32090 (MWS_10.11_Fix8)
+My webMethods Server might become unresponsive when attempting to connect to LDAP using SSL (LDAPS).
+
+The issue is resolved.
+
+
+
+
+MWSSOF-4345 (MWS_10.11_Fix8)
+My webMethods Server can only connect to Microsoft Exchange using basic authentication, and the
+basic authentication flow is no longer supported by Exchange.
+
+The issue is resolved. My webMethods Server now uses OAuth authentication for the SMTP, POP, and
+IMAP protocols when connecting to Microsoft Exchange.
+
+
+
+
+WTN-5804 (MWS_10.11_Fix8)
+Some of the built-in services for Task Engine might return incorrect business data.
+
+My webMethods Server might process some of the incoming Axis 1 requests properly and put incorrect
+values into incoming integer arrays, transfering wrong data to the Task Engine services.
+
+The issue is resolved.
+
+
+
+
+MWS-30677 (MWS_10.11_Fix7)
+The migration utility for My webMethods Server might omit fields from the jetty.xml configuration
+file when upgrading to version 10.7 and 10.11.
+
+The issue is resolved.
+
+
+
+
+MWS-31187 (MWS_10.11_Fix7)
+My webMethods Server might display CAF Command Button controls as disabled after the first click.
+
+The issue is resolved. For the fix to take effect, you must add the following custom JVM property
+in the custom_wrapper.conf file for My webMethdos Server:
+wrapper.java.additional.XXX=-Dcom.softwareag.mws.caf.enableCMDBtntimeout=true
+
+
+
+
+MWS-31341 (MWS_10.11_Fix7)
+My webMethods Server might log com.webmethods.sc.directory.DirectoryException: Unexpected Error:
+java.lang.NullPointerException error messages. This issue occurs when using a single My
+webMethods Server node together with one or more integration server nodes that have Common
+Directory Services installed.
+
+The issue is resolved. When Universal Messaging is not present or configured on a landscape, My
+webMethods Server nodes no longer use REST as the default means for communication between nodes,
+but use the database as a JMS provider instead.
+
+
+
+
+MWS-31345 (MWS_10.11_Fix7)
+My webMethods Server might fail to connect to the configured Microsoft Active Directory Server.
+This issue occurs when the LdapServerIntegrity level of the Active Directory server is increased.
+
+The issue is resolved. A new configuration field Quality of Protection has been added to the LDAP
+Configuration Page in My webMethods to allow selecting the security level of your Active
+Directory server.
+
+
+
+
+MWS-31400 (MWS_10.11_Fix7)
+In certain conditions updating a deployable component might cause My webMethods Server to refresh
+other bundles and shutdown unexpectedly, logging the following message: Refreshing existing
+bundles that are pending removal: [mws.war.wm_task_archival_0.9.0.v20220601-1154 [1035]] between
+bundle shutdowns and attempted restarts, and the runtime shutdown log message. The issue is
+resolved. To skip bundle restart, add the following custom JVM property to the
+custom_wrapper.conf for My webMethods Server and supply the bundle symbolic name as the property
+value: wrapper.java.additional.xxx=-Dbundle.refresh.stoplist=<symbolic.bundle.name> For example:
+wrapper.java.additional.520=-Dbundle.refresh.stoplist=mws.war.wm_task_archival
+
+
+
+
+MWS-31723 (MWS_10.11_Fix7)
+Task Engine events might fail to transfer the required task information to global task change
+rules during execution.
+
+The issue is resolved.
+
+
+
+
+MWS-31855 (MWS_10.11_Fix7)
+After installing fix My webMethods Server Common Lib Fix 6 on an installation that includes
+Optimize, the Optimize component might fail to start.
+
+The issue is resolved.
+
+
+
+
+WTN-5778 (MWS_10.11_Fix7)
+For some Axis 1 web service calls My webMethods Server might incorrectly interpret the incoming
+request and fail to make a required update to a task instance. This issue occurs when using the
+.NET API for Task Engine on My webMethods Server.
+
+The issue is resolved.
+
+
+
+
+MWS-29945 (MWS_10.11_Fix6)
+When a My webMethods user attempts to log with an expired password, My webMethods Server prints a
+log message with null instead of the user name.
+
+The issue is resolved.
+
+
+
+
+MWS-30678 (MWS_10.11_Fix6)
+Custom skins for My webMethods might behave unexpectedly after upgrading My webMethods Server to
+version 10.7.
+
+The login page for My webMethods Server versions 10.7 or later includes a hidden div element for
+SSO integration and might cause login customizations, developed for previous releases to behave
+unexpectedly, even when SSO is disabled.
+
+The issue is resolved.
+
+
+
+
+MWS-31095 (MWS_10.11_Fix6)
+A security issue with sensitive information in logs was discovered in My webMethods Server.
+
+The issue is resolved.
+
+
+
+
+MWS-31112 (MWS_10.11_Fix6)
+When creating a cluster from My webMethods Server and Process Engine containers, My webMethods
+Server might fail to initialize, logging a "Cannot register a containerized MWS node in a
+non-containerized MWS cluster." error message. This issue occurs when the Process Engine
+container starts before the My webMethods Server container.
+
+The issue is resolved.
+
+
+
+
+MWS-31183 (MWS_10.11_Fix6)
+Saved searches in My webMethods Server might get corrupted. This issue occurs when a saved search
+includes the DynamicSearchQueryTerm which is considered unsafe for deserialization.
+
+The issue is resolved.
+
+
+
+
+MWS-31285 (MWS_10.11_Fix6)
+The create-osgi-profile, delete-osgi-profile, and deprecate-profile commands for My webMethods
+Server are not intended for general use and might cause miscellaneous issues.
+
+The issue is resolved. The create-osgi-profile, delete-osgi-profile, and deprecate-profile
+commands are no longer available for general use from the command line interface for My webMethods
+Server and can only be activated with a dedicated patch from Software AG RnD.
+
+
+
+
+MWS-31342 (MWS_10.11_Fix6)
+When displaying week numbers, the Composite Application Framework Date Input control does not
+conform to the ISO 8601 standard for Spain and Germany.
+
+The issue is resolved. Now the CAF Date Input Control is compliant to ISO 8601 numbering, where
+the first week of a year is the first week in January that includes a Thursday. Applies based on
+the preferred language/locale for the current user.
+
+
+
+
+MWS-31401 (MWS_10.11_Fix6)
+In certain conditions My webMethods Server might fail to display more than one CAF HTMLInput
+control on a single page.
+
+The issue is resolved.
+
+
+
+
+MWS-31406 (MWS_10.11_Fix6)
+When starting up in a Docker container My webMethods Server might parse the paths to the
+instance/cluster configuration files incorrectly and fail to initialize.
+
+The issue is resolved.
+
+
+
+
+MWS-31415 (MWS_10.11_Fix6)
+My webMethods Server and Task Engine might fail to pick up changes, delivered with a Shared
+Components LWQ fix.
+
+The issue is resolved.
+
+
+
+
+MWS-31443 (MWS_10.11_Fix6)
+<Remove me from the official fix readme>
+
+
+
+
+MWS-31445 (MWS_10.11_Fix6)
+My webMethods Server might stop responding when there are interruptions in the connection to the
+database. This issue occurs when using Oracle databases.
+
+The issue is resolved.
+
+
+
+
+MWS-31513 (MWS_10.11_Fix6)
+The dialog forms for creating and editing LDAP configurations in My webMethods contain fields that
+are not localized and display  as field name keys.
+
+The issue is resolved.
+
+
+
+
+MWS-31546 (MWS_10.11_Fix6)
+The UmConnectionHealthIndicator health check indicator for My webMethods Server containers reports
+incorrect information.
+
+When running a cluster of My webMethods Server containers, the health indicator that tests the
+connection to Universal Messaging reports that the cluster is successfully connected using DB
+JMS, regardless of the actual configuration.
+
+The issue is resolved.
+
+
+
+
+MWS-31547 (MWS_10.11_Fix6)
+The custom data source health indicator for My webMethods Server containers displays the result of
+the health check, but no additional details.
+
+The issue is resolved. The custom data source health indicator for My webMethods Server containers
+now lists all configured custom data sources with their access URL and status.
+
+
+
+
+MWS-31548 (MWS_10.11_Fix6)
+My webMethods Server containers do not exit maintenance mode when the mode is changed from the
+graphical user interface.
+
+The issue is resolved.
+
+
+
+
+MWS-31557 (MWS_10.11_Fix6)
+Task Engine might log exceptions about failing to acquire a global schedule lock.
+
+The Task Event Orchestrator module in Task Engine might log the following error message:
+[POP.001.0002] A "com.webmethods.portal.task.events.orchestrator.TaskOrchestratorException"
+occurred with the Message "Unable to create lock entry for TaskID=-1, ruleID=-1". This is a
+concurrency issue that occurs in clustered environments.
+
+The issue is resolved.
+
+
+
+
+MWS-31574 (MWS_10.11_Fix6)
+The Log Analysis tools for My webMethods Server might fail to detect server logs in the default
+log directories and display error messages. This issue occurs when My webMethods Server is running
+in a Docker container.
+
+The issue is resolved.
+
+
+
+
+MWS-31581 (MWS_10.11_Fix6)
+The dialog forms for creating and editing LDAP configurations in My webMethods contain fields that
+are not localized and display as field name keys.
+
+
+
+
+MWS-31585 (MWS_10.11_Fix6)
+For some Axis 1 web service calls My webMethods Server might incorrectly interpret an incoming
+empty array as null and fail to make a required update to a task instance.
+
+The issue is resolved.
+
+
+
+
+MWS-31620 (MWS_10.11_Fix6)
+Task Engine in Integration Server is enabled by default even when accidentally installed and might
+cause library version conflicts.
+
+The issue is resolved. To prevent issues with the accidental installation of Task Engine with the
+Integration Server node in Installer, Task Engine in Integration Server is now disabled by
+default and will not initialize, unless turned on. To enable Task Engine in Integration Server,
+add the following property in the custom_wrapper.conf file for your Integration Server instance:
+wrapper.java.additional.XXX=-Dtask.library.mode.enable=true
+
+
+
+
+MWS-31623 (MWS_10.11_Fix6)
+Global environment variables in My webMethods Server portlet applications might not get populated
+with values.
+
+During My webMethods Server start up, a racing condition might occur, and some portlet
+applications might fail to access the required global environment variables.
+
+The issue is resolved.
+
+
+
+
+WTN-5527 (MWS_10.11_Fix6)
+Task Engine might fail to apply all changes to a task instance when executing multiple TaskChange
+events from different rules in a sequence.
+
+The issue is resolved. Task Engine is enhanced to perform an additional check for incomplete
+changes after a rule finishes execution.
+
+
+
+
+WTN-5645 (MWS_10.11_Fix6)
+In certain occasions Task Engine might process the task change events in an order, different than
+the order of firing, causing loses in the processing of scheduled events.
+
+The issue is resolved.
+
+
+
+
+WTN-5714 (MWS_10.11_Fix6)
+The Task Engine package in Integration Server overrides the default logging configuration of the
+server during startup.
+
+The issue is resolved.
+
+
+
+
+MWS-27657 (MWS_10.11_Fix5)
+My webMethods Server does not run in hot standby mode.
+
+The issue is resolved. My webMethods Server can now start in hot standby mode and provide
+additional failover capabilities. When running in hot standby mode a My webMethods Server node
+has read-only access to the database. Writing to the database is disabled, and all attempts to
+execute write operations are denied with the message "System is in standby mode, DB modification
+denied".
+
+To start a My webMethods Serve node in hot standby mode from the command line: mws.bat/sh -r -s
+<serverName> start 	 To start a My webMethods Serve node in hot standby mode with a property (for
+example, as a service/daemon): mws.db.readonly.mode=true Add the property to the
+custom_wrapper.conf file for My webMethods Server as described in Administering My webMethods
+Server.
+
+To take a My webMethods Server node out of hot standby mode: Make a POST request to
+http://localhost:8585/api/command/standbymode with the following property in the request body: {
+"standbyValue" : false }
+
+
+
+
+MWS-29184 (MWS_10.11_Fix5)
+A security issue with the third-party component hibernate-validator was discovered in My
+webMethods Server.
+
+The issue is resolved. The hibernate-validator library is upgraded to a more secure version.
+
+
+
+
+MWS-30138 (MWS_10.11_Fix5)
+In My webMethods, Administrators can set the position of the system directory service to a
+position different than the first in the list.
+
+The issue is resolved. My webMethods Server no longer allows moving the system directory service
+down the list of directory services.
+
+
+
+
+MWS-30758 (MWS_10.11_Fix5)
+Searching for tasks using a custom string field that contains numbers fails. This issue occurs
+when calling the searchTasksIndexed Task Engine built-in service from Software AG Designer.
+
+The issue is resolved.
+
+
+
+
+MWS-30863 (MWS_10.11_Fix5)
+A security issue with authentication access through all HTTP verbs was discovered in My webMethods
+Server.   The issue is resolved. My webMethods Server is enhanced to allow disabling all methods,
+excluding POST for authenticating through user name and password by setting the following
+property in the custom_wrapper.conf file for My webMethods Server to true:
+mws.security.deny.non.post.auth For more information about setting JVM properties in the
+custom_wrapper.conf file for My webMethods Server, see Administering My webMethods Server.
+
+
+
+
+MWS-30891 (MWS_10.11_Fix5)
+My webMethods Server containers might fail to start when configured to connect to the server
+database using SSL.
+
+When starting up in a container, My webMethods Server might process the keystore path in the
+server.properties file incorrectly, and fail to connect to the server database using SSL.
+
+The issue is resolved.
+
+
+
+
+MWS-30952 (MWS_10.11_Fix5)
+Deleting workspaces on the Workspace Management page in My webMethods might fail with an "Unable
+to load ResourceBundle" error message.
+
+The issue is resolved.
+
+
+
+
+MWS-31039 (MWS_10.11_Fix5)
+My webMethods Server containers might fail to start with a database integrity check error. This
+issue occurs when starting a My webMethods Server container after you manually edit the
+mws.db.xml to remove comments.
+
+The issue is resolved.
+
+
+
+
+MWS-31178 (MWS_10.11_Fix5)
+A security issue with deserialization of untrusted data was discovered in My webMethods Server.
+
+The issue is resolved. The package com.google.code.gson:gson was upgraded to a more secure version.
+
+
+
+
+MWS-31181 (MWS_10.11_Fix5)
+When starting up in a Docker container, My webMethods Server might fail with a DB integrity check
+error message. This issue occurs when the container uses a database which was migrated from a
+previous release.
+
+The issue is resolved.
+
+
+
+
+MWS-31191 (MWS_10.11_Fix5)
+When provisioning a My webMethods Server environment that includes multiple nodes, some of the
+server nodes might fail to start, logging multiple error messages, related to component
+installation.
+
+This issue occurs when the installation timestamp of a particular component is different across
+nodes, which causes the installation process to switch to non-optimized mode.
+
+The issue is resolved.
+
+
+
+
+MWS-31203 (MWS_10.11_Fix5)
+<Remove me from the official fix readme>
+
+
+
+
+MWS-31249 (MWS_10.11_Fix5)
+My webMethods Server containers might fail to start at the database connection validation phase.
+This issue occurs when starting a container from an image, created with Software AG Installer.
+
+The issue is resolved.
+
+
+
+
+MWS-31258 (MWS_10.11_Fix5)
+Installing My webMethods Server fixes might fail with an "Error occurred while updating classpath"
+error message. This issue occurs when one or more of the bundle repositories contains a corrupt
+JAR bundle.
+
+The issue is resolved. Now the fix installation logic in My webMethods Server is enhanced to skip
+the corrupt bundle and log a warning message.
+
+
+
+
+MWS-31268 (MWS_10.11_Fix5)
+<Remove me from the official fix readme>
+
+
+
+
+MWSSOF-4125 (MWS_10.11_Fix5)
+<Remove me from the official fix readme>
+
+
+
+
+WTN-5656 (MWS_10.11_Fix5)
+Task Engine might trigger Task Accepted change rules more than once when queueing new task
+instances.
+
+The issue is resolved.
+
+
+
+
+WTN-5704 (MWS_10.11_Fix5)
+The REST services for Task Engine on My webMethods Server might fail with an error.
+
+The Jersey server library might fail to initialize during the My webMethods Server startup due to
+OSGI resolution issues, and cause Task Engine REST services to fail.
+
+The issue is resolved. The My webMethods Server distribution no longer includes multiple bundles
+that provide the javax.inject API and cause OSGI resolution issues at server startup.
+
+
+
+
+MWS-29330 (MWS_10.11_Fix4)
+When using a MySQL Community Edition database, My webMethods Server containers do not process the
+JDBC driver supplied as an external library in a volume correctly, and fail to initialize.
+
+The issue is resolved.
+
+
+
+
+MWS-29722 (MWS_10.11_Fix4)
+My webMethods Server might require a long time to bootstrap when installing multiple components on
+startup.
+
+The issue is resolved. The deployment mechanism in My webMethods Server is enhanced to skip
+redundant tasks and speed up component installation.
+
+
+
+
+MWS-29984 (MWS_10.11_Fix4)
+When using My webMethods Server with Command Central, the Platform Manager plug-in for My
+webMethods Server might fail to retrieve and delete the cluster.xml file within the required
+limit and leave a local copy of the file on the file system, applying unexpected configurations.
+
+The issue is resolved.
+
+
+
+
+MWS-30277 (MWS_10.11_Fix4)
+When starting in a container with a custom health check configuration defined in a
+healthCheck.json file My webMethods Server logs an ambiguous error message in the full.log and
+does not report details on the parsing errors that might occur during the processing of the json
+file. This issue occurs when the the json file contains invalid entries or syntax errors.
+
+The issue is resolved. My webMethods Server containers are enhanced to include the stacktrace of
+all exceptions that occur when parsing the healthCheck.json configuration file.
+
+
+
+
+MWS-30499 (MWS_10.11_Fix4)
+When running schedule rules Task Engine might attempt to update tasks with status Error and log
+multiple "A "java.lang.Exception" occurred with the Message "Task with id <taskID> has status
+Error and can not be updated." error messages in the server log.
+
+The issue is resolved.
+
+
+
+
+MWS-30521 (MWS_10.11_Fix4)
+<Remove me from the official fix readme>
+
+
+
+
+MWS-30522 (MWS_10.11_Fix4)
+<Remove me from the official fix readme>
+
+
+
+
+MWS-30523 (MWS_10.11_Fix4)
+<Remove me from the official fix readme>
+
+
+
+
+MWS-30538 (MWS_10.11_Fix4)
+When using the searchTasksIndexedHPSTRA built-in service to search task business data, Task Engine
+might fail to return any search results.
+
+The issue is resolved.
+
+
+
+
+MWS-30601 (MWS_10.11_Fix4)
+My webMethods Server might duplicate taxonomy assets during deployment. This issue occurs when
+deploying application projects that change the server taxonomy concurrently on multiple server
+nodes using webMethods Deployer.
+
+The issue is resolved.
+
+
+
+
+MWS-30660 (MWS_10.11_Fix4)
+A security issue with the third-party library logback was discovered in My webMethods Server.
+
+The issue is resolved. The library is updated to the more secure version 1.2.9.
+
+
+
+
+MWS-30794 (MWS_10.11_Fix4)
+My webMethods Server might fail to start with a "FAILED to update MWS db connection parameters for
+server instance." error message. This issue occurs when starting My webMethods Server as a Docker
+container.
+
+The issue is resolved.
+
+
+
+
+MWS-30859 (MWS_10.11_Fix4)
+Task Engine does not fire scheduled task events after you modify the original schedule time.
+
+After a scheduled task event fires and you change the schedule time for the event, Task Engine
+does not trigger the event again.
+
+The issue is resolved.
+
+
+
+
+MWS-30985 (MWS_10.11_Fix4)
+Attempting to delete a data source in the administration pages for Common Directory Services in
+Integration Server fails with an "Calling delete datasource service results in  [POP.002.0005]
+Unable to locate command: removeAlias" error message.
+
+The issue is resolved.
+
+
+
+
+MWS-31103 (MWS_10.11_Fix4)
+When My webMethods Server is starting up in a Docker container, the container health check might
+fail, even when the checks for all enabled indicators pass. This issue occurs when a heath check
+indicator is removed from the configuration, or disabled.
+
+The issue is resolved.
+
+
+
+
+WTN-5702 (MWS_10.11_Fix4)
+Task searches might fail with an "Invalid element in <package_name>.TaskInfo - isVotable" error
+message. This issue occurs when using the built-in SOAP services for Task Engine in My webMethods
+Server and the search query excludes votable tasks.
+
+The issue is resolved.
+
+
+
+
+WTN-5713 (MWS_10.11_Fix4)
+When running on My webMethods Server, Task Engine might store the callback service data for tasks
+in an incorrect format.
+
+The issue is resolved.
+
+
+
+
+MWS-29369 (MWS_10.11_Fix3)
+When running inside a container, My webMethods Server does not display a proper warning message
+when you attempt to create a content service using an HTTP request.
+
+The issue is resolved. My webMethods Server containers now log a proper warning when you attempt
+to execute an unsupported operation such as creating a content service via HTTP.
+
+
+
+
+MWS-29880 (MWS_10.11_Fix3)
+My webMethods Server might generate invalid or corrupted attributes in the cluster.xml
+configuration file during server bootstrap. This issue occurs when using a custom cluster.xml
+file during the first start of a server instance that has not been initialized after installation.
+
+The issue is resolved.
+
+
+
+
+MWS-29886 (MWS_10.11_Fix3)
+A security issue with the third-party component Apache Common Compress was discovered in My
+webMethods Server.
+
+The issue is resolved. The Apache Common Compress library was upgraded to a more secure version.
+
+
+
+
+MWS-29890 (MWS_10.11_Fix3)
+A security issue with the third-party component jsoup was discovered in My webMethods Server.
+
+The issue is resolved. The jsoup library is upgraded to a more secure version.
+
+
+
+
+MWS-30117 (MWS_10.11_Fix3)
+Some of the My webMethods Server cluster nodes might fail during the in-memory initialization
+phase of the cluster start-up.
+
+The issue is resolved.
+
+
+
+
+MWS-30329 (MWS_10.11_Fix3)
+The dbintegrity check command-line diagnostic tool for My webMethods Server might fail with a
+"java.lang.NoSuchMethodError:
+org.apache.logging.log4j.spi.LoggerContextFactory.isClassLoaderDependet()" error message after
+fix installation.
+
+The issue is resolved.
+
+
+
+
+MWS-30378 (MWS_10.11_Fix3)
+My webMethods Server might ignore the new values that administrators supply when changing the
+passwords for system users.
+
+The issue is resolved.
+
+
+
+
+MWS-30465 (MWS_10.11_Fix3)
+My webMethods Server might attempt to load custom logging configurations more than once during
+instance start up.
+
+The issue is resolved.
+
+
+
+
+MWS-30501 (MWS_10.11_Fix3)
+My webMethods Server might fail to allocate the required number of  temporary database pool
+connections and log errors in the server log.
+
+The issue  is resolved.
+
+
+
+
+MWS-30524 (MWS_10.11_Fix3)
+A security issue with the third-party component JDOM was discovered in My webMethods Server.
+
+The issue is resolved. The JDOM library was upgraded to a more secure version.
+
+
+
+
+MWS-30621 (MWS_10.11_Fix3)
+When starting up inside a Docker container, My webMethods Server might fail to apply updates that
+are included as fixes, causing some features to behave unexpectedly or not work at all.
+
+The issue is resolved.
+
+
+
+
+MWS-30661 (MWS_10.11_Fix3)
+My webMethods Server might log a java.lang.NumberFormatException error message during upgrade and
+fail to migrate some of the instance configurations. This issue occurs when upgrading the server
+using Command Central, or the migration utility for My webMethods Server.
+
+The issue is resolved.
+
+
+
+
+MWS-30796 (MWS_10.11_Fix3)
+My webMethods Server might produce incorrect incorrect contents when regenerating the OSGI
+manifest files for deployed JAR files.
+
+When regenerating the OSGI manifest of a deployed bundles to address the change in the template or
+BND version, My webMethods Server might produce incorrect manifest contents. This issue occurs
+for jars built with an earlier version of the template, or jars that are already present in the
+deploy directory of the server instance, for example jars produced Asset Build Environment.
+
+This issue is resolved.
+
+
+
+
+MWS-30804 (MWS_10.11_Fix3)
+When installing a cluster environment, persisting the audit configuration file might fail and
+cause some of the My webMethods Server nodes to stop mid-installation, until manually restarted.
+
+The issue is resolved.
+
+
+
+
+WTN-5553 (MWS_10.11_Fix3)
+When using task types with complex events and/or task subscriptions, one or more of the following
+issues might occur: - Task Engine might trigger the execution of task events in an unexpected
+order, causing mismatches in task data. This issue occurs in environments, upgraded to version
+10.7 or later. - Task Engine might fail to add a subscription for a principal that has proper
+permissions. This issue occurs when a principal with the same ID is registered in more than one
+directory service.
+
+The issue is resolved. When executing task events, Task Engine now follows the order in which
+events are defined and executes events completely and sequentially. When storing subscriptions,
+Task Engine now makes an additional check to determine the directory service to which a task
+event subscriber belongs.
+
+
+
+
+WTN-5604 (MWS_10.11_Fix3)
+In certain conditions, Task Engine might fail to release task locks and cause performance
+degradation in the execution of an entire business process.
+
+The issue is resolved.
+
+
+
+
+WTN-5650 (MWS_10.11_Fix3)
+When creating tasks on the UI Development perspective, Software AG Designer might generate the
+taskRules.xml file incorrectly, causing task assignments to fail with a NullPointerException
+error message at runtime.
+
+The issue is resolved.
+
+
+
+
+MWS-29084 (MWS_10.11_Fix2)
+The Docker image generation tool for My webMethods Server might fail to create an image from a My
+webMethods Server installation. This issue occurs when you run the image generation tool without
+initializing the My webMethods Server instance.
+
+The issue is resolved. Now the image generation tool for My webMethods Server creates the Docker
+image for the installation without taking into account whether the server instance has been
+initialized or not.
+
+
+
+
+MWS-30115 (MWS_10.11_Fix2)
+My webMethods Server might fail to connect to Universal Messaging. This issue occurs when using
+basic authentication and the hsp or nhp protocol.
+
+The issue is resolved.
+
+
+
+
+MWS-30220 (MWS_10.11_Fix2)
+My webMethods Server might log multiple DEBUG/TRACE level messages during initialization.
+
+The issue is resolved.
+
+
+
+
+MWS-30221 (MWS_10.11_Fix2)
+The Folders > Administrative Folders > Administration Dashboard > Analysis > Logging Configuration
+page for My webMethods Server displays the internal names of the available logging appenders in
+the OUTPUT THRESHOLD(S) column, instead of the names of the log files to which each logger
+outputs log data.
+
+The issue is resolved.
+
+
+
+
+MWS-30274 (MWS_10.11_Fix2)
+My webMethods Server might fail to limit the search results for an LDAP query and load a large
+number of entries in the server cache.  The issue is resolved.
+
+
+
+
+MWS-30283 (MWS_10.11_Fix2)
+My webMethods Server might fail to start up, or start up after a significant amount of time when
+you provide a custom logging configuration.
+
+The issue is resolved.
+
+
+
+
+MWS-30296 (MWS_10.11_Fix2)
+My webMethods Server might disregard the configured session timeout for a user and terminate the
+session after three minutes as for a Guest account.
+
+The issue is resolved.
+
+
+
+
+MWS-30312 (MWS_10.11_Fix2)
+<Remove me from the official fix readme>
+
+
+
+
+MWS-30314 (MWS_10.11_Fix2)
+My webMethods Server might fail to initialize when starting in a Docker container. This issue
+occurs when using a Docker image, generated from an on-premises installation with the built-in
+image generation tool for My webMethods Server, when the versions of the Tanuki Wrapper in the
+wrapper.conf file and the .dockerignore file mismatch.
+
+The issue is resolved.
+
+
+
+
+MWS-30330 (MWS_10.11_Fix2)
+When using CAF Async Checkbox controls in a table, My webMethods Server renders an HTML table that
+contains aria-multiselectable=true attributes, which does not comply to the requirements of
+Section 508.
+
+The issue is resolved.
+
+
+
+
+MWS-30341 (MWS_10.11_Fix2)
+The migration utility for My webMethods Server might fail to migrate custom applications from the
+deploy directory of a server instance. The issue occurs when the application are packaged as .jar
+files.
+
+The issue is resolved.
+
+
+
+
+MWS-30377 (MWS_10.11_Fix2)
+My webMethods Server might fail to start in a Docker container when the run command does not
+include volume mapping.
+
+The issue is resolved.
+
+
+
+
+MWS-30415 (MWS_10.11_Fix2)
+My webMethods Server might fail to update user permissions that are inherited through nested
+groups and roles.
+
+The issue is resolved.
+
+
+
+
+MWS-30432 (MWS_10.11_Fix2)
+My webMethods Server might generate incorrect links when adding assets under a webspace. This
+issue occurs when the asset name contains spaces.
+
+The issue is resolved.
+
+
+
+
+MWS-30439 (MWS_10.11_Fix2)
+My webMethods Server might display an empty list of users in the People Search Box CAF control,
+even when matching search results are available. This issue occurs when the No Max Result option
+is selected.
+
+The issue is resolved.
+
+
+
+
+WTN-5426 (MWS_10.11_Fix2)
+Task Engine might place expired task instances in error state. This issue occurs when using change
+rules to update the task status and the user who last updated the task no longer exists.
+
+The issue is resolved. When executing rules that update the task status, My webMethods Server runs
+the rule on behalf of the sysadmin user, instead of the user who last modified the task instance
+if that user no longer exists.
+
+
+
+
+MWS-29056 (MWS_10.11_Fix1)
+When My webMethods Server is running as a Windows service, the service description in the Windows
+Services list does not display the correct version number.
+
+The issue is resolved.
+
+
+
+
+MWS-29085 (MWS_10.11_Fix1)
+When starting in a container, My webMethods Server might log multiple "ERROR: could not create
+lock for 'cluster.xml' java.lang.Exception: ERROR: file: 'cluster.xml' does not exist in MWS
+database. " error messages. This issue occurs when using the NODE_NAME environment variable to
+supply a new node name for the My webMethods Server instance.
+
+The issue is resolved.
+
+
+
+
+MWS-29325 (MWS_10.11_Fix1)
+When using My webMethods Server in a container with externalized log files, the performance
+metrics snapshot report perfsnapshot*.xml file is missing from the volume, specified with the
+$LOGS_DIR environment variable.
+
+The issue is resolved.
+
+
+
+
+MWS-29331 (MWS_10.11_Fix1)
+When running in a container, My webMethods Server does not store the log files, generated by the
+My webMethods Server command line utility such as the update-node-name_<nodeName>.log file in the
+designated external logs volume.
+
+The issue is resolved. My webMethods Server now stores all log files, including command line
+utility logs in the external volume when such volume is specified at container startup.
+
+
+
+
+MWS-29534 (MWS_10.11_Fix1)
+When attempting to create a user with a user ID that has more than the allowed number of
+characters, My webMethods Server displays an incorrect error message that the allowed number of
+characters in the user ID is 255.
+
+The issue is resolved. Now My webMethods Server displays an error message with the correct number
+of characters in the user ID, which is 226.
+
+
+
+
+MWS-29600 (MWS_10.11_Fix1)
+When using the My webMethods Server command-line utility to issue commands that require opening a
+database connection such as getconfig, My webMethods Server does not close the database
+connections and might cause multiple  warnings in the database server logs.
+
+The issue is resolved.
+
+
+
+
+MWS-29611 (MWS_10.11_Fix1)
+Bundle resolution might fail when deploying war files to My webMethods Server. This issue occurs
+with war files that use optional imports, as declared by the default (generated) bundle manifest.
+
+The issue is resolved. To ensure proper bundle resolution, My webMethods Server and Asset Build
+Environment are enhanced to provide the option to control how bundles are resolved by the
+quinox  platform using BND templates which are applied to multiple components. This option works
+in addition  to the current implementation, which generates bundle manifests using a default
+template with optional  resolution. Instructions from custom BND files for a particular
+application (OSGI-OPT/bnd.bnd)  continue to get merged with the template. Now you can also add
+one or more custom BND files to  control the template contents, and apply custom instructions to
+multiple applications. Custom  instructions are applied when building assets with Asset Build
+Environment or when deploying bundles  to My webMethods Server. For more information about
+working with BND templates,  see Administering My webMethods Server.
+
+
+
+
+MWS-29621 (MWS_10.11_Fix1)
+When running in a container, My webMethods Server might throw multiple NullPointerException error
+messages about the SyncAppsFolder/SyncAppsService.
+
+The issue is resolved.
+
+
+
+
+MWS-29630 (MWS_10.11_Fix1)
+Starting a My webMethods Server container as a second cluster node fails with the following error
+message: "DB integrity check FAILED. Container validation failed."
+
+The issue is resolved.
+
+
+
+
+MWS-29633 (MWS_10.11_Fix1)
+The Common Directory Services component in Integration Server might fail to initialize and display
+the status of Central User Management as Not Configured. This issue occurs when the Common
+Directory Services component attempts to connect to a data source used by a cluster of My
+webMethods Server instances, running in containers.
+
+The issue is resolved.
+
+
+
+
+MWS-29636 (MWS_10.11_Fix1)
+Logging in to My webMethods Server using single sign-on might fail with a 'Error in validating
+SAML Response:Incoming SAML message is invalid' error message. This issue occurs when: 1. The user
+does not complete the SAML authentication process in more than several minutes. 2. The
+authentication request is initialized via HTTP, and the response uses HTTPS.
+
+The issue is resolved. Now you can explicitly disable the validation of the InResponseToField in
+the SAML response by adding the mws.saml.sin.disable.request.caching property in the
+custom_wrapper.conf file for My webMethods Server, with a value of true, as follows:
+wrapper.java.additional.nnn=-Dmws.saml.sin.disable.request.caching=true, where nnn is the unique
+sequential number of the property.
+
+
+
+
+MWS-29710 (MWS_10.11_Fix1)
+Task Engine might fail to sort task instances when using a DB2 database.
+
+When you attempt to sort task instances on the Task List Management page in My webMethods by
+assignee (the Assigned To column), Task Engine might display the following error message:
+[SoftwareAG][DB2 JDBC Driver][DB2]The character value for the CAST, DECIMAL, FLOAT, or INTEGER
+scalar function is invalid. This issue occurs when using a DB2 database.
+
+The issue is resolved.
+
+
+
+
+MWS-29717 (MWS_10.11_Fix1)
+The Docker image generation tool for My webMethods Server fails to create an image with multiple
+exposed ports.
+
+The issue is resolved.
+
+
+
+
+MWS-29718 (MWS_10.11_Fix1)
+When the use.dockerignore command-line parameter is set to false but a .dockerignore file is
+available, the Docker image generation tool for My webMethods Server ignores the parameter value
+and uses the .dockerignore file when building an image.
+
+The issue is resolved.
+
+
+
+
+MWS-29719 (MWS_10.11_Fix1)
+The Docker image generation tool for My webMethods Server fails to create an image when the
+create.dockerignore command-line parameter is set to false.
+
+The issue is resolved.
+
+
+
+
+MWS-29721 (MWS_10.11_Fix1)
+When a user, defined in an LDAP directory service attempts to log into My webMethods, My
+webMethods Server might become unresponsive until restarted. This issue occurs when the LDAP
+directory service is configured to use Kerberos authentication. The issue is resolved.
+
+
+
+
+MWS-29723 (MWS_10.11_Fix1)
+During initialization, My webMethods Server might not calculate all time attributes for schedule
+events correctly. This issue occurs when My webMethods Serves starts in a container or when
+optimized startup is enabled on an on-premises installation (mws.inmemory.init=true).
+
+The issue is resolved.
+
+
+
+
+MWS-29729 (MWS_10.11_Fix1)
+My webMethods Server might return an incomplete list of users when you browse large LDAP groups of
+more than 3000 users.
+
+The issue is resolved.
+
+
+
+
+MWS-29741 (MWS_10.11_Fix1)
+My webMethods Server might bind to all IP addresses even when specifically configured to use a
+single IP address.
+
+The issue is resolved.
+
+
+
+
+MWS-29754 (MWS_10.11_Fix1)
+A security issue with cross-site scripting was discovered in My webMethods Server.
+
+The issue is resolved.
+
+
+
+
+MWS-29757 (MWS_10.11_Fix1)
+Some of the buttons for working with forms in My webMethods, for example for submitting or
+applying changes might not scale up enough to accommodate translated button labels.
+
+The issue is resolved.
+
+
+
+
+MWS-29860 (MWS_10.11_Fix1)
+My webMethods Server might terminate a user session due to timeout although the user is still
+actively interacting with the system.
+
+The issue is resolved.
+
+
+
+
+MWS-29879 (MWS_10.11_Fix1)
+When updating a newly installed instance, My webMethods Server might include the admin-pass.jar to
+the OSGi profile for the instance.
+
+The issue is resolved. Updating the server instance no longer adds the admin-pass.jar to the
+instance profile.
+
+
+
+
+MWS-29976 (MWS_10.11_Fix1)
+The generated marker file for validating the data and logs volumes for My webMethods Server
+container does not include the value of the required nodeName attribute.
+
+The issue is resolved.
+
+
+
+
+MWS-29977 (MWS_10.11_Fix1)
+The generated marker file for validating the data and logs volumes for My webMethods Server
+container does not include the value of the required cluster ID attribute.
+
+The issue is resolved.
+
+
+
+
+MWS-29995 (MWS_10.11_Fix1)
+My webMethods Server containers might shut down unexpectedly shortly after initialization. This
+issue occurs when the container connects to a database which has already been initialized by an
+on-premises My webMethods Server installation.
+
+The issue is resolved. The startup validation for My webMethods Server containers is enhanced to
+detect if the database is initialized by an on-premises installation and fail before starting the
+runtime.
+
+
+
+
+MWS-30104 (MWS_10.11_Fix1)
+My webMethods Server might display an 'Authentication statement is too old to be used with value'
+error message when a My webMethods user attempts to log in again after the user session expires
+due to a period of inactivity. This issue occurs with SAML SSO, when the period of validity of
+the SAML assertion of the IDP is longer than the default period for My webMethods Server.
+
+The issue is resolved. My webMethods Server now supports the maxAuthenticationAge property for
+SAML SSO to allow setting the same validity period as in the IDP configuration. To modify the
+assertion validity time, add the mws.saml.sin.max.authentication.age property to the
+custom_wrapper.conf file for My webMethods Server as follows:
+wrapper.java.additional.nnn=-Dmws.saml.sin.max.authentication.age=<value_in_seconds>, where nnn
+is the unique sequential number of the property. The default validity period is 7200 seconds.
+
+
+
+
+MWS-30105 (MWS_10.11_Fix1)
+The JSR-349 Bean Validation in Composite Application Framework applications might stop working.
+
+The issue is resolved.
+
+
+
+
+MWS-30106 (MWS_10.11_Fix1)
+The spFolderByOwner database procedure that My webMethods Server executes when loading user
+folders might work inefficiently with large amounts of data.
+
+The issue is resolved. The performance of the query that loads user folders is improved by adding
+an additional database index. This speeds up operation when the database contains large amounts
+of data.
+
+
+
+
+MWS-30116 (MWS_10.11_Fix1)
+When running in a Docker container, My webMethods Server does not create the default instance log
+directory in the designated default volume (MWS/volumes/logs/instance_logs).
+
+The issue is resolved.
+
+
+
+
+MWS-30202 (MWS_10.11_Fix1)
+When using webMethods Deployer to deploy web applications to My webMethods Server, the server
+might process resource cache incorrectly and cause issues in the operation of the deployed
+applications.
+
+The issue is resolved.
+
+
+
+
+MWS-30206 (MWS_10.11_Fix1)
+Task Engine might log error messages during task reindexing. This issue occurs when reindexing a
+task type that is not associated with any task instances.
+
+The issue is resolved.
+
+
+
+
+MWS-30223 (MWS_10.11_Fix1)
+My webMethods might fail to open some of the pages that you add to the left hand side menu for My
+webMethods in new tabs, or act inconsistently when navigating between menus. This issue occurs
+when the userAlias attribute of the <wm_xt_fabricfolder> definition contains non-ASCII characters.
+
+The issue is resolved.
+
+
+
+
+MWS-30382 (MWS_10.11_Fix1)
+When running on My webMethods Server, Task Engine might log an "java.sql.SQLException: Failed to
+start database './TASKLWQ'... Caused by: org.apache.derby.iapi.error.StandardException: Another
+instance of Derby may have already booted the database
+/home/administrator/softwareag/common/bin/TASKLWQ" error message. This issue occurs when two or
+more of the My webMethods Server instances are installed on the same host.
+
+The issue is resolved. For the fix to take effect on existing installations, you must add the
+following additional JVM property in the custom_wrapper.conf file for My webMethods Server:
+wrapper.java.additional.nnn=-Dderby.system.home="%SERVER_HOME%/system/lwq"
+wrapper.java.additional.nnn.stripquotes=TRUE,  where nnn is the unique sequential number of the
+property. For more information about working with the custom_wrapper.conf file, see Administering
+My webMethods Server.
+
+
+
+
+WTN-5523 (MWS_10.11_Fix1)
+The searchTaskIndexed built-in service in Task Engine might return unexpected results. This issue
+occurs when upgrading to Task Engine versions later than 9.7, if the parameter
+DoNotShowAcceptedByOthers is set to true in a non-inbox search.
+
+The issue is resolved. In older Task Engine versions, the DoNotShowAcceptedByOthers is ignored
+when performing non-inbox searches (with searchUserTasks set to false). For backward
+compatibility, now Task Engine provides the task.donotshowacceptedbyothers.disable custom JVM
+property. When set to true, Task Engine search services ignore the value of the
+DoNotShowAcceptedByOthers parameter.
+
+
+
+
+WTN-5537 (MWS_10.11_Fix1)
+When using task types with task assignment events, Task Engine might fail to assign tasks and log
+a java.lang.IllegalStateException error message. This issue occurs when the task includes multiple
+events.
+
+The issue is resolved.
+
+
+
+
+WTN-5539 (MWS_10.11_Fix1)
+Task Engine might log multiple 'Task is out of date' warnings. This issue occurs when multiple
+threads from a custom application access the getTask API and the cached copy of the task that the
+API returns is not up to date.
+
+The issue is resolved. Now Task Engine is enhanced to query the database for the latest copy of
+the task before returning it through the API. For the fix to take effect, you must add the
+task.enable.strong.consistency custom JVM property in the custom_wrapper.conf file for the My
+webMethods Server instance that hosts Task Engine, and set the property value to true, as
+follows: wrapper.java.additional.nnn=-Dtask.enable.strong.consistency=true, where nnn is the
+unique sequential number of the property. Note that using the strong consistency setting might
+have performance impact on systems under heavy load.
+
+
+
+
+WTN-5562 (MWS_10.11_Fix1)
+When using the built-in search services with the "is empty" and "is not empty" operators, Task
+Engine returns incorrect results.
+
+The issue is resolved.
+
+
+
+
+WTN-5578 (MWS_10.11_Fix1)
+Task Engine might ignore the cache policies configurations, set in the cache.xml file for the
+hosting My webMethods Server instance.
+
+The issue is resolved.
+
+
+
+
+WTN-5601 (MWS_10.11_Fix1)
+Task Engine might log NullPointerException error messages related to the
+TaskVotingChangeEventListener component in the My webMethods Server logs.
+
+The issue is resolved.
+
+
+
+
+WTN-5641 (MWS_10.11_Fix1)
+<Remove me from the official fix readme>
+
+
+
+
+
+
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+If this is the first time you are installing a fix using the Software AG Update Manager, stop 
+My webMethods Server and back up the My webMethods Server database and file system before 
+applying the fix.  
+
+
+
+9.0 Uninstallation
+
+These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+You can only uninstall one My webMethods Server fix at a time. Make sure you backup your server 
+settings before uninstalling My webMethods Server fixes.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was not tested with non-English configurations and non-ASCII data. However, this 
+fix has no globalization impact and can be applied to systems running in any supported locale or 
+configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Super iPaas Integration LLC, an IBM Company 2024.

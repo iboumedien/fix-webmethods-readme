@@ -1,0 +1,304 @@
+        IBM webMethods Adapter 7.1 for Ariba Supplier OnRamp Fix 17 readme
+
+                          October 2024
+
+________________________________________________________________________________
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+_______________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods Adapter 7.1 for Ariba Supplier OnRamp Fix 17
+
+
+2.0 Fix ID
+
+AribaSupplierOnRamp_7.1_Fix17
+
+
+3.0 Product(s)/Component(s) Affected
+
+None.
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include 
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the 
+release.
+
+POA-256
+Updated copyright notes, vendor, and product names for IBM rebranding.
+
+POA-254
+cXML document transactions are failing due to incorrect mapping caused by a
+missing "body" variable in the wm.b2b.cxml.rec:record_Extrinsic record.
+
+This issue is now resolved.
+
+POA-220 (AribaSupplierOnRamp_7.1_Fix16)
+In webMethods Adapter for Ariba Supplier OnRamp, the
+pub.ariba.supplier.cxml:checkDocumentDigitalSignature service calls
+pub.flow:debug service, which logs the debug messages when the service is
+invoked irrespective of the logging levels set in Integration Server.
+
+This issue is now resolved.
+
+The debug messages generated from invoking pub.flow:debug service appear in the
+logs only if the logging level is set to DEBUG in Integration Server. 
+
+POA-193 (AribaSupplierOnRamp_7.1_Fix15)
+In webMethods adapter for Ariba Supplier OnRamp, the shared secret validation
+fails if the shared secret is not configured and the incoming message contains a
+shared secret.
+
+This issue is now resolved.
+
+POA-186 (AribaSupplierOnRamp_7.1_Fix14)
+In webMethods Adapter for Ariba Supplier OnRamp, a new log file is generated
+every minute.
+
+This issue is now resolved. 
+
+WF-15643 (AribaSupplierOnRamp_7.1_Fix14)
+In webMethods adapter for Ariba Supplier OnRamp, the support for a single shared
+secret is replaced with shared secret support for multiple identities.
+
+POA-157 (AribaSupplierOnRamp_7.1_Fix14)
+In webMethods Adapter for Ariba Supplier OnRamp, the Logs module viewed in
+Integration Server Administrator screen is enhanced. 
+
+POA-158 (AribaSupplierOnRamp_7.1_Fix14)
+In webMethods Adapter for Ariba Supplier OnRamp, the Error Details viewed in
+Integration Server Administrator screen in Logs module is inconsistent.
+
+This issue is now resolved. 
+
+POA-156 (AribaSupplierOnRamp_7.1_Fix14)
+In webMethods Adapter for Ariba Supplier OnRamp, when using Send cXML Request in
+the Test module in Integration Server Administrator screen, the text in Request
+Content is incorrectly displayed due to the HTML encoding of the generated CXML.
+
+This issue is now resolved. 
+
+POA-155 (AribaSupplierOnRamp_7.1_Fix14)
+In webMethods Adapter for Ariba Supplier OnRamp, when viewing the Test module in
+Integration Server Administrator screen, the Browse button provided for the From
+File field, is unable to fetch the absolute file path in major browsers.
+
+This issue is now resolved.
+
+A text field is provided to add the absolute file path for the From File field
+in the Test module. 
+
+POA-154 (AribaSupplierOnRamp_7.1_Fix14)
+In webMethods Adapter for Ariba Supplier OnRamp, the Test module viewed in Integration
+Server Administrator screen is inconsistent as the CSS files are not recognized.
+
+This issue is now resolved. 
+
+POA-150 (AribaSupplierOnRamp_7.1_Fix14)
+In webMethods Adapter for Ariba Supplier OnRamp, when using Send cXML Request in
+the Test module in Integration Server Administrator screen, the text in Response
+Content is incorrectly displayed due to the HTML encoding of the generated CXML.
+
+This issue is now resolved. 
+
+POA-139 (AribaSupplierOnRamp_7.1_Fix13)
+In webMethods Ariba Supplier OnRamp, the 'cxmlmessages.log' is unable to roll
+over at a given time interval.
+
+This issue is now resolved.
+
+POA-129 (AribaSupplierOnRamp_7.1_Fix12)
+In webMethods Ariba Supplier OnRamp 7.1, Fix 11 fails to install on Integration
+Server 10.7.
+
+This issue is now resolved. 
+
+POA-119 (AribaSupplierOnRamp_7.1_Fix11)
+In webMethods Ariba Supplier OnRamp 7.1, the cumulative fix does not contain
+the fix of POA-106.
+
+This issue is now resolved.
+
+POA-112(AribaSupplierOnRamp_7.1_Fix10)
+In webMethods Ariba Supplier OnRamp 7.1, the adapter's administrator UI pages 
+does not support the new Administrator screens of Integration Server(IS) 10.1.
+
+This issue is resolved. [webMethods Ariba Supplier OnRamp now supports the new 
+Administrator screens of IS from version 10.1 and later.
+ 
+POA-107(AribaSupplierOnRamp_7.1_Fix9)
+Ariba OnRamp 7.1 logs unnecessary warning message pub.flow:setResponse is using 
+the value from parameter "response" because no value specified for 
+"responseString" or "responseBytes".
+
+This warning message occurs because some of adapter services map input paramter 
+"response" instead of "responseString" for the flow service pub.flow:setResponse.
+
+This issue is resolved.
+
+POA-106(AribaSupplierOnRamp_7.1_Fix8)
+Ariba OnRamp 7.1 fails to start after Integration Server restart.
+
+Ariba Supplier OnRamp 7.1, when installed and activated for the first time, 
+stores the configuration related information in the MSSQL 2012 database. However, 
+after restarting Integration Server and attempting to start the OnRamp, the 
+following error is thrown:
+
+Error while starting Ariba Supplier OnRamp. Unable to get repository context: 
+can't acquire read lock.
+
+This error occurs because the OnRamp cannot retrieve the configuration 
+information from the MSSQL 2012 database after Integration Server is restarted.
+
+This issue is resolved.
+
+
+WF-6564(AribaSupplierOnRamp_7.1_Fix7)
+Ariba Supplier OnRamp support for new Admin screens IS 9.10 onwards
+
+Ariba Supplier OnRamp Admin UI pages did not support new format of screens 
+developed for IS 9.10.
+
+This issue is resolved now by modifying the Ariba Supplier OnRamp pages.
+
+WF-5804 (AribaSupplierOnRamp_7.1_Fix6)
+Ariba Supplier OnRamp support for DB2
+
+Ariba Supplier OnRamp was not supporting DB2 database.
+
+This issue is resolved now by providing install and un-install DB scripts for DB2 
+under config folder of Ariba supplier package.
+
+POA-77 (AribaSupplierOnRamp_7.1_Fix5)
+
+Ariba Supplier OnRamp fixes from fix 1 to fix 3 are missing.
+
+The Ariba Supplier OnRamp fix 4 did not include previous fixes.
+
+This issue is resolved now by repackaging all fixes from fix 1 to
+fix 4.
+
+RGHADPESTBL-1145 (AribaSupplierOnRamp_7.1_Fix4)
+
+Ariba Supplier OnRamp fixes not available through SoftwareAG Update Manager.
+
+Ariba Supplier OnRamp fixes are not compatible with SoftwareAG Update Manager.
+
+This issue is now resolved by making Ariba Supplier OnRamp fixes available on 
+SoftwareAG Update Manager.
+
+1-1YWEYS (ARIBASUPPLIERONRAMP_7.1_Fix3)
+Missing required "text" attribute for Status element in the Response cXML when a 
+request is not processed successfully.
+
+After successfully processing a request, webMethods
+Ariba Supplier OnRamp creates a "text" attribute for the Status element in the 
+Response cXML. However, if the request is not successfully processed, 
+the Response cXML created by the OnRamp does not contain the "text" attribute. 
+This results in an invalid response because the "text" attribute is required for 
+indicating the correct status of the transaction.
+
+This issue is resolved by updating the
+"wm.b2b.cxml.messages:createErrorResponse" service to populate an appropriate 
+value for the "text" attribute based on the status code of the request process. 
+Also, in the wm.ariba.supplier.tn.handlerUtils:checkSetupResultAndGetResponse
+service, the value of the briefMessageKey parameter is now changed from "Order 
+processing failure" to "PunchOut Setup Request processing failed". Ariba Supplier 
+OnRamp now logs a correct error message in Trading Networks when a 
+PunchoutSetupRequest is not processed successfully.
+
+1-1YWEYS (ARIBASUPPLIERONRAMP_7.1_Fix2)
+Missing required "text" attribute for Status element in the Response cXML when a 
+request is not processed successfully.
+
+After successfully processing a request, webMethods Ariba Supplier OnRamp creates 
+a "text" attribute for the Status element in the Response cXML. However, if the 
+request is not successfully processed, the Response cXML created by the OnRamp
+does not contain the "text" attribute. This results in an invalid response 
+because the "text" attribute is required for indicating the correct status of the 
+transaction.
+
+This issue is resolved by updating the "wm.b2b.cxml.messages:createErrorResponse" 
+service to populate an appropriate value for the "text" attribute based on the
+status code of the request process. Also, in the 
+wm.ariba.supplier.tn.handlerUtils:checkSetupResultAndGetResponse service, the 
+value of the briefMessageKey parameter is now changed from "Order processing 
+failure" to "PunchOut Setup Request processing failed". Ariba Supplier OnRamp now 
+logs a correct error message in Trading Networks when a PunchoutSetupRequest is 
+not processed successfully.
+
+1-1WALZR (ARIBASUPPLIERONRAMP_7.1_Fix1)
+Ariba OnRamp 7.1 fails to start after Integration Server restart.
+
+Ariba Supplier OnRamp 7.1, when installed and activated for the first time, 
+stores the configuration related information in the MSSQL database. However, 
+after restarting Integration Server and attempting to start the OnRamp, the 
+following error is thrown:
+
+Error while starting Ariba Supplier OnRamp. Unable to get repository context: 
+can't acquire read lock.
+
+This error occurs because the OnRamp cannot retrieve the configuration 
+information from the MSSQL database after Integration Server is restarted.
+
+This issue is resolved.
+
+
+8.0 Installation
+
+Install using Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Copyright Super iPaas Integration LLC, an IBM Company 2024.

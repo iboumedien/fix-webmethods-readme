@@ -1,0 +1,355 @@
+                 webMethods Trading Networks 10.7 Fix 10 readme
+
+                         January 2024
+
+_________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+webMethods Trading Networks 10.7 Fix 10
+
+
+
+2.0 Fix ID
+
+TNS_10.7_Fix10
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Trading Networks 10.7.
+
+
+
+4.0 Requirements
+
+WebMethods Metering Agent 10.7 Fix 2 or the latest fix that supersedes this.
+Integration Server Core 10.7 Fix 13 or the latest fix that supersedes this.
+Trading Networks Database 10.7 Fix 4 or the latest fix that supersedes this.
+
+For language pack requirements, see the Globalization section of the Software 
+AG Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes 
+for the release.
+OTN-23469
+When importing TPA with a lot of TPA data, if the total TPA audit log message 
+exceeds the Activity Log Full Message column size, the import operation does not 
+end. In addition, the following log message is added:
+'..Continued from previous activity log record, continued in next activity log 
+record..' in the Activity log table every 10 seconds.
+This issue is resolved and the import operation completes successfully.
+
+OTN-23685
+Invoking a service with a pipeline data causes null pointer exception in Unit Test Framework.
+This issue is resolved.
+
+OTN-23403 (TNS_10.7_Fix9)
+In webMethods Trading Networks, when you change the status of Preferred Protocol
+in Partner Profiles > Delivery Settings, the activity log does not update.
+
+This issue is resolved.
+
+OTN-23419 (TNS_10.7_Fix9)
+When using the TripleDES encryption algorithm, the data encrypted with the wm.tn.mime:createEncryptedData 
+and wm.tn.mime:createSignedAndEncryptedData services in webMethods Trading Networks fails to decrypt.
+
+This issue occurs when the Entrust Toolkit updates to 8.1.20.
+This issue is now resolved.
+
+OTN-23241 (TNS_10.7_Fix7)
+In webMethods Trading Networks, wm.tn.mime:createEncryptedData and
+wm.tn.mime:createSignedAndEncryptedData services fail when using the
+DES (Data Encryption Standard) or TripleDES encryption algorithm.
+This issue occurs when the Entrust Toolkit updates to 8.1.20.
+
+This issue is resolved.
+
+OTN-23019 (TNS_10.7_Fix6)
+Few logging messages have been missing in the system. The issue is now resolved.
+
+OTN-22949 (TNS_10.7_Fix6)
+The warning message "WARN net.sf.ehcache.config.CacheConfiguration - Cache:
+This might lead to performance degradation or OutOfMemoryError at Terracotta
+client.From Ehcache 2.0 onwards this has been changed to mean a store with no
+capacity limit. Set it to 1 if you want no elements cached in memory" appears in
+echache.log file.
+
+The issue is now resolved. To ignore cache elements in memory and refer the TN admin guide to add the TN properties.
+
+OTN-22705 (TNS_10.7_Fix4)
+The wm.tn.task:restartTask service throws an exception when Trading Networks 
+restarts the task successfully.
+
+This issue is now resolved.
+
+OTN-22854 (TNS_10.7_Fix4)
+In Trading Networks, TN_RUNTIMETABLES_DELETE takes longer to execute.
+
+This issue is resolved. Now, the performance of this procedure is improved.
+
+OTN-22694 (TNS_10.7_Fix4)
+In Trading Networks, the Transaction status appears as 'Done With Errors' when a 
+transaction fails initially but succeeds during the retry.
+
+This issue is now resolved.
+
+OTN-22754 (TNS_10.7_Fix4)
+In trading networks, the host field value truncates when this field has more
+than 64 characters in Delivery Settings for a partner.
+
+This issue is resolved. Now, the host field has a maximum of 512 characters.
+
+OTN-22521 (TNS_10.7_Fix3)
+When installing the webMethods Trading Networks Server fix (FIX12) and while
+creating a partner profile, getting an SQLException:
+[SoftwareAG][Oracle JDBC Driver][Oracle]ORA-00936: missing expression error.
+This issue is now resolved.
+
+OTN-22212 (TNS_10.7_Fix2)
+For TN, the internal publishable documents are not synced 
+directly to Universal Messaging during start up. 
+This issue is now resolved. 
+
+OTN-22232 (TNS_10.7_Fix2)
+webMethods Trading Networks becomes very slow with a large dataset in
+DeliveryJob table. The query takes more time, which causes Trading Networks
+startup to slow down.
+SELECT TypeData, JobID,TimeCreated,TimeUpdated,DocID,JobStatus, TimeToWait,Retries,
+RetryLimit,RetryFactor,TransportStatus,
+TransportStatusMessage,TransportTime,ServiceName,OutputData, QueueName,
+UserName FROM DeliveryJob WHERE ServerID ='or1010050168079.corp.adobe.com' AND
+(JobStatus = 'NEW' OR JobStatus = 'PENDING') ;
+This issue is resolved. Trading networks startup is fast now.
+ 
+OTN-22233 (TNS_10.7_Fix2)
+WebMethods Trading Networks creates a local user account in the Integration Server
+when deploying Trading Networks assets through the deployer.
+This issue is resolved.
+
+OTN-22236 (TNS_10.7_Fix2)
+when EDIencoding EDI property set to windows-1252, some of the character such as
+"Ã?Â�" was not showing properly on MWS transaction Page.
+This issue is now resolved.
+
+OTN-22263 (TNS_10.7_Fix2)
+When executing 'wm.tn.query:createProfileQuery' service, and then the
+'wm.tn.query:profileQuery' service with the following extended field criteria:
+extendedFields[0]/fieldId: [ProfileField ID]
+extendedFields[0]/op: IS NULL
+extendedFields[0]/fieldValue: [Blank], partner profiles are not returned in the
+output.
+This issue is resolved.
+
+OTN-22267 (TNS_10.7_Fix2)
+The extendedArchive service does not release the connection and displays the
+status as running when it is scheduled through the webMethods server. The
+expected scheduler status remained active.
+This issue is now resolved. The flow service is working as expected.
+
+OTN-21793 (TNS_10.7_Fix2)
+The store procedure, TN_RUNTIMETABLES_ARCHIVE, is taking long time to complete the execution.
+This issue is resolved now. The performance of the store procedure is improved and the execution time is reduced.
+
+OTN-21827 (TNS_10.7_Fix1)
+Job Manager thread that processes Pending and New delivery tasks get terminated
+during the startup, when it completes the first run before the WmTN startup complete.
+This issue is now resolved.
+
+OTN-22070 (TNS_10.7_Fix1)
+when EDIencoding EDI property set to windows-1252, some of the character such as
+"????" was not showing properly on MWS transaction Page.
+This issue is now resolved.
+
+OTN-21863 (TNS_10.7_Fix1)
+When TN nodes in the cluster are restarted simultaneously, there will be multiple 
+cluster notifications between nodes to refresh document types that cause 
+ORA-01555 Snapshot Too Old error.
+This issue is now resolved by increasing the PCTVersion value on the TypeData column
+of BizDocTypeDef table.
+
+CLTF-3104 (TNS_10.7_Fix1)
+Installing either this fix or any higher fix version enables you to export the Trading
+Networks assets to webMethods.io B2B 1.5 version or higher.
+
+OTN-21600 (TNS_10.7_Fix1)
+IS Server hangs on the execution of services wm.tn.route:getAnyTask,
+wm.tn.route:getTask, wm.tn.task:getAnyTask, and wm.tn.task:getTask when there
+are a large number of errors associated with the BizDoc Envelope.
+A new parameter includeBizDocErrors is added in the input specification for the
+above services, where the user can choose whether to include errors.
+This is now resolved.
+
+OTN-21698 (TNS_10.7_Fix1)
+After restarting Integration server, updating existing keystores in Integration
+Server is not updating the new expiration date in Trading Networks.
+This issue is now resolved.
+
+OTN-21830 (TNS_10.7_Fix1)
+Oracle partition scripts are not present under location SoftwareAG_directory\
+common\db\scripts\oracle\tradingnetworks\65\partition_support , though Trading
+Networks Administrator guide says for versions above 10.4.
+Now these scripts are added under SoftwareAG_directory\common\db\TradingNetworks
+\TradingNetworks\scripts\9.8.fix1-9.9\oracle\partition_support and documentation
+as well is updated.
+
+OTN-21888 (TNS_10.7_Fix1)
+"java.io.IOException: Stream closed" exception is thrown when executing
+wm.tn.doc:view service with getContent=true for a 0-byte payload.
+This issue is resolved now.
+
+OTN-21537 (TNS_10.7_Fix1)
+The store procedures, TN_RUNTIMETABLES_DELETE, TN_RUNTIMETABLES_ARCHIVE,
+TN_ARCHIVETABLES_DELETE, was taking long time to complete the execution.
+This issue is now resolved and the performance of these store procedures have
+been improved and the execution time also has been reduced.
+
+OTN-21561 (TNS_10.7_Fix1)
+When a transaction is clicked, it is taking time to load the activity log
+details of that particular transaction and the user gets 'Read timed out' in 
+the screen. This happens only when there are millions of enteries in the 
+ActivityLog table and when the user logged in does not have TN Administrator 
+role (Read Only User).
+This issue is now resolved.
+
+BOC-10131 (TNS_10.7_Fix1)
+Unable to import profile and a user exported from on premise 10.7
+Import attached asset from asset migration portal of wmB2B
+it throws an error "The export file type is not supported. You can only 
+import a file that is exported from another B2B Cloud instance or On-Premise 
+instance."
+Attachment contains a profile and a user
+
+
+
+8.0 Installation
+
+Install using the Software AG Update Manager or Command Central (9.7 or later). 
+For instructions, see the corresponding documentation at
+http://documentation.softwareag.com.
+
+After installation is complete, please perform the below step :
+
+1. If Integration Server contains wMDeployer installation along with Trading Networks,
+then delete the tncore.jar file under
+%INSTALL_DIR%\IntegrationServer\instances\default\packages\WmDeployer\code\jars\static.
+
+2. Start Integration Server. 
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action reverts your installation to the previously 
+installed fix. You cannot apply these instructions to the previously 
+installed fix.
+
+Uninstall using the Software AG Update Manager or Command Central (9.7 or later). 
+For instructions, see the corresponding documentation at
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was tested
+with non-English configurations and non-ASCII data.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new 
+messages and these messages appears in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2024 Software AG, Darmstadt, Germany and/or 
+Software AG USA Inc., Reston, VA, USA, and/or its subsidiaries and/or its
+affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or
+registered trademarks of Software AG and/or Software AG USA Inc. and/or its
+subsidiaries and/or its affiliates and/or their licensors. Other company and
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its
+subsidiaries is located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party
+copyright notices, license terms, additional rights or restrictions, please
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party
+Products". For certain specific third-party license restrictions, please refer
+to section E of the Legal Notices available under "License Terms and Conditions
+for Use of Software AG Products / Copyright and Trademark Notices of
+Software AG Products". These documents are part of the product documentation,
+located at http://softwareag.com/licenses and/or in the root installation
+directory of the licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

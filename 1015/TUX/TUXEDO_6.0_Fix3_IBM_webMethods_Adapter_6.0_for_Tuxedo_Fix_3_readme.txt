@@ -1,0 +1,149 @@
+	  IBM webMethods Adapter 6.0 for Tuxedo Fix 3 readme
+
+                         October 2024
+
+_________________________________________________________________
+
+This file provides important information for applying IBM webMethods Adapter 6.0
+for Tuxedo Fix 3 to IBM webMethods Adapter 6.0 for Tuxedo. For 
+additional information about IBM webMethods Adapter 6.0 for Tuxedo, see 
+the readme in the directory in which you installed IBM webMethods Adapter for
+Tuxedo.
+
+
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+_______________________________________________________________________________
+
+
+
+1.0 Fix Name
+
+IBM webMethods Adapter 6.0 for Tuxedo Fix 3
+
+
+
+2.0 Fix ID
+
+TUXEDO_6.0_Fix3
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects IBM webMethods Adapter 6.0 for Tuxedo.
+
+
+
+4.0 Fix Requirements
+
+None.
+
+
+
+5.0 Platform Support
+
+This fix applies to all platforms supported by IBM webMethods Adapter 6.0 for
+Tuxedo.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+This fix addresses the following issues:
+
+TUX-60
+Updated copyright notes, vendor and product names for IBM rebranding.
+
+1-1A4CBD (Tuxedo_6.0_Fix1)
+When creating a Tuxedo Adapter Synchronous service, the 
+list of available Tuxedo services is not displayed in 
+sorted order.
+
+In webMethods Developer, when creating a Synchronous 
+adapter service, the list of available Tuxedo services 
+in the Select Tuxedo Service drop-down list box is not 
+sorted. This makes searching for a particular service 
+difficult.
+
+This issue is now resolved. The Tuxedo services listed 
+are now sorted alphabetically by name.
+
+
+1-1A4CD0 (Tuxedo_6.0_Fix1)
+During runtime of a Synchronous adapter service, the 
+Tuxedo Adapter does not allow display of output 
+parameters in response to an Application Exception 
+from the Jolt Server.
+
+When running a Synchronous adapter service, the Tuxedo 
+Adapter throws an AdapterException to report an error 
+when the adapter receives an Application Exception from 
+the Jolt Server. However, the AdapterException does not 
+provide a way to access the output parameters from the 
+Application Exception. The Tuxedo Jolt APIs provide an 
+exception handling pattern where, when throwing an 
+application exception (for example, InsufficientBalance 
+in an accounting application), the client can get a handle 
+to a Java object containing certain output parameters 
+resulting from a Tuxedo Service invocation. Because 
+Tuxedo allows output parameters to be retrieved from an 
+object embedded in an application exception, the Tuxedo 
+Adapter should provide the same functionality.
+
+This issue is resolved. The user can now select a new 
+parameter, "Throw Application Level Exception", when 
+creating a Synchronous adapter service to indicate how 
+the adapter is to handle an Application Exception 
+received from the Jolt Server.
+
+- Select the "Throw Application Level Exception" 
+parameter to specify that the Synchronous service 
+execution returns a status of -1, and also returns the 
+output parameters resulting from the remote Tuxedo 
+service execution. The adapter does not throw an 
+AdapterException.
+
+- Clear the "Throw Application Level Exception" parameter 
+to specify that the Tuxedo Adapter throws an 
+AdapterException. This is the default behavior.
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the 
+documentation at https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the 
+documentation at https://docs.webmethods.io/.
+
+
+
+
+10.0 Copyright
+
+Copyright Super iPaas Integration LLC, an IBM Company 2024.

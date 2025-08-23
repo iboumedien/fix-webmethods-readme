@@ -1,0 +1,242 @@
+    webMethods Integration Server 10.5 Database Fix 4 readme
+
+                        July 2022 
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform/RDBMS Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+11.0  Contacting Us
+_________________________________________________________________________________________________
+
+1.0 Fix Name
+
+webMethods Integration Server 10.5 Database Fix 4.
+
+
+2.0   Fix ID
+
+IS_10.5_Database_Fix4
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Integration Server 10.5.
+
+
+4.0 Requirements
+
+None.
+
+For language pack requirements, see the Globalization section of the 
+Software AG Empower Product Support Web site. The Globalization section can 
+be found at:
+
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+5.0 Platform/RDBMS Support
+
+Same platforms as product release.
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+PIE-74347
+Integration Server logs the "unique constraint IDX_SVC_MINMAX_CTX violated"
+error intermittently due to a race condition under high load.
+
+The issue is now resolved.
+
+PIE-74816
+OAuth initialization fails with a java.sql.SQLException because Integration
+Server is unable to retrieve metadata for IS_OAUTH_CLIENTS.CLIENT_SECRET column. 
+
+This has been resolved by moving the database migration for OAuth out of
+Integration Server and into separate SQL scripts that can be executed by the
+Software AG Database Component Configurator. 
+
+This fix also adds the new configuration parameter watt.server.db.logMigration.
+After a fix or a new release is installed, Integration Server may perform
+migration actions on the embedded database the first time it is started. Set
+this parameter to true for Integration Server to write detailed log messages
+about database migration to the server log. Set this parameter to false to
+indicate Integration Server does not write detailed log messages about database
+migration to the server log. The default is false. You must restart Integration
+Server for changes to this parameter to take effect. 
+
+Important! To complete resolution of PIE-74816, you must install fix
+IS_10.5_Database_Fix4 (or higher) and run the Software AG Database Component
+Configurator before starting Integration Server. 
+
+WMN-7156
+With webMethods Monitor, a service enabled for audit might have out of order
+audit events. 
+
+When the pub.prt.log:logActivityMessages service is invoked, the wmservice_raiu
+trigger 
+may encounter race condition.
+
+The issue is resolved.
+Replace <WEBMDB> with the actual database name and set the following database
+parameters: 
+ALTER DATABASE <WEBMDB> SET ALLOW_SNAPSHOT_ISOLATION ON;
+ALTER DATABASE <WEBMDB> SET READ_COMMITTED_SNAPSHOT ON WITH ROLLBACK IMMEDIATE;
+
+
+PIE-62773 (IS_10.5_Database_Fix3)
+In Integration Server, the migration scripts for SQL Server database do not work as
+expected for non-dbo schemas.
+
+This issue is resolved now.
+
+PIE-68781 (IS_10.5_Database_Fix3)
+Using SAG database procedure SERVER_ARCHIVE_START_SERVERARCHIVE to ARCHIVE takes an 
+exceedingly long time to delete the old data.
+
+The SERVER_ARCHIVE_START_SERVERARCHIVE procedure requires an index on the 
+ROOTCONTEXTID column in WMSERVICE table. However, the index was missing, resulting 
+in the SERVER_ARCHIVE_START_SERVERARCHIVE taking many hours to delete the old data.
+
+The issue is resolved by adding the missing index.
+
+PIE-71412 (IS_10.5_Database_Fix3)
+Creating tables for the ISInternal component on a MySQL 8.0 database throws 
+"Specified key was too long; max key length is 3072 bytes".
+
+This issue is now resolved.
+
+PIE-71617 (IS_10.5_Database_Fix3)
+For the ISCoreAudit component, the unique index on contextid column in 
+WMSERVICE_MIN_MAX table is missing in MySQL, Oracle, and PostgreSQL databases.
+
+Now, this issue is resolved. The unique index on contextid column in 
+WMSERVICE_MIN_MAX table is created for all the database types Integration Server supports.
+
+PIE-61795(IS_10.5_Database_Fix1)
+Integration Server migrated to Google Cloud Platform from on-premise throws the
+following error for scheduled jobs: 
+[ISS.0137.0013E] Scheduler: Error updating task in database:
+Deadlock found when trying to get lock; try restarting transaction.
+
+This issue is resolved now. 
+
+PIE-62870(IS_10.5_Database_Fix1)
+For migration from Integration Server 9.12 to 10.5, a change was omitted for an
+OAuth database component, resulting in a startup error. 
+
+This issue has been resolved.
+
+PIE-66520(IS_10.5_Database_Fix1)
+Archiving audit data takes an inordinately long time.
+
+When using the audit data archiving procedures provided with Integration Server,
+the process takes a long time to delete expired audit data. 
+
+This issues is now resolved.
+
+PIE-66716(IS_10.5_Database_Fix1)
+The IS_CORE_SCOPE table is in reorg_pending mode after creating Integration
+Server 10.5 product schema or migrating a schema to Integration Server 10.5 in
+DB2 database. 
+
+This issue is resolved. When creating a product schema or migrating the schema,
+the IS_CORE_SCOPE table will not be in reorg_pending mode. 
+
+PIE-67794(IS_10.5_Database_Fix1)
+Migration scripts for SQL Server database do not work as expected for non-dbo
+schemas. 
+
+When a user has more than one schema in the same database in SQL Server, the
+database migration scripts do not work as expected. The migration scripts
+execute a script to alter a table after checking if the change is not included
+in the database. The migration script does not check the current schema.
+Consequently, if the change has been made to another schema in the same
+database, the table in the current schema is not updated. 
+
+Now, the migration script checks the schema to determine if a change has already
+been made to the table. 
+
+PIE-63389(IS_10.5_Database_Fix1)
+Integration Server does not support the MySQL database.
+
+Integration Server supports MySQL 8.x community edition as one of the database
+platforms.
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+
+10.0 Copyright
+
+Copyright 2022  Software AG, Darmstadt, Germany and/or 
+Software AG USA, Inc., Reston, VA, USA, and/or its subsidiaries 
+and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either 
+trademarks or registered trademarks of Software AG and/or Software AG
+USA Inc. and/or its subsidiaries and/or its affiliates and/or their 
+licensors. Other company and product names mentioned herein may be 
+trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG 
+and/or its subsidiaries is located at http://softwareag.com/licenses.
+
+This software may include portions of third-party products. For 
+third-party copyright notices, license terms, additional rights or 
+restrictions, please refer to "License Texts, Copyright Notices and 
+Disclaimers of Third Party Products". For certain specific third-party 
+license restrictions, please refer to section E of the Legal Notices 
+available under "License Terms and Conditions for Use of Software AG 
+Products / Copyright and Trademark Notices of Software AG Products". 
+These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory 
+of the licensed product(s).
+
+
+11.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

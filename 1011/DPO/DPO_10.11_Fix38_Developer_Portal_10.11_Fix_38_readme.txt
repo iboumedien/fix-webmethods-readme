@@ -1,0 +1,1112 @@
+           
+           webMethods Developer Portal 10.11 Fix 38 Readme
+                           
+                           August 2025
+                           
+_________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+ 
+1.0 Fix Name
+
+webMethods Developer Portal 10.11 Fix 38
+ 
+
+2.0 Fix ID
+
+DPO_10.11_Fix38
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Developer Portal 10.11.
+ 
+ 
+4.0 Requirements
+
+For language pack requirements, see the Globalization section
+of the Software AG Empower Product Support website. The
+Globalization section can be found at:
+https://empower.softwareag.com/Products/Globalization/default.asp
+ 
+5.0 Platform Support
+
+webMethods Developer Portal 10.11 Fix 38 is supported on the same 
+platforms and operating systems and with the same JREs as 
+webMethods Developer Portal 10.11.
+
+ 
+6.0 Cautions and Warnings
+
+None.
+  
+7.0 Fix Contents
+
+DPO-6653
+Restore operation fails due to license issue.
+
+Restore operation fails in the 10.11 and 10.15 versions, when you restore the backup 
+file taken from 10.11 instance, which was migrated from the API Portal 10.7 version.
+
+This issue is now resolved.
+
+DPO-6304 (Fix 37)
+Vulnerable third party component found in the Docker image - devportal:10.11.0.35.
+
+This issue is now resolved. Following reported JARs inside portal.war are upgraded to 
+a safer version.
+
+/opt/softwareag/profiles/CTP/workspace/webapps/portal.war/spring-security-web-5.8.15.jar
+/opt/softwareag/profiles/CTP/workspace/webapps/portal.war/cxf-core-3.5.9.jar
+/opt/softwareag/profiles/CTP/workspace/webapps/portal.war/tomcat-embed-core-9.0.27.jar
+/opt/softwareag/profiles/CTP/workspace/webapps/portal.war/bcprov-jdk18on-1.78.0.jar
+
+
+DPO-6317 (Fix 36)
+Webhook configuration issue.
+
+When the number of webhooks is more than 12, then only the first 12 webhooks were notified
+about their respective events.
+
+This issue is now resolved. 
+
+DPO-6155 (Fix 36)
+A vulnerable version of the third-party component, cxf-core, is used.
+
+This issue is now resolved. The mentioned JAR is upgraded to version 3.5.9.
+
+
+DPO-6010 (Fix 35)
+Registration form - First letter in the placeholder text is not capitalized.
+
+When you, as an administrator, provide the placeholder text for any custom field 
+of the Sign up page in camel case, then the first letter of the placeholders
+appear in lowercase.
+
+This issue is now resolved.
+
+
+DPO-5295 (Fix 34)
+Unable to edit applications.
+
+When an application has only API key details, and if you edit that application
+then the application is not updated as expected.
+
+This issue is now resolved. 
+
+
+DPO-5383 (Fix 33)
+Security vulnerabilities and exposures in Developer Portal!
+
+The specified changes are made to the following two endpoints:
+
+- /portal/rest/v1/passwordpolicy - Does not return the advanced configuration 
+   details.
+- /portal/rest/v1/prometheus - Exposed only to cloud instances. For on-prem, 
+   this endpoint will return 404 in UI and 200 with 404 HTML content in the 
+   REST client.
+
+DPO-4360 (Fix 33)
+Versions of some third-party components are vulnerable.
+
+This issue is now resolved. The versions of the following JARs are upgraded:
+
+* spring-security-core to 5.8.12 version
+* spring-web to 5.3.34 version
+* esapi to 2.5.3.1 version
+* commons-compress to 1.26.1 version
+
+
+DPO-4156 (Fix 32)
+OAuth token expiry label is not in synchronization with API Gateway.
+
+Validity of OAuth tokens expiry is displayed in milliseconds in the 'Applications details' 
+page of the Developer Portal, whereas API Gateway displays this value in seconds.
+
+This issue is now resolved.
+
+
+DPO-3963 (Fix 31)
+The request body parameter not working as expected when a file is uploaded.
+
+When an API endpoint redirects the request to another endpoint, Developer Portal
+displays the 302 response code instead of the correct response code.
+
+This issue is now resolved.
+
+DPO-4064 (Fix 31)
+Access of protected pages to users without any role.
+
+When you have enabled an approval workflow for user onboarding, and if a user
+onboards, Developer Portal creates the profile for that user without any role.
+The corresponding roles are assigned to the users after the onboarding approval.
+In such a scenario, if the newly onboarded user signs in and navigates to the
+"Manage applications" page some static data appears instead of the
+"404-Not found" page. Also, the user could search for other users without any
+role and share applications with them.
+
+This issue is now resolved. When users without any role access Developer
+Portal and navigate to any protected page, then the "404-Not found" page
+appears. Also, other users cannot share applications with these
+users (without any role).
+
+DPO-4042 (Fix 31)
+The version of the third-party component, tomcat-embed-core, is found vulnerable.
+
+This issue is now resolved. The version of the tomcat-embed-core
+jar is upgraded to 8.5.98.
+
+DPO-3413 (Fix 31)
+When you attempt to sign in with an existing user name the response time is
+longer than the response time taken when you attempt with a non-existing user
+name. Hence, these attempts allow potential user enumeration.
+
+This issue is now resolved.
+
+
+DPO-3890 (Fix 30)
+Version of the third party component, Logback, is vulnerable.
+
+This issue is now resolved. The versions of the Logback-classic and Logback core 
+jars are upgraded to 1.2.13.
+
+DPO-3412 (Fix 30)
+User enumeration is possible based on a failed error message during sign in.
+
+Since different error messages are displayed for a valid user versus an invalid user 
+after certain failed sign in attempts, user enumeration could be performed.
+
+This issue is now resolved. A generic error message is displayed for all failed 
+sign in attempts.
+
+DPO-3762 (Fix 30)
+Versions of few third party components are vulnerable.
+
+This issue is now resolved. The versions of the following JARs are upgraded:
+
+ * JOSE4j to 0.9.3 version
+ * JSON to 20231013.0.0 version
+ * ESAPI to 2.5.2.0 version
+ * Elasticsearch to 7.17.15 version
+ * Reactor Netty HTTP to 1.1.13 version
+ * Netty-handler (also all netty jars) to 4.1.100 version
+ 
+DPO-3843 (Fix 30)
+SOAP API description is not displayed properly.
+
+If a SOAP API has no definition, then the description is displayed as a summary 
+of that API in the API gallery page.
+
+On the API details and Community details pages, the complete description of 
+SOAP APIs is not displayed. The description is truncated according to the 
+length of the description column in the API details grid based on your 
+screen resolution. 
+
+This issue is now resolved. The Manage API and Community details pages now 
+display the description with ellipses at the end indicating that it is not 
+the complete description. You can view the complete text by clicking the 
+corresponding API name.
+
+DPO-3876 (Fix 30)
+Unable to use the Browse button on the Try API page.
+
+The Browse button under the Request Body section parameter of multipart form-data 
+of type, file does not work as expected.
+
+This issue is now resolved. 
+
+DPO-3802 (Fix 30)
+Incorrect default value in the Try API page.
+
+In the Try API page for content type "text/plain", under the 'Request Body' 
+section, 'None' is selected by default.
+
+This issue is now resolved. 'Raw' is selected by default. 
+
+DPO-3873 (Fix 30)
+Inactive and rejected applications appear on the 'Use existing application' popup.
+
+When you request an application from the API details page, the inactive and 
+rejected applications also appear on the 'Use existing application' popup.
+
+This issue is now resolved.
+
+
+DPO-2937 (Fix 28)
+WSDL documentation tag [Soap APIs] does not appear properly.
+
+The description of SOAP APIs does not appear properly in the following pages: 
+- API gallery
+- Manage API
+- Community details
+- API details
+
+This issue is now resolved.
+
+DPO-3353 (Fix 28)
+Unable to back up the data from the Developer Portal.
+
+The backup operation fails due to a parse error when the data involves APIs of large size.
+
+This issue is now resolved.
+
+YAI-30531 (Fix 28)
+Incorrect application status displayed in Developer Portal.
+
+When you request for an application creation from Developer Portal, and if API Gateway
+rejects the request, then Developer Portal keeps displaying the status as 'WAITING_THIRDPARTY'.
+
+This issue is now resolved. Developer Portal now displays the correct status and
+the reason for rejection.
+
+
+DPO-2638 (Fix 27)
+Addition attributes information does not appear.
+
+When you, as an administrator, update a user information, the additional attributes collected
+during the user registration are no longer visible.
+
+This issue is now resolved.
+
+DPO-2769 (Fix 27)
+Configured user onboarding approval workflow does not work when using UAEPass.
+
+If you have specified "API Consumer" role as the default group of newly signed-up users,
+and if a user signs up using UAEPass then the registration does not go through the
+configured onboarding approval workflow.
+
+This issue is now resolved.
+
+DPO-2735 (Fix 27)
+Unable to access Developer Portal when using the Docker build.
+
+When you access Developer Portal Docker instance as http://localhost:18101,
+the system does not redirect you to http://localhost:18101/portal.
+
+This issue is now resolved.
+
+DPO-2842 (Fix 27)
+Unable to view all applications.
+
+During application request, if you try to select an application from the 'Request application'
+pop-up window then only 12 applications appear in the drop-down.
+
+This issue is now resolved.
+
+DPO-2588 (Fix 27)
+User session is active after server restart.
+
+When you restart your Developer Portal server without signing out, and launch your browser,
+your user session is still active.
+
+This issue is now resolved. The following property should be added to dpo_wrapper.conf or 
+wrapper.conf file and restart the server,
+wrapper.java.additional.4000=-Dportal.server.config.disable-umc-user-session-setting=true
+
+
+DPO-2493 (Fix 26)
+Data export includes only the first 1000 assets.
+
+When you back up your data, the backup file includes only 1000 assets of each
+asset type (API,Application, User, and so on) even when there are more than 1000
+assets of each type.
+
+This issue is now resolved.
+
+DPO-2651 (Fix 26)
+Unable to view advanced search results page.
+
+When a guest user searches for an asset, views the search result, and refreshes
+the Advanced search results page then the '401 error' appears.
+
+This issue is now resolved.
+
+
+DPO-2538 (Fix 25)
+Pagination issue in Community details page.
+
+When you view the list of users in a community from the Community details page,
+and if you select to view 24 or greater number of records from the 'Items per 
+page' drop-down then only 12 records appear.
+
+This issue is now resolved. 
+
+DPO-2472 (Fix 25)
+Unable to import zipped API specifications.
+
+API creation fails when you create a REST API by importing a zip file.
+
+This issue is now resolved.
+
+DPO-2536 (Fix 25)
+UAE Pass logout issue.
+
+When a UAE Pass user logs out from Developer Portal, they are not logged out from
+UAE Pass.Due to this, they are automatically logged in during consecutive sessions.
+
+This issue is now resolved. You must enable this feature by specifying the UAE 
+logout URL in the following variable in the 'dpo_wrapper' config file located in 
+SAGInstallDir\profiles\CTP\configuration:
+
+wrapper.java.additional.2201=-Dcom.softwareag.portal.oauth.uaepass.logout.url=<uae_pass_logout_url>
+
+DPO-2551 (Fix 25)
+Information missing in API details page.
+
+In the API details page of a REST API, the 'possible value' and 'payload type
+information' details of parameters do not appear.
+
+This issue is now resolved.
+
+
+DPO-2347 (Fix 24)
+Login page is not displayed for guest users.
+
+When a guest user accesses the http://localhost:18101/portal/applications page,
+a page with static content appears instead of redirecting the user to the
+Login page.
+
+This issue is now resolved.
+
+DPO-2340 (Fix 24)
+Internal server error.
+
+The Internal server error page appears instead of the corresponding 4xx
+response code, when you access a theme's REST endpoint with an invalid theme Id.
+
+This issue is now resolved.
+
+
+DPO-2167 (Fix 23)
+The 'Verify hostname' option in the LDAPS configuration page is not enforced 
+properly for secured LDAP connections.
+
+This issue is now resolved. 
+
+You can enforce hostname verification only when you have enabled certificate 
+verification. 
+
+The 'Verify hostname' option is removed from the UI. Hence, to enable the 
+hostname verification set the envirornment variable, 
+'portal.server.config.disable-host-name-verifier', to 'false'. The default value 
+of this setting is 'true'.
+
+DPO-2303 (Fix 23)
+Access tokens are not displayed in Application details page.
+
+When you publish an application from API Gateway, if both API key and OAuth
+credential details are not published to Developer Portal then the Access token
+section in the Application details page does not include the access tokens.
+
+This issue is now resolved. 
+
+
+DPO-2194 (Fix 22)
+APIs that are present in multiple stages do not appear properly in API gallery.
+
+When you migrate from API Portal 10.7 to Developer Portal, the API gallery
+page does not display the APIs properly if they are present in more than one
+stage.
+
+This issue is now resolved.
+
+If you are doing fresh migration from API Portal 10.7 to Developer Portal 10.11,
+then install the latest fix and perform the migration.
+
+If data exists in Developer Portal 10.11 before this fix, then perform these
+steps:
+ * Install Fix23 on Developer Portal and launch the application.
+ * Take a backup of the "Core" data alone from Developer Portal.
+ * Restore the backed-up core data to Developer Portal.
+
+
+DPO-2159 (Fix 21)
+Developer Portal - Elasticsearch connection issue.
+
+Developer Portal is unable to connect to Elasticsearch if you enable sniffing
+in Elasticsearch as the access protocol changes to http when x-pack is enabled.
+
+This issue is now resolved.
+
+
+DPO-1932 (Fix 20)
+Unable to specify rate limit for administrative APIs.
+
+This issue is now resolved. You can now configure rate limit for the required 
+APIs using the following variables in the 'dpo_wrapper' config file located in 
+SAGInstallDir\profiles\CTP\configuration:
+
+* wrapper.java.additional.2011=-Dportal.server.config.enable-rate-limiting - 
+  Allows you to specify whether rate limit has to be applied to specified APIs.
+  Possible values:
+  - true. Rate limit is applied to the specified APIs.
+  - false. Rate limit is not applied.
+  
+* wrapper.java.additional.2012=-Dportal.server.config.rate-per-minute -
+  Allows to specify the number of invocations to be allowed per minute.
+  
+* wrapper.java.additional.2013=-Dportal.server.config.rate-limited-apis - 
+  Allows you to specify the list of APIs (separated by commas) to which you 
+  want to apply the rate limit.
+  
+Sample configuration
+
+wrapper.java.additional.2011=-Dportal.server.config.enable-rate-limiting=true
+wrapper.java.additional.2012=-Dportal.server.config.rate-per-minute=3
+wrapper.java.additional.2013=-Dportal.server.config.rate-limited-apis=
+/rest/v1/signup,
+/rest/v1/forgotpassword
+
+DPO-1933 (Fix 20)
+If you close the Developer Portal application browser and open the browser 
+again, then your user session remains open.
+
+This issue is now resolved. A new property, 
+'-Dportal.server.config.disable-umc-user-session-setting', is added to the 
+wrapper.conf file located in the SAGIstallDir\profiles\CTP\configuration folder.
+Set the property to 'true' and restart Developer Portal. This property allows
+configuring the user session closure upon the closure of the corresponding 
+browser.
+
+After this configuration, if you close the Developer Portal browser and open a 
+new browser session, then your Developer Portal session is also closed. 
+The Sign in button appears to let you sign in to the application.
+
+DPO-1940
+The moment.js script file used in Developer Portal is outdated.
+
+This issue is resolved. The version of the script file is upgraded to 2.29.4.
+
+DPO-1979 (Fix 20)
+An error message appears if an empty value or null is provided as SOAPAction
+header value when testing a SOAP API.
+
+This issue is now resolved.
+
+
+DPO-1847 (Fix 19)
+An error occurs while requesting a bearer token.
+
+An error occurs when you request a bearer token from the Try API 
+page for the shared application.
+
+This issue is resolved. 
+
+
+DPO-1698 (Fix 18)
+Unable to parse WSDL specifications that do not include output operations.
+
+An error message appears when you create an API by importing a WSDL file that
+has only input operations and no output operations.
+
+This issue is resolved. 
+
+DPO-1568 (Fix 18)
+Application uses vulnerable third-party libraries and Linux executables.
+
+This issue is resolved. The libraries and executables are updated to their
+appropriate higher versions. 
+
+DPO-1770 (Fix 18)
+API tryout fails if API name includes a blank space.
+
+If APIs that are published from API Gateway include a blank space in their 
+names, and if you invoke the https endpoints of those APIs, then the invocation
+fails.
+
+This issue is resolved. 
+
+DPO-1713 (Fix 18)
+E-mail template subject update issue.
+
+If you modify the subject in any of the e-mail templates, then the updated 
+subject does not appear in the mails sent to users. 
+
+This issue is resolved.
+
+DPO-1805 (Fix 18)
+Unable to connect to AD using LDAPS
+
+When the LDAP server URL is given as LDAPS, then without enabling hostname 
+verification or Certificate verification. The test connection failed with the 
+host name not found error.
+
+This issue is resolved.
+
+
+DPO-1566 (Fix 17)
+Scope information is not displayed in the Application details page.
+
+When you republish an API from API Gateway, then the Scope of that API does
+not appear in the Application details page due to missing provider reference
+link.
+
+This issue is resolved.
+
+
+DPO-1389 (Fix 16)
+When a user signs up and their registration is in the 'Pending' state, they
+could view the details of other consumers.
+
+This issue is resolved.
+
+DPO-1397 (Fix 16)
+Possible values of variables given in the schema definition do not appear.
+
+When you publish an API from API Gateway, the possible values of variables
+present in the schema definition do not appear in the API details page of
+Developer Portal.
+
+This issue is resolved.
+
+DPO-1422 (Fix 16)
+Scope details not included in the OAuth token request.
+
+When you use the "Implicit" or "Authorization code" grant types to test APIs,
+then the scope selection is not sent as part of Access Token URL request.
+
+This issue is resolved.
+
+
+DPO-1418 (Fix 15)
+Anonymous user were able to get the users list from Developer Portal.
+
+This issue is resolved.
+
+DPO-1402 (Fix 15)
+Changes in the password recovery page.
+
+The following changes are made to the password recovery page:
+
+- The page description is modified as “Enter your username to recover the 
+password”. Earlier, it was “Enter your registered email to recover the 
+password”.
+- If you provide the associated e-mail Id instead of the actual username, 
+Developer Portal will simply display a success message to avoid user 
+enumeration.
+
+
+DPO-957 (Fix 14)
+Arbitrary SOAP body for Try Out.
+
+You can now provide the following details on the Try API page when you test
+SOAP APIs that are protected with Web Service Security (WSS):
+
+* Enhanced WSS authentication
+* WSS SAML assertion
+* Custom SOAP header
+
+DPO-1329 (Fix 14)
+Users with the API consumer role could view the details of other consumer users.
+
+This issue is resolved. Only minimal information is displayed.
+
+DPO-1328 (Fix 14)
+Complete list of communities does not appear.
+
+If there are more than fifteen communities in Developer Portal, then only the
+first twelve communities appear in the Publish/ Republish screen of API Gateway.
+
+This issue is resolved.
+
+DPO-1296 (Fix 14)
+Anonymous users could access file attachments available under the API
+documentation section on the API details page.
+
+This issue is resolved.
+
+DPO-1291 (Fix 14)
+Stage name does not appear in the API tile.
+
+When you add stage name to API tiles from the Customization section, then the
+text "undefined" appears in the API tiles instead of the actual stage name.
+
+This issue is resolved.
+
+DPO-1264 (Fix 14)
+APIs list does not refresh when you change stage.
+
+When you navigate to the Create application page from the API details page, and
+modify the value in the Stage field, then the APIs field does not refresh.
+
+This issue is resolved.
+
+
+DPO-1266 (Fix 13)
+When you publish an API from API Gateway, the description for the API resource
+responses does not appear in the API details page.
+
+This issue is resolved.
+
+DPO-1265 (Fix 13)
+Users are unable to recover passwords.
+
+If you, as an administrator, add a user using a user Id, instead of e-mail
+Id, and if those users recover their passwords by providing an e-mail Id other
+then the one used during registration, then the password recovery mail is not
+sent.
+
+This issue is resolved.
+
+DPO-1236 (Fix 13)
+Icons to differentiate local and LDAP users.
+
+The Manage users screen now displays an icon next to each user that indicates
+whether the user created in Developer Portal or imported from an LDAP group.
+
+DPO-1222 (Fix 13)
+An irrelevant error message appears when an LDAP user recovers their password.
+
+This issue is resolved. The "LDAP users cannot be updated" message appears when
+an LDAP user recovers their password.
+
+
+DPO-1194 (Fix 12)
+Items per page value not considered for the Access logs table in Dashboard.
+
+The Access logs table in the Dashboard page does not display the number of
+records based on the value selected in the "Items per page" drop-down list.
+
+This issue is resolved.
+
+DPO-1142 (Fix 12)
+Application details are not refreshed when you navigate from a new shared
+application notification.
+
+When you are viewing an application, if you receive a notification about
+another application being shared with you, and if you click the notification to
+view the new application, then the system does not display the corresponding
+new application details.
+
+This issue is resolved.
+
+DPO-1048 (Fix 12)
+OutOfMemoryError exception in Developer Portal.
+
+Developer Portal displays the OutOfMemoryError exception and becomes
+unresponsive when huge runtime transactions are sent from API Gateway.
+
+This issue is resolved.
+
+DPO-1029 (Fix 12)
+Blank screen appears when you activate a cloned theme.
+
+A blank screen appears when you activate a theme that was created by cloning
+another theme.
+
+This issue is resolved.
+
+DPO-1019 (Fix 12)
+Clear text icon (X) in text fields.
+
+When you press the Tab key from a text field, the focus is shifted to the
+Clear text icon (X) to allow you to clear the contents of the corresponding text
+field.
+
+This Close icon is removed from the text fields to allow you to navigate to the
+next field when you press the Tab key.
+
+
+DPO-1060 (Fix 11)
+Large responses does not appear in Try API page.
+
+If the size of response messages exceed a certain limit, the response does not
+appear in the Try API page.
+
+This issue is resolved.
+
+DPO-1059 (Fix 11)
+Unable to try SOAP APIs due to certificate issue.
+
+Users are not able to test SOAP APIs with the https endpoint because of
+reference to the incorrect certificate location.
+
+This issue is resolved.
+
+DPO-1049 (Fix 11)
+Lengthy schema names exceed the left pane of API details page.
+
+When the length of schema names exceeds beyond the left pane of the API details
+page, then excess part appears in the main section.
+
+This issue is resolved.
+
+DPO-1030 (Fix 11)
+Unable to pass comma-separated values for a query parameter that accepts
+multiple values for REST APIs from the Try API page because the system
+interprets commas as additional parameters.
+
+This issue is resolved.
+
+DPO-1005 (Fix 11)
+When a user, who is part of a community is deleted, and if you update the
+details of the community then the update transaction fails.
+
+This issue is resolved.
+
+DPO-998 (Fix 11)
+Long application names are not displayed properly.
+
+If an application name runs longer than the fixed width of the breadcrumbs
+section in the application details page then the name is not displayed properly.
+
+This issue is resolved.
+
+DPO-988 (Fix 11)
+Scope information missing in application details page.
+
+If more than one scope is configured for an API in API gateway then only one
+scope appears in the application details page of Developer Portal.
+
+This issue is resolved.
+
+DPO-987 (Fix 11)
+Corresponding error message does not appear during token request.
+
+If client credentials grant-type is disabled in API Gateway and if you request
+for access token from Developer Portal then the corresponding error message
+does not appear.
+
+This issue is resolved.
+
+
+DPO-961 (Fix 10)
+Provider and Webhook pages are not displayed properly when you publish portal
+destination configuration from API Gateway.
+
+If the API Gateway administrator password contains a ':' (colon) and if you
+configure a Developer Portal destination, then the destination publish fails
+in API Gateway. When this occurs, the Provider and Webhook pages in Developer
+Portal are not displayed properly.
+
+This issue is resolved.
+
+DPO-955 (Fix 10)
+"Show owned applications only" toggle button does not work as expected.
+
+When you enable the "Show owned applications only" toggle button from the
+Application analytics page, the analytics of owned applications do not appear.
+
+This issue is resolved.
+
+DPO-951 (Fix 10)
+Unable to register Developer Portal from CentraSite.
+
+When you configure the Developer Portal destination from CentraSite, the
+publish action fails.
+
+This issue is resolved.
+
+DPO-916 (Fix 10)
+Blank error message in the Manage users page.
+
+When the number of users exceeds 10000 and records are displayed in multiple
+pages, and if you navigate from page 101 to the next page then a blank error
+message appears.
+
+This issue is resolved.
+
+
+DPO-919 (Fix 9)
+SMTP SSL connectivity issue.
+
+Developer Portal displays an error message when you enable SSL with the
+"STARTTLS" option during SMTP configuration.
+
+This issue is resolved.
+
+DPO-890 (Fix 9)
+Disabling of hostname verification for SSL certificates.
+
+When the HTTPS endpoints of API Gateway are invoked with self-signed
+certificate, then Developer Portal displays the SSL exception message.
+
+This issue is resolved. The hostname verification is disabled by default using
+the new setting 'disable-host-name-verifier' added to the application-dev.yml file.
+
+The default value of this setting is 'true'.
+
+DPO-888 (Fix 9)
+Authentication issue when modifying and saving webhooks.
+
+As an administrator, when you edit the details of a webhook and save the
+changes, then the encrypted password is encrypted again. This leads to an
+authentication issue.
+
+This issue is resolved.
+
+DPO-887 (Fix 9)
+External approval of consumer applications fails due to lack of data.
+
+When external approval is enabled for application requests, then the details of
+the associated APIs and users are missing in the events data.
+
+This issue is resolved.
+
+DPO-885 (Fix 9)
+Developer Portal does not use the LDAPS certificate uploaded under the
+Truststore tab of LDAP configuration.
+
+This issue is resolved.
+
+
+DPO-800 (Fix 8)
+Text with dark background colors is not readable.
+
+If you apply a dark background color to the left navigation pane, then the text
+and labels displayed in the pane are not readable.
+
+This is resolved now.
+
+DPO-819 (Fix 8)
+Unable to view icons due to page alignment issues.
+
+When you customize a theme, some icons in the "Add Layout/Component" section
+are hidden behind an overlapping top navigation banner.
+
+This issue is resolved.
+
+DPO-824 (Fix 8)
+"Skip to content" link appears in Developer Portal header.
+
+The "Skip to content" link appears in the header section of the UI even when
+you have not added it to your customized theme.
+
+This issue is resolved.
+
+DPO-703 (Fix 8)
+Unable to delete inactive applications.
+
+When you request for an application from Developer Portal, and if API Gateway
+is down or unreachable then the application will be in the 'inactive' state.
+These applications cannot be deleted from Developer Portal.
+
+This issue is resolved. You can delete inactive or obsolete applications by
+making a REST call to the following endpoint:
+DELETE http://{host}:{port}/portal/rest/v1/applications/{Id}?force=true
+
+DPO-728 (Fix 8)
+Only the first 10,000 users displayed.
+
+If the number of users exceeds 10,000, then only the first 10,000 users are
+displayed on the Manage users page.
+
+This issue is resolved.
+
+
+DPO-559 (Fix 7)
+UI text not translated.
+
+The text in the breadcrumbs are not translated to the selected language.
+
+This issue is resolved.
+
+DPO-754 (Fix 7)
+OAuth sign in fields does not appear on the Sign in page.
+
+When you enable the OAuth feature, then the required signing in options does
+not appear on the Sign in page.
+
+This issue is resolved. 
+
+
+DPO-604 (Fix 6)
+The customized title and favicon do not appear.
+
+When you customize the title and icon displayed on the browser header (favicon) 
+of the active theme, the changes do not appear immediately in the UI.
+
+This issue is resolved.
+
+DPO-596 (Fix 6)
+Error occurs when exporting APIs.
+
+The 'Internal Server Error' message appears when you export APIs that are 
+published from API Gateway.
+
+This issue is resolved.
+
+
+DPO-564 (Fix 5)
+Layout section does not appear properly.
+
+Incorrect labels and mismatched icons appear on the Layouts section of the
+Customize theme page.
+
+This issue is resolved.
+
+DPO-548 (Fix 5)
+Developer Portal backup operation fails.
+
+When you perform a backup operation from a Linux system and when the report is
+generated, an error occurs due to a missing font. This leads to the failure
+of the backup operation.
+
+This issue is resolved.
+
+DPO-475 (Fix 5)
+Null pointer exception when republishing an API.
+
+A NullPointerException message appears when you republish an API from
+API Gateway that is in a Kubernetes environment.
+
+This issue is resolved.
+
+
+DPO-495 (Fix 4)
+Unable to modify the text seen on the Sign in buttons.
+
+This issue is resolved. You can remove the irrelevant sign in option by
+deleting the particular component of your custom theme and add a button using
+the web component which will invoke the REST endpoint to get the configured
+OAuth provider details.
+
+DPO-525 (Fix 4)
+Unable to delete APIs.
+
+Unable to delete the APIs that are published without exposing their resources.
+
+This issue is resolved.
+
+
+DPO-504 (Fix 3)
+Vulnerable third party component, Log4j, used.
+
+This issue is resolved. The Log4j Core version is upgraded to 2.17.1.
+
+DPO-467 (Fix 2)
+Vulnerable 3rd Party Component Log4j used
+
+This issue is resolved. log4j version is upgraded to 2.16.0.
+
+DPO-439 (Fix 2)
+DELETE SMTP does not reset the SMTP settings
+
+When we delete the existing SMTP configuration via REST call, it is not getting cleared.
+
+This issue is resolved.
+
+DPO-398 (Fix 2)
+Remove Password Cut Copy Paste for signin screen
+
+Copy and paste functionality was disabled for password field of "Sign In" page.
+
+This issue is resolved now.
+
+
+DPO-256 (Fix 1)
+Unique URL for entities in a page.
+
+When you customize a page, the different blocks and entities in the page do not
+have an unique URL that allow you identity the block or entity that you are
+currently customizing.
+
+This issue is resolved.
+
+DPO-259 (Fix 1)
+Display of warning messages for unsaved changes.
+
+When there are unsaved changes during customization, and if you navigate away
+from the page without saving the change, then a warning message does not appear.
+
+This issue is resolved.
+
+DPO-260 (Fix 1)
+User registration fails if you add a new field in the Sign up page.
+
+If you add a new field in the Sign up page, an error appears, and the user
+registration fails.
+
+This issue is resolved.
+
+DPO-274 (Fix 1)
+Browser-based warning messages appear when there are unsaved changes.
+
+When there are unsaved changes on a page during customization, and if you
+navigate away from the page, the browser-based warning messages appear instead
+of the application-based messages.
+
+This issue is resolved.
+
+DPO-272 (Fix 1)
+Sample payload does not appear properly in the Try API page.
+
+When you select content type for a hybrid API, then the corresponding sample
+payload does not appear properly.
+
+This issue is resolved.
+
+DPO-245 (Fix 1)
+Unable to test SOAP APIs.
+
+When you test a SOAP API, the '400 - Bad request' error code appears.
+
+This issue is resolved.
+
+DPO-250 (Fix 1)
+REST API to purge UMC audits events.
+
+A REST API, that allows you to export and purge the UMC audit events, is not
+available.
+
+This issue is resolved. An API to perform the specified action is added.
+
+DPO-254 (Fix 1)
+Localization text does not appear properly.
+
+When Localization text is used, the UI label keys are displayed instead of the
+given text in some instances.
+
+This issue is resolved.
+
+
+
+8.0 Installation
+
+Install the fix using the Software AG Update Manager.For instructions, see Using
+the Software AG Update Manager located on the documentation website at 
+http://documentation.softwareag.com. 
+ 
+
+ 
+9.0 Uninstallation
+
+You can uninstall the fixes applied on webMethods Developer Portal 10.11.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was tested
+with non-English configurations and non-ASCII data.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new 
+messages and these messages will appear in English
+
+
+
+11.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

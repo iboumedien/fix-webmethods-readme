@@ -1,0 +1,182 @@
+          My webMethods Server Asset Build Environment 10.11 Fix 2 readme
+
+										January 2024
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+My webMethods Server Asset Build Environment 10.11 Fix 2
+
+
+
+2.0 Fix ID
+
+MWS_10.11_ABE_Fix2
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+My webMethods Server Asset Build Environment 10.11
+
+
+4.0 Fix Requirements and Dependencies
+
+None.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product 
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.	
+
+
+7.0 Fix Contents
+
+The fix will change the structure of the database. Review the fix contents carefully before 
+installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes 
+for the release.
+
+MWS-33012 (MWS_10.11_ABE_Fix2)
+Building My webMethods Server assets with Asset Build Environment might fail with a
+“java.lang.NoSuchFieldError: EMPTY_BYTE_ARRAY" error message. This issue occurs when the
+/common/lib/ext/log4j directory contains multiple versions of the Log4j library.
+
+The issue is resolved.
+
+
+MWS-33171 (MWS_10.11_ABE_Fix2)
+Building My webMethods Server Assets with Asset Build Environment might fail with an error. 
+This issue occurs when fix Java Package Core 11 Fix 152 is installed.
+
+The issue is resolved.
+
+
+MWS-26910 (MWS_10.11_ABE_Fix1)
+Building My webMethods Server assets with Asset Build Environment might fail with a
+NoClassDefFoundError error message.
+
+The issue is resolved.
+
+
+MWS-29611 (MWS_10.11_ABE_Fix1)
+Bundle resolution might fail when deploying war files to My webMethods Server. This issue occurs
+with war files that use optional imports, as declared by the default (generated) bundle manifest.
+
+The issue is resolved. To ensure proper bundle resolution, My webMethods Server and Asset Build
+Environment are enhanced to provide the option to control how bundles are resolved by the
+quinox  platform using BND templates which are applied to multiple components. This option works
+in addition  to the current implementation, which generates bundle manifests using a default
+template with optional  resolution. Instructions from custom BND files for a particular
+application (OSGI-OPT/bnd.bnd)  continue to get merged with the template. Now you can also add
+one or more custom BND files to  control the template contents, and apply custom instructions to
+multiple applications. Custom  instructions are applied when building assets with Asset Build
+Environment or when deploying bundles  to My webMethods Server. For more information about
+working with BND templates,  see Administering My webMethods Server.
+
+
+
+MWS-29634 (MWS_10.11_ABE_Fix1)
+Building CAF applications with Asset Build Environment fails. This issue occurs when the
+application project contains different versions of third party libraries that are also included
+in the My webMethods Server distribution.
+
+The issue is resolved.
+
+
+MWS-29665 (MWS_10.11_ABE_Fix1)
+When building My webMethods Server assets, Asset Build Environment might ignore dependencies,
+declared in the project classpath and fail to compile the assets.
+
+The issue is resolved.
+
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+If this is the first time you are installing a fix using the Software AG Update Manager, stop 
+My webMethods Server and back up the My webMethods Server database and file system before 
+applying the fix.  
+
+
+
+9.0 Uninstallation
+
+These instructions can only be used to uninstall the most recently installed fix. This action will 
+revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+You can only uninstall one My webMethods Server fix at a time. Make sure you backup your server 
+settings before uninstalling My webMethods Server fixes.
+
+
+
+10.0 Globalization
+																
+											
+This fix conforms to the internationalization standards of the webMethods product suite and includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was not tested with non-English configurations and non-ASCII data. However, this 
+fix has no globalization impact and can be applied to systems running in any supported locale or 
+configuration.
+
+						   
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2024 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, 
+and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or registered trademarks
+of Software AG and/or Software AG USA Inc. and/or its subsidiaries and/or its affiliates and/or 
+their licensors. Other company and product names mentioned herein may be trademarks of their 
+respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries is 
+located at http://softwareag.com/licenses.
+																			 
+This software may include portions of third-party products. For third-party copyright notices, 
+license terms, additional rights or restrictions, please refer to "License Texts, Copyright Notices 
+and Disclaimers of Third Party Products". For certain specific third-party license restrictions, 
+please refer to section E of the Legal Notices available under "License Terms and Conditions for 
+Use of Software AG Products / Copyright and Trademark Notices of Software AG Products". 
+These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the licensed product(s).						 

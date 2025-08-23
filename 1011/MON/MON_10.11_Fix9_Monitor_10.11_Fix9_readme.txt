@@ -1,0 +1,344 @@
+                       webMethods Monitor 10.11 Fix 9 readme
+
+                                      September 2024
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Monitor 10.11 Fix 9 (WmMonitor package update)
+
+
+
+2.0 Fix ID
+
+MON_10.11_Fix9
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Monitor 10.11.
+
+
+
+4.0 Requirements and Dependencies
+
+Optimize 10.11 Fix 9 or higher is required. Optimize fixes contain updates to shared components,
+used by both Monitor and Optimize products, so Optimize optimizeSharedLib 10.11 Fix 6 should be installed even if
+Optimize is not present on the machine.
+
+It is also recommended to update to the latest fix level for related BPM products
+such as Designer, Process Engine, Optimize and ESB, and Business Console.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods Monitor.
+
+
+
+6.0 Cautions and Warnings
+
+1. For RGHWPE-4389 PostgreSQL database support for Monitor.
+Set Default archiving parameter in the OPERATION_PARAMETER table:
+        PostgreSQL: Process Audit Log schema name
+
+2. BPM Archival for PostgreSQL database only supports multiple schemas with single db only.
+For E.g:
+
+CREATE DATABASE bpmarchive(db name);
+ \c bpmarchive;(connect to database)
+
+CREATE SCHEMA processbpm(process schema name);
+SET search_path TO processbpm;
+
+-- create user now --
+CREATE USER processbpmuser (process schema user);
+ALTER USER processbpmuser WITH ENCRYPTED PASSWORD 'manage';
+ALTER USER processbpmuser SET search_path = processbpm;
+
+--grant permissions --
+GRANT CONNECT ON DATABASE bpmarchive TO processbpmuser;
+GRANT USAGE, CREATE ON SCHEMA processbpm TO processbpmuser;
+GRANT ALL ON SCHEMA processbpm TO processbpmuser;
+--below grants are needed to make sure if user creates new objects in future , grants are
+available for them too
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON TABLES TO processbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON SEQUENCES TO processbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON FUNCTIONS TO processbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON TYPES TO processbpmuser;
+
+--create archive schema now --
+CREATE SCHEMA archiveprocessbpm(archive schema name);
+SET search_path TO archiveprocessbpm;
+
+-- create user now --
+CREATE USER archiveprocessbpmuser(archive schema user) ;
+ALTER USER archiveprocessbpmuser WITH ENCRYPTED PASSWORD 'manage';
+ALTER USER archiveprocessbpmuser SET search_path = archiveprocessbpm;
+
+--grant permissions --
+GRANT CONNECT ON DATABASE bpmarchive TO archiveprocessbpmuser;
+GRANT USAGE, CREATE ON SCHEMA archiveprocessbpm TO archiveprocessbpmuser;
+GRANT USAGE, CREATE ON SCHEMA processbpm TO archiveprocessbpmuser;
+GRANT ALL ON SCHEMA archiveprocessbpm TO archiveprocessbpmuser;
+GRANT ALL ON SCHEMA processbpm TO archiveprocessbpmuser;
+
+--below grants are needed to make sure if user creates new objects in future , grants are
+available for them too --
+ALTER DEFAULT PRIVILEGES IN SCHEMA archiveprocessbpm GRANT ALL ON TABLES TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA archiveprocessbpm GRANT ALL ON SEQUENCES TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA archiveprocessbpm GRANT ALL ON FUNCTIONS TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA archiveprocessbpm GRANT ALL ON TYPES TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON TABLES TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON SEQUENCES TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON FUNCTIONS TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON TYPES TO archiveprocessbpmuser;
+GRANT ALL ON ALL TABLES IN SCHEMA processbpm TO archiveprocessbpmuser;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA processbpm TO archiveprocessbpmuser;
+GRANT ALL ON ALL FUNCTIONS IN SCHEMA processbpm TO archiveprocessbpmuser;
+
+
+
+7.0 Fix Contents
+
+WMN-8671
+In the Process Instance page of webMethods Monitor, the Resubmit Closest button does not resubmit a process instance in which the failed step is contained in a subprocess.
+
+The issue is resolved.
+
+WMN-8475(MON_10.11_Fix8)
+In webMethods Monitor, the My webMethods Server settings might override the Task Client settings.
+
+The issue is resolved.
+
+WMN-8362(MON_10.11_Fix8)
+In webMethods Monitor, several API queries consume a lot of memory.
+
+The issue is resolved. The following services are modified so that the wm.monitor.useExactMatch parameter in monitor.cnf applies to them.
+
+pub.monitor.process.instance:getInstanceList
+pub.monitor.process.instance:getInstanceListWithFilter
+pub.monitor.process.instance:getInstanceListCustomDataSet
+pub.monitor.process.instance:getInstanceListCustomData
+pub.monitor.process.instance:getPagedInstanceList
+
+If you set useExactMatch to True, your search query will return only those INSTANCEID,
+PARENTINSTANCEID, and CUSTOMID results which exactly match your search term. An isExactMatch input parameter is also added to these services. isExactMatch works like the useExactMatch parameter, but takes priority over it.
+
+New parameter reference:
+  isExactMatch
+  
+  This parameter allows you to control whether your search query will use the UPPER and LIKE
+  conditions for INSTANCEID, PARENTINSTANCEID, and CUSTOMID.
+  
+Valid values are:
+  false - Default value for isExactMatch. The search query will use the UPPER and LIKE
+  conditions for INSTANCEID, PARENTINSTANCEID, and CUSTOMID.
+  true - If you set isExactMatch to True, the search query will not use the UPPER and LIKE
+  conditions for INSTANCEID, PARENTINSTANCEID, and CUSTOMID. The query will return only those
+  results which exactly match your search term.
+
+
+WMN-8418(MON_10.11_Fix7)
+In the About the Integration Server Administrator page, when you click Get diagnostics, errors appear in the server.log file.
+
+The issue is resolved.
+
+WMN-8143(MON_10.11_Fix6)
+In webMethods Monitor, when you view information for a collaboration task step in a webMethods-executed process, the Step Information window does not display a Task Detail link.
+
+The issue is resolved.
+
+WMN-8164(MON_10.11_Fix6)
+In webMethods Monitor, the statement cache begins to use a lot of memory resources. This might result in degraded performance.
+
+The issue is resolved.
+
+WMN-8269(MON_10.11_Fix6)
+With webMethods Monitor the Step Details Error section displays a unexpected exception.
+
+This issue is resolved.
+
+WMN-8267(MON_10.11_Fix6)
+In webMethods Monitor, when you assign an Integration Server host name using the watt.server.scheduler.logical.hostname property, multiple imageCleanup tasks are scheduled after each Integration Server restart. 
+
+The issue is resolved.
+
+WMN-8275(MON_10.11_Fix6)
+In webMethods Monitor, when you assign an Integration Server host name using the watt.server.scheduler.logical.hostname property, multiple imageCleanup tasks are scheduled after each Integration Server restart. 
+
+The issue is resolved.
+
+WMN-8291(MON_10.11_Fix6)
+In webMethods Monitor, when you stop a process instance during an active subprocess step, the subprocess continues executing and an error is displayed. 
+
+The issue is resolved.
+
+WMN-8233(MON_10.11_Fix5)
+In webMethods Monitor, the ProcessStageDefinitionsChange event type contains a file path to a non-existent XML schema location.
+
+The issue is resolved.
+
+WMN-8200(MON_10.11_Fix4)
+In webMethods Monitor, when the node name is changed from lower case to upper case, a new wm.monitor.admin:imageCleanup task 
+is scheduled after each Integration Server restart.
+
+The issue is now resolved.
+
+WMN-8163(MON_10.11_Fix3)
+In webMethods Monitor, you cannot resubmit a process instance using the Resubmit Closest button. 
+The issue occurs when the process contains intermediate events.
+
+The issue is resolved. The Process Instances page now displays the correct process status and the Integration Server 
+log contains a warning message.
+
+
+WMN-8058(MON_10.11_Fix2)
+In webMethods Monitor, after you restart Integration Server, the Scheduler page displays a number of scheduled tasks with 
+the imageCleanup service.
+
+The issue is resolved.
+
+WMN-7958(MON_10.11_Fix2)
+In webMethods Monitor, when you terminate an Oracle Database archive service and start a new service, a message for 
+a successful operation appears, but no data is archived.
+
+The issue is resolved. To archive data, grant SELECT privilege to the Archive User:
+1. Install the MON_10.11_Database_Fix3 fix.
+2. Open Oracle Database and log in as a SYS user.
+3. Execute the "GRANT SELECT ON V_$SESSION TO <archive_user>;" SQL procedure, where <archive_user> is the user used to 
+log in to the Archive database.
+
+WMN-7953(MON_10.11_Fix1)
+With webMethods Monitor, search query performance needs to be improved.
+
+The issue is resolved. To improve search query performance on an SQL Server database configured in Integration Server,
+the wm.monitor.useExactMatch parameter is added to the monitor.cnf configuration file.
+
+New parameter reference:
+  useExactMatch
+
+  This parameter allows you to control whether a search by keyword query performed from the
+  Process Instance Detail page will use the UPPER and LIKE functions for instanceID and
+  parentinstanceID.
+
+Valid values are:
+  false - Default value for useExactMatch. The search query will use the UPPER and LIKE
+  functions for instanceID and parentinstanceID.
+  true - If you set useExactMatch to True, the search query will not use the UPPER and LIKE
+  functions for instanceID and parentinstanceID. The search query will return only those results
+  which exactly match your search term.
+
+The issue is resolved.
+
+WMN-7997(MON_10.11_Fix1)
+With webMethods Monitor, when you open a process details page in Business Console, the Summary tab does not display process
+instance details. The issue occurs when Integration Server and My webMethods Server use a MySQL 5 database.
+
+The issue is resolved.
+
+WMN-7975(MON_10.11_Fix1)
+With webMethods Monitor, when the Integration Server host is part of a stateless cluster environment with a shared database,
+pub.monitor:imageCleanup might not start.
+
+The issue is now resolved.
+
+WMN-7846(MON_10.11_Fix1)
+With webMethods Monitor, the getInstanceListWithFilter service fails when the logged field contains "and" in the name.
+
+The issue is resolved.
+
+WMN-7845(MON_10.11_Fix1)
+With webMethods Monitor, the getStepDetails service returns the input pipeline regardless of the status specified 
+in the service inputs. In addition, the audit timestamp returned by the getStepDetails service is incorrect for the 
+requested status.
+
+The issue is resolved. The optional input parameter stepInputPipeline has been added to the getStepDetails service.
+
+New parameter reference:
+  stepInputPipeline
+
+Valid values are:
+  false - When stepInputPipeline is set to false, all data
+  returned by the getStepDetails service is specific to the
+  requested status.
+  true - Default value for stepInputPipeline. When
+  stepInputPipeline is set to true, the getStepDetails service
+  returns the input pipeline with the correct audit timestamp.
+
+WMN-7841(MON_10.11_Fix1)
+With webMethods Monitor, resubmitting one or more process instances from the process list might fail with an error. 
+This issue occurs when executing the "Resubmit Closest" or "Rebsubmit Earliest" actions.
+
+The issue is resolved.
+
+WMN-8034(MON_10.11_Fix1)
+In webMethods Monitor, the getListCustomData service fails when you execute it with multiple input parameters.
+
+The issue is resolved.
+
+WMN-7996(MON_10.11_Fix1)
+In webMethods Monitor, the setArchiveStatusToError service fails with an error: "Unknown Key: [119.329]".
+
+The issue is resolved.
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central  location (9.7 or later
+products), or Software AG Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action
+will revert your installation to the previously installed fix. You cannot use these instructions to
+uninstall the previously installed fix.
+
+Uninstall using Command Central (9.7 or later) or Software AG Update Manager. For instructions, see
+the documentation at https://docs.webmethods.io/.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and includes
+support for operation in any country, locale, or language as specified in the Installing webMethods
+Products guide. It was not tested with non-English configurations and non-ASCII data. However, this
+fix has no globalization impact and can be applied to systems running in any supported locale or
+configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these messages
+will appear in English.
+
+
+
+11.0 Copyright
+
+Super iPaas Integration LLC, an IBM Company 2024.

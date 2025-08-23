@@ -1,0 +1,156 @@
+		IBM webMethods Adapter 7.1 for X.400 Fix 5 readme
+
+	                  October 2024
+_________________________________________________________________
+
+This file provides important information for applying IBM webMethods
+Adapter 7.1 for X.400 Fix 5 to IBM webMethods Adapter for X.400
+7.1. For additional information about IBM webMethods
+Adapter 7.1 for X.400, see the readme file in the _documentation 
+directory of your IBM installation (if installed).
+
+
+
+Contents:
+
+1.0   Fix Name
+2.0	  Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Fix Requirements
+5.0   Fix Contents
+6.0   Platform Support
+7.0   Installation
+8.0   Uninstallation
+9.0   Cautions and Warnings
+10.0  Copyright
+
+
+
+
+1.0 Fix Name
+
+IBM webMethods Adapter 7.1 for X.400 Fix 5
+
+
+
+2.0 Fix ID
+
+OFX_7.1_Fix5
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects IBM webMethods Adapter 7.1 for X.400.
+
+
+
+4.0 Fix Requirements
+
+None.
+
+
+
+5.0 Fix Contents
+
+OFX-37
+Updated copyright notes, vendor and product names for IBM rebranding.
+
+OFX-27(OFX_7.1_Fix4)
+In webmethods X.400 Adapter, the password provided for 
+configuring the adapter is not masked and appears as a clear text.
+
+This issue is resolved. The password entered is now masked.
+
+OFX-29(OFX_7.1_Fix4)
+In webMethods X.400 Adapter, the adapter's administrator UI
+pages does not support the new Administrator screens of
+Integration Server(IS) 10.1.
+
+This issue is resolved. webMethods X.400 Adapter now supports the new
+Administrator screens of IS from version 10.1 and later. 
+
+OFX-25(OFX_7.1_Fix3)
+webMethods X.400 Adapter 7.1 support for new Admin screens 
+IS 9.10 onwards. 
+
+webMethods X.400 Adapter 7.1 Admin UI pages did not support
+new format of screens developed for IS 9.10. 
+
+This issue is resolved now by modifying the webMethods X.400
+Adapter 7.1 pages.
+
+OFX-14(OFX_7.1_Fix2)
+After installation of TNS_FIx13 wm.x400.tn.Util:getX400fields
+gets java.lang.NullPointerException
+
+This issue is now resolved.
+
+
+OFX-12(OFX_7.1_Fix2)
+When reloading the X400forTradingNetworks package of the 
+webMethods X.400 Adapter, duplicate extended fields are 
+created in the X.400 extended field group.
+
+When you reload the X400forTradingNetworks package manually, 
+or after restarting an Integration Server, duplicate 
+extended fields are added to the X.400 extended field group 
+for all partner profiles present in Trading Networks. This 
+is an issue, because to make the extended field functions 
+work, you should provide values for these duplicate fields.
+
+This issue is now resolved. Reloading the 
+X400forTradingNetworks package manually or after restarting 
+Integration Server does not add any new fields in the X.400 
+extended field group.
+
+OFX-4(OFX_7.1_Fix1)
+webMethods X.400 Adapter does not produce a submit notification
+when sending back a notification.
+
+When sending a positive, negative, or forwarded EDI notification
+back to the sender of a document, X.400 Adapter does not produce
+a submit notification. Instead, the adapter logs a
+"cannot find documentId for uafiLocalId" exception in the
+Integration Server log.
+
+This issue is resolved. The documentID maps correctly to the
+uafiLocalId in the crossReferenceList.xml file and X.400 Adapter
+produces a submit notification.
+
+
+
+6.0 Platform Support
+
+This fix is supported on all platforms on which IBM webMethods
+Adapter 7.1 for X.400 is supported. 
+
+
+
+7.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+8.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+9.0 Cautions and Warnings
+
+None.
+
+
+
+10.0 Copyright
+
+Copyright Super iPaas Integration LLC, an IBM Company 2024.

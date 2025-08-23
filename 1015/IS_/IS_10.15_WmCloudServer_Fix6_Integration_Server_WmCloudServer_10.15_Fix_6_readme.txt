@@ -1,0 +1,185 @@
+                  webMethods Integration Server 10.15 WmCloudServer Fix 6 readme
+
+                                   April 2024 
+                                                   
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Integration Server 10.15 WmCloudServer Fix 6.
+
+
+
+2.0 Fix ID
+
+IS_10.15_WmCloudServer_Fix6
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Integration Server 10.15.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product 
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+webMethods Integration Server 10.15 WmCloudServer Fix 6 is supported on the 
+same platforms and operating systems and with the same JREs as webMethods 
+Integration Server 10.15.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+PIE-85481
+Enabling dynamic queues by setting watt.server.wmcloud.createResponseQueue=true 
+results in performance degradation in Integration Server.
+
+Integration Server creates dynamic queues with a spindle size of 1000, leading 
+to performance degradation during high loads with small events, as the spindles 
+are created frequently.
+
+This issue is now resolved. Dynamic queues now have a default spindle size of
+10000. 
+
+Integration Server now provides the watt.wmcloud.um.listeners.spindleSize
+server configuration parameter to specify the spindle size. The default value is
+10000. 
+You do not need to restart Integration Server for changes to this parameter to
+take effect. 
+
+PIE-87486 (IS_10.15_WmCloudServer_Fix5)
+Removed unused code segments to enhance code optimization.
+
+PIE-85723 (IS_10.15_WmCloudServer_Fix4)
+Internal updates to Integration Server to support internal changes to webMethods
+Cloud (webmethods.io). 
+
+BIC-21811
+
+PIE-84255 (IS_10.15_WmCloudServer_Fix3)
+The on-premise Integration Server now provides an option to enable or disable 
+payload compression for communication with webMethods Cloud.
+
+In Integration Server Administrator, go to webMethods Cloud > Accounts, and 
+select the Enable Compression option. By default, the option is not selected. 
+Compression is enabled only if both the on-premise Integration Server and 
+webMethods Cloud installations are configured to use the compression 
+functionality.
+If webMethods Cloud does not perform compression, then on-premise Integration 
+Server returns the payload in its original, uncompressed form.
+Compressing payloads smaller than 5KB leads to slight decrease in throughput. 
+It is recommended to disable compression for file types such as PDFs, zip files, 
+and so on to maintain optimal throughput.
+
+Note:
+If you enable compression for an existing account, you must
+upload the account for the changes to take effect.
+
+PIE-79818 (IS_10.15_WmCloudServer_Fix2)
+
+PIE-79935 (IS_10.15_WmCloudServer_Fix2)
+
+PIE-80453 (IS_10.15_WmCloudServer_Fix2)
+
+PIE-80514 (IS_10.15_WmCloudServer_Fix2)
+
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, 
+or language as specified in the webMethods Installation Guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix 
+has no globalization impact and can be applied to systems running in any 
+supported locale or configuration.
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new 
+messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright @2023  Software AG, Darmstadt, Germany and/or Software AG USA  Inc.,
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their 
+licensors.
+
+The name Software AG and all Software AG product names are either trademarks 
+or registered trademarks of Software AG and/or Software AG USA Inc. and/or 
+its subsidiaries and/or its affiliates and/or their licensors. Other company 
+and product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its 
+subsidiaries is located at http://softwareag.com/licenses.
+
+Use of this software is subject to adherence to Software AG's licensing 
+conditions and terms. These terms are part of the product documentation, 
+located at http://documentation.softwareag.com/legal/ and/or in the root
+installation directory of the licensed product(s).
+
+This software may include portions of third-party products. For third-party 
+copyright notices, license terms, additional rights or restrictions, please 
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party 
+Products". For certain specific third-party license restrictions, please 
+refer to section E of the Legal Notices available under "License Terms
+and Conditions for Use of Software AG Products / Copyright and Trademark 
+Notices of Software AG Products". These documents are part of the product 
+documentation, located at http://softwareag.com/licenses and/or in the 
+root installation directory of the licensed product(s).

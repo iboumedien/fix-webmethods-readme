@@ -1,0 +1,176 @@
+    webMethods Application Platform Server Service Integration 
+                 9.8.0 Fix 1 readme 
+
+                    April 2015 
+
+_________________________________________________________________ 
+
+This file provides important information for applying webMethods 
+Application Platform Server Service Integration 9.8.0 Fix 1 to 
+webMethods Application Platform Server 9.8.0. For additional 
+information about webMethods Application Platform Server 9.8.0, 
+see the readme file in the _documentation directory of your 
+Software AG installation (if installed) or on the Empower website 
+at https://empower.softwareag.com. 
+
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Product(s)/Component(s) Affected
+3.0   Fix Requirements
+4.0   Fix Contents
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Installation
+8.0   Uninstallation
+9.0   Globalization
+10.0  Copyright
+11.0  Contacting Us
+
+1.0 Fix Name 
+
+webMethods Application Platform Server Service Integration 
+9.8.0 Fix 1 
+
+
+
+2.0 Product(s)/Component(s) Affected 
+
+This fix affects webMethods Application Platform Server 9.8.0 
+
+
+
+3.0 Fix Requirements 
+
+For language pack requirements, see the Globalization section of 
+the Software AG Empower Product Support website. The 
+Globalization section can be found at: 
+
+https://empower.softwareag.com/Products/Globalization/default.asp 
+
+
+
+4.0 Fix Contents 
+
+PLD-124
+Improve support for overloaded Java method names in IS service 
+generation 
+
+The IS services created to invoke Java methods cannot support 
+overloaded method names in Java. Prior to this fix, if an exposed 
+Java method has an overloaded name, the generated IS service may 
+choose the wrong Java method at invocation time. Also, prior to 
+this fix the IS service generation did not properly support an 
+@Service annotation that declares multiple interfaces. 
+
+This issue is resolved. 
+
+
+
+5.0 Platform Support 
+
+webMethods Application Platform Server Service Integration 
+9.8.0 Fix 1 is supported on the same platforms and operating 
+systems and with the same JREs as webMethods Application Platform 
+Server 9.8.0
+
+
+
+6.0 Cautions and Warnings 
+
+None
+
+
+
+7.0 Installation 
+
+Install the fix using the Software AG Update Manager. For 
+instructions, see Using the Software AG Update Manager located 
+either in the _documentation directory or on the documentation 
+website at http://documentation.softwareag.com. 
+
+
+
+8.0 Uninstallation 
+
+Uninstall the fix using the Software AG Update Manager. For 
+instructions, see Using the Software AG Update Manager. 
+
+NOTE: This uninstall procedure can only be used to uninstall the 
+most recently installed fix. This action will revert your 
+installation to the previously installed fix. You cannot apply 
+this uninstall procedure to the previously installed fix. 
+
+
+
+9.0 Globalization 
+
+This fix conforms to the internationalization standards of the 
+webMethods product suite and includes support for operation in 
+any country, locale, or language as specified in the Installing 
+webMethods Products guide. It was not tested with non-English 
+configurations and non-ASCII data. This fix may have some 
+globalization impact. 
+
+
+9.1 Localization 
+
+This fix does not require an updated Language Pack. It might 
+contain new messages and these messages will appear in English. 
+
+
+
+10.0 Copyright 
+
+Copyright � 2015 Software AG, Darmstadt, Germany and/or Software 
+AG USA Inc., Reston, VA, USA, and/or its subsidiaries and/or its 
+affiliates and/or their licensors. 
+
+The name Software AG and all Software AG product names are either 
+trademarks or registered trademarks of Software AG and/or 
+Software AG USA Inc. and/or its subsidiaries and/or its 
+affiliates and/or their licensors. Other company and product 
+names mentioned herein may be trademarks of their respective 
+owners. 
+
+Detailed information on trademarks and patents owned by Software 
+AG and/or its subsidiaries is located at 
+http://softwareag.com/licenses. 
+
+This software may include portions of third-party products. For 
+third-party copyright notices, license terms, additional rights 
+or restrictions, please refer to "License Texts, Copyright 
+Notices and Disclaimers of Third Party Products". For certain 
+specific third-party license restrictions, please refer to 
+section E of the Legal Notices available under "License Terms and 
+Conditions for Use of Software AG Products / Copyright and 
+Trademark Notices of Software AG Products". These documents are 
+part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation 
+directory of the licensed product(s). 
+
+
+
+11.0 Contacting Us 
+
+Authorized technical support contacts can reach Software AG 
+Global Support in the following ways: 
+
+Web: https://empower.softwareag.com (online support center) 
+
+E-mail: empower@softwareag.com 
+
+You can find complete contact information in our Global Support 
+Contact Directory at: 
+
+https://empower.softwareag.com/public_directory.asp 
+
+You can also visit our Software AG Developer Communities to 
+access additional articles, demos, and tutorials, technical 
+information, samples, useful resources, online discussion forums 
+moderated by Software AG professionals, and more at: 
+
+http://communities.softwareag.com/ecosystem/communities/public/in 
+dex.html 

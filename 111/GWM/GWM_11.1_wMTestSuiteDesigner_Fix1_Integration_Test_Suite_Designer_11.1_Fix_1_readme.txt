@@ -1,0 +1,90 @@
+    webMethods Unit Test Framework Designer 11.1 Fix 1 readme
+
+                          November 2024
+
+_________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+
+
+
+1.0 Fix Name
+
+webMethods Integration Test Suite Designer 11.1 Fix 1
+
+
+
+2.0 Fix ID
+
+GWM_11.1_wMTestSuiteDesigner_Fix1
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Integration Test Suite Designer 11.1.
+
+
+
+4.0 Requirements
+
+This fix requires an existing 
+webMethods Integration Test Suite Designer 11.1 installation.
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by 
+webMethods Designer 11.1.
+
+
+
+6.0 Cautions and Warnings
+
+Warning: Do not use the "Uninstall" option (from About Eclipse SDK > 
+Installation Details > Installed Software tab), as that will completely 
+remove a particular feature.
+
+
+
+7.0 Fix Contents
+
+GWM-865
+
+This fix resolves multiple security vulnerabilities in IBM webMethods Integrated Test Suite.
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the 
+documentation at https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. 
+This action will revert your installation to the previously installed fix. You cannot 
+use these instructions to uninstall the previously installed fix.
+
+Uninstall using Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Copyright Super iPaaS Integration LLC, an IBM Company 2024.

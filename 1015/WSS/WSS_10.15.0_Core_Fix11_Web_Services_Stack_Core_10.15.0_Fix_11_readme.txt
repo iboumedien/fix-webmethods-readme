@@ -1,0 +1,291 @@
+			SAG Web Services Stack 10.15 Fix 11 readme
+
+                    October 2024
+
+________________________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+SAG Web Services Stack 10.15 Fix 11
+
+
+
+2.0 Fix ID
+
+WSS_10.15_Core_Fix11
+
+
+3.0 Product(s)/Component(s) Affected
+
+
+This fix affects SAG Web Services Stack 10.15.
+
+
+
+4.0 Requirements
+
+This fix requires any of the products listed in 3.0 Products (s)/Component(s) Affected. 
+
+Official fixes are cumulative. Therefore, you can install the specified fix or later.
+
+For language pack requirements, see the Globalization section of the Software AG
+Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported
+by webMethods Product Suite 10.15.
+
+
+
+6.0 Cautions and Warnings
+
+Software AG Tomcat Server is stopped by Software AG Update 
+Manager, therefore it must be restarted after applying the fix.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+WSSTACK-4432
+Updates to apache-mime4j-core JAR to resolve security vulnerability.
+
+Integration Server now includes the 0.8.11 version of the JAR file which
+resolves the following security vulnerability:
+CVE-2024-21742 (https://nvd.nist.gov/vuln/detail/CVE-2024-21742)
+
+The previous version of the JAR file was: apache-mime4j-core-0.7.3-rc1.jar
+
+WSSTACK-5869
+Web Services Stack (WSS) version 10.15 is now supported on Java 17 runtime.
+
+WSSTACK-4405
+When Web Services Stack is deployed in a directory that has a name containing spaces,
+Web Services Stack incorrectly creates a new directory with the same name containing "%20"
+instead of spaces.
+This issue is resolved.
+
+WSSTACK-4423
+Duplicate WS-Security tags on outbound IS calls
+
+Intermittently user experienced duplicate timestamp token header generated in outgoing soap messages. 
+
+The issue is now fixed.
+
+WSSTACK-5805
+Uploading an existing Web Services Stack ( WSS ) service archive file results in 
+an error.
+
+WSS application returns the "Unable to upload the aar file" error when you upload 
+an existing WSS service archive file on the WSS Admin Module due to an internal 
+issue.
+
+This issue is resolved. Now, you can upload the existing WSS service archive file
+on the WSS Admin Module.
+
+WSSTACK-4412
+Web Services Stack uses the third-party ESAPI library v.2.4.0.0, 
+which has known vulnerabilities. This issue is resolved. Web Services Stack now 
+uses the stable version, ESAPI-2.5.3.1.
+
+WSSTACK-5821
+Web Services Stack uses the third-party Bouncy Castle library v.1.76.0,
+which has known vulnerabilities. This issue is resolved. Web Services Stack now 
+uses the stable version Bouncy Castle, 1.78.1.
+
+WSSTACK-4376
+In Software AG WebServices Stack, the WSDL11ToAxisServiceBuilder class, which is part of the axis2-kernel.jar file, is missing.
+The issue is resolved.
+
+WSSTACK-4290
+Software AG Web Services Stack uses the third-party Bouncy Castle library v. 1.69.0, 
+which has known vulnerabilities.
+This issue is resolved. Web Services Stack now uses the stable version
+Bouncy Castle 1.76.0.
+
+WSSTACK-4226
+Software AG Web Services Stack uses the third-party Apache Commons Codec
+v.1.11.0, which has а security vulnerability CVE-2020-15250.
+This issue is resolved. Web Services Stack now uses the stable version
+Apache Commons Codec 1.15.0.
+
+WSSTACK-3944
+Software AG Web Services Stack uses the third-party Apache Xalan
+2.7.2, which has а security vulnerability CVE-2022-34169.
+This issue is resolved. Web Services Stack now uses the stable version
+Apache Xalan 2.7.3.
+
+WSSTACK-4163
+In Software AG Web Services Stack, WSDL temporary files might not be deleted.
+The issue is resolved. 
+
+WSSTACK-4146
+Software AG Web Services Stack uses the third-party modified library Jettison 1.5.3,
+which has а security vulnerability CVE-2023-1436.
+Web Services Stack now uses the stable version
+Jettison 1.5.4.
+
+WSSTACK-4121
+Software AG Web Services Stack uses the third-party Spring Framework v.5.3.23,
+which has а security vulnerability CVE-2016-1000027.
+This issue is resolved. Web Services Stack no longer uses Spring Framework.
+
+WSSTACK-4129
+Software AG Web Services Stack uses the third-party Apache Velocity Engine v.1.5.2,
+which has а security vulnerability CVE-2020-13936.
+This issue is resolved. Web Services Stack no longer uses Apache Velocity Engine.
+
+WSSTACK-4109
+In WebServices Stack, during processing of a SOAP message that contains an attribute value larger
+than 524288 bytes, a "Maximum attribute size limit (524288) exceeded" error occurs.
+The issue is resolved. However, Software AG does not recommend using XML attribute values
+larger than 4096 bytes. For larger values, use XML elements.
+
+WSSTACK-4093
+Software AG Web Services Stack uses the third-party Apache Commons FileUpload
+library v.1.3.3, which has а security vulnerability NVD - CVE-2023-24998.
+This issue is resolved. Web Services Stack now uses the stable version
+Apache Commons FileUpload 1.5.0.
+
+WSSTACK-4020
+Software AG Web Services Stack uses the third-party modified library Jettison 1.2,
+which has а security vulnerability CVE-2022-40150.
+Web Services Stack now uses the stable version
+Jettison 1.5.3.
+This issue is resolved. 
+
+WSSTACK-4067
+Software AG Web Services Stack uses the third-party library Woodstox-core 6.1.1,
+which has а security vulnerability NVD - CVE-2022-40152.
+This issue is resolved. Web Services Stack now uses the stable version
+Woodstox-core 6.4.0.
+
+WSSTACK-4020
+Software AG Web Services Stack uses the third-party modified library Jettison 1.2,
+which has а security vulnerability CVE-2022-40150.
+This issue is resolved. 
+
+WSSTACK-4016
+Software AG Web Services Stack uses the third-party library Apache Commons BCEL 5.2,
+which has а security vulnerability CVE-2022-42920.
+This issue is resolved. Web Services Stack now uses the stable version
+Apache Commons BCEL 6.7.0.
+
+WSSTACK-3932
+Software AG Web Services Stack creates raw request log files with size 0.
+This issue is resolved.
+
+WSSTACK-3936
+Software AG Web Services Stack uses the third-party Spring library v. 5.3.21,
+which has а security vulnerability CVE-2016-1000027.
+This issue is resolved. Web Services Stack now uses the stable version
+Spring 5.3.23.
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or Software AG Update Manager to install 
+fixes on one machine at a time. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was tested
+with non-English configurations and non-ASCII data.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new 
+messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2024 Software AG, Darmstadt, Germany and/or Software AG USA Inc.,
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks
+or registered trademarks of Software AG and/or Software AG USA Inc. 
+and/or its subsidiaries and/or its affiliates and/or their licensors.
+Other company and product names mentioned herein may be trademarks
+of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries
+is located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. 
+For third-party copyright notices, license terms, additional rights or restrictions,
+please refer to "License Texts, Copyright Notices and Disclaimers of Third Party Products".
+For certain specific third-party license restrictions, please refer to section E of 
+the Legal Notices available under "License Terms and Conditions for Use of Software AG Products /
+Copyright and Trademark Notices of Software AG Products". 
+These documents are part of the product documentation, located at
+http://softwareag.com/licenses and/or in the root installation directory of the licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

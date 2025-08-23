@@ -1,0 +1,449 @@
+﻿                webMethods Adapter Runtime 10.5 Fix 9 Readme
+
+                                  July 2024
+
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Adapter Runtime 10.5 Fix 9
+
+
+
+2.0 Fix ID
+
+WAR_10.5_Fix9
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+None.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+For language pack requirements, see the Globalization section of the Software 
+AG Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include 
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+PIEAR-2573
+When CSRF is enabled, Integration Server Administrator > webMethods Adapter for
+Apache Kafka > Listeners page fails to provide an option to delete a disabled
+listener.
+
+This issue is now resolved.
+
+PIEAR-2536
+After applying the Adapter Runtime 10.5 Fix 8, the webMethods adapter for JDBC 
+could not reload environment variables in some instances. 
+
+This issue is now resolved.
+
+PIEAR-2535
+After applying the Adapter Runtime 10.5 Fix 8, the Adapter Runtime was throwing 
+a NullPointerException (NPE) during startup in a few instances. 
+
+This issue is now resolved.
+
+PIEAR-1672
+The /health endpoint does not return information about the adapter health
+indicator when the Microservices Runtime or a Integration Server instance is
+migrated from 10.3 version to 10.7 version.
+
+This issue is now resolved.
+
+Note: The /health endpoint functionality is available in Microservices Runtime
+or in an Integration Server instance with a Microservices license.
+
+PIEAR-2447 (WAR_10.5_Fix8)
+In Microservices Runtime Administrator, adapters are not listed due to incorrect  
+compiler code optimization.
+
+This issue is now resolved.
+
+PIEAR-2415 (WAR_10.5_Fix8)
+When the health end-point of an adapter is accessed, the listener properties
+appear including the runtimeState attribute which is a dictionary of key/value
+pairs. If the listener is enabled, then the runtimeState dictionary displays the
+runtime state of the listener. If the listener is disabled, then the runtimeState
+dictionary displays only currentState as disabled which is the state of the
+listener set by the user.
+
+PIEAR-1760 (WAR_10.5_Fix8)
+In webMethods Adapter Runtime, the administrator API GET operations for
+notifications do not display the notification type and the notification state.
+
+This issue is now resolved.
+
+PIEAR-2256 (WAR_10.5_Fix8)
+Whenever Integration Server is started, a WmAS400 package containing a single
+config sub-directory is created.
+
+This issue is now resolved.
+
+PIEAR-2314 (WAR_10.5_Fix8)
+In the webMethods Adapter Runtime, an administrator API request to enable a
+suspended polling notification fails.
+
+This issue is now resolved.
+
+PIEAR-2315 (WAR_10.5_Fix8)
+In webMethods Adapter Runtime, the administrator API GET operations for
+notification do not display the notificationProperties field if the notification
+type is a listener. The notificationProperties field is displayed for polling
+notifications.
+
+PIEAR-2320 (WAR_10.5_Fix8)
+In webMethods Adapter Runtime, the notification state displayed in the
+administrator API GET operations are not in sync with the notification status
+displayed in the Integration Server Administrator > Server > Scheduler page.
+
+This issue is now resolved.
+
+PIEAR-1949 (WAR_10.5_Fix7) 
+When CSRF guard is enabled, the user is not able to enable or disable connections
+from the Integration Server Administrator screen if opened using chrome or edge
+browser.
+
+This issue is now resolved. 
+
+PIEAR-1899 (WAR_10.5_Fix7) 
+In Microservices Runtime, the JDBC polling notifications are not enabled although
+the notificationEnabled property is set to true in the application.properties file.
+
+This issue is now resolved.
+
+PIEAR-1889 (WAR_10.5_Fix7) 
+The adapter asset properties passed as environment variables arguments in a
+docker run command are not substituted for the externalized adapter asset
+properties defined in the application.properties file.
+
+This issue is now resolved. 
+
+PIEAR-1888 (WAR_10.5_Fix7) 
+The listeners in webMethods Adapter for Websphere MQ, which are in pending enabled
+state fail to change to enabled state when Integration Server exits the quiesce
+mode. 
+
+This issue is now resolved. 
+
+PIEAR-1886 (WAR_10.5_Fix7) 
+In webMethods Adapter Runtime, the WmSAP adapters' listener notification nodes
+are not listed in Integration Server Administrator screen.
+
+This issue is now resolved.
+
+PIEAR-1788 (WAR_10.5_Fix7) 
+The webMethods AdapterRuntime (ART) based adapters configuration properties
+which can be configured from Integration Server Administrator are available in
+configuration variables template generated by Microservices Runtime.
+For more information, see the adapter installation and user guide.
+
+PIEAR-1733 (WAR_10.5_Fix7) 
+When the adapter listeners package is loaded before the adapter package, the
+listeners are in Pending Enabled state and fail to change to the Enabled state.
+
+This issue is now resolved.
+
+If the adapter listeners package is loaded before the adapter package, then the
+listeners are in the Disabled state and you must enable the listeners manually.
+You must ensure proper package dependency is maintained to avoid the error. 
+
+PIEAR-1854 (WAR_10.5_Fix6)
+In Integration Server Administrator screen, on selecting the Adapters dropdown,
+the installed adapters are not listed.
+
+This issue is now resolved. 
+
+PIEAR-1784 (WAR_10.5_Fix6)
+The webMethods AdapterRuntime (ART) asset properties which can be configured
+from Integration Server Administrator are available in configuration variables
+template generated by Microservices Runtime. Microservices Runtime generates an
+application.properties file.
+
+You can update the values of the properties in the application.properties file
+and pass to a Microservices Runtime. Microservices Runtime loads the information
+from the application.properties and updates the webMethods Adapter Runtime assets
+configuration properties. 
+
+PIEAR-1749 (WAR_10.5_Fix6)
+The user is unable to delete or change the state of the listener notification
+using adapters administrator APIs.
+
+This is now resolved.  
+
+PIEAR-1738 (WAR_10.5_Fix6)
+In Adapter Runtime, during Integration Server startup, when packages are loading,
+an exception occurs in ART node registration, preventing the other nodes in the
+package from registering. This occurs when the error resource bundle is not
+initialized during node creation.
+
+This issue is now resolved. 
+
+PIEAR-1663 (WAR_10.5_Fix6)
+When deploying a package using a repository-based deployment, the adapter
+runtime fails to re-enable the enabled connections as the passman is not
+populated with the password. An error "null password given; logon denied"
+is generated.
+
+This issue is now resolved. 
+
+PIEAR-1625 (WAR_10.5_Fix5)
+WmART is enhanced to externalize the Kafka Adapter connection
+configurations.
+
+PIEAR-1608 (WAR_10.5_Fix5)
+A deadlock occurs while deploying the package, as the lock acquired during
+connection release is not released.
+
+This issue is resolved.
+
+PIEAR-1582 (WAR_10.5_Fix5)
+Listener is launched twice during webMethods Integration Server startup if,
+pub.art.listener:enableListener is used in one of the packages as startup
+services.
+
+This issue is resolved.
+
+PIEAR-1409 (WAR_10.5_Fix5)
+In webMethods Adapter Runtime, adapter ClusterAware listeners do not sync with
+each other after restarting the Integration Server.
+
+This issue is now resolved.
+
+PIEAR-1373 (WAR_10.5_Fix5)
+Connections remain in pending enabled state, as the exceptions from connection
+startup call backs are ignored.
+
+This issue is resolved.
+
+PIEAR-1515 (WAR_10.5_Fix4)
+WebSphere MQ listeners are not displayed in Integration Server Administrator.
+A runtime exception occurs while registering the listener nodes as the 
+corresponding adapter is not loaded. The runtime exception abruptly ends the 
+listener node registration in that package. 
+
+The issue is resolved.
+
+PIEAR-1493 (WAR_10.5_Fix4)
+In webMethods WebSphere MQ Adapter, when the connection in the Integration 
+Server Admin UI page is enabled, invoking the 
+pub.art.connection:queryConnectionState service causes a delay in Put service.
+Invoking the pub.art.connection:queryConnectionState service creates a new 
+connection to check the connectivity causing the delay.
+
+The issue is now resolved.
+
+A new watt property 
+"watt.art.pub.queryConnectionState.disableConnectionCreation" is introduced to 
+disable creating the connection in the pub.art.connection:queryConnectionState 
+service. 
+Set the property "watt.art.pub.queryConnectionState.disableConnectionCreation" 
+to true to disable creating the connection. 
+The pub.art.connection:queryConnectionState service returns the current state 
+of the connection.
+
+PIEAR-1467 (WAR_10.5_Fix4)
+Unable to shutdown Integration Server because of a deadlock in webMethods Adapter Runtime.
+The deadlock occurs at times when connection and listener cleanups happen concurrently.
+
+The issue is resolved.
+
+PIEAR-1463 (WAR_10.5_Fix4)
+webMethods Adapter Runtime now supports multiple versions of the metadata
+definition of template.
+
+PIEAR-1379
+In webMethods Adapter Runtime, the user is unable to change the user persona for 
+Run As User column in the polling notifications.
+
+This issue is now resolved.
+
+PIEAR-1414 (WAR_10.5_Fix3)
+In webMethods Adapter Runtime, Cloud Container environment is unable to load the 
+Admin User Interface due to an invalid extension of a JavaScript file. 
+
+This issue is resolved. Now, the file extension has been changed.
+
+PIEAR-1441 (WAR_10.5_Fix3)
+In repository based deployment, when the MQ Client libraries are not loaded in 
+the classpath, the listeners and the listener notifications are in a disabled 
+state even though the State After Deployment field is enabled. 
+
+This issue is now resolved. The enable state is persisted for Listeners and 
+Listener Notifications that enables the assets on restarting the Integration 
+Server.
+
+PIEAR-1444 (WAR_10.5_Fix3)
+In webMethods Adapter Runtime, the user is unable to change the user persona for 
+Run As User column in the polling notifications. 
+
+This issue is now resolved.
+
+PIEAR-1403 (WAR_10.5_Fix2)
+In Designer, while deploying a package to Cloud Container having adapter 
+connections, the labels of the connection properties are not inline with that of 
+connection properties of Integration Server Administrator throughout the 
+substitution of variables. 
+
+This issue is now resolved. 
+
+PIEAR-1397 (WAR_10.5_Fix2)
+In webMethods Adapter Runtime, the connection properties are unable to 
+populate the BOOLEAN type property while externalizing the connection 
+assets.
+
+This issue is now resolved. 
+
+PIEAR-1392 (WAR_10.5_Fix2)
+In repository based deployment, connections are disabled although State After
+Deployment field is enable.
+
+This issue is now resolved. Now, the connections are enabled post deployment.
+
+PIEAR-1322 (WAR_10.5_Fix2)
+Admin API has been enhanced to support listeners and notifications.
+
+PIEAR-1312 (WAR_10.5_Fix1)
+In webMethods Adapter Runtime, existing templates cannot be deprecated.
+Now, webMethods Adapter Runtime is enhanced to support the template deprecation
+
+PIEAR-1304 (WAR_10.5_Fix1)
+In webMethods Adapter for JDBC, the value of HeartBeat Interval is not validated
+while saving the connection.
+
+This issue is now resolved.
+
+PIEAR-1300 (WAR_10.5_Fix1)
+In webMethdos Adapter for WebSphere MQ, when a password field is empty while
+saving or creating a connection, a default value is assigned to the password in
+the connection.
+
+This issue is now resolved.
+
+PIEAR-1299 (WAR_10.5_Fix1)
+In webMethdos Adapter for JDBC, when the connections are deployed using deployer,
+the editing or viewing of the connection is giving integer values to string
+casting exception.
+
+This issue is now resolved.
+
+PIEAR-1296 (WAR_10.5_Fix1)
+In webMethods Adapter for JDBC, when a connection is created, Connection Manager
+metadata is added to the pipeline.
+
+This issue is now resolved.
+
+PIEAR-1229 (WAR_10.5_Fix1)
+In webMethods Adapter Runtime, the substitution of the template variable is not
+processed during externalization process.
+
+This issue is now resolved.
+
+
+
+8.0 Installation
+
+Install using the Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using the Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix has
+no globalization impact and can be applied to systems running in any supported 
+locale or configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new 
+messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2024 Software AG, Darmstadt, Germany and/or Software AG USA Inc., 
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their 
+licensors.
+
+The name Software AG and all Software AG product names are either trademarks or 
+registered trademarks of Software AG and/or Software AG USA Inc. and/or its 
+subsidiaries and/or its affiliates and/or their licensors. Other company and 
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its 
+subsidiaries is located at http://softwareag.com/licenses. 
+
+This software may include portions of third-party products. For third-party 
+copyright notices, license terms, additional rights or restrictions, please 
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party 
+Products". For certain specific third-party license restrictions, please refer 
+to section E of the Legal Notices available under "License Terms and Conditions 
+for Use of Software AG Products / Copyright and Trademark Notices of Software AG
+Products". These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the 
+licensed product(s).

@@ -1,0 +1,370 @@
+		Software AG Command Central 10.5 WebUI Fix 14 readme
+
+                           August 2022
+
+_________________________________________________________________
+
+This file provides important information for applying Software AG
+Command Central 10.5 WebUI Fix 14 to Software AG Command Central 10.5. 
+For additional information about Software AG Command Central 10.5, 
+see the readme file in the _documentation directory of your 
+Software AG installation (if installed) or on the Empower website at 
+https://empower.softwareag.com.
+
+
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+Software AG Command Central 10.5 WebUI Fix 14
+
+
+
+2.0 Fix ID
+
+CCE_10.5_WebUI_Fix14
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Software AG Command Central 10.5.
+
+
+
+4.0 Fix Requirements
+
+Software AG Command Central 10.5 FIX 11
+
+For language pack requirements, see the Globalization section of the 
+Software AG Empower Product Support website at
+
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+The fix is supported on all platforms supported by 
+Software AG Command Central 10.5.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+
+SUM-4413 (Software AG Command Central 10.5 WebUI Fix 10)
+When installing fixes from the Command Central web user interface, the "Install Fixes" wizard
+always shows the latest version of dependent fixes, even when a fix requires an old version of a
+dependent fix.
+
+The issue is now resolved. To view old fixes in the “Install Fixes” wizard, click Options and select
+Show older fixes.
+
+
+CCE-6201 (Software AG Command Central 10.5 WebUI Fix 8)
+The Command Central web user interface does not indicate when you attempt to import an invalid
+template. In Command Central, if you attempt to import an invalid template using the web user interface,
+Command Central does not add the template in the Templates view but does not display a message
+stating that the template was not imported.
+
+The issue is resolved. Now Command Central displays an error message indicating that the template
+was not imported because it is invalid.
+
+
+CCE-6142 (Software AG Command Central 10.5 WebUI Fix 8)
+When you use the “Auto-select same as…” option in the Install Fixes wizard to update an installation
+with the same fixes installed in another installation, the wizard shows the latest version of the
+auto-selected fixes available in the fix repository. The behavior is an issue when you want to
+update an installation with a fix with the exact same version as the fix installed in another
+installation.
+
+The issue is resolved. Now with the “Auto-select same as…” option, Command Central auto-selects
+fixes as follows:
+- If a fix with the exact same version is available in the fix repository, the wizard selects the fix with
+the same version.
+- If a fix with the same version is not in the repository, the wizard selects the latest version of the fix
+instead and notifies the user. 
+
+
+CCE-6212 (Software AG Command Central 10.5 WebUI Fix 8)
+On the Fixes tab in the Command Central web user interface, when viewing the table of installed
+fixes in an installation, you cannot sort the data in some of the columns in the table.
+
+The issue is resolved. You can now sort the data in all table columns. 
+
+
+CCE-6027 (Software AG Command Central 10.5 WebUI Fix 6)
+When you use the “Auto-select same as…” option in the Install Fixes wizard 
+to update an installation with the same fixes installed in another installation, 
+the wizard shows the latest version of the auto-selected fixes available 
+in the fix repository. The behavior is an issue when you want to update an 
+installation with a fix with the exact same version as the fix installed in another
+installation.
+
+The issue is resolved. 
+Now with the “Auto-select same as…” option, Command Central auto-selects
+fixes as follows:
+- If a fix with the exact same version is available in the fix repository, 
+the wizard selects the fix with the same version.
+- If a fix with the same version is not in the repository, the wizard 
+selects the latest version of the fix instead and notifies the user. 
+
+
+CCE-6020 (Software AG Command Central 10.5 WebUI Fix 5)
+When exporting a product instance to a template, Command Central fails to list the available
+configuration types in the “Select Configuration Types” step of the “Export Instance to Template”
+wizard if a child component of the selected product instance does not have any configuration
+instances.
+
+The issue is resolved. Now Command Central successfully lists the configuration types when a
+child component of the product instances has no configuration instances.
+
+
+CCE-5825 (Software AG Command Central 10.5 WebUI Fix 4)
+When exporting a product instance to a template, in the “Select Configuration Types” 
+step of the “Export Instance to Template” wizard, Command Central does not list some 
+of the configuration types for the child components of the selected product instance.
+
+The issue is resolved. 
+Now Command Central lists all configuration types for the product instance
+and its child components in the wizard. 
+
+
+CCE-5383 (Software AG Command Central 10.5 WebUI Fix 2)
+In the Command Central web user interface, if you connect to the default templates 
+repository on GitHub for the second time using the same repository name, 
+all default templates imported into Command Central when you first 
+connected to the repository get replaced with the latest templates on GitHub.
+
+The issue is resolved. 
+Now you see a notification that the default templates will be 
+re-imported and you can choose to cancel the operation. 
+
+
+CCE-5541 (Software AG Command Central 10.5 WebUI Fix 2)
+When connecting to a new asset repository, if you specify the name or location 
+of an asset repository that is already registered in Command Central, 
+the connection attempt fails with an error. Command Central also deletes 
+the existing repository with the same name. The issue occurs because you 
+cannot have two repositories registered under the same name, 
+or using the same location.
+
+The issue is resolved.
+
+
+CCE-5643 (Software AG Command Central 10.5 WebUI Fix 2)
+In the "Export Database to Template" wizard in Command Central, 
+after you clear the "Use components latest version" checkbox, 
+move onto the "Summary" step and go back to the first wizard step, 
+the checkbox is selected (in other words, it gets reverted to its default value).
+
+The issue is now resolved. 
+Command Central keeps the changes you made to all input fields and checkboxes, 
+even when you go back and forward in the "Export Database to Template" wizard. 
+
+
+CCE-5512 (Software AG Command Central 10.5 WebUI Fix 2)
+In some cases when deploying assets to Integration Cloud, the “Restart Required” 
+KPI is displayed when you are viewing instances in the Command Central web user 
+interface. This KPI is only used for monitoring run-time components 
+with pending changes that require restart.
+
+This issue is resolved. 
+The “Restart Required” KPI is no longer displayed in the Command Central web
+user interface. 
+
+
+CCE-5471 (Software AG Command Central 10.5 WebUI Fix 2)
+When you open several layers from different stacks in the Stacks view, 
+the Command Central web user interface starts to respond slowly.
+
+The issue is resolved. 
+
+
+CCE-5372 (Software AG Command Central 10.5 WebUI Fix 2)
+Run-time component configurations are not visible in the Command Central 
+web user interface. If a run-time component has a large number of configurations, 
+some configurations might not be visible and accessible in the 
+configurations drop-down box for that component.
+
+The issue is resolved. 
+
+
+CCE-5684 (Software AG Command Central 10.5 WebUI Fix 2)
+In the Export Instance to Template wizard, after you choose to export a 
+product instance without configurations, the Select Configuration Types 
+step of the wizard might still ask you to select which configurations to export.
+
+The issue is resolved. 
+Now when you choose to export an instance without configurations, the Select
+Configuration Types step indicates that Command Central 
+will not export configurations.
+
+
+CCE-5617 (Software AG Command Central 10.5 WebUI Fix 2)
+In the Command Central web user interface, if you navigate from the Stacks 
+view to another view (excluding the Installations view), and from there onto 
+the Installations view, all instance statuses are displayed as unknown 
+until Command Central executes a status refresh.
+
+The issue is resolved. 
+
+
+CCE-5608 (Software AG Command Central 10.5 WebUI Fix 2)
+In Command Central, when viewing the contents of a product repository, 
+it is hard to read the product IDs in the "Product ID" column, because 
+the column is too narrow and you can only widen it manually.
+
+The issue is now resolved. 
+By default the "Product ID" column is wide enough to read the product IDs.
+
+
+CCE-5412 (Software AG Command Central 10.5 WebUI Fix 2)
+In the Command Central web user interface, you cannot add layers to a stack 
+if the name of the stack contains a period (.)
+
+The issue is resolved. 
+
+
+CCE-5380 (Software AG Command Central 10.5 WebUI Fix 2)
+In the Command Central web user interface, the Installations page might 
+load slowly if the hosts of some installations are shut down or unknown.
+
+The issue is resolved. 
+Command Central has been optimized to deal properly with hosts that are 
+shut down or unknown, and the Installations page loads without delay. 
+
+
+CCE-5524 (Software AG Command Central 10.5 WebUI Fix 2)
+In the Command Central web user interface, when a plain text configuration includes 
+the "\n" characters, Command Central treats “\n” as code for end-of-line and moves 
+the text after it on a new line. For example, if the configuration has:
+"user:"company.com\new"=operator"
+Command Central displays it as:
+"user:"company.com
+ew"=operator"
+
+The issue is resolved. 
+
+
+CCE-5490 (Software AG Command Central 10.5 WebUI Fix 1)
+The messages and tooltips in the dialogue boxes for connecting to and updating 
+the default templates repository on GitHub are updated to provide more information. 
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or Software AG Update Manager to install 
+fixes on one machine at a time. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot apply these instructions to the previously 
+installed fix.
+
+Uninstall using Command Central (9.7 or later) or Software AG Update Manager. 
+For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the
+webMethods product suite and includes support for operation in
+any country, locale, or language as specified in the Installing
+webMethods Products guide. It was not tested with non-English
+configurations and non-ASCII data. This fix may have some
+globalization impact.
+
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might
+contain new messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright ©2021 Software AG, Darmstadt, Germany and/or Software AG USA Inc., 
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks 
+or registered trademarks of Software AG and/or Software AG USA Inc. and/or its 
+subsidiaries and/or its affiliates and/or their licensors. Other company and 
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or 
+its subsidiaries is located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. 
+For third-party copyright notices, license terms, additional rights or restrictions, 
+please refer to "License Texts, Copyright Notices and Disclaimers of Third Party Products". 
+For certain specific third-party license restrictions, please refer to section E of the 
+Legal Notices available under "License Terms and Conditions for Use of Software AG Products / 
+Copyright and Trademark Notices of Software AG Products". 
+These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

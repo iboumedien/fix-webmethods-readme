@@ -1,0 +1,349 @@
+
+                          CentraSite 10.11 Fix 13 Readme
+
+                          January 2023
+
+________________________________________________________________________________
+
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+CentraSite 10.11 Fix 13
+
+
+
+2.0 Fix ID
+INM_10.11_Fix13
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects CentraSite 10.11.
+
+
+
+4.0 Requirements
+
+CentraSite Core 10.11 Fix 13 and CentraSite Server Common 10.11 Fix 13 require each
+other.
+
+For language pack requirements, see the Globalization section of the Software AG
+Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+CentraSite 10.11 Fix 13 is supported on the same platforms and operating systems
+and with the same JREs as CentraSite 10.11.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also  include
+enhancements to existing functionality and features.  Any  of  these  items  can
+result in new or changed built-in services, APIs, or  configuration  parameters.
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate  of  previous  fixes
+for the release.
+
+
+INM-25780
+The bulk deploy feature is not working as expected
+
+The CentraSite servlet experienced an infinite loop as a result of a
+NullPointerException, which kept CentraSiteCommand from reaching the end.
+
+The issue is resolved. 
+
+
+INM-25773 (Fix 12)
+Import of archive failing from Business UI
+
+Importing an archive file fails because uploading archive files was not allowed
+by the server.
+
+The issue is resolved. 
+
+
+INM-25771 (Fix 12)
+Import archive command failing
+
+The Import archive command (ImportArchive[.sh|cmd]) throws a 
+java.lang.NoClassDefFoundError exception.
+
+This issue is resolved. 
+
+
+INM-25658 (Fix 11)
+HTML Injection Vulnerability in E-Mail
+
+The name and description input fields in the schedule report interface of
+the CentraSite Business UI was vulnerable to HTML injection.
+
+The issue is resolved.
+
+
+INM-25717 (Fix 11)
+The application does not validate for File Type or Content-Type in the avatar
+field
+
+Server-side validation is added for the file upload functionality in CentraSite.
+The file upload fails if the file size is above the set limit(default 100 MB)
+or the file is a binary (with mime type "application/octet-stream").
+
+The maximum file size limit can be set in one of the config.xml files:
+<CentraSiteInstall_Directory>/cast/cswebapps/BusinessUI/custom/conf/
+centrasite.xml
+<CentraSiteInstall_Directory>/cast/cswebapps/BusinessUI/system/conf/
+centrasite.xml
+
+Add the <FileUploadSettings maxUploadfileSize="" /> inside the UIProperties
+tag.
+
+For example:
+
+<GUIConfiguration>
+    ...
+    <UIProperties>
+        ...
+
+        <FileUploadSettings maxUploadfileSize="104857600" />
+
+        ...
+    </UIProperties>
+    ...
+</GUIConfiguration>
+
+The issue is resolved. 
+
+
+INM-25730 (Fix 11)
+Unpublish Gateway from Dev Portal in CentraSite does not work
+
+The error "INVALID_PORTAL_PUBLISH" is displayed when unpublishing 
+an API Gateway instance from the Developer Portal through CentraSite.
+
+The issue is resolved. 
+
+
+INM-25684 (Fix 10)
+Vulnerable 3rd party component jQuery used - jQuery v3.3.1
+
+CentraSite web application uses an outdated version of jQuery which can be
+vulnerable.
+
+The issue is resolved. 
+
+
+INM-25729 (Fix 9)
+DevPortal communities not visible in CentraSite
+
+When you publish a virtual service from API Gateway to Developer Portal in
+CentraSite, the communities are not visible on the publish screen.
+
+The issue is resolved. 
+
+
+INM-25682  (Fix 9)
+Life cycle state change is not happening for an asset
+
+When changing the lifecycle state, sometimes the corresponding
+asset is not updated in the global cache.
+
+The issue is resolved. 
+
+
+INM-25692 (Fix 8)
+Error after a session timeout
+
+When a CentraSite session times out, instead of redirecting 
+to the login page an Exception 500 message is displayed.
+
+The issue is resolved. 
+
+
+INM-25687 (Fix 7)
+CentraSite Repository crashes after migration from 10.5 to 10.11
+
+The LDAP configuration files are not unpacked by the sbsImport script.
+
+The issue is resolved. 
+
+
+INM-25469 (Fix 6)
+Vulnerable 3rd party component Shiro found in docker image - 
+softwareag/centrasite-crr:10.11
+
+Apache Shiro before 1.6.0, when using Apache Shiro, 
+a specially crafted HTTP request may cause an authentication bypass.
+
+This issue is resolved 
+
+
+INM-25645 (Fix 5)
+Enabling ARIS Integration displays an error
+
+The classpath for the scripts EnableARISIntegration.[cmd|sh] is expanded to
+include the activation.jar.
+
+The issue is resolved.
+
+
+INM-25587 (Fix 4)
+Vulnerable third party component Log4j is used
+
+Severe vulnerabilities affecting multiple versions (2.0 to 2.17.0) of the Apache
+Log4j 2 utility have been publicly disclosed. These vulnerabilities allow
+unauthenticated remote code execution.
+
+The issue is resolved by upgrading Log4j to version 2.17.1.
+
+
+INM-25587 (Fix 3)
+Vulnerable third party component Log4j is used
+
+Highly severe vulnerabilities impacting multiple versions (2.0 to 2.16.0) of the
+Apache Log4j 2 utility was disclosed publicly through the project's GitHub in
+December 2021. This vulnerability allows for unauthenticated remote code
+execution.
+
+The issue is resolved by upgrading Log4j to version 2.17.0.
+
+
+INM-25587 (Fix 2)
+Vulnerable third party component Log4j is used
+
+A highly severe vulnerability (CVE-2021-44228), impacting multiple versions (2.0
+to 2.14.1) of the Apache Log4j 2 utility was disclosed publicly through the
+project's GitHub on December 9, 2021. This vulnerability allows for
+unauthenticated remote code execution.
+
+The issue is resolved.
+
+
+INMLP-583 (Fix 1)
+UIs are not displayed in the target language.
+
+CentraSite installation shows an error message when installing CentraSite
+Language Packs.
+
+This error is resolved.
+
+
+8.0 Installation
+
+Software AG strongly recommends you to take a backup of the internal database in
+which CentraSite's registry and repository data is stored before installing this
+fix.
+
+Install the fix using  Software AG Update Manager.  For  instructions,  see  the
+documentation at http://documentation.softwareag.com.
+
+
+8.1 Post-Installation Steps
+
+It may be required to  start  Software AG  Runtime  and/or  CentraSite  Registry
+Repository after fix installation.
+
+Clear browser cache before starting CentraSite BusinessUI.
+
+
+
+9.0 Uninstallation
+
+You cannot uninstall the fixes applied on CentraSite 10.11.
+
+
+
+10.0 Globalization
+
+This  fix  conforms  to the  internationalization  standards  of the  webMethods
+product suite  and includes  support for  operation in  any  country, locale, or
+language as specified  in the Installing  webMethods  Products guide. It was not
+tested with non-English configurations and non-ASCII data. However, this fix has
+no globalization impact and can be applied to systems running  in  any supported
+locale or configuration.
+
+
+10.1 Localization
+
+This  fix  does not  require  an updated  language  pack. It  might  contain new
+messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2023  Software AG, Darmstadt,  Germany and/or Software  AG USA Inc.,
+Reston, VA,  USA, and/or  its subsidiaries  and/or its  affiliates and/or  their
+licensors.
+
+The name Software AG and all Software AG product names are either trademarks  or
+registered trademarks  of Software  AG and/or  Software AG  USA Inc.  and/or its
+subsidiaries and/or  its affiliates  and/or their  licensors. Other  company and
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and  patents owned by Software AG  and/or its
+subsidiaries is located at http://softwareag.com/licenses.
+
+This  software may  include portions  of third-party  products. For  third-party
+copyright  notices, license  terms, additional  rights or  restrictions, please
+refer  to  "License Texts,  Copyright  Notices and  Disclaimers  of Third  Party
+Products". For certain specific  third-party license restrictions, please  refer
+to section E of the Legal Notices available under "License Terms and  Conditions
+for Use of Software AG Products / Copyright and Trademark Notices of Software AG
+Products". These  documents are  part of  the product  documentation, located at
+http://softwareag.com/licenses and/or in the root installation directory of  the
+licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support  contacts can reach  Software AG Global  Support in
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You  can  find  complete  contact  information  in  our  Global  Support Contact
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also  visit our Software  AG Developer Communities  to access additional
+articles,  demos,   and  tutorials,   technical  information,   samples,  useful
+resources, online discussion forums moderated by Software AG professionals,  and
+more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

@@ -1,0 +1,180 @@
+			webMethods Internal Data Store 10.5 Fix 6 readme
+
+                              September 2022
+
+________________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+
+
+1.0 Fix Name
+
+webMethods Internal Data Store 10.5 Fix 6
+
+
+
+2.0 Fix ID
+
+CEL_10.5_Fix6
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+webMethods Internal Data Store 10.5
+
+
+
+4.0 Requirements
+
+For language pack requirements, see the Globalization section
+of the Software AG Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may
+also include enhancements to existing functionality and features.
+Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully
+before applying the fix.
+
+CEL-417 (CEL_10.5_Fix6)
+The elasticsearch client jar presents in the API Gateway contains vulnerable jars.
+
+CEL-395 (CEL_10.5_Fix6)
+Vulnerable third-party component, HttpClient, used.
+
+This issue is resolved. The versions of the vulnerable jar files are upgraded.
+
+CEL-368 (CEL_10.5_Fix5)
+
+Security vulnerability CVE-2021-45105 reported on log4j 2.16.0
+
+The issue is resolved. All Log4j libraries are updated to version 2.17.1.
+
+In case searchgaurd plugin shipped in the Internal Data Store is installed in your instance,
+We recommend to upgrade the log4j-slf4j-impl library to the safest version manually.
+
+CEL-335 (CEL_10.5_Fix4)
+
+Identified third party Log4j 2.9.1, which have known security vulnerability CVE-2021-44228
+
+The issue is resolved. All Log4j libraries are updated to version 2.16.0.
+
+In case searchgaurd plugin shipped in the Internal Data Store is installed in your instance,
+We recommend to upgrade the log4j-slf4j-impl library to the safest version manually.
+
+
+CEL-203 (CEL_10.5_Fix3)
+When Internal Data Store 10.5 Fix2 is installed, it overrides InternalDataStore
+/config/jvm.options file.
+
+From fix 3, the default heap size is set to 1GB.
+Please update the heap size in jvm.options as per the needs. 
+
+CEL-192 (CEL_10.5_Fix3)
+For the first time, CEL doesn't show the Elasticsearch clustering details properly.
+
+CEL doesn't show the proper node names under the clustering configuration.
+
+This issue is resolved now. 
+
+CEL-119 (CEL_10.5_Fix2)
+Incorrect status displayed in Command Central.
+
+Though the Internal Data Store is running as a Windows server, it's status
+is displayed as 'Stopped' in Command Central.
+
+This issue is resolved.
+
+CEL-116 (CEL_10.5_Fix1)
+Default JVM heap size enhanced for Elasticsearch.
+
+The default JVM heap size for Elasticsearch is increased from 1 GB to 2 GB.
+The existing configurations -Xms1g and -Xmx1g are changed to -Xms2g and -Xmx2g 
+respectively where:
+-Xms2g represents the initial size of total heap space.
+-Xmx2g represents the maximum size of total heap space. 
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or Software AG Update Manager to install 
+fixes on one machine at a time. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot apply these instructions to the previously 
+installed fix.
+
+Uninstall using Command Central (9.7 or later) or Software AG Update Manager. 
+For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, 
+or language as specified in the webMethods Installation Guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix 
+has no globalization impact and can be applied to systems running in any 
+supported locale or configuration.
+
+
+
+11.0 Copyright
+
+Copyright © 2020 Software AG, Darmstadt, Germany and/or Software AG USA Inc.,
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or
+registered trademarks of Software AG and/or Software AG USA Inc. and/or its
+subsidiaries and/or its affiliates and/or their licensors. Other company and
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its
+subsidiaries is located at http://softwareag.com/licenses.
+
+This software may include portions of third-party products. For third-party
+copyright notices, license terms, additional rights or restrictions, please
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party
+Products". For certain specific third-party license restrictions, please refer
+to section E of the Legal Notices available under "License Terms and Conditions
+for Use of Software AG Products / Copyright and Trademark Notices of Software AG
+Products". These documents are part of the product documentation, located at
+http://softwareag.com/licenses and/or in the root installation directory of the
+licensed product(s).

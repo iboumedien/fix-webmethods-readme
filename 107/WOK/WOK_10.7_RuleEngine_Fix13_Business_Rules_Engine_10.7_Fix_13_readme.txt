@@ -1,0 +1,169 @@
+                 Business Rules Engine 10.7 Fix 13 readme
+
+                         April 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Business Rules Engine 10.7 Fix 13
+
+
+
+2.0 Fix ID
+
+WOK_10.7_RuleEngine_Fix13
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Business Rules Engine.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in 
+services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes 
+for the release.
+
+WOK-15389 (WOK_10.7_RuleEngine_Fix3)
+Two unnecessary jar files are delivered with the Business Rules package.
+When starting up the Business Rules runtime these two jar files will be loaded by the classloader. 
+This impacts the package size and memory consumption.
+The jar files are removed.
+
+WOK-15528 (WOK_10.7_RuleEngine_Fix3)
+Deployment of business rules fails with java.lang.ClassNotFoundException: 
+com.softwareag.rules.runtime.pool.EnginePoolStore$Lambda$172
+When deploying a business rules project to one or more Integration Servers, through Hot Deployment 
+from My WebMethods Server, or through Deployer, sometimes the deployment fails on one or more 
+Integration Servers. The Integration Server error log shows a java.lang.ClassNotFoundException: 
+com.softwareag.rules.runtime.pool.EnginePoolStore$Lambda$172.
+This issue has been resolved by replacing the sometimes problematic lambda expression with a 
+concrete anonymous class.
+
+WOK-15663 (WOK_10.7_RuleEngine_Fix4)
+NullPointerException during rule project builds
+When building a rule project with the Asset Build Environment, the build would fail with
+java.lang.NullPointerException
+at com.wm.lang.ns.NSRecordRef.getNSRecord(NSRecordRef.java:245)
+This issue is now resolved.
+
+WOK-15788 (WOK_10.7_RuleEngine_Fix3)
+Duplicate JARs in WmBusinessRules installation
+After installation, two versions of the BusinessRulesPackage-10.*.*.jar and 
+deployer-common-acdl*.jar are present in the WmBusinessRules package.
+This issue has been resolved.
+
+WOK-16048 (WOK_10.7_RuleEngine_Fix4)
+Enable WOK license in 10.7
+With Business Rules 10.7, WOK licenses could not be used to install and run Business Rules.
+This issue is now resolved and WOK licenses can be used again.
+
+WOK-16486 (WOK_10.7_RuleEngine_Fix8)
+Business Rules does not support MySQL 8.x CE for 10.7
+Business Rules 10.7 did not support MySQL 8,x Community Edition.
+This issue is now resolved.
+
+WOK-16517 (WOK_10.7_RuleEngine_Fix9)
+businessrulestargetruntime.isOnline=0 after initial start of WmBusinessRules package
+When starting up the WmBusinessRules package for the first time on an Integration Server which 
+connects to a MySQL database, the BUSINESSTARGETRUNTIMES.ISONLINE column wrongly contains the value 
+0 instead of 1. This can cause Business Rules Hot Deployment to this Integration Server to fail.
+This issue is now resolved.
+
+WOK-17935 (WOK_10.7_RuleEngine_Fix12)
+Vulnerable 3rd Party Component commons-text used
+Business Rules used a vulnerable version of commons-text: CVE-2022-42889.
+This issue has been resolved by upgrading commons-text from from v1.8.0 to v1.10.0.
+
+WOK-18920
+In the Integration Servers server.log there appears the following message randomly:
+A business rules exception occurred. Cannot find rule set with name [XXXX]. 
+com.softwareag.rules.runtime.exception.RuleSetDoesNotExistException: Cannot find rule set with name 
+[XXXX].
+This issue has been resolved.
+
+                                            
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and 
+includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was tested with non-English configurations and non-ASCII data.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these 
+messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Super iPaaS Integration LLC, an IBM Company 2025

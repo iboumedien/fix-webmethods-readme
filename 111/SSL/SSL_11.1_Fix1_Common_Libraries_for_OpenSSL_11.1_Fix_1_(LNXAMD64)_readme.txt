@@ -1,0 +1,124 @@
+                    Common Libraries for OpenSSL 11.1 Fix 1 readme
+
+                                        December 2024
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Common Libraries for OpenSSL 11.1 Fix 1
+
+
+
+2.0 Fix ID
+
+SSL_11.1_Fix1
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+IBM webMethods ActiveTransfer Server/Gateway 11.1
+IBM webMethods ActiveTransfer Support 11.1
+IBM webMethods Broker Server 11.1
+IBM EntireX Broker 11.1
+IBM EntireX Libraries 11.1
+IBM EntireX Mini Runtime 11.1
+SSX 11.1
+IBM webMethods Universal Messaging Client Libraries 11.1
+
+
+
+4.0 Requirements and Dependencies
+
+Common Libraries for OpenSSL 11.1
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+
+6.0 Cautions and Warnings
+
+(Linux only) The environment variable LD_LIBRARY_PATH should be unset. If this variable is needed,
+its value must not contain the path to the OpenSSL libraries as shipped for the IBM EntireX
+product, for example "/opt/softwareag/common/security/openssl/lib", nor the system's standard
+paths "/usr/lib64", "/usr/lib", "/lib64" and/or "/lib"!
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to
+existing functionality and features. Any of these items can result in new or changed built-in
+services, APIs, or configuration parameters. Review the fix contents carefully before installing
+the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+SSL-264 (SSL_11.1_Fix1)
+This fix updates OpenSSL libraries to 3.0.15.
+The update also contains mitigations for the following OpenSSL security issues:
+CVE-2024-5565 (Low) and CVE-2024-6119 (Moderate).
+This fix also updates the packaged set of RootCA certificates as published by Mozilla for their
+NSS library to the current state as of 2024-10-29.
+
+
+
+8.0 Installation
+
+Install using Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+(Linux only) If not done already, either install all mentioned products below "/opt/softwareag" or
+create a symbolic link at "/opt/softwareag" pointing to the actual installation directory.
+
+(Linux only) Some products might still setup the environment variable LD_LIBRARY_PATH and append
+the system's standard paths "/usr/lib64", "/usr/lib", "/lib64" and/or "/lib". They usually do this
+via a script ending on "env" and residing in the product's INSTALL/-directory, e.g.
+/opt/softwareag/EntireX/INSTALL/exxenv_, etc. These lines have to be edited and the system's
+standard paths need to be removed.
+Example before editing:
+  LD_LIBRARY_PATH=${exxlibpath}:/lib64:/usr/lib64
+Example after editing:
+  LD_LIBRARY_PATH=${exxlibpath}
+
+*Please note*, these changes are only necessary on Linux systems when either the system's tools or
+one of the mentioned products cannot be started and fail to resolve symbols from the OpenSSL
+libraries. The changes should not be made on other systems!
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024

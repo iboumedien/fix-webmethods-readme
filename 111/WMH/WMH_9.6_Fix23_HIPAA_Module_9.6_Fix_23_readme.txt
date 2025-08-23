@@ -1,0 +1,931 @@
+	             IBM webMethods HIPAA Module 9.6 Fix 23 readme
+
+	                         December 2024
+
+_________________________________________________________________
+
+Contents:
+
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+
+
+
+1.0 Fix Name
+
+IBM webMethods HIPAA Module 9.6 Fix 23
+
+
+
+2.0 Fix ID
+
+WMH_9.6_Fix23
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+IBM webMethods HIPAA Module 9.6
+
+
+
+4.0 Requirements and Dependencies
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+       
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+
+WF-34119
+Fix includes security updates with no new features to existing user-facing
+functionalities.
+
+
+WMH-620 (WmHipaa_Fix22)
+In IBM webMethods module for Hipaa, the copyright information is updated.
+
+This issue is now resolved.
+
+
+WMH-610 (WmHipaa_Fix21)
+In IBM webMethods module for Hipaa, when you run the "pub.estd.hipaa:validate"
+service for 837 transactions, the following validation error occurs:
+ - 'ERROR_INVALID_US_ZIPPLUS4_CODE' if the N403 field contains a 5 digit US
+ postal code.
+ - 'ERROR_HIPAA_CODE_SOURCE' if the N403 field contains 9 digit US postal codes.
+ 
+This issue is resolved. The valid format for US postal codes contains 9-digits,
+without a hyphen. For example, 123456789.
+
+
+WMH-603 (WmHipaa_Fix21)
+
+Fixes for IBM webMethods module for Hippa does not install in webMethods 11.0 
+suite release.
+
+This issue is resolved.
+
+
+WMH-591 (WmHipaa_Fix20)
+In IBM webMethods module for Hipaa, pub.estd.hipaa:validate service throws
+validation errors for 837 transactions containing email addresses with a
+top-level domain longer than five characters in the PER segment in loop 1000A.
+
+This issue is resolved.
+
+
+WMH-579 (WmHipaa_Fix19)
+The pub.estd.hipaa:validate service generates implementation acknowledgment 999 
+with an incorrect date for ISA09 and GS04 fields. This happens when 999 
+generates during the year's end, wherein the year portion of the date gets 
+changed from the current year to next year.
+
+This issue is resolved.
+
+
+WMH-574 (WmHipaa_Fix19)
+
+In IBM webMethods module for Hipaa, pub.estd.hipaa:validate service throws
+inappropriate errors when validating either the 837 Professional or 837
+Institutional messages simultaneously with the 837 Dental messages.
+
+This issue is resolved.
+
+
+WMH-572 (WmHipaa_Fix18)
+
+In IBM webMethods Module for HIPAA, when HIPAA TPA contains multiple severity 
+configurations for the same snip validation level, such as Severity "Ignore" 
+(with errorIDs specified) and other Severity "Error" in mentioned order, then 
+pub.estd.hipaa:validate service ignores all the errors instead of ignoring only 
+the specific error codes.
+
+This issue is resolved now.
+
+
+WMH-570 (WmHipaa_Fix18)
+
+In IBM webMethods Module for HIPAA, pub.estd.hipaa:validate service is not 
+taking TPA configuration from default TPA when partner-specific TPA is disabled.
+
+This issue is resolved now.
+
+
+WMH-562 (WmHipaa_Fix18)
+
+In IBM webMethods module for Hipaa, pub.estd.hipaa:validate service is taking 
+the TA1 related setting from the default HIPAA TPA instead of partner-specific 
+HIPAA TPA.
+
+This issue is resolved now.
+
+
+WMH-561 (WmHipaa_Fix18)
+
+In IBM webMethods module for Hipaa, after migrating TN documents from 
+integration server having webmethods HipaaLink Module installed to higher 
+intergration server,throws the following error :
+"Violation of PRIMARY KEY constraint 'pk_BizDocTypeDef_TypeId'.
+Cannot insert duplicate key in object 'dbo.BizDocTypeDef'. The duplicate key
+value is (EDITechnicalAck---------)" occurs during startup.
+
+This happens when migrated TN database contains document X12 TA1 with id type
+"EDITechnicalAck---------" installed using webMethods hipaalink module and
+IBM webMethods module for Hipaa tries to install document X12 TA1 ACK document 
+with same id type.
+
+
+WMH-558 (WmHipaa_Fix18)
+
+In IBM webMethods module for Hipaa, pub.estd.hipaa:validate service fails with
+following exception java.lang.ArrayIndexOutOfBoundsException.
+This issue occurs when we run pub.estd.hipaa:validate service for certain 837 
+messages in multiple threads.
+
+This issue is now resolved.
+
+
+WMH-555 (WmHipaa_Fix18)
+
+In IBM webMethods module for Hipaa, error code "ERROR_HIPAA_FIELD_CONTENT" 
+reported for errors like "Segment HI_ExternalCauseOfInjury_2300 contains 
+ICD-10-CM codes. It is necessary to report a series of 3 external cause of 
+injury codes to fully describe an injury. It is very generic and unable to 
+ignore this particular error by configuring this error code in TPA as it can 
+impact other error cases.
+
+This issue is now resolved. New error code "ERROR_HIPAA_FIELD_SERIES_MAX_OCCUR"
+is introduced for errors related to error scenario where predefined series of
+fields in a segment are required to be present.
+
+
+WMH-554 (WmHipaa_Fix18)
+
+In IBM webMethods module for Hipaa, pub.estd.hipaa:validate service was not 
+throwing any error for the following scenarios:
+
+- when N403 contains only five-digit for segments where full nine-digit zip code
+  is required as per the HIPAA implementation guide.
+- when N404 contains the country code of Canada and N403 contains a value other 
+  than the format 'XXXXXX' consisting of 6 alphanumeric characters.
+These issues are now resolved.
+
+
+WMH-542 (WmHipaa_Fix17)
+
+In IBM webMethods module for Hipaa, pub.estd.hipaa:validate service was not 
+throwing any error for below mentioned scenarios:
+- SV101_04, SV101_05 and SV101_06 element values of 837 Professional has been
+already used.
+- SV202_04, SV202_05 and SV202_06 element values of 837 Institutional has been
+already used.
+- SV301_04, SV301_05 and SV301_06 element values of 837 Dental has been already
+ used.
+- CAS05, CAS08, CAS11, CAS14 and CAS14 element values of 837 Professional,
+Institutional and Dental has been already used.
+- When segment HI-External Cause of Injury contains ICD-10-CM codes and doesn't
+report series of 3 codes.
+- When segment NM1 has data element NM102 as 1 and NM104 is missing in 837
+message.
+These issues are now resolved and proper error is thrown.
+
+
+WMH-541 (WmHipaa_Fix17)
+
+In IBM webMethods module for HIPAA, pub.estd.hipaa:validate service does not
+function as expected in the following scenarios:
+- When partner-specific TPA is created, pub.estd.hipaa:validate service still
+takes the default HIPAA TPA.
+- No error was thrown for incorrect LX01 field in LX segment.
+- A non-numeric value in SV102 caused â€œjava.lang.NumberFormatException: For 
+input string: "UN".
+- No error was thrown for incorrect ZIP code format used in N403 field.
+These issues are now resolved.
+
+
+WMH-537 (WmHipaa_Fix17)
+
+The pub.estd.hipaa:validate service returns a validation error for 837
+transactions that contains the REF segment with value for the field REF02 as
+'000000000', when field REF01 is "EI".
+
+This issue is now resolved.
+
+WMH-519 (WmHipaa_Fix16)
+
+In IBM webMethods Module for HIPAA, pub.estd.hipaa:validate service for 837 
+HIPAA message, returns error for Claim level balancing validation even when line 
+level payment information is not present. Also in the service line level 
+balancing, multiple occurrences of Loop 2430 for the same payer was not 
+considered for balancing check calculation.
+
+These issues are resolved now.
+
+
+WMH-517 (WmHipaa_Fix15)
+
+The 'pub.estd.hipaa:validate' service returns 999 acknowledgement with incorrect
+values in IK4 segment and CTX05 element when the description was missing in
+SV101-7, SV202-7, and SV301-7 for Professional, Institutional and Dental claims
+for a non-specific procedure code in SV101-2, SV202-2, and SV301-2 respectively
+for 837 transactions.
+This issue is now resolved and the service returns 999 acknowledgement with
+correct values.
+
+
+WMH-505 (WmHipaa_Fix14)
+
+Previously, rounding off calculated value for fraction part was not matching
+with expected data due to incorrect calculated value or difference in fraction
+part.
+
+This issue is resolved and rounding off fractional part is controlled by
+configuring the property "wm.hipaa.pattern.roundOff" in the config.cnf file that
+is located in "...\packages\WmHipaa\config\" folder.
+
+Note : Format for this property should match this expression "^(#.(#{1,3}))$". 
+
+
+WMH-500 (WmHipaa_Fix14)
+
+HIPAA code functionality is enhanced by fixing the known issues in the module
+pertaining to 837 Professional, 837 Institutional, and 837 Dental message type. 
+
+
+WMH-496 (WmHipaa_Fix14)
+
+The pub.estd.hipaa:validate service, used for HIPAA message validation, is 
+blocked while parsing segment. When segment's qualifier matches with the 
+previous Loop qualifier and if the previous loop is not present in the input 
+message, it creates infinite loops and thereby, causing high CPU usages.
+
+This issue is resolved. 
+
+
+WMH-485 (WmHipaa_Fix14)
+
+Previously the pub.estd.hipaa:validate service did not returning a validation
+error when description was missing in SV101-7, SV202-7, and SV301-7 for
+Professional,Institutional and Dental claims for a non-specific procedure
+code in SV101-2, SV202-2, and SV301-2 respectively for 837 transactions.
+
+This issue is now resolved. 
+
+
+WMH-483 (WmHipaa_Fix13)
+
+The pub.estd.hipaa:validate service used for HIPAA message validation generates
+999 with full segment data in place of empty data for IK404 element when the 
+required data element is missing in the segment and the HTML report displays the
+same in ErrorFieldData column.
+
+This issue is resolved now. 
+
+
+WMH-482 (WmHipaa_Fix13)
+
+The pub.estd.hipaa:validate service in webMethods 10.1 incorrectly counts the
+value field of AK904 (Number of Accepted Transaction Sets) when there are
+informational or warning errors in the trasaction set.
+
+This issue is resolved. 
+
+
+WMH-481 (WmHipaa_Fix13)
+
+Previously, the calculated value did not match with the expected value due to 
+difference in decimal points as they were not rounded off. 
+
+The pub.estd.hipaa:validate service used for HIPAA message displays SNIP 3 
+balancing errors even when the expected and calculated values are the same in
+837 message type.
+    
+This issue is resolved.
+
+
+WMH-479 (WmHipaa_Fix13)
+
+While using the HIPAA module, the existing DB script for code source creation 
+displays a compilation error for Microsoft SQL Server. A separate Microsoft SQL
+Server 2019 DB script for code source creation was added.
+
+This issue is now resolved. 
+
+
+WMH-476 (WmHipaa_Fix13)
+
+HIPAA code functionality is enhanced by fixing the known issues in the module.
+
+
+WMH-467 (WmHipaa_Fix12)
+
+In 277 HIPAA message, if the SVC01-1 field is present with a
+value "NU" (revenue code), then SVC04 field must not be present in the message.
+However, IBM webMethods Module for HIPAA does not validate this.
+
+Additionally, in the error report the error field data displayed is incorrect.
+Instead of displaying the value of the field that should not be present in the
+message, it displays the value of the conditional field. For example, in the
+above case, the value of SVC01-1 field is displayed.
+
+These issues are resolved. Now, HIPPA module performs a validation of the fields
+and the error report displays the correct data. 
+
+
+WMH-454 (WmHipaa_Fix11)
+
+The pub.estd.hipaa:validate service used for HIPAA message validation, sometimes
+generates 999 with incorrect Business Unit Identifier that is, CTX segment.
+
+Example: In 999 for 837 transaction, the value in CTX01-2 always appears to be
+the Patient Control Number (CLM01) from the first claim in the transaction set,
+even if there is no error in the first claim. Also, it does not report the 
+correct Patient Control Number (CLM01). 
+
+This issue is resolved. Now this message is not displayed. 
+
+
+WMH-453 (WmHipaa_Fix11)
+
+The pub.estd.hipaa:validate service displays a validation error for 837
+transactions that contain a Patient Demographic Information DMG segment in the
+2010CA loop.
+
+This issue is now resolved. 
+
+
+WMH-452 (WmHipaa_Fix11)
+
+The pub.estd.hipaa:validate service, which is used for HIPAA message validation
+generates the following validation error when the 2420E loop occurs before
+2420C loop:
+"Unidentified data found"
+
+The order of multiple subloops that do not involve hierarchical structure and
+have the same numeric position within the transaction are not required to be 
+sent in the same order in which they appear in the implementation guide.
+
+This issue is resolved. Now, this message is not displayed. 
+
+
+WMH-445 (WmHipaa_Fix11)
+
+Low performance observed for the pub.estd.hipaa:validate service.
+
+The pub.estd.hipaa:validate service takes high processing time for 837 files
+with size greater than 4 MB.
+
+This issue is resolved.
+
+
+WMH-444 (WmHipaa_Fix11)
+
+The pub.estd.hipaa:validate service returns a validation error for 837
+transactions that contain a Prior Authorization REF segment in the loop 2400.
+
+This issue is now resolved.
+
+
+WMH-443 (WmHipaa_Fix11)
+
+The pub.estd.hipaa:validate service generates implementation acknowledgment 999
+with incorrect field value or missing data for IK3 and IK4 segments. Also the
+HTML report contains errors, such as missing ErrorFieldData, position,
+SegmentData, ErrorMessage, or incorrect field value.
+
+Examples:
+- IK302 contains a segment position, which is one less than the actual position.
+  This can happen when extra elements are present in a segment.
+- IK303 exceeds the maximum length of four, when the loop id is more then
+  length4 (example, 2310AC).
+- IK401 is generated with incorrect value. It is empty, -1, or contains a
+  leading zero. For example, CRC SEGMENT containing a value other than NU in
+  CRC03 when CRC02 is N.
+- IK401-2 is not generated when errors are reported in SV107 segment sub-element
+  and contains invalid diagnosis code pointer in SV107.
+- IK403 is generated with incorrect value. It is either 0 or uses a wrong code
+  ("6"). For example, data element SVD02 of the Line Adjudication SVD segment
+   containing an amount with more than two decimal places
+- IK404 is generated with incorrect value. It is either missing or contains a
+  bad code when control characters such as a horizontal tab or a line feed in
+  a data element.
+- IK3 segment is generated and followed by a Business Unit Identifier CTX
+  segment, even if the segment with the error occurs before a Business Unit
+  Identifier segment. For example, N3_2010AA has errors.
+- IK4 segment is not generated when extra elements are present in a segment.
+- IK4 segment is not followed by an Element Context CTX segment.
+- 999 is generated for errors having any SNIP level severity configuration
+  (in TPA) with information, error, and warning, except ignored.
+- HTML report contains error reported for AN datatype as SNIPLevel 2 instead of
+  SNIPLevel 1.
+  
+These issue are resolved. 
+
+
+WMH-430  (WmHipaa_Fix10)
+
+The pub.estd.hipaa:validate service used for HIPAA message validation is 
+generating "The data [D9] is not in the allowed list of enumeration values"
+validation error message for REF and DTP segment when they are not present in 
+order but present in same logical position .
+
+This issue is resolved. Now this message is not displayed.
+
+
+WMH-429  (WmHipaa_Fix10)
+
+In IBM webMethods module for hipaa, pub.estd.hipaa:validate service does not 
+throw any error for below mentioned scenarios:
+
+1. An amount of zero in CAS03 of the Line Adjustment CAS is not allowed.
+2. Control characters such as a horizontal tab or line feed
+anywhere in a data element is not allowed.
+3. Any value other than NU in CRC03 when CRC02 is N is not allowed
+in the EPSDT Referral CRC segment
+4.Having a date range where the start date is after the end
+date in DTP03 of a DTP segment is incorrect.
+5. The inclusion of extra sub-elements in an element or
+extra elements in a segment result is incorrect.
+6. Having an amount with more than two decimal places in
+SVD02 of the Line Adjudication SVD segment is incorrect. 
+7. Using an invalid diagnosis code pointer in SV107 is incorrect. 
+
+
+WMH-428  (WmHipaa_Fix10)
+
+Error occurs while executing pub.estd.hipaa:validate service.
+
+In IBM webMethods Module for HIPAA, while executing pub.estd.hipaa:validate 
+service for 837 HIPAA message, an error occurs with a message "The rule 
+validation for P0405 failed for CTP05" though both the fields are present in the 
+message.
+
+This issue is resolved.
+
+
+WMH-427  (WmHipaa_Fix10)
+
+999 and HTML report do not get generated in IBM webMethods Module for HIPAA, 
+while executing pub.estd.hipaa:validate service.
+
+In IBM webMethods Module for HIPAA, while executing pub.estd.hipaa:validate 
+service for 837 HIPAA the message, 999 and HTML report do not get generated when 
+a numeric (data type R) element in the input file contains a non-numeric value.
+
+This issue is resolved.
+
+
+WMH-415 (WmHipaa_Fix9)
+
+In IBM webMethods Module for HIPAA, while executing pub.estd.hipaa:validate 
+service, the following errors are observed: 
+
+1. The service generates TA1 when there are rejecting errors in the functional
+groups or transaction sets regardless of any errors in the interchanges even
+though the "TA1" parameter is set 'error' in TPA.
+
+2. Displays the error 'com.softwareag.estd.hipaa.exception.HipaaException: Rule
+info for date format is not present in the xsd' when FRM04 element is present
+in the input message.
+
+These issues are resolved. 
+
+
+WMH-404 (WmHipaa_Fix8)
+
+The pub.estd.hipaa:validate service generates implementation acknowledgment 999 
+with incorrect field value or format.
+
+Examples:
+GS04 field is generated in YYMMDD format. The correct format is CCYYMMDD.
+GS05 field is generated in HHMM format. The MM part displays the current month 
+instead of the current minutes.
+GS08 filed is generated with incorrect code. The correct code is 005010X231A1.
+ST02 and SE02 fields are generated with the value 001. The minimum length for 
+these fields is 4.
+ST03 mandatory field is missing.
+The AK904 field value is incorrect when errors generated for SNIP level is 
+configured as 'ignore' in Trading Partner Agreement.
+
+These issues are resolved.
+
+
+WMH-398 (WmHipaa_Fix8)
+
+The pub.estd.hipaa:validate service used for HIPAA message validation is 
+displaying "Parsing the root node" message in the logs.
+
+This issue is resolved. Now this message is not displayed.
+
+
+WMH-397 (WmHipaa_Fix8)
+
+The pub.estd.hipaa:validate service used for HIPAA message validation sometimes 
+fails with NullPointerException error and generates no output.
+For example, if the CAS segment is not present before the AMT segment in 
+Loop_2320, the validation service displays the NullPointerException error.
+
+This issue is resolved.
+
+
+WMH-394 (WmHipaa_Fix8)
+
+The pub.estd.hipaa:validate service used for HIPAA message validation generates 
+997 and 999 acknowledgements with some of the segments having data element 
+delimiter '*' instead of the actual data element delimiter in the input HIPAA 
+message. 
+
+This issue is resolved. 
+
+
+WMH-385 (WmHipaa_Fix7)
+
+In any data field, if a header control segment such as ISA, GS, or ST
+suffixed with a data element delimiter is present, then the HIPAA module treats
+data in the data field as a header.
+
+This issue is resolved.
+
+
+WMH-372 (WmHipaa_Fix6)
+
+The validation of HIPAA messages in Integration Server 10.3 fail with either the 
+NullPointerException or the Segment Identifier appears null in the XML report.
+
+This issue is resolved.
+
+
+WMH-304 (WmHipaa_Fix5)
+
+The validation of a HIPAA message fails with the following error: 
+"Control Number 16951 for Transaction Set 16859 is not unique or incremental."
+
+This issue is resolved as per the X12 specification and X12 committee guidance 
+reference RFI #1139.
+
+
+WMH-307 (WmHipaa_Fix5)
+
+The validation of the HIPAA message for NM101__EntityIdentifierCode element for
+multiple message types fail with the following error:
+"Data Element ns:NM101__EntityIdentifierCode does not contain a valid 
+identification code: 'DN' is not allowed." 
+
+This issue occurs when multiple situational loops contain the same segment and
+the input message contains the segment from the next situational loop.
+
+This issue is resolved. 
+
+
+WMH-308 (WmHipaa_Fix5)
+
+The validation of the HIPAA message for multiple message types fail with the 
+following error:
+"Missing Mandatory segment/Loop: ns:LX_ServiceLineNumber_2400."
+
+This issue occurs when multiple situational loops contain the same segment and
+the input message contains the segment from the next situational loop.
+
+This issue is resolved.
+
+
+WMH-332 (WmHipaa_Fix5)
+
+The HTML-based utility used to administer the IBM webMethods HIPAA 
+eStandards Module has a new look and feel. Menu and screen 
+locations have not changed.
+
+
+WMH-365 (WmHipaa_Fix5)
+
+The com.wm.util.coder.IDataBinCoder class does not load the HIPAA document type
+class.
+
+This issue is resolved. The required HIPAA document type classes are added to
+the configuration file for whitelisting. 
+
+
+WMH-292 (WmHipaa_Fix4)
+
+The following error is displayed in the server when you update
+the default HIPAA TPA: 
+"Unknown service: wm.estd.hipaa.util:updateXEngineConfig" 
+Also, the TPA changes are not updated until you restart Integration
+Server. 
+
+This issue is resolved.
+
+Note: Ensure that you install the latest Trading Networks fixes
+and reload the package in Integration Server to update the TPA 
+changes.
+
+
+WMH-300 (WmHipaa_Fix4)
+
+In IBM webMethods HIPAA Module, including spaces in the ISA02 or 
+ISA04 fields of an ISA segment results in the following validation
+error:
+"ERROR_HIPAA_DATATYPE_ALPHANUMBERIC. The data does not contain any significant
+data characters."   
+
+This issue is resolved. The ISA02 or ISA04 fields of an ISA 
+segment can contain spaces.
+
+
+WMH-303 (WmHipaa_Fix4)
+
+In IBM webMethods Module for HIPAA, the errors that are ignored
+are displayed in the HTML validation report. This increases
+the file size and impacts the visibility of the errors.
+
+This issue is resolved. The visibility of the errors can be
+controlled by configuring the following properties in the
+config.cnf file that is located in the ...\packages\WmHipaa\config\
+folder:
+wm.hipaa.htmlreport.show.error=yes
+wm.hipaa.htmlreport.show.warning=yes
+wm.hipaa.htmlreport.show.information=yes
+wm.hipaa.htmlreport.show.ignore=no
+
+Reload the package for the changes to take effect. 
+
+
+WMH-305 (WmHipaa_Fix4)
+
+In IBM webMethods Module for HIPAA, the validation of a message
+fails when the NM104 (First Name), NM105 (Middle Name), or
+NM107(Last Name) fields are not present when the NM102 (Entity Type Qualifier)
+field is 1 (person).
+
+This issue is resolved. The NM104, NM105, and NM107 are configured
+as optional fields when the NM102 field is 1 and are not
+present when the NM102 field is 2 (Non-Person Entity).
+
+WMH-306 (WmHipaa_Fix4)
+
+In IBM webMethods Module for HIPAA, the validation of a message
+fails when the NM104 (First Name), NM105 (Middle Name), or
+NM107(Last Name) fields are not present when the NM102 (Entity Type Qualifier)
+field is 1 (person).
+
+This issue is resolved. The NM104, NM105, and NM107 are configured
+as optional fields when the NM102 field is 1 and are not
+present when the NM102 field is 2 (Non-Person Entity).
+
+ 
+WMH-309 (WmHipaa_Fix4)
+
+In IBM webMethods Module for HIPAA, a new line character is appended
+at the end of each segment in 997,999 and TA1 during the validation
+of a HIPAA message.
+
+This issue is resolved.
+
+
+WMH-318 (WmHipaa_Fix4)
+
+In case of an error during the validation of a HIPAA message,
+the error is duplicated under the "Segment Errors" and
+"DataElement Errors" sections in the validation report.
+
+This issue is resolved. The error message is now displayed
+only under the "DataElement Errors" section.
+
+
+WMH-321 (WmHipaa_Fix4)
+
+During the first Integration Server startup, IBM webMethods Module
+for HIPAA displays the following exception in the server logs:
+"Unknown type id: EDITechnicalAck--------- service Exception "
+
+This issue is resolved.
+
+
+WMH-339 (WmHipaa_Fix4)
+
+During Integration Server startup on Unix platforms, IBM webMethods 
+Module for HIPAA displays the following exception in the server 
+logs:
+"com.softwareag.estd.hipaa.exception.HipaaApplicationException: 
+com.softwareag.estd.hipaa.exception.HipaaException: Could not 
+load file from the location
+$InstallDir/IntegrationServer/instances/default/packages/WmHIPAA/resources/
+schema/276-A1.xsd"
+
+This issue is resolved.
+
+
+WMH-283 (WmHipaa_Fix3)
+
+IBM webMethods Module for HIPAA displays the following error during 
+start-up: "Initialization of Java Service wm.estd.hipaa.util:getDefaultPayload 
+failed due to error: com.wm.app.b2b.server.ServiceSetupException: No 
+method getDefaultPayload in class wm.estd.hipaa.util" 
+
+This issue is resolved. 
+
+NOTE: Ensure that you delete the ...\IntegrationServer\ 
+instances\<instance_name>\packages\WmHipaa\ns\wm\estd\hipaa\ 
+util\getDefaultPayload folder from the WmHipaa package for 
+all the instances. 
+
+
+WMH-288 (WmHipaa_Fix3)
+
+In IBM webMethods Module for HIPAA, the WMHIPAA_CODE_SET_537 table 
+in the database displays the codes in 8 digits even though the
+537.txt code source file displays the codes in 10 digits with 
+descriptions. Also, it appears that the middle 8 digits from 
+the 10-digit code is displayed.
+
+This issue is resolved. 
+                        
+NOTE: After applying the fix, remove the WMHIPAA_CODE_SET_537 
+table from the database and the entry for the code source ID
+537 from the INSTALLED_CODE_SET_VERSION table and re-import 
+the code source.
+
+
+WMH-291 (WmHipaa_Fix3)
+
+In IBM webMethods Module for HIPAA, during the validation of the 
+837 Professional message, the pub.estd.hipaa:validate service 
+attempts to check the code source 236 for field CLM05-01 
+instead of the code source 237.
+
+This issue is resolved.
+
+
+WMH-293 (WmHipaa_Fix3)
+
+In IBM webMethods Module for HIPAA, when you set the severity to 
+"ignore" for HIPAA TPA, the validation report results as "Passed" 
+but the generated 999 has an "R" in the IK501 and AK901 fields 
+which indicates that the validation did not pass. 
+
+Similarly, when you set the severity to "information" for HIPAA 
+TPA, the validation report results as "Failed" and the generated 
+999 remains unchanged. 
+
+This issue is resolved.
+
+
+WMH-298 (WmHipaa_Fix2)
+
+In IBM webMethods Module for HIPAA, the changes that are made to 
+the pub.estd.hipaa:attachResponsePayload service are reset after 
+the fix is installed. 
+
+This issue is resolved.
+
+
+EAH-92 (WmHipaa_Fix2)
+
+The HIPAA document type fails while loading or reloading the 
+WmTN package and displays the following error:
+"Unable to load the following TN document types because their classes are not
+found in the classpath." 
+
+This issue is resolved.
+
+
+WMH-221 (WmHipaa_Fix1)
+
+Validation passes even though value of REF03 field is missing 
+when REF01 is 0B in 5010-278 message for the Loop 2010F. 
+
+In the 5010-278 message when 2010F-REF01=0B then the field REF03 
+is required. But the Module 9.6 for HIPAA does not report an 
+error even though value of REF03 field is missing. 
+
+This issue is resolved. Now, the module reports an error if the 
+value of REF03 field is missing when 2010F-REF01=0B.
+
+
+WMH-250 (WmHipaa_Fix1)
+
+IBM webMethods Module 9.6 for HIPAA does not list the code set values 
+in the View page after reloading the WmHIPAA package. 
+
+View page to view code sources does not list the code set values 
+when the WmHIPAA package is reloaded after table creation. 
+
+This issue is resolved.
+
+
+WMH-252 (WmHipaa_Fix1)
+
+IBM webMethods Module 9.6 for HIPAA fails to validate a valid 
+Social Security Number in the NM109 field of the 278 message in 
+the Loop 2010B. 
+
+The module identifies the value in the field NM109 as the 
+Social Security Number only when the value of NM108 field is set 
+to 34. The validation of NM109 fails even though the condition is 
+met because the module considers the format of the value to be 
+incorrect. 
+
+This issue is resolved. Now, the module identifies the format in 
+NM109 as the Social Security Number and correctly validates the 
+information.
+
+
+WMH-259 (WmHipaa_Fix1)
+
+IBM webMethods Module for HIPAA does not update validData and 
+invalidData output variables after running the 
+pub.estd.hipaa:validate service. 
+
+After validating the HIPAA message using pub.estd.hipaa:validate 
+service, the module does not update the validData and invalidData 
+output variables even though the split variable is set to true. 
+
+This issue is resolved. Now, the module updates the valid and 
+invalid HIPAA data in the validData and invalidData output 
+variables
+
+
+WMH-262 (WmHipaa_Fix1)
+
+IBM webMethods Module 9.6 for HIPAA does not contain an About page. 
+
+This issue is resolved. An About page is included in IBM webMethods 
+Module 9.6 for HIPAA.
+
+
+WMH-268 (WmHipaa_Fix1)
+
+Integration Server Administrator has a new look and feel. 
+
+The HTML-based utility used to administer the IBM webMethods Module 
+for HIPAA has a new look and feel. Menu and screen locations have 
+not changed.
+
+
+WMH-270 (WmHipaa_Fix1)
+
+Loading large number of records from code sources into 
+IBM webMethods Module for HIPAA causes out of memory. 
+
+This issue is resolved. Now, loading large number of records from 
+codes sources into IBM webMethods Module for HIPAA requires lesser 
+memory space.
+
+
+      
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central  
+location (9.7 or later products), or Update Manager to install fixes on one 
+machine at a time. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Command Central (9.7 or later) or Update Manager. For 
+instructions, see the documentation at https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Copyright Super iPaaS Integration LLC, an IBM Company 2024.

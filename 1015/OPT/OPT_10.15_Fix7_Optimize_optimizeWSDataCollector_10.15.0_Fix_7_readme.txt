@@ -1,0 +1,273 @@
+          IBM webMethods BPM Optimize optimizeWSDataCollector 10.15.0 Fix 7 readme
+
+                          March 2025                          
+
+_________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+
+
+1.0 Fix Name
+
+IBM webMethods BPM Optimize optimizeWSDataCollector 10.15.0 Fix 7
+
+
+2.0 Fix ID
+
+OPT_10.15_Fix7
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects:
+
+- Web Service Data Collector 10.15
+
+
+4.0 Requirements and Dependencies
+
+
+For Optimize environments, the fix version of the Optimize component fixes must
+be the same as the fix version of Optimize shared components fixes
+(wMFix.OPT.optimizeSharedLib and wMFix.OPT.optimizeSharedUI).
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+6.0 Cautions and Warnings
+
+1. Attempting to apply the Optimize Fix to an installation where
+ MWS is configured to use the embedded Derby database will fail.
+ There will be an error reported in the IBM webMethods Update Manager
+ log. For all other supported Relational Database Management Systems
+ configured for MWS, the fix can be applied successfully.
+
+ There is no workaround at this time.
+
+
+ 2. IBM does not recommend uninstalling this fix because 
+ Optimize or other webMethods products might not work properly.
+
+ To be able to restore your Optimize installation, before you install
+ the fix you must back up the Optimize database and your file system.
+
+
+7.0 Fix Contents
+
+
+WMN-8733 (OPT_10.15_Fix7)
+In the Process Instance page of Monitor, the Resubmit Closest button does not resubmit a process instance that was previously resubmitted and in which the failed step is contained in a sub-process.
+
+The issue is resolved.
+
+WMN-8766 (OPT_10.15_Fix7)
+In webMethods Monitor, the pub.monitor.archive services fail to archive a PostgresSQL database if the database name contains "db2".
+
+The issue is resolved.
+
+WMN-8767 (OPT_10.15_Fix7)
+In the Process Instance page of Monitor, when you click Resubmit Closest or Resubmit Earliest, the process instance is not resubmitted and an error appears in the log. The issue occurs when the process model logging level is set to 2 - Errors only.
+
+The issue is resolved.
+
+WMN-8748 (OPT_10.15_Fix7)
+In the Advanced search tab of the Services page, when you apply a filter whose Value parameter is in scientific notation (for example "3E150"), an error occurs.
+ 
+The issue is resolved.
+
+
+
+OBE-13001 (OPT_10.15_Fix6)
+In the Edit Role page of Optimize, granting access to a service fails with an error.
+
+The issue is resolved.
+
+
+
+OBE-12616 (OPT_10.15_Fix5)
+In IBM webMethods Optimize, creating a table in Oracle Database 23 using Database Component Configurator fails.
+
+The issue is resolved. Log in as table owner before you run the database migration script.
+
+WMN-8720 (OPT_10.15_Fix5)
+A security vulnerability in the Services page of Monitoring is now fixed.
+
+The issue is resolved.
+
+OBE-12985 (OPT_10.15_Fix5)
+The SetLogLevelClient tool now supports HTTPS.
+
+OBE-12776 (OPT_10.15_Fix5)
+When you restart Optimize or Broker Server, the JMS objects on Broker Server might become corrupted.
+ 
+The issue is resolved.
+
+
+
+WMN-8362 (OPT_10.15_Fix4)
+In webMethods Monitor, several API queries consume a lot of memory.
+
+The issue is resolved. The following services are modified so that the wm.monitor.useExactMatch parameter in monitor.cnf applies to them.
+
+pub.monitor.process.instance:getInstanceList
+pub.monitor.process.instance:getInstanceListWithFilter
+pub.monitor.process.instance:getInstanceListCustomDataSet
+pub.monitor.process.instance:getInstanceListCustomData
+pub.monitor.process.instance:getPagedInstanceList
+
+If you set useExactMatch to True, your search query will return only those INSTANCEID,
+PARENTINSTANCEID, and CUSTOMID results which exactly match your search term. An isExactMatch input parameter is also added to these services. isExactMatch works like the useExactMatch parameter, but takes priority over it.
+
+New parameter reference:
+  isExactMatch
+  
+  This parameter allows you to control whether your search query will use the UPPER and LIKE
+  conditions for INSTANCEID, PARENTINSTANCEID, and CUSTOMID.
+  
+Valid values are:
+  false - Default value for isExactMatch. The search query will use the UPPER and LIKE
+  conditions for INSTANCEID, PARENTINSTANCEID, and CUSTOMID.
+  true - If you set isExactMatch to True, the search query will not use the UPPER and LIKE
+  conditions for INSTANCEID, PARENTINSTANCEID, and CUSTOMID. The query will return only those
+  results which exactly match your search term.
+
+WMN-8671 (OPT_10.15_Fix4)
+In the Process Instance page of webMethods Monitor, the Resubmit Closest button does not resubmit a process instance in which the failed step is contained in a subprocess.
+
+The issue is resolved.
+
+WMN-8475 (OPT_10.15_Fix4)
+In webMethods Monitor, the My webMethods Server settings might override the Task Client settings.
+
+The issue is resolved.
+
+
+
+OBE-12441 (OPT_10.15_Fix3)
+webMethods Optimize uses an older version of the JSON library, which has known security vulnerabilities.
+
+The issue is resolved. webMethods Optimize now uses JSON version 20230227.
+
+OBE-12418 (OPT_10.15_Fix3)
+webMethods Optimize uses an older version of the Chart.js library, which has known security vulnerabilities.
+ 
+The issue is resolved. webMethods Optimize now uses Chart.js 2.9.4.
+
+OBE-12377 (OPT_10.15_Fix3)
+webMethods Optimize uses an older version of the Jettison library, which has known security vulnerabilities.
+ 
+The issue is resolved. webMethods Optimize now uses Jettison 1.5.4.19.
+
+OBE-12429 (OPT_10.15_Fix3)
+In webMethods Optimize, when you deploy an Optimize environment, a PostgreSQL error might appear in the error log.
+
+The issue is resolved.
+
+OBE-12604 (OPT_10.15_Fix3)
+The WmOptimize package loses connection to the JMS server and has to be reloaded to reconnect.
+ 
+The issue is resolved.
+
+WMN-8413 (OPT_10.15_Fix3)
+If webMethods Monitor uses a PostgreSQL database, the Business Process page performance is very slow, which might result in a timeout exception.
+ 
+The issue is resolved.
+
+WMN-8457 (OPT_10.15_Fix3)
+In webMethods Monitor, the pub.monitor.service.getList service generates a large number of SQL statements, which might lead to database issues.
+
+The issue is resolved.
+
+WMN-8458 (OPT_10.15_Fix3)
+
+OBE-12639 (OPT_10.15_Fix3)
+webMethods Optimize cannot start with JDK 17.
+
+The issue is resolved.
+
+WMN-8163 (OPT_10.15_Fix3)
+In webMethods Monitor, you cannot resubmit a process instance using the Resubmit Closest button. The issue occurs when the process contains intermediate events.
+
+The issue is resolved. The Process Instances page now displays the correct process status and the Integration Server log contains a warning message.
+
+
+
+OBE-12405 (OPT_10.15_Fix2)
+When you uninstall an Optimize fix, Software AG Update Manager incorrectly deletes files from the Software AG_directory\common\runtime\bundles directory.
+
+The issue is resolved.
+
+OBE-12439 (OPT_10.15_Fix2)
+In the Business Data page of Optimize, when you expand Intrinsic Process Metrics and open one of the event maps, the Edit Event Map page displays multiple exceptions.
+ 
+The issue is resolved.
+
+OBE-12433 (OPT_10.15_Fix2)
+
+When you configure Optimize through CCS and put IPv6 address for hosts that contain "::" the IP addresses will be malformed and wrongly saved.
+
+This issue is now resolved.
+
+OBE-12458 (OPT_10.15_Fix2)
+In the Configuration Settings page of the WmOptimize package, when you configure Analytic Engine Host or JMS Server URL with an IPv6 address and click Submit, an error is displayed.
+
+The issue is resolved.
+
+
+
+OBE-12356 (OPT_10.15_Fix1)
+webMethods Optimize uses an older version of the Entrust library, which is not compatible with Java 11.
+
+The issue is resolved. webMethods Optimize now uses Entrust 8.1.20.
+
+
+
+
+
+
+
+
+
+
+
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or IBM webMethods Update Manager to install fixes on 
+one machine at a time. For instructions,see the documentation at 
+https://docs.webmethods.io/.
+
+
+9.0 Uninstallation
+
+IBM does not recommend uninstalling this fix because 
+Optimize or other webMethods products might not work properly.
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Command Central (9.7 or later) or Update Manager. For instructions, see 
+the documentation at https://docs.webmethods.io/.
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025
