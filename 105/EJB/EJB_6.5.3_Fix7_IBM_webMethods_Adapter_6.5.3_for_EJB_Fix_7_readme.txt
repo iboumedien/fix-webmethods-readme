@@ -1,0 +1,149 @@
+		IBM webMethods Adapter 6.5.3 for Enterprise JavaBeans Fix 7 readme
+
+                         October 2024
+________________________________________________________________________________
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods Adapter 6.5.3 for Enterprise JavaBeans Fix 7.
+
+
+2.0 Fix ID
+
+EJB_6.5.3_Fix7.
+
+
+3.0 Product(s)/Component(s) Affected
+
+None.
+
+
+4.0 Fix Requirements
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+ 
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include 
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the 
+release
+
+POJ-217
+Updated copyright notes, vendor, and product names for IBM rebranding.
+
+POJ-185 (EJB_6.5.3_Fix6) 
+webMethods Enterprise JavaBeans Adapter now supports WebLogic 14c.
+
+POJ-170 (EJB_6.5.3_Fix5) 
+In webMethods Enterprise JavaBeans Adapter, support for weblogic 8.x is not 
+provided.
+
+This issue is now resolved.
+
+POJ-164 (EJB_6.5.3_Fix4) 
+In webMethods Enterprise JavaBeans Adapter, 'MethodResults' from 
+FetchInvokeEJB3.0 does not have a index which causes 'Results' becomes null.
+
+This issue is now resolved by making Results field in the output as 
+Document Array type field.
+
+POJ-159 (EJB_6.5.3_Fix3) 
+In webMethods Enterprise JavaBeans Adapter, instances of TransactionHelperImpl 
+grows when calling adapter service with CreateInvokeEJB 2.1 template.
+
+This memory leak occurs as weblogic server creates a new context when we call 
+getRemoteBean api on the EJB Handle as part of executing CreateInvokeEJB 2.1 
+template.
+
+This isssue is resolved by deactivating tansaction helper using the weblogic 
+util API. 
+
+POJ-155 (EJB_6.5.3_Fix2) 
+In webMethods Enterprise JavaBeans Adapter, instances of TransactionHelperImpl 
+grows when reload of values happens in the adapter template.
+
+This memory leak occurs as the contexts of weblogic server are not closed when 
+look up for EJBs happens.
+
+This isssue is resolved by closing the weblogic server contexts after EJB lookups. 
+
+WF-6040 (EJB_6.5.3_Fix1) 
+EJB Adapter - websphere 8.5 certification
+Cannot configure adapter connections to WebSphere Server 8.5 when using 
+webMethods Enterprise JavaBeans Adapter 6.5.3.
+
+When configuring an adapter connection, the user needs to select an application 
+server vendor/version of the EJB Server to connect to, choosing a value from the 
+EJB Server Type field. However, there is no value for WebSphere Server 8.5.
+
+WF-6136 (EJB_6.5.3_Fix1) 
+EJB adapter: Support for 3.0 & 3.1 ejb on websphere
+Cannot configure adapter services with EJB 3.0 and 3.1 to WebSphere Server 8.5
+when using webMethods Enterprise JavaBeans Adapter 6.5.3.
+
+EJB adapter is supported with websphere 2.1 ejb only.Now EJB3.0 and 3.1 support 
+is provided with WebSphere Server 8.5.
+
+WF-5930 (EJB_6.5.3_Fix1) 
+EJB adapter - Support for WLS 12c
+Cannot configure adapter connections to Weblogic Server 12c when using 
+webMethods Enterprise JavaBeans Adapter 6.5.3.
+
+When configuring an adapter connection, the user needs to select an application 
+server vendor/version of the EJB Server to connect to, choosing a value from the 
+EJB Server Type field. However, there is no value for Weblogic Server 12c.
+
+
+
+8.0 Installation
+
+Install using Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Copyright Super iPaas Integration LLC, an IBM Company 2024.

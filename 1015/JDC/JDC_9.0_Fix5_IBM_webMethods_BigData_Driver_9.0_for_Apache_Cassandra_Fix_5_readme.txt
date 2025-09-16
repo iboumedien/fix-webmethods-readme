@@ -1,0 +1,126 @@
+                IBM webMethods BigData Driver 9.0 for Apache Cassandra Fix 5 readme
+
+
+                                        March 2025
+
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods BigData Driver 9.0 for Apache Cassandra Fix 5
+
+
+
+2.0 Fix ID
+
+JDC_9.0_Fix5
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+None. 
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include 
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the 
+release.
+
+BDDR-202
+Updated the Product name as per IBM rebranding and also Licenses 3rdparty 
+notices for fix JDC_9.0_Fix5.
+
+BDDR-88 (JDC_9.0_Fix4)
+Upgraded Apache Cassandra Progress driver to 6.0.0.000464 version for
+compatibility with Java 17.
+
+BDDR-42 (JDC_9.0_Fix3)
+The BigData drivers are in the locked state while you access the database objects.
+This issue occurs only when the current applicationKey does not match existing 
+applicationKey.
+
+This issue is now resolved.
+
+
+RGHADPESTBL-5221 (JDC_9.0_Fix2)
+The driver jar file cassandra-db-6.0.0.jar is renamed to wmcassandra.jar.
+
+The upgrade is from from 6.0.0.000118 (C0185.F000032.U000008) to 6.0.0.000216 
+(C0285.F000105.U000052).
+
+
+BDDR-2 (JDC_9.0_Fix1)
+In webMethods BigData Driver for Apache Cassandra, using the existing 
+cassandra-db-6.0.0.jar, Adapter for JDBC was unable to establish connection with 
+Cassandra version 3.7. 
+
+This issue is resolved.Now, cassandra-db-6.0.0.jar is upgraded to the latest 
+build provided by Progress Data Direct.
+
+Note: The name of the driver jar will be wmcassandra.jar.
+The driver version is upgraded from 6.0.0.000118 (C0185.F000032.U000008) to 
+6.0.0.000195 (C0253.F000060.U000026).
+
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a 
+central location (9.7 or later), or IBM webMethods Update Manager to install fixes 
+on one machine at a time. For instructions, see the documentation at https://docs.webmethods.io.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using IBM webMethods Command Central (9.7 or later) or IBM webMethods 
+Update Manager. For instructions, see the documentation at https://docs.webmethods.io.
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

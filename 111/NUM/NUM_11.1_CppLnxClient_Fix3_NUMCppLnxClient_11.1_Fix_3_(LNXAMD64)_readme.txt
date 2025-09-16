@@ -1,0 +1,226 @@
+                     Universal Messaging Cpp Linux Client 11.1 Fix 3 Readme
+                                  August 2025
+
+________________________________________________________________________________
+
+This file provides important information for applying IBM Universal Messaging Cpp Linux Client 11.1 Fix 3 to IBM Universal Messaging 11.1 installations.
+For additional information about Universal Messaging, see the index.html file in the docs directory of your installation.
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+
+
+
+1.0 Fix Name
+
+Universal Messaging Cpp Linux Client 11.1 Fix 3
+
+
+
+2.0 Fix ID
+
+NUM_11.1_CppLnxClient_Fix3
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+Universal Messaging Cpp Linux Client 11.1
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+
+NUM-24833 (NUM_11.1_wM_Client_Fix3)
+When you use webMethods Infrastructure Data Collector with Universal Messaging, Infrastructure Data Collector might fail to start.
+
+The issue occurs due to incorrect versions of the “Import-Package” Java packages of the Universal Messaging nAdminAPI and nJMS JAR files.
+
+The issue is resolved. Now, the Universal Messaging Java packages have correct versions.
+
+NUM-24484 (NUM_11.1_wM_Client_Fix3)
+The umTools.jar will be updated by applying um-TemplateApplications fix instead of um-client fix
+
+NUM-24219 (NUM_11.1_wM_Client_Fix3)
+Observed frequent UM connection retry's in HS leads to high CPU. 
+The UM client reconnect logic is changed to have a more predictable reconnect delay. 
+Added the new parameter com.softwareag.um.client.MaxReconnectInterval. 
+
+NUM-24202 (NUM_11.1_wM_Client_Fix3)
+In a horizontal scalability (HS) session, when some of the Universal Messaging servers are offline, a Universal Messaging client might see high CPU usage when it tries to connect to the HS servers.
+
+The issue occurs because the client makes a reconnection attempt every one second. In addition, each reconnection attempt causes a resource leak that occupies considerable heap space.
+
+The issues are resolved. The reconnection interval for a client session has been randomized to between 1 and 10 seconds.
+
+
+NUM-23227 (NUM_11.1_wM_Client_Fix3)
+In a slow environment, a Universal Messaging (UM) server might delay sending a keepalive response to a UM client, which could disconnect the client.
+
+The issue is resolved. You can use a new UM client-side property, "com.softwareag.um.client.server_keep_alive_leeway", to specify the additional time it can take a UM server to reply to a keepalive sent by a UM client. The default value is 15 seconds. You can increase the keepalive leeway if the UM server is under heavy load that might cause a delay in the keepalive reply. Such a delay can sometimes disconnect UM clients, so you have the option to increase the allowed delay before a client closes a connection due to a failed keepalive.
+
+For more information about working with client properties, see the Universal Messaging documentation.
+
+NUM-23024 (NUM_11.1_wM_Client_Fix3)
+Universal Messaging server logging has been improved to better identify client details.
+
+NUM-25014 (NUM_11.1_wM_Client_Fix3)
+For native sessions created in Hybrid environment the flag set via environment variable "com.softwareag.um.client.retry_reconnect_on_security_exception" was ignored and set to false. 
+This prevented sessions reconnections after getting security exception.
+Now it is fixed, default value of com.softwareag.um.client.retry_reconnect_on_security_exception is true. When it is set to true, the session will try to reconnect after getting  a security exception
+
+
+
+
+NUM-23833 (NUM_11.1_wM_Client_Fix2)
+In Universal Messaging, exceeding the warning threshold configured for direct and heap memory might result in degraded JVM performance.
+
+The issue is resolved.
+
+NUM-23914 (NUM_11.1_wM_Client_Fix2)
+The Universal Messaging realm servers fail to join a Universal Messaging cluster with the following error: "Remote connection failed security challenge". The Universal Messaging clients cannot establish a connection to the realm servers or the connection is slow with the same error message.
+The issue occurs because of incorrect header values exchanged during the authentication.
+The issue is resolved. A new parameter with name com.softwareag.um.authentication.maxHeaderCount and default value of 0 has been added to limit the number of headers exchanged. Do not change the default value of the parameter as it is used when the server communicates with a client that uses headers.
+
+NUM-22883 (NUM_11.1_wM_Client_Fix2)
+Reconnect logic uses uses JMS flag which results in dead session to be left in session pool. As part of the fix, Flag for shouldTryToReconnect() logic is set separately for native session and JMS. 
+
+For native session, the flag can be set/unset from environment variable "com.softwareag.um.client.retry_reconnect_on_security_exception" with default value being true. For JMS, it can be set/unset using com.pcbsys.nirvana.nJMS.Constants#setReconnectAfterAccessChange() API, by default value is set to false.
+
+
+
+
+NUM-23248 (NUM_11.1_wM_Client_Fix1)
+Added IBM Bee logo as the browser logo for UM API doc which was empty before.
+Covered it for all the platforms and for all the languages.
+
+NUM-21114 (NUM_11.1_wM_Client_Fix1)
+
+In Universal Messaging, you can create duplicate stores (channels or queues) for a particular store name, which might result in duplicate or lost events.
+
+The store names contain the same sequence of letters but have different cases for the characters, for example, testQueue and TestQueue.
+
+The issue is resolved.
+
+Important: After you apply this fix, the Universal Messaging server will not start if there are duplicate stores for a particular store name present on the server when you work with case-insensitive data folders, for example, on a Windows operating system. Contact Software AG Global Support on how to proceed.
+
+When you start the Universal Messaging server, it checks for duplicate stores and shuts down if it finds any such stores. The server also writes the following warning message in the nirvana.log file and in the console output: “WARNING: Multiple stores found for store name: <Store name>. Listing the stores for this store name: <Store 1><Store 2>…”
+
+In addition, you can no longer create duplicate stores when you work with a case-insensitive data folder.
+
+When starting, the server now detects what type of file system is used, case-sensitive or case-insensitive, and sets the “isCaseSensitive” flag. If the detection process fails, the server uses the default value of the flag, which is “true”. If you create a store for a store name that conflicts with an existing name on the server, Universal Messaging displays the following message: “There is a conflict in the given store name.”
+
+Previously, you could use the property “caseSensitive” in a config.props file to set this flag and specify whether the system was case-sensitive or not. This property has been removed. The default value of the flag was “true”. If the flag was set to “false”, operations on a channel would use lowercase for comparison of the store name.
+
+NUM-19924 (NUM_11.1_wM_Client_Fix1)
+After a Universal Messaging Realm restarts, the number of current connections might be incorrect because of a memory leak. The issue occurs if a subscription was removed while the realm was down.
+The issue is now resolved.
+
+NUM-21540 (NUM_11.1_wM_Client_Fix1)
+The Universal Messaging admin client API might log an out-of-bounds exception.
+
+The issue is resolved.
+
+
+
+
+
+
+
+
+
+8.0 Installation
+
+If you are installing a Universal Messaging server fix, please shut down any running Universal
+Messaging server instances before installing.
+In case the Universal Messaging server instance is a member of a cluster, please apply the
+procedure for installing rolling cluster updates described below(*).
+
+If you are installing a Universal Messaging client fix, please shut down any applications such as
+Integration server or Enterprise Manager which are using client libraries.
+
+If you are installing a Universal Messaging Enterprise Manager fix, you do not need to shut down the
+Universal Messaging server.
+
+Install using the Update Manager or Command Central (9.5 or later). For instructions,
+see the corresponding documentation at https://docs.webmethods.io.
+
+(*) Universal Messaging cluster is supporting rolling updates for its nodes.
+There is a strong recommendation to start applying the new fixes on the Slave nodes and leave the
+Master node to be the last one.
+
+For each single node that is part of the cluster the customer needs to follow the steps:
+1) Shutdown the node. The node will be disconnected from the cluster.
+2) Apply the specific fix
+3) Start the node. It will be connected back again to the cluster and will be operational
+4) Apply the same procedure from 1-3 steps on the next node
+
+In order to have truly no downtime, the client that talks to the Universal Messaging cluster should
+also be implemented in a way that it tolerates brief connection loss. A rolling update in a cluster
+still means that:
+a) When the node that a client is connected to is brought down for maintenance, the connection to
+this server, and respectively the cluster, will be lost and has to be re-established. The client
+should be able to handle this seamlessly.
+b) When the master node of the cluster is brought down for maintenance, the cluster will briefly
+go offline until a new master is elected. This is usually a very short time window, but still,
+similarly to point a). The client applications should be able to handle it in order to have truly
+no downtime from the point of view of the end user.
+
+
+
+9.0 Uninstallation
+
+If you are uninstalling a Universal Messaging server fix,
+please note that any running Universal Messaging server
+instances will be automatically shutdown before installing.
+
+If you are uninstalling a Universal Messaging client fix,
+please shut down any applications such as Integration Server
+or Enterprise Manager which are using client libraries.
+
+If you are uninstalling a Universal Messaging Enterprise Manager
+fix, you do not need to shut down the Universal Messaging server.
+
+Uninstall using the Update Manager or
+Command Central (9.5 or later). For instructions, see the
+corresponding documentation at https://docs.webmethods.io/.
+
+Note: These instructions can only be used to uninstall the
+most recently installed fix. This action will revert your
+installation to the previously installed fix. You cannot
+apply these instructions to the previously installed fix.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

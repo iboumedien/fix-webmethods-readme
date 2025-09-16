@@ -1,0 +1,284 @@
+                     Universal Messaging Server 11.1 Fix 3 Readme
+                                  August 2025
+
+________________________________________________________________________________
+
+This file provides important information for applying IBM Universal Messaging Server 11.1 Fix 3 to IBM Universal Messaging 11.1 installations.
+For additional information about Universal Messaging, see the index.html file in the docs directory of your installation.
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+
+
+
+1.0 Fix Name
+
+Universal Messaging Server 11.1 Fix 3
+
+
+
+2.0 Fix ID
+
+NUM_11.1_RealmServer_Fix3
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+Universal Messaging Server 11.1
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+
+NUM-24661 (NUM_11.1_wM_RealmServer_Fix3)
+The Universal Messaging server logs an “Unknown consumer type“ error message when loading durable objects during startup.
+The issue is resolved. The redundant error messages are now removed from the log file.
+
+NUM-24179 (NUM_11.1_wM_RealmServer_Fix3)
+A potential event loss scenario is possible if a UM server has a remote join to another UM server or cluster.
+
+This issue is now resolved after the application of this fix.
+
+NUM-23771 (NUM_11.1_wM_RealmServer_Fix3)
+In Universal Messaging, events may accumulate on the source side of a remote join.
+
+The issue may occur when you reuse or disconnect the remote join, and the last EID of the source channel has a large value.
+
+Specifically, the issue may happen during the following situation:
+1. You delete the remote join using the admin API or the Enterprise Manager, or you disconnect the join from the destination server for a long time.
+2. Many publishers to the source channel modify the last EID of the channel.
+3. You recreate or reconnect the remote join.
+
+The issue is resolved. In addition, you can use a new realm configuration property, "RemoteJoinContextStatsInterval", to log join statistics at a specified interval in milliseconds. You configure the property on the Config tab for a realm in the Enterprise Manager, as part of the Join Config property group. A value between 0 (default) and less than 5000 disables logging. The minimum logging interval is 5000.
+
+For more information about working with realm configuration properties, see the Universal Messaging documentation.
+
+NUM-23024 (NUM_11.1_wM_RealmServer_Fix3)
+Universal Messaging server logging has been improved to better identify client details.
+
+NUM-23917 (NUM_11.1_wM_RealmServer_Fix3)
+An active/active cluster might disconnect if the load of the realm events from Shared or Serial durable subscribers is too high.
+When the number of channel or queue events is very high, the rebuild of the subscriber filter or the additional synchronization of events in the cluster might block the inter-cluster communication.
+The issue is resolved. Now an active/active cluster does not disconnect under a very high load of realm events.
+
+NUM-20845 (NUM_11.1_wM_RealmServer_Fix3)
+When working with Universal Messaging (UM) clusters in a cross-cluster environment that includes different UM versions, a deadlock condition might occur.
+The issue is resolved.
+
+
+
+
+NUM-23508 (NUM_11.1_wM_RealmServer_Fix2)
+Establishing a client connection to a Universal Messaging server might fail.
+
+The issue happens because in rare cases stream corruption during handshaking might occur.
+
+This issue is now resolved.
+
+NUM-23833 (NUM_11.1_wM_RealmServer_Fix2)
+In Universal Messaging, exceeding the warning threshold configured for direct and heap memory might result in degraded JVM performance.
+
+The issue is resolved.
+
+NUM-23914 (NUM_11.1_wM_RealmServer_Fix2)
+The Universal Messaging realm servers fail to join a Universal Messaging cluster with the following error: "Remote connection failed security challenge". The Universal Messaging clients cannot establish a connection to the realm servers or the connection is slow with the same error message.
+The issue occurs because of incorrect header values exchanged during the authentication.
+The issue is resolved. A new parameter with name com.softwareag.um.authentication.maxHeaderCount and default value of 0 has been added to limit the number of headers exchanged. Do not change the default value of the parameter as it is used when the server communicates with a client that uses headers.
+
+NUM-23625 (NUM_11.1_wM_RealmServer_Fix2)
+The log level for the specific message Flow Control enabled for Connection with ID has been changed from warn to debug to reduce the amount of non-critical log entries in the nirvana.log file. This adjustment helps clean up the logs, making them easier to read and understand, while still providing detailed Flow Control information at the debug level when needed for troubleshooting.
+
+NUM-23645 (NUM_11.1_wM_RealmServer_Fix2)
+Snooping on the outstanding events on a durable using Command Central, the Universal Messaging Enterprise Manager, or the Universal Messaging client API might lead to stalled tasks on a Universal Messaging server.
+
+This can have undesired consequences such as, for example, a split-brain cluster state, that is, the existence of more than one master node in the cluster.
+
+The issue is resolved.
+
+NUM-23668 (NUM_11.1_wM_RealmServer_Fix2)
+Prometheus scraping of Universal Messaging metrics is slow.
+
+The issue occurs because the jmx_sag_um_exporter.yaml file, the configuration file of the Prometheus JMX exporter agent, contains some rules that do not provide useful information for monitoring but degrade performance.
+
+The issue is resolved. The superfluous rules have been removed from the jmx_sag_um_exporter.yaml file.
+
+NUM-23762 (NUM_11.1_wM_RealmServer_Fix2)
+When monitoring Universal Messaging, the Prometheus JMX Exporter agent removes the suffix "total" from the names of rules of type “gauge” and the suffix "info" from the names of rules of any type.
+
+The issue is resolved. The affected rules are renamed to match the output of the Prometheus JMX Exporter.
+
+NUM-23685 (NUM_11.1_wM_RealmServer_Fix2)
+The Universal Messaging server does not update its garbage collection (GC) state.
+
+The issue is resolved.
+
+
+NUM-23773 (NUM_11.1_wM_RealmServer_Fix2)
+The Prometheus JMX exporter has been upgraded to version 1.0.1, which provides better scraping performance.
+
+NUM-23778 (NUM_11.1_wM_RealmServer_Fix2)
+When you set the DisableExplicitGC realm configuration property to “false”, the Universal Messaging server might override this value when it performs the next check for memory usage exceeding the warning threshold.
+
+The issue is resolved.
+
+NUM-23267 (NUM_11.1_wM_RealmServer_Fix2)
+When you delete a reliable queue, Universal Messaging does not remove the empty folder associated with the queue, which might slow down performance if many folders accumulate.
+
+The issue is resolved.
+
+NUM-23776 (NUM_11.1_wM_RealmServer_Fix2)
+The description of the DisableExplicitGC realm configuration property in the Universal Messaging Enterprise Manager and Administration API is incorrect.
+
+The issue is resolved.
+
+NUM-21542 (NUM_11.1_wM_RealmServer_Fix2)
+Updated bouncycastle libraries to 1.78.1 to address security vulnerabilities.
+
+NUM-23719 (NUM_11.1_wM_RealmServer_Fix2)
+The Universal Messaging realm servers fail to join a Universal Messaging cluster with the following error: "Remote connection failed security challenge". The Universal Messaging clients cannot establish a connection to the realm servers or the connection is slow with the same error message.
+The issue occurs because of incorrect header values exchanged during the authentication.
+The issue is resolved. A new parameter with name com.softwareag.um.authentication.maxHeaderCount and default value of 0 has been added to limit the number of headers exchanged. Do not change the default value of the parameter as it is used when the server communicates with a client that uses headers.
+
+NUM-22254 (NUM_11.1_wM_RealmServer_Fix2)
+Universal Messaging uses the Protobuf library version 3.21.12, which has a security vulnerability.
+The issue is resolved. The Protobuf library has been updated to version 3.25.5.
+
+
+
+
+NUM-23219 (NUM_11.1_wM_RealmServer_Fix1)
+The logging was improved by adding ERR/WARN logs around DNS lookup resolution
+
+NUM-21114 (NUM_11.1_wM_RealmServer_Fix1)
+
+In Universal Messaging, you can create duplicate stores (channels or queues) for a particular store name, which might result in duplicate or lost events.
+
+The store names contain the same sequence of letters but have different cases for the characters, for example, testQueue and TestQueue.
+
+The issue is resolved.
+
+Important: After you apply this fix, the Universal Messaging server will not start if there are duplicate stores for a particular store name present on the server when you work with case-insensitive data folders, for example, on a Windows operating system. Contact Software AG Global Support on how to proceed.
+
+When you start the Universal Messaging server, it checks for duplicate stores and shuts down if it finds any such stores. The server also writes the following warning message in the nirvana.log file and in the console output: “WARNING: Multiple stores found for store name: <Store name>. Listing the stores for this store name: <Store 1><Store 2>…”
+
+In addition, you can no longer create duplicate stores when you work with a case-insensitive data folder.
+
+When starting, the server now detects what type of file system is used, case-sensitive or case-insensitive, and sets the “isCaseSensitive” flag. If the detection process fails, the server uses the default value of the flag, which is “true”. If you create a store for a store name that conflicts with an existing name on the server, Universal Messaging displays the following message: “There is a conflict in the given store name.”
+
+Previously, you could use the property “caseSensitive” in a config.props file to set this flag and specify whether the system was case-sensitive or not. This property has been removed. The default value of the flag was “true”. If the flag was set to “false”, operations on a channel would use lowercase for comparison of the store name.
+
+NUM-21607 (NUM_11.1_wM_RealmServer_Fix1)
+The CreateJMSQueue and CreateJMSTopic tools, and any other Universal Messaging command-line administration tools associated with stores (channels and queues) now create stores of type Mixed when you use the tool without specifying the store type.
+
+Previously, the tools created stores of type Reliable.
+
+In addition, in the Universal Messaging Java client API, the constructors com.pcbsys.nirvana.client.nChannelAttributes.nChannelAttributes() and com.pcbsys.nirvana.client.nChannelAttributes.nChannelAttributes(String name) now create mixed stores by default instead of reliable ones.
+
+Also, the methods in nSession and nRealmNode that create channels or queues create mixed stores instead of reliable ones if you do not set the type of the store (channel or queue) explicitly.
+
+You can use a new system property on the client side, com.softwareag.um.client.DefaultChannelType, to specify the type of stores created when using the administration tools and the nChannelAttributes constructors. Valid values are ‘mixed’, ‘reliable’, and ‘persistent’. 
+
+
+
+
+
+
+
+
+
+8.0 Installation
+
+If you are installing a Universal Messaging server fix, please shut down any running Universal
+Messaging server instances before installing.
+In case the Universal Messaging server instance is a member of a cluster, please apply the
+procedure for installing rolling cluster updates described below(*).
+
+If you are installing a Universal Messaging client fix, please shut down any applications such as
+Integration server or Enterprise Manager which are using client libraries.
+
+If you are installing a Universal Messaging Enterprise Manager fix, you do not need to shut down the
+Universal Messaging server.
+
+Install using the Update Manager or Command Central (9.5 or later). For instructions,
+see the corresponding documentation at https://docs.webmethods.io.
+
+(*) Universal Messaging cluster is supporting rolling updates for its nodes.
+There is a strong recommendation to start applying the new fixes on the Slave nodes and leave the
+Master node to be the last one.
+
+For each single node that is part of the cluster the customer needs to follow the steps:
+1) Shutdown the node. The node will be disconnected from the cluster.
+2) Apply the specific fix
+3) Start the node. It will be connected back again to the cluster and will be operational
+4) Apply the same procedure from 1-3 steps on the next node
+
+In order to have truly no downtime, the client that talks to the Universal Messaging cluster should
+also be implemented in a way that it tolerates brief connection loss. A rolling update in a cluster
+still means that:
+a) When the node that a client is connected to is brought down for maintenance, the connection to
+this server, and respectively the cluster, will be lost and has to be re-established. The client
+should be able to handle this seamlessly.
+b) When the master node of the cluster is brought down for maintenance, the cluster will briefly
+go offline until a new master is elected. This is usually a very short time window, but still,
+similarly to point a). The client applications should be able to handle it in order to have truly
+no downtime from the point of view of the end user.
+
+
+
+9.0 Uninstallation
+
+If you are uninstalling a Universal Messaging server fix,
+please note that any running Universal Messaging server
+instances will be automatically shutdown before installing.
+
+If you are uninstalling a Universal Messaging client fix,
+please shut down any applications such as Integration Server
+or Enterprise Manager which are using client libraries.
+
+If you are uninstalling a Universal Messaging Enterprise Manager
+fix, you do not need to shut down the Universal Messaging server.
+
+Uninstall using the Update Manager or
+Command Central (9.5 or later). For instructions, see the
+corresponding documentation at https://docs.webmethods.io/.
+
+Note: These instructions can only be used to uninstall the
+most recently installed fix. This action will revert your
+installation to the previously installed fix. You cannot
+apply these instructions to the previously installed fix.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

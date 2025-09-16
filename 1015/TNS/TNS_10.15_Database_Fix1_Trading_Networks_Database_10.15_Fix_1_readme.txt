@@ -1,0 +1,149 @@
+         Trading Networks Database 10.15 Fix 1 readme
+
+                         March 2025
+
+_____________________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform/RDBMS Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+11.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+Trading Networks Database 10.15 Fix 1.
+
+
+
+2.0 Fix ID
+
+TNS_10.15_Database_Fix1
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Trading Networks Database 10.15
+scripts
+
+
+
+4.0 Requirements
+
+Trading Networks Server 10.15 Fix 1 or the latest fix that supersedes this.
+
+
+
+5.0 Platform/RDBMS Support
+
+Same platforms and RDBMS as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes 
+for the release.
+
+OTN-28952
+
+Trading Networks - wm.tn.archive:extendedArchive does not 
+delete transaction content. This issue has now been resolved.
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+1. Shut down all product instances that connect to the database and then 
+   back up the database.
+
+2. On the machine that hosts the Database Component Configurator, go to the 
+   <Software AG_directory>/common/db/bin directory and run the command below.
+   See Installing Software AG Products for command details.
+
+   dbConfigurator.{bat|sh} -a migrate -d <RDBMS> -c <db_component[,...]> 
+   -v latest -l <RDBMS_URL> -u <user_name> -p <password>
+
+<db_component> names are: 
+TradingNetworks, TradingNetworksArchive
+
+
+
+9.0 Uninstallation
+
+Uninstall using Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+If necessary, restore the database backup you created before migrating the 
+database components.
+
+
+
+10.0 Copyright
+
+Copyright © 2020 Software AG, Darmstadt, Germany and/or 
+Software AG USA Inc., Reston, VA, USA, and/or its subsidiaries and/or its
+affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or
+registered trademarks of Software AG and/or Software AG USA Inc. and/or its
+subsidiaries and/or its affiliates and/or their licensors. Other company and
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its
+subsidiaries is located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party
+copyright notices, license terms, additional rights or restrictions, please
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party
+Products". For certain specific third-party license restrictions, please refer
+to section E of the Legal Notices available under "License Terms and Conditions
+for Use of Software AG Products / Copyright and Trademark Notices of
+Software AG Products". These documents are part of the product documentation,
+located at http://softwareag.com/licenses and/or in the root installation
+directory of the licensed product(s).
+
+
+11.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

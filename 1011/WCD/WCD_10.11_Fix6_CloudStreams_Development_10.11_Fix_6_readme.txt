@@ -1,0 +1,259 @@
+    webMethods CloudStreams Development 10.11 Fix 6 readme
+
+                         October 2023
+
+_________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+webMethods CloudStreams Development 10.11 Fix6
+
+
+
+2.0 Fix ID
+
+WCD_10.11_Fix6
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+webMethods CloudStreams Development
+
+
+
+4.0 Requirements
+
+This fix requires the latest available fixes to be installed in advance. In 
+addition, follow the post install instruction.
+
+For language pack requirements, see the Globalization section of the Software AG
+Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+webMethods CloudStreams Development 10.11 Fix 6 is supported on all platforms 
+supported by webMethods CloudStreams Development 10.11.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+WCD-2086 (WCD_10.11_Fix6)
+
+Previously, a common generic message without much information was being 
+displayed to the user in case of an error while importing a provider project.
+
+This issue is resolved. Now, the proper reason for the exception will be 
+displayed as part of the message.
+
+WCD-2069 (WCD_10.11_Fix5)
+
+The Unpublish window in the Designer under the CloudStreams Development 
+perspective would get stuck in a loop when attempting to unpublish a 
+Provider package on the Current or Development server.
+
+This issue was observed due to an exception occurring when clicking the 
+'Next' button, as some fields such as Target Server and webMethods.io 
+Integration tenants were null, causing the window to get stuck in the loop.
+
+This issue is resolved.
+
+WCD-2059 (WCD_10.11_Fix5)
+
+Headers/mappings for multi-authentication enabled connectors were not 
+updating correctly when the connection alias was changed from the pool.
+
+This issue is now resolved.
+
+WCD-2048 (WCD_10.11_Fix4)
+
+While editing of cloud connector service, custom parameters from simple record type
+fields are missing.
+
+This issue is now resolved.
+
+WCD-2011 (WCD_10.11_Fix4)
+
+Users can create operations dynamically by pointing to a WSDL hosting web URL or
+by uploading a Workday WSDL file locally. For complex operations, the "Next"
+button should be enabled to select an abstract object on the "Operation and
+Business Object Configuration" wizard.
+
+This issue is resolved.
+
+WCD-2046 (WCD_10.11_Fix3)
+
+While creating a connector using a Swagger specification file, if the Swagger file 
+contains an empty summary, then the connector fails to load into the Designer.
+
+This issue is now resolved.
+
+WCD-2010 (WCD_10.11_Fix2)
+
+Few back-ends expect percent-encoding of reserved characters in the URI.
+
+When a URI-based parameter value, containing a reserved character, has a special
+meaning (a "reserved purpose") and the URI scheme has a different meaning or purpose
+of the reserved character, then the reserved character must be percent-encoded. An
+error occurs if an URI with a reserved character is not handled properly.
+
+This issue is resolved.
+
+WCD-2004 (WCD_10.11_Fix2)
+
+If there are no webMethods.io Integration tenants configured and a user tries
+to unpublish a connector from Development/Target Server(s), the "Next" button on the
+"List of Target(s)" page does not work.
+
+This issue is resolved.
+
+WCD-1985 (WCD_10.11_Fix2)
+
+The "Select All" button is enabled in the "Unpublish provider" screen even in scenarios
+where there are no published connectors to select.
+
+This issue is resolved.
+
+WCD-1984 (WCD_10.11_Fix2)
+
+While publishing connectors to webmethods.io Integration tenants, if the first connector
+is not selected from the list of connectors of the same provider, the metadata for
+connectors was incorrectly set.
+
+This issue is resolved.
+
+WF-16743 (WCD_10.11_Fix1)
+
+Support for Publish and Unpublish of Connectors
+
+Publish connectors to a webMethods.io Integration tenant
+
+CloudStreams provides you the ability to publish connectors that reside within 
+the on-premises application to the desired webMethods.io Integration tenant.
+
+Unpublish published connectors from a webMethods.io Integration tenant
+
+CloudStreams provides you the ability to unpublish the published connectors 
+from the webMethods.io Integration tenant.
+
+WCD-1921 (WCD_10.11_Fix1)
+
+The table header in the Provider Refactor Preview screen gets blurred when
+the screen is resized.
+
+This issue is resolved.
+
+8.0 Installation
+
+Step 1: Install using the Software AG Update Manager. For instructions, 
+see the documentation at http://documentation.softwareag.com.
+
+Note: If you have migrated your connector services from a version prior to 
+CloudStreams 9.7 and impacted by WST-2213, and you are yet to run the migration
+utility as suggested in WST-2213, go to Step 2, else skip Step 2. If you have
+created your connector services with a CloudStreams 9.7 or later version, you do
+not need to run the migration utility.
+
+Step 2: Run the CloudStreams migration utility (pub.cloudstreams.migration:migrate)
+to migrate your old CloudStreams artifacts to the latest version.
+For more information on the migration utility, see the Integration Server upgrade 
+section in the "Upgrading Software AG Products" guide.
+
+
+
+9.0 Uninstallation
+
+Uninstall using the Software AG Update Manager. For instructions see the 
+documentation at http://documentation.softwareag.com.
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot apply these instructions to the previously installed fix.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was 
+tested with non-English configurations and non-ASCII data.
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might contain new messages
+and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright (c) 2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., 
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their 
+licensors.
+
+The name Software AG and all Software AG product names are either trademarks or 
+registered trademarks of Software AG and/or Software AG USA Inc. and/or its 
+subsidiaries and/or its affiliates and/or their licensors. Other company and 
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its 
+subsidiaries is located at http://softwareag.com/licenses.
+
+This software may include portions of third-party products. For third-party 
+copyright notices, license terms, additional rights or restrictions, please 
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party Products".
+For certain specific third-party license restrictions, please refer to section E 
+of the Legal Notices available under "License Terms and Conditions for Use of 
+Software AG Products / Copyright and Trademark Notices of Software AG Products". 
+These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the 
+licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact Directory 
+at: https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

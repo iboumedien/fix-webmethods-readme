@@ -1,0 +1,105 @@
+                  webMethods Common Monitoring Provider Bundle 10.15.0 Fix 2 readme
+
+                                       August 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Common Monitoring Provider Bundle 10.15.0 Fix 2
+
+
+2.0 Fix ID
+
+CMP_10.15_Fix2
+
+
+3.0 Product(s)/Component(s) Affected
+
+webMethods Platform Manager 10.15
+webMethods Optimize 10.15
+
+
+
+4.0 Requirements and Dependencies
+
+None
+
+5.0 Platform Support
+
+All platforms that webMethods Optimize Base Engine supports.
+
+
+
+6.0 Cautions and Warnings
+
+Attempting to install this fix in a My webMethods Server environment that is configured to use an
+embedded Derby database fails. You can find the error details about the fix installation failure in
+the IBM webMethods Update Manager log file.
+
+
+
+7.0 Fix Contents
+
+CMP-207:
+Infrastructure Data Collector stops monitoring a Universal Messaging server when you delete a NamedObject component that belongs to that server.
+The issue is resolved.
+
+CMP-203
+After you discover Terracotta assets using a direct connection method, the monitoring of Terracotta KPI definitions fails with an error.
+The issue is resolved.
+
+CMP-195 (CMP_10.15_Fix1)
+The Universal Messaging NamedObject component is not available for selection in the Monitoring Components page. 
+The issue is resolved.
+
+WID-2321 (CMP_10.15_Fix1)
+Optimize for Infrastructure cannot discover Terracotta BigMemory Max 4.4.0.12.
+The issue is resolved.
+
+CMP-165 (CMP_10.15_Fix1)
+In webMethods Optimize, when you try to discover an Integration Server with an IPv6 address, an error is displayed.
+The issue is resolved. To discover an Integration Server which is hosted on a different virtual machine using its IPv6 address:
+
+1. Install this fix.
+
+2. Open the custom_wrapper.conf file located in the profiles/IS_default/configuration folder on the machine which hosts the Integration Server.
+
+3. Add the following line:
+wrapper.java.additional.400=-Djava.rmi.server.hostname=[IPv6 address of the machine which hosts the Integration Server]
+Important: The IPv6 address should be enclosed within square brackets.
+
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Command Central (9.7 or later) or IBM webMethods Update Manager. For instructions, see 
+the documentation at https://docs.webmethods.io.
+
+
+10.0 Copyright
+
+Copyright IBM Corporation 2025

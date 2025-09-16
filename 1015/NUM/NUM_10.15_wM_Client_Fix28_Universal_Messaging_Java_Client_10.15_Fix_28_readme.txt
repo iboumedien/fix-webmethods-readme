@@ -1,0 +1,654 @@
+             IBM webMethods Universal Messaging webMethods Client 10.15 SP0 Fix 28 Readme
+          
+                                  August 2025
+
+________________________________________________________________________________
+
+This file provides important information for applying IBM webMethods Universal Messaging Client 
+10.15 SP0 Fix 28 to IBM webMethods Universal Messaging 10.15 SP0 installations. For additional 
+information about IBM webMethods Universal Messaging, see the index.html file in the docs directory 
+of your installation. 
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings 
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization 
+11.0  Copyright
+
+
+
+1.0 Fix Name
+
+IBM webMethods Universal Messaging webMethods Client 10.15 SP0 Fix 28
+
+
+
+2.0 Fix ID
+
+NUM_10.15_wM_Client_Fix28
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+IBM webMethods Universal Messaging webMethods Client 10.15 SP0
+
+
+
+4.0 Requirements
+
+None.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+ 	
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+NUM-24903 (NUM_10.15_wM_Client_Fix28)
+
+UM hybrid client is not reconnecting to cloud UM server 
+after IS client gets javax.security.auth.login.LoginException. 
+This exception happens after um-nginx operator restart
+
+In a hybrid environment, an on-premises Universal Messaging client does not reconnect to 
+a cloud Universal Messaging server after the client receives a security exception.
+The issue occurs even though the “com.softwareag.um.client.retry_reconnect_on_security_exception” 
+client parameter is set to “true”, which is the default value, 
+because the Universal Messaging client session in a hybrid environment erroneously ignores 
+the value of the parameter.
+The issue is resolved.
+As a part of NUM-22801 implementation not all the nSessionAttributes constructors initialized 
+nSessionAttributes.isRetryReconnectOnSecurityException to default value (true).
+Now we use in nSessionAttributes a private constructor to initialize 
+isRetryReconnectOnSecurityException 
+to default true or the value from system property 
+"com.softwareag.um.client.retry_reconnect_on_security_exception".
+All other constructors will internally use it.
+
+NUM-23931 (NUM_10.15_wM_Client_Fix27)
+
+When a Universal Messaging client disconnects from a Universal Messaging server, the time period 
+that the client waits to reconnect to the server is inconsistent. The inconsistent time period 
+between the reconnection attempts causes delays.
+The issue occurs when the Reconnect Immediate flag for a client session is set to false. 
+The reconnection interval increases after each attempt to reconnect and the maximum duration 
+between the attempts is not configurable.
+The issue is resolved. A parameter with name com.softwareag.um.client.MaxReconnectInterval is 
+added to limit the maximum duration between the attempts to reconnect. The minimum valid value 
+is 200 milliseconds and a maximum valid value is not defined. The default is 30 seconds. 
+Use the parameter when the Reconnect Immediate flag is false.
+
+NUM-24483 (NUM_10.15_wM_Client_Fix27)
+
+Upgraded the prometheus jmx exporter jar to version 1.2.0.
+
+NUM-24147 (NUM_10.15_wM_Client_Fix26)
+
+In a horizontal scalability (HS) session, when some of the Universal Messaging servers are offline, 
+a Universal Messaging client might see high CPU usage when it tries to connect to the HS servers.
+The issue occurs because the client makes a reconnection attempt every one second. In addition, each 
+reconnection attempt causes a resource leak that occupies considerable heap space.
+The issues are resolved. The reconnection interval for a client session has been randomized to 
+between 1 and 10 seconds.
+
+NUM-23770 (NUM_10.15_wM_Client_Fix26)
+
+The client side API com.pcbsys.nirvana.client.nSession#deleteRealm has been changed to ensure that 
+the realm name to be removed is first removed locally on the connected realm server before the 
+connected realm server name is removed remotely. This API is also used in the Enterprise Manager 
+whenever a realm server is first selected and the right mouse button context menu item "Remove A 
+Realm" is executed or performed.
+In addition, you can use a new realm configuration property, "RemoteJoinContextStatsInterval", to 
+log join statistics at a specified interval in milliseconds. You configure the property on the 
+Config tab for a realm in the Enterprise Manager, as part of the Join Config property group. A 
+value between 0 (default) and less than 5000 disables logging. The minimum logging interval is 
+5000.
+For more information about working with realm configuration properties, see the Universal Messaging 
+documentation.
+
+NUM-23913 (NUM_10.15_wM_Client_Fix25)
+
+The Universal Messaging realm servers fail to join a Universal Messaging cluster with the following 
+error: "Remote connection failed security challenge". The Universal Messaging clients cannot 
+establish a connection to the realm servers or the connection is slow with the same error message.
+The issue occurs because of incorrect header values exchanged during the authentication.
+The issue is resolved. A new parameter with name com.softwareag.um.authentication.maxHeaderCount and 
+default value of 0 has been added to limit the number of headers exchanged. Do not change the 
+default value of the parameter as it is used when the server communicates with a client that uses 
+headers.
+
+NUM-23024 (NUM_10.15_wM_Client_Fix25)
+
+Universal Messaging server logging has been improved to better identify client details.
+
+NUM-23707 (NUM_10.15_wM_Client_Fix24)
+
+The display names of the fix packages that deliver updates to the Java Service Wrapper for Linux, 
+AIX, and macOS operating systems have been changed to better indicate their purpose.
+
+NUM-23466 (NUM_10.15_wM_Client_Fix24)
+
+Universal Messaging uses the Protobuf library version 3.21.12, which has a security vulnerability.
+The issue is resolved. The Protobuf library has been updated to version 3.25.5.
+
+NUM-23600 (NUM_10.15_wM_Client_Fix24)
+
+In Universal Messaging, exceeding the warning threshold configured for direct and heap memory might 
+result in degraded JVM performance.
+The issue is resolved.
+
+NUM-23356 (NUM_10.15_wM_Client_Fix23)
+
+The description of the DisableExplicitGC realm configuration property in the Universal Messaging 
+Enterprise Manager and Administration API is incorrect.
+The issue is resolved.
+
+NUM-23355 (NUM_10.15_wM_Client_Fix23)
+
+When you set the DisableExplicitGC realm configuration property to ?false?, the Universal Messaging 
+server might override this value when it performs the next check for memory usage exceeding the 
+warning threshold.
+The issue is resolved.
+
+NUM-23083 (NUM_10.15_wM_Client_Fix23)
+
+Ensure that the last EID for a channel is at least set to the highest EID of the store in order to 
+prevent a possible cluster recovery loop.
+
+NUM-23275 (NUM_10.15_wM_Client_Fix22)
+
+After a Universal Messaging Realm restarts, the number of current connections might be incorrect 
+because of a memory leak. The issue occurs if a subscription was removed while the realm was down.
+The issue is now resolved.
+
+NUM-21404 (NUM_10.15_wM_Client_Fix21)
+
+When UM server or client is trying to do reverse lookup for the client ip, more logs are added at 
+the appropriate log levels, to indicate whether the DNS lookup consumes more time than expected. 
+This will provide more information in identifying issues with client-server connectivity.
+Also, the connection time threshold for logging the message as an error is reduced.
+
+NUM-22801 (NUM_10.15_wM_Client_Fix20)
+
+Reconnect logic uses uses JMS flag which results in dead session to be left in session pool. As part 
+of the fix, Flag for shouldTryToReconnect() logic is set separately for native session and JMS. 
+For native session, the flag can be set/unset from environment variable 
+"com.softwareag.um.client.retry_reconnect_on_security_exception" with default value being true. For 
+JMS, it can be set/unset using com.pcbsys.nirvana.nJMS.Constants#setReconnectAfterAccessChange() 
+API, by default value is set to false.
+
+NUM-22840 (NUM_10.15_wM_Client_Fix19)
+
+Universal Messaging now supports both Java 17 and Java 11 as a runtime for the server, client, and 
+sample applications components.
+
+NUM-22582 (NUM_10.15_wM_Client_Fix18)
+
+The Cluster Status panel of the Universal Messaging Enterprise Manager and the ClusterState 
+command-line tool display long values for ?Broadcast Time" and "Response Time" instead of dates.
+The issue is resolved. Besides showing a correct date value, the "Broadcast Time" and "Response 
+Time" properties have been renamed to "Last Broadcast Time" and "Last Response Time".
+
+NUM-21407 (NUM_10.15_wM_Client_Fix18)
+
+Improved logging when different threads try to close an http connection simultaneously in a 
+Universal Messaging client.
+
+NUM-21337 (NUM_10.15_wM_Client_Fix18)
+
+On the Windows platform JVM's do not support millisecond resolution when using the 
+java.util.concurrent.locks.LockSupport#parkNanos methods causing delays up to 15 milliseconds when 
+expecting only 1 millisecond. A solution has been implemented that overcomes this issue by enabling 
+1 millisecond clock resolution with the use of java.lang.Thread#sleep(long) on a thread for the 
+life of the JVM.
+
+NUM-21311 (NUM_10.15_wM_Client_Fix18)
+
+The CreateJMSQueue and CreateJMSTopic tools, and any other Universal Messaging command-line 
+administration tools associated with stores (channels and queues) now create stores of type Mixed 
+when you use the tool without specifying the store type.
+Previously, the tools created stores of type Reliable.
+In addition, in the Universal Messaging Java client API, the constructors 
+com.pcbsys.nirvana.client.nChannelAttributes.nChannelAttributes() and 
+com.pcbsys.nirvana.client.nChannelAttributes.nChannelAttributes(String name) now create mixed 
+stores by default instead of reliable ones.
+Also, the methods in nSession and nRealmNode that create channels or queues create mixed stores 
+instead of reliable ones if you do not set the type of the store (channel or queue) explicitly.
+You can use a new system property on the client side, com.softwareag.um.client.DefaultChannelType, 
+to specify the type of stores created when using the administration tools and the 
+nChannelAttributes constructors. Valid values are ?mixed?, ?reliable?, and ?persistent?. 
+
+NUM-20414 (NUM_10.15_wM_Client_Fix16)
+
+In Universal Messaging Enterprise Manager, the Connections tab > Connection Summary panel for a 
+channel displays an incorrect number of connections.
+The issue is resolved.
+
+NUM-21392 (NUM_10.15_wM_Client_Fix16)
+
+Improved logging during session life cycle in Universal Messaging clients.
+
+NUM-20881 (NUM_10.15_wM_Client_Fix15)
+
+In a slow environment, a Universal Messaging (UM) server might delay sending a keepalive response to 
+a UM client, which could disconnect the client.
+The issue is resolved. You can use a new UM client-side property, 
+"com.softwareag.um.client.server_keep_alive_leeway", to specify the additional time it can take a 
+UM server to reply to a keepalive sent by a UM client. The default value is 15 seconds. You can 
+increase the keepalive leeway if the UM server is under heavy load that might cause a delay in the 
+keepalive reply. Such a delay can sometimes disconnect UM clients, so you have the option to 
+increase the allowed delay before a client closes a connection due to a failed keepalive.
+For more information about working with client properties, see the Universal Messaging 
+documentation.
+
+NUM-20272 (NUM_10.15_wM_Client_Fix15)
+
+During network latency, the Universal Messaging NHP and NHPS communication drivers might not perform 
+optimally, which might result in many network events queueing on the client side.
+When the client encounters network latency and with enough concurrent requests in a request-reply 
+scenario, the server's NHP and NHPS drivers are overwhelmed when using the default configuration.
+The issue is resolved. Logging has been enhanced and the max buffer size of the drivers has been 
+increased from 10 KB to 100 MB when a request is sent. When you set the 
+'com.softwareag.um.client.write_handler' client property
+to 'queue' each request is filled before being sent.
+In addition, you can use the following new client properties to change the default behavior of the 
+communication drivers in case of network delays and to enhance logging:
+com.softwareag.um.client.MaximumContentLengthPerHTTPRequest=<bytes>
+Specifies the maximum number of bytes that a single HTTP request can send. Default is 103809024, or 
+99 MB in bytes.
+com.softwareag.um.client.EventSerializationTimeLoggingThreshold=<milliseconds>
+Specifies a threshold in milliseconds beyond which the client writes a log message to help find 
+network delays. The measurement is taken while serializing an event into bytes. Default is 1000 
+milliseconds.
+com.softwareag.um.client.NetworkFlushTimeLoggingThreshold=<milliseconds>
+Specifies a threshold in milliseconds beyond which the client writes a log message to help find 
+network delays during OutputStream flush calls. The measurement is taken while calling the 
+highest-level flush and an additional
+log message is produced in the lowest area where multiple flush calls could be executed. Default is 
+5000 milliseconds.
+com.softwareag.um.client.OutboundQueueSizeLoggingThreshold=<number_of_events>
+Specifies a threshold beyond which the client writes a
+log message to help find queued network events waiting to be sent by the client. This indicates an 
+upcoming timeout on requests and potentially timed-out requests due to the client not receiving a 
+reply from the server. Default is 50 events.
+com.softwareag.um.client.MarkTimedOutEventDeleted=true|false
+Changes the behavior when the client sends a synchronous request, if the request times out on the 
+client side before it is sent. In this case, the event is deleted, which can result in quicker 
+recovery of a bad state and in not sending superfluous data. Default is 'true'.
+For more information about setting client properties, see the Universal Messaging documentation.
+
+NUM-20251 (NUM_10.15_wM_Client_Fix14)
+
+In Universal Messaging, you can create duplicate stores (channels or queues) for a particular store 
+name, which might result in duplicate or lost events.
+The store names contain the same sequence of letters but have different cases for the characters, 
+for example, testQueue and TestQueue.
+The issue is resolved.
+Important: After you apply this fix, the Universal Messaging server will not start if there are 
+duplicate stores for a particular store name present on the server when you work with 
+case-insensitive data folders, for example, on a Windows operating system. Contact Software AG 
+Global Support on how to proceed.
+When you start the Universal Messaging server, it checks for duplicate stores and shuts down if it 
+finds any such stores. The server also writes the following warning message in the nirvana.log file 
+and in the console output: ?WARNING: Multiple stores found for store name: <Store name>. Listing 
+the stores for this store name: <Store 1><Store 2>??
+In addition, you can no longer create duplicate stores when you work with a case-insensitive data 
+folder.
+When starting, the server now detects what type of file system is used, case-sensitive or 
+case-insensitive, and sets the ?isCaseSensitive? flag. If the detection process fails, the server 
+uses the default value of the flag, which is ?true?. If you create a store for a store name that 
+conflicts with an existing name on the server, Universal Messaging displays the following message: 
+?There is a conflict in the given store name.?
+Previously, you could use the property ?caseSensitive? in a config.props file to set this flag and 
+specify whether the system was case-sensitive or not. This property has been removed. The default 
+value of the flag was ?true?. If the flag was set to ?false?, operations on a channel would use 
+lowercase for comparison of the store name.
+
+NUM-20696 (NUM_10.15_wM_Client_Fix13)
+
+When you try to modify the JNDI settings for a UM realm server, Enterprise Manager does not load the 
+settings on the JNDI tab correctly.
+During the hostname resolution if Enterprise Manager cannot reach the resolved host and port, the 
+JNDI settings on the JNDI tab are not loaded correctly. The issue occurs when you are using a 
+firewall, VPN, or you have an issue with the DNS.
+The issue is now resolved.
+
+NUM-20804 (NUM_10.15_wM_Client_Fix13)
+
+If you set setReconnectAfterAccessChange(..) to false, if the client receives nSecurityException for 
+cluster formation or for exceeding the connection limit, these exceptions are treated as 
+recoverable and the client will try to reconnect to the Universal Messaging server. For any other 
+security exceptions, the client will make no reconnection attempts."
+
+NUM-20711 (NUM_10.15_wM_Client_Fix13)
+
+A Java client session that uses the Universal Messaging HTTP protocol (NHP) might take longer to 
+close. The issue occurs when the client session is routed via an HTTP proxy with chunked transfer 
+encoding enabled.
+The issue is resolved.
+
+NUM-20613 (NUM_10.15_wM_Client_Fix12)
+
+Universal Messaging now uses the Java Service Wrapper version 3.5.53 on Linux, AIX, and macOS 
+operating systems.
+A script will modify and switch any existing Universal Messaging server instances running on Linux, 
+AIX, and macOS to the Java Service Wrapper version 3.5.53.
+
+NUM-18957 (NUM_10.15_wM_Client_Fix12)
+
+Updated the openssl library version to 3.0.9 which has fix to critical vulnerability
+
+NUM-20269 (NUM_10.15_wM_Client_Fix11)
+
+? new realm ACL permission, Override Connection Count, has been added to the Security > ACL tab for 
+a realm in the Enterprise Manager.
+The Override Connection Count permission allows a user with an admin connection to connect to a 
+realm even when the connection limit set in the MaxNoOfConnections and 
+MaxNoOfConnectionsPerUserName realm configuration properties is exceeded. 
+
+NUM-20268 (NUM_10.15_wM_Client_Fix11)
+
+Connection failure in the client buries the underlying exception which is resolved now.
+"If the initialization of a session fails, in some scenarios, Universal Messing clients now receive 
+an exception other than nRealmUnreachableException, which can help to better determine the cause of 
+the failure. The change is introduced to make exceptions more transparent to clients. Now clients 
+can also receive exceptions such as nSessionNotConnectedException, 
+nSessionAlreadyInitialisedException, and nSecurityException. When connections exceed the limit set 
+by the MaxNoOfConnections and MaxNoOfConnectionsPerUserName properties, clients receive 
+nSecurityException.
+
+NUM-20216 (NUM_10.15_wM_Client_Fix11)
+
+A vulnerability was discovered in the third-party Xerces library used in Universal Messaging.
+The issue is resolved. The Xerces jar used in Universal Messaging has been upgraded to version 
+2.12.1 from versions 2.11 and 2.3.
+
+NUM-19953 (NUM_10.15_wM_Client_Fix10)
+
+The following issues are observed in Universal Messaging: 
+- NullPointerException when auto-acknowledging events for queues.
+- Leaked asynchronous queue connection readers retaining pending events for a queue.
+- Continuous rollback of events for a queue.
+These issues are resolved.
+
+NUM-19887 (NUM_10.15_wM_Client_Fix10)
+
+Using JMX, you can monitor only one Universal Messaging HTTP-SocketAccept or
+HTTP-SSLSocketAccept thread pool at a time and you cannot identify which thread
+pool you are monitoring.
+Out of many existing HTTP-SocketAccept or HTTP-SSLSocketAccept thread pools,
+you can monitor only one at a time using JMX and it is not clear which one it is.
+The JMX monitoring tool just displays the generic name HTTP-SocketAccept.
+The issue happens because the socket accept thread pool name does not include
+the name of the corresponding Universal Messaging interface and the JMX server
+cannot identify the different thread pools.
+The issue is resolved. Now each HTTP-SocketAccept or HTTP-SSLSocketAccept thread
+pool name includes the name of the corresponding interface, for example,
+HTTP-SocketAccept-nhp1, and all thread pools are visible and identifiable in your
+JMX monitoring tool.
+
+NUM-19810 (NUM_10.15_wM_Client_Fix9)
+
+Before the fix, user is unable to create/Delete the site in Enterprise Manager -> Cluster -> Sites 
+tab. Site tab did not display the Site details if the sites are already present.
+After this fix, User will be able to create/delete the Site from Enterprise Manager. The Site 
+details will also be displayed in Enterprise Manager Site panel if the site details are present
+
+NUM-19413 (NUM_10.15_wM_Client_Fix9)
+
+Adding or modifying supported ciphers for a Universal Messaging server SSL interface using 
+command-line tools might fail.
+When you run the AddHTTPSInterface, AddSSLInterface, or ModifyInterface command-line tools and 
+specify the 'ciphers' optional parameter, the tools might fail to execute, although the specified 
+ciphers are part of the list of supported SSL ciphers. Adding a cipher might fail with the 
+following error: "Illegal argument passed: Cipher not found in supported cipher list".
+The issue is resolved.
+
+NUM-19293 (NUM_10.15_wM_Client_Fix6)
+
+Creation of an interface when there is an existing interface with the same port was allowed.
+This issue is resolved.
+
+NUM-19302 (NUM_10.15_wM_Client_Fix6)
+
+When Integration Server uses Universal Messaging as a JMS provider, it might stop responding when 
+you try to enable or disable JMS triggers.
+The issue is resolved.
+
+NUM-19410 (NUM_10.15_wM_Client_Fix5)
+
+Universal Messaging now supports defining the number of concurrent connections per user.
+You can use a new realm configuration property, "MaxNoOfConnectionsPerUserName", part of the 
+"Connection Config" group in the Enterprise Manager, to specify the number of concurrent 
+connections per user. The default is -1, which means no limit is set on the number of connections. 
+Valid values range between -1 and 2147483647. When you set a limit, if connections exceed the 
+specified number, the client will get an nSecurityException. However, admin connections with the 
+"Realm Override Connection Count" permission are still allowed to connect to the realm server.
+In addition, the existing "MaxNoOfConnections" property, controls the total number of concurrent 
+connections to the server. When you set a limit on the total number, connections that exceed the 
+limit are rejected if they are non-admin connections or if they do not have the "Realm Override 
+Connection Count" permission. The default is -1, which means no limit is set on the number of 
+connections. Valid values range between -1 and 2147483647.
+
+NUM-18564 (NUM_10.15_wM_Client_Fix4)
+
+A Universal Messaging client might take a long time to detect a connection failure.
+The issue is resolved. Universal Messaging keep-alive performance has been optimized for improved 
+detection of broken socket connections.
+For all nSession clients, each client will now check for the reception of a server-side keep alive. 
+Note that you configure server-side keep-alive intervals by setting the "KeepAlive" realm 
+configuration property under "Connection Config" in Enterprise Manager. If this keep alive is not 
+received on time, the session is closed, and a reconnection attempt is made. Also note that 
+reconnections can be disabled at an API level.
+In addition, you can use a new Java system property, com.softwareag.um.client.missed_keep_alives=<n> 
+to set the number of missed server-side keep alives before a connection is closed.
+Java system property reference
+com.softwareag.um.client.missed_keep_alives=<n>
+Specifies the number of missed server-side keep alives before a connection is closed. The default 
+value is 1. A value of 1 means that if a single keep alive is missed by the client, the session is 
+closed. To disable server-side keep alive checking, set the Java property to 0 (zero).
+Note that the Java property is consulted only once upon JVM startup.
+Important: If you experience issues with lost connections or duplicate messages after applying this 
+fix, particularly with multiplexed sessions, you should adjust the value of 
+"com.softwareag.um.client.missed_keep_alives". To resolve such issues, Software AG recommends that 
+you first set the property to a value greater than or equal to two. However, if the issues persist 
+after some time, disable the fix altogether by setting the property value to zero.
+For more information, see the Universal Messaging Java API documentation on:
+com.pcbsys.nirvana.client.nConstants#setPermittedKeepAlivesMissed
+com.pcbsys.nirvana.client.nConstants.MISSED_KEEP_ALIVES
+For more information about the "KeepAlive" realm configuration property, see the Universal Messaging 
+Administration Guide.
+
+NUM-19125 (NUM_10.15_wM_Client_Fix3)
+
+The Universal Messaging TraceStores realm configuration property in Enterprise Manager is not 
+updated correctly.
+You cannot remove the names of all the stores specified in the TraceStores configuration property. 
+At least one store that you cannot delete remains specified.
+The issue is resolved.
+
+NUM-19116 (NUM_10.15_wM_Client_Fix3)
+
+When we are deleting the durable, we are deregistering and removing all the viewers and panels 
+attached to a nDurable object, before deleting the actual object.
+
+NUM-18339 (NUM_10.15_wM_Client_Fix3)
+
+A Universal Messaging Java client fails to connect to the server when the hostname of the server or 
+of the machine that hosts the server contains special characters, such as an underscore.
+The issue occurs because the Java URI API does not support special characters in hostnames.
+The issue is resolved.
+
+NUM-18812 (NUM_10.15_wM_Client_Fix2)
+
+An additional console opens when you start Universal Messaging Enterprise Manager.
+The issue is resolved.
+
+NUM-18412 (NUM_10.15_wM_Client_Fix2)
+
+The close button of the "Retry Connection" in Enterprise Manager does not prevent the message from 
+showing up.
+The close button of the "Retry Connection" in Enterprise Manager does not act the same as if the 
+"No" button is clicked. The "Retry Connection" message window keeps showing up although the close 
+button has been clicked. 
+The issue is resolved.
+
+NUM-18668 (NUM_10.15_wM_Client_Fix2)
+
+When you enable the ThreadDumpOnSlowTask thread-pool monitoring property, Universal Messaging might 
+generate many thread dumps over a short time, which could slow performance.
+The issue is resolved.
+
+NUM-18469 (NUM_10.15_wM_Client_Fix2)
+
+Connecting to Universal Messaging from an OSGi application might fail because the Universal 
+Messaging OSGi nClient.jar library forces you to install log4j-related jars even though they are 
+not used.
+The issue occurs because the log4j jars in the nClient.jar library have been added as mandatory 
+import packages.
+The issue is resolved. The log4j-related jars in nClient.jar have been changed to optional import 
+packages.
+
+NUM-18421 (NUM_10.15_wM_Client_Fix2)
+
+Universal Messaging might log thread dumps twice in nirvana.log.
+When a stalled or slow moving task is detected, or a thread dump is requested, it might be logged 
+twice in nirvana.log which is unnecessary.
+The issue is resolved.
+
+NUM-18317 (NUM_10.15_wM_Client_Fix2)
+
+Configuring Universal Messaging thread pool monitoring is not available on the client side.
+Universal Messaging does not provide a mechanism for the client API to control the thread pool 
+monitoring
+configuration, such as stalled task timeout, slow task timeout, or idle thread timeout. This 
+prevents the client
+from easily adjusting these monitoring settings for specific needs.
+The issue is resolved. You can use the following new system properties on the client side to 
+configure thread pool monitoring:
+-com.softwareag.um.client.IdleThreadTimeout (default 60000ms)
+-com.softwareag.um.client.StalledTaskWarningTime (default 60000ms)
+-com.softwareag.um.client.PendingTaskErrorThreshold (default 1000)
+-com.softwareag.um.client.PendingTaskWarningThreshold (default 100)
+-com.softwareag.um.client.SlowMovingTasksTimeout (default 5000ms)
+For more information about these client properties, see the Universal Messaging documentation.
+
+NUM-18456 (NUM_10.15_wM_Client_Fix1)
+
+When you export a realm configuration in an xml file using Enterprise Manager, Universal Messaging 
+wrongly appends "@" at the end of a join destination.
+The issue occurs when the source channel in a join has a namespace.
+This issue is now resolved.
+
+8.0 Installation
+
+If you are installing a Universal Messaging server fix, please shut down any running Universal
+Messaging server instances before installing.
+In case the Universal Messaging server instance is a member of a cluster, please apply the
+procedure for installing rolling cluster updates described below(*).
+
+If you are installing a Universal Messaging client fix, please shut down any applications such as
+Integration server or Enterprise Manager which are using client libraries.
+
+If you are installing a Universal Messaging Enterprise Manager fix, you do not need to shut down the
+Universal Messaging server.
+
+Install using the Software AG Update Manager or Command Central (9.5 or later). For instructions,
+see the corresponding documentation at http://documentation.softwareag.com.
+
+(*) Universal Messaging cluster is supporting rolling updates for its nodes.
+There is a strong recommendation to start applying the new fixes on the Slave nodes and leave the
+Master node to be the last one.
+
+For each single node that is part of the cluster the customer needs to follow the steps:
+1) Shutdown the node. The node will be disconnected from the cluster.
+2) Apply the specific fix
+3) Start the node. It will be connected back again to the cluster and will be operational
+4) Apply the same procedure from 1-3 steps on the next node
+
+In order to have truly no downtime, the client that talks to the Universal Messaging cluster should
+also be implemented in a way that it tolerates brief connection loss. A rolling update in a cluster
+still means that:
+a) When the node that a client is connected to is brought down for maintenance, the connection to
+this server, and respectively the cluster, will be lost and has to be re-established. The client
+should be able to handle this seamlessly.
+b) When the master node of the cluster is brought down for maintenance, the cluster will briefly
+go offline until a new master is elected. This is usually a very short time window, but still,
+similarly to point a). The client applications should be able to handle it in order to have truly
+no downtime from the point of view of the end user.
+
+
+
+9.0 Uninstallation
+
+If you are uninstalling a Universal Messaging server fix,
+please note that any running Universal Messaging server
+instances will be automatically shutdown before installing.
+
+If you are uninstalling a Universal Messaging client fix, 
+please shut down any applications such as Integration Server 
+or Enterprise Manager which are using client libraries.
+
+If you are uninstalling a Universal Messaging Enterprise Manager 
+fix, you do not need to shut down the Universal Messaging server.
+
+Uninstall using the Software AG Update Manager or 
+Command Central (9.5 or later). For instructions, see the 
+corresponding documentation 
+at http://documentation.softwareag.com.
+
+Note: These instructions can only be used to uninstall the 
+most recently installed fix. This action will revert your 
+installation to the previously installed fix. You cannot 
+apply these instructions to the previously installed fix.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix has
+no globalization impact and can be applied to systems running in any supported 
+locale or configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might contain new 
+messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Super iPaas Integration LLC, an IBM Company 2024.

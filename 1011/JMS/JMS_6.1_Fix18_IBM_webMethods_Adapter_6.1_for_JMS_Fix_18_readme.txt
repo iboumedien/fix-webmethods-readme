@@ -1,0 +1,439 @@
+                   IBM webMethods Adapter 6.1 for JMS Fix 18 readme
+
+                                        August 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods Adapter 6.1 for JMS Fix 18
+
+
+
+2.0 Fix ID
+
+JMS_6.1_Fix18
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects IBM webMethods Adapter for JMS.
+
+
+
+4.0 Requirements and Dependencies
+
+This fix requires any of the following fixes based on
+the Integration Server version: 
+
+1. IS_8.2_SP1_Core_Fix3 or later if you are using Integration Server 
+   8.2.1. This dependent fix will be installed automatically by 
+   IBM webMethods Update Manager.
+
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by IBM webMethods
+Adapter 6.1 for JMS.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+SUM-7210
+The dependency on older versions of the IS fix is removed. 
+However, you can still refer to the Fix Requirements section for 
+the information on the older IS fixes.
+
+JMS-206(JMS_6.1_Fix17)
+Updated copyright notes, vendor and product names for IBM rebranding.
+
+
+JMS-185(JMS_6.1_Fix16)
+After a network reset or Integration Server restart, 
+JMS Adapter services fail with numerous connection-related 
+messages in the server log.
+
+When a JMS session becomes invalid or is closed, the stale
+connections are kept in the JMS pool for a longer time. As a
+result, JMS Adapter services invoked after the session is
+restored fail, with numerous error messages in the server log.
+Even after the network is restored, JMS Adapter services cannot
+produce or consume messages successfully.
+
+This issue is resolved. After the network is restored, the
+JMS connection pool is reset, and subsequent service
+invocations are successful. 
+
+JMS-176 (JMS_6.1_Fix15)
+webMethods JMS Adapter connection pool does not get refreshed 
+when JNDI context becomes invalid.
+
+When the JNDI context becomes invalid, the JMS Adapter 
+connection pool does not get refreshed. The behavior occurs 
+because JMS Adapter does not treat the invalid JNDI context as
+a fatal error and does not close and re-create all existing JMS
+sessions, connections, context, and consumers.
+
+The issue has been resolved. Now when the JNDI context becomes 
+invalid, the JMS connection pool is refreshed.
+
+JMS-174 (JMS_6.1_Fix14)
+Disabling a webMethods JMS Adapter notification does not shut 
+down the notification.
+
+When you disable a JMS Adapter notification that is configured 
+as a true listener, the adapter notification may not shut down.
+The issue occurs because when the adapter notification is a true
+listener, WmART calls a runNotification() callback even after 
+the notification is disabled and starts one listener thread. 
+As a result, the JMS client connections remain in an active 
+state even after disabling the adapter notification. In addition,
+during Integration Server shutdown, WmART does not call the 
+shutdown callback for JMS Adapter notifications.
+
+This issue is resolved. Now after disabling an JMS Adapter 
+notification, the notification always shuts down and the 
+corresponding JMS client connections also close down.
+
+JMS-160 (JMS_6.1_Fix13)
+JMS Adapter creates hundreds of topic connections with JMS
+provider.
+
+When the Use Durable Subscriber parameter is enabled and a
+connection client ID is set in JMS Adapter notifications for JMS
+topics, JMS Adapter creates hundreds of connections with the JMS
+provider. This behavior occurs because the adapter creates a new
+connection instance at every polling event of the notification
+but does not properly close a connection if an exception occurs
+when setting the client ID.
+
+This issue is resolved. JMS Adapter closes connections properly
+when exceptions occur while setting the connection client ID. 
+
+1-1RA96N (JMS_6-1_Fix12)
+In webMethods JMS Adapter, the number of JMS connections keep
+increasing on IBM MQSeries 6.0, leading to a fatal
+AdapterConnectionException.
+
+When the JMS Adapter tries to create a new connection, if the
+JMS queue is full, JMS Adapter throws a fatal
+AdapterConnectionException, removes all the non-transactional
+connections from the cache maintained by the ConnectionState, and
+the connection pool is reset. When the non-transactional
+connection is removed from the cache, it is not closed.
+
+This issue is now resolved. IS_6-5_SP2_ART_Fix8 ensures that the
+non-transactional connections are closed after the connection
+pool is reset. Therefore, the number of connections on MQ Server
+will not increase.
+
+1-1PZN4S (JMS_6-1_Fix11)
+Cannot send a BytesMessage to a native JMS Broker client when 
+using the JMS Adapter DocumentToBytesMessage and MessageProducer 
+services.
+
+The value passed in the BytesMessage parameter is null when 
+received by the native JMS client. The JMS Header and the JMS 
+Properties values are received correctly, but not the 
+BytesMessage itself. The JMS Adapter throws an exception:
+ADA.680.1014 recordtojmsbytesmessage: broker: [BRM.10.1053] JMS
+Bytes writeObject objects of java.lang.object.Bytes not valid.
+This behavior occurs due to the input and output field type of 
+BytesMessageBody.
+
+This issue is resolved. After applying the fix, you must also 
+make the following changes in your adapter services:
+
+For MessageProducer adapter services:
+
+1. Delete and add the entry on the "Bytes Message" tab of the 
+DocumentToBytesMessage adapter service. (This changes the input 
+field type from java.lang.Byte[] to java.lang.Object.)
+
+2. In the message producing flow, remap the assignment to the 
+"BytesMessageBody" INPUT parameter of the DocumentToBytesMessage 
+adapter service and then save.
+
+For MessageConsumer adapter services:
+
+1. Delete and add the entry on the "Bytes Message" tab of the 
+BytesMessageToDocument adapter service. (This changes the input 
+field type from java.lang.Byte[] to java.lang.Object.)
+
+2. In the message consuming flow, remap the assignment to the 
+"BytesMessageBody" OUTPUT parameter of the 
+bytesMessageToDocument service and then save.
+
+1-1KGED0 (JMS_6-1_Fix11)
+The JNDI Security Credentials field is displayed in clear text 
+format while creating/editing/viewing a JMS connection.
+
+In webMethods JMS Adapter 6.1, the JNDI Security Credentials 
+field is erroneously displayed as clear text while 
+creating/editing/viewing a JMS connection. Ideally, this field 
+should be treated with confidentiality just like a Password 
+field. The field value should not be readable and must be 
+displayed in "********" format.
+
+Now the JNDI Security Credentials field is displayed just like a 
+Password field.
+
+1-1B26RT (JMS_6-1_Fix10)
+JMS notification is unable to reconnect when the JMS provider 
+reboots.
+
+When the JMS provider is down, the connection errors prevent the
+JNDI context from getting nullified. Later, when the JMS provider
+comes up again, the JNDI context is not initilaized as it was not
+nullified earlier, and the notification services try to connect
+to the old queues referred by the old JNDI context.
+
+This issue is resolved now.
+
+1-19OSW8 (JMS_6-1_Fix9)
+The webMethods JMS Adapter is unable to connect to JBoss 4.0.3
+SP1 and 4.0.4.GA.
+
+The webMethods JMS Adapter is unable to connect to JBoss 4.0.3
+SP1 and 4.0.4.GA because the principal/credentials are not used
+properly during the creation of initial context.
+
+This issue is resolved now. Necessary code changes are done
+to include all the JNDI properties while creating the initial
+context.
+
+1-15EUQZ (JMS_6-1_Fix8)
+JMS Adapter throws ClassNotFoundException on the webMethods 
+console.
+
+When JMS connections are restored from a temporary termination, 
+the webMethods JMS Adapter 6.1 throws a ClassNotFoundException in
+JMS notification services for WebLogic classes. This error occurs 
+because of a classloader problem in the Integration Server 
+notification thread.
+
+This issue has been resolved by using the correct classloader 
+when the connections are restored.
+
+1-14FWYP (JMS_6-1_Fix7)
+webMethods JMS Adapter 6.1 throws a SecurityException when 
+connected to more than one WebLogic server.
+
+When the JMS Adapter 6.1 is connected to more than one WebLogic 
+server that use different security principles and credentials, 
+an exception is thrown.
+
+This issue is now resolved. The following configuration changes 
+are required:
+
+1. A new watt property is introduced, watt.jmsadapter.weblogic, 
+   to ensure proper authentication when multiple WebLogic servers 
+   are involved. To set the value of this property:
+
+   a. From the Integration Server Administrator, 
+      click Settings > Extended.  
+ 
+   b. Click Edit Extended Settings. 
+      In the Extended Settings editor, type the following:
+
+      watt.jmsadapter.weblogic = true
+
+      If you set the value to true, the JMS Adapter 6.1 ensures 
+      proper authentication when multiple WebLogic servers are 
+      involved. By default, the value is false.
+   
+   c. Click Save Changes. A key for the new property appears 
+      in the Extended Settings list.
+
+   d. Click Show and Hide Keys. You will see 
+      "watt.jmsadapter.weblogic" listed as a Key and is visible.
+
+   e. Restart the webMethods Integration Server for the changes 
+      to take effect.
+
+   For more information about working with extended configuration
+   settings, see the webMethods Integration Server
+   Administrator's Guide.
+
+2. a. Create a text file WmJMSAdapter_jaas.config and copy the 
+      following to the file :
+
+      /** Login Configuration for the JAAS Sample Application **/
+      WmJMSAdapter
+      {   
+        weblogic.security.auth.login.UsernamePasswordLoginModule 
+        required debug=true;
+      };
+
+   b. Save the file in ${JAVA_DIR}/jre/lib/security,
+
+      where:
+      
+      ${JAVA_DIR} is set in the server.bat file
+      (server.sh in Unix) in the 
+      <webMethods_Integration_server_install_dir>
+      /IntegrationServer/bin directory.
+
+   c. Append the following line, verbatim, to 
+      ${JAVA_DIR}/jre/lib/security/java.security:
+
+      login.config.url.1=
+      file:${java.home}/lib/security/WmJMSAdapter_jaas.config
+      
+
+1-12KYFF (JMS_6-1_Fix6)
+JMS Adapter logs debug messages while running JMS adapter
+notifications.
+
+After applying JMS Adapter 6.1 Fix 4, the adapter logs debug
+messages to the server log file, producing one message with
+each polling notification interval. These messages are leftover
+debugging messages, and refer to the WebLogic application server
+even though the adapter is not running in a WebLogic environment.
+
+The issue is now resolved. The debug messages have been removed.
+
+1-11NCLV (JMS_6-1_Fix5)
+The JMS Adapter throws a TopicConnection error when enabling the
+connection.
+
+When using the JMS Adapter to create and enable a TopicConnection
+with certain JMS providers, the following error is reported:
+
+[ADA.680.1014] JMS Exception in
+WmJMSUtils.createTopicConnection): TopicConnection[]:
+setClientID() must be the first method invoked on a JMS
+connection, and must not be invoked more than once.
+
+This message occurs because of incorrect usage of the
+setClientId() API.
+
+This issue is resolved. The JMS Adapter now ensures that
+setClient()Id is invoked as specified by the JMS specification.
+
+1-10YTWQ (JMS_6-1_Fix5)
+Runtime exceptions are thrown when a JMS Adapter notification
+retrieves a JMS message from the WebLogic JMS provider.
+
+When the adapter attempts to retrieve a JMS message, the
+following error appears in the Integration Server log file:
+
+"ExceptionWmJMSQueueConnection.destroyConnection() -
+weblogic.jms.common.JMSException"
+
+This issue is resolved, and the JMS Adapter now handles JMS
+client side exceptions raised with the WebLogic JMS provider.
+
+1-10KVQ6 (JMS_6-1_Fix4)
+"Invalid Subject" errors are logged in the Integration Server log
+file when the JMS Adapter attempts to connect to a WebLogic JMS
+provider.
+
+If the user creates two connections to two WebLogic servers using
+two different username/password pairs, and creates notifications
+using those two connections, the following errors appear in the
+Integration Server log file:
+[ADA.0680.0004C] !Exception! Closing QueueSession:
+java.lang.SecurityException: [Security:090398]Invalid Subject:
+principals=[values]
+[ADA.0680.0004C] !Exception! Closing JMS QueueConnection:
+java.lang.SecurityException: [Security:090398]Invalid Subject:
+principals=[values]
+The "Invalid Subject" error indicates an authentication failure
+with one of the WebLogic servers.
+
+To overcome this issue, a new configuration parameter,
+'watt.jmsadapter.weblogic' has been added. You add the
+'watt.jmsadapter.weblogic' parameter to your webMethods
+Integration Server installation and set the parameter value to
+"true". Setting this property to "true" ensures proper
+authentication when multiple WebLogic servers are involved. By
+default, the value of this parameter is false. Do not set this
+property if the above errors do not occur in your setup.
+
+You can add the 'watt.jmsadapter.weblogic' server configuration
+parameter by using the Settings > Extended screen of the
+Integration Server Administrator. For instructions on using this
+screen and working with extended configuration settings, see the
+webMethods Integration Server Administrator's Guide.
+
+1-XE4RZ (JMS_6-1_Fix3)
+After shutting down the WebLogic JMS provider and then
+restarting it, the JMS Adapter cannot reconnect to it.
+
+This fix resolves this issue by removing a potential deadlock
+situation.
+
+1-W5UPA (JMS_6-1_Fix2)
+The webMethods JMS Adapter 6.1 is inappropriately calling private
+WmART APIs. This fix prevents the adapter from calling the
+private APIs.
+
+Note: This fix is required to use the webMethods JMS Adapter 6.1
+with Integration Server 6.5. This fix is backwards compatible,
+but not required, when using the JMS Adapter 6.1 on earlier
+versions of IS 6.x. There is no functional change in the adapter.
+
+1-QMEX8 (JMS_6-1_Fix1)
+When trying to enable a JMS Adapter connection (after it was
+disabled), the adapter throws an error "Client id in use".
+The connection cannot be enabled and the Customer must restart
+the Integration Server. 
+
+This fix addresses this issue by properly
+disposing the native JMS connection.
+
+1-QLFFD (JMS_6-1_Fix1)
+When requesting an adapter connection, the webMethods JMS Adapter
+cannot get the JMS Session Handle, and closes the connection.
+
+This fix addresses this issue by properly disposing the
+native JMS connection.
+
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the 
+documentation at https://www.ibm.com/docs/en/products.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the 
+documentation at https://www.ibm.com/docs/en/products.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corporation 2025

@@ -1,0 +1,112 @@
+													IBM webMethods End to End Monitoring Core 11.1 Fix 3 readme
+
+																			Aug 2025                     
+
+_________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Fix Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+_________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods End to End Monitoring Core 11.1 Fix 3
+
+
+
+2.0 Fix ID
+
+UHA_11.1_Core_Fix3
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects 
+
+IBM webMethods webMethods Integration Server 11.1
+IBM webMethods End to End Monitoring Integration Server or Microservices Runtime Plug-in 11.1
+IBM webMethods End to End Monitoring APIGateway Plug-in 11.1
+
+
+
+4.0 Fix Requirements
+
+IS_11.1_WmCloud_Fix2
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+Applying a fix reverts the changes in these files to their default values. "E2EMonitoring\agent\config\agent.config",
+"E2EMonitoring\agent\config\apm-trace-include-plugin.config" and "E2EMonitoring\agent\e2ecustomlog4j2.properties".
+Create a backup of these files before applying the fix, if you have made changes to these files. After the fix is 
+applied, reapply the changes.
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+
+
+UHA-241 (UHA_11.1_Core_Fix3)
+
+E2EM Support for webMethods Hybrid Integration Use-cases in MCSP-based environment was not there.
+
+This is resolved now.
+
+
+
+UHM-7751 (UHA_11.1_Core_Fix2)
+
+End to End Monitoring hybrid connection issue was causing hybrid monitoring to fail.
+
+This is resolved now
+
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+If this is the first time you are installing a fix using the IBM webMethods Update Manager, 
+back up the IBM webMethods End-to-End Monitoring file system before applying the fix.   
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action will 
+revert your installation to the previously installed fix. You cannot apply these instructions to the 
+previously installed fix.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Super iPaas Integration LLC, an IBM Company 2024.

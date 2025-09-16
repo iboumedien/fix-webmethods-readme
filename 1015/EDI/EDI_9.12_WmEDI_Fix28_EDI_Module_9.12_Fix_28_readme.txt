@@ -1,0 +1,684 @@
+				IBM webMethods EDI Module 9.12 Fix 28 readme
+
+							August 2025    
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods EDI Module 9.12 Fix 28
+
+
+
+2.0 Fix ID
+
+EDI_9.12_WmEDI_Fix28
+
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+IBM webMethods EDI Module 9.12
+
+
+
+4.0 Requirements and Dependencies
+
+WFF_10.1_Fix6 or the latest equivalent Flat File fix.
+TNS_10.5_Fix10 or the latest equivalent TN fix. 
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+EEO-5253
+
+IBM webMethods Module for EDI 9.12 does not support X12 version 6030.
+
+This issue is resolved. To use the 6030 version, set the EDI
+configuration property EDISchemaSource to SEF.
+Install the fix, and restart MWS for the new document types to appear in the 
+list.
+
+EEO-5237
+ 
+In IBM webMethods module for EDI, Trading Networks performs data metering for
+the EDI content.
+The issue is resolved. Now, the module performs EDI data metering internally.
+
+EEO-5222(EDI_9.12_WmEDI_Fix27)
+
+In the IBM webMethods Module for EDI, the service "wm.b2b.editn:installEDITypes" 
+fails to install the EDI schema when only an XML Doctype is installed without 
+the corresponding SEF Doctype present in the EDI Module.
+ 
+This issue is resolved.
+
+EEO-5210(EDI_9.12_WmEDI_Fix27)
+
+In IBM webMethods Module for EDI, the default EDITPA resets the field values for
+ICheaderInfo/ISA/ISA01, ICheaderInfo/ISA/ISA03, ICheaderInfo/ISA/ISA11,
+ICHeaderInfo/GS/GS07, ICHeaderInfo/UNB/UNB01, and ICHeaderInfo/UNB/UNB08 to
+their default values if those fields are empty when the integration server
+restarts.
+
+This issue is resolved.
+
+WF-34119(EDI_9.12_WmEDI_Fix26)
+
+Fix includes security updates with no new features to existing user-facing
+functionalities.
+
+EEO-5170(EDI_9.12_WmEDI_Fix25)
+
+IBM webMethods Module for EDI 9.12 does not support X12 versions 8040 and 8050.
+
+This issue is resolved. To use the 8040 and 8050 versions, set the EDI 
+Configuration property EDISchemaSource to SEF.
+After installing the fix, restart MWS for the new doctypes to be listed.
+
+EEO-5159(EDI_9.12_WmEDI_Fix24)
+
+In IBM webMethods Module for EDI 9.12, the copyright information is updated.
+
+This issue is now resolved.
+
+EEO-5120 (EDI_9.12_WmEDI_Fix23)
+
+When you configure the value for the input parameter UNARequired as false for 
+service wm.b2b.edi.util:addICEnvelopeEDIFACT, IBM webMethods Module for EDI 9.12 
+adds the UNA segment in the UN/EDIFACT document based on the default behavior 
+of the service wm.b2b.edi.util:addICEnvelopeEDIFACT.
+ 
+This issue is resolved. Now, a new input parameter removeUNA is added.  
+When you set the value for removeUNA to true, it does not add the UNA segment,  
+irrespective of the value configured for the input parameter UNARequired. 
+
+EEO-5113 (EDI_9.12_WmEDI_Fix22)
+
+IBM webMethods Module for EDI 9.12 does not support X12 version 7020.
+
+This issue is resolved. To use the 7020 version, set the EDI Configuration 
+property EDISchemaSource to SEF.
+
+EEO-5110 (EDI_9.12_WmEDI_Fix22)
+
+In IBM webMethods Module for EDI 9.12, setting 
+watt.server.http.X-Content-Type-Options to 'nosniff' in IS Extended Settings 
+restricts the capability to search or add new settings in Solution > EDI > 
+Partner setup > Manage Interchange Info.
+
+This issue is resolved.
+
+EEO-5024 (EDI_9.12_WmEDI_Fix22)
+
+In IBM webMethods Module for EDI 9.12, when you enable CSRF guard in Integration
+server, the CSRF token is visible in the http request URL and in the Referer
+field of the Request Header tab.
+
+This issue is resolved.
+
+EEO-5054 (EDI_9.12_WmEDI_Fix21)
+
+In IBM webMethods Module for EDI 9.12, the reconciliation of FA status does not 
+happen for EDI batch documents.
+
+This issue is resolved.
+
+EEO-5064 (EDI_9.12_WmEDI_Fix21)
+
+In IBM webMethods Module for EDI, the service wm.b2b.edi.util:controlNumber does 
+not support PostgreSQL and Sybase database and creates a duplicate message ID 
+for an EDI message.
+
+This issue is resolved.
+
+
+EEO-5080 (EDI_9.12_WmEDI_Fix21)
+
+In IBM webMethods Module for EDI 9.12, IBM webMethods Integration Server becomes
+unresponsive when processing EDI documents, and the following error appears:
+"ORA-01000: maximum open cursors exceeded in the server log."
+
+This issue is resolved.
+
+
+EEO-5041 (EDI_9.12_WmEDI_Fix20)
+
+IBM webMethods Module for EDI 9.12 did not support UNEDIFACT versions 17B, 18B, 
+19A, 19B, 20A, 20B, 21A, 21B, 22A, 22B earlier. These versions are now supported 
+and the issue is resolved.
+Note: To use 17B, 18B, 19A, 19B,20A, 20B, 21A, 21B, 22A, 22B versions, set the 
+EDI Configuration property EDISchemaSource to SEF. 
+
+
+EEO-5005 (EDI_9.12_WmEDI_Fix19)
+
+In IBM webMethods Module for EDI 9.12, the wm.b2b.edi.util:addICEnvelopeEDIFACT
+service adds a space as delimiter to denote repetition by default.
+
+The issue is resolved by adding an input parameter named
+repeatingField_separator in the wm.b2b.edi.util:addICEnvelopeEDIFACT service.
+The default value is space character.
+
+
+EEO-4996 (EDI_9.12_WmEDI_Fix18)
+
+SUM is unable to locate EDI_9. 12_WmEDI_Fix17 in the Integration Server 10.15 
+version of IBM webMethods Module for EDI 9.12.
+The issue occured when the manifest attribute property EM-Phase is set to true. 
+
+The issue is resolved.
+
+
+EEO-4294 (EDI_9.12_WmEDI_Fix17)
+
+In IBM webMethods Module for EDI 9.12, the original Sender ID and original 
+Receiver ID for UNEDIFACT and ANSI X12 documents were not getting auto-populated 
+on the Transactions page.
+As a result, two new attributes namely original Sender ID Type and original
+Receiver ID Type appear on the Attributes tab on the Transaction Details page.
+
+This issue is resolved.
+To use the newly added attributes, set the EDI configuration
+EDIPartnerOriginalIDAttributesEnabled property to True in the properties.cnf 
+file.
+
+
+EEO-4972 (EDI_9.12_WmEDI_Fix17)
+
+In IBM webMethods Module for EDI 9.12, An error "Cannot insert the value NULL 
+into column 'DocID', table 'BizDocRelationship'; column does not allow nulls. 
+INSERT fails" occurs when relating the input document to final batch document
+in the process of EDI batching of type multiple output.
+
+This issue is resolved.
+
+
+EEO-4981 (EDI_9.12_WmEDI_Fix17)
+
+UNA segment goes missing in CONTROL documents of UNEDIFACT message when UNB01
+field contains UNOB to UNOF character set or UNEDIFACT message has delimiter
+other than default delimiter.
+ 
+This issue is resolved.
+
+
+EEO-4896 (EDI_9.12_WmEDI_Fix16)
+
+IBM webMethods Module for EDI 9.12 was not supporting X12 version 8020 and 
+8030.
+This issue is now resolved and supports the versions.
+Note: To use 8020 and 8030 version, set the EDI Configuration property
+EDISchemaSource to SEF.
+
+
+EEO-4906 (EDI_9.12_WmEDI_Fix16)
+
+IBM webMethods Module for EDI 9.12 was not supporting VDA 4986_12 DELJIT schema.
+This issue is now resolved and supports the versions.
+A new property flag 'VDACode' has to be added in the 'EDI Module
+Configuration Properties'. The flag value should be set to GAV (VDACode=GAV)
+to support the above mentioned schemas.
+Note: This requires VDA fix EDI_9.12_VDA_Fix3.
+
+
+EEO-4883 (EDI_9.12_WmEDI_Fix15)
+
+When accessing Solution > EDI from the Integration Server admin page, an error
+"Object Not Found" occurs.
+
+This issue is now resolved.
+
+
+EEO-4794 (EDI_9.12_WmEDI_Fix14)
+
+SplitOption from default EDITPA does not recognize when the partner configures a
+specific interchange.
+This issue is now resolved. By default, SplitOption recognizes the transaction
+when the partner configures a specific interchange. This can be disabled by
+setting the UseSplitInDefaulttpaWhenInterchangeConfigured to true.
+
+
+EEO-4839 (EDI_9.12_WmEDI_Fix14)
+
+When EDI property EDIResolveDuplicates sets to true, the functionality was not
+working as expected.
+
+The issue is resolved now.
+
+
+EEO-4755 (EDI_9.12_WmEDI_Fix13)
+
+when EDIencoding EDI property set to windows-1252, some of the character such as
+"ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬ ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬ ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬ ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡
+Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢?ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬ ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬ ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ 
+ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬ ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡
+ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬ ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬ 
+ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬ ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬
+Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡" was not showing properly on MWS transaction Page.
+This issue is now resolved.
+
+
+EEO-4784 (EDI_9.12_WmEDI_Fix12)
+
+FA generation failed for X12 7050, 7060, 8010 version because the EDIheaders of 
+GS08 did not have values for 7050, 7060, 8010.
+
+The issue is now resolved.
+
+
+EEO-4674 (EDI_9.12_WmEDI_Fix11)
+
+In IBM webMethods Module for EDI 9.12 Flow services 
+'wm.b2b.edi.util:addICEnvelope' and 'wm.b2b.edi.util:addICEnvelopeEDIFACT' 
+have missing values in their respective inputs for the 'testIndicator' 
+pre-defined pick list. Now 'I' for Information is added to 
+'wm.b2b.edi.util:addICEnvelope' and '2','3', and '4' values are added to 
+'wm.b2b.edi.util:addICEnvelopeEDIFACT' testIndicator 
+pre-defined pick list.
+This issue is now resolved.
+
+
+EEO-4669 (EDI_9.12_WmEDI_Fix11)
+
+The encoding input parameter in wm.b2b.edi:convertToString service is ignored.
+This issue is now resolved and encoding input parameters are considered.
+
+
+EEO-4667 (EDI_9.12_WmEDI_Fix11)
+
+wm.b2b.editn.batch:getControlNumber service did not return the correct control
+number, when the pipeline variable 'originalEDIDATA' is passed along with the
+inputs of the service.
+This issue is now resolved and the service returns the correct control number.
+
+
+EEO-4657 (EDI_9.12_WmEDI_Fix11)
+
+wm.b2b.editn:ediPartnerIDToTNPartnerID service did not return the correct output
+for some of the qualifiers.
+This issue is now resolved.
+
+
+EEO-4666 (EDI_9.12_WmEDI_Fix11)
+
+In IBM webMethods EDI Module 9.12, if 01 and ZZ is present as sender and 
+receiver qualifier for inbound and outbound UNEDIFACT document the error 
+( pathName=/UNB/UNB03/UNB031 or /UNB/UNB02/UNB021, errorCode=DT-STR001, 
+errorMessage=[ISC.0082.9293]) was displayed in envelope transactions.
+This issue is now resolved.
+
+
+EEO-4656 (EDI_9.12_WmEDI_Fix11)
+
+In IBM webMethods EDI Module 9.12, Archival was not functioning for some of the
+activity log messages.Since it did not have a doc ID.
+This issue is now resolved and we have removed the unnecessary activity logs
+messages without doc ID.
+
+
+EEO-4620 (EDI_9.12_WmEDI_Fix10)
+
+IBM WebMethods Module for EDI 9.12 was not supporting UNEDIFACT version 18A.
+
+This issue is now resolved and supports the version.
+Note: To use UNEDIFACT version 18A, set the EDI Configuration property
+EDISchemaSource to SEF.
+
+
+EEO-4607 (EDI_9.12_WmEDI_Fix10)
+
+IBM webMethods Module for EDI 9.12 was not supporting X12 version 7050, 7060 and 
+8010.
+
+This issue is now resolved and supports the versions.
+Note: To use 7050, 7060 and 8010 version, set the EDI Configuration property
+EDISchemaSource to SEF.
+
+
+EEO-4562 (EDI_9.12_WmEDI_Fix10)
+
+wm.b2b.editn.batch:getControlNumber service was not returning the correct
+control number, when the control number added to the increment value is greater
+than the maximum value configured.
+This issue is now resolved and the service returns the correct control number.
+
+
+EEO-4511 (EDI_9.12_WmEDI_Fix10)
+
+EDI option is missing in "Add Document types" due to NullPointerException while
+loading WmEDIforTN Package.
+
+The issue is resolved now.
+
+
+EEO-4540 (EDI_9.12_WmEDI_Fix9)
+
+wm.b2b.editn.batch:getControlNumber service did not return the correct control 
+number for some of the qualifiers specified in inputs of senderQualifier and
+receiverQualifier.
+This issue is now resolved and the service returns the correct control number.
+
+
+EEO-4532 (EDI_9.12_WmEDI_Fix9)
+
+Security check was performed on the envelope, group, and transaction.
+A security check is performed to ensure that the resulting bizdoc is associated
+with the user profile of the sender.
+This issue is resolved. By default, security check is performed if atleast
+one user is configured in the sender partner profile. This can be disabled by
+setting the 'EDICheckUser=false' property in
+<InstallDir>\IntegrationServer\instances\<InstanceName>\packages\WmEDI\config
+\properties.cnf.
+
+
+EEO-4513 (EDI_9.12_WmEDI_Fix9)
+
+"wm.b2b.edi.util:generateFA" service was used to return a FA status as
+rejected for the 100th transaction of any UNEDIFACT document in an envelope.
+This issue is now resolved and the service accepts above 100th transaction.
+
+
+EEO-4509 (EDI_9.12_WmEDI_Fix9)
+
+Full stack-trace message was appearing in the Activity Log.
+This issue is now resolved and the stacktrace is removed and a proper error
+message is added.
+
+
+EEO-4493 (EDI_9.12_WmEDI_Fix8)
+
+Previously, for an EDIINT inbound document with EDI payload, the envelope,
+group, and transactions were not extracted as expected when an asynchronous MDN
+was requested.
+
+This issue is now resolved.
+
+
+EEO-4485 (EDI_9.12_WmEDI_Fix8)
+
+Previously, an error appeared on IBM My webMethods Server user interface while 
+adding an extracted custom attribute for TRADACOMS documents.
+
+This issue is now resolved.
+
+
+EEO-4422 (EDI_9.12_WmEDI_Fix7)
+
+When multiple EDI interchanges are sent to wm.tn:receive service in a single 
+post, Trading Networks performs the security check on only the last envelope.
+A security check is performed to ensure that the resulting bizdoc is associated
+with the user profile of the sender.
+
+This issue is resolved.
+
+
+EEO-4449 (EDI_9.12_WmEDI_Fix7)
+
+wm.b2b.edi.util:generateFA service fails to generate the GS segment
+control number for X12 messages. This happens when the generateControlNumber
+input value is set to 'FromControlNumberTable'.
+
+This issue is now resolved.
+
+
+EEO-4459 (EDI_9.12_WmEDI_Fix7)
+
+In the IBM webMethods EDI Module, wm.b2b.edi:envelopeProcess service displays an
+error in the server log during Integration Server start.
+
+This issue is now resolved.
+
+
+EEO-4353 (EDI_9.12_WmEDI_Fix6)
+
+UNH number is getting reset to zero after restart.
+Note: when wm.b2b.edi.EDIConverter.controlNumber() will be called then control 
+no details will be added into table with Sender External ID as 'Sender' and 
+Receiver External ID as 'Receiver' and Production Mode as 'CUSTOM' and user can
+modify the control number using Control Numbers IBM My webMethods Server page
+(Duplicate Detection Window) is not applicable for this entry.Set property 
+EDIControlNumForTransactions=true in 
+<InstallDir>\IntegrationServer\instances\<instanceName>\packages\WmEDI\config
+\properties.cnf and Restart Integration Server.
+
+This issue is now resolved.
+
+
+EEO-4385 (EDI_9.12_WmEDI_Fix6)
+
+In the IBM webMethods EDI Module, the EDI document recognition and 
+wm.b2b.editn:getICDetail service does not work as expected for large documents. 
+This issue occurs in a Microsoft Windows environment.
+
+This issue is now resolved.
+
+
+EEO-4387 (EDI_9.12_WmEDI_Fix6)
+
+In the IBM webMethods EDI Module, wm.b2b.edi:convertToString service was not
+enforcing the encoding value specified in the "EDIencoding" property.
+
+This issue is now resolved.
+
+
+EEO-4311 (EDI_9.12_WmEDI_Fix5)
+
+The wm.b2b.edi:envelopeProcess service returns the EDI data as valid even though 
+the delimiter is not defined in the last record of EDI data.
+ 
+This issue is resolved by adding the strictValidate parameter.
+
+
+EEO-4234 (EDI_9.12_WmEDI_Fix5)
+
+The wm.b2b.edi.util.formatServices:formatN0 service is unable to execute due to 
+incorrect EDI data.
+ 
+This issue is resolved.
+
+
+EEO-4187 (EDI_9.12_WmEDI_Fix4)
+
+The wm.b2b.edi:convertToValues service does not convert EDI data after 
+installing the previous fix.
+   
+This issue is resolved. 
+
+
+EEO-4180 (EDI_9.12_WmEDI_Fix4)
+
+When an UN/EDIFACT document uses an EDITPA with documentPersistOrder property 
+set to EnvelopeFirst, the UN/EDIFACT transaction and envelope are not related to
+each other. 
+    
+This issue is resolved. 
+
+
+EEO-4185 (EDI_9.12_WmEDI_Fix4)
+
+When the documentPersistOrder parameter is set to EnvelopeFirst in TPA, the 
+transaction is not recognized from the second group onwards in the ISA segment. 
+
+This issue is resolved. 
+
+
+EEO-4062 (EDI_9.12_WmEDI_Fix3)
+
+The CPU usage is high when a large amount of FA data is received and there is a 
+memory leak in the wm.b2b.edi.util:generateFA service.
+  
+This issue is resolved.
+
+
+EEO-4003 (EDI_9.12_WmEDI_Fix2)
+
+After applying EDI_9.0_WmEDI_Fix16, the VRS and TOT segments are not created 
+as per standard for batched data. 
+
+This issue is resolved. 
+
+
+EEO-3958 (EDI_9.12_WmEDI_Fix2)
+
+The control numbers generated after executing the wm.b2b.edi:convertToString 
+service is a formatted date string of "ddkkmm" pattern followed by 3 digits that 
+ranges from 101 to 999. This value is incremented by 1 with each execution of 
+the service and results in the duplication of control numbers when the value 
+exceeds 999. 
+
+This issue is resolved. IBM webMethods Module for EDI is now updated with a 
+control number window ranging from 000000000 to 999999999 for the 
+wm.b2b.edi:convertToString service.
+
+
+EEO-3942 (EDI_9.12_WmEDI_Fix2)
+
+IBM webMethods Module for EDI converts the batched data of the optional fields 
+for TRADACOM VRS and TOT segments from empty to 0. In addition, a value is added 
+to the optional priority code field of the STX segment. 
+
+This issue is resolved. The module now processes the batched TRADACOM message 
+correctly. For priority code, a picklist option "None" is added in the EDI batch 
+to enable support for when a user wants the field to be optional.
+
+
+EEO-3940 (EDI_9.12_WmEDI_Fix2)
+
+The module does not support VDA4938, VDA4984, and VDA4987 schemas. 
+
+This issue is resolved. IBM webMethods Module for EDI now supports VDA4938, 
+VDA4984, and VDA4987 schemas.
+
+
+EEO-3936 (EDI_9.12_WmEDI_Fix2)
+
+The batchProcess service adds the sender code instead of the receiver code in 
+the RSG02 segment of the TRADACOMS message. 
+
+This issue is resolved.
+
+
+EEO-3939 (EDI_9.12_WmEDI_Fix2)
+
+IBM webMethods Module for EDI does not consider the encoding configured by the 
+user while generating autoGenerateFA. 
+
+This issue is resolved.
+
+
+EEO-3765 (EDI_9.12_WmEDI_Fix1)
+
+IBM webMethods Module for EDI does not support X12 7040, UNEDIFACT 16B,
+and UNEDIFACT 17A versions.
+
+This issue is resolved. IBM webMethods Module for EDI now supports
+X12 7040, UNEDIFACT 16B, and UNEDIFACT 17A versions.
+
+
+EEO-3783 (EDI_9.12_WmEDI_Fix1)
+
+While parsing the EDI document types with custom number attributes,
+the document processing fails and displays ClassCastException.
+
+This issue is resolved. 
+
+
+EEO-3786 (EDI_9.12_WmEDI_Fix1)
+
+The services that are referenced to the deleted document,
+wm.b2b.edi:EDItemplate, fail when executed from the scheduler.
+
+This issue occurs because the document that is deleted as part
+of the release is not deleted from the dependent services.
+
+This issue is resolved. The module now does not have any services
+referenced to the deleted document, wm.b2b.edi:EDItemplate. 
+
+
+EEO-3788 (EDI_9.12_WmEDI_Fix1)
+
+Integration Server Administrator has a new user interface.
+
+The HTML-based utility that administers IBM webMethods EDI Module has a new user
+interface. However, the menu and screen locations remain unchanged.
+
+
+EEO-3796 (EDI_9.12_WmEDI_Fix1)
+
+The services that are referenced to the removed service,
+wm.b2b.editn.util.VersionSupport:createStdVerScript, fail when executed from 
+the scheduler.
+
+This issue occurs because the service that is removed as part of the release is 
+not removed from the dependent services.
+
+This issue is resolved. The module now does not have any services referenced to 
+the removed service, wm.b2b.editn.util.VersionSupport:createStdVerScript.
+
+
+EEO-3859 (EDI_9.12_WmEDI_Fix1)
+
+The com.wm.util.coder.IDataBinCoder class does not load the EDI schema classes.
+
+This issue is resolved. A configuration file is added to the required EDI schema
+classes that are allowed. 
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central
+location (9.7 or later products), or Update Manager to install fixes on
+one machine at a time. For instructions,
+see the documentation at https://www.ibm.com/docs/en/products.
+
+
+
+9.0 Uninstallation
+
+Uninstall using Command Central (9.7 or later) or Update Manager.
+For instructions, see the documentation at https://www.ibm.com/docs/en/products.
+       
+
+
+10.0 Copyright
+
+Copyright IBM Corporation 2025

@@ -1,0 +1,182 @@
+          IBM webMethods Adapter 6.0 for Lotus Notes Fix 7 readme
+
+                         October 2024
+_________________________________________________________________
+
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Fix Requirements
+5.0   Fix Contents
+6.0   Platform Support
+7.0   Installation
+8.0   Uninstallation
+9.0   Cautions and Warnings
+10.0  Localization
+11.0  Copyright
+
+
+
+1.0 Fix Name
+
+IBM webMethods Adapter 6.0 for Lotus Notes Fix 7
+
+
+
+2.0 Fix ID
+
+LN_6.0_Fix7
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+None.
+
+
+
+4.0 Fix Requirements
+
+None.
+
+
+
+5.0 Fix Contents
+
+This fix is cumulative, which means that it includes all previous fixes for the 
+release.
+
+LNS-45
+Updated copyright notes, vendor, and product names for IBM rebranding.
+
+LNS-32 (LN_6.0_Fix6)
+In webMethods Lotus Notes Adapter 6.0, the password entered is 
+not masked for Lotus Notes adapter services. 
+
+In the Assign Input Values screen of Lotus Notes adapter services, 
+the password entered appears in cleartext. 
+
+This issue is resolved. Now, the password entered is masked.
+
+
+RGHADPESTBL-1124 (LN_6.0_Fix5)
+SUM Adoption for webMethods Lotus Notes Adapter 6.0
+
+LNS-11 (LN_6.0_Fix4)
+Output from wm.ln.item:getProperties service displays Object
+names instead of Item object properties.
+
+The service wm.ln.item:getProperties is supposed to populate the
+expected set of fields in the properties document of the
+pipeline. However, it is incorrectly returning an array of
+objects in the pipeline properties document.
+
+This issue is resolved. The properties document is now populated
+correctly.
+
+LNS-10 (LN_6.0_Fix4)
+Service wm.ln.acl:getEntry does not create an output ACL Entry
+object; the aclEntry output parameter is null.
+
+During processing, wm.ln.acl:getEntry calls internal service
+wm.ln.acl.IMPL:getEntry. In the wm.ln.acl:getEntry service, a new
+(but invalid) parameter "aclEntry" was created in the pipeline
+mapping, and it does not appear in the output signature of the
+wm.ln.acl.IMPL:getEntry service. This incorrect mapping results
+in a null value in the "aclEntry" output parameter. This behavior
+occurs because "Entry" is not defined in service
+wm.ln.acl:getEntry.
+
+This issue is resolved. The mappings have been corrected.
+
+LNS-6 (was 1-1OOBC9) (LN_6.0_Fix3)
+Built-in service wm.ln.document:appendItemsFromRecord truncates
+last input record.
+
+The wm.ln.document:appendItemsFromRecord service does not append
+the last item in the input record to the lotus.domino.Document
+to which it is appending the items.
+This issue is now resolved, and all input records are correctly
+appended to the document.
+
+LNS-5 (was 1-14B9Z1) (LN_6.0_Fix2)
+In webMethods Lotus Notes Adapter 6.0, while executing the
+wm.ln.item:getText service, the output parameter text is not
+available in the output pipeline.
+
+While executing the wm.ln.item:getText service, the output
+parameter text of String data type is not available in the
+output pipeline. This happens because the input parameters,
+item and maxlen, are not mapped to the input variables in the
+pipeline.
+
+This issue is now resolved. The wm.ln.item:getText service now
+includes the input parameter mappings.
+
+LNS-19 (was 1-13XMTB) (LN_6.0_Fix2)
+The "wm.ln.document.getFirstItem" service throws a
+java.lang.ClassCastException.
+
+While executing the webMethods Lotus Notes Adapter, the
+built-in service "wm.ln.document.getFirstItem", a
+java.lang.ClassCastException is thrown. This service casts any
+item object as a richtextItem irrespective of the item data
+type.
+
+This issue is resolved. The richtextItem is cast through the
+richtextItem parameter and the non richtextItem is cast through
+the item parameter.
+
+LNS-18 (was 1-W3NP3) (LN_6.0_Fix1)
+This fix ensures the webMethods Lotus Notes Adapter 6.0 is
+compatible with the webMethods Integration Server 6.5. Without
+this fix, users will notice that Lotus Domino session objects
+are created without using the user name or password specified in
+a connection, and therefore are anonymous sessions. Applying the
+fix ensures that session objects are created with the
+appropriate credentials.
+
+
+
+6.0 Platform Support
+
+This fix is supported on all platforms supported by the
+webMethods Lotus Notes Adapter 6.0.
+
+
+
+7.0 Installation
+
+
+Install using the Update Manager. For instructions, see the 
+documentation at https://docs.webmethods.io.
+
+
+
+8.0 Uninstallation
+
+Uninstall using the Update Manager. For instructions, see the 
+documentation at https://docs.webmethods.io.
+
+
+
+9.0 Cautions and Warnings
+
+None.
+
+
+
+10.0 Localization
+
+This fix does not require an updated Language Pack. It might
+contain new messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright Super iPaas Integration LLC, an IBM Company 2024.
+
+
+

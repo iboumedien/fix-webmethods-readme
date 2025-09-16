@@ -1,0 +1,395 @@
+                   webMethods HDFS Adapter 9.8 Fix 9 readme
+
+						October 2023
+
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods HDFS Adapter 9.8 Fix 9
+
+
+
+2.0 Fix ID
+
+WHD_9.8_Fix9
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+None. 
+
+
+
+4.0 Requirements
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+For language pack requirements, see the Globalization section of the Software AG 
+Empower Product Support website at 
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include 
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the 
+release.
+
+WHD-129
+
+Upgraded the Hadoop libraries to version 3.2.4 due to vulnerability in YARN
+NodeManager and Apache Hadoop's FileUtil.unTar(File, File) API.
+The YARN NodeManager can leak the password and the FileUtil.unTar(File, File) API
+can escape the input file name before sending it to the shell.
+
+This issue is now resolved.
+
+WHD-131
+
+Upgraded the Hadoop libraries to version 3.2.4 due to a vulnerability allowing
+remote users to run arbitrary commands.
+
+This issue is now resolved.
+
+WHD-134
+
+Upgraded Guava libraries to version 30.1.1 due to vulnerabilities in creating a
+temp directory and unbounded memory allocation.
+
+This issue is now resolved.
+
+WHD-135
+
+Upgraded the Commons-io libraries to version 2.11.0 due to a vulnerability in
+which invoking the FileNameUtils.normalize method with an improper input string
+exposes the files in the parent directory.
+
+This issue is now resolved.
+
+WHD-102 (WHD_9.8_Fix8)
+
+In webMethods Adapter for HDFS, upgraded the Hadoop libraries to version 3.3.1
+due to the vulnerability which causes the WebHDFS client to send SPNEGO
+authorization header to remote URL without proper verification.
+
+This issue is now resolved.
+
+WHD-86 (WHD_9.8_Fix7)
+
+The Hadoop libraries included with the webMethods Adapter for HDFS contains
+the following vulnerabilities:
+
+1. The YARN NodeManager in Apache Hadoop version 2.6.x before version 2.6.5, and
+version 2.7.x before version 2.7.3 can leak the password for credential store
+provider used by the NodeManager for YARN Applications.
+
+2. In Apache Hadoop version 2.6.x before version 2.6.5, and version 2.7.x before
+version 2.7.3, a remote user authenticating with the HDFS NameNode can possibly
+run arbitrary commands with the same privileges as the HDFS service.
+
+3. In Apache Hadoop version 2.x before version 2.7.4, a user escalating to yarn
+user can possibly run arbitrary commands as root user.
+
+4. In Apache Hadoop versions 2.6.1 to 2.6.5, 2.7.0 to 2.7.3, and 3.0.0-alpha1,
+a file in an encryption zone with access permissions making it readable to world
+is localized through YARN's localization mechanism, that file is stored in a
+world-readable location and can be shared freely with any application that
+requests to localize that file.
+
+5. In Apache Hadoop versions 3.0.0-alpha1 to 3.0.0, 2.9.0, 2.8.0 to 2.8.3, and
+2.5.0 to 2.7.5, HDFS exposes extended attribute key or value pairs during
+listXAttrs, verifying only path-level search access to the directory rather than
+path-level read permission to the referent.
+
+6. Apache Hadoop versions 3.1.0, 3.0.0-alpha to 3.0.2, 2.9.0 to 2.9.1, 2.8.0 to
+2.8.4, 2.0.0-alpha to 2.7.6, 0.23.0 to 0.23.11 is exploitable through the zip
+slip vulnerability in places that accept a zip file.
+
+7. In Apache Hadoop versions 3.0.0-alpha1 to 3.1.0, 2.9.0 to 2.9.1, and 2.2.0 to
+2.8.4, a user who can escalate to yarn user can possibly run arbitrary commands
+as root user.
+
+This issue is resolved. Now, the Hadoop libraries are upgraded to version 2.10.0.
+
+WHD-81 (WHD_9.8_Fix6)
+
+After applying any HDFS_9.8_Fix, Integration Server Administrator does not 
+render the package name ?WmHDFSAdapter? correctly under IS Admin Portal > About 
+> View > Installed Packages and Updates. 
+
+The issue is resolved now.
+
+WHD-72 (WHD_9.8_Fix5)
+HDFS Adapter logs an error message 
+ "[WHD.0003.0032E] Error: Error.updateEvent:At least one parameter to the 
+ current statement is uninitialized." when close service is triggered on a 
+ valid handle. 
+ 
+This issue is now resolved.
+
+WHD-58 (WHD_9.8_Fix4)
+
+Service Exceptions were thrown whenever write service (wm.hadoop.hdfs:write) and 
+wm.hadoop.hdfs:close service encountered an exception. 
+
+Issue is now resolved. The service will not throw an exception. A detailed 
+message specifying the reason for the failure of the operation will be sent.
+
+WHD-52 (WHD_9.8_Fix4)
+
+HDFS Adapter when configured to connect with a kerberos connection failed with 
+the following exception "Failed on local exception: java.io.IOException: 
+javax.security.sasl.SaslException: GSS initiate failed [Caused by GSSException:
+No valid credentials provided (Mechanism level: Failed to find any Kerberos tgt)
+]; Host Details : local host is: "hostabc/ipxyz"; destination host is: "hostabc"
+:8020;" . 
+
+This issue is now resolved.
+
+WHD-37 (WHD_9.8_Fix3)
+Enhancements for rollover capability
+
+The fix introduces the following change for configuring a
+webMethods Adapter for HDFS connection.
+
+*) You can now specify the following parameters (FileSizeRollover,
+ TimeRollover) only if you want to write operation to be 
+ performed until the file reaches a specified size or for a 
+ specified duration.
+
+   - FileSizeRollover: Specify the FileSizeRollover to create a 
+     new file when the file reaches a certain size. The unit of
+	 size for rollover is in bytes for the rollover.
+   - TimeRollover: Specify the TimeRollover to create a new file
+     for the write operation after a specified duration. The unit
+	 of time for rollover is in seconds for the rollover.
+
+	 	 
+WHD-34 (WHD_9.8_Fix3)
+Doctype validation issues
+
+The fix introduces the following change for configuring a 
+webMethods Adapter for HDFS connection.
+
+*) wm.hadoop.hdfs:write service is modified to not take the 
+document as input.
+Prior to this fix, the document input earlier allowed one to 
+provide a document as input which can be converted to CSV, JSON,
+XML and TXT. However, this had a limitation since not all input 
+options were available to the users via the 
+wm.hadoop.hdfs:write service for one to convert it to the above 
+mentioned formats. Users can make use of 
+pub.xml:documentToXMLString to convert it to XML. Similarly 
+users can make use of pub.json:documentToJSONString to convert 
+it to JSON. CSV and TXT input can be provided by 
+the user as a string.
+
+WHD-31 (WHD_9.8_Fix3)
+Enhancements in Read operation to support Open, Read, and Close
+services.
+
+This fix introduces support of open, read and close services for 
+the Read operations. In addition, wm.hadoop.hdfs:read service is 
+modified to not return the document as input.
+
+
+*) wm.hadoop.hdfs:read service is modified to not return the
+document as input.
+However users can make use of pub.xml:xmlStringToXMLNode followed
+by pub.xml:xmlNodeToDocument to convert the string to a document.
+Similarly users can make use of 
+pub.json:jsonStringToDocument/pub.json:jsonStreamToDocument to
+convert the string to a document.
+
+WHD-21 (WHD_9.8_Fix3) 
+
+Enhancements in existing HDFS write functionality for Open and 
+Close options.
+
+The fix introduces the following change for configuring a 
+webMethods Adapter for HDFS connection.
+
+
+*) You can now specify wm.hadoop.hdfs:open service to perform 
+read and write operations. In addition, the service allows
+you to specify rollover properties for writing to the file based
+ on its size or the duration of the write operation.
+
+
+*) You can now specify wm.hadoop.hdfs:close service to close the
+stream to the file with the file handle. The service returns the
+message specifying the reason for the success or failure of the 
+close operation.
+	 	 
+WHD-11 (WHD_9.8_Fix3)
+Upgrade of Hadoop libraries
+
+In Apache Hadoop 2.6.x before 2.6.5 and 2.7.x before 2.7.3, a 
+remote user who can authenticate with the HDFS NameNode can 
+possibly run arbitrary commands with the same privileges as the 
+HDFS service. 
+To address the above issue, the following hadoop libraries are 
+upgraded to version 2.7.3. 
+
+1. hadoop-auth 
+2. hadoop-common 
+3. hadoop-hdfs
+
+WHD-24 (WHD_9.8_Fix2)
+Encrypting client communication with the HDFS cluster through  
+webMethods Adapter for HDFS.
+
+For clients authenticated to access the HDFS cluster using 
+Kerberos, you can encrypt their communication with the HDFS 
+cluster through webMethods Adapter for HDFS by setting values of 
+certain parameters in the core-site.xml and hdfs-site.xml files.
+
+Important: Software AG recommends that you maintain identical 
+versions of both core-site.xml and hdfs-site.xml on the HDFS 
+cluster and the computer on which webMethods Adapter for HDFS is 
+running.
+
+1. In core-site.xml, set the value of the hadoop.rpc.protection 
+property to privacy.
+2. In hdfs-site.xml, set the value of the 
+dfs.encrypt.data.transfer property to true.
+
+WHD-12 (WHD_9.8_Fix2)
+Enhancements for configuring a webMethods Adapter for HDFS 
+connection from the Integration Server Administrator.
+
+This fix introduces the following changes for configuring a 
+webMethods Adapter for HDFS connection from the Integration 
+Server Administrator:
+
+*) You can now  specify the NameNode URI value for a 
+High-Availability (HA) configuration of the HDFS cluster in the 
+hdfs://<nameservices> format. 
+The earlier format of hdfs://<primary server>:<primary port>;
+hdfs://<secondary server>:<secondary port> is not required.
+
+*) A new Advanced Settings section is introduced in the 
+Connections screen of the Integration Server Administrator for 
+specifying local paths to the HDFS configuration files 
+core-site.xml and hdfs-site.xml. You can download these files 
+from the HDFS cluster and store them locally. 
+
+Important: Software AG recommends that you maintain identical 
+versions of both these advanced configuration files on the HDFS 
+cluster and the computer on which webMethods Adapter for HDFS is 
+running.
+
+WHD-2 (WHD_9.8_Fix1)
+Incorrect error message is logged when a write operation
+to an already existing file in the HDFS cluster fails.
+
+When webMethods Adapter for HDFS attempts to write to an already
+existing file in the HDFS cluster and the write operation fails,
+Integration Server logs the following error message, which is
+incorrect:
+<FileName>.tmp already exists.
+Here, <FileName>.tmp refers to the temporary file to which
+webMethods Adapter for HDFS initially writes data.
+
+This issue is now resolved. The updated error message refers to
+the actual file to which the adapter writes data and not to
+the temporary file created for the write operation.
+
+
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation 
+at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed 
+fix. This action will revert your installation to the previously installed fix. 
+You cannot use these instructions to uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product 
+suite and includes support for operation in any country, locale, or language as 
+specified in the Installing webMethods Products guide. It was not tested with 
+non-English configurations and non-ASCII data. However, this fix has no 
+globalization impact and can be applied to systems running in any supported locale 
+or configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages 
+and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., 
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their 
+licensors.
+
+The name Software AG and all Software AG product names are either trademarks or 
+registered trademarks of Software AG and/or Software AG USA Inc. and/or its 
+subsidiaries and/or its affiliates and/or their licensors. Other company and 
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or 
+its subsidiaries is located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party 
+copyright notices, license terms, additional rights or restrictions, please 
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party 
+Products". For certain specific third-party license restrictions, please refer 
+to section E of the Legal Notices available under "License Terms and Conditions 
+for Use of Software AG Products / Copyright and Trademark Notices of Software AG
+Products". These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the
+licensed product(s).

@@ -1,0 +1,120 @@
+                   IBM webMethods BigData Driver 9.0 for Apache Hive Fix 5 readme
+
+                                        March 2025
+
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods BigData Driver 9.0 for Apache Hive Fix 5
+
+
+
+2.0 Fix ID
+
+JDH_9.0_Fix5
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+None. 
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include 
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the 
+release.
+
+BDDR-206
+Updated the Product name as per IBM rebranding and also Licenses 3rdparty 
+notices for fix JDH_9.0_Fix5.
+
+BDDR-89 (JDH_9.0_Fix4)
+Upgraded Apache Hive Progress driver to 6.0.1.001212 version for compatibility
+with Java 17.
+
+BDDR-57 (JDH_9.0_Fix3)
+Updated webMethods BigData Driver for Apache HIVE which supports CDP 7.0 and
+later. 
+
+BDDR-42 (JDH_9.0_Fix2)
+The BigData drivers are in the locked state while you access the database objects.
+This issue occurs only when the current applicationKey does not match existing 
+applicationKey.
+
+This issue is now resolved.
+
+
+RGHADPESTBL-5219 (JDH_9.0_Fix1)
+The driver jar file hive-db-5.1.4.jar is renamed to wmhive.jar.
+The upgrade is from from 5.1.4.000117 (F000258.U000115) to
+6.0.1.000092 (F000126.U000065).
+
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a 
+central location (9.7 or later), or IBM webMethods Update Manager to install fixes 
+on one machine at a time. For instructions, see the documentation at https://docs.webmethods.io.
+
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using IBM webMethods Command Central (9.7 or later) or IBM webMethods 
+Update Manager. For instructions, see the documentation at https://docs.webmethods.io.
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

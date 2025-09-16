@@ -1,0 +1,186 @@
+                 webMethods Trading Networks 10.11 MWS Fix 3 readme
+
+                         March 2023
+
+_________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+webMethods Trading Networks MWS 10.11 Fix 3.
+
+
+
+2.0 Fix ID
+
+TN_10.11_MWS_Fix3
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Trading Networks MWS 10.11 
+user interface.
+
+
+
+4.0 Requirements
+
+For language pack requirements, see the Globalization section of the Software 
+AG Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes 
+for the release.
+
+OTN-23038
+When you submit a larger XML file on the submit document page, the Mywebmethods 
+server fails and displays the error message "400: Unable to parse form content" 
+in the UI.
+This issue is resoved.
+
+OTN-23138
+In webMethods Trading Networks, after installing the Japanese language pack the
+TN transactions "Query or Transform failed" and the partners are recognized as
+'Unknown'
+
+OTN-23017
+When My webMethods receives the xml document with the CDATA section. Xml CDATA 
+makes My webMethods unresponsive.
+This issue is resolved
+
+OTN-22955 (TN_10.11_MWS_Fix2)
+The error message "Can't find resource for bundle
+com.webmethods.portal.framework.portletcontainer.portletapi.impl.PortletResourceBundle,
+key error.message.26022" appears on clicking the "Add Partner Group" button or
+when editing an existing partner group in Partner group.
+This issue is now resolved.
+
+OTN-22642 (TN_10.11_MWS_Fix1)
+In webMethods Trading Networks, while creating a public search using the filter
+option, you select as a default search (options tab >Basic as a default search
+tab). Then, when you open the transaction page, it opens on the advanced tab,
+not the basic tab and switching to basic clean the content and return to ?All.?
+This issue is now resolved.
+
+
+
+8.0 Installation
+
+Install using the Software AG Update Manager or Command Central (9.7 or later). 
+For instructions, see the corresponding documentation at
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action reverts your installation to the previously 
+installed fix. You cannot apply these instructions to the previously 
+installed fix.
+
+Uninstall using the Software AG Update Manager or Command Central (9.7 or later). 
+For instructions, see the corresponding documentation at
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was tested
+with non-English configurations and non-ASCII data.
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new 
+messages and these messages appears in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2023 Software AG, Darmstadt, Germany and/or 
+Software AG USA Inc., Reston, VA, USA, and/or its subsidiaries and/or its
+affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks or
+registered trademarks of Software AG and/or Software AG USA Inc. and/or its
+subsidiaries and/or its affiliates and/or their licensors. Other company and
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its
+subsidiaries is located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. For third-party
+copyright notices, license terms, additional rights or restrictions, please
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party
+Products". For certain specific third-party license restrictions, please refer
+to section E of the Legal Notices available under "License Terms and Conditions
+for Use of Software AG Products / Copyright and Trademark Notices of
+Software AG Products". These documents are part of the product documentation,
+located at http://softwareag.com/licenses and/or in the root installation
+directory of the licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html
