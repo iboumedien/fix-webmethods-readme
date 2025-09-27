@@ -1,0 +1,171 @@
+                   Common Libraries for OpenSSL 10.15 Fix 6 readme
+
+                                        September 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Common Libraries for OpenSSL 10.15 Fix 6
+
+
+
+2.0 Fix ID
+
+SSL_10.15_Fix6
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+IBM webMethods Broker Server 10.15
+CentraSite Registry Repository 10.15
+IBM EntireX Broker 10.9
+IBM EntireX Libraries 10.9
+IBM EntireX Mini Runtime 10.9
+SSX 10.15
+Tamino XML Server 10.15
+IBM webMethods Universal Messaging Client Libraries 10.15
+
+
+
+4.0 Requirements and Dependencies
+
+Common Libraries for OpenSSL 10.15
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+
+6.0 Cautions and Warnings
+
+(Linux only) The environment variable LD_LIBRARY_PATH should be unset. If this variable is needed,
+its value must not contain the path to the OpenSSL libraries as shipped for the IBM EntireX
+product, for example "/opt/softwareag/common/security/openssl/lib", nor the system's standard
+paths "/usr/lib64", "/usr/lib", "/lib64" and/or "/lib"!
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to
+existing functionality and features. Any of these items can result in new or changed built-in
+services, APIs, or configuration parameters. Review the fix contents carefully before installing
+the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+SSL-281 (SSL_10.15_Fix6)
+This fix updates OpenSSL libraries to 3.0.17.
+The update also contains mitigations for the following OpenSSL security issues:
+CVE-2024-9143 (Low) and CVE-2024-13176 (Low).
+This fix also updates the packaged set of RootCA certificates as published by Mozilla for their
+NSS library to the current state as of 2025-07-08.
+
+SSL-258 (SSL_10.15_Fix5)
+This fix updates OpenSSL libraries to 3.0.15.
+The update also contains mitigations for the following OpenSSL security issues:
+CVE-2024-5565 (Low), CVE-2024-6119 (Moderate), CVE-2024-4741 (Low), CVE-2024-4603 (Low),
+CVE-2024-2511 (Low), CVE-2024-0727 (Low), CVE-2023-6237 (Low), CVE-2023-6129 (Low),
+CVE-2023-5678 (Low), and CVE-2023-5363 (Moderate).
+This fix also updates the packaged set of RootCA certificates as published by Mozilla for their
+NSS library to the current state as of 2024-10-29.
+This fix also updates the packaged FIPS 140-2 module to the certified version 3.0.9.
+
+SSL-230 (SSL_10.15_Fix4)
+This fix updates OpenSSL libraries to 3.0.11.
+The update also contains mitigations for the following OpenSSL security issues:
+CVE-2023-3446 (Low), CVE-2023-2975 (Low), CVE-2023-3817 (Low), CVE-2023-4807 (Low).
+This fix also updates the packaged set of RootCA certificates as published by Mozilla for their
+NSS library to the current state as of 2023-09-20.
+
+SSL-210 (SSL_10.15_Fix3)
+This fix updates OpenSSL libraries to 3.0.9.
+The update also contains mitigations for the following OpenSSL security issues:
+CVE-2023-0464 (Low), CVE-2023-0465 (Low), CVE-2023-0466 (Low), CVE-2023-1255 (Low), and
+CVE-2023-2650 (Moderate).
+This fix also updates the packaged set of RootCA certificates as published by Mozilla for their
+NSS library to the current state as of 2023-06-02.
+
+SSL-166 (SSL_10.15_Fix3)
+Enable certified FIPS 140-2 module of OpenSSL 3.0.8.
+This issue has been fixed.
+
+SSL-212 (SSL_10.15_Fix3)
+Windows platform 32-bit components not updated.
+This issue has been fixed.
+
+SSL-196 (SSL_10.15_Fix2)
+This fix updates OpenSSL libraries to 3.0.8.
+The update also contains mitigations for the following OpenSSL security issues:
+CVE-2023-0286 (High), CVE-2022-4304 (Moderate), CVE-2023-0215 (Moderate),
+CVE-2022-4450 (Moderate), CVE-2022-4203 (Moderate), CVE-2023-0216 (Moderate),
+CVE-2023-0217 (Moderate), CVE-2023-0401 (Moderate) and CVE-2022-3996 (Low).
+This fix also updates the packaged set of RootCA certificates as published by Mozilla for their
+NSS library to the current state as of 2023-02-08. A noteworthy change here is the removal of the
+distrusted TrustCor certificates as explained by Mozilla here:
+https://bugzilla.mozilla.org/show_bug.cgi?id=1803453.
+
+SSL-168 (SSL_10.15_Fix1)
+This fix updates OpenSSL libraries to 3.0.7.
+The update also contains mitigations for the following OpenSSL security issues:
+CVE 2022-3602 (High) and CVE 2022-3786 (High).
+
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://www.ibm.com/docs/en/products.
+
+(Linux only) If not done already, either install all mentioned products below "/opt/softwareag" or
+create a symbolic link at "/opt/softwareag" pointing to the actual installation directory.
+
+(Linux only) Some products might still setup the environment variable LD_LIBRARY_PATH and append
+the system's standard paths "/usr/lib64", "/usr/lib", "/lib64" and/or "/lib". They usually do this
+via a script ending on "env" and residing in the product's INSTALL/-directory, e.g.
+/opt/softwareag/EntireX/INSTALL/exxenv_, etc. These lines have to be edited and the system's
+standard paths need to be removed.
+Example before editing:
+  LD_LIBRARY_PATH=${exxlibpath}:/lib64:/usr/lib64
+Example after editing:
+  LD_LIBRARY_PATH=${exxlibpath}
+
+*Please note*, these changes are only necessary on Linux systems when either the system's tools or
+one of the mentioned products cannot be started and fail to resolve symbols from the OpenSSL
+libraries. The changes should not be made on other systems!
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://www.ibm.com/docs/en/products.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025
