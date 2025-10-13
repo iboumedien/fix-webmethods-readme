@@ -1,0 +1,726 @@
+                    webMethods Integration Server 10.15 WmCloud Fix 8 readme
+
+                                   October 2025 
+                                                   
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Integration Server 10.15 WmCloud Fix 8.
+
+
+
+2.0 Fix ID
+
+IS_10.15_WmCloud_Fix8
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Integration Server 10.15.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+
+5.0 Platform Support
+
+webMethods Integration Server 10.11 WmCloud Fix 8 is supported on the 
+same platforms and operating systems and with the same JREs as webMethods 
+Integration Server 10.11.
+
+
+
+6.0 Cautions and Warnings
+
+IS_10.15_Core_Fix18 (and above) and IS_10.15_WmCloud_Fix7 (and above) are 
+interdependent. Therefore, install the fixes together.
+
+
+
+7.0 Fix Contents
+
+PIE-101574
+Hybrid tenant connections created before the introduction of token-based
+authentication now show an "invalid credentials" error after upgrade.
+
+The issue occurs due to recent fixes that introduced token-based authentication
+alongside basic authentication. Older tenant configurations lack the required
+input field, leading to initialization failures.
+
+This issue is now resolved.
+
+PIE-98159 (IS_10.15_WmCloud_Fix7)
+Integration Server lacks server-side validation for user inputs during tenant
+user creation. This allows invalid or malicious data to enter the system,
+which creates security risks and may cause applications to fail.
+
+Integration Server accepts user-provided values, such as alias, username,
+and WebMethods Cloud URL, without validating or sanitizing them on the server
+side. This behavior lets harmful payloads (like HTML tags <a>aa</a>) get stored 
+and processed. 
+
+This issue is resolved. Now, Integration Server accepts only safe
+and expected values. It prevents injection attacks and protects data integrity.
+
+PIE-87562 (IS_10.15_WmCloud_Fix7)
+Disabling a tenant alias does not effectively disable the accounts associated
+with the alias and results in locked accounts on the cloud side.
+
+An account can still receive, process, and reply to requests for on-premise
+services from webMethods Cloud when the tenant alias associated with the account
+is disabled.
+
+This issue is now resolved by removing the functionality to enable or disable a
+tenant connection alias.
+
+PIE-94148 (IS_10.15_WmCloud_Fix7)
+In hybrid integration, the on-premises Integration Server does not log the
+connected Realm server details.
+
+This issue is now resolved.
+
+PIE-96500 (IS_10.15_WmCloud_Fix7)
+Integration Server experiences high CPU usage when Universal Messaging servers
+are stopped in the Horizontal Scaling setup.
+
+The high CPU usage is due to numerous Universal Messaging client sessions 
+repeatedly attempting to reconnect to the stopped servers every 2 seconds.
+
+This issue is resolved by distributing UM session re-connections over a period 
+of time to prevent CPU spikes, using two newly introduced server configuration 
+parameters:
+
+    - watt.server.messaging.um.session.reconnectImmediately: Specifies whether 
+      Integration Server reconnects immediately. Set the parameter to true for 
+	  an immediate reconnection attempt or false to prevent the attempt. The 
+	  default value is true.
+    - watt.server.messaging.um.session.reconnectInterval: Specifies the interval 
+	  at which Integration Server attempts an immediate reconnection. The 
+      default value is 5 seconds. There is no maximum value for this parameter. 
+	  The reconnection interval is calculated as the set value plus a random 
+	  value between 0 and the set value.
+      For example, if there are 10 sessions, session 1 may have an interval of 5 
+      seconds, session 2 may have 7 seconds, session 3 may have 9 seconds, and 
+      so on. This staggered retry mechanism prevents all sessions from 
+	  reconnecting simultaneously, reducing CPU load.
+
+You must restart Integration Server for changes to these parameters to take
+effect. 
+
+PIE-98970 (IS_10.15_WmCloud_Fix7)
+The server log displays user credentials in clear text when Integration
+Server updates the transport configuration used to connect to IBM
+webMethods Integration (SaaS).
+
+Now, Integration Server masks user credentials in server log messages.
+
+PIE-99213 (IS_10.15_WmCloud_Fix7)
+Integration Server supports OAuth token-based authentication for hybrid
+connections. 
+
+You can now enable OAuth token-based authentication for hybrid connections while
+creating tenant aliases on an on-premises Integration Server using OAuth tokens.
+In Integration Server Administrator > webMethods Cloud > Tenant Connections >
+Create Tenant Connection, select Token as the authentication type, and enter the
+authentication token generated from IBM webMethods Integration for hybrid
+connectivity instead of basic authentication. 
+
+PIE-81603 (IS_10.15_WmCloud_Fix6)
+Removing idle listeners for Cloud on an on-premises Integration Server may cause
+a session leak. 
+ 
+Applying a WmCloud fix or upgrading to a release that included PIE-61850
+resulted in Integration Server monitoring on-premises listeners to ensure that
+each enabled webMethods Cloud account had an active listener. If the monitoring
+thread found a listener that was not running, the monitoring thread attempted to
+start the listener. Integration Server used the
+watt.wmcloud.listeners.maxIdleTime value to determine the length of time a
+listener could be idle before being recreated. However, when removing the idle
+listener, Integration Server did not properly close the connection for the
+listener it was removing. Over a period of time, the leaked connections build up
+on the Cloud and cause issues. 
+ 
+To address this issue, Integration Server no longer uses a thread to remove idle
+listeners and their associated connections. The listeners for Cloud accounts can
+reconnect automatically so it is no longer necessary to dedicate a thread to
+replacing the listener if it becomes idle. As a result, the
+watt.wmcloud.listeners.maxIdleTime is now obsolete. Integration Server ignores
+watt.wmcloud.listeners.maxIdleTime if the parameter exists in the server.cnf. 
+ 
+In addition to the above change, the maximum value of
+watt.wmcloud.listeners.monitoringinterval is now 300000 (5 minutes).
+Integration Server resets watt.wmcloud.listeners.monitoringinterval to 300000 (5
+minutes) if it was set to higher value. 
+
+PIE-94775 (IS_10.15_WmCloud_Fix6)
+Integration Server allows users to create tenant connections with 
+invalid and malicious data.
+
+In Integration Server Administrator > WmCloud > Create Tenant Connections, when
+creating a tenant connection, Integration Server 
+accepts invalid data, which results in tenant connections containing malicious
+content and leads to Cross-Site Scripting (XSS) vulnerabilities. 
+
+This issue is resolved. Now, Integration Server validates the data 
+before creating tenant connections.
+
+PIE-96791 and PIE-94375
+Improvements to the performance and scalability of hybrid invocation.
+
+In hybrid invocation, webMethods.io invokes a service that resides on an 
+on-premises Integration Server. The on-premises Integration Server executes the 
+requested service and sends a response to webMethods.io.
+The communication backbone for hybrid invocation is a Universal Messaging server 
+that the IBM Site Reliability Engineering team deploys and manages (previously, 
+this team might have been named the webMethods.io Cloud Operations or simply 
+Cloud Ops).
+
+To optimize the performance and scalability of hybrid invocation, Integration 
+Server introduces enhancements in the following areas:
+
+- Horizontal scalability. Hybrid integration can use multiple Universal 
+  Messaging servers, ensuring that workloads can be distributed across multiple 
+  servers for better resource utilization and reliability. A single tenant can 
+  communicate with one or more Universal Messaging servers.
+  
+- Session pooling. A session pooling mechanism supported across multiple 
+  Universal Messaging servers can be used with the webMethods.io and on-premises 
+  Integration Server. This mechanism ensures that NHP (the HTTP protocol for 
+  Universal Messaging) efficiently handles requests and replies in a
+  scalable manner, regardless of deployment environment.
+  
+- Runtime scale up and scale down. Universal Messaging servers can be added and 
+  removed dynamically by the IBM Site Reliability Engineering team, without 
+  causing an interruption in the current processing or requiring a configuration 
+  change. This capability allows hybrid integration to adjust resources based on 
+  demand, enhancing flexibility and improving resource management.
+
+To support the enhanced hybrid invocation capabilities, an on-premises 
+Integration Server includes changes to Integration Server Administrator and 
+server configuration parameters, specifically:
+
+- Option to reload transport configuration for a tenant connection.
+
+  The webMethods Cloud > Tenant connections page in Integration Server 
+  Administrator now has a Reload Transport Configuration column. Click the icon 
+  in this column to reload the Universal Messaging transport configuration for a 
+  specific tenant. Integration Server connects to webemthods.io to retrieve the 
+  latest Universal Messaging transport configuration. If the updated configuration
+  includes changes to the URL for the Universal Messaging servers, Integration 
+  Server reloads the existing session pools (consumer and producer) and 
+  listeners without interrupting any current hybrid invocation processing. For 
+  example, if the transport configuration changes include a new URL for Universal 
+  Messaging, Integration Server dynamically adjusts the session pools and listeners
+  to use the new URLs by adding new sessions to the pool and creating new listener. 
+  If the transport configuration change includes removal of a URL, Integration 
+  Server slowly removes sessions and listeners that use the removed URL.
+  
+  Note: You can also reload the Universal Messaging transport configuration by 
+  clicking Updates Settings on the webMethods Cloud > Tenant connections > Edit 
+  tenant connection page. Integration Server obtains the updated transport 
+  configuration, shuts down the existing Universal Messaging listeners and 
+  session pools for the tenant, and then restarts all Universal Messaging 
+  listeners and session pools for the tenant. Any in-flight requests will be lost.
+  
+- Session pool configuration parameters. For each webMethods Cloud account, the 
+  on-premises Integration Server now maintains a consumer session pool for 
+  receiving requests from webMethods.io and a producer session pool for sending 
+  responses to webMethods.io. Use the following server configuration parameters
+  to determine the maximum size of the session pools.
+
+  - watt.wmcloud.consumer.sessionPool.count
+    Specifies the maximum number of sessions for the on-premises consumer 
+	session pool for each webMethods Cloud account. Consumer pool sessions 
+	receive request messages from webMethods.io. Each session in this pool 
+	corresponds to a dedicated message listener. The minimum value is 1.
+    The default value is 1.
+
+  - watt.wmcloud.producer.sessionPool.count
+    Specifies the maximum number of sessions for the on-premises producer 
+	session pool for each webMethods Cloud account. Producer pool sessions send 
+	responses for hybrid invocations to webMethods.io. Each session in the pool 
+	is associated with a socket on the Universal Messaging server. The minimum 
+	value is 1. The default value is 5.
+
+The following server configuration parameters have been replaced by 
+watt.wmcloud.consumer.sessionPool.count and watt.wmcloud.producer.sessionPool.count:
+
+- watt.wmcloud.um.sessionPool.config
+- watt.wmcloud.sessionPool.maxCount
+
+The following server configuration parameters are obsolete because the new 
+hybrid invocation capabilities do not use the parameters:
+
+- watt.wmcloud.sendResponse.retryCount
+- watt.wmcloud.sendResponse.retryDelay
+- watt.wmcloud.sendResponse.transactional
+- watt.wmcloud.sessionPool.minCount
+- watt.wmcloud.sessionPool.sweeperInterval
+- watt.wmcloud.um.event.waitTime
+- watt.wmcloud.um.sessionPool.maxCount
+- watt.wmcloud.um.sessionPool.minCount
+- watt.wmcloud.umsession.maxlimit
+
+There is no replacement for these parameters. While the parameters may still 
+appear in server.cnf, Integration Server does not use the parameters.
+
+PIE-84992 (IS_10.15_WmCloud_Fix5)
+In the legacy Integration Server Administrator, disabling an On-Premise Account 
+under webMethods Cloud fails because the Stage value is incorrect.
+
+This issue is now resolved.
+
+PIE-86351 (IS_10.15_WmCloud_Fix5)
+Health indicator information for troubleshooting purposes.
+
+The HybridConnections health indicator information includes individual statuses 
+for tenant connections and associated accounts, sessions, and stage along with
+the overall hybrid connection status. The current session for an account is the 
+number of active sessions between the On-premise Integration Server and 
+webmethods Cloud. You can use the health indicator information for 
+troubleshooting purposes.
+
+PIE-87692 (IS_10.15_WmCloud_Fix5)
+The on-premise Integration Server monitors the tenant connection status at a 
+regular interval of 10 minutes, increasing the load on webMethods Cloud.
+ 
+The wm.client.integrationlive.admin:scheduleTenantMonitoringTask task 
+runs in the on-premise Integration Server at the specified interval of 
+10 minutes to monitor the tenant connection status. Since the hybrid 
+connectivity alerts are managed by webMethods Cloud, the on-premise 
+Integration Server does not have to perform the monitoring that 
+increases the load on webMethods Cloud.
+
+This issue is now resolved. Now, the on-premise Integration Server does not 
+handle the alerts for tenant connections. 
+
+PIE-81971 (IS_10.15_WmCloud_Fix4)
+A Cloud account cannot be deleted on the on-premise Integration Server if the
+tenant on webMethods Cloud is not available. 
+
+A cloud configuration change, such as deleting an account, made on the
+on-premise Integration Server cannot complete if the on-premise server cannot
+connect to the tenant on the Cloud. 
+
+Now, Integration Server continues with on-premise configuration changes related
+to Cloud without requiring a successful response from the Cloud tenant. Changes
+to cloud accounts, applications, and the tenant connection alias can be made on
+the on-premise Integration Server and then pushed to the Cloud. However, if a
+connection to the Cloud is not available, the cloud configuration on the
+on-premise Integration Server becomes out of sync with the Cloud tenant. To get
+the items on Cloud synchronized with the on-premise configuration, edit the
+account or application in the Cloud. 
+
+PIE-82574 (IS_10.15_WmCloud_Fix4)
+Under heavy load, an on-premises Integration Server might take a long time to 
+send responses to the Cloud.
+
+Previously, each webMethods Cloud account on an on-premises Integration Server 
+used a single session to send responses to the Cloud. Under heavy load, this 
+configuration might create resource contention and increase response time.
+
+To address this issue, an on-premises Integration Server now creates a session 
+pool for each webMethods Cloud account and uses sessions in the pool to send 
+responses to the Cloud. The server configuration parameter 
+watt.wmcloud.um.sessionPool.maxCount determines the maximum number of sessions 
+in the pool. The default value is 3.
+
+You do not need to restart Integration Server for changes to this parameter to 
+take effect. However, the webMethods Cloud accounts on the on-premises 
+Integration Server must be disabled and then enabled for changes to the 
+parameter to take effect.
+
+PIE-83656 (IS_10.15_WmCloud_Fix4)
+When multiple webMethods Cloud accounts with the same alias are associated with
+multiple tenants, surplus sessions are created. 
+
+This issue is now resolved.
+
+PIE-83687 (IS_10.15_WmCloud_Fix4)
+A session leak may occur if the Enable link is repeatedly clicked for an enabled
+account on the WmCloud > Accounts page in Integration Server Administrator. 
+
+This issue is now resolved.
+
+PIE-84595 (IS_10.15_WmCloud_Fix4)
+Session leak may occur when constantly refreshing the webMethods Cloud >
+Accounts page. 
+
+Repeatedly clicking the link in the Enabled column for an account on the
+webMethods Cloud > Accounts page may cause a session leak for the Universal
+Messaging server used to route messages to and from the tenant for the
+on-premises Integration Server. 
+
+Now, if an action results in the change to an account's enabled status, the
+link in the Enabled column is disabled until the action completes. 
+
+PIE-84618 (IS_10.15_WmCloud_Fix4)
+A tenant connection alias that specified a non-existent webMethods Cloud URL was
+created as enabled but should be disabled. 
+
+When using the webMethods Cloud > Tenant connections page to create a tenant
+connection alias, specifying an invalid URL for the webMethods Cloud URL results
+in an enabled tenant connection alias but should not. 
+
+This issue is now resolved.
+
+PIE-84855 (IS_10.15_WmCloud_Fix4)
+Integration Server Administrator displays an incomplete message when deleting a
+tenant. 
+
+After attempts to delete a tenant on the webMethods Cloud > Tenant connections
+page, Integration Server Administrator displays just the name of the tenant
+without any context. This can be confusing if the tenant connection cannot be
+deleted because it is being used by an account. 
+
+Now Integration Server Administrator displays clearer error messages when
+attempts to delete a connection alias succeed or fail. 
+
+PIE-84873 (IS_10.15_WmCloud_Fix4)
+Integration Server experiences a delay while updating tenant connections.
+ 
+When you update settings in Integration Server Administrator > webMethods Cloud
+> Tenant connections, Integration Server refreshes all available account 
+connections, irrespective of the updated tenant. As a result, updating settings
+leads to a delay in re-establishing connections to webMethods Cloud.
+ 
+This issue is resolved. Now, Integration Server refreshes only the account 
+connections associated with the updated tenant.
+
+PIE-85000 (IS_10.15_WmCloud_Fix4)
+Hybrid requests might fail because of a NullPointerException that sometimes
+occurs after disabling and then enabling a webMethods Cloud account on an
+on-premises Integration Server. 
+
+This issue is now resolved.
+
+PIE-85142 (IS_10.15_WmCloud_Fix4)
+When webMethods Cloud is unreachable, disabling a webMethods Cloud account
+results in an open response session, leading to session leakage. 
+ 
+This issue is resolved. Now, when you disable a webMethods Cloud account, 
+the on-premise Integration Server closes the response session irrespective 
+of the webMethods Cloud status.
+
+PIE-81694 (IS_10.15_WmCloud_Fix3)
+Integration Server logs the "Unable to create an SMTP client instance for a 
+hybrid connectivity alert: The email properties are not configured." error when 
+an account or tenant connection is disconnected or restored. 
+
+Integration Server uses the email notification settings configured in 
+Integration Server Administrator > Settings > Resources to send the hybrid 
+connectivity alert mails to the user. If the email notification settings are 
+not configured, and the watt.wmcloud.hybridConnectivityAlert.notifications 
+server configuration parameter has a value other than 'alert' or 'none', 
+Integration Server logs the error when an account or tenant connection is 
+disconnected or restored. 
+
+This issue is now resolved. Now, the default value of 
+the watt.wmcloud.hybridConnectivityAlert.notifications server configuration 
+parameter is 'alert'.
+
+PIE-83185 (IS_10.15_WmCloud_Fix3)
+Integration Server Administrator exposes tenant connection passwords.
+
+In Integration Server Administrator > webmethods Cloud > Tenant connections, the
+password used to create a tenant connection is exposed while editing the
+connection. 
+
+This issue is now resolved.
+
+PIE-84255 (IS_10.15_WmCloud_Fix3)
+The on-premise Integration Server now provides an option to enable or disable 
+payload compression for communication with webMethods Cloud.
+
+In Integration Server Administrator, go to webMethods Cloud > Accounts, and 
+select the Enable Compression option. By default, the option is not selected. 
+Compression is enabled only if both the on-premise Integration Server and 
+webMethods Cloud installations are configured to use the compression 
+functionality. If webMethods Cloud does not perform compression, then on-premise 
+Integration Server returns the payload in its original, uncompressed form.
+Compressing payloads smaller than 5KB leads to slight decrease in throughput. It 
+is recommended to disable compression for file types such as PDFs, zip files, 
+and so on to maintain optimal throughput.
+
+Note:
+If you enable compression for an existing account, you must upload the account 
+for the changes to take effect.
+
+PIE-81048 (IS_10.15_WmCloud_Fix2)
+Integration Server stores duplicate queue information while creating a 
+tenant for webMethods Cloud.
+
+While creating a tenant connection, Integration Server stores the queue 
+information in the accounts.cnf file. However, Integration 
+Server stores the same queue information twice in the "queues" 
+and "queueNames" records resulting in duplicate entries.
+
+This issue is resolved. Now, Integration Server stores the 
+queue information in the "queueNames" record in the accounts.cnf file.
+
+PIE-81176 (IS_10.15_WmCloud_Fix2)
+Integration Server now provides alerts for hybrid connectivity.
+
+A new channel, "Hybrid Connections" is added for hybrid connectivity alerts,
+which are generated for the following events:
+
+- Tenant connection disconnected
+- Tenant connection restored
+- Account disconnected
+- Account restored
+
+When an account connection or a tenant connection is disconnected or restored,
+Integration Server notifies the user through a notification in Integration
+Server Administrator followed by an email.
+You can configure the hybrid connectivity notifications using
+the watt.wmcloud.hybridConnectivityAlert.notifications server configuration
+parameter and the recipients of the notification emails using 
+the watt.wmcloud.hybridConnectivityAlert.mail server configuration parameter.
+
+Integration Server uses the email notification settings configured in
+Integration Server Administrator > Settings > Resources. 
+
+watt.wmcloud.hybridConnectivityAlert.mail
+Specifies the list of email addresses to which Integration Server sends emails
+about errors and warnings related to the connection status between Integration
+Server and webMethods Cloud. Use a semicolon (;) as a delimiter to specify
+multiple email addresses. By default, the parameter value is blank.
+
+watt.wmcloud.hybridConnectivityAlert.notifications
+Specifies whether Integration Server generates notifications and notifies users
+when a tenant connection or an account for webMethods Cloud is disconnected or
+restored. The parameter can have one of the following values:
+
+- alert: Integration Server displays a notification in Integration Server
+Administrator.
+- email: Integration Server sends an email to the user.
+- none: Integration Server does not notify the user.
+
+Note: If you are using any value other than alert, email, or none, Integration 
+Server notifies the user through a notification in Integration Server 
+Administrator, followed by an email. By default, the parameter value is blank.
+
+Integration Server restart is not required for changes to these parameters to 
+take effect.
+
+In addition, the HybridConnections health indicator is added to track the status
+of hybrid connections.
+HybridConnections: Checks all the listed tenant connection
+aliases and associated accounts for webMethods Cloud. Returns a status of UP if
+all of the listed tenant connections and associated accounts are UP.
+Returns a status of DOWN if any of the listed tenant or account connections are
+down. The health indicator includes individual statuses for tenant connections
+and associated accounts, along with the overall hybrid connection status.
+If an enabled tenant connection does not have an account alias or the account
+alias is not enabled, the health indicator does not list the tenant alias.
+If a tenant connection is disabled and the associated account is enabled, the
+health indicator shows the account status.
+
+PIE-78153 (IS_10.15_WmCloud_Fix1)
+Service executions on the on-premise Integration Server result in 
+increased logging in the server log.
+
+For example:
+[ISS.0021.8018I] Received request ID <REQ_ID> to execute service 
+<SERVICE_NAME> for application <APP_NAME> using account <ACCOUNT_NAME>.
+[ISS.0021.8020I] Executed service <SERVICE_NAME> for request ID <REQ_ID>. 
+Session ID: <SESSION_ID>.
+
+This issue is resolved. Now, Integration Server logs the service execution 
+details only when you set the WmCloud logging facility to the Trace level.
+
+PIE-78298 (IS_10.15_WmCloud_Fix1)
+Service executions on an on-premise Integration Server result in increased 
+logging in the server log. 
+
+During WmCloud package startup, Integration Server may log an error message 
+like the following: 
+
+<timestamp> [ISS.0028.0012I] (tid=<thread id>) WmCloud: Startup service (
+wm.client.integrationlive.admin:loadTenantAccountInfo) 
+
+<timestamp> }}{{{} \\\ISS.0021.6004E\\\{} (tid=<thread id>) An error occurred 
+while loading information from the webMethods Cloud environment. No tenant 
+aliases are enabled. 
+
+This error message is meaningful only if Integration Server is used as an on-
+premise server with webMethods Cloud. This message can be safely ignored if it 
+occurs on an Integration Server that is not used with webMethods Cloud. 
+
+This issue is resolved. Now, the log level for several log messages produced by 
+Integration Server during startup is adjusted. ISS.0021.6004 is no longer 
+an error when all cloud tenants are disabled. Additionally, no INFO log 
+messages are produced when an on-premise service executes. Set the logging 
+level for the Integration Cloud (0021) logging facility to DEBUG to produce log 
+messages with each service execution.
+
+PIE-78317 (IS_10.15_WmCloud_Fix1)
+Integration Server allows uploading applications to Integration Cloud 
+through a disabled tenant connection.
+
+Integration Server requires a tenant connection that is valid and 
+enabled to upload applications to Integration Cloud. However, 
+Integration Server Administrator displays a successful message while 
+uploading an application for a disabled tenant connection.
+
+This issue is resolved. Now, Integration Server displays the 
+"Tenant connection is not enabled." message for a disabled tenant 
+connection.
+
+PIE-78419 (IS_10.15_WmCloud_Fix1)
+Session leak when Universal Messaging server used for hybrid connectivity is
+missing a required queue. 
+ 
+When the Universal Messaging server that facilitates communication between the
+on-premises Integration Server and webMethods Cloud is missing a required queue
+(specifically the queue from which the on-premises Integration Server retrieves
+requests from webMethods Cloud), the on-premise Integration Server continually
+attempts to reconnect resulting in sessions that are neither disposed of nor
+closed. This leads to a constant accumulation of open connections which
+eventually leads to resource exhaustion and Universal Messaging server becoming
+unresponsive. 
+
+Now, when a required Universal Messaging queue is missing, the on-premises
+Integration Server closes sessions that attempted to establish a connection to
+the missing queue. This prevents the accumulation of sessions and resource
+exhaustion. 
+
+PIE-78523 (IS_10.15_WmCloud_Fix1)
+System packages include JAR files for third party libraries that already exist
+in the <IntegrationServer>\lib\jars directory. 
+
+The code/jars/static directory in some webMethods system packages (WmAdmin,
+WmCloud, and WmIntegrationLiveServer) contain third-party JAR files already in
+the <IntegrationServer>\lib\jars directory. This is unnecessary as system
+packages should rely on JAR files already present in the Integration Server
+installation library. 
+
+This issue is now resolved. After applying a fix that includes PIE-78523, the
+system packages will no longer contain the duplicated JAR files. 
+
+PIE-78577 (IS_10.15_WmCloud_Fix1)
+When an on-premise Integration Server establishes a session with webMethods
+Cloud to send a response, an error, such as a missing queue, results in the
+session remaining open instead of being closed. 
+
+Now, if an error occurs when establishing a session to send a response to
+webMethods Cloud, the on-premise Integration  Server closes the session,
+preventing session leaks. 
+
+PIE-78790 (IS_10.15_WmCloud_Fix1)
+A webMethods Cloud account on an on-premise Integration Server waits for 
+15 minutes before reconnecting to webMethods Integration Cloud, 
+resulting in increased downtime.
+
+Integration Server uses the value of the Maximum Reconnection Attempts 
+field specified in webMethods Cloud > Accounts > Create On-Premise 
+Account > Account Settings to limit the reconnection attempts. 
+By default, Integration Server makes five attempts to reconnect to 
+webMethods Integration Cloud after waiting for a random time that 
+ranges between 1 to 15 minutes, resulting in increased downtime.
+
+The issue is resolved. Now, the account frequently attempts to
+reconnect to webMethods Cloud with a random interval between
+100 milliseconds to 10 seconds for the first two minutes and
+then waits for a period of 30 to 60 seconds before attempting
+to retry the connection.
+
+PIE-78830 (IS_10.15_WmCloud_Fix1)
+webMethods.io Integration requests time out without an error message.
+
+In a hybrid integration environment, a request from webMethods.io Integration
+to an on-premise Integration Server fails when the response payload exceeds
+the configured maximum buffer size. However, Integration Server does not
+send the exception to webMethods.io Integration but retries to send the
+response based on the watt.wmcloud.sendResponse.retryCount server
+configuration parameter and then fails. Hence, webMethods.io Integration
+requests time out without an exception.
+
+This issue is resolved. Now, Integration Server does not retry publishing
+the response when the response exceeds the maximum buffer size
+but sends an exception to webMethods.io Integration.
+
+PIE-78907 (IS_10.15_WmCloud_Fix1)
+webMethods Cloud requests fail with timeout errors when request timeout is set
+to 5 minutes or higher.
+
+After applying a WmCloud fix that contains PIE-75389, webMethods Cloud accounts
+that use a request timeout value of 300000 milliseconds (i.e. 5 minutes) or higher
+cannot receive Cloud requests. The requests fail with the following exception:
+
+"com.pcbsys.nirvana.client.nTransactionException: The time out specified exceeds 
+the servers"
+
+This issue is now resolved.
+
+PIE-80374 (IS_10.15_WmCloud_Fix1)
+Integration Server uses one-way SSL to connect to webMethods Cloud even though
+two-way SSL is configured. 
+
+Even though Integration Server and webMethods Cloud are configured for two-way
+SSL, Integration Server switches to one-way SSL. 
+
+This issue is now resolved. Integration Server uses two-way SSL to connect to 
+Cloud when it is configured. 
+
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the 
+documentation at https://www.ibm.com/docs/en/products.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the 
+documentation at https://www.ibm.com/docs/en/products.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, 
+or language as specified in the webMethods Installation Guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix 
+has no globalization impact and can be applied to systems running in any 
+supported locale or configuration.
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new 
+messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright IBM Corporation 2025

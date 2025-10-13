@@ -1,0 +1,497 @@
+        IBM webMethods Module for AS4 10.1 Fix 14 readme 
+
+                        February 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+
+1.0 Fix Name
+
+IBM webMethods Module for AS4 10.1 Fix 14
+
+
+
+2.0 Fix ID
+
+ASH_10.1_Fix14
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+IBM webMethods Module for AS4 10.1.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+ASH-579
+
+In IBM webMethods module for AS4, when the sender sends a secured SOAP envelope
+with a security flag enabled in the P-Mode, and the receiver receives this
+envelope with a security flag disabled in the P-Mode, the receiver does not send
+an error signal to the sender.
+The issue is resolved. Now, the receiver sends an error signal to the sender
+in this case.
+
+ASH-578
+
+In IBM webMethods module for AS4, there is no validation of the participant
+PEPPOL certificate for expiry or revocation or whether the validity period
+has not yet started in the following cases:
+1. When using the service wm.ip.estd.as4.peppol:getReceiverDetails, or
+2. When submitting payload using the service wm.ip.estd.as4.msh:submit, or
+3. During the processing of an inbound peppol document
+ 
+This issue is resolved.
+
+ASH-566 (ASH_10.1_Fix13)
+
+Fix includes security updates with no new features to existing user-facing
+functionalities.
+
+ASH-551 (ASH_10.1_Fix12)
+
+In the IBM webMethods module for AS4, the copyright information is updated.
+
+This issue is now resolved.
+
+
+ASH-537 (ASH_10.1_Fix11)
+
+In the IBM webMethods module for AS4, the "ValueType" attribute in 
+BinarySecurityToken for signature contains 
+"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509PKIPathv1" 
+for the outbound Peppol message.
+ 
+The value for the "ValueType" attribute must be
+"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3" 
+as per the Peppol specification version 2.0.3.
+ 
+This issue is resolved. If you have created any Integration Server instance 
+other than the default, you must delete the file with name 
+X509Authentication_Signature_Peppol.policy from path 
+IntegrationServer/instances/default/packages/WmAS4/config/policies/WSS1.1/.
+
+
+ASH-528 (ASH_10.1_Fix11)
+
+In the IBM webMethods module for AS4, the default TPA for Peppol has the 
+encryptBody option set to true. This setting causes errors when processing AS4 
+peppol messages for inbound and outbound transactions.
+
+This issue is resolved. Now, the encryptBody option is set to false in the
+default TPA for Peppol.
+
+
+ASH-526 (ASH_10.1_Fix11)
+
+In the IBM webMethods module for AS4, the wm.ip.estd.as4.peppol:validateContent
+service displays errors as a StringList and returns the output as an object
+after running the service. If the input parameter action has no configured
+value in the <INSTALL_DIR>\IntegrationServer\instances<INSTANCE_NAME>\packages\
+WmAS4\resources\peppol\validate.cnf file, the service does not display an error.
+
+This issue is resolved.
+
+
+ASH-507 (ASH_10.1_Fix10)
+
+In IBM webMethods Module for AS4, when the input parameter 'type' in the 
+'property' field of the wm.ip.estd.as4.msh:submit service is set to an empty 
+string, and the 'as4.message.validateEBMSHeader' property is configured as true, 
+the processing of the message fails with the following error: "Invalid ebms 
+header error."
+
+This issue is resolved. Now, when you use the wm.ip.estd.as4.msh:submit service
+to submit an AS4 message and the value of the "type" input parameter is an empty
+string, the service will not include it in the eb:Property element within
+eb:UserMessage/eb:MessageProperties.
+
+
+ASH-503 (ASH_10.1_Fix10)
+
+In the IBM webMethods module for AS4, when the attribute "type" is not 
+configured in the eb:PartyId element in eb:UserMessage/eb:PartyInfo/eb:From and 
+eb:UserMessage/eb:PartyInfo/eb:To elements, the processing of the message fails.
+
+This issue is resolved.
+
+
+ASH-500 (ASH_10.1_Fix10)
+
+A few security-related concerns are addressed in the AS4 module.
+
+
+ASH-488 (ASH_10.1_Fix9)
+
+In the IBM webMethods module for AS4, when submitting payload using the
+wm.ip.estd.as4.msh:submit service for Peppol, the service fails to validate the
+payload as the payload is compressed.
+
+This issue is resolved.
+
+
+ASH-458 (ASH_10.1_Fix9)
+
+In the IBM webMethods module for AS4, the xml transformer instance returns with 
+an altered javax.xml.transform.TransformerFactory.newInstance().newTransformer()
+API after installing the AS4 Fix ASH_10.1_Fix7.
+
+This issue is resolved.
+
+
+ASH-467 (ASH_10.1_Fix8)
+
+In The IBM webMethods module for AS4, the Peppol TPA displays non-supported
+mepBinding and irrelevant labels. First, delete the existing default trading
+partner agreement with Peppol, Unknown, and Unknown for agreementid, sender,
+and receiver, respectively. Then, reload the WmAS4 package or restart the
+Integration Server.
+
+This issue is resolved.
+
+
+ASH-462 (ASH_10.1_Fix8)
+
+In the IBM webMethods module for AS4 10.1, the 
+wm.ip.estd.as4.peppol:getReceiverDetails service throws a NullPointerException 
+when the value specified for the processIdentifier parameter is invalid. 
+
+This issue is resolved.
+
+
+ASH-459 (ASH_10.1_Fix8)
+
+In the IBM webMethods module for AS4 10.1, when the documentType input has any
+leading or trailing spaces the wm.ip.estd.as4.peppol:getReceiverDetails service
+does not return the endpoint details of the peppol participant.
+
+This issue is resolved.
+
+
+ASH-451 (ASH_10.1_Fix8)
+
+In the IBM webMethods module for AS4 10.1, The signed receipt signal message
+generated in As4 for peppol does not include the certificate.
+
+This issue is resolved.
+
+
+ASH-446 (ASH_10.1_Fix8)
+
+In the IBM webMethods module for AS4 10.1, the processing
+of receipt signal message fails from peppol testbed.
+
+This issue is now resolved. First, delete the existing default trading partner
+agreement with Peppol, Unknown, and Unknown for agreementid, sender, and
+receiver, respectively. Then, reload the WmAS4 package or restart the
+Integration Server.
+
+
+ASH-444 (ASH_10.1_Fix8)
+
+In the IBM webMethods module for AS4 10.1, the processing peppol bound messages
+include the disabled trading partner agreements.
+
+This issue is now resolved.
+
+
+ASH-442 (ASH_10.1_Fix8)
+
+In the IBM webMethods module for AS4 10.1, when Integration Server routes the 
+request through a proxy server, the wm.ip.estd.as4.peppol:getReceiverDetails
+service does not return the endpoint details of peppol participant.
+
+This issue is resolved.  
+Set the as4.peppol.proxy.enable property as true in <Install_Dir>\
+IntegrationServer\instances<Instance_Name>\packages\WmAS4\config\config.cnf 
+file.
+When you enable as4.peppol.proxy.enable property and do not configure the 
+default HTTP proxy server in Integration server, you must set the HTTP proxy 
+alias server for the as4.peppol.proxyAlias property in the configuration 
+<Install_Dir>\IntegrationServer\instances<Instance_Name>\packages\WmAS4\config\
+config.cnf file.
+
+
+ASH-440 (ASH_10.1_Fix8)
+
+In the IBM webMethods module for AS4 10.1, 
+wm.ip.estd.as4.peppol:getReceiverDetails service does not fetch the peppol 
+participant details from the test SMP server.
+
+This issue is resolved when the input isProduction is added to the service.
+
+
+ASH-429 (ASH_10.1_Fix7)
+
+IBM webMethods module for AS4 10.1 provides necessary services support to 
+transmit messages in peppol network. For more information refer IBM webMethods 
+Module for AS4 Installation and User's Guide.
+AS4 is a mandatory transport protocol in the Peppol eDelivery network. It is
+used to transmit asynchronous messages between corner 2 and corner 3 in a
+four-corner topology. Peppol uses PKI for signature and encryption on AS4
+message level and SMP/SML for dynamic discovery.
+
+
+ASH-419 (ASH_10.1_Fix6)
+
+In the IBM webMethods module for AS4 10.1, the module generates SOAP messages 
+with improper order of security elements. As a result, the AS4 messages do not 
+follow the recommendation in specification of WSS SOAP Message Security version 
+1.1.1. and the "Signature" element appears before "EncryptedData."
+
+This issue is now resolved. Set the
+"as4.security.header.signature.after.encryptionData" configuration parameter to
+"true" to make the "Signature" element appear after "EncryptedData."
+
+
+ASH-397 (ASH_10.1_Fix6)
+
+In the IBM webMethods module for AS4 10.1, the module processes the user message
+that contains an invalid charset format and the module does not send an error
+signal.
+
+This issue is now resolved.
+
+
+ASH-396 (ASH_10.1_Fix6)
+
+In the IBM webMethods module for AS4 10.1, the module processes user messages
+even when the MimeType property is absent, the module does not throw an error
+and send error signal.
+
+This issue is now resolved.
+
+
+ASH-395 (ASH_10.1_Fix6)
+
+In the IBM webMethods module for AS4 10.1, when the user message contains the
+corrupted payloads in compressed form, the module does not throw an error
+and send error signal.
+
+This issue is now resolved.
+
+
+ASH-394 (ASH_10.1_Fix6)
+
+In the IBM webMethods module for AS4 10.1, the module processes the user message
+with compression errors and sends a receipt signal instead of an error signal.
+
+This issue is now resolved.
+
+
+ASH-384 (ASH_10.1_Fix5)
+
+In the IBM webMethods module for AS4 10.1, the startup service fails with the 
+error "Startup service exited with the following error:
+com.wm.app.b2b.server.InvokeException: java.lang.NoSuchMethodError:
+org.apache.axis2.context.ConfigurationContext
+com.wm.app.b2b.server.Server.getAxisConfigContext()", which further results in
+failure of wm.as4.services:submit service. This happens in Integration Server
+version 10.11 and above.
+
+This issue is now resolved.
+
+
+ASH-363 (ASH_10.1_Fix4)
+
+In the IBM webMethods module for AS4 10.1, the following exception "ORA-00001: 
+unique constraint (SAG_WEBM_DEV.PK_BIZDOCATTDEF_ATTID) violated." is displayed 
+in logs during the module startup. This occurs when the attribute exists in the 
+database and the module tries to insert attributes during startup.
+
+This issue is now resolved.
+
+ASH-333 (ASH_10.1_Fix3)
+
+IBM webMethods module for AS4 10.1 does not have a mask generation function with
+SHA-1 algorithm.
+
+This issue is resolved. Now, the following algorithms are added in the Trading
+Partner Agreement under "legs/security/x509/algorithmSuite":
+-"Advanced128Sha256MGFSha1GCM"
+-"Advanced256Sha256MGFSha1GCM" 
+
+
+ASH-332 (ASH_10.1_Fix3)
+
+In the IBM webMethods module for AS4 10.1, module doesn't load the TPA while 
+processing the incoming message if its state is "Proposed" for the tuple 
+combination provided and throws error 
+"Encountered error while retrieving PMode ... Error message: TPA not found".
+
+This issue is resolved. The IBM webMethods module for AS4 10.1 loads the Trading 
+Partner Agreement which has "Proposed" state.
+
+
+ASH-331 (ASH_10.1_Fix3)
+
+In the IBM webMethods module for AS4 10.1, the validation of signature for 
+inbound error signal fails with the following error when the Trading Partner 
+Agreement parameters "legs/security/enableSecurity" and 
+"legs/security/x509/sign/enableSign" are enabled:
+"Missing wsse:Security header in request."
+
+This is because, the IBM webMethods module for AS4 10.1 always expects a signed
+error signal from partners and hence tries to validate the signature.
+ 
+This issue is resolved. Now, the module does not validate the signature of
+inbound error signal message.
+
+
+ASH-314 (ASH_10.1_Fix2)
+
+In IBM webMethods AS4 10.1 module, Inbound and Outbound Receipt Signal 
+processing fails with the following errors respectively:
+"org.apache.rampart.RampartException: Expected encrypted part missing."
+"org.apache.axis2.AxisFault: Error in encryption."
+
+This occurs when the custom Policy file that contains "EncryptedParts" is used
+with or without "attachment" or "body" element.
+
+This issue is now resolved.
+
+
+ASH-294 (ASH_10.1_Fix1)
+
+In the IBM webMethods module for AS4 10.1, module services get processed 
+successfully without displaying any error for the disabled Trading Partner 
+Agreement.
+
+This issue is resolved. The IBM webMethods module for AS4 10.1 now displays an 
+error if it does not find any enabled Trading Partner Agreement for the 
+specified or received input values.
+
+
+ASH-291 (ASH_10.1_Fix1)
+
+In the IBM webMethods module 10.1 for AS4, the SHA-1 algorithm is used instead 
+of MGF SHA256 even when the algorithmSuite is set to 'Advanced256Sha256GCM'.
+
+This issue is resolved. Now, the MGF SHA256 algorithm is used.
+
+
+ASH-286 (ASH_10.1_Fix1)
+
+In the IBM webMethods Module 10.1 for AS4, for payload part content, different 
+MIME types are not supported in the AS4 message.
+
+This issue is resolved. Now the user can specify different MIME types for each 
+part in "property" input parameter under "partInfo" using "PayloadMimeType"
+property in wm.ip.estd.as4.msh:submit service.
+
+
+ASH-282 (ASH_10.1_Fix1)
+
+wm.ip.estd.as4.msh:submit service fails when pmodeId and agreementRef inputs are 
+not provided. The exception  displayed is  
+"com.softwareag.estd.ebms.exception.EBMSException: 
+Neither pmodeId nor AgreementRef is not present.TPA loading failed."
+
+This issue is resolved.
+
+
+ASH-281 (ASH_10.1_Fix1)
+
+wm.ip.estd.as4.msh:submit service fails when payload Part ID is SOAP Body 
+and compressionType parameter is set to none in TPA.
+The exception displayed is 
+"com.softwareag.estd.ebms.exception.EBMSException: Encountered error while 
+sending message using PModeID with Part ID SOAP Body. Compression of the 
+SOAP body for the AS4 message is not supported." 
+
+This issue is resolved.
+
+
+ASH-279 (ASH_10.1_Fix1)
+
+In the IBM webMethods Module 9.5 for AS4, eb:MessageProperties element is 
+missing the optional attribute 'type' in the user message.
+
+This issue is resolved. A new optional input parameter, 'type', is added under
+'property' in wm.ip.estd.as4.msh:submit and wm.ip.estd.as4.msh:userMessageSubmit
+services. If the type parameter is specified, then the 'type' attribute with
+specified value will be added in the eb:MessageProperties element. 
+
+
+ASH-276 (ASH_10.1_Fix1)
+
+In the IBM webMethods Module 9.5 for AS4, if the as4.message.emptyConversationId
+property is set to true, then non-empty conversation Id is not supported.
+
+This issue is resolved. The new TPA parameter, allowEmptyConversationId, is
+added in the com.wm.estd.as4.documents.pmode:PMode document.
+Empty conversation ID is not allowed if you set this parameter to false. If set
+to true, an empty conversation ID is allowed.
+If an option is not set in the TPA for this parameter, then the config property,
+as4.message.emptyConversationId, is used.
+
+Note: By default, this parameter is set to null. To use this parameter, update
+TPA manually or recreate the TPA with the required value. 
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central  
+location (9.7 or later products), or Update Manager to install fixes on one 
+machine at a time. For instructions,
+see the documentation at https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Command Central (9.7 or later) or Update Manager. For 
+instructions, see the documentation at https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Copyright Super iPaaS Integration LLC, an IBM Company 2025.

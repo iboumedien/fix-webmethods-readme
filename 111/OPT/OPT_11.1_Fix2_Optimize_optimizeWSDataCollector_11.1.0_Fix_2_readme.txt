@@ -1,0 +1,130 @@
+          IBM webMethods BPM Optimize optimizeWSDataCollector 11.1.0 Fix 2 readme
+
+                        September 2025                        
+
+_________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+
+
+1.0 Fix Name
+
+IBM webMethods BPM Optimize optimizeWSDataCollector 11.1.0 Fix 2
+
+
+2.0 Fix ID
+
+OPT_11.1_Fix2
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects:
+
+- Web Service Data Collector 11.1
+
+
+4.0 Requirements and Dependencies
+
+
+For Optimize environments, the fix version of the Optimize component fixes must
+be the same as the fix version of Optimize shared components fixes
+(wMFix.OPT.optimizeSharedLib and wMFix.OPT.optimizeSharedUI).
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+6.0 Cautions and Warnings
+
+1. Attempting to apply the Optimize Fix to an installation where
+ MWS is configured to use the embedded Derby database will fail.
+ There will be an error reported in the IBM webMethods Update Manager
+ log. For all other supported Relational Database Management Systems
+ configured for MWS, the fix can be applied successfully.
+
+ There is no workaround at this time.
+
+
+ 2. IBM does not recommend uninstalling this fix because 
+ Optimize or other webMethods products might not work properly.
+
+ To be able to restore your Optimize installation, before you install
+ the fix you must back up the Optimize database and your file system.
+
+
+7.0 Fix Contents
+
+
+OBE-13159 (OPT_11.1_Fix2)
+The Central Configurator's "Log4j2 Logging" editor fails to render properly in the UI, displaying "Preview unavailable" errors. This issue affects the ability to configure logging settings through the webMethods Administration interface.
+
+The issue is resolved.
+
+OBE-13004 (OPT_11.1_Fix2)
+In the Edit Role page of Optimize, granting access to a service fails with an error.
+
+The issue is resolved.
+
+OBE-13163 (OPT_11.1_Fix2)
+AE/InfraDC are unable to connect to SSL-enabled Broker. The property key used to retrieve the SSL encryption setting has been updated to match the key used when storing the value.
+
+The issue is resolved.
+
+
+
+OBE-12988 (OPT_11.1_Fix1)
+The SetLogLevelClient tool now supports HTTPS.
+
+OBE-12923 (OPT_11.1_Fix1)
+In IBM webMethods Optimize, creating a table in Oracle Database 23 using Database Component Configurator fails.
+
+The issue is resolved. Log in as table owner before you run the database migration script.
+
+OBE-12938 (OPT_11.1_Fix1)
+When you restart Optimize or Broker Server, the JMS objects on Broker Server might become corrupted.
+ 
+The issue is resolved.
+
+
+
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or IBM webMethods Update Manager to install fixes on 
+one machine at a time. For instructions,see the documentation at 
+https://docs.webmethods.io/.
+
+
+9.0 Uninstallation
+
+IBM does not recommend uninstalling this fix because 
+Optimize or other webMethods products might not work properly.
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Command Central (9.7 or later) or Update Manager. For instructions, see 
+the documentation at https://docs.webmethods.io/.
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025
