@@ -1,0 +1,125 @@
+                   IBM webMethods Installer Shared component Installer Bundles 10.7.0 Fix 5 readme
+
+                                        April 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Installer Bundles 10.7.0 Fix 5
+
+
+
+2.0 Fix ID
+
+WIS_10.7_InstallationProvisioning_Fix5
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects IBM webMethods Platform Manager 10.7.0 10.7.0
+
+
+
+4.0 Requirements and Dependencies
+
+TPS_10.7_Loggers_Fix2
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+WIR-15209 (WIS_10.7_InstallationProvisioning_Fix5)
+IBM webMethods Installer Shared component Provisioning Application is not able to use IBM account for authentication and entitlement check.
+
+WIR-14095 (WIS_10.7_InstallationProvisioning_Fix3)
+Installation of webMethods Installer Shared Tools InstallationProvisioning 10.7 Fix 2
+might fail, because fix dependencies are not explicitly declared.
+
+Required dependencies are defined.
+
+The issue is resolved. 
+
+
+WIR-14043
+With IBM webMethods Commmand Central installation of Integration Server might fail.
+The issue is resolved.
+
+
+WIR-13166
+With IBM webMethods Command Central running multiple product repository validations in parallel might result 
+in sporadical failure.
+
+The issue is resolved. 
+
+WIR-13110 (WIS_10.7_InstallationProvisioning_Fix2)
+With IBM webMethods Command Central installation of fixes might fail, because of certificate mismatch.
+
+The issue is resolved.
+
+WIR-13031 (WIS_10.7_InstallationProvisioning_Fix1)
+With IBM webMethods Central some products might not be reported as
+installed.
+
+The issue is resolved.
+
+
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a central location (9.7 or later), 
+or IBM webMethods Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at https://docs.webmethods.io.
+
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Command Central (9.7 or later) or IBM webMethods Update Manager. For instructions, see 
+the documentation at https://docs.webmethods.io.
+
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

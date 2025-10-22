@@ -1,0 +1,199 @@
+     webMethods Integration Server 10.7 Migration Fix 1 readme
+
+				                           November 2022
+
+________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+
+1.0 Fix Name
+
+webMethods Integration Server 10.7 Migration Fix 1
+
+
+
+2.0 Fix ID
+
+IS_10.7_Migration_Fix1
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Integration Server 10.7.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+PIE-67747
+As part of Integration Server migration, the cloned database password is saved 
+in the configuration file (migrate.dat) in plain text. 
+
+This issue is resolved. Now, the password is not saved in the configuration 
+file.
+
+PIE-74746
+After migrating to an Integration Server to which a fix containing PIE-67747 has
+been applied, the password of a cloned live database configured for a JDBC
+connection pool alias is incorrect. 
+ 
+When migrating an Integration Server instance, users can choose to use a clone
+of the live database for the JDBC connection pool alias associated with a JDBC
+functional alias. If two or more JDBC connection pool aliases exist, the
+migration utility prompts for the password for one JDBC connection pool alias
+but not for any of the other JDBC pool aliases. As a result, the migrate.dat
+file prepared by the migration utility does not contain the password for the
+JDBC connection pool. The migrated Integration Server instance cannot connect to
+all of the databases. 
+
+To resolve this issue, when the user opts to use a clone of the live database
+for the JDBC connection pool, the migration utility prompts for the password for
+all JDBC connection pool aliases. Furthermore, the migration utility saves the
+encoded password in the migrate.dat file by default. 
+
+However, saving the encoded password in the migrate.dat file represents a
+security vulnerability. The new server configuration parameter
+watt.migrate.hidePassword controls whether an encoded database password for a
+JDBC connection pool alias will be saved in migrate.dat. Set
+watt.migrate.hidePassword to false in the migrate.bat/sh file on the target
+Integration Server for the migration utility to save the encoded database
+password. Set to true to omit database passwords for JDBC connection pool
+aliases from the migrate.dat file. The default is false. Set the
+watt.migrate.hidePassword value on the target Integration Server before running
+the migration utility. 
+
+Example of setting watt.migrate.hidePassword in migrate.bat:
+
+%JAVA_EXE% -Dwatt.migrate.hidePassword=true
+-Dwatt.migrate.product.dataProvider=com.wm.app.b2b.server.migrate.MigratorAppDataProviderImpl
+-Dwatt.installer.migrate.destDir="%IS_DIR%"
+-Dcom.webmethods.sc.config.configRoot="%IS_DIR%\config"
+-DCDBS.home.path=%DB_DIR% -Djava.library.path="%SSO_DIR%" -ms%JAVA_MIN_MEM%
+-mx%JAVA_MAX_MEM% -classpath %CLASSPATH%
+com.wm.app.b2b.server.migrate.cmd.IntegrationServerCmdLineToolMigrationDriver %* 
+
+Example of setting watt.migrate.hidePassword in migrate.sh:
+
+$JAVA_RUN $JAVA_D64 -Dwatt.migrate.hidePassword=true
+-Dwatt.migrate.product.dataProvider=com.wm.app.b2b.server.migrate.MigratorAppDataProviderImpl
+-Dwatt.installer.migrate.destDir=$IS_DIR -Dcom.web 
+
+ 
+
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+
+
+
+8.0 Installation
+
+Install the fix using the Software AG Update Manager.
+For instructions, see Using the Software AG Update Manager
+located either in the _documentation directory or on the
+documentation Web site at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Uninstall the fix using the Software AG Update Manager.
+For instructions, see Using the Software AG Update Manager.
+
+NOTE: This uninstall procedure can only be used to uninstall the
+most recently installed fix. This action will revert your
+installation to the previously installed fix. You cannot apply
+this uninstall procedure to the previously installed fix.
+
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the
+webMethods product suite and includes support for operation in
+any country, locale, or language as specified in the webMethods
+Installation Guide. It was not tested with non-English
+configurations and non-ASCII data. However, this fix has no
+globalization impact and can be applied to systems running in
+any supported locale or configuration.
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might
+contain new messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2022  Software AG, Darmstadt, Germany and/or
+Software AG USA  Inc., Reston, VA, USA, and/or its subsidiaries
+and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are
+either trademarks or registered trademarks of Software AG and/or
+Software AG USA Inc. and/or its subsidiaries and/or its
+affiliates and/or their licensors. Other company and product
+names mentioned herein may be trademarks of their respective
+owners.
+
+Detailed information on trademarks and patents owned by
+Software AG and/or its subsidiaries is located at
+http://softwareag.com/licenses.
+
+Use of this software is subject to adherence to Software AG’s
+licensing conditions and terms. These terms are part of the
+product documentation, located at
+http://documentation.softwareag.com/legal/ and/or in the root
+installation directory of the licensed product(s).
+
+This software may include portions of third-party products. For
+third-party copyright notices, license terms, additional rights
+or restrictions, please refer to "License Texts, Copyright
+Notices and Disclaimers of Third Party Products". For certain
+specific third-party license restrictions, please refer to
+section E of the Legal Notices available under "License Terms
+and Conditions for Use of Software AG Products / Copyright and
+Trademark Notices of Software AG Products". These documents are
+part of the product documentation, located at
+http://softwareag.com/licenses and/or in the root installation
+directory of the licensed product(s).
+

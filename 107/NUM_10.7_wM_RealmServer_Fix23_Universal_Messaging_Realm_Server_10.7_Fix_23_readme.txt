@@ -1,0 +1,1274 @@
+           IBM webMethods Universal Messaging webMethods RealmServer 10.7 SP0 Fix 23 Readme
+        
+                                  December 2024
+
+________________________________________________________________________________
+
+This file provides important information for applying IBM webMethods Universal Messaging RealmServer 
+10.7 SP0 Fix 23 to IBM webMethods Universal Messaging 10.7 SP0 installations. For additional 
+information about IBM webMethods Universal Messaging, see the index.html file in the docs directory 
+of your installation. 
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings 
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization 
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+IBM webMethods Universal Messaging webMethods RealmServer 10.7 SP0 Fix 23 Build ***BUILD_NUMBER***
+
+
+
+2.0 Fix ID
+
+NUM_10.7_wM_RealmServer_Fix23
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+IBM webMethods Universal Messaging webMethods RealmServer 10.7 SP0
+
+
+
+4.0 Requirements
+
+None.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+It is strongly advisable that the Universal Messaging client libraries
+are patched together with the realm server binaries, and that both are kept
+up to date with latest Universal Messaging official fix set.
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+ 	
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+NUM-23813 (NUM_10.7_wM_RealmServer_Fix23)
+
+Universal Messaging uses the Protobuf library version 3.21.12, which has a security vulnerability.
+The issue is resolved. The Protobuf library has been updated to version 3.25.5.
+
+NUM-23628 (NUM_10.7_wM_RealmServer_Fix23)
+
+The log level for the specific message Flow Control enabled for Connection with ID has been changed 
+from warn to debug to reduce the amount of non-critical log entries in the nirvana.log file. This 
+adjustment helps clean up the logs, making them easier to read and understand, while still 
+providing detailed Flow Control information at the debug level when needed for troubleshooting.
+
+NUM-23601 (NUM_10.7_wM_RealmServer_Fix23)
+
+After a restart of the master node in a cluster, Universal Messaging might not delete .mem files for 
+a channel on a slave node after all events are acknowledged.
+Universal Messaging might not delete the .mem files for a multi-file store channel on a slave node 
+in a cluster even after all events have been acknowledged. The issue occurs when the channel uses a 
+JMS engine and after you edit a storage property for the channel and restart the master node.
+The issue is resolved.
+
+NUM-23226 (NUM_10.7_wM_RealmServer_Fix23)
+
+In Universal Messaging, events may accumulate on the source side of a remote join.
+The issue may occur when you reuse or disconnect the remote join, and the last EID of the source 
+channel has a large value.
+Specifically, the issue may happen during the following situation:
+1. You delete the remote join using the admin API or the Enterprise Manager, or you disconnect the 
+join from the destination server for a long time.
+2. Many publishers to the source channel modify the last EID of the channel.
+3. You recreate or reconnect the remote join.
+The issue is resolved. In addition, you can use a new realm configuration property, 
+"RemoteJoinContextStatsInterval", to log join statistics at a specified interval in milliseconds. 
+You configure the property on the Config tab for a realm in the Enterprise Manager, as part of the 
+Join Config property group. A value between 0 (default) and less than 5000 disables logging. The 
+minimum logging interval is 5000.
+For more information about working with realm configuration properties, see the Universal Messaging 
+documentation.
+
+NUM-21545 (NUM_10.7_wM_RealmServer_Fix22)
+
+Updated bouncycastle libraries to 1.78.1 to address security vulnerabilities.
+
+NUM-21442 (NUM_10.7_wM_RealmServer_Fix22)
+
+Super users on remote hosts can bypass mandatory authentication regardless of the validity of their 
+credentials.
+The issue is now resolved. Only super users on localhost are exempt from authentication.
+
+NUM-21335 (NUM_10.7_wM_RealmServer_Fix22)
+
+On the Windows platform JVM's do not support millisecond resolution when using the 
+java.util.concurrent.locks.LockSupport#parkNanos methods causing delays up to 15 milliseconds when 
+expecting only 1 millisecond. A solution has been implemented that overcomes this issue by enabling 
+1 millisecond clock resolution with the use of java.lang.Thread#sleep(long) on a thread for the 
+life of the JVM.
+
+NUM-21032 (NUM_10.7_wM_RealmServer_Fix21)
+
+When updating protobuf descriptor for the channel and then cluster (all servers) is fully restarted 
+the channel missed the new updated protobuf descriptor. 
+Now it should be fixed.
+
+NUM-20889 (NUM_10.7_wM_RealmServer_Fix21)
+
+AMQP keep alives from a UM server may cause a decode-error during transport, or the idle timeout 
+threshold may be missed due to improper keep alive processing on a UM server, causing an AMQP 
+client to disconnect and close.
+This issue is now resolved. AMQP clients should now remain connected unless gracefully shutdown, or 
+the idle timeout threshold (if applicable) is exceeded after proper keep alive processing.
+
+NUM-20952 (NUM_10.7_wM_RealmServer_Fix20)
+
+When you close all consumers that are subscribed to a durable, the server logs a 
+NullPointerException.
+The issue is resolved.
+
+NUM-20934 (NUM_10.7_wM_RealmServer_Fix20)
+
+A vulnerability was discovered in the third-party org.json library used in Universal Messaging 
+[version 20230227].
+This issue is resolved by upgrading org.json jar used in Universal Messaging from version 20230227 
+to version 20231013.
+
+NUM-20924 (NUM_10.7_wM_RealmServer_Fix20)
+
+UM previously supported only filters like: 'document.field = stringField',
+but did not support filters like 'stringField=document.field', i.e. where RHS expression of filter 
+contains document nested fields.
+Now it is fixed and nested fields can be used in right hand side of  filter expression (for now 
+except boolean fields values).
+
+NUM-18246 (NUM_10.7_wM_RealmServer_Fix19)
+
+Added audit logs on important operations.
+
+NUM-16156 (NUM_10.7_wM_RealmServer_Fix19)
+
+Universal Messaging does not provide an option to export Protobuf
+definitions from a channel or queue.
+The Protobuf definitions are needed when you want to explore
+the structure of a payload in a client application or when you
+import or export the contents of a channel or queue.
+The issue is resolved. Now you can export Protobuf definitions
+from a channel or queue in the following ways:
+- Using a new command-line tool named ExportProtobufDefinitions.
+- Using the Enterprise Manager. A new option, Export Protobuf Definitions,
+has been added to the context menu for a channel or queue.
+In addition, the ExportRealmXML and ImportRealmXML command-line tools
+also have options for exporting and importing Protobuf definitions, respectively.
+
+NUM-20637 (NUM_10.7_wM_RealmServer_Fix18)
+
+In a Universal Messaging cluster, a slave node might fail to redirect a client application to the 
+master node because the nodes fail to exchange information about the public connections during the 
+formation of the cluster.
+The issue is resolved.
+
+NUM-20547 (NUM_10.7_wM_RealmServer_Fix18)
+
+A Universal Messaging queue synchronous reader waits additional 300 seconds to process an event 
+instead of two seconds. The issue is resolved.
+
+NUM-20310 (NUM_10.7_wM_RealmServer_Fix18)
+
+Bouncy Castle libraries updated from version 1.60 to version 1.70
+
+NUM-19439 (NUM_10.7_wM_RealmServer_Fix18)
+
+AMQP framing/decode errors are possible on the client side due to a possible race condition in the 
+QPID Proton J library.
+To resolve these errors, the server must synchronize access to a 
+org.apache.qpid.proton.engine.Transport for all instances where frames could be written.
+
+NUM-19236 (NUM_10.7_wM_RealmServer_Fix18)
+
+Xalan library updated from version 2.7.2 to version 2.7.3
+
+NUM-20215 (NUM_10.7_wM_RealmServer_Fix17)
+
+A vulnerability was discovered in the third-party Xerces library used in Universal Messaging.
+The issue is resolved. The Xerces jar used in Universal Messaging has been upgraded to version 
+2.12.1 from versions 2.11 and 2.3.
+
+NUM-19990 (NUM_10.7_wM_RealmServer_Fix17)
+
+A vulnerability was discovered in the third-party org.json library used in Universal Messaging.
+The issue is resolved. The org.json jar used in Universal Messaging has been upgraded to version 
+20230227 from version 20160810.
+
+NUM-19228 (NUM_10.7_wM_RealmServer_Fix17)
+
+A vulnerability of 3d party component Snakeyaml  in jmx_prometheus_javaagent.jar was discovered (as  
+Snakeyaml of 1.29 v was used in jmx_prometheus_javaagent.jar)
+The issue is resolved. The jmx_prometheus_javaagent binary has been upgraded from version 0.16.1 to 
+version 0.18.0 (which contains snakeyaml 2.0 - which mitigated the vulnerability).
+
+NUM-18259 (NUM_10.7_wM_RealmServer_Fix17)
+
+A Universal Messaging client might fail to connect to the server with a "backlog exceeded" error.
+The client cannot connect to the server and Universal Messaging writes the following
+error to the nirvana.log: "Backlog queue exceeded limit, unable to process incoming connection".
+In addition, the client might report many slow-moving tasks related to event processing. The issue 
+occurs
+after installing the fix for NUM-17781 for your Universal Messaging version, which introduces a 
+regression.
+The issue is resolved. The restriction on the total number of connections being authenticated now 
+falls back on
+the Connection Monitor to ensure that there are not too many connections being authenticated at the 
+same time.
+This enforces the limit based on the host from which the connections are coming and not based on the 
+total of connections.
+
+NUM-17830 (NUM_10.7_wM_RealmServer_Fix17)
+
+UM server was not able to handle more then thousand simultaneous MQTT connection gracefully- MQTT 
+connect time would increase and MQTT clients might start experiencing connect timeouts. 
+This is now resolved by optimizing the MQTT connect handling on the server. Depending on the 
+environment used, single UM server should be able to handle more then 5000 MQTT connect operations 
+simultaneously.
+Also UM's ability to work with thousands stores and consumers is also improved.
+Following important optimizations were added as part of this fix:
+- Durable state saving was optimized by using an buffered output stream, so the save operation is 
+performed faster on disk.
+- MQTT configuration to configure the EventsPerSpinle channel configuration for auto created topics 
+is added:
+"Protocol MQTT Config"-> "AutoCreatedStoreSpindleSize". Defaults to 50000. Previously stores were 
+created with eventsPerSpindle = 0, which was leading to MQTT auto created stores were created as 
+non-multifile stores.
+- Durable config was added to enable\disable the Consumer State Monitor.
+In case of many consumers, the consumer state monitor used for monitor consumer's health might add 
+an additional overhead which can affect the performance of the UM server's Scheduler Pool.
+"DurableConfig"->"EnableConsumerStateMonitor". Default value is true, to disable the consumer 
+monitor set the value to false.
+- A ConcurrentModificationException in the nInterestStorageValidator is fixed.
+- For single UM server deployment (non-A/A clustering), the duplicate MQTT ClientID detection is 
+optimized to not persist connection state on disk.
+
+NUM-19891 (NUM_10.7_wM_RealmServer_Fix15)
+
+Using JMX, you can monitor only one Universal Messaging HTTP-SocketAccept or
+HTTP-SSLSocketAccept thread pool at a time and you cannot identify which thread
+pool you are monitoring.
+Out of many existing HTTP-SocketAccept or HTTP-SSLSocketAccept thread pools,
+you can monitor only one at a time using JMX and it is not clear which one it is.
+The JMX monitoring tool just displays the generic name HTTP-SocketAccept.
+The issue happens because the socket accept thread pool name does not include
+the name of the corresponding Universal Messaging interface and the JMX server
+cannot identify the different thread pools.
+The issue is resolved. Now each HTTP-SocketAccept or HTTP-SSLSocketAccept thread
+pool name includes the name of the corresponding interface, for example,
+HTTP-SocketAccept-nhp1, and all thread pools are visible and identifiable in your
+JMX monitoring tool.
+
+NUM-19414 (NUM_10.7_wM_RealmServer_Fix15)
+
+Adding or modifying supported ciphers for a Universal Messaging server SSL interface using 
+command-line tools might fail.
+When you run the AddHTTPSInterface, AddSSLInterface, or ModifyInterface command-line tools and 
+specify the 'ciphers' optional parameter, the tools might fail to execute, although the specified 
+ciphers are part of the list of supported SSL ciphers. Adding a cipher might fail with the 
+following error: "Illegal argument passed: Cipher not found in supported cipher list".
+The issue is resolved.
+
+NUM-19220 (NUM_10.7_wM_RealmServer_Fix15)
+
+Having many synchronous consumers active on a queue might cause high CPU usage and slow performance 
+in Universal Messaging.
+The issue is resolved.
+
+NUM-19468 (NUM_10.7_wM_RealmServer_Fix14)
+
+Adding a consumer to a UM Store leaves the sub-name field in the Connections tab empty.
+Issue is resolved.
+
+NUM-19452 (NUM_10.7_wM_RealmServer_Fix14)
+
+CPU usage in Universal Messaging might spike due to Prometheus monitoring.
+When JMX monitoring using Prometheus is enabled in a Universal Messaging server,
+CPU usage can reach 99% even during insignificant loads.
+The issue is resolved. Universal Messaging now provides an updated jmx_sag_um_exporter.yaml file in 
+the <Software_AG_directory>\UniversalMessaging\sever\templates directory, which limits additional 
+queries made by the JMX Exporter agent. For information about how to apply the new file to existing 
+server instances, see the topic on monitoring Universal Messaging using Prometheus in the Universal 
+Messaging documentation.
+
+NUM-19430 (NUM_10.7_wM_RealmServer_Fix14)
+
+Universal Messaging now supports defining the number of concurrent connections per user.
+You can use a new realm configuration property, "MaxNoOfConnectionsPerUserName", part of the 
+"Connection Config" group in the Enterprise Manager, to specify the number of concurrent 
+connections per user. The default is -1, which means no limit is set on the number of connections. 
+Valid values range between -1 and 2147483647. When you set a limit, if connections exceed the 
+specified number, the client will get an nSecurityException. However, admin connections with the 
+"Realm Override Connection Count" permission are still allowed to connect to the realm server.
+In addition, the existing "MaxNoOfConnections" property, controls the total number of concurrent 
+connections to the server. When you set a limit on the total number, connections that exceed the 
+limit are rejected if they are non-admin connections or if they do not have the "Realm Override 
+Connection Count" permission. The default is -1, which means no limit is set on the number of 
+connections. Valid values range between -1 and 2147483647.
+
+NUM-19300 (NUM_10.7_wM_RealmServer_Fix14)
+
+When Integration Server uses Universal Messaging as a JMS provider, it might stop responding when 
+you try to enable or disable JMS triggers.
+The issue is resolved.
+
+NUM-19232 (NUM_10.7_wM_RealmServer_Fix14)
+
+
+NUM-19200 (NUM_10.7_wM_RealmServer_Fix14)
+
+ReadPool tasks could be stalled when connections are abruptly closed. This defect manifests itself 
+by server log entries such as 
+[Mon Jul 11 10:37:55.294 CEST 2022] [UM-Monitor-Thread] ThreadPool: <ReadPool> Stalled task found, 
+Thread ReadPool:86 has been active for 61500(ms) running task class 
+com.pcbsys.foundation.drivers.fServerHTTPDriver$OpenConnection, Idle Threads 89, Allocated Threads 
+100, Queued Tasks 0, Task Executed 1807968920
+This issue is now resolved. 
+
+NUM-19163 (NUM_10.7_wM_RealmServer_Fix14)
+
+Previously if  protobuf descriptors were updated for the channel on master/slave node, all other 
+nodes stayed with old protobuf descriptors. 
+And if the master was restarted,  the new master was selected and all nodes again restore old 
+protobuf descriptors.
+Durable filters were not able to be applied to the event and stopped receiving events at this point.
+Now it is fixed and each node of the cluster will update channel protobuf descriptors when it is 
+changed in one of the nodes.
+
+NUM-19151 (NUM_10.7_wM_RealmServer_Fix14)
+
+Enterprise Manager displays invalid realm property values imported from an XML realm configuration 
+file using the ninstancemanager command-line tool.
+After you import a realm configuration from an XML file using ninstancemanager and the configuration 
+contains invalid realm property values, Universal Messaging might not automatically replace the 
+invalid values with valid ones on start-up. As a result, Enterprise Manager displays the invalid 
+property values, which could lead to exceptions and unexpected behavior of Enterprise Manager.
+The issue is resolved. 
+
+NUM-18514 (NUM_10.7_wM_RealmServer_Fix14)
+
+In a Universal Messaging (UM) cluster that uses multiplexed sessions, the primary realm server 
+instance stops responding because of increased CPU usage, which stalls the tasks on the UM server. 
+The issue occurs when the multiplexed SSL session between the server and client does not close 
+properly.
+The issue is resolved.
+javax.net.ssl.SSLException: closing inbound before receiving peer's close_notify
+The fix for this issue involves correcting and refactoring specific code in the server's NIO layer 
+to address the issue.
+
+NUM-18479 (NUM_10.7_wM_RealmServer_Fix14)
+
+Reintroduced the Id option of the nRealmTool utility to modify the host and port.
+
+NUM-19578 (NUM_10.7_wM_RealmServer_Fix13)
+
+Fixed a rare deadlock caused by an abnormal close in the Javascript websocket driver. A side effect 
+of this deadlock is that a UM server may shutdown and automatically restart.
+
+NUM-18339 (NUM_10.7_wM_RealmServer_Fix13)
+
+A Universal Messaging Java client fails to connect to the server when the hostname of the server or 
+of the machine that hosts the server contains special characters, such as an underscore.
+The issue occurs because the Java URI API does not support special characters in hostnames.
+The issue is resolved.
+
+NUM-18668 (NUM_10.7_wM_RealmServer_Fix12)
+
+When you enable the ThreadDumpOnSlowTask thread-pool monitoring property, Universal Messaging might 
+generate many thread dumps over a short time, which could slow performance.
+The issue is resolved.
+
+NUM-18421 (NUM_10.7_wM_RealmServer_Fix12)
+
+Universal Messaging might log thread dumps twice in nirvana.log.
+When a stalled or slow moving task is detected, or a thread dump is requested, it might be logged 
+twice in nirvana.log which is unnecessary.
+The issue is resolved.
+
+NUM-18475 (NUM_10.7_wM_RealmServer_Fix11)
+
+Creating a durable on the JMX server fails with a MalformedObjectNameException.
+When you have enabled the JMX server and try to create a durable on a channel, Universal Messaging 
+writes a MalformedObjectNameException in the nirvana.log file. The durable gets created on the 
+Universal Messaging server, but not on the JMX server. The issue occurs because the JMX beans and 
+attributes cannot validate a durable name containing special characters.
+The issue is now resolved.
+
+NUM-18197 (NUM_10.7_wM_RealmServer_Fix10)
+
+Universal Messaging continuously writes NullPointerExceptions to the nirvana.log file, which 
+originate from the JMX context.
+The issue occurs if you create a secure interface and do not specify correct certificate attributes.
+The issue is resolved.
+
+NUM-18121 (NUM_10.7_wM_RealmServer_Fix10)
+
+Improve the performance of cluster pipeline processing by using a different data structure.
+
+NUM-18111 (NUM_10.7_wM_RealmServer_Fix10)
+
+The performance of a Universal Messaging server might deteriorate when a durable or a queue has many 
+outstanding events.
+The issue is resolved.
+
+NUM-16036 (NUM_10.7_wM_RealmServer_Fix10)
+
+When Universal Messaging is configured to use the Logback framework, rolling the logs might fail 
+with an exception.
+When rolling the logs on a Windows operating system, if the Logback framework fails to rename a log 
+file, it throws a NullPointerException.
+The issue is resolved. Universal Messaging now supports version 1.2.11 of the Logback framework.
+
+NUM-17870 (NUM_10.7_wM_RealmServer_Fix9)
+
+Universal Messaging audit logging for cluster operations has been enhanced.
+The server now creates audit logging events for each cluster operation depending
+on whether the 'RealmSuccess' audit realm configuration property or 'RealmFailure'
+audit realm configuration property is set to 'true'.
+In addition, Universal Messaging logs connection details and information about
+the user who performs the following actions:
+- Creates a cluster
+- Adds a member to a cluster
+- Removes a member from a cluster
+- Destroys a cluster
+For more information about the 'RealmSuccess' and 'RealmFailure' properties and server
+audit logging, see the Universal Messaging documentation.
+
+NUM-17909 (NUM_10.7_wM_RealmServer_Fix8)
+
+A Universal Messaging realm server logs errors about insufficient disk space even when the free disk 
+space is sufficient.
+The server logs an error into the nirvana.log file that "Free disk space has reduced below warning 
+threshold percentage."
+The issue is resolved. Now the server logs an error message only when the free disk space required 
+for the realm server to continue processing is below the defined minimum threshold.
+
+NUM-17790 (NUM_10.7_wM_RealmServer_Fix8)
+
+Universal Messaging now supports flat namespaces for topics and queues in the JMX server bean. When 
+you enable the new functionality, a JMX queue namespace, for example, will have the format 
+"destinationName=/q1/q2/q3".
+By default, JMX namespaces for topics and queues are created using a folder tree structure, for 
+example, "Folder1=q1,Folder2=q2,destinationName=queuename", which might cause issues for some 
+monitoring solutions.
+To enable the flat namespace functionality, you must set to ?true? a new realm configuration 
+property, ?FlatStoreJMXBeanNamespace", as part of the JVM management configuration for a realm. To 
+switch to flat namespaces, take the following steps:
+1. In Enterprise Manager, select a realm and go to Config > JVM Management.
+2. Set the "FlatStoreJMXBeanNamespace" property to ?true?.
+3. Disable the ?EnableJMX? property to stop the JMX server.
+4. Set ?EnableJMX? to ?true? again.
+If you are using Prometheus to monitor Universal Messaging, you must edit the ?pattern? parameter 
+for all topic and queue attributes in the jmx_sag_um_exporter.yaml file between steps 3 and 4, as 
+follows:
+Old version of pattern:
+- pattern: com.softwareag.um.server<type=Broker, brokerName=(\S*), destinationType=Queue, 
+(.*)><>(TotalPublished)
+New version of pattern:
+- pattern: com.softwareag.um.server<type=Broker, brokerName=(\S*), destinationType=Queue, 
+destinationName=(\S*)><>(TotalPublished)
+You must replace (.*) in the old file version with destinationName=(\S*) in the new file version. A 
+restart of the server is not required because the changes take effect at run time.
+
+NUM-17766 (NUM_10.7_wM_RealmServer_Fix8)
+
+Exempt file, which is used to allow users to bypass authentication when it is mandatory, has been 
+updated to support wildcard entries.
+The exempt file supports wildcard entries using the * (asterisk) symbol, such as: user@*, *@host. 
+However, *@* is not supported, as it will allow any user to bypass authentication, hence making the 
+use of authentication worthless. 
+Note: Username ?*? is a valid username, but if such user needs to be added into the exempt list, it 
+will be read as a wildcard. In such cases we recommend ?*? username to not be used.
+Functionality changed:
+-authentication exempt users were loaded by default from a ?DSECURITYFILE file. This is now changed 
+and the ?DSECURITYFILE is not used anymore to load the exempt users. Exempt users now need to be 
+explicitly defined using the -DNirvana.auth.exempt property. 
+-when exempt user with invalid password was provided, the expected outcome was authentication 
+failure. Now, we do not make difference between exempt user with or without password, so we expect 
+successful login in both cases, when user from exempt list tries to login.
+
+NUM-17689 (NUM_10.7_wM_RealmServer_Fix8)
+
+Universal Messaging Enterprise Manager shows a negative value for Current Connections in the Totals 
+section for a shared or serial durable.
+The issue is resolved.
+
+NUM-17275 (NUM_10.7_wM_RealmServer_Fix8)
+
+Improved the logging for missing JAAS login module
+
+NUM-14367 (NUM_10.7_wM_RealmServer_Fix8)
+
+NA
+
+NUM-17735 (NUM_10.7_wM_RealmServer_Fix7)
+
+Universal Messaging now offers more verbose logging related to DNS resolution.
+
+NUM-17566 (NUM_10.7_wM_RealmServer_Fix7)
+
+The Universal Messaging server might log NullPointerException error messages when JMX is enabled.
+When you enable JMX on Universal Messaging, the UM JMX server might register sync queue readers 
+incorrectly and log multiple NullPointerException error messages in the nirvana.log. This issue 
+occurs when attempting to read events from a queue with a sync consumer.
+The issue is resolved.
+
+NUM-17552 (NUM_10.7_wM_RealmServer_Fix7)
+
+You can create a non-clustered durable on a clustered channel in a Universal Messaging cluster.
+The issue is resolved. Universal Messaging now disregards the nDurableAttributes#isClustered flag. 
+When you create a durable object on a clustered channel the durable is clustered even if
+the isClustered attribute flag is set to 'false'.
+
+NUM-17289 (NUM_10.7_wM_RealmServer_Fix7)
+
+A slave node might fail to join a Universal Messaging cluster, writing a ?fatal file I/O? error to 
+the server log.
+The node switches back and forth between offline and recovery states until it shuts down. The issue 
+occurs when the slave node tries to purge a large number of events on a store.
+The issue is resolved. Cluster node recovery times have been improved and slave nodes do not enter a 
+recovery loop. This applies directly to any channel or queue that employs multi-file storage.
+
+NUM-17288 (NUM_10.7_wM_RealmServer_Fix7)
+
+A very rare condition in slave recovery could leave a slave node with channel(s) not recovered 
+resulting in OOM. This issue is now resolved. 
+
+NUM-17044 (NUM_10.7_wM_RealmServer_Fix7)
+
+The Universal Messaging realm server now uses the hostname instead of the IP address for 
+communication for security purposes.
+System requirement: DNS resolution must work properly on the VMs hosting Universal Messaging.
+
+NUM-17440 (NUM_10.7_wM_RealmServer_Fix6)
+
+When using Protobuf messages, UM uses the default Protobuf 3 values. This behavior is now 
+configurable via a server side configuration option - TreatUnsetFieldsAsNull . Its default value is 
+false to retain the current behavior where unset string fields are treated as empty strings and not 
+NULL. To change that behavior and treat unset fields as NULL,  set the configuration value of 
+TreatUnsetFieldsAsNull to true. 
+One can configure TreatUnsetFieldsAsNull via EnterpriseManager->Realm->Config->Show Advanced 
+Config->Advanced Configuration->Protobuf Config->TreatUnsetFieldsAsNull.
+
+NUM-17414 (NUM_10.7_wM_RealmServer_Fix6)
+
+Restarting Universal Messaging fails with a file I/O error.
+The issue might occur when the server tries to load a shared or serial durable with a
+selector that has an event buffer size of more than 10 000 symbols. In this case,
+Universal Messaging writes the following error in the nirvana.log file:
+"Server shutdown initiated due to fatal file I/O error occurred: Unable to load the durable
+from, corruption detected...Input exceeded input buffer size."
+The issue is resolved. You can now create durables with selectors that have an input event buffer 
+size of more than 10 000 symbols.
+
+NUM-17343 (NUM_10.7_wM_RealmServer_Fix6)
+
+When the used by customer nodeJS AMQP (Rhea) client was closed- the associated AMQP processing tasks 
+were not closed appropriately. This caused high CPU usage caused by UM's server AMQP processing 
+threads. Similar high CPU usage was also possible on a idle, non-closed AMQP client connections.
+This issue is now resolved.
+
+NUM-17334 (NUM_10.7_wM_RealmServer_Fix6)
+
+When using NSPS protocol (nsp over SSL) for inter-cluster commmunication, Universal Messaging master 
+realm may lockup when writing data to another realm in the cluster if the connection to that realm 
+is interrupted. The lockup may prevent the cluster keep alive check to reset the connection and may 
+cause the master realm to remain stuck even after the rest of the cluster reforms and elects 
+another master.
+This issue is now resolved. Universal Messaging server no longer holds any locks when closing an 
+inter-realm connection, which enables cluster keep alive handling to close non-responsive 
+connections immediately.
+
+NUM-17254 (NUM_10.7_wM_RealmServer_Fix6)
+
+Creating a new session to Universal Messaging might fail when working with temporary stores that 
+have the autoDelete flag enabled.
+Session creation fails with the message "com.pcbsys.nirvana.client.nUnexpectedResponseException:
+Received an unexpected response to the request: Unexpected response to handshake request,
+class com.pcbsys.nirvana.base.events.nDeleteChannel".
+The issue is resolved.
+
+NUM-17151 (NUM_10.7_wM_RealmServer_Fix6)
+
+The upper limit for stalled task warning time (StalledTaskWarningTime) used to be 1 minute which is 
+insufficient for some customers which have long running tasks. The upper limit is now increased to 
+5 minutes in line with older releases. 
+
+NUM-17150 (NUM_10.7_wM_RealmServer_Fix6)
+
+After migrating to Universal Messaging version 10.1 or above, a secondary node goes down because the 
+connection used for a multiplex session stalls.
+The issue is resolved.
+
+NUM-17119 (NUM_10.7_wM_RealmServer_Fix6)
+
+When clients use the Universal Messaging channel iterator client API to consume events from
+a channel with a shared durable, pausing a session to the server might cause messages to be 
+perceived as lost.
+The issue occurs because the server does not suspend subscriptions properly when a session is 
+paused.
+In this case, the server might send events to consumers while the consumers are not ready to process 
+them.
+Such events are perceived as lost, but will be redelivered once the session is closed and a new one 
+is established.
+This issue is resolved. Now the Universal Messaging server times out all durable subscriptions
+when a session is paused, and clients receive a nRequestTimedOutException.
+
+NUM-17062 (NUM_10.7_wM_RealmServer_Fix6)
+
+During the cluster destruction process, there could be a communication task executing, that updates 
+a server's known state of remote nodes. There was a possibility that those two processes could 
+interfere with each other, resulting in a NullPointerException logged in the server log file. This 
+issue is now resolved.
+
+NUM-17094 (NUM_10.7_wM_RealmServer_Fix5)
+
+A security vulnerability related to the Prometheus JMX functionality was discovered in Universal 
+Messaging Docker images.
+The issue is resolved. The jmx_prometheus_javaagent binary has been upgraded from version 0.13.0 to 
+version 0.16.1.
+
+NUM-16534 (NUM_10.7_wM_RealmServer_Fix5)
+
+In a Universal Messaging cluster, the JVM crashes with a memory corruption error caused by 
+synchronization issues.
+The issue is resolved.
+
+NUM-16519 (NUM_10.7_wM_RealmServer_Fix5)
+
+Universal Messaging servers might crash because of memory issues related to the JMX connections.
+After a client unsubscribes from a durable or queue on a realm server, the Universal Messaging 
+server might exhaust the available memory and crash.
+The issue occurs because Universal Messaging does not properly remove the JMX connections associated 
+with the subscription.
+The issue is now resolved.
+While fixing this particular issue the overall JMX design was improved an optimized, so other issues 
+were fixed as well.
+This fix is considered an important one for the JMX functionality, so it is strongly recommended for 
+customers which use JMX to install it.
+
+NUM-16404 (NUM_10.7_wM_RealmServer_Fix5)
+
+After enabling trace logging from Enterprise Manager, the server log shows messages that do not give 
+clear details about the traced issue and originate from UM private channels.
+The issue is resolved. When trace logging is enabled, Universal Messaging now logs only messages 
+from the consumer channels. The log messages now give more information, such as which event details 
+are retrieved and from which store. 
+
+NUM-16041 (NUM_10.7_wM_RealmServer_Fix5)
+
+Slight performance adjustment in UM's internal files handling.
+
+NUM-15870 (NUM_10.7_wM_RealmServer_Fix5)
+
+Improved server start-up when a large number of stores are loaded.
+
+NUM-10065 (NUM_10.7_wM_RealmServer_Fix5)
+
+When non-durable JMS sync consumer on channel was re-subscribed and there are no new events 
+published- it was possible the UM server to not delete the old events kept by the old subscriber.
+This is now fixed- when the new consumer is added it will properly reset its interest and the old 
+events for which we don't have interest anymore will be deleted.
+
+NUM-16830 (NUM_10.7_wM_RealmServer_Fix4)
+
+The Universal Messaging realm server has memory and performance issues when a memory leak occurs in 
+the task scheduler.
+The issue is resolved. 
+
+NUM-16785 (NUM_10.7_wM_RealmServer_Fix4)
+
+Having a username that contains "@" results in Universal Messaging logging the exception message 
+"Unexpected subject/address format.?, which might flood the nirvana.log and client.log file.
+The issue is now resolved.
+
+NUM-16608 (NUM_10.7_wM_RealmServer_Fix4)
+
+Creating and then deleting many channels or queues might result in Universal Messaging leaking 
+memory and shutting down. 
+The issue is now resolved. 
+
+NUM-16533 (NUM_10.7_wM_RealmServer_Fix4)
+
+Regression in queue filtering could lead to events destined for one queue consumer to be delivered 
+to another queue consumer instead. This could potentially lead to stuck consumers and / or disk 
+space issues. This issue is now resolved. 
+
+NUM-16472 (NUM_10.7_wM_RealmServer_Fix4)
+
+Synchronous durable topic or queue consumers that have low timeout values (tenths of milliseconds or 
+less) and consume messages from a slave realm in a Universal Messaging cluster might stop consuming 
+messages and log the following message in the nirvana.log file for the slave realm:
+"Cluster> Rolling back Event IDs to allocate for a local connection that no longer exists."
+The issue is resolved. Universal Messaging now has the "TimeoutSynchronousConsumerOnMaster" advanced 
+realm configuration property that you can use to switch the timeout procedure to the master realm 
+in the cluster. Valid values for the new property are:
+true - switches the timeout procedure to the master realm in the cluster
+false (default) - the timeout procedure is run on a slave realm in the cluster
+Important! You must configure the new property after updating all realms in the cluster to the fix 
+version of the master realm.
+
+NUM-16457 (NUM_10.7_wM_RealmServer_Fix4)
+
+Despite using a network drive as a data directory, Universal Messaging might store some .mem files 
+locally. 
+Universal Messaging might incorrectly save some .mem files on a local drive, even though you are 
+using a network drive as a data directory for storing channels and queues. 
+The issue is now resolved.
+
+NUM-16033 (NUM_10.7_wM_RealmServer_Fix4)
+
+Filter expressions in UM involving NULL were not evaluated correctly and used to return wrong 
+results. This issue is now fixed. 
+
+NUM-15970 (NUM_10.7_wM_RealmServer_Fix4)
+
+When nProtobuf events get published from a Universal Messaging server to the client, the events are 
+not processed in the correct order. The issue occurs because the custom Protobuf attributes are not 
+set in the nProtobuf events.
+The issue is resolved.
+
+NUM-15853 (NUM_10.7_wM_RealmServer_Fix4)
+
+When initializing a Universal Messaging multiplex session, the connection times out and the Java 
+Service Wrapper detects a deadlock condition.
+The issue is resolved.
+
+NUM-13618 (NUM_10.7_wM_RealmServer_Fix4)
+
+Changing the <RealmName> of an existing Universal Messaging (UM) server instance through the REALM 
+server parameter in the Server_Common.conf file after starting the server instance might result in 
+issues.
+The issue is resolved. Now you cannot change the <RealmName> of a UM server instance after creating 
+the server instance.
+
+NUM-16458 (NUM_10.7_wM_RealmServer_Fix3)
+
+Using the AMQP protocol in Universal Messaging version 10.7 Fix 1 fails with an error. The issue 
+occurs because the proton-j.jar version 0.33.5 is missing.
+The issue is now resolved.
+
+NUM-16367 (NUM_10.7_wM_RealmServer_Fix3)
+
+Recovering empty indexed durables in a cluster might result in failed inter-realm communication 
+between the master node and a secondary node.
+The issue can occur when no events are waiting to be delivered on the durable or the number of 
+events on the master and the secondary node is equal.
+The issue is resolved.
+
+NUM-16364 (NUM_10.7_wM_RealmServer_Fix3)
+
+Universal Messaging fails to start automatically after migration using a Command Central composite 
+template.
+The server writes a NullPointerException to the nirvana.log file. You can start the server only from 
+the Command Central web user interface.
+The issue is resolved.
+
+NUM-16350 (NUM_10.7_wM_RealmServer_Fix3)
+
+Server status log now will display the open file descriptor on Unix platform
+
+NUM-16257 (NUM_10.7_wM_RealmServer_Fix3)
+
+A NullPointerException occurs randomly in a Universal Messaging server when you try to publish 
+events to a channel.
+The issue is resolved.
+
+NUM-16160 (NUM_10.7_wM_RealmServer_Fix3)
+
+Issue with high disk usage has been resolved.
+
+NUM-16068 (NUM_10.7_wM_RealmServer_Fix3)
+
+When a durable is corrupted, Universal Messaging shuts down with an error message that does not 
+include the name of the corrupted .idx or .txn file.
+The server returns the following general error in the nirvana.log file: "Server shutdown initiated 
+due to fatal file
+I/O error occurred : Failed during openOrCreate null."
+The issue is resolved. Server logging has been improved to include the name of the corrupted durable 
+file.
+
+NUM-15668 (NUM_10.7_wM_RealmServer_Fix3)
+
+Universal Messaging reports a ConcurrentModificationException due to synchronization issues with 
+multi-file disk stores.
+The issue is resolved.
+
+NUM-16211 (NUM_10.7_wM_RealmServer_Fix2)
+
+Restarting a Universal Messaging (UM) server instance in Command Central fails when the JMX service 
+is enabled in Universal Messaging.
+When a Universal Messaging server uses the JMX service (with both "EnableJMX" and "EnableLegacyJMX" 
+realm configuration properties set to "true"), restarting the UM server instance in Command Central 
+fails, because the JMX service continues to run and prevents the server instance from restarting.
+The issue is resolved.
+
+NUM-16198 (NUM_10.7_wM_RealmServer_Fix2)
+
+The Universal Messaging server or Java client might fail to start after you apply
+Universal Messaging 10.5 realm server fix 11 or Universal Messaging 10.5 Java client fix 11, 
+respectively.
+The Universal Messaging server or Java client might fail to start with a
+'java.lang.NoClassDefFoundError: com.pcbsys.foundation.threads.fThreadPool' exception.
+The issue occurs if the server or client log file has reached the configured 'RolledLogFileDepth'
+at the time of initialization. The default value for 'RolledLogFileDepth' is 100 MB.
+This issue is now resolved.
+
+NUM-16145 (NUM_10.7_wM_RealmServer_Fix2)
+
+An issue with high CPU and memory usage is observed in Universal Messaging.
+The issue is resolved.
+
+NUM-16089 (NUM_10.7_wM_RealmServer_Fix2)
+
+The Universal Messaging server shuts down with the following error message: " java.io.IOException: 
+Store inconsistency..."
+The issue is resolved. The server no longer shuts down, but multi-file stores now fail when the 
+store order is inconsistent. The error message includes additional information about the failed 
+store.
+
+NUM-16001 (NUM_10.7_wM_RealmServer_Fix2)
+
+In Universal Messaging, caching for multi-file disk stores is enabled by default.
+This issue is resolved. Caching for multi-file disk stores is no longer enabled by default.
+
+NUM-15961 (NUM_10.7_wM_RealmServer_Fix2)
+
+Universal Messaging returns a NullPointerException at startup.
+Universal Messaging writes a NullPointerException in the nirvana.log at startup if the server tries 
+to create a cluster-wide internal store while the cluster is not configured.
+The issue is resolved.
+
+NUM-15905 (NUM_10.7_wM_RealmServer_Fix2)
+
+The performance of a Universal Messaging cluster might deteriorate when a shared-queued durable 
+consumer sends event acknowledgements to a clustered realm.
+The problem occurs because the master realm broadcasts event acknowledgements to all nodes in the 
+cluster and then waits for the realms to process the acknowledgements.
+This issue is now resolved. The Universal Messaging master realm no longer waits for the clustered 
+realms to respond to an acknowledgement request.
+
+NUM-15889 (NUM_10.7_wM_RealmServer_Fix2)
+
+Creating a channel or queue for a webMethods Cloud Container solution using the Universal Messaging 
+Enterprise Manager might result in an error.
+When you create a queue or channel for a Cloud Container solution on the JNDI tab in the Universal 
+Messaging Enterprise Manager, Universal Messaging creates the queue or channel, but also displays 
+an empty error message. Additionally, the newly created queue or channel is not listed on the 
+Settings > Messaging > JNDI Settings page in Cloud Container.
+The issue is now resolved.
+
+NUM-15404 (NUM_10.7_wM_RealmServer_Fix2)
+
+Universal Messaging might shut down with an out-of-memory error.
+In some cases, the Universal Messaging realm server might shut down with OutOfMemoryError. The issue 
+occurs due to a combination of factors including the slow processing of data buffers from 
+multiplexed sessions.
+The issue is resolved.
+
+NUM-15364 (NUM_10.7_wM_RealmServer_Fix2)
+
+Java Template Applications are now available for AIX.
+
+NUM-15352 (NUM_10.7_wM_RealmServer_Fix2)
+
+Publishing events to a Universal Messaging channel or queue might result
+in a "No privilege for attempted operation" error.
+The issue occurs when a value is specified for the TTL property of
+the channel or queue, and the user running the Universal Messaging server
+does not have permissions for the channel or queue.
+The issue is resolved.
+
+NUM-14608 (NUM_10.7_wM_RealmServer_Fix2)
+
+Performance issue when nginx used as load balancer.
+Issue has been fixed.
+
+NUM-13860 (NUM_10.7_wM_RealmServer_Fix2)
+
+Data streams in a Universal Messaging cluster might get duplicated.
+After recovery, data streams might be duplicated on the secondary nodes in a cluster, thus
+causing resource duplication.
+The issue is resolved.
+
+NUM-12799 (NUM_10.7_wM_RealmServer_Fix2)
+
+OOM, ConcurrentModificationException and deadlock could occur when we have perpetual user connect 
+and disconnect for the same channel or queue. This issue is now fixed. 
+
+NUM-10942 (NUM_10.7_wM_RealmServer_Fix2)
+
+A security vulnerability was discovered in Universal Messaging multiplexed sessions.
+This issue is now resolved.
+The current fix introduces changes in behavior depending on where you install the fix:
+- If you install the fix on both the client and the server, creating a session
+through nSessionFactory#createMultiplexed will create a multiplexed session only if
+no credentials are supplied or the supplied credentials match those of the original session.
+In all other cases a normal session is created.
+- If you install the fix only on the client, the same behavior as above is observed.
+- If you install the fix only on the server, a multiplexed session is created,
+but all credentials are ignored. The multiplexed session will use the user of the original session.
+
+NUM-15919 (NUM_10.7_wM_RealmServer_Fix1)
+
+Migrating a Universal Messaging server instance on a Windows operating system might fail with 
+the following error: "java.lang.UnsatisfiedLinkError: NUMInstanceManager.dll: Can't find dependent 
+libraries".
+This issue is now resolved.
+
+NUM-15865 (NUM_10.7_wM_RealmServer_Fix1)
+
+Beginning with release 10.7, Universal Messaging (UM) servers now have bi-directional compatibility 
+with the following Universal Messaging clients:
+- native API for Java
+- API for JMS
+- the Resource Adapter for JMS.
+Bi-directional compatibility means that a UM server now works not only with clients that have lower 
+version, but also with clients that have higher release version than the server.
+We have improved logging and error handling, optimized HTTP-based connection intercepts, and added 
+support for Horizontal Scalability (HS) in server environments of mixed release versions. To 
+support HS in such environments, we have added a new URL parameter, "HS_PROTOCOL_VERSION".
+Parameter description: (Optional) In the "HS_PROTOCOL_VERSION" parameter, you specify the lowest 
+release version of the server that the HS session can connect to. This parameter ensures that the 
+HS session will use the same protocol version to connect to all servers. The parameter is required 
+when the servers in the HS URL have different versions.
+Example: The following URL indicates that the HS client will use protocol version 10.5 to connect to 
+servers of release version 10.5 or higher. UM1 (nsp://host1:port1) is version 10.5 and UM2 
+(nsp://host2:port2) is version 10.7, but because "HS_PROTOCOL_VERSION=10.5", the client session 
+will use protocol version 10.5.
+(nsp://host1:port1)(nsp://host2:port2)?HS_PROTOCOL_VERSION=10.5
+Note that a UM server with release version lower than the version of the client API will not support 
+all new functions added in the API. For details about compatibility limitations, see the topics for 
+the respective client API in the Universal Messaging documentation.
+
+NUM-15855 (NUM_10.7_wM_RealmServer_Fix1)
+
+
+NUM-15718 (NUM_10.7_wM_RealmServer_Fix1)
+
+Possible dead lock fixed during initializing Master cluster state.
+It was possible during master state initialization the JMS engine to dispatches a purge cluster-wide 
+purge request, because of the dead lock the master state initialization to never finish. The 
+deadlock was introduced with the "Disconnect On Cluster Failure" server-side flag feature.
+
+NUM-15646 (NUM_10.7_wM_RealmServer_Fix1)
+
+Universal Messaging now uses the Qpid Proton-J version 0.33.5 server library for the AMQP networking 
+protocol.
+
+NUM-15643 (NUM_10.7_wM_RealmServer_Fix1)
+
+Caching does not work for multi-file disk stores even when caching is enabled for the server 
+instance.
+The issue is resolved. By default, caching is not enabled for multi-file stores. To store events 
+from a channel with multi-file store in the cache:
+1/ When configuring the Universal Messaging server instance, set the EnableStoreCaching and 
+EnableCaching server configurations to "true" and restart the server.
+2/ When creating a channel with a multi-file store,  "Enable Caching" channel storage properties to 
+"true".
+
+NUM-15592 (NUM_10.7_wM_RealmServer_Fix1)
+
+Deleting a Universal Messaging channel or queue that is configured for trace logging
+might result in an exception in the server log file during server shutdown.
+The issue occurs because when you delete a channel or queue, the Universal Messaging server
+might not remove all resources of the trace logger for the channel or queue. In this case, when you 
+stop
+Universal Messaging, the server returns the following exception in the Universal Messaging server 
+nirvana.log file:
+"org.apache.logging.log4j.core.appender.AppenderLoggingException: Error writing to 
+RandomAccessFile",
+followed by the path to the trace log file of the deleted channel or queue.
+This issue is now resolved.
+
+NUM-15533 (NUM_10.7_wM_RealmServer_Fix1)
+
+When the web socket frame buffer is empty and the server received closed operation, the server will 
+try to get the size of frame buffer and will return NPE.
+This issue is now resolved
+Also, the warning log message "Porotocl: HTTPD: Invalid protocol handshake detected. Has cookie but 
+no such session exists" is now improved to return the cookie the server received.
+
+NUM-15438 (NUM_10.7_wM_RealmServer_Fix1)
+
+When a Universal Messaging (UM) realm server shuts down as a result of running out of disk space, 
+the server log does not give clear details about the issue.
+The issue is resolved. When a realm server shuts down because of low disk space, the UM logs now 
+include a warning message that indicates the percentage of free disk memory, as well as the total 
+disk memory and free disk memory in megabytes. 
+
+NUM-15431 (NUM_10.7_wM_RealmServer_Fix1)
+
+The Universal Messaging realm server has performance issues when insufficient threads are assigned 
+to the task scheduler.
+The issue is resolved. Now the default value of "SchedulerPoolSize" is 10. After installing the fix, 
+the scheduler pool size gets updated to the default value (if it was less than 10) or remains 
+unchanged (if it was greater than 10).
+Doc versions have also been updated with the new value.
+
+NUM-15393 (NUM_10.7_wM_RealmServer_Fix1)
+
+The Universal Messaging server shuts down with the following error message: "Multi file store, reset 
+file headers due to underlying exception, key:409000."
+The issue is resolved.
+The multi-file store now fails when the store order is inconsistent and the error message includes 
+the store path.
+Also, the full stack trace with the error details is added in the wrapper log.
+
+NUM-15360 (NUM_10.7_wM_RealmServer_Fix1)
+
+Sparse purging of events from a channel might cause high CPU usage in Universal Messaging
+when the channel has a lot of shared durables.
+Sparse purging of events from a channel might become very time-consuming when the channel has
+a lot of shared durables and some of the durables are not active. This can lead to the
+accumulation of many events on the durables and high CPU usage.
+The issue is resolved.
+
+NUM-15348 (NUM_10.7_wM_RealmServer_Fix1)
+
+UM generates several thread dumps due to Reason: Stalled task detected on this thread pool.
+Fixed the code logic to calculate the task duration correctly, this issue has been resolved.
+
+NUM-15275 (NUM_10.7_wM_RealmServer_Fix1)
+
+When the web socket frame buffer is empty and the server received closed operation, the server will 
+try to get the size of frame buffer and will return NPE.
+This issue is now resolved
+Also, the warning log message "Porotocl: HTTPD: Invalid protocol handshake detected. Has cookie but 
+no such session exists" is now improved to return the cookie the server received.
+
+NUM-15273 (NUM_10.7_wM_RealmServer_Fix1)
+
+When client is performing nTransaction#commit inside a cluster on a slave node and at the same time 
+the channel is deleted on the master node the master will not respond to the slave which will lead
+to the connection between these two being interrupted after the MasterRequestTimeout has passed. 
+This can lead to downtime in the UM cluster. 
+This issue is now fixed.
+
+NUM-15248 (NUM_10.7_wM_RealmServer_Fix1)
+
+Universal Messaging fails to deliver events to a cluster-wide persistent queue through a join when 
+the queue stores events in a single file.
+In a Universal Messaging cluster, when a channel and a persistent queue have a join and the queue
+stores events in a single file, that is the EventsPerSpindle property is set to 0, 
+the events published to the channel are not delivered to the queue.
+The issue is resolved.
+
+NUM-15197 (NUM_10.7_wM_RealmServer_Fix1)
+
+The Universal Messaging RealmInformationCollector tool fails to run in a Docker container.
+When you try to start the RealmInformationCollector in a Docker container, the tool returns
+the following error: 'Universal Messaging realm server component not present in the current
+installation directory (/opt/softwareag/UniversalMessaging/tools/runner/./../../..). 
+So this operation is not applicable.' 
+This issue is now resolved.
+
+NUM-15170 (NUM_10.7_wM_RealmServer_Fix1)
+
+A large number of indexed durables on a Universal Messaging channel might cause high CPU usage and 
+performance issues.
+When a channel has multiple indexed durables, but only several of them are active, events might 
+accumulate causing memory and performance issues.
+The issue is resolved.
+
+NUM-15163 (NUM_10.7_wM_RealmServer_Fix1)
+
+Universal Messaging writes messages to already rolled nirvana.log files.
+The problem occurs because Universal Messaging does not use the correct logging framework. The 
+server uses the default logging framework instead of the additionally specified Log4J2 framework.
+The issue is resolved. Now all packages use the correct logger for the package level.
+
+NUM-15113 (NUM_10.7_wM_RealmServer_Fix1)
+
+The Universal Messaging nirvana.log file does not contain enough information after the migration of 
+durables.
+The issue is resolved. The logging information has been enhanced. After you migrate durables, the 
+nirvana.log file contains detailed information about the number of durables, channel name, durable 
+type, durable name, unique id, selector, and event information under the "DURABLE MIGRATION>? tag.
+
+NUM-15071 (NUM_10.7_wM_RealmServer_Fix1)
+
+After setting the "ClusterMode" realm server property to "Replication", the admin sessions to 
+non-master nodes get disconnected and have to reconnect again.
+The issue is resolved. Admin sessions are no longer affected after enabling the Replication mode for 
+a cluster.
+
+NUM-14767 (NUM_10.7_wM_RealmServer_Fix1)
+
+Exclusive durables are not always properly recovered during cluster recovery. 
+This issue is now resolved.
+
+NUM-14412 (NUM_10.7_wM_RealmServer_Fix1)
+
+Connecting nodes in a Universal Messaging cluster might fail when you use
+the VIA list of an interface to configure access control list (ACL) entries
+for cluster communication.
+The issue is resolved.
+
+NUM-13855 (NUM_10.7_wM_RealmServer_Fix1)
+
+Subscribing a message consumer with a selector to a queue might result in a timeout when the queue 
+reaches a high event ID.
+The issue is now resolved.
+
+NUM-13153 (NUM_10.7_wM_RealmServer_Fix1)
+
+Change default interface accept thread to 10 by adding the accept thread in the boot strap file.
+
+NUM-11779 (NUM_10.7_wM_RealmServer_Fix1)
+
+When the Cluster Config -> DisconnectWhenNotReady is set to true 
+and the UM server has not joined the cluster- the UM server was also disconnecting and Admin 
+connections. Admin connections should not be disconnected in this case and this is now resolved.
+Now If the Admin client tries to perform cluster-wide operation while the UM server has not joined 
+the cluster yet- the client will get a exception on the cluster-wide operation, instead of closing 
+the session.  
+
+NUM-8858 (NUM_10.7_wM_RealmServer_Fix1)
+
+In selectors for protobuf events, the values in integer arrays are not compared properly.
+This issue is now resolved.
+
+NUM-16027 (NUM_10.7_wM_RealmServer_Fix1)
+
+NA
+
+NUM-15504 (NUM_10.7_wM_RealmServer_Fix1)
+
+Running a Universal Messaging command-line tool using the runUMTool
+Tools Runner application might result in an out-of-memory exception in the JVM.
+The JVM might run out of memory if the tool encounters a memory problem or leak.
+The issue occurs because the runUMTool application does not have a memory limit.
+The issue is resolved. Two new environment variables, UM_JAVA_MIN_MEM and UM_JAVA_MAX_MEM,
+have been added. You can use them to specify the minimum and maximum memory used by the tool
+you are executing.
+Environment Variable Configuration Reference
+Specify the minimum and maximum memory used by the command-line tool you are executing by setting 
+the following variables:
+- UM_JAVA_MIN_MEM=-XmsXXX, where XXX is the value of the minimum memory limit in megabytes.
+The default value is "-Xms256m".
+- UM_JAVA_MAX_MEM=-XmxXXX, where XXX is the value of the maximum memory limit in megabytes.
+The default value is "-Xmx512m".
+Specify the two environment variables in the command prompt before running the
+runUMTool command:
+On Windows: SET UM_JAVA_MIN_MEM=-Xms256m
+On Unix: UM_JAVA_MIN_MEM=-Xms256m
+
+
+8.0 Installation
+
+If you are installing a Universal Messaging server fix, please shut down any running Universal
+Messaging server instances before installing.
+In case the Universal Messaging server instance is a member of a cluster, please apply the
+procedure for installing rolling cluster updates described below(*).
+
+If you are installing a Universal Messaging client fix, please shut down any applications such as
+Integration server or Enterprise Manager which are using client libraries.
+
+If you are installing a Universal Messaging Enterprise Manager fix, you do not need to shut down the
+Universal Messaging server.
+
+Install using the Software AG Update Manager or Command Central (9.5 or later). For instructions,
+see the corresponding documentation at http://documentation.softwareag.com.
+
+(*) Universal Messaging cluster is supporting rolling updates for its nodes.
+There is a strong recommendation to start applying the new fixes on the Slave nodes and leave the
+Master node to be the last one.
+(*) Starting with 10.7 Fix 8, Universal Messaging provides updated versions of security libraries with 
+the Universal Messaging realm server fixes, if any of these libraries has been updated. You can find 
+the libraries in the UniversalMessaging\lib folder.
+
+For each single node that is part of the cluster the customer needs to follow the steps:
+1) Shutdown the node. The node will be disconnected from the cluster.
+2) Apply the specific fix
+3) Start the node. It will be connected back again to the cluster and will be operational
+4) Apply the same procedure from 1-3 steps on the next node
+
+In order to have truly no downtime, the client that talks to the Universal Messaging cluster should
+also be implemented in a way that it tolerates brief connection loss. A rolling update in a cluster
+still means that:
+a) When the node that a client is connected to is brought down for maintenance, the connection to
+this server, and respectively the cluster, will be lost and has to be re-established. The client
+should be able to handle this seamlessly.
+b) When the master node of the cluster is brought down for maintenance, the cluster will briefly
+go offline until a new master is elected. This is usually a very short time window, but still,
+similarly to point a). The client applications should be able to handle it in order to have truly
+no downtime from the point of view of the end user.
+
+
+
+9.0 Uninstallation
+
+If you are uninstalling a Universal Messaging server fix,
+please note that any running Universal Messaging server
+instances will be automatically shutdown before installing.
+
+If you are uninstalling a Universal Messaging client fix, 
+please shut down any applications such as Integration Server 
+or Enterprise Manager which are using client libraries.
+
+If you are uninstalling a Universal Messaging Enterprise Manager 
+fix, you do not need to shut down the Universal Messaging server.
+
+Uninstall using the Software AG Update Manager or 
+Command Central (9.5 or later). For instructions, see the 
+corresponding documentation 
+at http://documentation.softwareag.com.
+
+Note: These instructions can only be used to uninstall the 
+most recently installed fix. This action will revert your 
+installation to the previously installed fix. You cannot 
+apply these instructions to the previously installed fix.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix has
+no globalization impact and can be applied to systems running in any supported 
+locale or configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might contain new 
+messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Super iPaas Integration LLC, an IBM Company 2024.

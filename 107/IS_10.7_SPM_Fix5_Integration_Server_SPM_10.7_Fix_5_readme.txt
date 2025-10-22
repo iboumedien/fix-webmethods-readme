@@ -1,0 +1,332 @@
+                    webMethods Integration Server 10.7 SPM Fix 5 readme
+
+                                   November 2024 
+                                                   
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Integration Server 10.7 SPM Fix 5.
+
+
+
+2.0 Fix ID
+
+IS_10.7_SPM_Fix5
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Integration Server 10.7.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+For language pack requirements, see the Globalization section of 
+the Software AG Empower Product Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+webMethods Integration Server 10.7 SPM Fix 5 is supported on the 
+same platforms and operating systems and with the same JREs as webMethods 
+Integration Server 10.7.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+PIE-81002
+Updating an SFTP server alias without a client version number through
+a template in Command Central or a REST client results in a null pointer
+exception. 
+
+This issue is now resolved.
+
+PIE-92407
+High system utilization is reported in CloudStreams instances and Terracotta
+servers. 
+
+When two or more Integration Servers are installed with the same Software AG
+Platform Manager (SPM), and one of the Integration Servers is down or not
+reachable, all the Integration Server runtime-components are removed from the 
+cache, which leads to this issue.
+
+This issue is resolved. Now, when one Integration Server is down, only that
+Integration Server runtime-component and its parent are removed from cache.
+
+PIE-72589 (IS_10.7_SPM_Fix4)
+When Platform Manager and Integration Server run together, executing the 
+command to stop Integration Server terminates Platform Manager instead. 
+
+When Platform Manager is started as a Windows application using start-up 
+scripts, executing the command on the Command Central CLI to stop Integration 
+Server terminates Platform Manager instead of Integration Server, which 
+continues to run despite executing the stop command. However, this issue does 
+not occur when Platform Manager runs as a Windows service. 
+
+The issue is resolved now.
+
+PIE-75029 (IS_10.7_SPM_Fix4)
+Adding or updating MWS roles to an Integration Server ACL through Command
+Central results in an exception.
+
+Adding or updating the "Allowed" or "Denied" list of an ACL with MWS roles
+through the Command Central user interface or the CLI results in the
+"Allow or Deny Group names are not valid." exception.
+
+This issue is now resolved.
+
+PIE-75462 (IS_10.7_SPM_Fix4)
+Command Central cannot connect to the IP address configured in the 
+"watt.server.inetaddress" parameter in Integration Server. 
+
+In Integration Server Administrator, when the watt.server.inetaddress is set to 
+an IP address on which Integration Server listens to incoming requests, the 
+server is not visible on Command Central. 
+
+This issue is now resolved. 
+
+PIE-77197 (IS_10.7_SPM_Fix4)
+Migration log is not visible on the Command Central Jobs page.
+
+This issue is now resolved.
+
+PIE-77625 (IS_10.7_SPM_Fix4)
+In Command Central, clicking the Overview or Configuration tab for the Monitor 
+component in "Home > Instances > ALL > [instance_name] > Monitor" incorrectly 
+throws the "Unexpected component status" although the Monitor component is 
+online. 
+
+This issue is now resolved.
+
+PIE-71693 (IS_10.7_SPM_Fix3)
+Creating a keystore alias from a template fails.
+
+Creating a keystore alias from a template fails when the template has a Key 
+alias with an encrypted password.
+
+This issue is resolved now.
+
+PIE-68030 (IS_10.7_SPM_Fix3)
+Updates to packages deployed on a cloud environment are not visible.
+
+When packages and configuration assets for an existing solution are deployed to
+a cloud environment through Designer, the changes are not displayed in the
+cloud environment as the deployment fails intermittently. However, Designer
+does not display the status of the deployment, which is misleading.
+
+This issue is now resolved by including additional deployment logs to explain
+the cause.
+
+PIE-69862 (IS_10.7_SPM_Fix2)
+Command Central settings for remote servers do not match those in 
+Integration Server.
+
+In Command Central > {IS_Instance} > Integration Server > Configuration > Endpoints, 
+the following settings for Remote Servers do not match with Integration Server:
+
+Authentication > Type drop-down shows SSL and BASIC options.
+SSL > Key Alias and Keystore Alias are mandatory fields for SSL type 
+authentication.
+
+However, in Integration Server settings for Remote Servers, users can only 
+choose to use SSL or not, and Key Alias and Keystore Alias are not mandatory 
+fields. The settings in Command Central are updated accordingly.
+
+PIE-70523 (IS_10.7_SPM_Fix2)
+Updates to Integration Server Administrator:
+
+As part of IS_10.7_Core_Fix5, the following additional options are available on
+the Server > Quiesce page.
+
+- Disable Audit Logging: This allows you to disable the audit logging in the quiesce
+  mode.
+- Disable System Tasks interacting with Database: This allows you to disable system
+  tasks in the quiesce mode.
+- Disable Alerts and Notifications: This allows you to disable alerts and
+  notifications in the quiesce mode.
+- Disable Statistics Data Collector: This allows you to disable the statistics
+  data collector in the quiesce mode.
+Select these options for Integration Server to work with a read-only database as
+part of a disaster recovery setup.
+
+Note:
+It is recommended to enter and exit the quiesce mode in the following manner:
+1. Enter the quiesce mode, and then enable the database for read-only operations.
+2. Enable the database for read-write operations, and then exit the quiesce mode.
+
+For more information, see "webMethods Integration Server Administrator's Guide".
+
+If you select the "Disable Alerts and Notifications" option on the Server > Quiesce
+page and the server is in quiesce mode, alerts are not emitted, and running alerts
+and notifier services might throw an exception.
+
+Updates to Deployer:
+
+You can deploy the quiesce settings asset from a source repository to a target
+Integration Server. The ID and supported substitution variables in quiesce settings
+are:
+
+Asset type ID - isquiescesettings
+
+Substitution Values:
+
+- portAlias: The Integration Server port to use as the quiesce port on the target
+  servers. Ensure that the port alias is associated with either the WmRoot or the
+  WmPublic package and is of type HTTP or HTTPS.
+- systemTasksDisabled: Specifies whether the system tasks on the target servers
+  are disabled during quiesce mode. Default is false.
+- alertingDisabled: Specifies whether alerts or notifications are disabled on the
+  target servers during quiesce mode. Default is false.
+- auditingDisabled: Specifies whether audit logging is disabled on the target
+  servers during quiesce mode. Default is false.
+- statisticsDataCollectorDisabled: Specifies whether the statistics data collector
+  is disabled on the target servers during quiesce mode. Default is false.
+  
+For more information, see the webMethods Deployer User's Guide.
+
+Other changes:
+
+The configuration types and configuration instances in SPM are updated with the
+new IS-QUIESCE-OPTIONS.
+You can manage or configure the quiesce options for different Integration Server
+instances centrally using Command Central.
+You can also manage quiesce settings by invoking an Admin API with this end-point:
+"http://server:port/admin/quiesce/config".
+
+PIE-68218 (IS_10.7_SPM_Fix2)
+Applying a Command Central template to add a Common Directory Services (CDS)
+member group to an ACL results in java.lang.StringIndexOutOfBoundsException.
+
+Applying a Command Central template on an Integration Server instance to add a
+CDS member group to an ACL fails despite prefixing the group name with the
+"system_" group type in the template.
+
+This issue is now resolved.
+
+PIE-63044 (IS_10.7_SPM_Fix1)
+Command Central does not display API Gateway logs.
+
+If API Gateway is installed along with Integration Server, the API 
+Gateway logs are generated in the "<Installation_Directory>/IntegrationServer/instances/<instance_name>/logs/APIGateway" 
+folder. However, in Command Central, when you navigate to "Home > Instances > 
+ALL > instance_name > Integration Server > Logs > APIGateway", the tab does not 
+display the log files.
+
+This issue is resolved now.
+
+PIE-64999 (IS_10.7_SPM_Fix1)
+The PAUSE and RESUME operations for an Integration Server instance in Command 
+Central do not work if the Integration Server instance uses a non-primary, 
+SSL-enabled quiesce port.
+
+The issue is resolved now.
+
+PIE-66538 (IS_10.7_SPM_Fix1)
+Command Central does not display all the supported RDBMS options.
+
+While creating a new instance in Command Central and selecting the RDBMS,
+Command Central does not list all the supported RDBMS options.
+
+This issue is now resolved.
+
+PIE-67298 (IS_10.7_SPM_Fix1)
+Software AG Platform Manager (SPM) pings Integration Server (IS) at a much
+higher frequency than expected.
+
+The issue is fixed. SPM pings IS at an interval of 60 seconds now.
+
+PIE-66885 (IS_10.7_SPM_Fix1)
+When a Command Central maintenance template is executed against an Integration 
+Server cluster, the Software AG Platform Manager (SPM) plugin does not invoke 
+services on the node specified in the properties file.
+
+The issue is resolved now.
+
+
+
+8.0 Installation
+
+Install the fix using the Software AG Update Manager.
+For instructions, see Using the Software AG Update Manager
+located either in the _documentation directory or on the
+documentation Web site at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Uninstall the fix using the Software AG Update Manager.
+For instructions, see Using the Software AG Update Manager.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the
+webMethods product suite and includes support for operation in
+any country, locale, or language as specified in the Installing
+webMethods Products guide. It was tested with non-English
+configurations and non-ASCII data.
+
+
+10.1 Localization
+
+None.
+
+
+
+11.0 Copyright
+
+Super iPaas Integration LLC, an IBM Company 2024.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

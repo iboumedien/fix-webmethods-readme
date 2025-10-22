@@ -1,0 +1,146 @@
+					Eclipse 4.15.0 Fix 1 Readme
+
+                          August 2021
+
+_________________________________________________________________
+
+This file provides important information for  applying  Eclipse 4.15.0 Fix 1
+to Eclipse 4.15.0. For additional information about Designer 10.1,  see
+the  readme  file  in  the  _documentation  directory   of   your   Software  AG
+installation. The _documentation directory is installed as a separate  component
+in the Software AG Installer and might not  be  present.  You  can  install  the
+directory using the Software AG Installer or you can view the readme file on the
+Empower Web site at https://empower.softwareag.com.
+
+
+
+Contents
+--------
+
+1.  Fix Name
+2.  Product(s)/Component(s) Affected
+3.  Fix Requirements
+4.  Fix Contents
+5.  Installation
+6.  Uninstallation
+7.  Cautions and Warnings
+8.  Globalization
+9.  Copyright
+10. Contacting Us
+
+
+
+1.  Fix Name
+------------
+
+Eclipse 4.15.0 Fix 1
+
+
+
+2.  Product(s)/Component(s) Affected
+------------------------------------
+
+This fix affects: Software AG Designer.
+
+
+
+3.  Fix Requirements
+--------------------
+
+This fix requires an existing Eclipse 4.15.0 installation.
+
+For  language  pack   requirements,   see  the  Globalization  section   of  the
+Software AG Empower Product Support  Web site. The Globalization section  can be
+found at https://empower.softwareag.com/Products/Globalization/default.asp.
+
+
+
+4.  Fix Contents
+----------------
+
+SDEF-3000
+In Designer Linux platform, The CAF controls are not shown in the ui editor.
+
+When you open CAF webContent file in the editor and open the Properties view, 
+the CAF controls are not shown in the ui editor
+
+This issue is now resolved.
+
+5.  Installation
+----------------
+
+Install the fix using the Software AG Update Manager.
+For instructions, see Using the Software AG Update Manager
+located either in the _documentation directory or on the 
+documentation Web site at http://documentation.softwareag.com.
+
+
+6.  Uninstallation
+------------------
+
+Due to fixes for Eclipse core, Eclipse 4.15.0 Fix 1 cannot take advantage of the
+Software AG Update Manager un-installation feature.
+
+
+7.  Cautions and Warnings
+-------------------------
+
+
+
+8.  Globalization
+-----------------
+
+This fix conforms to  the  internationalization  standards  of   the  webMethods
+product suite and includes support  for operation in any  country,   locale,  or
+language as specified  in the  Installing webMethods Products guide. It  was not
+tested with non-English configurations  and non-ASCII data. However,   this  fix
+has no globalization impact and can   be  applied  to  systems  running  in  any
+supported locale or configuration.
+
+This fix does not require  an  updated  Language  Pack.  It  might  contain  new
+messages and these messages will appear in English.
+
+
+
+9.  Copyright
+-------------
+
+Copyright (C) 2021  Software AG,  Darmstadt,  Germany  and/or  Software AG  USA,
+Inc., Reston, VA, United States of America, and/or their licensors.
+
+Detailed information on trademarks and  patents owned by Software AG  and/or its
+subsidiaries is located at http://documentation.softwareag.com/legal/.
+
+Use of this software  is   subject  to  adherence  to  Software  AG's  licensing
+conditions and terms. These  terms   are  part  of  the  product   documentation
+located  at  http://documentation.softwareag.com/legal/   and/or  in  the   root
+installation directory of the licensed product(s).
+
+This software may include  portions of third-party  products.   For  third-party
+copyright notices and license terms,  please refer to "License Texts,  Copyright
+Notices and Disclaimers of Third Party  Products." This document is part of  the
+product documentation,  located  at   http://documentation.softwareag.com/legal/
+and/or in the root installation directory of the licensed product(s).
+
+
+
+10. Contacting Us
+-----------------
+
+Authorized technical support contacts can  reach  Software AG Global Support  in
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+  E-mail: empower@softwareag.com
+
+You can  find  complete  contact  information  in  our  Global  Support  Contact
+Directory at:
+
+  https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities  to  access  additional
+articles,  demos,   and  tutorials,  technical  information,   samples,   useful
+resources, online discussion  forums  moderated  by  Software AG  professionals,
+and more at:
+
+  http://communities.softwareag.com/ecosystem/communities/public/index.html

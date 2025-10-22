@@ -1,0 +1,99 @@
+                    IBM Terracotta DB 10.11.0 Fix 29 readme
+    
+                        October 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM Terracotta 10.11.0 Fix 29
+
+
+2.0 Fix ID
+
+TDB_10.11.0_Fix29
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects IBM Terracotta 10.11.0 components
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms that IBM Terracotta DB 10.11.0 supports.
+
+
+6.0 Cautions and Warnings
+
+none
+
+7.0 Fix Contents
+
+Update base docker image version
+Upgrade to Parquet Avro 1.15.2 : Fixes CVE-2025-30065 & CVE-2025-46762
+jackson-annotations 2.18.1
+jackson-core 2.18.1
+jackson-databind 2.18.1
+
+8.0 Installation
+
+1. Shut down all servers. A safe shutdown procedure is as follows.
+
+a. Shut down the mirror servers using the stop-tc-server script. 
+   If you are using a wrapper solution to manage the mirror servers, execute the wrapper shut
+   down command to shut down the mirror servers instead of using the stop-tc-server script.
+
+b. Shut down the clients. A Terracotta client will shut down when you shut down your application.
+
+c. Shut down the active servers using the stop-tc-server script.
+   If you are using a wrapper solution to manage the servers, execute the wrapper shut down
+   command to shut down the servers instead of using the stop-tc-server script.
+
+2. Install using IBM webMethods Update Manager.
+   For instructions, see the documentation at https://docs.webmethods.io/.
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action
+will revert your installation to the previously installed fix. You cannot use these instructions to
+uninstall the previously installed fix.
+
+1. Shut down all servers. A safe shutdown procedure is as follows.
+
+a. Shut down the mirror servers using the stop-tc-server script. 
+   If you are using a wrapper solution to manage the mirror servers, execute the wrapper shut
+   down command to shut down the mirror servers instead of using the stop-tc-server script.
+
+b. Shut down the clients. A terracotta client will shut down when you shut down your application.
+
+c. Shut down the active servers using the stop-tc-server script.
+   If you are using a wrapper solution to manage the servers, execute the wrapper shut down
+   command to shut down the servers instead of using the stop-tc-server script.
+
+2. Uninstall using IBM webMethods Update Manager.
+   For instructions, see the documentation at https://docs.webmethods.io/.
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

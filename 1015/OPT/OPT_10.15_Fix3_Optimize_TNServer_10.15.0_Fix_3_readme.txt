@@ -1,6 +1,6 @@
-          webMethods Optimize InfrastructureDC 10.15.0 Fix 3 readme
+          webMethods Optimize InfrastructureDC 10.15.0 Fix 4 readme
 
-                          March 2025
+                          February 2025
 
 ____________________________________________________________________________________________________
 
@@ -19,11 +19,11 @@ ________________________________________________________________________________
 
 1.0 Fix Name
 
-webMethods Optimize InfrastructureDC 10.15.0 Fix 3
+webMethods Optimize InfrastructureDC 10.15.0 Fix 4
 
 2.0 Fix ID
 
-WID_10.15.0_Fix3_InfrastructureDC
+WID_10.15.0_Fix4_InfrastructureDC
 
 
 3.0 Product(s)/Component(s) Affected
@@ -59,19 +59,27 @@ APIs, or configuration parameters. Review the fix contents carefully before inst
 
 This fix is cumulative, which means that it includes all previous fixes for the release.
 
-WID-2365
+WID-2413
+When InfrastructureDC monitors Integration Server, a large number of poll threads are being created.
+The issue is resolved. 
+
+WID-2424
+When InfrastructureDC monitors ART Connections, status alternates between connected and disconnected.
+The issue is resolved.
+
+WID-2365 (WID_10.15_Fix3)
 When Infrastructure Data Collector monitors Integration Server components, error messages appear in the server log.
 The issue is resolved.
 
-WID-2387
+WID-2387 (WID_10.15_Fix3)
 The WmARTExtDC package causes error messages to appear in the server log. 
 The issue is resolved.
 
-WID-2321
+WID-2321 (WID_10.15_Fix3)
 Optimize for Infrastructure cannot discover Terracotta BigMemory Max 4.4.0.12.
 The issue is resolved.
 
-WID-2331
+WID-2331 (WID_10.15_Fix3)
 In Optimize for Infrastructure, the <SAG_Install_Dir>/InfrastructureDC/bin/migrate/migrate.sh utility throws an exception.
 The issue is resolved.
 

@@ -1,0 +1,303 @@
+		Software AG Command Central 10.7 WebUI Fix 15 readme
+
+                           February 2024
+
+_________________________________________________________________
+
+This file provides important information for applying Software AG
+Command Central 10.7 WebUI Fix 15 to Software AG Command Central 10.7. 
+For additional information about Software AG Command Central 10.7, 
+see the readme file in the _documentation directory of your 
+Software AG installation (if installed) or on the Empower website at 
+https://empower.softwareag.com.
+
+
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+Software AG Command Central 10.7 WebUI Fix 15
+
+
+
+2.0 Fix ID
+
+CCE_10.7_WebUI_Fix15
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Software AG Command Central 10.7.
+
+
+
+4.0 Fix Requirements
+
+Software AG Command Central 10.7 Fix 15
+
+For language pack requirements, see the Globalization section of the 
+Software AG Empower Product Support website at
+
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+The fix is supported on all platforms supported by 
+Software AG Command Central 10.7.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+CCE-7158
+
+Attempting to view the contents of a repository using the Command Central web user interface fails
+with the following error: "There is no repository to register". The issue occurs when the repository
+name contains a space.
+
+The issue is resolved. 
+
+CCE-7067
+
+In the Command Central web user interface, if you have a stack with a layer containing no components
+and you execute a lifecycle operation on that layer, Command Central might incorrectly stop all 
+components in all environments that it manages.
+
+The issue is resolved. Now it is not possible to execute a lifecycle operation on a layer with no 
+components.
+
+CCE-6777  (Software AG Command Central 10.7 WebUI Fix 3)
+Navigating to the Licensing view in the Command Central web user interface results in a 406 error.
+The issue occurs because the following disclaimer fails to display on the Licensing > Reports tab: 
+"This License Inventory Management Application (LIMA) provides guidance ..."
+The issue is now resolved.
+
+CCE-6561 (Software AG Command Central 10.7 WebUI Fix 3)
+In the Command Central web user interface, after you open the Database catalog for a database layer
+in the Stacks view, you cannot view all installed components, because the contents of the database 
+catalog do not fit in the screen.
+
+The issue is resolved. Now you can view all installed components when opening the Database catalog.
+
+CCE-6608 (Software AG Command Central 10.7 WebUI Fix 3)
+When upgrading a stack using the Command Central web user interface, if you click the Back button at
+the end of step 2 "Specify fixes and parameters for runtime," the upgrade wizard displays a blank
+screen and you have to manually scroll back to step 1.
+
+The issue is resolved. Now the upgrade wizard correctly displays step 1 after you click the Back button
+in step 2.
+
+
+CCE-6588 (Software AG Command Central 10.7 WebUI Fix 2)
+In the Stacks view of the Command Central web user interface, if there are four or more stacks with
+a different number of layers, Command Central does not align the stacks properly on the screen.
+
+The issue is resolved. Command Central now displays up to three stacks per row and aligns them based
+on the number of layers they contain.
+
+CCE-6732 (Software AG Command Central 10.7 WebUI Fix 2)
+When you want to create a layer through the Stacks wizard in the Command Central web user interface,
+you cannot click the Finish button of the wizard when the screen resolution is higher than 1018p
+(Full HD).
+
+The issue is resolved.
+
+CCE-6543 (Software AG Command Central 10.7 WebUI Fix 2)
+The functionality of the following group of commands is updated to create and manage installation
+reports (that are not based on license manifest files), instead of license reports based on
+license manifest files and installation information:
+
+sagcc create license-tools reports installation
+sagcc list license-tools reports installation
+sagcc get license-tools reports installation <reportId>
+sagcc get license-tools reports installation disclaimer
+sagcc delete license-tools reports installation [<reportId>]
+
+Note that the license reports based on license manifest files are deprecated without replacement.
+
+CCE-6548 (Software AG Command Central 10.7 WebUI Fix 2)
+Command Central does not validate the port numbers that you specify when you create,
+edit, or upgrade stacks with the upgrade wizard of the web user interface.
+
+The issue is resolved. Now Command Central validates the port number values in the 
+upgrade wizard.
+
+CCE-6531 (Software AG Command Central 10.7 WebUI Fix 1)
+In the Stacks view of the Command Central web user interface, when you click "Upgrade stack"
+ for a stack displayed on the right side of the screen, the “Upgrade stack” menu does not 
+ fit into the screen.
+
+The issue is resolved. Now the "Upgrade stack" menu is fits into the screen for all stacks.
+
+CCE-6539 (Software AG Command Central 10.7 WebUI Fix 1)
+In the Stacks view of the Command Central web user interface, when you click a layer and try to
+execute a lifecycle action (for example, start, stop, or pause), Command Central does not start a
+job for the lifecycle action and the action is not executed.
+
+The issue is resolved. You can now execute lifecycle actions on layers in the Stacks view.
+
+CCE-6540 (Software AG Command Central 10.7 WebUI Fix 1)
+The following text on the Stacks home page is outdated:"Stacks you create cannot yet be modified,
+ updated, or upgraded." You can now modify and upgrade the stacks, but you cannot yet update them.
+
+The issue is resolved. Now the text is corrected to state that you can modify and upgrade the stacks.
+
+CCE-6562 (Software AG Command Central 10.7 WebUI Fix 1)
+When you restart the upgrade of a stack that has an Integration Server run-time layer from 
+the Command Central web user interface and use existing templates, the upgrade operation fails 
+if the Integration Server instance from the layer is offline. The issue occurs because Command Central
+ obtains the required migration properties from the source Integration Server instance, 
+ instead of the generated migration templates.
+
+The issue is resolved. Now Command Central obtains migration properties from the generated migration
+templates when re-starting an upgrade operation for a stack with Integration Server and the operation
+does not fail if Integration Server is offline.
+
+CCE-6566 (Software AG Command Central 10.7 WebUI Fix 1)
+When using the Stacks view in the Command Central web user interface, if you expand a layer in a stack, 
+click on an instance in the layer,
+and click the "Installation alias" link on the instance Overview tab, the installation page does not load.
+
+The issue is resolved. Now the installation page loads successfully after navigating to the instance 
+Overview tab from the Stacks view.
+
+CCE-6578 (Software AG Command Central 10.7 WebUI Fix 1)
+Upgrading a stack fails because of failed connection to the database. The issue occurs if at the time 
+of creating the database layer in the stack, you specify an encrypted password in the respective field 
+in Command Central. Then if you export the migration properties to a file and import them again through 
+the Command Central web user interface, the database connection fails during the stack upgrade.
+
+The issue is resolved. You can now successfully migrate a stack after importing a migration properties 
+file that contains an encrypted database password.
+
+CCE-6586 (Software AG Command Central 10.7 WebUI Fix 1)
+The Stacks view of the Command Central web user interface is slow to respond when you have nine or more 
+existing stacks.
+
+The issue is resolved. Now the stacks load as expected in the Stacks view, even when you have over 
+nine existing stacks.
+
+CCE-6587 (Software AG Command Central 10.7 WebUI Fix 1)
+During a stack upgrade with the upgrade wizard in Command Central, the "Specify fixes and parameters" 
+section might fail to load the migration properties and displays an error. The issue occurs when run-time
+components from the layers in the stack are offline when you open the upgrade wizard.
+
+The issue is resolved.
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or Software AG Update Manager to install 
+fixes on one machine at a time. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot apply these instructions to the previously 
+installed fix.
+
+Uninstall using Command Central (9.7 or later) or Software AG Update Manager. 
+For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the
+webMethods product suite and includes support for operation in
+any country, locale, or language as specified in the Installing
+webMethods Products guide. It was not tested with non-English
+configurations and non-ASCII data. This fix may have some
+globalization impact.
+
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might
+contain new messages and these messages will appear in English.
+
+
+
+1.0 Copyright
+
+Copyright ©2021 Software AG, Darmstadt, Germany and/or Software AG USA Inc., 
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks 
+or registered trademarks of Software AG and/or Software AG USA Inc. and/or its 
+subsidiaries and/or its affiliates and/or their licensors. Other company and 
+product names mentioned herein may be trademarks of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or 
+its subsidiaries is located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. 
+For third-party copyright notices, license terms, additional rights or restrictions, 
+please refer to "License Texts, Copyright Notices and Disclaimers of Third Party Products". 
+For certain specific third-party license restrictions, please refer to section E of the 
+Legal Notices available under "License Terms and Conditions for Use of Software AG Products / 
+Copyright and Trademark Notices of Software AG Products". 
+These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

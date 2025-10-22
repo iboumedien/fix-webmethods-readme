@@ -1,0 +1,507 @@
+                IBM webMethods Adapter 9.6 for Apache Kafka Fix 17 readme
+
+                                  September 2025
+
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods Adapter 9.6 for Apache Kafka Fix 17
+
+
+
+2.0 Fix ID
+
+WAK_9.6_Fix17
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+None.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include 
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the 
+release.
+
+WB-428
+The existing Schema Registry support in the Kafka Adapter has been enhanced to 
+allow more robust schema handling. With this update, the adapter can now retrieve 
+schemas directly from the registry server for producing and consuming Kafka messages, 
+and also perform full CRUD operations on schemas through the utility services.
+
+WAK-556
+In webMethods Adapter for Apache Kafka, the functionality for setting specific 
+tenant user details for flow service execution on the IBM webMethods Hybrid 
+Integration environment is no longer supported at adapter level.
+
+WAK-553
+In IBM webMethods Hybrid Integration environment, the Kafka Adapter services
+and notification input/output signatures do not include the Key and Value Schema 
+dependencies.
+
+The issue is resolved. Schema Registry is now supported.
+
+WAK-549
+In the Integration Server Administrator page, the webMethods Adapter for Apache 
+Kafka connections type hyperlink cannot be accessed when CSRF is enabled.
+
+The issue is resolved.
+
+WAK-543
+The IBM webMethods Adapter for Apache Kafka listener performs topic name 
+validation during both listener startup and runtime, which might result in 
+reduced performance and stability.
+
+The issue is resolved. The behavior is enhanced and topic name validation is 
+now restricted to listener startup only, while validation now also includes partition
+validation and offset validation.
+
+WAK-541
+In an Origin environment, creating nodes might result in empty input and output 
+signatures for both services and Confluent Kafka synch listener notifications.
+
+This issue is resolved.
+
+WAK-536
+In the IBM webMethods Hybrid Integration environment, synchronous notification 
+services result in runtime failures due to missing tenant user details for the 
+execution.
+
+This issue is resolved.
+
+WAK-533
+When running the Kafka Adapter in an IBM webMethods Hybrid Integration environment, 
+the flow for a Confluent Kafka synch listener notification fails. The behavior occurs 
+because the listener notification does not trigger the outputParameterNames 
+resourceDomain call.
+
+The issue is resolved. The Confluent synch listener notification flow now executes 
+successfully.
+
+WAK-521
+In webMethods Adapter for Kafka in webmethods.io Integration, while enabling or
+testing a connection with SASL_SSL or an SSL security protocol configured with
+keystore or truststore, results in the following exception:
+"Cannot test the Account: Resource Connection Exception:
+java.lang.NullPointerException: Cannot invoke
+com.wm.util.security.WmSecureString.toString() because 'secureString' is null."
+
+This issue is now resolved.
+
+WAK-517
+In the webMethods.io Integration environment, when nodes are created, empty
+input and output signatures are rendered for the services.
+
+This issue is now resolved.
+
+WAK-479(WAK_9.6_Fix16)
+In IBM webMethods Adapter for Apache Kafka, running the
+wm.adapter.wmkafka.serde:registerSerializer public service fails with invalid
+className error.
+
+This issue is now resolved.
+
+WAK-478(WAK_9.6_Fix16)
+In IBM webMethods Adapter for Apache Kafka, the debug messages are logged when
+the log level is configured for INFO.
+
+This issue is now resolved.
+
+WAK-477(WAK_9.6_Fix16)
+IBM webMethods Adapter for Apache Kafka provides a mechanism to handle the poison
+pill scenario by leveraging an error-handling deserializer. The poison pill
+scenario occurs when a record published to a Kafka topic continuously fails to
+be consumed. This occurs when the producer and consumer are configured with
+incompatible serializers and deserializers.
+
+Perform the following steps to enable an error-handling deserializer:
+1. Set watt.adapter.kafka.use.error.handling.deserializer property to true in
+Integration Server Administrator, navigate to Settings > Extended.
+2. Edit the relevant consumer connection to specify a custom service to process
+the record with the error in the "Deserializer Error Handler" field
+3. Enable the relevant consumer connection.
+
+Note:
+1. Consumer records with errors will not be passed to the consumer service or
+configured listeners.
+2. If the watt.adapter.kafka.use.error.handling.deserializer property is set to
+true and the flow service is not specified in the "Deserializer Error Handler"
+field, then the records with errors will be lost. The user may have to reset the
+consumer offset to a prior value to read them again.
+3. For more information about the input structure of the record with the error
+received from the deserializer error handler, see the
+wm.adapter.wmkafka.serde.specifications:deserializerErrorHandler sample service
+specification.
+
+WAK-447(WAK_9.6_Fix16)
+When IBM webMethods Adapter for Apache Kafka package is loaded, the 'Adapter
+Runtime: Duplicate facility 507' warning appears in the server log.
+
+This issue is now resolved.
+
+WAK-440(WAK_9.6_Fix16)
+In IBM webMethods Adapter for Apache Kafka, continuous commits to the Kafka
+topics are performed even when the listener consumes no data.
+
+This issue is now resolved.
+
+However, note that when auto-commit is enabled, the Adapter for Apache Kafka
+consumer commits offsets based on the defined auto-commit interval, regardless
+of whether the Kafka listener is consuming any messages.
+
+WAK-436(WAK_9.6_Fix16)
+When the messages of type Byte are serialized using IBM webMethods Adapter for
+Apache Kafka producer service and deserialized using another client which uses
+non-ByteBuffer Double APIs, a value mismatch occurs.
+
+This issue is now resolved.
+
+WAK-443(WAK_9.6_Fix15)
+Updated copyright notes, vendor, and product names for IBM rebranding.
+
+WAK-396(WAK_9.6_Fix14)
+In the webMethods Adapter for Apache Kafka, the listener notification fails to
+process data with an empty array for Avro array-type fields.
+
+This issue is now resolved.
+
+WAK-395(WAK_9.6_Fix14)
+In webMethods Adapter for Apache Kafka, the connection types listed in Adapters
+> webMethods Adapter for Apache Kafka > Connection Types page, is rearranged to
+improve usability and flow.
+
+WAK-394(WAK_9.6_Fix14)
+In the webMethods Adapter for Apache Kafka, the connection types are not listed
+in Adapters > webMethods Adapter for Apache Kafka > Connection Types page, if
+the dependent client libraries are not provided in
+Integration Server_directory\instances\<instance_name>\packages\WmKafkaAdapter
+\code\jars folder.
+
+This issue is now resolved.
+
+WAK-341(WAK_9.6_Fix14)
+In the webMethods Adapter for Apache Kafka, the listener notification fails to
+process Avro fields of enum, union, and byte types particularly bytes generated
+using APIs other than ByteBuffer Double APIs.
+
+This issue is now resolved.
+
+WAK-347(WAK_9.6_Fix13)
+In webMethods Adapter for Apache Kafka, a generic error message appears in
+Integration Server Administrator if an error occurs while enabling or testing a
+connection.
+
+This issue is now resolved. Specific and refined error messages now appear in
+Integration Server Administrator if an error occurs while enabling or testing a
+connection, thereby improving clarity and facilitating troubleshooting.
+
+WAK-335(WAK_9.6_Fix13)
+In webMethods Adapter for Apache Kafka, serializing an Avro message of type
+String array fails.
+
+This issue is now resolved.
+
+WAK-334(WAK_9.6_Fix13)
+In webMethods Adapter for Apache Kafka, the topic names, table names, and
+stream names appear in alphabetical order in the dropdown in adapter services.
+
+A new server configuration parameter watt.adapter.kafka.include.internal.topics
+is introduced to facilitate filtering internal topics in the dropdown for topic
+names in adapter services. Possible values are:
+#false: Default. Internal topic names are not listed.
+#true: All topic names including internal are listed.
+This parameter is applicable only if the version of producer and consumer
+connections is v11 or higher.
+
+WAK-332(WAK_9.6_Fix13)
+In webMethods Adapter for Apache Kafka, the connection to the schema registry
+server fails if two-way SSL (mTLS) is used for authentication.
+
+This issue is now resolved.
+
+WAK-330(WAK_9.6_Fix13)
+In webMethods Adapter for Apache Kafka, if the schema registry server is not
+reachable, an error message appears in Integration Server Administrator preventing
+Integration Server from enabling the connection.
+
+This issue is now resolved. The message is now logged into the Server log as a
+warning. The connection is enabled if the schema registry server is not reachable
+while enabling the connection.
+
+WAK-326(WAK_9.6_Fix13)
+In webMethods Adapter for Apache Kafka, the default value of pollTime for the
+Confluent Kafka Consume service and Apache Kafka Consume service is now 10000 ms
+(10 seconds).
+
+WAK-325(WAK_9.6_Fix13)
+In webMethods Adapter for Apache Kafka, the Confluent Kafka Producer connection
+and Apache Kafka Producer connection version 11 is enabled, even when the server
+is not reachable.
+ 
+This issue is now resolved.
+
+WAK-324(WAK_9.6_Fix13)
+In webMethods Adapter for Apache Kafka, updated the listener notification
+template names, descriptions, and tab names for clarity.
+
+WAK-322(WAK_9.6_Fix13)
+In webMethods Adapter for Apache Kafka, error logging for connections is
+enhanced to provide clarity and facilitate troubleshooting and debugging.
+
+WAK-320(WAK_9.6_Fix12)
+In webMethods Adapter for Apache Kafka, the Schema Registry URL's reachability
+check is performed using the standard APIs, thereby ensuring that the Schema
+Registry URL is reachable.
+
+WAK-272(WAK_9.6_Fix12)
+In Integration Server Administrator, the Logs > Server displays the debug
+statements for webmethods Adapter for Apache Kafka if the Logging Level is set
+to Info in Logging > Server Logger > Edit Server Logger > Adapters >
+com.wm.adapter.wmkafka.KafkaAdapter.
+
+This issue is now resolved.
+
+WAK-267(WAK_9.6_Fix12)
+In webMethods Adapter for Apache Kafka, creating a Confluent Kafka Producer
+Connection or Confluent Kafka Consumer Connection with multiple
+comma-separated list of URLs in Schema Registry URL displays an error.
+
+This issue is now resolved.
+
+WAK-264(WAK_9.6_Fix11)
+In webMethods Adapter 9.6 for Apache Kafka, the Custom KSQL adapter service runs
+indefinitely without displaying the output.
+
+This issue is now resolved.
+
+WAK-261(WAK_9.6_Fix11)
+In webMethods Adapter for Apache Kafka, listener notification fails to receive
+the message when the Avro schema with a field of type array contains a single
+item.
+
+This issue is now resolved.
+
+WAK-234(WAK_9.6_Fix11)
+In webMethods Adapter for Apache Kafka, the Produce service fails to execute if
+the Avro schema contains a nested array.
+
+This issue is now resolved.
+
+WAK-233(WAK_9.6_Fix11)
+In webMethods Adapter for Apache Kafka, the message is consumed by the Consume
+service even if the Key Schema or Value Schema selected in the Consume service
+is different from the Key Schema or Value Schema selected in the Produce service.
+
+This issue is now resolved.
+
+WAK-232(WAK_9.6_Fix11)
+In webMethods Adapter for Apache Kafka, in the Consume service, the
+ConsumeOutput > key fields display the value from the ConsumeOutput > value fields.
+
+This issue is now resolved.
+
+WAK-231(WAK_9.6_Fix11)
+In webMethods Adapter for Apache Kafka, the key and value fields for the
+Produce and Bulk Produce services appear in a different order in the ProduceInput
+field.
+
+This issue is now resolved.
+
+WAK-224(WAK_9.6_Fix11)
+In Integration Server Administrator page, the user is unable to access webMethods
+Adapter for Apache Kafka page when CSRF is enabled.
+
+This issue is now resolved.
+
+WAK-222(WAK_9.6_Fix11)
+In webMethods Adapter 9.6 for Apache Kafka, asynchronous notification fails to
+publish the document as the header field is mandatory in Publishable Document
+Type.
+
+This issue is now resolved.
+
+WAK-190(WAK_9.6_Fix10)
+In webMethods Adapter 9.6 for Apache Kafka, when auto-commit is set to false for
+the Confluent Kafka Consumer connection and the flow service associated with the
+synchronous listener notification fails, then the transaction is not rolled back
+and the offset is incremented.
+
+This issue is now resolved.
+
+WAK-188(WAK_9.6_Fix10)
+In webMethods Adapter 9.6 for Apache Kafka, a number of listeners in the enabled
+state change to disabled state when Integration Server is restarted.
+
+This issue is now resolved.
+
+WAK-158(WAK_9.6_Fix9)
+In webMethods Adapter 9.6 for Apache Kafka, Confluent Kafka Connection is not 
+getting enabled for Cloud Confluent Kafka Instance.
+
+This issue is now resolved.
+
+Now, a new Field "Schema Registry Credentials" has been added in Confluent Kafka 
+Connection.
+
+WAK-155(WAK_9.6_Fix9)
+In webMethods Adapter 9.6 for Apache Kafka, if Avro schema field type is declared 
+as logical type then the service execution fails with the error "Error 
+serializing Avro message".
+
+This issue is now resolved.
+
+WAK-149(WAK_9.6_Fix8)
+webMethods Adapter 9.6 for Apache Kafka does not support a service for publishing 
+a bulk of messages.
+
+This support has now been added in webMethods Adapter 9.6 for Apache Kafka.
+
+WAK-117(WAK_9.6_Fix8)
+In webMethods Adapter 9.6 for Apache Kafka, nested Avro document fields are 
+not rendered properly for confluent kafka adapter services. 
+
+This issue is now resolved. 
+
+WAK-94(WAK_9.6_Fix7)
+In webMethods Adapter 9.6 for Apache Kafka, a large number of 
+kafka-admin-client-thread threads are present in webMethods Server.
+
+This issue is now resolved.
+
+WAK-68(WAK_9.6_Fix6)
+The "Topic Operations" in WmKafka Adapter menu fails and displays the following 
+error message: 
+"Object Not Found" 
+
+This issue is resolved. Now, the invalid "Topic Options" menu item has been 
+removed from the Adapter menu. 
+
+WF-15026(WAK_9.6_Fix5)
+webMethods Adapter 9.6 for Apache Kafka does not support java services for topic 
+management and meta data lookup for Produce & Consume adapter services.
+
+This support has now been added in webMethods Adapter 9.6 for Apache Kafka.
+
+
+WAK-45(WAK_9.6_Fix4)
+In webMethods Adapter 9.6 for Apache Kafka, adapter listener gets disabled when
+adapter notification's execution takes more time than poll interval.
+
+This issue is resolved now.
+
+WF-14161(WAK_9.6_Fix4)
+In webMethods Adapter 9.6 for Apache Kafka, java coding is necessary to work with
+Avro schema files using Confluent schema registry.
+
+webMethods Adapter 9.6 for Apache Kafka, now supports new connection types and 
+adapter services for Confluent Kafka which eases the user experience in working 
+with avro files.  
+
+WF-14162(WAK_9.6_Fix4)
+webMethods Adapter 9.6 for Apache Kafka, now supports KSQL feature of Confluent 
+Kafka.
+
+Confluent KSQL is the streaming SQL engine that enables real-time data processing 
+against Apache Kafka®.
+It provides an easy-to-use, yet powerful interactive SQL interface for stream 
+processing on Kafka, without the need to write code in a programming language 
+such as Java or Python.
+
+WAK-24(WAK_9.6_Fix3)
+In webMethods Adapter 9.6 for Apache Kafka, adapter listener joins and leaves 
+the consumer group, leading to low performance.
+
+The adapter listener joins and leaves the consumer group, every time it polls 
+for a message by subscribing or assigning topics.
+
+Also, before successful invocation of associated adapter notification, 
+committing of Kafka messages occurs.
+
+These issues are now resolved. 
+
+WAK-20(WAK_9.6_Fix2)
+
+webMethods Adapter 9.6 for Apache Kafka is certified with Kafka 0.11.x.x, and
+confluent 4.0.0 versions. If the producer and consumer connection types have 
+v11+ as Kafka version, then you can send or consume the headers as a part of the 
+message.
+
+Also, Adapter for Apache Kafka provides two new connection types to connect to 
+the secured Kafka systems.
+ 
+
+WAK-9(WAK_9.6_Fix1)
+In webMethods Adapter 9.6 for Apache Kafka, output signature variable 'messages' 
+of sync/async adapter notification is getting changed to results at runtime.
+
+Output signature variable of sync/async adapter notification is not same at 
+design time and at runtime.
+
+This issue is now resolved.
+
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the documentation 
+at https://www.ibm.com/docs/en/products.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed 
+fix. This action will revert your installation to the previously installed fix. You 
+cannot use these instructions to uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the documentation 
+at https://www.ibm.com/docs/en/products.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corporation 2025

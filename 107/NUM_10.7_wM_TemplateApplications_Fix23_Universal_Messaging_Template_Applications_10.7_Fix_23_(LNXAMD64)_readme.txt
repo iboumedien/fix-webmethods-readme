@@ -1,0 +1,539 @@
+       IBM webMethods Universal Messaging webMethods TemplateApplications 10.7 SP0 Fix 23 Readme
+   
+                                  December 2024
+
+________________________________________________________________________________
+
+This file provides important information for applying IBM webMethods Universal Messaging 
+TemplateApplications 10.7 SP0 Fix 23 to IBM webMethods Universal Messaging 10.7 SP0 installations. 
+For additional information about IBM webMethods Universal Messaging, see the index.html file in the 
+docs directory of your installation. 
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings 
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization 
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+IBM webMethods Universal Messaging webMethods TemplateApplications 10.7 SP0 Fix 23 Build ***BUILD_NUMBER***
+
+
+
+2.0 Fix ID
+
+NUM_10.7_wM_TemplateApplications_Fix23
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+IBM webMethods Universal Messaging webMethods TemplateApplications 10.7 SP0
+
+
+
+4.0 Requirements
+
+None.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+ 	
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+NUM-21520 (NUM_10.7_wM_TemplateApplications_Fix21)
+
+Some options are missing from the Universal Messaging runUMTool command-line tool when you have only 
+the UM Template Applications installed.
+The issue occurs because several jar files are missing from the lib directory although they are 
+present in the runUMTool classpath.
+The issue is resolved.
+
+NUM-21517 (NUM_10.7_wM_TemplateApplications_Fix21)
+
+Some options are missing from the Universal Messaging runUMTool command-line tool when you have only 
+the UM Template Applications installed.
+The issue occurs because several jar files are missing from the lib directory although they are 
+present in the runUMTool classpath.
+The issue is resolved.
+
+NUM-20774 (NUM_10.7_wM_TemplateApplications_Fix19)
+
+runUMTool options' are loaded in the presence of their dependencies. Since TA only installation 
+onboards only client_fix_jars, the missing jars caused a few options in runUMTool to not load up 
+and therefore missing from the list. 
+Including org.json and all other jars in the TA's runUMTool's classpath was done as part of this 
+ticket.
+
+NUM-20729 (NUM_10.7_wM_TemplateApplications_Fix19)
+
+Netty-all libraries updated to version 4.1.97
+Note: Any existing instances of the AMQP Java Template Applications under UniversalMessaging/java 
+will need to be recreated using the Universal Messaging Instance Manager due to library dependency 
+changes. Non-AMQP Java Template Applications are not affected by this change.
+
+NUM-16156 (NUM_10.7_wM_TemplateApplications_Fix19)
+
+Universal Messaging does not provide an option to export Protobuf
+definitions from a channel or queue.
+The Protobuf definitions are needed when you want to explore
+the structure of a payload in a client application or when you
+import or export the contents of a channel or queue.
+The issue is resolved. Now you can export Protobuf definitions
+from a channel or queue in the following ways:
+- Using a new command-line tool named ExportProtobufDefinitions.
+- Using the Enterprise Manager. A new option, Export Protobuf Definitions,
+has been added to the context menu for a channel or queue.
+In addition, the ExportRealmXML and ImportRealmXML command-line tools
+also have options for exporting and importing Protobuf definitions, respectively.
+
+NUM-20133 (NUM_10.7_wM_TemplateApplications_Fix18)
+
+Universal Messaging uses the Guava library version 30.1.1, which has a security vulnerability.
+The issue is resolved. The Guava library has been updated to version 32.1.1.
+
+NUM-20308 (NUM_10.7_wM_TemplateApplications_Fix17)
+
+The Universal Messaging RealmInformationCollector (RIC) tool fails to export the realm configuration 
+of a cluster in live mode when the cluster is not formed and a JNDI context is present.
+The tool returns the exception "Failed to execute 'realmconfig' collector, reason: Failed to export 
+realm configuration for instance: <instance>". The issue occurs because the export of the JNDI 
+event set fails.
+The issue is resolved. Now the RIC tool ignores the export of the JNDI event set and exports the 
+realm configuration.
+
+NUM-19749 (NUM_10.7_wM_TemplateApplications_Fix15)
+
+The ClusterState command line tool is now enhanced to report information about all nodes in a 
+Universal Messaging server cluster, including offline nodes.
+The nClusterTool command line tool is now enhanced to report more details about the state of the 
+member nodes in the cluster.
+
+NUM-19414 (NUM_10.7_wM_TemplateApplications_Fix15)
+
+Adding or modifying supported ciphers for a Universal Messaging server SSL interface using 
+command-line tools might fail.
+When you run the AddHTTPSInterface, AddSSLInterface, or ModifyInterface command-line tools and 
+specify the 'ciphers' optional parameter, the tools might fail to execute, although the specified 
+ciphers are part of the list of supported SSL ciphers. Adding a cipher might fail with the 
+following error: "Illegal argument passed: Cipher not found in supported cipher list".
+The issue is resolved.
+
+NUM-19300 (NUM_10.7_wM_TemplateApplications_Fix14)
+
+When Integration Server uses Universal Messaging as a JMS provider, it might stop responding when 
+you try to enable or disable JMS triggers.
+The issue is resolved.
+
+NUM-18602 (NUM_10.7_wM_TemplateApplications_Fix12)
+
+Running the AdminToolsConf collector that is part of the Universal Messaging Realm Information 
+Collector tool fails with a ?Directory doesn't exist? error.
+The issue occurs when the \UniversalMessaging\java\umserver\bin folder or the conf files in the bin 
+folder do not exist.
+This issue is resolved.
+
+NUM-17580 (NUM_10.7_wM_TemplateApplications_Fix7)
+
+The Universal Messaging HealthChecker command-line tool has been enhanced to check
+if non-clustered durables are present on clustered channels.
+If the tool finds such durables, it displays a warning message:
+"WARN: Durable (durable1) is not cluster wide while Topic [ch1] on [umserver] is clustered".
+
+NUM-17552 (NUM_10.7_wM_TemplateApplications_Fix7)
+
+You can create a non-clustered durable on a clustered channel in a Universal Messaging cluster.
+The issue is resolved. Universal Messaging now disregards the nDurableAttributes#isClustered flag. 
+When you create a durable object on a clustered channel the durable is clustered even if
+the isClustered attribute flag is set to 'false'.
+
+NUM-17414 (NUM_10.7_wM_TemplateApplications_Fix6)
+
+Restarting Universal Messaging fails with a file I/O error.
+The issue might occur when the server tries to load a shared or serial durable with a
+selector that has an event buffer size of more than 10 000 symbols. In this case,
+Universal Messaging writes the following error in the nirvana.log file:
+"Server shutdown initiated due to fatal file I/O error occurred: Unable to load the durable
+from, corruption detected...Input exceeded input buffer size."
+The issue is resolved. You can now create durables with selectors that have an input event buffer 
+size of more than 10 000 symbols.
+
+NUM-17174 (NUM_10.7_wM_TemplateApplications_Fix6)
+
+The Universal Messaging RealmInformationCollector diagnostic tool might fail while
+collecting information about the operating system.
+The issue occurs due to failure in the old Oshi library that the tool uses.
+The issue is resolved. The Oshi-Core, JNA, and JNA-Platform libraries have been upgraded to the 
+latest version.
+
+NUM-17015 (NUM_10.7_wM_TemplateApplications_Fix6)
+
+Universal Messaging Template Applications fixes are not available for Solaris operating systems.
+The issue is resolved. You can now install a common Template Applications fix on both Solaris and 
+AIX using Software AG Update Manager.
+
+NUM-16926 (NUM_10.7_wM_TemplateApplications_Fix5)
+
+
+NUM-16890 (NUM_10.7_wM_TemplateApplications_Fix5)
+
+The IdentifyLargeDurableOutstandingEvents command line tool reports information about all channels 
+with durables. The behavior is incorrect because the tool must report only the channels that 
+contain durables with a number of outstanding events above the defined threshold.
+The issue is resolved. 
+
+NUM-15346 (NUM_10.7_wM_TemplateApplications_Fix5)
+
+The Universal Messaging DeleteJoin command-line tool cannot find an inter-cluster join between two 
+cluster-wide channels.
+This issue is now resolved.
+
+NUM-16828 (NUM_10.7_wM_TemplateApplications_Fix4)
+
+Universal Messaging was not providing a clear and easy way to obtain server's version.
+When UM client is using HS and is connecting to servers with different versions - the 
+hsReleaseVersion attribute is mandatory. In case it is not provided the session will not be 
+established ( or disconnected if already active and a server is restarted). This issue is now 
+resolved. 
+With the assistance of ServerReleaseVersion tool you can now have information about each server's 
+version and provide you correct HS URL if needed. The ServerReleaseVersion tool will take care of 
+going through all of the servers, part of the provided URL that are running at the moment of the 
+check and will check their versions after which will generate the correct HS URL to be used by 
+users in case such URL was provided.
+
+NUM-15610 (NUM_10.7_wM_TemplateApplications_Fix4)
+
+GetDurableInfo UMTool returns 0 oustanding events even when the outstanding events on the specified 
+durable is greater than 0.
+This is issue is resolved. GetDurableInfo tool returns actual outstanding events on the specified 
+durable
+
+NUM-15502 (NUM_10.7_wM_TemplateApplications_Fix4)
+
+The Universal Messaging RealmInformationCollector diagnostic tool does not collect enough memory 
+statistics on Linux.
+The issue is resolved. Now the RealmInformationCollector osinfo collector prints the output of the 
+following Linux commands:
+- cat /proc/meminfo - reports the amount of free and used memory (both physical and swap) on the 
+system,
+as well as the shared memory and buffers used by the kernel.
+- vmstat -w (VM statistics) - obtains information about memory, system processes, paging, 
+interrupts, block I/O, disk, and CPU scheduling.
+- vmstat -dw - reports VM disk statistics.
+- iostat - monitors system input/output device loading.
+For more information about using the RealmInformationCollector tool and the osinfo collector, see 
+the Universal Messaging Administration Guide.
+
+NUM-16458 (NUM_10.7_wM_TemplateApplications_Fix3)
+
+Using the AMQP protocol in Universal Messaging version 10.7 Fix 1 fails with an error. The issue 
+occurs because the proton-j.jar version 0.33.5 is missing.
+The issue is now resolved.
+
+NUM-15569 (NUM_10.7_wM_TemplateApplications_Fix2)
+
+When collecting data about the Universal Messaging (UM) realm servers using the UM administration 
+tools, one of the following issues shows in the reports:
+-  During the JNDI status check on UM servers with existing JNDI entries, the Health Checker tool 
+returns the following warning: "Realm umserver: No JNDI entry for store."
+- The Realm Information Collector returns a Null Pointer Exception if the 
+<install_dir>/UniversalMessaging/Java/<Instance>/bin directory does not exist.
+The issue is now resolved.
+
+NUM-15403 (NUM_10.7_wM_TemplateApplications_Fix2)
+
+Now JMSStore creation/deletion  can be done with runUmTools tools those are CreateJMSTopic, 
+CreateJMSQueue, DeleteJMSTopic and DeleteJMSQueue and they also can set various channel attributes.
+
+NUM-15364 (NUM_10.7_wM_TemplateApplications_Fix2)
+
+Java Template Applications are now available for AIX.
+
+NUM-15325 (NUM_10.7_wM_TemplateApplications_Fix2)
+
+DeleteDurable tool fails to delete the durable if there is at least one queue hosted on the server.
+This issue is resolved now.
+
+NUM-15303 (NUM_10.7_wM_TemplateApplications_Fix2)
+
+HealthChecker now contains information about
+* umTools.jar version that Health checker is initiated with.
+* Realm Information Collector now can be initiated with the secured connections.
+* Environment state check to collects realm server version.
+
+NUM-15289 (NUM_10.7_wM_TemplateApplications_Fix2)
+
+The psinfo data collector of the Realm Information Collector diagnostic tool does not collect the 
+kernel TCP parameter values and some ulimit values on Linux operating systems.
+The issue is resolved. Now the kernel TCP parameter values are logged in the "sysctl.txt" file. The 
+operating system details, such as time and username identification, are now stored in the 
+"ulimit.txt"
+
+NUM-15235 (NUM_10.7_wM_TemplateApplications_Fix2)
+
+The output of the IdentifyLargeDurableOutstandingEvents command-line administration tool does not 
+provide information about the names of the channels.
+This issue is resolved.
+
+NUM-15233 (NUM_10.7_wM_TemplateApplications_Fix2)
+
+The output of the Universal Messaging HealthChecker command-line administration tool has been 
+improved. The tool now offers:
+- Better output readability
+- Clearer durable warnings
+- Warnings for queue build-up
+In addition, the DurableSubscriberLargeStorageCheck prints the channel size.
+
+NUM-15574 (NUM_10.7_wM_TemplateApplications_Fix1)
+
+When calculating the free memory during a health check, the HealthChecker tool fails with 
+java.lang.NumberFormatException, but does not include a message text to explain why the issue 
+occurs.
+The issue is resolved. The following warning messages have been added to indicate the reason for 
+this exception:
+WARN: Could not retrieve total memory value, realm did not respond in 7000 ms
+WARN: Used memory can not be processed properly.
+WARN: Free memory can not be processed properly.
+
+NUM-15504 (NUM_10.7_wM_TemplateApplications_Fix1)
+
+Running a Universal Messaging command-line tool using the runUMTool
+Tools Runner application might result in an out-of-memory exception in the JVM.
+The JVM might run out of memory if the tool encounters a memory problem or leak.
+The issue occurs because the runUMTool application does not have a memory limit.
+The issue is resolved. Two new environment variables, UM_JAVA_MIN_MEM and UM_JAVA_MAX_MEM,
+have been added. You can use them to specify the minimum and maximum memory used by the tool
+you are executing.
+Environment Variable Configuration Reference
+Specify the minimum and maximum memory used by the command-line tool you are executing by setting 
+the following variables:
+- UM_JAVA_MIN_MEM=-XmsXXX, where XXX is the value of the minimum memory limit in megabytes.
+The default value is "-Xms256m".
+- UM_JAVA_MAX_MEM=-XmxXXX, where XXX is the value of the maximum memory limit in megabytes.
+The default value is "-Xmx512m".
+Specify the two environment variables in the command prompt before running the
+runUMTool command:
+On Windows: SET UM_JAVA_MIN_MEM=-Xms256m
+On Unix: UM_JAVA_MIN_MEM=-Xms256m
+
+NUM-15394 (NUM_10.7_wM_TemplateApplications_Fix1)
+
+When you execute the ngetservertime tool on a Universal Messaging realm with basic authentication 
+enabled and mandatory, the tool returns a security exception.
+When you execute the ngetservertime tool on a realm with basic authentication enabled and mandatory, 
+the tool returns the following error: 
+"com.pcbsys.foundation.security.auth.fAuthenticationException: An error occurred while 
+authenticating driver". This issue occurs because the tool does not pass the user password to the 
+session it creates.
+The issue is now resolved. You can use either one of two new system properties, ?UM_PASSWORD? or 
+?PASS_PASSWORD_IN_CONSOLE?, to pass the user password to the session.
+Do not use the two properties together.
+Property description
+UM_PASSWORD=<password>
+Passes the user password to the session created by the tool.
+You set the new property in the .conf file of the ngetservertime tool in the
+<SoftwareAG_directory>\UniversalMessaging\ java\<instance_name>\bin directory in the following 
+format:
+wrapper.java.additional.<n>=-DUM_PASSWORD=<password>
+where <n> is a unique positive integer.
+PASS_PASSWORD_IN_CONSOLE
+Specifies whether to provide the user password in the console.
+Values are:
+- true - you are asked to specify the password in the console.
+- false (default) - you are not asked to specify the password in the console.
+You set the new property in the .conf file of the ngetservertime tool in the
+<SoftwareAG_directory>\UniversalMessaging\ java\<instance_name>\bin directory in the following 
+format:
+wrapper.java.additional.<n>=-DPASS_PASSWORD_IN_CONSOLE=true|false
+where <n> is a unique positive integer.
+For more information about the two properties, see the Universal Messaging webhelp.
+
+NUM-15197 (NUM_10.7_wM_TemplateApplications_Fix1)
+
+The Universal Messaging RealmInformationCollector tool fails to run in a Docker container.
+When you try to start the RealmInformationCollector in a Docker container, the tool returns
+the following error: 'Universal Messaging realm server component not present in the current
+installation directory (/opt/softwareag/UniversalMessaging/tools/runner/./../../..). 
+So this operation is not applicable.' 
+This issue is now resolved.
+
+NUM-15112 (NUM_10.7_wM_TemplateApplications_Fix1)
+
+The Universal Messaging GetDurablesInfo command-line tool fails with a NullPointerException. 
+The issue is resolved.
+
+NUM-14978 (NUM_10.7_wM_TemplateApplications_Fix1)
+
+Using the Universal Messaging RepublishEventsFromOfflineFile command-line tool
+might result in the following issues:
+- The tool returns a NullPointerException when it imports events from a .mem file
+and some events are missing.
+- The tool returns a "java.lang.Long cannot be cast to java.lang.Integer" exception
+when it imports events with the "nrvpub.redelivery" header property from an .xml file.
+The issues are resolved.
+
+NUM-14901 (NUM_10.7_wM_TemplateApplications_Fix1)
+
+Exporting or importing a realm configuration into XML results in missing or incomplete joins 
+details.
+When exporting or importing realm configurations from Enterprise Manager or using the "nexportrealm" 
+or "nimportrealm" code samples, one of the following issues occurs:
+- The exported XML file does not include any information about the remote joins.
+- The joins entries in the exported XML file do not include the details of the remote realm, which 
+incorrectly represents the join as local.
+- The information about the remote joins does not get imported.
+The issues are now resolved.
+
+NUM-14202 (NUM_10.7_wM_TemplateApplications_Fix1)
+
+Some of the tools in runUMTool doesn't connect to an SSL interface.
+This issue is resolved.
+
+NUM-14148 (NUM_10.7_wM_TemplateApplications_Fix1)
+
+A Diagnostics Collector to collect channel and cluster diagnostic was not present in 
+RealmInformationCollector.
+A collector to collect config files from java\instance\bin folder was not present in 
+RealmInformationCollector.
+These issues are addressed.
+
+NUM-13940 (NUM_10.7_wM_TemplateApplications_Fix1)
+
+A tool to print the top channel usages based on memory was not present till now in 
+RealmInformationCollector.
+This issue is addressed in this enhancement.
+
+NUM-13939 (NUM_10.7_wM_TemplateApplications_Fix1)
+
+The GC and threadpool details were not part of the HealthChecker. Now this enhancement has been 
+added.
+
+NUM-13153 (NUM_10.7_wM_TemplateApplications_Fix1)
+
+Change default interface accept thread to 10 by adding the accept thread in the boot strap file.
+
+NUM-13071 (NUM_10.7_wM_TemplateApplications_Fix1)
+
+The Realm Export into XML did not contain the selector thread configuration of the interfaces 
+previously. This fix addresses this issue.
+
+
+8.0 Installation
+
+If you are installing a Universal Messaging server fix, please shut down any running Universal
+Messaging server instances before installing.
+In case the Universal Messaging server instance is a member of a cluster, please apply the
+procedure for installing rolling cluster updates described below(*).
+
+If you are installing a Universal Messaging client fix, please shut down any applications such as
+Integration server or Enterprise Manager which are using client libraries.
+
+If you are installing a Universal Messaging Enterprise Manager fix, you do not need to shut down the
+Universal Messaging server.
+
+Install using the Software AG Update Manager or Command Central (9.5 or later). For instructions,
+see the corresponding documentation at http://documentation.softwareag.com.
+
+(*) Universal Messaging cluster is supporting rolling updates for its nodes.
+There is a strong recommendation to start applying the new fixes on the Slave nodes and leave the
+Master node to be the last one.
+(*) Starting with 10.7 Fix 8, Universal Messaging provides updated versions of security libraries with 
+the Universal Messaging realm server fixes, if any of these libraries has been updated. You can find 
+the libraries in the UniversalMessaging\lib folder.
+
+For each single node that is part of the cluster the customer needs to follow the steps:
+1) Shutdown the node. The node will be disconnected from the cluster.
+2) Apply the specific fix
+3) Start the node. It will be connected back again to the cluster and will be operational
+4) Apply the same procedure from 1-3 steps on the next node
+
+In order to have truly no downtime, the client that talks to the Universal Messaging cluster should
+also be implemented in a way that it tolerates brief connection loss. A rolling update in a cluster
+still means that:
+a) When the node that a client is connected to is brought down for maintenance, the connection to
+this server, and respectively the cluster, will be lost and has to be re-established. The client
+should be able to handle this seamlessly.
+b) When the master node of the cluster is brought down for maintenance, the cluster will briefly
+go offline until a new master is elected. This is usually a very short time window, but still,
+similarly to point a). The client applications should be able to handle it in order to have truly
+no downtime from the point of view of the end user.
+
+
+
+9.0 Uninstallation
+
+If you are uninstalling a Universal Messaging server fix,
+please note that any running Universal Messaging server
+instances will be automatically shutdown before installing.
+
+If you are uninstalling a Universal Messaging client fix, 
+please shut down any applications such as Integration Server 
+or Enterprise Manager which are using client libraries.
+
+If you are uninstalling a Universal Messaging Enterprise Manager 
+fix, you do not need to shut down the Universal Messaging server.
+
+Uninstall using the Software AG Update Manager or 
+Command Central (9.5 or later). For instructions, see the 
+corresponding documentation 
+at http://documentation.softwareag.com.
+
+Note: These instructions can only be used to uninstall the 
+most recently installed fix. This action will revert your 
+installation to the previously installed fix. You cannot 
+apply these instructions to the previously installed fix.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix has
+no globalization impact and can be applied to systems running in any supported 
+locale or configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might contain new 
+messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Super iPaas Integration LLC, an IBM Company 2024.

@@ -1,0 +1,286 @@
+			SAG Web Services Stack 10.7 Fix 17 readme
+
+                    November 2023
+
+________________________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+SAG Web Services Stack 10.7 Fix 17
+
+
+
+2.0 Fix ID
+
+WSS_10.7_OSGi_Fix17
+
+
+3.0 Product(s)/Component(s) Affected
+
+
+This fix affects SAG Web Services Stack 10.7.
+
+
+
+4.0 Requirements
+
+This fix requires any of the products listed in 3.0 Products (s)/Component(s) Affected. 
+
+Official fixes are cumulative. Therefore, you can install the specified fix or later.
+
+For language pack requirements, see the Globalization section of the Software AG
+Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported
+by webMethods Product Suite 10.7.
+
+
+
+6.0 Cautions and Warnings
+
+Software AG Tomcat Server is stopped by Software AG Update 
+Manager, therefore it must be restarted after applying the fix.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+WSSTACK-4314
+Software AG Web Services Stack uses the third-party Bouncy Castle library 
+v. 1.68.0, which has known vulnerabilities.
+This issue is resolved. Web Services Stack now uses the stable version
+Bouncy Castle 1.76.0.
+
+WSSTACK-4295
+Software AG Web Services Stack uses the third-party Woodstox
+6.1.1, which has а security vulnerability CVE-2022-40152.
+This issue is resolved. Web Services Stack now uses the stable version
+Woodstox 6.5.1.   
+
+WSSTACK-4298
+Software AG Web Services Stack uses the third-party Apache Velocity Engine v.1.5.0,
+which has а security vulnerability CVE-2020-13936.
+This issue is resolved. Web Services Stack no longer uses Apache Velocity Engine.
+
+WSSTACK-4315
+Software AG Common Platform uses an old version of the third-party ESAPI library.
+This issue is resolved. Common Platform now uses ESAPI v.2.4.0.0.
+
+WSSTACK-3947
+Software AG Web Services Stack uses the third-party Apache Xalan
+2.7.2, which has а security vulnerability CVE-2022-34169.
+This issue is resolved. Web Services Stack now uses the stable version
+Apache Xalan 2.7.3.
+
+WSSTACK-4225
+Software AG Web Services Stack uses the third-party Apache Commons Codec
+v.1.11.0, which has а security vulnerability CVE-2020-15250.
+This issue is resolved. Web Services Stack now uses the stable version
+Apache Commons Codec 1.15.0.
+
+WSSTACK-4147
+Software AG Web Services Stack uses the third-party modified library Jettison 1.5.3,
+which has а security vulnerability CVE-2023-1436.
+Web Services Stack now uses the stable version
+Jettison 1.5.4.
+
+WSSTACK-4123
+Software AG Web Services Stack uses the third-party Spring Framework v.5.3.23,
+which has а security vulnerability CVE-2016-1000027.
+This issue is resolved. Web Services Stack no longer uses Spring Framework.
+
+WSSTACK-4102
+In WebServices Stack, during processing of a SOAP message that contains an attribute value larger
+than 524288 bytes, a "Maximum attribute size limit (524288) exceeded" error occurs.
+The issue is resolved. However, Software AG does not recommend using XML attribute values
+larger than 4096 bytes. For larger values, use XML elements.
+
+WSSTACK-4094
+Software AG Web Services Stack uses the third-party Apache Commons FileUpload
+library v.1.3.3, which has а security vulnerability NVD - CVE-2023-24998.
+This issue is resolved. Web Services Stack now uses the stable version
+Apache Commons FileUpload 1.5.0.
+
+WSSTACK-4102
+The newer Woodstox come with that attribute size limitation (524288 bytes). It was intended to guard against Denial-Of-Service. The problem is resolved but we do not recommend to be used by customers.
+
+WSSTACK-4054
+Software AG Web Services Stack uses the third-party library Apache Commons BCEL 5.2,
+which has а security vulnerability CVE-2022-42920.
+This issue is resolved. Web Services Stack now uses the stable version
+Apache Commons BCEL 6.7.0.
+
+WSSTACK-3939
+Software AG Web Services Stack uses the third-party Spring library v. 5.3.21,
+which has а security vulnerability CVE-2016-1000027.
+This issue is resolved. Web Services Stack now uses the stable version
+Spring 5.3.23.
+
+WSSTACK-3933
+Software AG Web Services Stack creates raw request log files with size 0.
+This issue is resolved.
+
+WSSTACK-3828
+Software AG Web Services Stack uses the third-party Gson library v. 2.2.1,
+which has а security vulnerability CVE-2022-25647.
+This issue is resolved. Web Services Stack now uses the stable version
+Gson 2.9.0.
+
+WSSTACK-3840
+Software AG Web Services Stack uses the third-party ESAPI library 2.2.3.1,
+which has known security vulnerabilities.
+The issue is resolved. Web Services Stack now uses the stable version
+ESAPI 2.3.0.0.
+
+WSSTACK-3812
+Software AG Web Services Stack uses the third-party Spring library v. 5.3.18, 
+which has а security vulnerability CVE-2022-22968.
+This issue is resolved. Web Services Stack now uses the stable version 
+Spring 5.3.21.
+
+WSSTACK-3847
+The Software AG Web Services Stack uses a version of
+Apache Commons-IO that has known vulnerabilities.
+This issue is resolved. Apache Commons-IO is upgraded to the stable
+version 2.10.0.
+
+WSSTACK-3687
+Software AG Web Services Stack uses the third-party ESAPI library 2.1.0.1,
+which has known security vulnerabilities.
+The issue is resolved. Web Services Stack now uses the stable version
+ESAPI 2.2.3.1.
+
+WSSTACK-3674
+Web Services Stack uses the third-party XmlSec library v.1.5.6, which has а security vulnerability.
+This issue is resolved.
+
+WSSTACK-3789
+Web Services Stack uses the third-party Spring library which has а security vulnerability.
+This issue is resolved.
+
+WSSTACK-3726
+A security vulnerability exists in the third-party Log4j library.
+This issue is resolved. Web Services Stack now uses
+Log4j 2.17.1, where this vulnerability is fixed.
+
+WSSTACK-3682
+When you execute the Web Services Stack wsdl2java shell script on Linux
+with Java 11, it fails with an error:
+"Error: -classpath requires class path specification"
+This issue is resolved.
+
+WSSTACK-3701
+A security vulnerability exists in the third-party Log4j library.
+This issue is resolved. Web Services Stack now uses
+Log4j 2.16.0, where this vulnerability is fixed.
+
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or Software AG Update Manager to install 
+fixes on one machine at a time. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was tested
+with non-English configurations and non-ASCII data.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new 
+messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright © 2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc.,
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either trademarks
+or registered trademarks of Software AG and/or Software AG USA Inc. 
+and/or its subsidiaries and/or its affiliates and/or their licensors.
+Other company and product names mentioned herein may be trademarks
+of their respective owners.
+
+Detailed information on trademarks and patents owned by Software AG and/or its subsidiaries
+is located at http://softwareag.com/licenses .
+
+This software may include portions of third-party products. 
+For third-party copyright notices, license terms, additional rights or restrictions,
+please refer to "License Texts, Copyright Notices and Disclaimers of Third Party Products".
+For certain specific third-party license restrictions, please refer to section E of 
+the Legal Notices available under "License Terms and Conditions for Use of Software AG Products /
+Copyright and Trademark Notices of Software AG Products". 
+These documents are part of the product documentation, located at
+http://softwareag.com/licenses and/or in the root installation directory of the licensed product(s).
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html

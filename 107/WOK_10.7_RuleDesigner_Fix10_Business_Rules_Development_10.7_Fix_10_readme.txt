@@ -1,0 +1,221 @@
+                 Business Rules Development 10.7 Fix 10 readme
+
+                         March 2022
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Business Rules Development 10.7 Fix 10
+
+
+
+2.0 Fix ID
+
+WOK_10.7_RuleDesigner_Fix10
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Business Rules Development.
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+For language pack requirements, see the Globalization section of the Software AG Empower Product
+Support website at https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+Warning: Do not use the "Uninstall" option (from About Eclipse
+SDK > Installation Details > Installed Software tab), as that will completely remove a particular
+feature.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in 
+services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes 
+for the release.
+
+WOK-15450 (WOK_10.7_RuleDesigner_Fix2)
+DeployToCloudException: Could not promote assets when deploying rule project to Cloud Container
+When an IS package has been previously deployed to a Cloud Container solution and then a rule 
+project is deployed to the same solution, the rule project deployment fails with an 
+"DeployToCloudException: Could not promote assets when deploying rule project to Cloud Container" 
+error.
+This issue has been resolved.
+
+WOK-15528 (WOK_10.7_RuleDesigner_Fix3)
+Deployment of business rules fails with java.lang.ClassNotFoundException: 
+com.softwareag.rules.runtime.pool.EnginePoolStore$Lambda$172
+When deploying a business rules project to one or more Integration Servers, through Hot Deployment 
+from My WebMethods Server, or through Deployer, sometimes the deployment fails on one or more 
+Integration Servers. The Integration Server error log shows a java.lang.ClassNotFoundException: 
+com.softwareag.rules.runtime.pool.EnginePoolStore$Lambda$172.
+This issue has been resolved by replacing the sometimes problematic lambda expression with a 
+concrete anonymous class.
+
+WOK-15663 (WOK_10.7_RuleDesigner_Fix4)
+NullPointerException during rule project builds
+When building a rule project with the Asset Build Environment, the build would fail with
+java.lang.NullPointerException
+at com.wm.lang.ns.NSRecordRef.getNSRecord(NSRecordRef.java:245)
+This issue is now resolved.
+
+WOK-15728 (WOK_10.7_RuleDesigner_Fix3)
+Cloud Container solutions list is not updated while deploying rule project
+When beginning to deploy a rule project to cloud container using Designer, the list of available 
+target solutions does not show recently created solutions.
+This issue has been resolved.
+
+WOK-15732 (WOK_10.7_RuleDesigner_Fix3)
+No Designer error message on Deploy to a solution with a different version
+When deploying rule projects from a 10.5 Designer installation to a 10.7 cloud container solution, 
+the deployment fails with no error message and no user feedback.
+This issue has been resolved by providing an error message, informing the user that the Designer 
+installation and the cloud container solution must be on the same version.
+
+WOK-15742 (WOK_10.7_RuleDesigner_Fix3)
+Rules can be deployed from Designer to cloud container solution without the WmBusinessRules package
+When deploying a rule project from Designer to a cloud container solution, the rule project can be 
+deployed, even though the target solution does not have the WmBusinessRules package enabled.
+This issue has been resolved.
+
+WOK-15743 (WOK_10.7_RuleDesigner_Fix3)
+Rules deployment is not asking to select IS for type3 solutions in Designer
+When deploying a rule project from Designer to a cloud container solution which contains more than 
+one Integration Server, the Designer Deploy to Cloud wizard does not prompt the user to select an 
+Integration Server to deploy to.
+This issue has been resolved.
+
+WOK-15751 (WOK_10.7_RuleDesigner_Fix3)
+Rules deployment is not tracking in history of Deploy Page
+When deploying a rule project from Designer to a cloud container solution, the cloud container 
+Solutions - Deploy - History page does not show information about the deployment.
+This issue has been resolved.
+
+WOK-16172 (WOK_10.7_RuleDesigner_Fix5)
+Missing dependency checks when deploying to Cloud Container
+When using Designer to deploy rule projects to Cloud Container,
+dependencies to External Event Rules, Process Actions and Predictive Analytics Actions were not 
+checked and deployment of such rule projects was not prevented; dependencies to service actions 
+were not checked and user was not informed of missing dependencies; dependencies to internal rules 
+assets were declared.
+This issue has been resolved.
+
+WOK-16955
+Designer plugins may load obsolete TPS libraries
+When another Fix delivers a new version of a Java library, the Business Rules Designer plugins 
+sometimes load the outdated and not the new version of this library.
+This issue has been resolved.
+
+WOK-17045
+Plaintext password stored
+When deploying Business Rules projects to Cloud Container, a plaintext password was stored in the 
+Cloud Container configuration.
+This issue is now resolved
+
+                                            
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using Software AG Update Manager. For instructions, see the documentation at 
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods product suite and 
+includes 
+support for operation in any country, locale, or language as specified in the Installing webMethods 
+Products guide. It was tested with non-English configurations and non-ASCII data.
+
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new messages and these 
+messages 
+will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright 
+© 2022 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston,
+VA, USA, and/or its subs
+idiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG pro
+duct names are either trademarks or registered
+trademarks of Software AG and/or Software AG USA Inc.
+ and/or its subsidiaries and/or its
+affiliates and/or their licensors. Other company and product nam
+es mentioned herein may be
+trademarks of their respective owners.
+
+Detailed information on trademark
+s and patents owned by Software AG and/or its subsidiaries is
+located at http://softwareag.com/licen
+ses .
+
+This software may include portions of third-party products. For third-party copyright notices
+,
+license terms, additional rights or restrictions, please refer to "License Texts, Copyright Notice
+s
+and Disclaimers of Third Party Products". For certain specific third-party license restrictions,
+p
+lease refer to section E of the Legal Notices available under "License Terms and Conditions for
+Use 
+of Software AG Products / Copyright and Trademark Notices of Software AG Products". These
+documents 
+are part of the product documentation, located at http://softwareag.com/licenses and/or
+in the root 
+installation directory of the licensed product(s).

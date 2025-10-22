@@ -1,0 +1,263 @@
+                   EntireX Adapter 10.7 Fix 27 readme
+                               01 2024
+
+This file provides important information for applying EntireX 10.7 Fix 27 to
+EntireX Adapter 10.7. For additional information about EntireX 10.7, see the 
+readme file on the Empower website at https://empower.softwareag.com.
+          
+            
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+7.1   Resolutions included from earlier Fixes
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+
+
+
+1.0   Fix Name
+
+EntireX Adapter 10.7 Fix 27
+
+
+
+2.0   Fix ID
+
+XAI_10.7_Fix27
+
+
+
+3.0   Product(s)/Component(s) Affected
+
+This fix affects EntireX Adapter
+
+
+
+4.0   Requirements and Dependencies
+
+For language pack requirements, see the Globalization section of the Software AG
+Empower Product Support website. The Globalization section can be found at: 
+
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0   Platform Support
+
+EntireX Adapter 10.7 Fix 27 is supported on the same platforms and operating
+systems and with the same JREs as webMethods Integration Server 10.7.
+
+
+
+6.0   Cautions and Warnings
+
+None
+
+
+
+7.0   Fix Contents
+
+- EXX-15713 XAI_10.7_Fix27:
+   CICS Socket Listener: Internal protocol mismatch during handshake 
+   disconnects from host, sends data to the disconnected host (CICS 
+   call failed: java.net.SocketException: Socket closed), reconnects 
+   to the host and sends the data again.
+   The issue is solved now and the data will be send with the lower 
+   protocol in the same connection. 
+
+
+
+
+
+
+7.1   Resolutions included from earlier Fixes
+
+Fix 21:
+
+- EXX-14892 XAI_10.7_Fix21:
+   When suppressing null values of type date (D), setting 
+   entirex.marshal.date=null resulted in an error.
+   Also, when suppressing null values of numeric/decimal type (I1, 
+   I2, I4, N, P) using the suppression mode "Suppress null elements 
+   and trim array cells at end containing null elements and zero 
+   numbers", zeros in structures/groups or as simple elements were 
+   not suppressed.
+   These issues are now resolved.
+
+
+Fix 19:
+
+- EXX-14648 XAI_10.7_Fix19:
+   EntireX Adapter: Copy and Paste of Broker ID from and into 
+   connections containing double back slashes will replace them at 
+   runtime with double forward slashes.  This may cause errors like 
+   "Wrong argument to Broker constructor: Invalid Broker ID"
+   This issue is resolved now.
+
+
+
+- EXX-14730 XAI_10.7_Fix19:
+   Passwords are printed to the console in encrypted form.
+   With this correction the (encrypted) password is no longer 
+   displayed
+
+
+- EXX-13802 XAI_10.7_Fix19:
+   EntireX Application Monitoring Data Collector
+   entirex.appmondc.filesperday=yes is specified.
+   The new log file was started with a delay and data of the new day 
+   was included in the log file of the previous day. No data from 
+   the next day should be included in the file for the previous day.
+
+   This issue is resolved now. 
+
+
+Fix 15:
+
+- EXX-14251 XAI_10.7_Fix15:
+   A call to a listener connection with at least one output 
+   parameter of type Date leads into the error : EXX 0800 0310 
+   "Unsupported field: YearOfEra".
+   The issue is now resolved
+
+
+- EXX-14346 XAI_10.7_Fix15:
+   url-style BrokerID starting with uppercase protocol (like SSL://, 
+   HTTP:// etc.) was not accepted by validation process. The 
+   application hit the error "Invalid Broker ID".
+   This is resolved now.
+   With this correction the protocol part of url-style BrokerID can 
+   be written now case-insensitive.
+
+
+Fix 5:
+
+- EXX-13064 XAI_10.7_Fix5:
+   The Broker ID used for SSL communication may contain a password. 
+   The format may look like
+   ssl://ipaddress:port?trust_store=trust.jks&key_store=key.jks&key_p
+   passwd=thepassword
+   How to encrypt the password associated with the key in the config 
+   files?
+   
+   With this correction the Broker ID is checked. If it contains the 
+   key_passwd, the password will be encrypted and added to Broker ID 
+   with key_passwd_e. In this case key_passwd will be removed.
+
+
+
+- EXX-13423 XAI_10.7_Fix5:
+   EXEC CICS SYNCPOINT fails in a program called via EntireX CICS 
+   Socket Listener if the program is called via CICS DPL. 
+   The issue is resolved now. For DPL programs used in EntireX CICS 
+   Socket Listener the new option SyncOnReturn must be activated in 
+   Adapter resp. RPC Server for CICS Socket listener. 
+   NOTE: The Solution requires corrections of CICS Socket Listener 
+   on z/OS and EntireX Adapter or RPC Server for CICS Socket 
+   Listener and configuration change in either EntireX Adapter or 
+   RPC Server for CICS Socket Listener 
+   
+   With this correction the EntireX Adapter supports a new 
+   Connection Parameter for CICS Socket Listener Connections 
+   parameters: 
+   Sync on Return
+   Possible values are true or false (Default).
+   The value true triggers that the CICS program is called with the 
+   CICS LINK option SYNCONRETURN. 
+   
+   For the RPC Server for CICS Socket Listener the option can be 
+   enabled with the new parameter:
+   cics.sl.synconreturn
+   Possible values are yes or no (Default). 
+   The value yes triggers that the CICS program is called with the 
+   CICS LINK option SYNCONRETURN. 
+   
+   The documentation will be updated accordingly.
+
+
+
+- EXX-13467 XAI_10.7_Fix5:
+   Editing the date and time patterns on the configuration web page 
+   of the EntireX Adapter could add unwanted blanks to these 
+   patterns which leads to DateTimeParseExceptions. 
+   This issue is resolved now. 
+
+
+- EXX-13492 XAI_10.7_Fix5:
+   Multiple possible output as COBOL channel containers were not 
+   processed properly in EntireX Adapter.
+   This issue is resolved now.
+
+
+- EXX-13539 XAI_10.7_Fix5:
+   RPC Call may fail with 
+   com.softwareag.entirex.dynamicrpc.DynamicRPCException: Wrong Date 
+   parameter
+   The issue is now resolved
+
+
+- EXX-13302 XAI_10.7_Fix5:
+   EntireX Adapter: Calling a COBOL program fails if last parameter 
+   has datatype AV
+   The issue is now resolved
+
+
+
+
+
+
+8.0   Installation
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or Software AG Update Manager to install 
+fixes on one machine at a time. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+9.0   Uninstallation
+
+Uninstall using Command Central (9.7 or later) or Software AG Update Manager. 
+For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+10.0  Copyright
+
+Copyright (c) 2024 Software AG, Darmstadt,
+Germany and/or Software AG USA Inc., Reston, VA, USA, and/or its
+subsidiaries and/or its affiliates and/or their licensors.
+
+The name Software AG and all Software AG product names are either
+trademarks or registered trademarks of Software AG and/or
+Software AG USA Inc. and/or its subsidiaries and/or its
+affiliates and/or their licensors. Other company and product
+names mentioned herein may be trademarks of their respective
+owners.
+
+Detailed information on trademarks and patents owned by Software
+AG and/or its subsidiaries is located at 
+http://softwareag.com/licenses. 
+
+This software may include portions of third-party products. For
+third-party copyright notices, license terms, additional rights
+or restrictions, please refer to "License Texts, Copyright
+Notices and Disclaimers of Third Party Products". For certain
+specific third-party license restrictions, please refer to
+section E of the Legal Notices available under "License Terms
+and Conditions for Use of Software AG Products / Copyright and
+Trademark Notices of Software AG Products". These documents are
+part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation
+directory of the licensed product(s).
+
+
+

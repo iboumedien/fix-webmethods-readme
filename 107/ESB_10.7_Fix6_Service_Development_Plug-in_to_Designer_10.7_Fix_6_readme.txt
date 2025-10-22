@@ -1,0 +1,282 @@
+    webMethods Designer Service Development 10.7 Fix 6 readme
+
+                         July 2023
+
+_________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+
+1.0 Fix Name
+
+webMethods Designer Service Development 10.7 Fix 6
+
+
+
+2.0 Fix ID
+
+ESB_10.7_Fix6
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Designer Service Development 10.7
+
+
+
+4.0 Requirements
+
+- IS_10.7_Core_Fix7 or the latest fix that supersedes this fix.
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods 
+Designer Service Development 10.7.
+
+
+
+6.0 Cautions and Warnings
+
+Warning: Do not use the "Uninstall" option (from About Eclipse
+SDK > Installation Details > Installed Software tab), as that
+will completely remove a particular feature.
+
+
+
+7.0 Fix Contents
+
+WED-10158
+Designer throws the "Unrecognized token" error while testing the 
+connection to webMethods Cloud Container.
+
+In Designer > Window > Preferences > Software AG > Cloud Container, 
+testing the connection to the Cloud Container URL fails with the error.
+
+This issue is now resolved.
+
+
+WED-9982 (ESB_10.7_Fix5)
+In Designer, lines of code disappear while editing a flow service.
+
+In Designer, consider a flow service with multiple steps such as MAP,
+INVOKE, and so on under steps such as SEQUENCE and REPEAT. While
+editing the flow service using operations such as Move Left and
+Move Right, Designer throws an exception that results in missing code.
+
+This issue is now resolved. 
+
+
+WED-9721 (ESB_10.7_Fix4)
+Designer now provides an option for user to create a consumer REST API 
+descriptor using an OpenAPI document that conforms to the OpenAPI 3.0.x 
+specification.
+
+
+WED-9691 (ESB_10.7_Fix4)
+Delay in updating complex flow services. 
+
+Updating a flow service with complex pipeline mappings and several document 
+references require Designer to constantly communicate with Integration Server 
+to reconcile the pipeline mappings, which causes the delay. 
+
+This issue is resolved. Now, Integration Server reconciles the pipeline mappings. 
+
+Note: 
+As the reconciliation logic is removed from Designer, install this Designer 
+fix with the corresponding Integration Server fix to resolve the issue.
+
+
+WEL-139 (ESB_10.7_Fix3)
+The Java service editor fails to recognize the external library references in
+packages.
+
+Designer excludes the external libraries in the project classpath.
+Hence, the Java service editor fails to recognize the external library
+references in the packages opened locally for service development.
+
+This issue is now resolved.
+
+
+WED-9639 (ESB_10.7_Fix3)
+Creating a provider REST API Descriptor from a Swagger document fails
+with "NullPointerException".
+
+This issue is now resolved.
+
+
+WED-9507 (ESB_10.7_Fix2)
+Designer throws the following exception during cloud deployment.
+
+<java.io.InterruptedIOException: Read timed out after xxx ms>
+
+While deploying assets to a cloud environment, Designer synchronizes assets in
+the local (source) repository according to the cloud (target) repository. If the
+cloud repository contains more files or large packages, synchronization takes
+more time, and the connection timeout happens.
+
+To resolve this issue, a new parameter called "Repository timeout (seconds)" is
+added under "Window > Preferences > Software AG > Service Development > Cloud
+Deployment". This parameter specifies the connection timeout in seconds between
+the cloud and the local repository. The default value is 240 seconds. 
+
+
+WED-9506 (ESB_10.7_Fix2)
+Designer does not support deploying Microservices Runtime assets to cloud.
+
+In Designer > Package Explorer, the context menu for Integration Server assets
+displays 'Deploy to Cloud'. This option is not available for Microservices
+Runtime assets.
+
+The issue is now resolved.
+
+
+WED-9529 (ESB_10.7_Fix2)
+A security issue with the jQuery library was discovered
+in Designer Service Development.
+
+The issue is resolved. The vulnerable version 3.1.1 of the library
+is now upgraded to a more secure version (3.6.0). 
+
+
+WED-9528 (ESB_10.7_Fix2)
+A security issue with the Bootstrap library was discovered
+in Designer Service Development.
+
+The issue is resolved. The vulnerable version 3.3.7 of the library
+is now upgraded to a more secure version (4.6.0).
+
+
+WED-9323 (ESB_10.7_Fix2)
+Designer throws a NullPointerException while comparing identical services between
+two Integration Servers.
+
+Designer throws a NullPointerException when you compare a service on one
+Integration Server with an identical service on another Integration Server by
+right-clicking and selecting "Compare Element(s) With > Other Server > {server_name}",
+where {server_name} signifies another connected Integration Server that has the
+second service.
+
+This issue is now resolved. 
+
+
+WED-9315 (ESB_10.7_Fix2)
+Designer incorrectly handles the breakpoints of flow steps in the flow editor.
+
+In a flow service, the breakpoint enabled for a MAP or INVOKE step must remain
+attached to the step regardless of the modifications to the flow service.
+However, when the flow service is modified by adding, deleting, or rearranging
+the steps, the breakpoint does not move with the original step in the flow editor,
+which is incorrect. Similar behavior is observed in the Debug perspective as
+well.
+
+This issue is resolved now. 
+
+
+WED-9195 (ESB_10.7_Fix1)
+While comparing the current version of a flow service in Local Service
+Development with a specific revision in the Version Control System, Designer
+generates a NullPointerException and does not display the differences.
+
+This issue is now fixed.
+
+
+
+8.0 Installation
+
+Install using the Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot apply these instructions to the previously installed 
+fix. 
+
+Uninstall using the Software AG Update Manager. For instructions, see the 
+documentation at http://documentation.softwareag.com. 
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix has 
+no globalization impact and can be applied to systems running in any supported 
+locale or configuration. 
+
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might contain new 
+messages and these messages will appear in English. 
+
+
+
+11.0 Copyright
+
+Copyright © 2023 Software AG, Darmstadt, Germany and/or Software AG USA Inc., 
+Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their 
+licensors. 
+
+The name Software AG and all Software AG product names are either trademarks or 
+registered trademarks of Software AG and/or Software AG USA Inc. and/or its 
+subsidiaries and/or its affiliates and/or their licensors. Other company and 
+product names mentioned herein may be trademarks of their respective owners. 
+
+Detailed information on trademarks and patents owned by Software AG and/or its 
+subsidiaries is located at http://softwareag.com/licenses . 
+
+This software may include portions of third-party products. For third-party 
+copyright notices, license terms, additional rights or restrictions, please 
+refer to "License Texts, Copyright Notices and Disclaimers of Third Party 
+Products". For certain specific third-party license restrictions, please refer 
+to section E of the Legal Notices available under "License Terms and Conditions 
+for Use of Software AG Products / Copyright and Trademark Notices of Software AG 
+Products". These documents are part of the product documentation, located at 
+http://softwareag.com/licenses and/or in the root installation directory of the 
+licensed product(s). 
+
+
+
+12.0 Contacting Us
+
+Authorized technical support contacts can reach Software AG Global Support in 
+the following ways:
+
+  Web: https://empower.softwareag.com (online support center)
+
+  E-mail: empower@softwareag.com
+
+You can find complete contact information in our Global Support Contact 
+Directory at:
+
+https://empower.softwareag.com/public_directory.asp
+
+You can also visit our Software AG Developer Communities to access additional 
+articles, demos, and tutorials, technical information, samples, useful resources,
+online discussion forums moderated by Software AG professionals, and more at:
+
+http://communities.softwareag.com/ecosystem/communities/public/index.html
