@@ -1,0 +1,201 @@
+			webMethods Integration Server 10.15 Database Fix 5 readme
+
+                             October 2025 
+
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform/RDBMS Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Integration Server 10.15 Database Fix 5.
+
+
+
+2.0   Fix ID
+
+IS_10.15_Database_Fix5
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Integration Server 10.15.
+
+
+
+4.0 Requirements
+
+None.
+
+
+
+5.0 Platform/RDBMS Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+PIE-96049
+When using an Oracle database to store monitoring events, attempts by
+Integration Server to save an event in the IS_MONITOR table result in the error
+ORA-06502: PL/SQL: numeric or value error: number precision too large. 
+
+For an Oracle database, the precision of the IS_MONITOR.ID column is too low for
+the monitoring events from Integration Server. 
+
+To resolve this issue, the size of Oracle database table column IS_MONITOR.ID
+and the related tables (IS_SERVICE_STATS, IS_SERVER_STATS, IS_SERVER_DETAILS) is
+now Numeric(12). Previously, the column size was Numeric(10). 
+
+The IS_MONITOR.ID column size is now updated for all supported databases.
+
+PIE-99414
+After applying a fix that includes PIE-96049, database scripts for migrating a
+DB2 database fail if the IS_MONITOR table is empty. 
+
+This issue is now resolved. 
+
+PIE-86110 (IS_10.15_Database_Fix4)
+Primary and foreign key columns in data statics tables for SQL Server should use
+the data type BIGINT instead of INTEGER. 
+
+When installing the Integration Server database schema for SQL Server,
+installation created primary and foreign keys for the following tables using the
+INTEGER data type: IS_MONITOR, IS_SERVER_DETAILS, IS_SERVER_STATS and
+IS_SERVICE_STATS. The primary and foreign key columns should be of type BIGINT. 
+
+This issue is now resolved. After applying this fix, the data type for primary
+and foreign key columns in the mentioned tables will be BIGINT. Existing data
+will be preserved. 
+
+PIE-87571 (IS_10.15_Database_Fix4)
+Table indices created in the wrong tablespace when installing Integration Server
+database schema for Oracle. 
+
+When installing Integration Server database schema for Oracle, the following
+tables indices were created in WEBMDATA instead of WEBINDX tablespace:
+IS_MONITOR, IS_SERVER_DETAILS, IS_SERVER_STATS, IS_SERVICE_STATS and IS_ALERT 
+
+This issue has been corrected. After applying this fix, newly indexed data will
+be written to the WEBMINDX tablespace. Any existing index data will be rebuilt
+in the WEBINDX tablespace as well. 
+
+PIE-92751 (IS_10.15_Database_Fix4)
+Internal change to support Embedded Derby fixes.
+
+PIE-94643 (IS_10.15_Database_Fix4)
+Internal changes to support OAuth usage by layered products.  
+
+PIE-86011 (IS_10.15_Database_Fix3)
+Migrating the Archive component in Integration Server from a lower version
+to a higher version results in the error: "Cannot drop the trigger 'WMSERVICE_RAIU',
+because it does not exist"
+
+This issue is now resolved.
+
+WDA-1908
+In webMethods Monitor, a lock in the WMSERVICE_RAIU trigger causes performance 
+issues.
+
+The issue is resolved.
+
+WMN-8101
+When webMethods Monitor uses a Microsoft SQL Server database and there is a race
+condition during services execution, an error message appears in the server.log
+file: 
+"Cannot insert duplicate key row in object 'dbo.WMSERVICE_MIN_MAX' with unique
+index 'IDX_SVC_MINMAX_CTX'." 
+
+The issue is resolved.
+
+PIE-77408 (IS_10.15_Database_Fix1)
+The "wm.server.dispatcher:deleteExpiredUUID" service causes 
+performance degradation in databases while deleting large data sets.
+
+Integration Server uses wm.server.dispatcher:deleteExpiredUUID to 
+remove the expired entries from the WM_IDR_MSG_HST table. 
+However, in some databases, wm.server.dispatcher:deleteExpiredUUID degrades the
+database performance while deleting large data sets. 
+
+This issue is resolved.
+
+Now, Integration Server provides an option to remove the expired 
+entries in batches and to configure the batch size. To limit the batch size, 
+use the watt.server.trigger.delete.expired.uuid.limit server configuration
+parameter. 
+
+If you set the parameter value to a positive integer, Integration Server uses 
+the value to apply a batching logic to remove the entries. If you do not provide 
+any value, Integration Server retains the old behavior. There is no default 
+value for the watt.server.trigger.delete.expired.uuid.limit parameter. 
+
+You do not need to restart Integration Server for changes to this parameter to
+take effect. 
+
+PIE-78146 (IS_10.15_Database_Fix1)
+When using a SQL Server database, the pub.storage:get service occasionally
+encounters a deadlock error. 
+
+The distributed locking table WM_EXCL_DIST_LOCK has a redundant unique index on
+its primary key. The unique index is not needed as primary keys are inherently
+unique. Presence of the redundant index increases the likelihood that a deadlock
+error will occur. 
+
+To resolve this issue, a database migration script has been added to drop the
+redundant index. 
+
+PIE-78575 (IS_10.15_Database_Fix1)
+After installing IS_10.15_Database_Fix1 on Integration Server 10.15, database
+migration throws an error.
+
+After installing the latest database fix (IS_10.15_Database_Fix1) on Integration
+Server, migrating the database from 10.11.fix2 to the latest fix version results 
+in the "path not found for 10.11.fix2 MYSQL to latest" error as the folder 
+required to migrate the ISInternal component to the latest version is missing.
+
+This issue is now resolved.
+
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the 
+documentation at https://www.ibm.com/docs/en/products.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot use these instructions to uninstall the previously 
+installed fix.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the 
+documentation at https://www.ibm.com/docs/en/products.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corporation 2025

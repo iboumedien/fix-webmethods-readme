@@ -1,0 +1,169 @@
+                       webMethods Process Engine CDC 10.15 Fix 3 readme
+
+                                      October 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Process Engine CDC 10.15 Fix 3.
+
+
+
+2.0 Fix ID
+
+WPECDC_10.15_Fix3
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Process Engine.
+
+
+
+4.0 Requirements and Dependencies
+
+DC 10.15 DBS Fix 1 or higher is required.  
+
+It is recommended to update to the latest fix level for related BPM products
+such as Designer, Process Engine, Optimize and ESB, and Business Console.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+WPE-5300
+Database Component Configurator fails to migrate the Process Engine component from 10.5 to 10.15. The issue occurs when the component is a MySQL database.
+
+The issue is resolved.
+
+WPE-5441
+In webMethods Process Engine, querying the Process Audit Log database component may cause performance issues.
+
+The issue is now resolved. This fix creates a new index in the DEPLOYMENTVERSION column of the WMSTEPDEFINITION table in the Process Audit schema.
+
+WPE-4482
+Migration of Process Engine component may fail.
+
+Below exception is seen in the logs:
+[SoftwareAG][SQLServer JDBC Driver][SQLServer]The index 'PRTUUIDXREF_IE1X' is
+dependent on column 'UUID'.
+
+This issue is now resolved.
+
+WPE-5452
+In webMethods Process Engine, performing a search from the Process Instances page may cause performance issues.
+
+The issue is resolved. This fix creates two new indices in the PRA_PROCESS_RECENT table in the Process Audit schema.
+
+WPE-5474
+With webMethods Process Engine, a high database CPU utilization situation may occur.
+When Process Engine queries PRTPROCESS table, high utilization of database CPU is observed.
+The issue is now resolved. This fix creates a new index in the PARENTSTEPTYPE and ROOTINSTANCEID
+columns of the PRTPROCESS table in the Process Engine schema.
+
+WPE-5387 (WPECDC_10.15_Fix2)
+The IDX_PRTPROCESS_ROOT and IDX_PRTPROCESS_PARENT indexes are now created in the PRTPROCESS table of the Process Engine database.
+
+WPE-5063 (WPECDC_10.15_Fix1)
+During the migration the 10.3 ProcessAudit database component to 10.11, the script was failing due to missing check of current schema and column name.
+
+Modified script to handle the scenario.
+
+The issue has been now resolved.
+
+WPE-5151 (WPECDC_10.15_Fix1)
+The inline subprocess instances that are interrupted when the parent instance reaches terminal status, are not cleaned by Storage Cleaner.
+
+The issue is now resolved.
+
+WPE-5215 (WPECDC_10.15_Fix1)
+In webMethods Monitor, when Integration Server uses a PostgreSQL database, if you click on the Conversation ID of a RosettaNet document, the Transactions page displays an error:  9999:wm.tn.portal.actions:getProcessInformation encountered execution error. wm.tn.portal.actions:getProcessInformation can not get instance information. 
+
+The issue is resolved.
+
+WPE-5219 (WPECDC_10.15_Fix1)
+In webMethods Monitor, when Integration Server uses a MySQL database, if you click on the Conversation ID of a RosettaNet document, the Transactions page displays an error:  9999:wm.tn.portal.actions:getProcessInformation encountered execution error. wm.tn.portal.actions:getProcessInformation can not get instance information. 
+
+The issue is resolved.
+
+WPE-5197 (WPECDC_10.15_Fix1)
+In webMethods Process Engine, the custom process ID is not updated when using an Oracle database.
+The issue occurs when the watt.prt.auditLogProcessAtRest property located in the prt.cnf file is set to "true".
+
+The issue is resolved.
+
+WPE-5242 (WPECDC_10.15_Fix1)
+With webMethods Process engine, timeouts processing may be delayed.
+
+This issue is now resolved. Database column type has been changed for
+SQL Server to accurately store the expiry timestamp of timeouts.
+
+
+8.0 Installation
+
+[Note: All fixes that participate in a 9.7 or later release must be tested with Command Central as 
+part of the fix process.]
+
+[For products that have adopted SUM and tested with CC, use this text.]
+Use IBM webMethods Command Central to install fixes on multiple machines from a central location (9.7 or later), 
+or IBM webMethods Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at https://docs.webmethods.io.
+
+[For products that have adopted SUM but failed to test with CC, use this text.]
+Install using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+[For products that have adopted SUM and tested with CC, use this text.]
+Uninstall using IBM webMethods Command Central (9.7 or later) or IBM webMethods Update Manager. For instructions, see 
+the documentation at https://docs.webmethods.io.
+
+[For products that have adopted SUM but failed to test with CC, use this text.]
+Uninstall using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

@@ -1,0 +1,218 @@
+                   IBM webMethods Adapter Runtime 10.15 Fix 5 readme
+
+                                 October 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+IBM webMethods Adapter Runtime 10.15 Fix 5
+
+
+
+2.0 Fix ID
+
+WAR_10.15_Fix5
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+None.
+
+
+
+4.0 Requirements and Dependencies
+
+This fix requires the installation of the latest Integration Server Core fix.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include 
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the 
+release.
+
+PIEAR-2779
+As part of the webMethods rebranding, all the Software AG references are updated to webmethods.
+
+PIEAR-2784
+Adoption of Jakarta namespace changes.
+
+PIEAR-2684 (WAR_10.15_Fix4)
+The Adapter health check API has been enhanced to remove the Spring Boot dependency.
+
+PIEAR-2573 (WAR_10.15_Fix3)
+When CSRF is enabled, Integration Server Administrator > webMethods Adapter for
+Apache Kafka > Listeners page fails to provide an option to delete a disabled
+listener.
+
+This issue is now resolved.
+
+PIEAR-2513 (WAR_10.15_Fix3)
+In webMethods.io Integration environment, webMethods Adapter for Runtime is
+enhanced to update node files exclusively from the designtime Integration Server.
+This update is then propagated to the Git repository and subsequently pulled
+into runtime Integration Servers.
+
+PIEAR-2415 (WAR_10.15_Fix3)
+When the health end-point of an adapter is accessed, the listener properties
+appear including the runtimeState attribute which is a dictionary of key/value
+pairs. If the listener is enabled, then the runtimeState dictionary displays the
+runtime state of the listener. If the listener is disabled, then the runtimeState
+dictionary displays only currentState as disabled which is the state of the
+listener set by the user.
+
+PIEAR-2466 (WAR_10.15_Fix2)
+When Integration Server starts, the error message "Unable to find message key
+1502.1 in bundle com.wm.resources.B2BCoreMsgBundle" appears in the server log,
+as the logging facility code used is invalid.
+
+This issue is now resolved.
+
+PIEAR-2457 (WAR_10.15_Fix2)
+When the RAISERROR function is called in a stored procedure, Integration Server
+logs an exception that the com.wm.adk.error.AdapterServiceException class is not
+whitelisted. The exception persists even if the class is whitelisted.
+ 
+This issue is now resolved.
+
+PIEAR-2455 (WAR_10.15_Fix2)
+webMethods Adapter Runtime is enhanced to support polling notifications in
+webMethods.io Integration environment.
+
+PIEAR-2403 (WAR_10.15_Fix2)
+When the SAP® ERP connection password is not available in Passman, then an
+attempt is made to create a connection instead of throwing an exception while
+enabling the connection.
+
+This issue is now resolved.
+
+PIEAR-2354 (WAR_10.15_Fix2)
+When Integration Server starts, SAP® ERP listener node status is updated, and the
+status is synced to all other Integration Servers in the PODs resulting in a
+GIT conflict.
+
+This issue is now resolved.
+
+Only the user actions are synced to all other Integration Servers in the PODs.
+
+PIEAR-2328 (WAR_10.15_Fix2)
+Logging is enhanced in webMethods Adapter Runtime to include more logs for
+webMethods.io Integration environment.
+
+PIEAR-1760 (WAR_10.15_Fix1)
+In webMethods Adapter Runtime, the administrator API GET operations for
+notifications do not display the notification type and the notification state.
+
+This issue is now resolved.
+
+PIEAR-2250 (WAR_10.15_Fix1)
+BinCoder exceptions/warnings appear in Integration Server logs.
+
+When the whitelist filtering is enabled in Integration Server, then the Java
+object is deserialized only if the class appears in the whitelist. The Java class
+com.wm.pkg.art.error.DetailedServiceException was not included in the whitelist
+which resulted in the appearance of the BinCoder exceptions/warnings in
+Integration Server logs.
+
+This issue is now resolved
+
+PIEAR-2338 (WAR_10.15_Fix1)
+When a SAP® ERP listener is enabled or disabled, then the updated status of the 
+listener in all webMethods.io Integration instances is not in sync as the GIT 
+push of the updated node is skipped.
+
+This issue is now resolved.
+
+PIEAR-2206 (WAR_10.15_Fix1)
+In webMethods Adapter for SAP, ALE synchronous notification fails to process the
+notification and logs a null pointer exception. This issue appears in SAP® ERP
+in webMethods.io Integration only.
+
+This issue is now resolved.
+
+PIEAR-2314 (WAR_10.15_Fix1)
+In the webMethods Adapter Runtime, an administrator API request to enable a
+suspended polling notification fails.
+
+This issue is now resolved.
+
+PIEAR-2315 (WAR_10.15_Fix1)
+In webMethods Adapter Runtime, the administrator API GET operations for
+notification do not display the notificationProperties field if the notification
+type is a listener. The notificationProperties field is displayed for polling
+notifications.
+
+This issue is now resolved.
+
+PIEAR-2320 (WAR_10.15_Fix1)
+In webMethods Adapter Runtime, the notification state displayed in the
+administrator API GET operations are not in sync with the notification status
+displayed in the Integration Server Administrator > Server > Scheduler page.
+
+This issue is now resolved.
+
+PIEAR-2256 (WAR_10.15_Fix1)
+Whenever Integration Server is started, a WmAS400 package containing a single
+config sub-directory is created.
+
+This issue is now resolved.
+
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a central location (9.7 or later), 
+or IBM webMethods Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at https://www.ibm.com/docs/en/products.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Command Central (9.7 or later) or IBM webMethods Update Manager. For instructions, see 
+the documentation at https://www.ibm.com/docs/en/products.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corporation 2025

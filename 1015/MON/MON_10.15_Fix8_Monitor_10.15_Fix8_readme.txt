@@ -1,0 +1,288 @@
+                       webMethods Monitor 10.15 Fix 8 readme
+
+                                      October 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Monitor 10.15 Fix 8 (WmMonitor package update)
+
+
+
+2.0 Fix ID
+
+MON_10.15_Fix8
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Monitor 10.15.
+
+
+
+4.0 Requirements and Dependencies
+
+It is recommended to update to the latest fix level for related BPM products
+such as Designer, Process Engine, Optimize and ESB, and Business Console.
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods Monitor.
+
+
+
+6.0 Cautions and Warnings
+
+1. For RGHWPE-4389 PostgreSQL database support for Monitor.
+Set Default archiving parameter in the OPERATION_PARAMETER table:
+        PostgreSQL: Process Audit Log schema name
+
+2. BPM Archival for PostgreSQL database only supports multiple schemas with single db only.
+For E.g:
+
+CREATE DATABASE bpmarchive(db name);
+ \c bpmarchive;(connect to database)
+
+CREATE SCHEMA processbpm(process schema name);
+SET search_path TO processbpm;
+
+-- create user now --
+CREATE USER processbpmuser (process schema user);
+ALTER USER processbpmuser WITH ENCRYPTED PASSWORD 'manage';
+ALTER USER processbpmuser SET search_path = processbpm;
+
+--grant permissions --
+GRANT CONNECT ON DATABASE bpmarchive TO processbpmuser;
+GRANT USAGE, CREATE ON SCHEMA processbpm TO processbpmuser;
+GRANT ALL ON SCHEMA processbpm TO processbpmuser;
+--below grants are needed to make sure if user creates new objects in future , grants are
+available for them too
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON TABLES TO processbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON SEQUENCES TO processbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON FUNCTIONS TO processbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON TYPES TO processbpmuser;
+
+--create archive schema now --
+CREATE SCHEMA archiveprocessbpm(archive schema name);
+SET search_path TO archiveprocessbpm;
+
+-- create user now --
+CREATE USER archiveprocessbpmuser(archive schema user) ;
+ALTER USER archiveprocessbpmuser WITH ENCRYPTED PASSWORD 'manage';
+ALTER USER archiveprocessbpmuser SET search_path = archiveprocessbpm;
+
+--grant permissions --
+GRANT CONNECT ON DATABASE bpmarchive TO archiveprocessbpmuser;
+GRANT USAGE, CREATE ON SCHEMA archiveprocessbpm TO archiveprocessbpmuser;
+GRANT USAGE, CREATE ON SCHEMA processbpm TO archiveprocessbpmuser;
+GRANT ALL ON SCHEMA archiveprocessbpm TO archiveprocessbpmuser;
+GRANT ALL ON SCHEMA processbpm TO archiveprocessbpmuser;
+
+--below grants are needed to make sure if user creates new objects in future , grants are
+available for them too --
+ALTER DEFAULT PRIVILEGES IN SCHEMA archiveprocessbpm GRANT ALL ON TABLES TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA archiveprocessbpm GRANT ALL ON SEQUENCES TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA archiveprocessbpm GRANT ALL ON FUNCTIONS TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA archiveprocessbpm GRANT ALL ON TYPES TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON TABLES TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON SEQUENCES TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON FUNCTIONS TO archiveprocessbpmuser;
+ALTER DEFAULT PRIVILEGES IN SCHEMA processbpm GRANT ALL ON TYPES TO archiveprocessbpmuser;
+GRANT ALL ON ALL TABLES IN SCHEMA processbpm TO archiveprocessbpmuser;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA processbpm TO archiveprocessbpmuser;
+GRANT ALL ON ALL FUNCTIONS IN SCHEMA processbpm TO archiveprocessbpmuser;
+
+
+7.0 Fix Contents
+
+WMN-8804
+With webMethods Monitor, the Services queries may exhaust the ISCoreAudit JDBC pool and hang the server. This issue occurs when there is a large volume of records in the audit tables, causing long execution times in SQL Server. To help minimize the impact, the following property can be added to the monitor.cnf file to reduce the effect of locking during these queries:
+
+wm.monitor.mssql.withNoLock=true
+
+This issue is resolved.
+
+WMN-8766 (MON_10.15_Fix7)
+In webMethods Monitor, the pub.monitor.archive services fail to archive a PostgresSQL database if the database name contains "db2".
+
+The issue is resolved.
+
+WMN-8767 (MON_10.15_Fix7)
+In the Process Instance page of Monitor, when you click Resubmit Closest or Resubmit Earliest, the process instance is not resubmitted and an error appears in the log. The issue occurs when the process model logging level is set to 2 - Errors only.
+
+The issue is resolved.
+
+WMN-8748 (MON_10.15_Fix7)
+In the Advanced search tab of the Services page, when you apply a filter whose Value parameter is in scientific notation (for example "3E150"), an error occurs.
+ 
+The issue is resolved.
+
+WMN-8733 (MON_10.15_Fix7)
+In the Process Instance page of Monitor, the Resubmit Closest button does not resubmit a process instance that was previously resubmitted and in which the failed step is contained in a sub-process.
+
+The issue is resolved.
+
+WMN-8720 (MON_10.15_Fix6)
+A security vulnerability in the Services page of Monitoring is now fixed.
+
+The issue is resolved.
+
+WMN-8475 (MON_10.15_Fix5)
+In webMethods Monitor, the My webMethods Server settings might override the Task Client settings.
+
+The issue is resolved.
+
+WMN-8362 (MON_10.15_Fix5)
+In webMethods Monitor, several API queries consume a lot of memory.
+
+The issue is resolved. The following services are modified so that the wm.monitor.useExactMatch parameter in monitor.cnf applies to them.
+
+pub.monitor.process.instance:getInstanceList
+pub.monitor.process.instance:getInstanceListWithFilter
+pub.monitor.process.instance:getInstanceListCustomDataSet
+pub.monitor.process.instance:getInstanceListCustomData
+pub.monitor.process.instance:getPagedInstanceList
+
+If you set useExactMatch to True, your search query will return only those INSTANCEID,
+PARENTINSTANCEID, and CUSTOMID results which exactly match your search term. An isExactMatch input parameter is also added to these services. isExactMatch works like the useExactMatch parameter, but takes priority over it.
+
+New parameter reference:
+  isExactMatch
+  
+  This parameter allows you to control whether your search query will use the UPPER and LIKE
+  conditions for INSTANCEID, PARENTINSTANCEID, and CUSTOMID.
+  
+Valid values are:
+  false - Default value for isExactMatch. The search query will use the UPPER and LIKE
+  conditions for INSTANCEID, PARENTINSTANCEID, and CUSTOMID.
+  true - If you set isExactMatch to True, the search query will not use the UPPER and LIKE
+  conditions for INSTANCEID, PARENTINSTANCEID, and CUSTOMID. The query will return only those
+  results which exactly match your search term.
+
+WMN-8143 (MON_10.15_Fix5)
+In webMethods Monitor, when you view information for a collaboration task step in a webMethods-executed process, the Step Information window does not display a Task Detail link.
+
+The issue is resolved.
+
+WMN-8653 (MON_10.15_Fix5)
+The pub.monitor.process.instance:getInstanceModelInfo service does not retrieve any information on a revised process instance.
+
+The issue is resolved.
+
+WMN-8671 (MON_10.15_Fix5)
+In the Process Instance page of webMethods Monitor, the Resubmit Closest button does not resubmit a process instance in which the failed step is contained in a subprocess.
+
+The issue is resolved.
+
+WMN-8476 (MON_10.15_Fix4)
+You cannot update the configuration of the wmMonitor package.
+ 
+The issue is resolved.
+
+WMN-8458 (MON_10.15_Fix4)
+In webMethods Monitor, the serviceArchive and documentArchive services fail when you execute them with an empty batch size.
+
+The issue is resolved.
+
+WMN-8291 (MON_10.15_Fix4)
+In webMethods Monitor, when you stop a process instance during an active subprocess step, the subprocess continues executing and an error is displayed.
+
+The issue is resolved.
+
+WMN-8269 (MON_10.15_Fix4)
+With webMethods Monitor the Step Details Error section displays a unexpected exception.
+
+This issue is resolved.
+
+WMN-8233 (MON_10.15_Fix4)
+In webMethods Monitor, the ProcessStageDefinitionsChange event type contains a file path to a non-existent XML schema location.
+
+The issue is resolved.
+
+WMN-8164 (MON_10.15_Fix4)
+In webMethods Monitor, the statement cache begins to use a lot of memory resources. This might result in degraded performance.
+
+The issue is resolved.
+
+WMN-8163 (MON_10.15_Fix4)
+In webMethods Monitor, you cannot resubmit a process instance using the Resubmit Closest button. The issue occurs when the process contains intermediate events.
+
+The issue is resolved. The Process Instances page now displays the correct process status and the Integration Server log contains a warning message.
+
+WMN-8457 (MON_10.15_Fix4)
+In webMethods Monitor, the pub.monitor.service.getList service generates a large number of SQL statements, which might lead to database issues.
+
+The issue is resolved.
+
+WMN-8413 (MON_10.15_Fix4)
+If webMethods Monitor uses a PostgreSQL database, the Business Process page performance is very slow, which might result in a timeout exception.
+ 
+The issue is resolved.
+
+WMN-8402 (MON_10.15_Fix4)
+In the Business Process page of Monitor, when you hover over the Total Instances number of a model that has no instances, the window shows incorrect statistics.
+
+The issue is resolved.
+
+WMN-8400 (MON_10.15_Fix4)
+In webMethods Monitor, when you cancel a process instance, two errors might appear in the log: "Unable to find message key '22.119' in bundle 'com.wm.resources.B2BCoreMsgBundle'" and "Unable to find message key '135.119' in bundle 'com.wm.app.b2b.server.jndi.resources.JNDIBundle'."
+
+The issue is resolved.
+
+WMN-8332 (MON_10.15_Fix3)
+In webMethods Monitor, multiple wm.monitor.admin:imageCleanup tasks are automatically created even when 
+webMethods Business Process Management Suite is not installed.
+
+The issue is resolved. If you want to disable the creation of imageCleanup tasks, add the following line in the monitor.cnf file:
+wm.monitor.imageCleanupEnabled=false
+
+WMN-8273 (MON_10.15_Fix2)
+In webMethods Monitor, a new wm.monitor.admin:imageCleanup task is scheduled automatically after each Integration Server restart.
+
+The issue is now resolved.
+
+WMN-8200 (MON_10.15_Fix1)
+In webMethods Monitor, when the node name is changed from lower case to upper case, a new wm.monitor.admin:imageCleanup 
+task is scheduled after each Integration Server restart.
+
+The issue is now resolved.
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a central  location (9.7 or later
+products), or IBM webMethods Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action
+will revert your installation to the previously installed fix. You cannot use these instructions to
+uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Command Central (9.7 or later) or IBM webMethods Update Manager. For instructions, see
+the documentation at https://docs.webmethods.io/.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025.

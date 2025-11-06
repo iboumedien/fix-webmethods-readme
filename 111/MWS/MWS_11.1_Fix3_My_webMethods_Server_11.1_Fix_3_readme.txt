@@ -1,0 +1,617 @@
+                   IBM My webMethods Server MWS 11.1 Fix 3 readme
+
+                                      October 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+My webMethods Server 11.1 Fix 3.
+
+
+
+2.0 Fix ID
+
+MWS_11.1_Fix3
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+
+
+4.0 Requirements and Dependencies
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+1. Back up the My webMethods Server database and file system before installing this fix.
+
+2. Before starting a Fix installation shut down all IBM My webMethods Server cluster nodes. 
+   IBM Update Manager will shut down and restart IBM My webMethods Server during fix 
+   installation. IBM Update Manager waits for a preconfigured time of 300000 ms (5 mins) 
+   for IBM My webMethods Server to shut down and restart. If a particular IBM My webMethods Server 
+   installation takes more time for shutdown and restart, you can configure the wait time by setting
+   the following system property for IBM Update Manager: 
+   -Dmws.shutdown.waittime = <time_in_ms>
+   
+3. If multiple nodes exist in one installation directory, the IBM Update Manager will 
+   install the fix on all the nodes.	
+  
+4. If the cluster nodes are on different installation/machines, the fix installation should be done 
+   sequentially for each IBM My webMethods Server cluster node. Wait for IBM Update Manager to 
+   complete Fix installation on one IBM My webMethods Server installation before installing the fix 
+   to another cluster node installation/machine.
+
+5. If you have a webMethods product that runs outside of the current webMethods installation 
+   directory (the directory in which you installed this fix) and uses any of the files in
+   <webMethods_directory>/common/lib, then apply this fix to the other product installation
+
+6. Applying a fix reverts the MWS\server\default\bin\server.properties.[bat|sh],
+   MWS\bin\setenv.[bat|sh], MWS\bin\mws.[bat|sh], MWS\server\default\config\wrapper.conf files to
+   their default contents.
+   If you made changes to these files, create a backup of these files before installing the fix, 
+   and change the required values again after the fix installation completes.
+
+7.If you are installing wMFix.SCGCommon.MWS fix on an installation that includes Integration Server
+  and are planning to create a Docker image, initialize Integration Server before creating the image to
+  check if the extracted cds.update.properties file (located in the Integration Server instance's config
+  directory) includes potential Common Directory Service database content updates. After the file is 
+  processed, it will be renamed to cds.update.properties.installed.
+  Optionally, you can add the file to the list of files to include in the .dockerignore file for 
+  Integration Server images by listing it in the IntegrationServer/docker/is_container.xml file to ensure
+  it is not included in the image.
+     
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed 
+built-in services, APIs, or configuration parameters. Review the fix contents carefully before 
+installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+MWS-37844 (MWS_11.1_Fix3)
+New my webMethods Server instances might fail to register as cluster nodes in the cluster.xml
+file, logging a reference to registerLocalClusterNode.
+
+This issue occurs when the custom_wrapper.conf and cluster.node.properties.bak files list
+different node names for such a server instance, the instance fails to initialize and adds the
+same node name in the cluster.xml file multiple times.
+
+The issue is resolved, registering mechanism now uses the same values for check and addition.
+
+
+MWS-37884 (MWS_11.1_Fix3)
+My webMethods Server might log javax.jcr.ItemExistsException error messages when the JCR module is
+under heavy load.
+
+The issue is resolved.
+
+
+MWS-37921 (MWS_11.1_Fix3)
+When assigning a role to a user, Common Directory Services might log role cache related errors on
+other cluster nodes or Common Directory Services instances that use the same database.
+
+The issue is resolved.
+
+
+MWS-37925 (MWS_11.1_Fix3)
+The IOAuthUserService interface does not provide access to the acess_token attribute.
+
+The issue is resolved.
+
+
+MWS-37995 (MWS_11.1_Fix3)
+My webMethods Server might log random "Someone has placed this Context on multiple HttpSessions"
+error messages.
+
+The issue is resolved.
+
+
+MWS-38001 (MWS_11.1_Fix3)
+When closing database connections, My webMethods Server might log an error message and fail to
+remove a particular connection from the database pool.
+
+The issue is resolved.
+
+
+MWS-38018 (MWS_11.1_Fix3)
+The My webMethods Server initialization fails with a reference to ISystemPolicy.
+
+The My webMethods server bootstap might fail with a reference to ISystemPolicy being unavailable.
+
+The issue is resolved.
+
+
+MWS-38028 (MWS_11.1_Fix3)
+Logging in to My webMethods Server with SSO might fail. This issue occurs when using the default
+server cookie setting SameSite="Strict".
+
+The issue is resolved. My webMethods Server now uses lax cookie settings that allow sending
+cookies on certain cross-site requests.
+
+
+MWS-38051 (MWS_11.1_Fix3)
+In clustered environments, concurrent calls to the Task Engine REST API might fail with
+SQLIntegrityConstraintViolationException.
+
+When Task Engine is running on a My webMethods Server cluster, concurrent calls to the Task Engine
+REST API might occasionally fail with an SQLIntegrityConstraintViolationException error message
+with reference to the PK_TBLUSER_ROLE primary key. This issue occurs when the role membership of
+the principal has been modified.
+
+The issue is resolved.
+
+
+MWS-38073 (MWS_11.1_Fix3)
+After applying My webMethods Server fixes, existing Glue web service connectors might start
+logging java.lang.NumberFormatException error messages. This issue occurs when the
+wsclient-authMethod property for the connector is not specified.
+
+The issue is resolved.
+
+
+MWS-38099 (MWS_11.1_Fix3)
+Customer complained events were piling up in the "com.webmethods.cds.events.nis" Universal
+Messaging channel.
+
+The issue has been resolved
+
+
+MWS-38103 (MWS_11.1_Fix3)
+After applying fixes to the My webMethods Server Shared libraries, Integration Server or
+Microservices Runtime instances that host Central Directory System require much longer to
+initialize.
+
+The issue is resolved.
+
+
+MWS-38105 (MWS_11.1_Fix3)
+A security issue with the Jetty third-party library was discovered in My webMethods Server. The
+issue is resolved. The Jetty library is upgraded to the more secure version 9.4.57.
+
+
+MWS-38113 (MWS_11.1_Fix3)
+The instance creation tooling in My webMethods Server might transfer incorrect values to the
+custom_wrapper.conf file, causing newly created instances to fail at startup.  The issue is
+resolved.
+
+
+MWS-38140 (MWS_11.1_Fix3)
+A security issue with the Jetty third-party library was discovered in My webMethods Server.  The
+issue is resolved. The Jetty library is upgraded to the more secure version 9.4.57.
+
+
+MWS-38185 (MWS_11.1_Fix3)
+A security issue with the CAF FormattedMessages control was discovered in My webMethods Server.
+The issue is resolved.
+
+
+MWS-38187 (MWS_11.1_Fix3)
+In certain conditions CAF web applications might fail during the startup phase of the installation
+process and log a "java.lang.IllegalAccessException: class
+org.eclipse.jetty.osgi.boot.utils.internal.DefaultFileLocatorHelper cannot access a member of
+class XXXX" error message.
+
+The issue is resolved.
+
+
+MWS-38190 (MWS_11.1_Fix3)
+If there are 2 or more LDAP members with the same CN in different Organizational units and only
+one of them is a member of a group, all users are listed as group members. e.g
+cn=test,ou=bg,dc=com and cn=test,ou=us,dc=com The issue is now resolved.
+
+
+MWS-38248 (MWS_11.1_Fix3)
+In certain conditions, deleting a server node might fail with an error when executed as part of
+the My webMethods Server upgrade.
+
+The issue is now resolved.
+
+
+MWS-38268 (MWS_11.1_Fix3)
+When running applications that include CAF PorletInclude controls My webMethods might fail to
+clean up memory, resulting in increased memory consumption.
+
+The issue is resolved.
+
+
+MWS-38270 (MWS_11.1_Fix3)
+Cached role memberships not updated. When a principal's group and/or role memberships are managed
+in an external source, such as LDAP server, cached memberships in My webMethods Server or CDS are
+not updated when changes are made to in the external source. This issue is resolved, principal
+memberships are refreshed when the user logs in.
+
+
+MWS-38273 (MWS_11.1_Fix3)
+When searching for B2B transactions, My webMethods Server might automatically adjust the timestamp
+of some transactions. This issue occurs when the user who executes the search is in a time zone
+with a HH:30 minutes offset from the server time.
+
+The issue is resolved.
+
+
+MWS-38294 (MWS_11.1_Fix3)
+When Common Directory Services is running on Microservices Runtime, the custom loggers for CDS
+output log messages to the console.log instead of the _full_.log.   The issue is resolved. Common
+Directory Services now outputs log messages to the _full_.log of Microservices Runtime.
+
+
+MWS-38299 (MWS_11.1_Fix3)
+Security issues with the third-party library apache.felix.webconsole (4.8.8) were discovered in My
+webMethods Server.
+
+The issue is resolved. The obsolete library apache.felix.webconsole was removed from the My
+webMethods Server distribution.
+
+
+MWS-38338 (MWS_11.1_Fix3)
+My webMethods Server might delete active event subscriptions, resulting in event losses for
+Integration Server. This issue occurs when My webMethods Server and Integration Server are
+running in different time zones and are using the database as a JMS provider.
+
+The issue is resolved.
+
+
+MWS-38353 (MWS_11.1_Fix3)
+When rendering the default login page, My webMethods Server might fail to load a required image
+and log a "Failed to get raw property" error message.  The issue is resolved.
+
+
+MWS-38373 (MWS_11.1_Fix3)
+My webMethods Server might log javax.jms.JMSException: ObjectMessage: Class Not
+Found:org.apache.logging.slf4j.Log4jLogger cannot be found by com.webmethods.caf.server error
+messages.
+
+The issue is resolved.
+
+
+MWS-38466 (MWS_11.1_Fix3)
+A security issue with the third-party library jackrabbit-spi-commons 2.20.11 was discovered in My
+webMethods Server. The issue is resolved. The library is updated to the more secure version
+2.20.17.
+
+
+MWS-38478 (MWS_11.1_Fix3)
+When using the Fix Permissions button on Permission administration portlet, My webMethods Server
+restores the security realms for all Fabric tasks, but not for their children.
+
+The issue is resolved. The Fix Permissions button now applies to Fabrik tasks and their children
+resources.
+
+
+MWS-38496 (MWS_11.1_Fix3)
+Improve performance of My webMethods Server runtime status check invoked by SPM and reduce
+resource usage. In SPM this performance issue at times may have resulted in an error logged,
+referring to timeout while while checking My webMethods Server runtime status. This issue is
+resolved.
+
+
+MWS-38514 (MWS_11.1_Fix3)
+My webMethods Server might fail to automatically reconnect to an SQL database after the connection
+to the database server gets lost.
+
+This issue is resolved.
+
+
+MWS-38558 (MWS_11.1_Fix3)
+A security issue with the third-party library Apache Tika was discovered in My webMethods
+Server.The issue is resolved.
+
+The Apache Tika library was upgraded to the more secure version 3.2.3. The vulnerable
+tika-parsers-standard-package module was removed. To preserve required functionality, the
+following modules were added: project.modules.ext.tika_parser_text_module
+project.modules.ext.commons_csv
+
+
+MWS-38566 (MWS_11.1_Fix3)
+If the first startup of Integration Server immediately after installing MWS Shared Libraries fix
+is in quiesce mode, it does not start successfully. This issue is resolved.
+
+
+WTN-6090 (MWS_11.1_Fix3)
+Task Engine might fail to write error messages to the My webMethods Server log. This issue occurs
+when using the Task Engine RESTful web services.
+
+The issue is resolved.
+
+
+WTN-6117 (MWS_11.1_Fix3)
+In certain conditions Task Engine might assign tasks to all members of a role.
+
+The issue is resolved.MWS-37158 (MWS_11.1_Fix2)
+Task Engine might enter in a deadlock and stop performing task operations until the hosting server
+instance is restarted.
+
+The issue is resolved.
+
+
+MWS-37169 (MWS_11.1_Fix2)
+My webMethods Server might clear the escape characters for and LDAP configuration that includes a
+Base DN, Group DN, or User DN fields with special characters.   The issue is resolved.
+
+
+MWS-37333 (MWS_11.1_Fix2)
+MWS-37347 (MWS_11.1_Fix2)
+A security issue with insufficiently random numbers and values in security contexts was discovered
+in My webMethods Server.
+
+The issue is resolved.
+
+
+MWS-37369 (MWS_11.1_Fix2)
+A security issue with console logging output was discovered in BPMS products.
+
+The issue is resolved.
+
+
+MWS-37375 (MWS_11.1_Fix2)
+A security issue with potential stored cross-site scripting was discovered in the Common Directory
+Services (WmCDS) package for Integration Server.
+
+The issue is resolved.
+
+
+MWS-37385 (MWS_11.1_Fix2)
+<Remove me from the official fix readme>
+
+
+MWS-37403 (MWS_11.1_Fix2)
+In certain conditions creating an LDAP directory service connection from Integration Server
+through SSL might fail.
+
+The issue is resolved. My webMethods Server now includes an aggregated TrustManager that loads the
+trusted certificates from all discovered stores. To enable the feature,  add the following
+additional JVM property to the custom_wrapper.conf file for My webMethods Server:
+wrapper.java.additional.XXX=-Dmws.ldap.use.aggregated.trustmanager=true.
+
+
+MWS-37531 (MWS_11.1_Fix2)
+My webMethods Server includes and uses the spring-boot-actuator component.
+
+The issue is resolved.  The spring-boot-actuator component is no longer used.
+
+
+MWS-37671 (MWS_11.1_Fix2)
+My webMethods Server might log ClassNotFoundException error messages when loading servlets during
+start up.
+
+The issue is resolved.
+
+
+MWS-37705 (MWS_11.1_Fix2)
+When installing components using the Install Administration UI, My webMethods Server might create
+records with locale other than the default system locale and start using different text resources
+when those are updated in more recent component versions.
+
+The issue is resolved.
+
+
+MWS-37834 (MWS_11.1_Fix2)
+Common Directory Services uses the javax.net.ssl.trustStore and javax.net.ssl.trustStorePassword
+which are additional Java properties that might be seto by other products in an installation,
+causing issues during the initialization of the SSLSocketFactory component.
+
+The issue is resolved. Common Directory Services now accepts two new additional Java properties
+cds.javax.net.ssl.trustStore and cds.javax.net.ssl.trustStorePassword for Common Directory
+Services custom configuration. If these properties are not specified, Common Directory Services
+falls back to the values, set for javax.net.ssl.trustStore and javax.net.ssl.trustStorePassword.
+
+
+MWS-37867 (MWS_11.1_Fix2)
+A security issue with the jcommander third-party library was discovered in My webMethods Server.
+
+The issue is resolved. The jcommander library is upgraded to a more secure version.
+
+
+MWS-37885 (MWS_11.1_Fix2)
+A security issue with path traversal was discovered in My webMethods Server.
+
+The issue is resolved. An obsolete component for spell checking was removed from My webMethods
+Server.
+
+
+WTN-6042 (MWS_11.1_Fix2)
+Task Engine might enter in a deadlock and stop performing task operations until the hosting server
+instance is restarted.
+
+The issue is resolved.
+
+
+MWS-37184 (MWS_11.1_Fix1)
+When using form-based authentication in My webMethods Server, the autocomplete option on the
+password field on the login page for My webMethods is not disabled.
+
+The issue is resolved. The default login page for My webMethods now renders the password input
+field with the more secure attribute autocomplete="new-password" instead of the obsolete
+autocomplete="off".
+
+
+MWS-37286 (MWS_11.1_Fix1)
+My webMethods Server fix installation may fail with a reference to failed Jetty feature update or
+Log4J-related error messages. This issue occurs during the packaging of custom OSGI bundles at
+instance update.
+
+The issue is resolved.
+
+
+MWS-37306 (MWS_11.1_Fix1)
+Thedefault cipher encryption method in My webMethods Server is not sufficiently secure.
+
+The issue is resolved. My webMethods Server now uses CBC cipher mode for encryption.
+
+
+MWS-37307 (MWS_11.1_Fix1)
+A security issue with the third-party library TinyMCE 6.8.2 was discovered in My webMethods Server.
+
+The issue is resolved. TinyMCE is upgraded to the more secure version 6.8.4.
+
+
+MWS-37308 (MWS_11.1_Fix1)
+A security issue with improper access control was discovered in My webMethods Server.
+
+The issue is resolved.
+
+
+MWS-37313 (MWS_11.1_Fix1)
+A security issue with XML entity vulnerabilities was discovered in My webMethods Server.
+
+The issue is resolved.
+
+
+MWS-37314 (MWS_11.1_Fix1)
+A security issue with XML entity vulnerabilities was discovered in My webMethods Server.
+
+The issue is resolved.
+
+
+MWS-37315 (MWS_11.1_Fix1)
+My webMethods Server might fail to retrieve proper group membership information for specific users
+and groups. This issue occurs sporadically, even when the Group Across Directory Service option
+is enabled.
+
+The issue is resolved.
+
+
+MWS-37318 (MWS_11.1_Fix1)
+A security issue with Improper neutralization of CRLF sequences in HTTP headers was discovered in
+My webMethods Server.
+
+The issue is resolved.
+
+
+MWS-37322 (MWS_11.1_Fix1)
+The built-in password encryption method in My webMethods Server is not sufficiently secure.
+
+The issue is resolved. My webMethods Server now uses SHA265 hashing for encryption.
+
+
+MWS-37324 (MWS_11.1_Fix1)
+The built-in encryption method in My webMethods Server is not sufficiently secure.
+
+The issue is resolved. My webMethods Server now uses SHA265 hashing for encryption.
+
+
+MWS-37354 (MWS_11.1_Fix1)
+After configuring SSO, the User Info page in My webMethods no longer shows the display name for
+the user profile.
+
+The issue is resolved. My webMethods Server now allows configuring mapping for known SAML
+attribute types through an additional JVM property. To set mapping for AZURE, add the following
+property to the custom_wrapper.conf file for My webMethdos Server:
+wrapper.java.additional.XXX=-Dmws.saml.attribute.type=AZURE.
+
+
+MWS-37371 (MWS_11.1_Fix1)
+A security issue with potential client-side validation bypass was discovered in My webMethods
+Server.
+
+The issue is resolved.
+
+
+MWS-37372 (MWS_11.1_Fix1)
+A security issue with missing JSESSIONID cookie attributes was discovered in My webMethods Server.
+
+The issue is resolved.
+
+
+MWS-37384 (MWS_11.1_Fix1)
+A security issue with possible injection reflected file download was discovered in My webMethods
+Server.
+
+The issue is resolved.
+
+
+MWS-37386 (MWS_11.1_Fix1)
+My webMethods Server uses database statements that do not execute as prepared statements.
+
+This issue is resolved. All database statements now execute as prepared statements.
+
+
+MWS-37387 (MWS_11.1_Fix1)
+A security issue with client-side validation for CAF Input Textbox controls was discovered in My
+webMethods Server.
+
+The issue is resolved. The client-side validation for CAF Input Textbox controls is enhanced to no
+longer allow entering invalid e-mails and prevent backtracking. In addition, the server-side
+validation is enhanced to be more strict in accordance with the RFC standards for e-mail naming.
+
+
+MWS-37394 (MWS_11.1_Fix1)
+My webMethods Server might fail to initialize when configured to use different values for node
+name and server name.
+
+The issue is resolved.
+
+
+MWS-37419 (MWS_11.1_Fix1)
+A security issue with potential bypass  of the business logic was discovered in My webMethods
+Server.
+
+The issue is resolved.
+
+
+MWS-37471 (MWS_11.1_Fix1)
+A security issue with XML eXternal Entities was discovered in My webMethods Server.
+
+The issue is resolved.
+
+
+
+
+
+
+8.0 Installation
+
+Install using IBM Update Manager. For instructions, see the documentation at
+https://docs.webmethods.io/.
+
+If this is the first time you are installing a fix using the IBM Update Manager, stop 
+IBM My webMethods Server and back up the IBM My webMethods Server database and file system before 
+applying the fix.   
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using IBM Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+You can only uninstall one My webMethods Server fix at a time. Make sure you backup your server 
+settings before uninstalling My webMethods Server fixes.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

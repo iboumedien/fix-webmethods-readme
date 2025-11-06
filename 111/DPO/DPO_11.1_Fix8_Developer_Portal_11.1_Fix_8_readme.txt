@@ -1,0 +1,263 @@
+                 IBM webMethods Developer Portal 11.1 Fix 8 Readme
+
+                         November 2025
+
+_________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+
+
+
+1.0 Fix Name
+
+IBM webMethods Developer Portal 11.1 Fix 8
+
+
+2.0 Fix ID
+
+DPO_11.1_Fix8
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects IBM webMethods Developer Portal 11.1
+
+
+4.0 Requirements and Dependencies
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install 
+the specified fix or later.
+
+
+5.0 Platform Support
+
+IBM webMethods Developer Portal 11.1 Fix 8 is supported on the same
+platforms and operating systems and with the same JREs as
+IBM webMethods Developer Portal 11.1.
+
+6.0 Cautions and Warnings
+
+None
+
+
+7.0 Fix Contents
+
+DPO-7250
+Versions of a few third-party components are vulnerable.
+
+This issue is now resolved. The versions of the following JARs 
+are upgraded:
+
+- commons-fileupload to 1.6.0 version
+- tomcat-embed-core to 10.1.46 version
+- netty-codec-http to 4.1.127 version
+- netty-codec-http2 to 4.1.127 version
+- nimbus-jose-jwt to 9.48.0 version
+- cxf-core to 4.0.9 version
+- cxf-rt-frontend-jaxrs to 4.0.9 version
+
+
+DPO-7166 (Fix6)
+APIs published from API Gateway are not visible in Developer Portal
+
+When a tenant was recreated using the same name as a previously
+deleted tenant, it was not provisioned correctly due to improper
+index mapping in the database.
+
+This issue is now resolved
+
+DPO-7163 (Fix6)
+Default theme entry is missing for reprovisioned tenant
+
+After de-provisioning a tenant and recreating it with the same name,
+the default theme entry was not present in the new tenant due to a
+caching issue.
+
+This issue is resolved now.
+
+DPO-7060 (Fix6)
+Support to restrict Developer Portal access to external systems.
+
+When you try to restrict the usage of Developer Portal outside the machine 
+in which is installed, the application is still accessible via an HTTP port.
+
+This issue is now resolved. The following changes are made:
+
+* Provided support for binding IP address for HTTP Port by adding a new 
+environmental configuration, 'portal.server.config.http-address' in 'dpo_wrapper.conf'.
+- Specify the required IP address in the 'portal.server.config.http-address' configuration.
+For example, wrapper.java.additional.2007=-Dportal.server.config.http-address=127.0.0.1.
+
+* Provided support to disable the HTTP port by adding a new environmental configuration, 'portal.server.config.http-port' in 'dpo_wrapper.conf’.
+- Specify a negative integer value to the ‘portal.server.config.http-port’ configuration.
+For example, wrapper.java.additional.2006=Dportal.server.config.http-port=-1.
+
+You can find the ‘dpo_wrapper.conf’ file from the InstallDirectory/DeveloperPortal/configuration.
+
+DPO-7089 (Fix6)
+Support for Elasticsearch 8.17.3 version as database
+
+Starting DPO 11.1 Fix6, Developer Portal supports Elasticsearch 8.17.3 version. 
+
+
+DPO-6815 (Fix5)
+When you view the request/response schema details of an API from the API details page, 
+the page stops responding.
+
+This issue is now resolved.
+
+DPO-6804 (Fix5)
+When an API is published from API Gateway to Developer Portal, and if there are more than 
+one possible values of query parameter of array type, then only one value 
+appears on the Try API page.
+
+This issue is now resolved. All possible values are now displayed in a drop-down field.
+
+DPO-6265 (Fix5)
+Versions of a few third-party components are vulnerable.
+
+This issue is now resolved. The versions of the following JARs are upgraded:
+
+- cxf-core to 3.5.10 version
+- spring-security-web to 6.3.9 version
+- spring-security-core to 6.3.9 version
+- spring-web* jars to 6.1.14 version
+- bcprov-jdk18on to 1.78.1 version
+- esapi to 2.5.3.1 version
+- tomcat-embed-core to 10.1.40 version
+- cxf-rt-transports-http to 4.0.5 version
+- xmlbeans to 4.0.0 version
+
+DPO-6441 (Fix5)
+Support for OpenSearch as database
+
+Starting Developer Portal 11.1 Fix 5, Developer Portal supports OpenSearch as a data store 
+alongside Elasticsearch. The supported version is 2.19.1. 
+Customers must start migrating to OpenSearch as early as possible, 
+as the support for Elasticsearch will be deprecated in future release.
+
+
+DPO-6446 (Fix4)
+Error appears during multiple scope selection for token generation.
+
+When you generate a token with Client credentials and if you select multiple scopes, 
+then the "Scope not defined" error message appears.
+
+This issue is now resolved.
+
+DPO-6294 (Fix4)
+When you edit the APIs linked with providers that are created from Developer Portal, 
+the updates are not saved.
+
+This issue is now resolved.
+
+DPO-6313 (Fix4)
+Mails sent from Developer Portal do not have the recipient mail in the 'To' field. 
+
+This issue is now resolved.
+
+DPO-6223 (Fix4)
+When you customize the user registration page, if you add a field with a name that 
+already exists then the application allows you to save the changes without displaying 
+any error message.
+
+This issue is now resolved.	
+
+
+DPO-5956 (Fix3)
+OAuth2 token is not displayed properly on the Try API page.
+
+When you request "implicit" grant type token for an OAuth2 protected API, then the
+OAuth token does not appear properly on the 'Try API' page.
+
+This issue is now resolved.
+
+DPO-6153 (Fix2)
+Application requests raised by users from Developer Portal are not sent to
+API Gateway.
+
+This issue is now resolved.
+
+DPO-5834 (Fix2)
+Success message displayed when you upload an invalid swagger file.
+
+If you select 'OpenAPI' and upload a swagger file during API creation, the file
+uploaded successfully without any error.
+
+This issue is now resolved.
+
+
+DPO-5994 (Fix1)
+Date formatter widgets are enhanced to be thread-safe. It enables optimal usage
+of shared resources.
+
+DPO-5993 (Fix1)
+SSL exceptions are not handled properly in SOAP and REST API tryout pages.
+
+This issue is now resolved.
+
+DPO-5982 (Fix1)
+Restoring of backup files with OAuth2 tokens fails due to NullPointerException.
+
+This issue is now resolved.
+
+DPO-5959 (Fix1)
+When you edit an application, the system validates whether a value is provided in
+the "Name" field.
+
+This issue is now resolved.
+
+DPO-5954 (Fix1)
+Enhancements are made to the Developer Portal 11.1 Fix 1 for improved performance.
+
+DPO-5930 (Fix1)
+When you, as an administrator, update the e-mail template for second time, then
+the changes are not reflected in the sent mails.
+
+This issue is now resolved.
+
+Note: After applying the fix, save the e-mail template for the changes to reflect.
+
+
+8.0 Installation
+
+Install using Update Manager. For instructions, see the 
+documentation at https://www.ibm.com/docs/en/wdp.
+
+
+9.0 Uninstallation
+
+Uninstall using Update Manager. For instructions, see the 
+documentation at https://www.ibm.com/docs/en/wdp.
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was tested
+with non-English configurations and non-ASCII data.
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new 
+messages and these messages will appear in English.
+
+
+11.0 Copyright
+
+Copyright Super iPaas Integration LLC, an IBM Company 2024.
