@@ -1,0 +1,93 @@
+﻿          webMethods Asset Build Environment 10.15 Fix 2 readme
+
+
+                        November 2025
+________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+
+________________________________________________________________
+
+1.0 Fix Name
+
+webMethods Asset Build Environment 10.15 Fix 2
+
+
+
+2.0   Fix ID
+
+ABE_10.15_Fix1
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Asset Build Environment 10.15.
+
+
+
+4.0 Requirements and Dependencies
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+6.0   Cautions and Warnings
+
+None.
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+ABE-619 (ABE_10.15_Fix2)
+
+Asset Build Environment uses an outdated version of the third-party component JGit, which has known
+security vulnerabilities.
+
+The issue is resolved. The JGit jar is migrated to the stable version 7.2.1.
+
+ABE-628 (ABE_10.15_Fix2)
+
+Asset Build Environment uses an outdated version of the third-party component Apache Ant, which has
+known security vulnerabilities.
+
+The issue is resolved. The Apache Ant component is migrated to the stable version 1.10.12.2.
+
+ABE-380 (ABE_10.15_Fix1)
+
+Asset Build Environment uses an outdated version of the
+third party component JGit, which has known security vulnerabilities.
+
+The issue is resolved. The JGit jar is migrated to the stable version 6.7.0.
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a central location (9.7 or later), 
+or IBM webMethods Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at https://www.ibm.com/docs/en/products.
+
+9.0 Uninstallation
+
+Uninstall using IBM webMethods Command Central (9.7 or later) or IBM webMethods Update Manager. For instructions, see 
+the documentation at https://www.ibm.com/docs/en/products.
+
+
+10.0 Copyright
+
+Copyright IBM Corporation 2025
