@@ -1,0 +1,119 @@
+                 webMethods Microgateway 11.1 Fix 7 Readme
+
+                         November 2025
+
+____________________________________________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Microgateway 11.1 Fix 7
+
+
+
+2.0 Fix ID
+
+YAM_11.1_Fix7
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Microgateway 11.1
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+
+YAM-0000 (YAM_11.1_Fix7)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-1918 (YAM_11.1_Fix6)
+Vulnerable 3rd Party Component eclipse jetty is used.
+
+CVE-2024-8184
+
+This issue is resolved.
+
+
+(Fixes 4 and 5 omitted intentionally)
+
+
+YAM-0000 (YAM_11.1_Fix3)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-0000 (YAM_11.1_Fix2)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-1901 (YAM_11.1_Fix1)
+When the introspection endpoint is not configured in API Gateway, Microgateway
+cannot perform OAuth2 authenticated requests.
+
+This issue is resolved.
+
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action
+will revert your installation to the previously installed fix. You cannot use these instructions to
+uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025
