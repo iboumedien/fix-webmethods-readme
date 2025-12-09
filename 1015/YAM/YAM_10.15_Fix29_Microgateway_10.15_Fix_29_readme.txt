@@ -1,0 +1,303 @@
+                 webMethods Microgateway 10.15 Fix 29 Readme
+
+                         November 2025
+
+____________________________________________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Microgateway 10.15 Fix 29
+
+
+
+2.0 Fix ID
+
+YAM_10.15_Fix29
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Microgateway 10.15
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+
+YAM-0000 (YAM_10.15_Fix29)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-0000 (YAM_10.15_Fix28)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-0000 (YAM_10.15_Fix27)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-0000 (YAM_10.15_Fix26)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-1969 (YAM_10.15_Fix25)
+Vulnerable JVM used.
+
+CVE-2024-21208,CVE-2024-21210,CVE-2024-21217,CVE-2024-21235
+
+This issue is resolved.
+
+
+YAM-1920 (YAM_10.15_Fix25)
+Vulnerable 3rd Party Component eclipse jetty is used.
+
+CVE-2024-8184
+
+This issue is resolved.
+
+
+(Fix number 24 omitted intentionally)
+
+
+YAM-0000 (YAM_10.15_Fix23)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-1927 (YAM_10.15_Fix22)
+Base image for Microgateway has been updated to alpine 3.20.2.
+This includes a newer version of the OpenSSL library.
+
+This issue is resolved.
+
+
+YAM-0000 (YAM_10.15_Fix21)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-0000 (YAM_10.15_Fix20)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-0000 (YAM_10.15_Fix19)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-0000 (YAM_10.15_Fix18)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-0000 (YAM_10.15_Fix17)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-0000 (YAM_10.15_Fix16)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-0000 (YAM_10.15_Fix15)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-0000 (YAM_10.15_Fix14)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-1822 (YAM_10.15_Fix13)
+The parameter strictResourceMatching does not work on Microgateway.
+
+Microgateway does not recognize the strictResourceMatching parameter and
+returns a 404 response.
+
+This issue is resolved.
+
+
+YAM-1787 (YAM_10.15_Fix12)
+Vulnerable 3rd party component json is used.
+
+- CVE-2023-5072
+
+This issue is resolved.
+
+
+YAM-1763 (YAM_10.15_Fix12)
+Vulnerable 3rd party component jetty is used.
+
+- CVE-2023-44487
+
+This issue is resolved.
+
+
+YAM-1798 (YAM_10.15_Fix12)
+Error connection pool shut down on Microgateway pods.
+
+Due to server internal error (for example, OutOfMemory) it might happen that the
+'connection pool shutdown' message displays over and over again. After this
+incident, there is an attempt to re-establish the internal connection pool that
+further requests have a chance to go through. However, when the server errors
+are logged (in error log), more resources (for example, Heap space) have to be
+provided.
+
+This issue is resolved.
+
+
+YAM-0000 (YAM_10.15_Fix11)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-0000 (YAM_10.15_Fix10)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-1692 (YAM_10.15_Fix9)
+OAuth2 authentication fails while invoking an API through Microgateway.
+
+When you start Microgateway with API names specified, the 'Gateway Scope'
+dependencies are not exported correctly from the respective API Gateway. This
+causes OAauth2 authentication failure during API invocation.
+
+The issue is resolved.
+
+
+YAM-1737 (YAM_10.15_Fix9)
+Vulnerable third party component Guava being used.
+
+- CVE-2023-2976
+
+This issue is resolved.
+
+
+YAM-0000 (YAM_10.15_Fix8)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-0000 (YAM_10.15_Fix7)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-1675 (YAM_10.15_Fix6)
+Vulnerable third-party json-smart jar is used.
+
+- CVE-2023-1370
+
+This issue is resolved.
+
+YAM-1686 (YAM_10.15_Fix6)
+Vulnerable 3rd Party Component Eclipse-jetty is used.
+
+- CVE-2023-26049
+
+This issue is resolved.
+
+
+YAM-0000 (YAM_10.15_Fix5)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-0000 (YAM_10.15_Fix4)
+Synchronize libraries with API Gateway Fix.
+
+
+YAM-1622 (YAM_10.15_Fix3)
+Microgateway accepts HTTP TRACE method.
+
+Microgateway responds to the HTTP TRACE method with HTTP response code 200
+instead of rejecting the method.
+Related vulnerabilities: CVE-2004-2320, CVE-2010-0386.
+
+This issue is resolved.
+
+YAM-1586 (YAM_10.15_Fix3)
+Vulnerable 3rd Party Component jettison is used.
+
+- CVE-2022-45693
+- CVE-2022-45685
+- CVE-2022-40150
+
+This issue is resolved.
+
+
+YAM-1543 (YAM_10.15_Fix2)
+Microgateway uses the JRE truststore to connect to the OAuth servers
+
+When an OAuth server is configured using the HTTPS port, Microgateway uses the
+JRE truststore to connect to the OAuth server for token introspection.
+
+The issue is resolved. Microgateway now uses its own keystore
+from config/truststore.jks.
+
+YAM-1582 (YAM_10.15_Fix2)
+Vulnerable third-party component snakeyaml is used.
+
+This issue is resolved.
+
+YAM-1552 (YAM_10.15_Fix2)
+Vulnerable third-party component jackson-databind is used.
+
+This issue is resolved.
+
+(Fix number 1 omitted intentionally)
+
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action
+will revert your installation to the previously installed fix. You cannot use these instructions to
+uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025
