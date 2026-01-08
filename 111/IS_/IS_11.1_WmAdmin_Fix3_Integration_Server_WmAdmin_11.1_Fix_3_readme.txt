@@ -1,0 +1,276 @@
+                webMethods Integration Server 11.1 WmAdmin Fix 3 readme
+
+                                  December 2025                                                      
+
+________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Integration Server 11.1 WmAdmin Fix 3.
+
+
+
+2.0   Fix ID
+
+IS_11.1_WmAdmin_Fix3
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Integration Server 11.1.
+
+
+
+4.0 Requirements and Dependencies
+
+IS_11.1_Core_Fix8
+
+
+
+5.0 Platform Support
+
+webMethods Integration Server 11.1 WmAdmin Fix 3 is supported 
+on the same platforms and operating systems and with the same 
+JREs as webMethods Integration Server 11.1.
+
+
+
+6.0 Cautions and Warnings
+
+IS_11.1_WmAdmin_Fix2 (or higher) and IS_11.1_Core_Fix5 (or higher) are
+interdependent. Therefore, install both the fixes together.
+
+
+
+7.0 Fix Contents
+
+DTS-3341
+Some HTML elements in Integration Server Administrator did not have an
+aria-label attribute. 
+
+The aria-label attribute has now been added.
+
+DTS-3352
+On the Services tab of the Dashboard, the Services Instances tab does not reload
+after switching to another tab and then switching back. 
+
+This issue is now resolved. 
+
+DTS-3353
+Disable autocomplete for the Integration Server Administrator login page.
+
+Autocomplete is now disabled for the form fields Username and Password on the
+Integration Server Administrator login page. However, browsers might still have
+autocomplete enabled, resulting in the browser prompting users to save username
+and password. For information about disabling autocomplete or autofill for a
+browser, refer to the browser documentation. 
+
+DTS-3428
+In the Service detail page in Server Monitoring, the Logged fields table does
+not sort by column. 
+
+This issue is now resolved.
+
+DTS-3433
+Integration Server Administrator is not legible when using a browser that uses a
+dark theme. 
+
+Integration Server Administrator only supports the light theme for a browser.
+However, Integration Server should be legible and display correctly in a browser
+that uses the dark theme. 
+
+Integration Server Administrator now renders properly in a browser that uses the
+dark theme. 
+
+DTS-3492
+Integration Server Administrator displays the redirect URL in the browser
+address bar when a user logs out of an Integration Server configured for single
+sign-on. 
+
+When a user logs out from an Integration Server Administrator configured for
+single sign-on, Integration Server Administrator redirects the request. During
+the redirect, the address bar in the browser contains the redirect URL. This is
+a security vulnerability. 
+
+Now, Integration Server maintains the redirect URL and only supplies it to
+Integration Server Administrator when required. 
+
+PIE-95887
+Users can create and manage configurations with secrets even if the
+vault server configured for Integration Server is unavailable. 
+
+The issue is resolved now.
+
+PIE-99687
+Creating a JKS keystore alias with multiple key aliases using the
+/admin/keystore API causes the error
+[ISS.0139.9071] Error: cannot load the keystore pointed to by keystore alias.
+
+When you invoke the /admin/keystore API to create a JKS keystore alias with
+multiple key aliases, Integration Server creates the keystore alias but with the
+error. 
+
+This issue is now resolved.
+
+DTS-3264 (IS_11.1_WmAdmin_Fix2)
+Integration Server returns details from an internal file without requiring
+authentication. 
+
+A call to <host>:<port>/assets/version.properties returns internal details from
+the version.properties file without requiring authentication. 
+
+This issue is resolved. Now, accessing the file requires administrator
+credentials. 
+
+DTS-3302 (IS_11.1_WmAdmin_Fix2)
+Integration Server Administrator uses a date/time calendar component from a
+third-party library that is no longer maintained. 
+
+Prior to this fix, Integration Server Administrator used the
+bootstrap-daterangepicker library for selecting dates. However, this library is
+no longer maintained which creates a security risk. 
+
+Integration Sever Administrator now use the ngx-daterangepicker-material
+library. 
+
+This resolves the following security vulnerability: CVE 2022-31129
+
+This fix also removes the third-party moment-duration-format library which is no
+longer maintained. 
+
+PIE-95921 (IS_11.1_WmAdmin_Fix2)
+After applying a fix that includes PIE-87732, the number of running services
+displayed on the Dashboard includes SOAP services that executed to completion. 
+
+Now, Integration Server properly decrements the number of running services for
+SOAP services. 
+
+DTS-3131 (IS_11.1_WmAdmin_Fix1)
+When killing a session in using the Dashboard > Usages > Current Sessions page 
+in Integration Server Administrator, the session ID was exposed in the URL of 
+the call to Integration Server.
+
+To make the request for a killing a session more secure, Integration Server 
+includes the session ID in the body of the request and not the URL.
+
+DTS-3149 (IS_11.1_WmAdmin_Fix1)
+When hovering the cursor over a long server log entry in Integration Server 
+Administrator, tooltip text appears outside of the tooltip text frame boundary.
+
+This issue is now resolved.
+
+DTS-3226 (IS_11.1_WmAdmin_Fix1)
+Integration Server Administrator displays a message about a missing WmGRPC 
+package even though the package is not installed and is not required.
+
+The WmGRPC package provides support for using gRPC with Integration Server. The 
+package is not required. However, when the WmGRPC package is not installed, 
+Integration Server Administrator displays the following message:
+
+ [ISS.0030.0013E] (tid=<threadID>) An exception was encountered while processing 
+ an administrative request. See the error log for details: Unknown package WmGRPC
+
+This issue is now resolved.
+
+DTS-3228 (IS_11.1_WmAdmin_Fix1)
+The Current sessions dialog displayed the incorrect value for Connect time.
+
+The Current sessions dialog displayed a Connect time value that divided the 
+connect time, which is received as seconds, by 1000. As the connect time is 
+received in seconds, not milliseconds, this division was not necessary.
+
+This issue is resolved.
+
+Note: In the Dashboard > Usages tab, the Current sessions dialog can be accessed 
+via the Sessions summary table by clicking the number in the Current column for 
+the Total sessions row.
+
+DTS-3238 (IS_11.1_WmAdmin_Fix1)
+Resolution for Cross-Site Scripting (XSS) vulnerability in /ssologout endpoint.
+
+The /ssologout endpoint is vulnerable to Cross-Site Scripting (XSS), allowing 
+malicious actors to inject JavaScript code via the redirectURL query parameter 
+into a web page.
+
+This vulnerability is fixed and the redirectURL is sanitized.
+
+PIE-94652 (IS_11.1_WmAdmin_Fix1)
+Integration Server (IS) exposes the internal IS version details without 
+authentication.
+
+Integration Server exposes the internal IS version details maintained in the 
+version.properties file without authentication through 
+host:port/assets/version.properties.
+
+This issue is resolved. Now, the file requires administrator credentials for 
+access.
+
+PIE-98193 (IS_11.1_WmAdmin_Fix1)
+Changes to the webMethods Cloud menu in Integration Server Administrator to 
+support registering an on-premises Integration Server with the hybrid control 
+plane. 
+
+The webMethods Cloud menu now has a Runtime control page to complete registration 
+of the on-premises Integration Server with the control plane in IBM webMethods 
+Hybrid Integration. The process of registering an on-premises Integration Server 
+with the control plane is initiated from the hybrid control plane and continues 
+on the webMethods Cloud > Runtime control page. 
+
+The ability to register and manage an on-premises Integration Server with the 
+hybrid control plane requires an entitlement to IBM webMethods Hybrid Integration. 
+
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the 
+documentation at https://www.ibm.com/docs/en/products.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed 
+fix. This action will revert your installation to the previously installed fix. 
+You cannot use these instructions to uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the 
+documentation at https://www.ibm.com/docs/en/products.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, 
+or language as specified in the webMethods Installation Guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix 
+has no globalization impact and can be applied to systems running in any 
+supported locale or configuration.
+
+
+10.1 Localization
+
+This fix does not require an updated language pack. It might contain new 
+messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright IBM Corporation 2025

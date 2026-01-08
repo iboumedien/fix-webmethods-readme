@@ -1,0 +1,107 @@
+		 Designer 11.1 Fix 2 readme
+
+                          November 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+
+
+1.0 Fix Name
+
+Designer 11.1 Fix 2
+
+
+
+2.0 Fix ID
+
+SDF_11.1_Fix2
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Branding and Naming
+
+
+
+4.0 Fix Requirements
+
+This fix requires an existing Designer 10.15 installation.
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods 
+Designer 11.1.
+
+
+6.0 Cautions and Warnings
+
+Warning: Do not use the "Uninstall" option (from About Eclipse
+SDK > Installation Details > Installed Software tab), as that
+will completely remove a particular feature.
+
+
+
+7.0 Fix Contents
+
+
+SDEF-4333
+Upgraded SnakeYAML and Jackson libraries to address security vulnerabilities. 
+
+Designer now uses the upgraded versions of the following libraries to address 
+the known security vulnerabilities:
+
+SnakeYAML: upgraded from 2.2.0 to 2.4.0.
+Jackson: upgraded from 2.16.1 to 2.19.2.
+
+
+SDEF-4228/SDEF-4205 (SDF_11.1_Fix1)
+Resolved multiple security vulnerabilities in the Designer platform.
+
+This fix addresses the following categories of vulnerabilities within the 
+Designer platform:
+
+•	Do not compare class objects with getName() or getSimpleName() methods
+•	Information exposure through error messages
+•	Insecure SSL
+•	Path Relative Stylesheet Import
+•	Plaintext storage of Password
+•	XML entity Injection rule
+ 
+                
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the 
+documentation at https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot apply these instructions to the previously installed 
+fix. 
+
+Uninstall using the Software AG Update Manager. For instructions, see the 
+documentation at https://docs.webmethods.io/. 
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

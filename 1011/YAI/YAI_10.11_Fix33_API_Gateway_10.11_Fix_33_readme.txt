@@ -1,0 +1,4692 @@
+                 webMethods API Gateway 10.11 Fix 33 Readme
+
+                         December 2025
+
+_________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+
+
+
+1.0 Fix Name
+
+webMethods API Gateway 10.11 Fix 33
+
+
+
+2.0 Fix ID
+
+YAI_10.11_Fix33
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods API Gateway 10.11
+
+
+
+4.0 Requirements and Dependencies
+
+None.
+
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+
+
+YAI-41312 (YAI_10.11_Fix33)
+
+In API Gateway UI, Current Port threads always show 0.
+When a port is configured with 'Private Threadpool Configuration' 
+enabled, the API Gateway UI consistently displays the Current Port 
+threads value as 0, regardless of actual thread activity.
+
+This issue is resolved.
+
+
+YAI-41547 (YAI_10.11_Fix33)
+
+When a request is using a default port (e.g. on the cloud) then 
+a NullPointerException may happen within a DELETE request. 
+
+This issue is resolved.
+
+
+YAI-41831 (YAI_10.11_Fix33)
+
+Vulnerable 3rd Party Component netty-codec-http2 is used.
+NVD - CVE-2025-55163
+
+This issue is resolved.
+
+
+YAI-42455 (YAI_10.11_Fix33)
+
+Incorrect URL validation allows system traversal on the 
+API Gateway server.
+
+This issue is resolved.
+
+
+YAI-42615 (YAI_10.11_Fix33)
+
+The Token refresh limit field accepts a null value while updating a strategy.
+When you create an application and leave the Token refresh limit field blank, 
+API Gateway saves the configurations without displaying an error message.
+
+This issue is resolved. If you update a strategy with a blank value, 
+API Gateway now displays an error message.
+
+
+YAI-40567 (YAI_10.11_Fix32)
+
+The log entries "Hash value of the certificate is:" have been moved to the debug
+log level instead of the info log level.
+
+This issue is resolved.
+
+
+YAI-41110 (YAI_10.11_Fix32)
+
+A user with lesser privilege is able to reset master password.
+A user with the privilege 'Manage aliases' is able to reset
+the master password.
+
+This issue is resolved.
+Now, a user with the necessary privilege is allowed to reset
+the master password.
+
+
+YAI-39945 (YAI_10.11_Fix32)
+
+Endpoint Alias URI: Trailing Tab Not Removed.
+When creating an endpoint alias with a URI that ends with a tab character,
+the tab is not removed as expected.
+
+This issue is resolved.
+
+
+YAI-39578 (YAI_10.11_Fix31)
+
+A DELETE REST request does not return native service response.
+
+A DELETE REST request from external to internal API Gateway might
+be hanging, resulting in a timeout exception. 
+
+This issue is resolved.
+
+
+YAI-40549 (YAI_10.11_Fix31)
+
+Setting up Cross DC with TLS fails.
+Setting up the Cross DC communication with keystores and truststores fails if
+the DCs themselves are constituted of an Ignite based cluster. The server.log
+contains the error message “Failed to serialize object: BinaryObjectException“.
+
+This issue is resolved.
+
+
+YAI-40006 (YAI_10.11_Fix31)
+
+API Key generation fails.
+
+While deploying an OAuth2 application from CentraSite to API Gateway,
+when an application is undeployed and redeployed the API-Key is changed.
+
+This issue is resolved. Now the original API-key gets retained.
+
+
+YAI-40055 (YAI_10.11_Fix31)
+
+Error while saving an application leads to creating a duplicate application.
+When you edit an application and save it in the API Gateway UI, and an error
+occurs while saving the operation to the API Gateway server, the application
+remains in Edit mode in the UI. On clicking Save again creates a duplicate of
+the application.
+
+This issue is resolved.
+
+
+YAI-39900 (YAI_10.11_Fix31)
+
+Extending a global policy filter does not work.
+
+In an API Gateway cluster a global policy is activated and hence affects a 
+certain number of APIs. The global policy is now updated with a filter
+'ApiName NotEquals' which means that after the update the global policy affects 
+less number of APIs. In the API Gateway UI the global policy update terminates 
+successfully. When you inspect the global policy and the affected APIs in 
+the UI, in particular the APIs that are no longer affected after the update
+because they match the 'ApiName NotEquals' filter, everything looks good. When 
+you issue REST or SOAP calls against the cluster node that performed the global 
+policy update for those APIs that are no longer affected by the global policy 
+the calls behave as expected. However, when the same REST or SOAP calls are 
+issued against one of the other cluster nodes, it is observed that the policy 
+actions defined by the global policies are still applied to the APIs that match 
+the 'ApiName NotEquals' filter.
+
+The issue is resolved.
+
+
+YAI-39762 (YAI_10.11_Fix30)
+
+Vulnerable 3rd Party Component Netty is used.
+
+CVE-2025-24970
+CVE-2025-25193
+
+This issue is resolved.
+
+
+YAI-39849 (YAI_10.11_Fix30)
+
+Vulnerable 3rd Party Component commons-io is used.
+
+CVE-2024-47554
+SNYK-RHEL8-MAVEN-8162443
+
+This issue is resolved.
+
+
+YAI-39879 (YAI_10.11_Fix30)
+
+When the same global policy is updated by more than one user, APIs using this
+policy might get deactivated.
+
+This issue is resolved
+
+
+YAI-39445 (YAI_10.11_Fix30)
+
+JMS/AMQP REST routing fails with JNDI alias for queues/topics.
+
+When working with JMS/AMQP REST routing for an API, if the JNDI alias is used to
+look up queues and topics, it does not work. However, when the queue name is 
+provided directly as the destination name, it works fine.
+
+This issue is resolved.
+
+
+YAI-39055 (YAI_10.11_Fix30)
+
+Error while downloading API Details documentation.
+While downloading the documentation files from the API Details section, API
+Gateway displays an invalid error.
+
+This issue is resolved. API Gateway displays the correct error message when the
+swagger file is invalid.
+
+
+YAI-39814 (YAI_10.11_Fix30)
+
+Providing a timeout for invoking backend REST APIs in addition to the existing 
+connect and read timeout.
+
+An additional timeout property, Native Service Timeout is introduced.
+This property specifies the time interval (in seconds) after which an HTTP
+connection attempt when calling the Integration Server HTTP
+backend service pub.client:http for REST APIs times out.
+For details about this property see the API Gateway User's guide.
+
+This new feature is implemented.
+The Native Service Timeout requires IS 10.11 Core Fix 19.
+You can also use it with IS 10.11 Core Fix 18 with a special hot fix.
+
+
+YAI-39350 (YAI_10.11_Fix30)
+
+Deployment of OAuth2 clients from CentraSite is enhanced.
+
+The deployment of OAuth2 clients from CentraSite is improved in 2 areas:
+1. On deploy the values are completely setup. It is not necessary to regenerate,
+which means client IDs and secrets are in line with the CentraSite values.
+2. On a redeploy or update from CentraSite the OAuth2 values are no longer
+changed or overwritten. This means that changes on OAuth2 values can only be
+performed with API Gateway methods.
+
+
+YAI-39161 (YAI_10.11_Fix29)
+
+API Gateway UI displays wrong and missing information in API mashup screen.
+
+At times, especially when accessing the API mashup screen for the first time,
+it is observed that the API mashups are displayed incorrectly. For example,
+wrong API name is shown or there is no API name displayed.
+
+This issue is resolved.
+
+
+YAI-38681 (YAI_10.11_Fix29)
+
+When multiple requests to create a new OAuth token 
+("invoke/pub.apigateway.oauth2/getAccessToken") run in parallel for an extended
+period in a Terracotta cluster, the server.log shows "Lock timed out" error 
+messages. As a result, you must restart some or all nodes in the cluster.
+
+This issue is resolved.
+
+
+YAI-38724 (YAI_10.11_Fix29)
+
+No validation for OpenAPI files.
+When you create a new API of type OpenAPI, the source input file is not properly 
+validated for errors, such as invalid references.
+
+This issue is resolved.
+
+
+YAI-38756 (YAI_10.11_Fix29)
+
+OpenAPI creation fails with 400 bad request exception.
+Trying to create an API with an OpenAPI JSON file containing a syntax error 
+fails. 
+
+This issue is resolved. 
+A new extended setting 'openAPIImporterValidation' is introduced to define 
+whether the OpenAPI syntax must be validated before importing the OpenAPI 
+file.
+
+
+YAI-38835 (YAI_10.11_Fix29)
+
+When a SOAP native service returns an error with a result payload, API Gateway 
+does not send the response payload if the 'Send Native Provider Response' flag 
+is enabled.
+
+This issue is resolved.
+
+
+YAI-38964  (YAI_10.11_Fix29)
+
+When you search for an API using /rest/apigateway/search, the list of gateway 
+endpoints appear empty, even though the actual list is not empty.
+
+This issue is resolved.
+
+If the list is empty, it is no longer displayed.
+
+
+YAI-38246 (YAI_10.11_Fix29)
+
+When an error response returns from a call through the API Gateway registration 
+port, a failure may occur, resulting in a "Stream closed" message.
+
+This issue is resolved.
+
+
+YAI-38415 (YAI_10.11_Fix29)
+
+HTTP header field "Content-Disposition" is case-sensitive
+
+When creating an API with API Gateway REST API using a multipart/form-data 
+request, the request only works if the "Content-Disposition" HTTP header field 
+is sent with case-sensitive formatting.
+
+This issue is resolved.
+
+
+YAI-38501 (YAI_10.11_Fix29)
+
+The API invocation fails when you use an endpoint alias with a tab at the end.
+
+This issue is resolved.
+
+
+YAI-38815 (YAI_10.11_Fix29)
+
+Unable to import keystores with .pfx suffix
+
+When you import a PKCS #12 keystore file with the suffix .pfx in the 
+API Gateway UI, it is rejected with an "Invalid keystore" error.
+However, the same keystore file imports successfully if you change the suffix 
+to .p12. 
+
+This issue is resolved.
+
+
+YAI-38877 (YAI_10.11_Fix29)
+
+IAM policy with SSL certificate fails when using X-Forwarded-Client-Cert header
+
+When sending an SSL certificate as an HTTP header with an IAM policy, the policy 
+does not work if the X-Forwarded-Client-Cert (XFCC) header value is provided in 
+the following formats:
+
+"Cert=-------BEGIN%20CERTIFICATE…"
+"Hash=xxxx;Cert=-------BEGIN%20CERTIFICATE…"
+
+This issue is resolved.
+
+
+YAI-38607 (Fix 28)
+
+APIGW_ Migration_Reports html is missing.
+Documentation states, that after a migration, the migration
+report can be found at this location
+<TARGET>\install\logs\APIGW_Migration_Reports_<date_time>.
+But this report is not available after the migration.
+
+This issue is resolved.
+
+YAI-37919 (Fix 28)
+
+API Gateway is using the vulnerable third-party component commons-codec.
+
+This issue is resolved.
+
+YAI-37888 (Fix 28)
+
+During startup, the API Gateway server.log displays an Apache Ignite warning. 
+The following message appears with a severity level of "warning":
+
+Class "com.softwareag.pg.pgmen.collectors.MacMap" cannot be serialized using 
+BinaryMarshaller because it either implements Externalizable interface or have 
+writeObject/readObject methods. OptimizedMarshaller will be used instead and 
+class instances will be deserialized on the server. Please ensure that all nodes 
+have this class in classpath. To enable binary serialization either implement
+Binarylizable interface or set explicit serializer using 
+BinaryTypeConfiguration.setSerializer() method.
+
+This issue is resolved.
+The log now prints the message with a severity level of "info".
+
+YAI-38135 (Fix 28)
+
+In some cases, OAuth2 authentication may fail on one node in a cluster if the 
+nodes are started in parallel.
+
+This issue is resolved.
+
+YAI-38315 (Fix 28)
+
+Data masking in SOAP APIs corrupts non-ASCII characters in UTF-8 encoded 
+requests.
+
+This issue is resolved.
+
+YAI-38322 (Fix 28)
+
+Unable to import an archive with Kerberos settings.
+Importing an archive with Kerberos settings fails with the error message:
+"Unable to find KerberosSettings.kerberosSettings Asset KerberosSettings while 
+importing the ACDL file."
+
+This issue is resolved.
+
+YAI-38459 (Fix 28)
+
+Importing a port archive with error shown as success.
+When importing a port with an archive where the "pkg" property is missing, 
+API Gateway incorrectly displayed the import as successful, even though the port 
+was not imported.
+
+This issue is resolved. API Gateway now adds the default package "WmRoot" 
+if the "pkg" property is missing. In other error cases, the import fails with an 
+appropriate error message.
+
+YAI-38468 (Fix 28)
+
+Thread information is displayed as zero for Ignite cluster.
+The following server information is displayed as zero for Ignite clusters:
+
+- Current server threads
+- Max server threads
+- Total requests
+- Average duration
+
+This issue is resolved. The columns are removed from the server information 
+for Ignite clusters.
+
+YAI-38471 (Fix 28)
+
+API status remains active after encountering a StackOverflow Error at startup.
+At startup, API Gateway activates all APIs. However, if an API encounters a 
+StackOverflow error, the API Gateway UI still displays the API as active.
+
+This issue is resolved. Now, if the API encounters a StackOverflow error during 
+startup, API Gateway deactivates it.
+
+YAI-38595 (Fix 28)
+
+API Gateway UI does not display custom gateway endpoints.
+In some cases, the API Gateway UI does not display custom gateway endpoints for 
+APIs.
+
+This issue is resolved.
+
+YAI-38375 (Fix 28)
+
+API Gateway displays an exception when document creation in Elasticsearch fails, 
+but it continues to process the transaction.
+
+This issue is resolved.
+
+YAI-37918 (Fix 28)
+
+UI displays incorrect label name.
+The API Gateway UI displays the label "{*}request.application,claims.CLAIM_NAME{*}" 
+incorrectly.
+
+This issue is resolved. The label name has been updated from 
+"{*}request.application,claims.CLAIM_NAME{*}" to 
+"{*}request.application.claims.CLAIM_NAME{*}" with the "{*},{*}" replaced by a "{*}.{*}".
+
+YAI-37417 (Fix 28)
+
+The XML Validation policy triggers unspecified exceptions when a newly imported 
+API receives parallel requests or immediately after startup.
+
+This issue is resolved.
+
+YAI-37282 (Fix 28)
+
+Downloading a CSV file with Firefox triggers a Content-Security-Policy error.
+
+This issue is resolved.
+
+YAI-37466 (Fix 27)
+
+Unable to create a SOAP API from a zip file containing WSDL and XSDs.
+When you create a SOAP API from a zip file, the API creation fails if 
+the imported schema lacks a namespace definition in the WSDL and the 
+corresponding XSD lacks a targetNamespace.
+
+The issue is resolved.
+
+YAI-32003 (Fix 27)
+
+Vulnerable 3rd party component ESAPI is used.
+
+The issue is resolved.
+
+YAI-32072 (Fix 27)
+
+A vulnerable third-party component Jersey is used
+
+Jersey, a third-party component, is vulnerable to information disclosure 
+(Snyk ID SNYK-JAVA-ORGGLASSFISHJERSEYCORE-125563) and XML entity expansion 
+(Snyk ID SNYK-JAVA-ORGGLASSFISHJERSEYMEDIA-59597).
+
+The issue is resolved.
+
+YAI-32132 (Fix 27)
+
+When tracer is enabled, the custom policies is unable to invoke any urls with get method. 
+
+This has been fixed 
+
+YAI-32142 (Fix 27)
+
+Creating an OData API fails due to Accept Header used by API Gateway.
+When creating an OData API with a URL of an xml metadata file, the request fails
+in some cases, because API Gateway adds an Accept header - application/json.
+
+This issue is resolved.
+
+YAI-32227 (Fix 27)
+
+Errors from AggregatedMonitorProcessor task are logged in server.log
+Example:  [YAI.0206.0002E] Error while running com.softwareag.pg.pgmen.
+processors.AggregatedMonitorProcessor task. 
+Cause: java.lang.NullPointerException null
+
+This issue is resolved.                         
+
+YAI-37314 (Fix 27)
+
+Vulnerable 3rd Party Component Bouncy-castle is used. 
+
+CVE-2024-30172 (Fix 27)
+
+This issue is resolved.
+
+YAI-37462 (Fix 27)
+
+Saving an API fails despite providing correct XPath payload expression.
+When you use square brackets in an XPath expression for request transformations,
+saving the API fails with the error message: 'Query expression cannot be empty'
+
+This issue is resolved.
+
+YAI-37487 (Fix 27)
+
+Discriminator does not work as expected.
+API Schema validation fails to work as expected when enabled with the defined
+discriminator at the schema level.
+
+This issue is resolved. The discriminator concept is introduced in the open API.
+
+YAI-37587 (Fix 27)
+
+Update API adds a CR/LF after the API description.
+When an API is updated, it adds an unwanted newline character at the end of the 
+API description.
+
+This issue is resolved.
+
+YAI-32179 (Fix 27)
+
+The code is updated to prevent NullPointerExceptions in error cases and added 
+missing error messages.
+
+The issue is resolved.
+
+YAI-37301 (Fix 27)
+
+The native endpoint displayed for SOAP APIs in Technical Information 
+section did only show the original one from the wsdl. Now the 
+effective one from the routing policy is shown
+
+YAI-31662 (Fix 27)
+
+API Gateway experienced a memory leak when working with JMS/AMQP policies due to
+the presence of "JMS/AMQP REST Routing" and/or "Enable JMS/AMQP" policies. 
+Analysis of heap dump revealed that a large number of 
+com.pcbsys.nirvana.nJMS.SessionImpl classes were causing the issue.
+
+The issue is resolved.
+
+YAI-31974 (Fix 27)
+
+When registering Microgateway to API Gateway, you cannot publish its endpoint 
+to Developer Portal. This action is only feasible when the Microgateway endpoint 
+is added to a Service Registry.
+
+The issue is resolved.
+
+You can independently publish the Microgateway endpoint on a Service Registry 
+entry.
+
+YAI-32097 (Fix 27)
+
+When an API request is redirected to Microgateway, the configured connection 
+and read timeouts are not applied to those connections.
+
+The issue is resolved.
+
+YAI-31954 (Fix 27)
+
+When you configure the file transaction logger, the transactional events are 
+not logged.
+
+The issue is resolved.
+
+YAI-31959 (Fix 27)
+
+Unauthorized users accessing authorized pages via deep links encounters a
+blank page.
+When an underprivileged user attempts to access a deep link, they will be
+directed to an unauthorized page on the homepage.
+
+This issue is resolved.
+
+YAI-32098 (Fix 27)
+
+Invoking an API fails when the API has a non-existing path.
+When you invoke an API that has a non-existing path, a NullPointerException
+is logged in the server.log from the AccumulatorManager task.
+
+This issue is resolved.
+
+YAI-37325 (Fix 27)
+
+Two versions of jaxb jars included in the API GAteway installation.
+In the API Gateway package, there are two versions of the following
+jaxb jars installed under WmAPIGateway/code/jars/static:
+jaxb-api, jaxb-core, jaxb-impl and jaxb-xjc.
+
+This issue is resolved. The older versions are now removed.
+
+YAI-32094 (Fix 27)
+
+Enabling Tracer consumes a lot of CPU and memory.
+In some cases, API Gateway consumes a lot of CPU and memory when one or more 
+APIs is configured with Tracer active and clustering is enabled.
+
+This issue is resolved.
+
+YAI-31839 (Fix 26)
+
+Incorrect passwords saved for aliases with the same name, but different stages.
+When using passwords for aliases that have the same name but with different
+stages, the passwords are not saved correctly for these aliases. In such cases,
+the password of the last alias saved is always used for all of these aliases.
+This issue affects both the HTTP Transport security aliases and SOAP message
+security aliases.
+
+This issue is resolved. When using such aliases, ensure to update the passwords
+before using them
+
+YAI-37466 (Fix 27)
+
+Unable to create a SOAP API from a zip file containing WSDL and XSDs.
+When you create a SOAP API from a zip file, the API creation fails if 
+the imported schema lacks a namespace definition in the WSDL and the 
+corresponding XSD lacks a targetNamespace.
+
+The issue is resolved.
+
+YAI-32003 (Fix 27)
+
+Vulnerable 3rd party component ESAPI is used.
+
+The issue is resolved.
+
+YAI-32072 (Fix 27)
+
+A vulnerable third-party component Jersey is used
+
+Jersey, a third-party component, is vulnerable to information disclosure 
+(Snyk ID SNYK-JAVA-ORGGLASSFISHJERSEYCORE-125563) and XML entity expansion 
+(Snyk ID SNYK-JAVA-ORGGLASSFISHJERSEYMEDIA-59597).
+
+The issue is resolved.
+
+YAI-32132 (Fix 27)
+
+When tracer is enabled, the custom policies is unable to invoke any urls with get method. 
+
+This has been fixed 
+
+YAI-32142 (Fix 27)
+
+Creating an OData API fails due to Accept Header used by API Gateway.
+When creating an OData API with a URL of an xml metadata file, the request fails
+in some cases, because API Gateway adds an Accept header - application/json.
+
+This issue is resolved.
+
+YAI-32227 (Fix 27)
+
+Errors from AggregatedMonitorProcessor task are logged in server.log
+Example:  [YAI.0206.0002E] Error while running com.softwareag.pg.pgmen.
+processors.AggregatedMonitorProcessor task. 
+Cause: java.lang.NullPointerException null
+
+This issue is resolved.                         
+
+YAI-37314 (Fix 27)
+
+Vulnerable 3rd Party Component Bouncy-castle is used. 
+
+CVE-2024-30172 (Fix 27)
+
+This issue is resolved.
+
+YAI-37462 (Fix 27)
+
+Saving an API fails despite providing correct XPath payload expression.
+When you use square brackets in an XPath expression for request transformations,
+saving the API fails with the error message: 'Query expression cannot be empty'
+
+This issue is resolved.
+
+YAI-37487 (Fix 27)
+
+Discriminator does not work as expected.
+API Schema validation fails to work as expected when enabled with the defined
+discriminator at the schema level.
+
+This issue is resolved. The discriminator concept is introduced in the open API.
+
+YAI-37587 (Fix 27)
+
+Update API adds a CR/LF after the API description.
+When an API is updated, it adds an unwanted newline character at the end of the 
+API description.
+
+This issue is resolved.
+
+YAI-32179 (Fix 27)
+
+The code is updated to prevent NullPointerExceptions in error cases and added 
+missing error messages.
+
+The issue is resolved.
+
+YAI-37301 (Fix 27)
+
+The native endpoint displayed for SOAP APIs in Technical Information 
+section did only show the original one from the wsdl. Now the 
+effective one from the routing policy is shown
+
+YAI-31662 (Fix 27)
+
+API Gateway experienced a memory leak when working with JMS/AMQP policies due to
+the presence of "JMS/AMQP REST Routing" and/or "Enable JMS/AMQP" policies. 
+Analysis of heap dump revealed that a large number of 
+com.pcbsys.nirvana.nJMS.SessionImpl classes were causing the issue.
+
+The issue is resolved.
+
+YAI-31974 (Fix 27)
+
+When registering Microgateway to API Gateway, you cannot publish its endpoint 
+to Developer Portal. This action is only feasible when the Microgateway endpoint 
+is added to a Service Registry.
+
+The issue is resolved.
+
+You can independently publish the Microgateway endpoint on a Service Registry 
+entry.
+
+YAI-32097 (Fix 27)
+
+When an API request is redirected to Microgateway, the configured connection 
+and read timeouts are not applied to those connections.
+
+The issue is resolved.
+
+YAI-31954 (Fix 27)
+
+When you configure the file transaction logger, the transactional events are 
+not logged.
+
+The issue is resolved.
+
+YAI-31959 (Fix 27)
+
+Unauthorized users accessing authorized pages via deep links encounters a
+blank page.
+When an underprivileged user attempts to access a deep link, they will be
+directed to an unauthorized page on the homepage.
+
+This issue is resolved.
+
+YAI-32098 (Fix 27)
+
+Invoking an API fails when the API has a non-existing path.
+When you invoke an API that has a non-existing path, a NullPointerException
+is logged in the server.log from the AccumulatorManager task.
+
+This issue is resolved.
+
+YAI-37325 (Fix 27)
+
+Two versions of jaxb jars included in the API GAteway installation.
+In the API Gateway package, there are two versions of the following
+jaxb jars installed under WmAPIGateway/code/jars/static:
+jaxb-api, jaxb-core, jaxb-impl and jaxb-xjc.
+
+This issue is resolved. The older versions are now removed.
+
+YAI-32094 (Fix 27)
+
+Enabling Tracer consumes a lot of CPU and memory.
+In some cases, API Gateway consumes a lot of CPU and memory when one or more 
+APIs is configured with Tracer active and clustering is enabled.
+
+This issue is resolved.
+
+YAI-31599 (Fix 26)
+
+The Outbound Auth - Message policy ends with an error: API Gateway outbound
+client encountered Security policy namespace cannot be null.
+The Outbound Auth - Message policy does not work and ends with an error, when
+the based WSDL does not contain ws:Policy elements.
+
+This issue is resolved.
+Now the policy should work as expected for the WSS Username Authentication
+scheme. Note that to get it working for already existing APIs with this policy,
+update the API by clicking Edit followed by Save.
+
+YAI-31487 (Fix 26)
+
+Unable to activate the REST API after associating the policy created from the 
+policy template. 
+
+This issue is resolved.
+
+YAI-31772 (Fix 26)
+
+Creating SOAP API using WSDL URL fails with an error.
+Creating SOAP API fails with an error when there is a WSDL importing another 
+WSDL and both have schema declarations that are identical.
+
+This issue is resolved.
+
+YAI-31915 (Fix 26)
+
+StAX factory classes cannot be set.
+
+The StAX factory classes XMLInputFactory, XMLOutputFactory, and XMLEventFactory, 
+can no longer be configured through Java properties when starting API Gateway.
+
+This issue is resolved.
+
+YAI-31103 (Fix 26)
+
+Deleting a policy action causes an error when the association is not deleted.
+Deleting a policy action using the Policy Action REST resource, without removing
+the association to the policy, causes issues in the API Gateway.
+
+This issue is resolved.
+
+YAI-31765 (Fix 25)
+
+API Gateway shows more than one port as primary port.
+In an environment it is observed, that more than one port is defined as
+primary port.
+
+This issue is resolved.
+
+YAI-30943 (Fix 25)
+
+JSON schema validation is failing incorrectly when the oneOf with type array combination is used in the JSON schema
+
+YAI-31460 (Fix 25)
+
+Updating an active API when enableHotDeploy=false fails with an incorrect
+error message.
+Updating an active API with a REST PUT call while enableHotDeploy is set to
+false fails with a NullPointerException, which is an incorrect error message.
+
+This issue is resolved.
+Now the update fails with an appropriate error message.
+
+YAI-31634 (Fix 25)
+
+Custom gateway endpoint is removed after importing if it has the same value as
+URL alias.
+When importing an archive with a URL alias and there is an existing API
+available on API Gateway that uses the same alias value as custom gateway
+endpoint URL, the import does not fail, but the custom gateway endpoint of the
+API gets removed.
+
+This issue is resolved. Now the import of the URL alias fails with an error
+message: URL Alias is used as Gateway endpoint for API <api name>.
+
+YAIC-6001 (Fix 25)
+
+Transaction logs are not present for multipart/form-data content-type.
+If request calls are done with multipart/form-data content type, transactions
+are not logged in Analytics.
+
+This issue is resolved.
+
+YAI-31484 (Fix 25)
+
+An API remains in active state though all its resources are disabled from being
+exposed to consumers.
+If an active API is edited and all resources for the API are disabled from
+being exposed to consumers, it is observed that the API remains in the Activated
+state.
+
+This issue is resolved. Now, when all resources of an API in activated state are
+disabled from being exposed to consumers the API goes to a deactivated state.
+
+YAI-28143 (Fix 25)
+
+Regular users are able to invoke the configuration endpoint used in the UI, to
+access configurations.
+
+This issue is resolved.
+
+YAI-29806 (Fix 25)
+
+In a HAFT setup OAuth tokens are not synchronized between nodes.
+When a node of the Cross-DC ring is actually a cluster of API Gateway servers
+then some servers in the cluster can be in green data center health status,
+while the other servers are in red status. If a new OAuth token is generated
+by a red status API Gateway then the token is not synchronized with the
+other nodes in the Cross-DC ring.
+
+This issue is resolved.
+The data center health status is now synchronized within an API Gateway cluster.
+
+YAI-31180 (Fix 25)
+
+Incorrect SOAP envelopes are generated for REST-enabled SOAP services.
+When a client sends an empty payload for a REST-enabled SOAP service, API
+Gateway consistently generates a SOAP 1.2 envelope when forwarding the request
+to the native service.
+
+This issue is resolved.
+
+YAI-31350 (Fix 25)
+
+Cannot activate an API with Validate API Specification policy.
+APIs enforced with the Validate API Specification policy that include HTTP 
+headers without a defined value, cannnot be activated. Also, archives with
+such APIs cannot be imported.
+
+This issue is resolved.
+
+YAI-31468 (Fix 25)
+
+Elements with the “nullable: true” property in OpenAPI schemas are not
+validated.
+
+This issue is resolved.
+
+YAI-31482 (Fix 25)
+
+Filtering by the Administrator team is not functioning as anticipated.
+Filtering listed APIs using the Administrator team is not yielding the expected
+results, with some APIs missing from the displayed outcome.
+
+This issue is resolved.
+
+YAI-31607 (Fix 25)
+
+The nested claims sent in the Invoke IS service pipeline are not in the expected
+format or structure.
+The claims returned from the remote introspection response, when sent to an
+Invoke IS service pipeline, are not in JSON format as expected.
+
+This issue is resolved.
+
+YAI-30682 (Fix 25)
+
+Incorrect status set for transaction event.
+When an API has load balancer routing configured and the native service throws
+an error, it sets the status as "success" instead of "failure".
+
+This issue is resolved.
+
+YAI-30942 (Fix 25)
+
+The identification of IP address ranges does not function as expected.
+When an API is subjected to the "Identify & Authorize" policy with the
+application identification condition set to "IP Address Range," the runtime
+invocation for that API fails for specific client IP addresses.
+
+This issue is resolved.
+
+YAI-30602 (Fix 25)
+
+The WWW-Authenticate header is being generated with a space after the Realm,
+causing an issue.
+
+This issue is resolved. Set the value of the extended setting
+'wwwAuthenticateWithSpace' to false to get the response header
+'WWW-Authenticate' without space.
+
+YAI-30765 (Fix 25)
+
+Invalid Swagger API definition does not generate an error.
+If the Swagger definition has parameters that have no 'in' or 'name' value then
+there is no exception generated.
+
+This issue is resolved. Now an invalid swagger API definition generates an
+error.
+
+YAIC-5662  (Fix 24)
+
+HTTP requests with empty bodies should not include the "Content-Type" header.
+The API Gateway automatically includes a default "Content-Type" header in POST
+requests with empty bodies when sending the request to the native service.
+
+This issue is resolved.
+
+YAI-30920 (Fix 24)
+
+API Gateway health shows yellow for Integration Server, when ServiceThread is
+disabled from the health gauge indicators.
+When ServiceThread, Memory, or Diskspace is disabled through the Integration
+Server UI, API Gateway always returns yellow status for the IS health check.
+
+This issue is resolved.
+Now, when you disable the ServiceThread, Memory, or Diskspace through IS UI
+from the health gauge indicators, API Gateway health check results are no longer
+affected by these factors.
+
+YAI-30658 (Fix 24)
+
+Vulnerable 3rd party component Netty used.
+CVE-2023-44487
+
+This issue is resolved.
+
+YAI-30857 (Fix 24)
+
+Failed import of a global policy creates a dummy global policy.
+After a failed import of a global policy, the global policy is created as a
+dummy policy. Activating SOAP APIs fails, due to the dummy global policy.
+
+This issue is resolved.
+
+YAI-31110 (Fix 24)
+
+Exporting ports fails when portClusteringEnabled is set to false.
+Exporting ports fails when port clustering is disabled by setting the parameter
+portClusteringEnabled to false.
+
+This issue is resolved.
+
+YAI-31173 (Fix 24)
+
+Removing hosts from Global IP Access Settings fails.
+In the API Gateway UI > Administration > Security > Global IP Access Settings 
+under Port Restrictions, when you try to delete a host from the allow or deny 
+list the operation fails with an error popup 'Internal Server Error'.
+
+This issue is resolved.
+
+YAI-30720 (Fix 24)
+
+WSS Security is not added to the SOAP Envelope in REST-enabled SOAP APIs when
+making SOAP Native requests.
+
+This issue is resolved.
+
+YAI-30764 (Fix 24)
+
+Using externalized user configuration through environment variables fails.
+When trying to change the Administrator password using the externalized 
+configuration environment variable 'apigw_users_Administrator_password' the 
+Administrator user looses the 'Administrators' role. Login is possible with the 
+modified password, but the API Gateway UI does no longer present the 
+administration tasks.
+
+Using the externalized configuration environment variable 
+'apigw_users_<user>_firstName' in order to change the first name of an existing 
+user fails, the server.log contains the error message 
+"BadRequestException: Password cannot be empty".
+
+This issue is resolved.
+
+YAI-30531 (Fix 24)
+
+Incorrect application status displayed in Developer Portal.
+When you request for an application creation from Developer Portal, and if API Gateway
+rejects the request, then Developer Portal keeps displaying the status
+as 'WAITING_THIRDPARTY'.
+
+This issue is now resolved. Developer Portal now displays the correct status and
+the reason for rejection.
+
+YAI-30679 (Fix 23)
+
+The response of a SOAP API, when enforced with a load balancer policy, contains
+multiple SOAP envelopes.
+When a SOAP API is subjected to a load balancer policy in the routing stage, and
+if all the endpoints fail, the response sent to the client includes multiple
+SOAP envelopes.
+
+This issue is resolved.
+
+YAI-29650 (Fix 23)
+
+There is an inconsistency in analytics 'API Provider time'.
+In Analytics, SOAP API calls that have read timeouts are displaying the provider
+time as 0.
+
+This issue is resolved.
+
+YAI-25978 (Fix 23)
+
+Schema validation does not validate the values in request/ response.
+When you have enabled the schema validation and if the request/response schema
+has an enumeration of type 'integer', then the system only checks whether the
+type matches. It does not check whether the values in the request/response are
+one of the possible values of enumeration.
+
+This issue is resolved.
+
+YAI-30501 (Fix 23)
+
+Promotion management issues with Global Policies
+
+The following two issues are observed with Promotion management.
+
+1. In the Promotion management page, when you search for Global Policies,
+    Threat Protection, or Policy Template assets using the 'Search by Type' 
+	filter, appropriate results are not retrieved.
+
+2. In the Promotion management page, the 'Show more...' button on the 'Promotion'
+    screen does not work when there are 10 or more assets.
+
+These issues are resolved.
+
+YAI-30535 (Fix 23)
+
+When accessing Custom Dashboard on API, an error message appears as "HTTP 
+Status 404–The requested resource [/apigatewayui/null] is not available". 
+The issue is due to the hash originating from Elasticsearch (ES) and Kibana, 
+which is a known issue.
+
+This issue is resolved.
+
+YAI-30392 (Fix 23)
+
+The Variable Framework is unable to parse nested fields within JWT claims.
+This issue is resolved.
+
+YAI-29915 (Fix 23)
+
+An error page is shown when there is an expired SSO session.
+When API Gateway has SSO enabled and a user's UI session becomes invalidated
+due to inactivity, logging back into API Gateway results in an error page being
+displayed.
+
+This issue is resolved. API Gateway redirects to the login page instead of
+displaying the error page in case of an expired SSO session.
+
+YAI-30222 (Fix 23)
+
+After succesfully adding an External authorization server, There is a 
+Test button available at each authorization server in the authorization 
+server alias list in Gateway UI.
+On pressing the button, the gateway will test the Dynamic Client Registration 
+in that authorization server and returns the response in the popup.
+This test will happen only when DCR is enabled in the authorization server.
+
+YAI-30354 (Fix 23)
+
+When REST Transformation is enabled for a SOAP API, SOAP headers are not
+generated.
+When you enable REST Transformation for a SOAP API, as per the WSDL schema,
+a parameter is defined to generate the SOAP headers. When API Gateway sends
+request to the native API, the SOAP headers are not generated.
+
+The issue is resolved. If the API already exists, you have to delete the API and
+create a new API using WSDL.
+
+YAI-30373 (Fix 23)
+
+Warning messages 'Could not find a policy info' logged unexpectedly.
+The following warnings are logged in API Gateway server.log:
+[YAI.0204.0005W] (...) Could not find a policy info for this key in the CCC
+cache. This happens when you define scopes for APIs and define Traffic Monitor
+policies for theses scopes. The warning messages are logged when you use
+resources of the API, where these scopes are not defined.
+
+This issue is resolved.
+
+YAI-30421 (Fix 23)
+
+vendorExtensions parameter is missing while saving the API in the API Gateway UI
+
+YAI-29934 (Fix 23)
+
+Issue while securing Elasticsearch.
+While securing Elasticsearch, the property 'apigw.kibana.autostart' cannot be
+configured to "true".
+
+This issue is resolved. Update the https URL in the property apigw.es.url.
+
+YAI-30231 (Fix 23)
+
+Publishing SOAP APis from CentraSite to API Gateway fails.
+Importing WSDL archives, which contain 2 or more identically named .xsd files, 
+fails.
+
+This issue is resolved.
+
+YAI-30322 (Fix 23)
+
+The response time for the getAccessToken method is too long in a CrossDC setup.
+When you use the getAccessToken methods to generate and synchornize the access
+token accross CrossDC nodes in the Active-Active mode, the response time is more
+than 5 seconds.
+
+This issue is resolved.
+Now, when you invoke the getAccessToken method, the response time is
+significantly reduced.
+
+YAI-30579 (Fix 23)
+
+Health check returns HTTP status 500.
+When the Elasticsearch destination is configured, but the protocol is not 
+defined, the health check call GET /rest/apigateway/health/all
+returns a HTTP Status 500.
+
+This issue is resolved.
+
+YAI-29870 (Fix 23)
+
+In the scope mapping page, the authentication serve name was not 
+displayed completely.
+
+This issue is fixed. As part of the fix, the user interface has been 
+changed and the full name of the server is visible.
+
+YAI-30111 (Fix 23)
+
+For REST enabled SOAP APIs, send native provider fault is not honored.
+In REST-enabled SOAP APIs, when an error condition policy is enforced with the
+"send native provider fault" flag set, the native error response is not being
+passed on to the client as expected.
+
+The issue is resolved. The native service error response is now propagated
+properly to the client.
+
+YAI-30114 (Fix 23)
+
+When invoking an API, excessive logging occurred due to the log invocation 
+policy enabled and the destination selected as JDBC.
+
+This issue is resolved.
+
+YAI-29714 (Fix 22)
+
+In API, when you enable or disable the tracer, the action is not logged in 
+the Audit log to check which user has made changes.
+
+This issue is resolved. 
+
+YAI-29219 (Fix 22)
+
+Resource path is inaccurate when the API is invoked without an API version.
+If you invoke an API without including the API version in the endpoint, the
+resource path in the transaction metric does not include a forwarding slash.
+
+The issue is resolved.
+
+YAI-30122 (Fix 22)
+
+The OpenAPI JSON file generated for an API by the API Gateway 
+includes "example" fields with null values.
+
+This issue is resolved.
+
+YAI-25978 (Fix 22)
+
+Schema validation does not validate the values in request/ response.
+When you have enabled the schema validation and if the request/response schema
+has an enumeration of type 'integer', then the system only checks whether the
+type matches. It does not check whether the values in the request/response are
+one of the possible values of enumeration.
+
+This issue is resolved.
+
+YAI-30001 (Fix 22)
+
+Accessing APIs without specifying a version returns inconsistent information.
+When you send a request without specifying a version to call a WSDL of an API,
+which has multiple versions, it is observed that the request retrieves WSDL of
+different API versions. This behavior is sometimes observed after API Gateway
+is restarted.
+
+This issue is resolved.
+Now, when you use the WSDL request without specifying a version, the request
+only retrieves the WSDL of the fixed version of the API, for example the latest
+version.
+
+YAI-30022 (Fix 22)
+
+Vulnerable third party component Guava being used.
+CVE-2023-2976
+
+This issue is resolved. 
+
+YAI-30092 (Fix 22)
+
+Invoking an API with an endpoint fails.
+After migrating an API, API invocation with the endpoint fails as the
+port/binding part of the endpoint is not recognized for http/https suffixes.
+
+This issue is resolved.
+
+YAI-30095 (Fix 22)
+
+API Gateway logs display JsonMappingException error.
+When working with larger json files, API Gateway log files display errors such
+as JsonMappingException: String length (20054016) exceeds the maximum
+length (20000000).
+
+This issue is resolved.
+In API Gateway, the maximum string length for json is now increased to
+2,147,483,64 and the watt property 'watt.server.json.decode.maxStringLength' is
+set to this maximum value at startup.
+
+YAI-30202 (Fix 22)
+
+Strategy created in one node is not deployed to other nodes in a Cross DC setup.
+When creating a strategy for an application in one node in a Cross DC setup,
+this strategy is not deployed to the other nodes in the Cross DC setup.
+
+This issue is resolved.
+
+YAI-29699 (Fix 22)
+
+Issue arises when updating the application's strategy.
+When the client ID of a strategy for an application is updated, the new value
+is not utilized for token validation.
+
+The issue is resolved. The updated client ID in the strategy is used for token
+validation.
+
+YAI-29423 (Fix 22)
+
+Native provider fault management does not work as expected with API Gateway and
+Microgateway.
+When using API Gateway with Microgateway wherein API Gateway endpoint calls
+are routed to Microgateway, in an error situation, the native provider fault
+does not work as expected.
+If the sendNativeProviderFault property is set to true in API Gateway, all API
+calls must respond with the native service error text in an error situation.
+Also, if an API is configured with a Conditional Error Processing Policy that
+uses the setting Send Native Provider Fault Message, the API must always respond
+with the native service error text in an error situation.
+This behavior is not observed in all situations.
+
+This issue is resolved.
+
+YAI-29821 (Fix 22)
+
+Outbound proxy passwords are corrupted.
+The passwords of outbound proxies are found to be corrupted after installation 
+of API Gateway 10.11 fix 20. All outbound communication through the proxy fails.
+While the API Gateway is up and running it is possible to correct the password 
+from the administration UI. However, after the next restart of the API Gateway 
+the password is again corrupted. The corrupted password sent to the outbound
+proxy has the value "********************************".
+
+This issue is resolved.
+
+YAI-29482 (Fix 22)
+
+Incorrect status set for transaction event.
+When an API has load balancer routing configured and the native service throws
+an error, it sets the status as "success" instead of "failure".
+
+This issue is resolved.
+
+YAI-29773 (Fix 22)
+
+PDF jars have been removed part of deprecating global API usage report feature.
+CVE-2019-0228
+
+This issue is resolved. 
+
+YAI-28968 (Fix 21)
+
+Importing a SOAP API with an application as its dependency doesn't update the 
+application's APIs section correctly. Only the imported API is displayed in the 
+application's APIs section.
+
+The issue is resolved.
+
+YAI-29233 (Fix 21)
+
+Unable to edit API policies.
+The "An error occurred while loading policy information." error message appears
+when you edit an API policy.
+
+This issue is now resolved.
+
+YAI-28817 (Fix 21)
+
+The API Gateway does not properly close the streamed connection to native service.
+The native streaming connection remains open when the client abruptly closes or
+disconnects during client response streaming.
+
+This issue is resolved.
+
+YAI-29053 (Fix 21)
+
+The native service does not receive the authorization header.
+The incoming authorization header is not forwarded to the native service if
+APIGateway is enforced with OAuth and JWT authentication, and the
+"Outbound Auth - Transport" policy is enforced with "JWT" as the
+authentication scheme and "Incoming Json web token" as the authentication mode
+in the routing stage.
+
+This issue is resolved.
+
+YAI-29113 (Fix 21)
+
+Old Client ID and Client secret still valid in cluster node after refresh.
+After refreshing the OAuth2 strategy for an application on one cluster node, the
+Client ID and Client secret are regenerated. But the old Client ID and Client
+secret are still valid on the other cluster nodes and can be used to create a
+new valid access token. Existing access tokens are also still valid in the
+other cluster nodes.
+
+This issue is resolved.
+
+YAI-29377 (Fix 21)
+
+The API gateway utilizes graphql-java version 19.3, which is susceptible to
+security attacks.
+
+The issue is resolved. The dependency is upgraded to the more secure
+version 20.1.
+
+YAI-29537 (Fix 21)
+
+In API Gateway UI, the 'Show more...' button at the 'Promotion' screen does
+not work when there are 20 or more applications.
+
+This issue is resolved.
+
+
+YAI-29462 (Fix 21)
+
+Unable to set XML payload in "Invoke webMethods IS" policy for REST enabled SOAP
+APIs.
+When a client sends a REST request for a REST enabled SOAP API and an XML
+payload is specified in the "Invoke webMethods IS" policy, the transformed
+payload is not sent to the native API.
+
+The issue is resolved.
+
+YAI-29131 (Fix 21)
+
+Scopes are not added to the external server while importing.
+The scopes configured for the external authorization server are not added when
+importing the OAuth/OpenID scopes, and an error is thrown.
+
+This issue is resolved.
+
+YAI-29325 (Fix 21)
+
+The Invoke webMethods IS policy pipeline does not pass the custom field added
+to the transaction events.
+The custom field added to the transaction events is not passed in the pipeline
+when invoking the IS service in the runtime request for an API that is enforced
+with the Invoke webMethods IS policy.
+
+This issue is resolved.
+
+YAI-29643 (Fix 21)
+
+APIGateway throws an error while validating OAuth2 token for an external
+authorization server.
+APIGateway throws an error in the runtime when it enforces an API with an OAuth2
+policy, where the external authorization server validates the OAuth2 token, and
+the client sends an OAuth2 token of type JWE.
+
+This issue is resolved.
+
+YAI-29374 (Fix 21)
+
+In Analytics, for time intervals the 'Quick select' do not display the 
+'Recently used' feature.
+
+This issue is resolved. As part of the fix 'Recently used,' feature is added.
+
+YAI-29099 (Fix 20)
+
+Delay in displaying the list of APIs associated with an application.
+
+If an application is associated with a large number of APIs, then the 
+Application details page takes a long time to list the APIs.
+
+This issue is now resolved.
+
+YAI-28379 (Fix 20)
+
+If you generate a sample JSON input of a REST-enabled SOAP service for an 
+array element, then a string type element is generated instead of an array
+element.
+
+This issue is resolved.
+
+YAI-28652 (Fix 20)
+
+Security vulnerability identified in third party component,
+snakeyaml-1.33.0.jar.
+
+To enhance the security, the third party component, 'snakeyaml-1.33.0.jar' is
+upgraded to a safer version.
+
+This issue is resolved.
+
+YAI-29017 (Fix 20)
+
+While importing an archive, the AWS configuration is imported wrongly when the
+master password is changed.
+
+When importing an archive with an AWS configuration with the archive created
+with a different master password then the one used in the current API Gateway
+installation, the AWS configuration gets imported with an error. All APIs that
+use the AWS configuration fail to import with the following exception:
+IllegalArgumentException: Access key cannot be null.
+
+This issue is resolved. AWS configurations are no longer imported if the master
+password does not match.
+
+YAI-29033 (Fix 20)
+
+Custom variables are not being assigned in runtime during API invocation for
+an API that has a custom extension policy that is enforced during the error
+handling phase.
+
+This issue is resolved.
+
+YAI-29160 (Fix 20)
+
+API Gateway health endpoint returns yellow status intermittently.
+
+When multiple health endpoint calls are made in parallel the returned status can
+be yellow. At the same time, the diskspace, memory, and servicethread fields are
+empty.
+
+This issue is resolved.
+
+YAI-29284 (Fix 20)
+
+API Gateway starts partially with a JsonMappingException error.
+
+API Gateway startup fails, and the server.log contains a JsonMappingException
+"String length (5046272) exceeds the maximum length (5000000)".
+
+This issue is resolved.
+To avoid the JsonMappingException configure API Gateway with a larger value for
+the JSON maximum string length. To achieve this, set the 'jsonMaxStringLength'
+Java system property in the <sag_inst>/profiles/IS_default/configuration
+/custom_wrapper.conf file. For example,
+"wrapper.java.additional.1100=-DjsonMaxStringLength=15000000".
+Alternatively, you can configure the JSON maximum string length by setting the
+'jsonMaxStringLength' environment variable in the <sag_inst>/profiles/
+IS_default/bin/custom_setenv.sh file (or custom_setenv.bat under Windows).
+For example, "export jsonMaxStringLength=15000000" or
+"set jsonMaxStringLength=15000000" for Windows.
+
+If a similar error occurs as follows, "The incoming YAML document exceeds the
+limit: 3145728 code points.", then you must configure the YAML code point limit
+with the "yamlCodepointLimit" Java system property or environment variable, in
+the same way as described above.
+
+YAI-29340 (Fix 20)
+
+Security vulnerability identified in third party packages.
+
+To enhance the security, the following third party packages are removed:
+WmAPIGateway/cli/lib/spring-web-5.3.23.jar,
+WmAPIGateway/code/jars/static/json-20211205.0.0.jar
+
+This issue is resolved.
+
+YAI-29191 (Fix 20)
+
+Analytics does not appear properly for response payloads when retrieved from 
+cache memory.
+
+When you enforce Service Result Cache policy on an API, and if you invoke the 
+API more than once, then API Gateway retrieves the response from the cache 
+memory for the second invocation onwards. In such case, the API analytics for
+the responses retrieved from cache does not appear properly.
+
+This issue is now resolved.
+
+
+YAI-28982 (Fix 20)
+
+In Analytics, under the time interval 'Quick select' window'Custom range', 
+'Last 1 year', 'Last 48 hours', and' This week' feature is removed.
+
+This issue is resolved. As part of the fix mentioned features are 
+available now.
+
+YAI-28741 (Fix 20)
+
+Usage of the same custom variable more than once in a gateway endpoint is not working as expected.
+
+This issue is resolved.
+
+YAI-28779 (Fix 20)
+
+Applications are not created for the requests received from Developer Portal.
+
+If you configure API Gateway with an external authorization server with 
+disabled dynamic client registration, then API Gateway does not create 
+applications for the requests received from Developer Portal.
+
+The issue is resolved.
+
+YAI-29005 (Fix 20)
+
+Old UI HTTP or HTTPS port configuration file is used even though the port
+configuration is updated.
+
+When copying an existing UI port configuration file located in the directory
+Installation_Dir\profiles\IS_default\configuration\com.softwareag.platform.
+config.propsloader to a backup file name, that begins with the filename
+com.softwareag.catalina.connector.http.pid- or
+com.softwareag.catalina.connector.https.pid- and for example ends with .backup,
+it is possible that an incorrect file is used instead of the expected UI
+port configuraiton file.
+
+This issue is resolved.
+The UI port configuration file now is selected based on the file name beginning
+with 'com.softwareag.catalina.connector.http.pid-' or
+'com.softwareag.catalina.connector.https.pid-' and ends with .properties
+
+
+YAI-28937 (Fix 20)
+
+Unable to specify a value range when using the 'search' API.
+
+When you use the 'search' API, and if you specify 10000 or a value above 10000 
+in the 'from' parameter in your request body then an error message appears.
+
+This issue is now resolved.
+
+YAI-28989 (Fix 20)
+
+API Gateway login with LDAP credentials is not working.
+
+When API Gateway is deployed in a Kubernetes environment, LDAP users are unable
+to login.
+
+The issue is now resolved.
+
+YAI-28353 (Fix 19)
+
+API Gateway does not validate the length of the keyword provided in the search
+query.
+
+When you provide a long keyword to the API Management search service, API
+Gateway executes the query without validating the length of the keyword hence,
+bringind down the Elastic search.
+
+This issue is resolved.
+
+YAIC-4919 (Fix 19)
+
+Request payload without a callback attribute fails to execute. 
+
+A failure occurs during invocation when an API that expects a callback condition
+in the request payload is called without an attribute. 
+
+This issue is resolved.
+
+YAI-28357 (Fix 19)
+
+API Mocking with condition to check integer field returns empty response.
+
+When the integer data in the API request body is matched with mocking condition,
+the response payload is empty.
+
+This issue is now resolved.
+
+YAI-28461 (Fix 19)
+
+Unable to search multiple times for the same type in the Promotion management UI
+while retaining the selected results. When you click the search button after 
+selecting at least one asset, no additional search results are displayed.
+ 
+The issue is resolved.
+You can search multiple times while retaining the previous results.
+
+YAI-28505 (Fix 19)
+
+Unable to create a Stage for a https URL.
+
+In the Promotion management page, unable to create a Stage for a https URL
+without entering the keystore alias and key alias.
+
+This issue is now resolved.
+
+YAI-28006 (Fix 19)
+
+graphql-java.jar dependency is upgraded from version 16.2.0 to 19.3.0
+
+YAI-28410 (Fix 19)
+
+API zip file includes the native WS policy
+
+In contrast to the WSDL loaded in the browser with the API Gateway endpoint,
+the WSDL packed in the API zip file contains the native WS policy incorrectly.
+
+The issue is resolved.
+
+YAI-28499 (Fix 19)
+
+AppMesh deployment ends with an error message.
+
+Each AppMesh deployment ends with an error message as the update of Kubernetes
+service fails.
+
+This issue is now resolved.
+
+YAI-28577 (Fix 19)
+
+The exported platform configuration contains invalid keys.
+
+When running the apigatewayUtil script in the
+<installation_root>/IntegrationServer/instances/default/packages/WmAPIGateway/cli/bin
+folder with the 'export platformConfiguration' command, the exported
+configuration contains the invalid keys 'clusterAware', 'clusterSessTimeout',
+and 'clusterName'. When using the exported configuration as externalized
+configuration the server.log contains error messages "Error loading
+configuration from YAML file source" and "Reason: Unrecognized field
+'clusterAware'".
+
+This issue is resolved.
+
+YAI-28617 (Fix 19)
+
+Importing a WSDL fails.
+
+Creating a new API from a WSDL in the API Gateway UI fails with the error
+message "Unable to create an API because of an invalid input wsdl file. Reason:
+Error while analysing schemas to be imported: error: src-resolve: type
+'<type>@<namespace>' not found".
+
+This issue is resolved.
+
+YAI-28658 (Fix 19)
+
+Ports API documentation swagger file is incorrect.
+
+The Ports API documentation swagger file APIGatewayPortManagement.json
+is incorrect for the requests of /ports/{listenerKey}/accessMode
+and /ports/{listenerKey}/ipAccessMode for POST and PUT methods.
+
+This issue is resolved.
+The swagger documentation as well as the respective product documentation is
+updated.
+
+YAI-28833 (Fix 19)
+
+Externalized configuration for AuthServer fails.
+
+An externalized configuration with an alias for an external authorization
+server is not accepted. The server.log contains the error message
+"[YAI.0013.9999E] Exception : Error loading configuration from YAML file source.
+Reason: java.lang.NullPointerException".
+
+This issue is resolved.
+
+YAI-28870 (Fix 19)
+
+Soap APIs respond with misleading error text when you use a transport policy to
+restrict the protocol.
+
+When you use the transport policy to restrict the protocol to either HTTP only
+or HTTPS only, Soap APIs respond with the error message "The service cannot be
+found for the endpoint reference (EPR)", when using a restrict protocol on the
+API. This error message is misleading.
+
+This issue is resolved. Soap APIs now respond with an appropriate response text
+"Transport protocol not supported".
+
+YAI-28902 (Fix 19)
+
+Performance issues observed when changing global polices for many APIs.
+
+When activating, deactivating or updating a global policy that affects a large
+number of Soap APIs, these operations can take a long time.
+
+This issue is resolved by improving the performance.
+
+YAIC-4947 (Fix 19)
+
+In external Elasticsearch and custom destination, sessionID information is
+missing in the error events and policy violation events.
+
+This issue is resolved.sessionID is added to error and policy violation events
+in the custom and external Elasticsearch destination.
+Description
+
+YAIC-5012 (Fix 19)
+
+The Trace API page lists 20 Runtime events per page as per the design. When you choose 
+"Select all", 20 events that are listed on that particular page are selected and exported. 
+
+To avoid misconception, the "select all" check box is renamed as "Select all per page"
+for clarity and the functionality remains the same.
+
+YAI-28350
+
+When you invoke a mocked API with no mocking condition and no default response,
+one of the available response code with an empty response is returned.
+
+This issue is resolved. The available response body is returned.
+
+YAI-28728 (Fix 19)
+
+Performance issues observed when invoking APIs
+
+When monitoring API Gateway on high load scenarios, the runtime invocations end
+up failing with time out exceptions.
+
+This issue is resolved.
+
+YAI-28219 (Fix 19)
+
+The Validate API Specification policy does not display the HTTP header name
+in the error message.
+
+This issue is now resolved.
+
+YAI-28335 (Fix 19)
+
+API details page does not display as expected after migration from 10.3 to 10.11.
+
+When you migrate from 10.3 to 10.11, the API details page does not appear as
+expected as a null value is set instead of the default values for the fields
+in the REST transformation section of API details page that are added
+post 10.3 release.
+
+This issue is now resolved.
+
+YAI-28416 (Fix 19)
+
+Unable to invoke mocked API from API mash-up.
+
+When the endpoint URI (in the routing policy -> Straight Through Routing) of a
+mocked API does not have the protocol information, and if you use that API in a
+mash-up, then the API cannot be invoked.
+
+This issue is now resolved.
+
+YAI-28428 (Fix 19)
+
+Transactional events contain wrong applicationIp field.
+
+When API Gateway is used as a proxy to route requests to Microgateway the
+applicationIp field of the transactional events produced by Microgateway
+contains the IP address of the API Gateway, instead of the actual client IP
+address.
+
+This issue is resolved.
+
+YAI-28503 (Fix 19)
+
+Elasticsearch performance is degrading when the TPS of API gateway increases
+
+The persistence of events one by one to Elasticsearch causes exceeded queue
+limit. Due to this, the TPS of API Gateway and Elasticsearch is expected to be
+the same. If not, Elasticsearch will not be able to process the events will
+exceed the queue limit.
+
+This issue is resolved.
+
+YAI-28437 (Fix 19)
+
+Use Schema to transform XML to JSON" property configuration is not honored.
+
+When you invoke REST-enabled APIs with the "Use Schema to transform
+XML to JSON" property checked, the response payload for an array type sent to
+the client returns a string.
+
+This issue is resolved.
+
+YAI-28489 (Fix 19)
+
+When a Job ID is created by Restore, a status message is stuck as
+'In Progress' even after a job is complete.
+
+The issue is resolved. As part of the fix, the restore status message is
+updated.
+
+YAI-28638 (Fix 19)
+
+Unable to login to API Gateway through LDAP after configuring LDAP through
+REST call
+
+This issue is resolved.
+
+YAI-28696 (Fix 19)
+
+Performance issue after migration.
+
+After you migrate from API Gateway 10.3 to 10.11, a performance issue is
+encountered if you invoke the '/gateway/security/exchangeIDToken' endpoint.
+
+This issue is resolved.
+
+YAI-27914 (Fix 19)
+
+When an API is using two global policies and you deactivate one global policy,
+it is observed that the second global policy does not work.
+
+When an API is using two global policies and you deactivate one global policy,
+then the other other global policy stops working. This might happen if one
+global policy is defining Traffic Optizmization policy and the other is defining
+a Monitor SLA or Monitor Performance policy.
+
+This issue is resolved.
+
+YAI-28114 (Fix 19)
+
+Archive job status is displayed incorrectly in a cluster environment.
+
+When you try to archive the transactional event type in a cluster environment,
+the status of the archive job under Job listing table in
+Administration > Manage Data > Archive and Purge shows incorrectly.
+
+This issue is resolved.
+
+YAI-28145 (Fix 19)
+
+An exception occurs when you run the script due to the jars
+issue in its classpath.
+ 
+The classpath has a jar with two different versions, out of which only one 
+version has the required function. Therefore, when you run a script,
+it tries to find the required function in an incorrect version of a jar 
+and an exception occurs as that function is not available in that jar.
+
+This issue is resolved by removing the inappropriate version of 
+the jar from the classpath.
+
+YAI-28246 (Fix 19)
+
+Loading invalid truststore results in a a null pointer exception.
+
+When trying to load an invalid truststore the following null pointer
+exception message is logged in some cases: "Exception occured :
+TrustStoreInitializer null java.lang.NullPointerException: null"
+
+This issue is resolved.
+
+YAI-28426 (Fix 19)
+
+sourceGatewayNode information is missing in the error events and policy
+violation events in external Elasticsearch destination.
+
+sourceGatewayNode field is empty and the information is missing in the
+policyViolationEvent and errorEvent in the custom external Elasticsearch
+destination.
+
+This issue is now resolved.
+
+YAI-28127 (Fix 19)
+
+API Gateway generates Transactional event with negative total time and publishes
+that event to the JDBC destination resulting in the Arithmetic overflow
+exception.
+
+This issue is resolved.
+
+YAI-27896 (Fix 18)
+
+Vulnerable third party components okhttp, freemarker, and rhino being used.
+
+This issue is resolved. These are now replaced with newer versions.
+
+YAI-28259 (Fix 18)
+
+The internal API, exchangeidtoken, does not work as expected. 
+When you invoke the internal API, exchangeidtoken with JWT as a bearer token, 
+then the access token is not sent to the client.
+
+The issue is resolved.
+
+YAI-28003 (Fix 18)
+
+Security concern in the API response to the client. 
+This issue is now resolved.
+
+YAI-28289 (Fix 18)
+
+Clicking the AppMesh tab logs out users with insufficient privileges.
+A user without the functional privilege 'Manage general administration
+configurations' is still able to see the AppMesh tab in the API Gateway UI.
+Clicking the AppMesh tab logs out the user from API Gateway UI.
+
+This issue is solved.
+A user without the 'Manage general administration configurations' privilege does
+not see the AppMesh tab.
+
+YAI-28221 (Fix 18)
+
+SOAP API details are not visible in the API details page after API Gateway
+migration.
+If you introduce a new API field in a SOAP API, the API details are not visible
+in the API details field after migration as the new field is not recognized by
+earlier versions of API Gateway.
+
+This issue is resolved.
+
+YAI-27750  (Fix 18)
+
+Incorrect JSON schema validation during API Invocation.
+When a request payload has nested level properties, and if the
+additionalProperties is set to false, then the JSON Schema validation does not
+identify the incorrect additional properties.
+
+This issue is now resolved.
+
+YAI-27742 (Fix 18)
+
+Publishing an API associated with an application from API Gateway to Developer
+Portal fails when the owner name of the application is replaced with UUID of
+a Portal user.
+
+For an API associated with an application created on API Gateway, when you
+change the owner name of an application with UUID of a portal user and publish,
+the API is published along with the application in API Portal. Whereas, only the
+API is published in the Developer Portal.
+
+This issue is resolved.
+
+YAI-27593 (Fix 18)
+
+API specification validation fails during API invocation. During API 
+invocation, the schema validation fails for the referenced query 
+parameter as the query parameter in the request is invalid. 
+
+This issue is now resolved.
+
+YAI-27066 (Fix 18)
+
+Duplicate endpoint aliases created while using environment variables to
+configure aliases.
+
+While using environment variables to configure endpoint aliases in API Gateway
+Docker container, it is observed that duplicate aliases are created every time
+on gateway startup.
+
+This issue is resolved.
+
+YAI-27882 (Fix 18)
+
+When you promote an API, you are unable to promote the application registrations
+of the API without promoting the applications to the target stage.
+
+This issue is now resolved.
+
+When promoting an API, select the "Include application registrations" checkbox
+in the Promotions tab of the Promotion management page to include application
+registrations.
+
+YAI-28194 (Fix 18)
+
+Duplicate endpoint aliases created while using environment variables to
+configure aliases.
+
+While using environment variables to configure endpoint aliases in API Gateway
+Docker container, it is observed that duplicate aliases are created every time
+on gateway startup.
+
+This issue is resolved.
+
+YAIC-4785 (Fix 18)
+
+Error when validating the JSON Web Token (JWT).
+The error message "Comparison method violates its general contract!"
+appears sporadically when validating JWT for an external authorization
+server.
+
+This issue is resolved.
+
+YAI-28235 (Fix 18)
+
+Updating aliases in a cluster environment leads to a memory spike.
+After updating aliases, which are used in many APIs, in a cluster environment, a
+fast growing memory usage is observed. The heap memory usage grows because of
+the number of notifications in the queue.
+
+This issue is resolved.
+
+YAI-28181 (Fix 18)
+
+Unable to reset master password. When an asset having secrets is imported from a 
+APIGateway which has different master password, the secrets gets corrupted in
+the import. As a result the master password cannot be reset.
+
+The issue is resolved by reverting to the old secret if there is 
+an error while importing secret.
+
+YAI-28162 (Fix 18)
+
+Exceptions in TerracottaClusterNotifier class are logged with the log level as
+Trace.
+This issue is resolved. The log level is now set to Warning as expected.
+
+YAI-28212 (Fix 18)
+
+wsimport command fails with an exception.
+An XSD request sent to API Gateway could not find the correct service name 
+because the request did not have the correct URL alias.
+
+The issue is resolved.
+
+YAI-28307 (Fix 18)
+
+When a large number of parallel requests are sent to a SOAP API, an error
+message "Error in the API Gateway outbound client. null" is sporadically sent
+to the client.
+
+The issue is resolved.
+
+YAI-28006 (Fix 18)
+
+graphql-java.jar dependency is upgraded from version 16.2.0 to 19.3.0
+
+YAI-27962 (Fix 17)
+
+Vulnerable 3rd Party Component aws-java-sdk-s3 is used. CVE-2022-31159
+
+This issue is resolved.
+
+YAI-27843 (Fix 17)
+
+API Gateway sets HTTP 200 response code for Connection Timeout and Connection
+Reset errors.It is observed that for Connection Timeout and Connection Reset errors
+API Gateway sets the response code as HTTP 200.
+
+This issue is resolved. API Gateway now sets the response code to 500 for these
+scenarios.
+
+YAI-27811 (Fix 17)
+
+The externalized configuration of API Gateway UI HTTPS port fails.
+The externalized configuration of API Gateway UI's HTTPS port fails as it does
+not accept the custom keystore password.
+
+This issue is fixed.
+
+YAI-27100 (Fix 17)
+
+Incorrect API creation.
+An incorrect API is created if you do not provide any value in the Parameters
+field of the Callbacks section when creating an OpenAPI.
+
+This issue is resolved.
+
+YAI-27940 (Fix 17)
+
+Invocations of a SOAP API enforced with "Validate API Specification" policy
+fails with error message.
+When multiple parallel invocations occur for a SOAP API enforced with
+"Validate API Specification" policy, an error message is seen.
+
+This issue is resolved.
+
+YAI-27932 (Fix 17)
+
+Response Transformation Policies enforced on the outgoing response for
+a Callback API is not executed in the callback response to the client.
+
+This issue is resolved.
+
+YAI-28087 (Fix 17)
+
+Performance issues observed when changing global polices for many APIs.
+When activating, deactivating or updating a global policy that affects a large
+number of APIs, these operations can take a long time.
+
+This issue is resolved by improving the performance.
+
+YAI-27967 (Fix 17)
+
+Throttling policy is incorrectly enforced when an API is updated.
+When updating a throttling policy for an API or a global policy while the API
+is invoked simultaneously by multiple clients, it is observed that the requests
+unexpectedly respond with an HTTP status 429 for a short period of time.
+
+This issue is resolved.
+
+YAI-28009 (Fix 17)
+
+Vulnerable 3rd party component netty is used.CVE-2022-41881
+
+This issue is resolved.
+
+YAI-28075 (Fix 17)
+
+Importing an inactive global policy does not disable the policy.
+When an active global policy is overwritten by an import of an inactive version
+of it, this policy is shown as inactive in the API Gateway UI. But the policy
+is still active when service requests are made on APIs that are using it.
+
+This issue is resolved.
+
+YAI-27833 (Fix 17)
+
+Unable to create API from URL.
+Unable to create API from URL as the import of a swagger or OpenAPI file using
+the URL might fail under certain circumstances.
+
+This issue is resolved
+
+YAI-27156 (Fix 17)
+
+Unable to change API Gateway UI keystore password from external configurations.
+Specifying a custom keystore with its password does not work while using the
+properties as environment variables in docker images.
+
+This issue is fixed.
+
+YAI-27759 (Fix 17)
+
+When REST Transformation is enabled for a SOAP API, SOAP headers are not
+generated. 
+When you enable REST Transformation for a SOAP API, as per the WSDL schema,
+a parameter is defined to generate the SOAP headers. When API Gateway sends
+request to the native API, the SOAP headers are not generated.
+ 
+The issue is resolved. If the API already exists, you have to delete the API and
+create a new API using WSDL.
+
+YAI-27726 (Fix 17)
+
+When using validate schema, to validate path, query, cookie and headers we are reading the schema from design for each runtime invocation.
+The use writeValueAsString and converting to JsonSchema causes memory leak and performance degradation.
+Fixing it by introducing the cache for JSONSchema and GatewaySchema for combination service id,resource,method,parameter level.
+
+Generating the schema key based on the API Type and parameter type and parameter name.
+Adapted the generation of schema key for all parameter types.
+
+YAI-27235 (Fix 17)
+
+Incorrect error message in Response schema validation.
+When there is failure in Validate API Specification in the response stage,
+the error message sent to the client is specified as "request" instead of
+"response"
+
+The issue is resolved.
+
+YAI-27753 (Fix 17)
+
+Applications data fail to load on the Global Analytics page.
+When you invoke an API associated with an application and monitor
+the analytics of the application from User Menu > Analytics > Applications, the
+page fails to load. However, the page loads when you click the refresh button.
+
+This issue is resolved.
+
+YAI-27670 (Fix 17)
+
+Unable to load the API details page due to cache issue.
+The API details page in the API Gateway UI does not load,
+as the required. API details are not available in cache. 
+
+This issue is now resolved.
+
+YAI-27229 (Fix 16)
+
+OAuth scope mapping details page takes time to load.
+The OAuth scope mapping detail page takes a long time to appear when there are
+large numbers of APIs.
+
+This issue is resolved.
+
+YAI-27107  (Fix 16)
+
+When you update the platform log settings, the server log levels are also
+modified.
+
+This issue is resolved.
+
+YAI-27621 (Fix 16)
+
+Policy screen doesn't reflect service level policy getting overridden by global policy
+In API Gateway UI API service policy configuration doesn't show global policy action overriding the service level policy action by disabling the service level policy action.
+
+This issue is resolved
+
+YAI-27100 (Fix 16)
+
+Incorrect API creation.
+An incorrect API is created if you do not provide any value in the Parameters
+field of the Callbacks section when creating an OpenAPI.
+
+This issue is resolved.
+
+YAI-27163 (Fix 16)
+
+The throttling counter does not reset after API Gateway is restarted.
+The throttling counter in API Gateway does not reset and the API invocation
+fails with the status code- 429, on restarting all the nodes.
+
+This issue is resolved. Restart Terracotta servers after you apply the fix.
+
+YAI-26308 (Fix 16)
+
+Unable to search for global policy descriptions with a dash '-' in them.
+When there is a dash '-' in a global policy description, and if you search for
+the same using the corresponding keyword, then the matching policies are not
+returned as results.
+
+This issue is resolved.
+
+YAI-27039 (Fix 16)
+
+Token lifetime value is not reflecting the value set in the local authorization server.
+When a new strategy is created the default token life time value is not reflecting the value set in local authorization server.
+
+The issue is resolved.
+
+YAI-26991 (Fix 16)
+
+When validating an API specification, the JSON schema validation is not 
+performed if the 'additionalProperties' field is used in the reference schema.
+
+This issue is resolved.
+
+YAI-27028 (Fix 16)
+
+API invocation fails with an error message 'HTTP/1.1 400 The endpoint reference
+EPR) for the Operation not found.'
+When a WSDL contains multiple bindings with different operations, then after
+activation all bindings are activated although only one binding can be used.
+During activation, API Gateway UI selects one endpoint and the selected endpoint
+is activated. Invoking the API with the other endpoints fails with an error.
+
+This issue is resolved.
+
+YAI-27172 (Fix 16)
+
+Incorrect log entry included for API delete events.
+When you delete an API from one of the nodes in an API cluster, the API is
+deleted correctly from that node. The server log file of other nodes in the
+cluster includes the following error log for the API delete event:
+"Exception:Error while deleting the record indexName - <index name>,
+type - gatewayscopes, doc ID - <doc is> Message - Not Found".
+
+This issue is resolved.
+
+YAI-27184 (Fix 16)
+
+APIs are disabled when API Gateway is shut down before the startup is completed.
+In some cases, APIs are unintentionally disabled when API Gateway shutdown or
+restart process is performed, before the startup process is completed.
+
+This issue is resolved.
+
+YAI-27380 (Fix 16)
+
+On invoking a REST API, the Global Ports Access Mode and IP Access Mode
+responds with 404 error.
+On invoking a REST API, the following REST calls to receive global Access Mode
+and IP Access Mode configurations for ports return with HTTP status
+404 - Invalid Listener.
+ports/global/ipAccessMode
+ports/global/accessMode
+
+This issue is resolved.
+
+YAI-27406 (Fix 16)
+
+Unable to purge expired OAuth2 tokens.
+When you invoke the "pub.oauth:removeExpiredAccessTokens" service for strategies
+having refresh count as 0, the expired OAuth2 tokens fetched for Authorization
+Code grant type are not purged.
+
+This issue is resolved.
+
+YAI-27414 (Fix 16)
+
+Creating an API based on WSDL fails.
+Creating a SOAP API based on WSDL fails with an unknown type error message when
+the wsdl imports or includes XSD schemas.
+
+This issue is resolved.
+
+YAI-27493 (Fix 16)
+
+API mocking conditions with XPath expressions for SOAP requests do not work.
+API mocking conditions with XPath expressions for SOAP requests do not work
+when the request contains xml payload as input and the XPath has a
+namespace prefix.
+
+This issue is resolved. Now API mocking works for a SOAP API when the XPath
+does not contain namespace prefixes.
+
+YAI-27512 (Fix 16)
+
+Opening the AppMesh tab in API Gateway UI displays an error message.
+When AppMesh is correctly configured in the API Gateway UI and the user opens
+the AppMesh tab, an error message pops up with the message: 'Service Error'.
+
+This issue is resolved.
+
+YAI-27541 (Fix 16)
+
+The extended setting 'return408ForConnectionTimeout' does not work as expected.
+The return408ForConnectionTimeout extended setting does not work for SOAP
+requests. That is when the value is changed from true to false there is no
+change in the API Gateway response.
+
+This issue is resolved.
+
+YAI-27561 (Fix 16)
+
+Web Services configured as SOAP 1.1 do not behave SOAP 1.1 compliant.
+Requests to a native API sent from API Gateway do return its current HTTP
+response code upon a failure. This is not compliant to the SOAP specification.
+
+This issue is resolved. Now, a new extended setting 'retainSOAPResponseStatus'
+is included to support the SOAP specification.
+When this parameter is set to true the native API responses retain the SOAP
+response status upon a failure. The default value is true.
+When this parameter is set to false, all response codes from the native SOAP API
+are converted to HTTP 500 (Internal Server Error).
+
+YAI-27573 (Fix 16)
+
+Error displayed in APIGateway UI while creating strategy.
+"Token life time mandatory" message is displayed when an strategy is created for an application using external authorization server.
+
+The issue is resolved.
+
+YAI-27613 (Fix 16)
+
+API Gateway Docker container ignores some environment variables.
+An API Gateway Docker container ignores the environment variables
+'apigw_wrapper_java_initmemory' and 'apigw_wrapper_java_maxmemory'. The
+API Gateway Java process is rather started with the default values '256' and
+'1024'.
+
+This issue is resolved.
+
+YAI-27471 (Fix 16)
+
+API activation fails with 'StackOverflowError' error.
+While activating APIs some functions might fail with 'StackOverflowError'. This
+might happen due to the functions being executed in a thread without enough
+thread space.
+
+This issue is resolved.
+Now, during API activation, the critical functions are handled separately. A new
+extended setting 'pg.runtime.extended.stackSize' is introduced. You can use the
+extended setting under Adminstration > General > Extended settings section to
+adjust the thread space size. The size is specified in MB. The default value is
+set at 20 MB
+
+YAI-27359 (Fix 16)
+
+Performance degradation observed in the runtime for APIs enforced with OAuth
+policy with the fix "Shared Libraries Parsers 10.15 Fix 1"
+
+The issue is resolved.
+
+YAI-27138 (Fix 16)
+
+The analytics dashboard fails to load on clicking the 'Refresh' button.
+If the 'enableTeamWork' parameter is set to 'true' in the 'Extended Settings'
+page, API Gateway-wide analytics fail to load occasionally on clicking the
+'Refresh' button in Administration > Analytics.
+
+This issue is resolved.
+
+YAI-25181 (Fix 16)
+
+When you generate an OpenAPI 3.0 JSON file, some JSON schemas of type ‘array’
+are not included.
+As a result, an error message appears during generation.
+
+This issue is resolved.
+
+YAI-27055 (Fix 16)
+
+Incorrect API appears when you access a disabled API.
+When there are two versions of a SOAP API, if you disable one of them, and if
+you access the disabled API's endpoints then the existing API is invoked.
+
+This issue is resolved.
+
+YAI-27349 (Fix 16)
+
+Unable to save an API when referring a header component in the header parameter.
+
+This issue is resolved.
+
+YAI-26539 (Fix 16)
+
+OAuth token request fails intermittently.
+The attempt to request OAuth tokens from an API Gateway cluster using the
+authorization grants flow fails intermittently with HTTP response code 400.
+
+This issue is resolved.
+
+YAI-26562 (Fix 16)
+
+API Gateway Ignite cluster formation fails.
+In an API Gateway Ignite cluster newly joining nodes fail to start up. The
+server.log contains messages "Still waiting for initial partition map exchange".
+API Gateway servers that are already part of the cluster start showing messages
+"Failed to wait for partition release future" or "Unable to await partitions
+release latch within timeout".
+
+This issue is resolved.
+
+YAI-27148 (Fix 16)
+
+Backward compatibility is broken in the response sent to the client for REST enabled SOAP APIs.
+For REST enabled SOAP APIs when "Use Schema to transform XML to JSON" option is disabled, 
+the response is not as per the one received by the clients in 10.5 version of APIGateway
+
+The issue is resolved.
+
+YAI-25270 (Fix 16)
+
+The Owner field in the Basic information section of the Application details 
+page does not display the owner name if the application is created from 
+API Portal.
+
+This issue is resolved. The Owner field displays the API Portal User Id with 
+'API Portal User' as a suffix in brackets.
+
+Note: This enhancement will be applicable only for the applications that are 
+created after you apply this fix. The suffix 'API Portal User' will be 
+appended to the owner name of the applications that were created before 
+applying this fix.
+
+YAI-26731 (Fix 16)
+
+Error while getting the access token for Authorization code grant type
+When APIGateway is clustered and the access token is retrieved for Authorization code grant type, 
+sporadically the following error is sent to the client
+"The supplied authorization code "*********" does not exist".
+
+The issue is resolved.
+
+YAI-27180 (Fix 16)
+
+Incorrect status message during archive/purge operation.
+When you perform an archive or purge operation, the job fails to create files
+in the backup directory. However, the "In Progress" message appears.
+
+This issue is resolved.
+
+YAI-27254 (Fix 16)
+
+The custom variable defined in the response processing for SOAP 
+API is not working properly. The value set in the custom variable 
+defined for a SOAP API in the Response Processing stage using the 
+Custom Extension policy is not working as expected when 
+it is using ${response} variable.
+
+The issue is resolved.
+
+
+YAI-27154 (Fix 16)
+
+Importing a 10.3 archive fails with an error.
+Importing a 10.3 archive that contains an application using a strategy fails
+with a NullPointerException.
+
+This issue is resolved.
+
+YAI-26675 (Fix 15)
+
+Rollback takes longer than promotion.
+The rollback process always updates the alias, which consumes more time than the 
+promotion process if the alias was not updated.
+
+The issue is resolved.
+
+YAIC-4373 (Fix 15)
+
+Unable to create an OData API using HTTPS.
+Creating an OData API with an HTTPS address fails if a self-signed certificate
+is used for the truststore or keystore.
+
+This issue is resolved.
+
+YAI-26200 (Fix 15)
+
+When you upgrade API Gateway 10.5 to 10.11 in Zero Downtime, the "Limit of total 
+fields [1000] has been exceeded" error message appears.
+
+This issue is resolved.
+
+YAI-26693 (Fix 15)
+
+The script for generating a Dockerfile to remove unused OSGI bundle jars is 
+improved.
+
+The issue is resolved.
+
+YAI-25566 (Fix 15)
+
+When the Validate API Specification policy is applied, the headers specified
+in the API definition are not used for validating the requests and responses.
+Users are mandated to specify headers in the policy and that is used in
+validating the requests and responses.
+
+This issue is resolved. API Gateway now uses the headers provided in the open
+API specification when there are no headers provided in the Policy
+specification tab. If headers are provided in the Policy specification tab
+as well as the open API specification, then API Gateway uses the headers from
+the policy specification tab.
+
+
+YAI-25857 (Fix 15)
+
+Transaction log entries are not included for 202 and 204 response codes.
+When you have enabled the logging policy, and if you invoke a SOAP API and the 
+native API returns 202 or 204 as response then the transactional logs are not 
+included in the destinations specified in the Log invocation policy.
+
+This issue is resolved.
+
+YAI-26480  (Fix 15)
+
+If you have enabled schema validation and selected some XML features in the 
+Validate API Specification policy, then the "Feature is not recognized" error 
+message is included in the server.log file when APIs are invoked. 
+
+This issue is resolved. The only supported features are:
+XMLSCHEMA_FULL_CHECKING  
+SCHEMA_AUGMENT_PSVI    
+GENERATE_SYNTHETIC_ANNOTATIONS 
+VALIDATE_ANNOTATIONS 
+NAMESPACE_GROWTH 
+TOLERATE_DUPLICATES 
+CONTINUE_AFTER_FATAL_ERROR 
+ALLOW_JAVA_ENCODINGS 
+STANDARD_URI_CONFORMANT_FEATURE
+DISALLOW_DOCTYPE
+
+YAI-26837 (Fix 15)
+
+When you enable the Log invocation policy, the transaction events with the 
+"OUT" or "FAULT" messages are not sent to the configured destinations.
+
+This issue is resolved.
+
+YAI-26864 (Fix 15)
+
+Switching between strategies in the Authentication section on the applications
+page resets the grant types.
+In the Authentication section of any application, when you switch between
+multiple strategies, the grant type checkboxes get reset in edit mode.
+
+This issue is resolved.
+
+YAI-26801 (Fix 15)
+
+Upgrade and migration overwrite the newly added functional privileges with
+those from the old version.
+When upgrading API Gateway, during the asset migration, the newly added
+functional privileges in the new version are lost and overwritten by the
+functional privileges from the old version. As a result, you can not see
+the sections or configurations related to the newly added functional privilege
+in the new version.
+
+This issue is resolved.
+
+YAI-27000 (Fix 15)
+
+Interacting with the synchronized application in a cross-data center environment
+with hot-standby and teamwork configuration is not possible.
+In a hot-standby cross-data center combined with enabled teamwork 
+configuration, the synchronized application cannot be opened or edited or 
+deleted.
+
+The issue is resolved.
+
+YAI-27085 (Fix 15)
+
+"migrate.bat datastore -dstoreSrc" is the valid command. Exception is thrown when "migrate.bat datastore dstoreSrc" command is given.
+
+The issue is resolved.
+
+YAI-26901 (Fix 15)
+
+Missing authorization headers are not logged as a policy violation event 
+for basic authentication.
+If Identify & Authorize Application policy is configured with HTTP Basic 
+Authentication and authorization headers are missing, it is not logged as a 
+policy violation event.
+
+The issue is resolved.
+
+To address this issue the property "Trigger policy violation event on missing 
+authorization header" is introduced. If this property is set to true, requests 
+without authorization headers are logged as a policy violation event.
+
+YAI-26927 (Fix 15)
+
+Virtual OData API returns a HTTP 200 response, even if the request is
+unauthenticated.
+When accessing the OData API with its endpoint in API Gateway, it returns a
+HTTP 200 response, even if the request is unauthenticated, although
+Identification & authorize policy is activated and effective. This happens as
+API Gateway stores the OData API document together with the API. However, it
+might happen that real data gets stored instead of the metadata.
+
+This issue is resolved. The OData API must be newly imported to resolve the
+problem.
+
+YAI-26974 (Fix 15)
+
+A SOAP WSDL with nested schema is observed to generate different IDs for
+subschemas.
+On importing a SOAP API that has a WSDL with nested schema, it is observed to
+generate different IDs for subschemas. This happens as a WSDL access with all
+its referencing schemas is usually divided into multiple requests. However, when
+the requests are distributed to different cluster members, through a load
+balancer, the requests might fail.
+
+This issue is resolved.
+
+YAI-27091 (Fix 15)
+
+Registration port connection to IS does not work after a reboot of an
+API Gateway node.
+When using external ports with registration ports, in some cases the external
+ports do not work correctly after a reboot of an API Gateway node. At times it
+is observed that the API Gateway UI adds a blank entry to the list of ports.
+
+This issue is resolved.
+
+YAIC-4436 (Fix 15)
+
+Cannot access swagger URL while creating a new API.
+Trying to create a new API in API Gateway on cloud, using swagger URL from an
+on-premise API Gateway instance, fails with an error “Unable to create an API as
+the input openapi url is not reachable”. This happens as the HTTPS imports for
+swagger and OpenAPI files did not use the configured keystore and truststore for
+outbound connection.
+
+This issue is resolved.
+
+YAI-26941 (Fix 15)
+
+Unable to use WSDL generated by API Gateway with Java "wsimport".
+The value of the schema location attribute provided is incorrect for an API that
+has a WSDL file that imports multiple XSD files.
+
+The issue is resolved.
+
+YAI-24042 (Fix 15)
+
+Added localization for all the options within the filter of the Analytics page.
+
+The issue is resolved.
+
+YAI-26777 (Fix 15)
+
+Error message appears when native service sends unzipped response.
+When API Gateway is unable to process a request and does not send the request 
+to the native service the same has to be communicated to the client. If those  
+responses are in the gzip format, then an exception occurs when API Gateway 
+tries to unzip those responses. If such responses are not in the gzip format, 
+then API Gateway forwards them to the client as if the response header does not
+contain the 'accept-encoding' variable.
+
+This issue is resolved.
+
+YAI-26509 (Fix 15)
+
+An old and unused truststore is loaded after migration from API Gateway 
+versions before 10.11.
+
+The issue is resolved.
+
+YAI-26525 (Fix 15)
+
+Service Management APIs do not return correct response codes when you perform 
+API activation and deactivation.
+
+This issue is resolved.
+
+YAI-26852 (Fix 15)
+
+API Gateway displays warnings during startup.
+During API Gateway startup the following warnings are found in the server.log:
+"ClusterCacheNotifier.subscribe(): overwriting existing notification",
+"type: credentialManager, listener: <old listener> replaced by: <new listener>".
+
+This issue is resolved.
+
+YAI-26881 (Fix 15)
+
+The return type of the context variable 'PROTOCOL_HEADERS' is changed.
+When 'PROTOCOL_HEADERS' is retrieved using
+'pub.apigateway.ctxvar:getContextVariable' IS service, the value returned is of
+type 'java.util.HashMap' instead of 'IData', which does not comply with the
+return type mentioned in the Documentation.
+
+This issue is resolved. The 'PROTOCOL_HEADERS' context variable return type is now
+changed to 'IData'.
+
+YAI-26914 (Fix 15)
+
+Incorrect status code sent to client.
+When you enforce Identify & Authorize policy for an API, select "Allow anonymous"
+Checked, and set Identification type to "HTTP Basic Authentication",
+API Gateway sends the 401-status code to the client when it returns any success message.
+
+The issue is resolved.
+
+YAI-26957 (Fix 15)
+
+Elements with the “nullable: true” property in OpenAPI schemas are not
+validated.
+
+This issue is resolved.
+
+YAI-26963 (Fix 15)
+
+The date-time validation in the JSON schema doesn't comply with RFC3339.
+
+This issue is resolved.
+
+YAI-26659 (Fix 15)
+
+When you migrate from one version of API Gateway to another, then the values
+specified for some of the individual index-wise batch size properties like
+apigateway.migration.batchSize.gateway {0} and _analytics_transactionalevents
+are not considered.
+
+This issue is resolved.
+
+YAI-26794 (Fix 15)
+
+Applications are not getting synchronized with Microgateway.
+When you have enabled the Team support feature, the changes made to the 
+applications in API Gateway are not getting synchronized with Microgateway.
+
+This issue is resolved.
+
+YAI-26819 (Fix 15)
+
+Request transformation not performed for REST-enabled SOAP APIs.
+An error message appears when you enforce the request payload transformation
+policy for REST-enabled SOAP APIs and the payload transformation is not
+performed.
+
+This issue is resolved.
+
+YAI-26487 (Fix 15)
+
+When you enable SOAP To REST transformation for a SOAP API of version 1.1, the 
+values are not properly substituted during the REST request to SOAP request
+transformation.
+This is because the default version for SOAP APIs is 1.2. Hence, if the SOAP 
+version of the API being transformed is 1.1, then namespace mismatch occurs. 
+
+This issue is resolved.
+
+YAI-26749 (Fix 15)
+
+Using Ignite clustering sometimes causes Terracotta issues within
+Integration Server.
+
+The issue is resolved.
+
+YAI-26736 (Fix 14)
+
+Error appears when you invoke an API that uses simple alias in its Straight 
+Through Routing policy.
+When you create a simple alias with a period (.) in the name and value as empty, 
+and use the alias in the Straight Through Routing policy, an error appears in 
+the response when invoking the API.
+
+This issue is resolved.
+
+YAI-26564 (Fix 14)
+
+Native service requests and responses are not included in transaction events.
+When a SOAP API has one way operation defined in the corresponding WSDL 
+specification, then the native service request and response are not included in
+the transaction events.
+
+This issue is resolved.
+
+YAI-26615 (Fix 13)
+
+Creating a port through Command Central with Access mode deny setting fails.
+This issue is resolved.
+
+YAI-25959 (Fix 13)
+
+Java exception occurs when you create a SoapUI project.
+For an API with a WSDL file that imports other WSDL files, creating a SoapUI
+project fails with a java.util.ConcurrentModificationException.
+
+The issue is resolved.
+
+YAI-26193 (Fix 13)
+
+Unable to download the WSDL zip file after importing an API
+After importing a SOAP API that includes multiple XSDs, the generated WSDL
+zip file cannot be downloaded. The Download zip button in the API Gateway UI
+does not work, and there are no error messages displayed.
+
+The issue is resolved.
+
+YAI-26263 (Fix 13)
+
+OAuth2 remote introspection is performed twice.
+When an external authorization server is configured for remote introspection 
+and if an opaque token is received during the runtime, then the remote 
+introspection is performed twice.
+
+This issue is resolved. 
+
+YAI-26463 (Fix 13)
+
+Transaction events are not masked properly in REST transformed APIs.
+When you have enabled REST transformation for a SOAP API, and if you configure
+the Data masking policy for the API by setting 'Apply for payload' to 'true',
+then the response payload in the transaction event is the same as the
+request payload.
+
+This issue is resolved.
+
+YAI-26493 (Fix 13)
+
+API Gateway removes SOAP headers from the response sent by native service.
+When native SOAP service sends SOAP headers in response to the client that
+invokes the API, API Gateway removes the SOAP headers when sending the
+response to the client.
+
+The issue is resolved.
+
+YAI-26570 (Fix 13)
+
+UI inconsistency in the promotion management page.
+The "Select all" checkbox in the "Search by type" menu additionally selects the 
+admin configurations if the "Include admin configuration" option is selected, 
+which is incorrect.
+
+The issue is resolved.
+
+YAI-26364 (Fix 13)
+
+Unable to use WSDL file generated by API Gateway.
+For an API that has a WSDL file that imports other WSDL files, the value of the 
+provided location attribute is incorrect.
+
+The issue is resolved.
+
+YAI-26208 (Fix 13)
+
+Log entries that indicate errors are made when starting and stopping
+API Gateway.
+
+The issue is resolved.
+
+YAI-26285 (Fix 13)
+
+Many 'ReportProcessor' error messages appear in the server.log.
+When 'Report performance data' is disabled for destinations, such as,
+API Gateway or Database, error messages like the following appear in the
+server.log: "[YAI.0206.0056E] ReportProcessor found invalid policy type". It is
+observed that when you set the publish interval to a small value (say 1 minute)
+before disabling the destinations, the error messages appear once a minute.
+
+This issue is resolved.
+
+YAI-26340 (Fix 13)
+
+Vulnerable third-party gson jars are used.
+
+This issue is resolved.
+
+YAI-26356 (Fix 13)
+
+Vulnerable third party component esapi used.
+Vulnerable third party components esapi jar is used in API Gateway.
+
+This issue is resolved.
+
+YAI-26381 (Fix 13)
+
+Vulnerable third party component keycloak used.
+Vulnerable third party components keycloak-core-15.0.2.jar and
+keycloak-adapter-core-15.0.2.jar are used in API Gateway.
+
+This issue is resolved.
+
+YAI-26393 (Fix 13)
+
+A NullPointerException is observed while importing users, groups and access
+profiles.
+While importing users, groups or acess profiles, the import may fail and end
+with a NullPointerException, which is logged in the server.log.
+
+This issue is resolved.
+
+YAI-26430 (Fix 13)
+
+APIs are disabled when shutdown API Gateway before startup completed.
+In some cases, APIs are unintentionally disabled when API Gateway shutdown or
+restart process is executed, before the startup process completed.
+
+This issue is resolved.
+
+YAI-26505 (Fix 13)
+
+Vulnerable third party component kubernetes-client used.
+Vulnerable third party components kubernetes-client is used in API Gateway.
+
+This issue is resolved.
+
+YAI-26682 (Fix 13)
+
+Vulnerable third party component esapi used.
+Vulnerable third party components esapi jar is used in API Gateway.
+
+This issue is resolved.
+
+YAI-26085 (Fix 13)
+
+Duplicate applications created when application requested from API Portal.
+When you create an application from API Portal by providing an existing
+application name, a duplicate of the application is created instead of
+registering the corresponding API to the same application.
+
+This issue is resolved.
+
+YAI-25424 (Fix 13)
+
+The quotes are not encoded.
+When a query parameter is added using request transformation and if the query 
+parameter has a quote character, it is not encoded when the query is sent to 
+the native service.
+
+This issue is resolved. 
+
+YAI-25760 (Fix 13)
+
+Unable to invoke Mashup API after bulk promotion.
+If you promote Mashup API along with other assets such as APIs and global
+policies, and invoke the Mashup API, then the Mashup API steps are not executed
+in the specified order. This issue is encountered when you activate Mashup API
+and then activate a global policy.
+
+This issue is resolved.
+
+YAI-26123 (Fix 13)
+
+Unable to log in to API Gateway.
+After you install API Gateway by specifying the machine's IP address and access
+the API Gateway UI, you get a "Server is unreachable" error.
+
+The issue is resolved.
+
+YAI-26227 (Fix 13)
+
+Remote introspection is performed even when application identification is
+unsuccessful.
+When you enforce an API with the API key and OpenId identification policy, and
+if the client does not send an API key during the runtime, then API Gateway
+still performs the remote introspection of the bearer token that is not needed.
+
+This issue is resolved.
+
+YAI-26289 (Fix 13)
+
+Performance data not created in API Gateway Ignite cluster.
+When API Gateway is set up as a cluster based on Apache Ignite then no
+performance data is created, although the 'Performance metrics data' switch is
+enabled in the destination configuration section.
+
+This issue is resolved.
+
+YAI-25976 (Fix 13)
+
+Unable to access API Gateway UI after editing ports in Command Central.
+When API Gateway UI port configurations are edited in Command Central, then
+after the next restart of API Gateway the UI is no longer accessible. Accessing
+the UI in a browser results in an error message "HTTP Status 404 – The
+requested resource [/apigatewayui] is not available".
+
+This issue is resolved.
+
+YAI-26428 (Fix 13)
+
+Accessing the inner level JSON element through variables does not return valid 
+JSON.
+When accessing an inner level JSON element in the response processing through 
+variable framework, then the value returned is not in the JSON format.
+
+This issue is resolved.
+
+YAI-25840 (Fix 13)
+
+Vulnerable third party component spring used.
+Vulnerable third party components spring-core-5.3.18.jar and
+spring-tx-5.3.18.jar are used in API Gateway.
+
+This issue is resolved.
+
+YAI-25481 (Fix 12)
+
+Security vulnerability identified in Moment.js library.
+To enhance security, the third-party library, 'Moment.js' is upgraded to a
+safer version.
+
+This issue is resolved.
+
+YAI-25774 (Fix 12)
+
+Validate API Specification policy does not validate query parameters with
+encoded characters.
+When you enforce Validate API Specification policy for an API, and if the query
+parameter contains an encoded character then the validation of the query
+parameter with the API specification fails.
+
+The issue is resolved.
+
+YAI-25890 (Fix 12)
+
+Mocked API does not return a proper response.
+When mocking is enabled for an API and the Accept header from the client has 
+the "q" parameter, then the mocked response is not sent to the client properly.
+
+The issue is resolved. 
+
+YAI-25948 (Fix 12)
+
+When using a third-party authentication server for OAuth2 token validation, if 
+the scope is sent in the "roles" claim of JWT then the runtime invocation fails
+during scope validation.
+
+This issue is resolved. API Gateway now supports the scope mapping of the 
+"roles" claim in JWT when validating OAuth2 access token.
+
+YAI-26140 (Fix 12)
+
+Log entries are not added when the identification and authorization of
+applications are performed using APIKey.
+
+This issue is resolved.
+
+YAIC-4202 (Fix 12)
+
+When using a third-party authentication server for OAuth2 token validation, if 
+the "client_id" value is sent in the "appid" claim of JWT then the runtime 
+invocation fails during the 'client_id' validation.
+
+This issue is resolved. API Gateway now considers the "appid" claim in JWT for 
+the client_id validation.
+
+YAI-25783 (Fix 12)
+
+API Gateway ports with bind addresses are incorrectly displayed in the
+API Gateway UI.
+When a bind address is added for a port in the API Gateway UI, the bind address
+information is not saved and is incorrectly displayed in the API Gateway UI.
+
+This issue is resolved.
+
+YAI-25822 (Fix 12)
+
+API Gateway logs port configuration data that might include password information.
+API Gateway is logging port manager configuration data, which might also
+include passwords in the default Info logging level.
+
+This issue is resolved.
+
+YAI-25944 (Fix 12)
+
+Importing schema fails while retrieving WSDLs.
+Importing a schema might fail when you use a load balancer for retrieving WSDLs
+and the load balancer distributes the requests among multiple nodes.
+
+This issue is resolved.
+
+YAI-25969 (Fix 12)
+
+A grants table inside the LeasedBasedCacheServer was growing unexpectedly. This issue is fixed.
+
+YAI-26066 (Fix 12)
+
+Global search takes long time to return results.
+When you provide a keyword in the Search field, multiple queries are sent to
+the API Data Store to identify the field type for field names used in the
+search. Due to this, the transaction takes a longer time to return search
+results.
+
+This issue is resolved.
+
+YAI-26077 (Fix 12)
+
+Memory Leaks in API Gateway on hot deploy of Soap APIs.
+API Gateway has memory leaks when redeploying active Soap APIs. The heap memory
+usage increases with every redeployment or update of an active Soap API.
+
+This issue is resolved.
+
+YAI-26127 (Fix 12)
+
+Performance issues observed while updating global polices for many Soap APIs.
+When updating a global policy that affects a large number of Soap APIs, the
+update can take a long time.
+
+This issue is resolved by improving the performance while updating Soap APIs.
+
+YAI-26133 (Fix 12)
+
+API name list is not refreshed when adding APIs to a new application.
+The APIs list displayed, when found using the search facility, in the 'Selected
+APIs' section is at times incorrectly displayed for newly created applications.
+
+This issue is resolved.
+
+
+YAI-25559 (Fix 12)
+
+Unable to search global policies using their description.
+When you search for a global policy using a keyword that is provided in the
+policy description, then the search does not return the corresponding global
+policy in the result.
+
+This issue is resolved.
+
+YAI-26085 (Fix 12)
+
+Duplicate applications created when application requested from API Portal.
+When you create an application from API Portal by providing an existing
+application name, a duplicate of the application is created instead of
+registering the corresponding API to the same application.
+
+This issue is resolved.
+
+YAI-25585 (Fix 12)
+
+If you version an API, and if you export the base version and import the same
+then the versioned API is deactivated.
+
+This issue is resolved.
+
+YAI-25879 (Fix 12)
+
+Unable to configure API Gateway timeout duration.
+When you provide a value in the API Gateway timeout field present on the
+Administration > System setting page, the change is not saved.
+
+This issue is resolved.
+
+YAI-25888 (Fix 12)
+
+Unable to add or remove teams from the applications that are created from
+Developer Portal.
+
+This issue is resolved.
+
+YAI-25896 (Fix 12)
+
+Incorrect request URL is displayed in the tracing.
+When tracing is enabled for an API and if the request from the client is over
+"https" , the API request and response of the tracing shows incorrect protocol.
+
+The issue is resolved.
+
+YAI-25930 (Fix 12)
+
+The API Gateway server log contains clear text passwords.
+When API Gateway is started as a Docker container, and a password is configured
+as an environment variable, then the clear text password appears in the server
+log with the message prefix "configuration from ENV".
+
+This issue is resolved.
+
+YAI-25939 (Fix 12)
+
+Performance degradation observed due to API tracing.
+
+This issue is resolved.
+
+YAI-26137 (Fix 12)
+
+Irrelevant error message appears when you invoke a REST API transformed from 
+a SOAP API.
+When you have enabled SOAP To REST transformation for a SOAP API that contains 
+an operation without the "Output" message in the WSDL definition,  and if you 
+invoke it as a REST API, then API Gateway displays a Null pointer exception 
+instead of the corresponding error message.
+
+For example, the following WSDL operation contains only the input message:
+<wsdl:operation name="Operation_with_input message_only">
+<wsdl:input message="ns:msg1"> </wsdl:input>
+</wsdl:operation>
+
+The following WSDL operation contains both input and output messages: 
+<wsdl:operation name="Operation_with_both_messages">
+ <wsdl:input message="ns:msg1"> </wsdl:input>
+<wsdl:output message="ns:msg2"> </wsdl:input>
+</wsdl:operation>
+
+This issue is resolved.
+
+YAI-25906 (Fix 12)
+
+When you invoke the "pub.oauth:introspectToken" service without providing any
+inputs, an exception message appears.
+
+This issue is resolved.
+
+YAI-25385 (Fix 11)
+
+Unable to sort promotions by time.
+This issue is resolved. A new extended setting 'promotionListSortByTime' is
+added to allow you to sort the promotions by time. Set the extended setting to
+'true' to enable this feature.
+
+This issue is resolved.
+
+YAI-25258 (Fix 11)
+
+Swagger and the open API JSON files include unexpected endpoints.
+When you publish a REST API to API Portal, the URL endpoints that appear in the
+generated swagger file and the open API JSON files of API Portal attachments
+are not as expected.
+
+This issue is resolved.
+
+YAI-25445 (Fix 11)
+
+Scopes are not created properly when importing an application.
+When you import an application that has OAuth2 strategy with scopes, and the 
+scopes are not present in the authorization server, then the new scopes are not 
+created properly in API Gateway
+
+The issue is resolved.
+
+YAI-25657 (Fix 11)
+
+Newly created OAuth2 clients are not loaded in secondary nodes of a clustered
+API Gateway.
+When you create an OAuth2 strategy in one of the nodes in a clustered
+API Gateway, the OAuth2 clients are not loaded in the cache of the secondary
+nodes of the cluster. This issue is encountered intermittently.
+
+This issue is resolved.
+
+YAI-25431 (Fix 11)
+
+Export of API Portal communication is not possible in API Gateway UI.
+You can not export API Portal communication to an archive through the
+API Gateway UI
+
+This issue is resolved.
+
+YAI-25468 (Fix 11)
+
+Sub-facilities in logging level of API Gateway were overwritten when restarting Integration Server.
+This issue is resolved.
+
+YAI-25505 (Fix 11)
+
+The password expiry setting configured for a user is not deleted when the user
+is deleted from API Gateway.
+When you configure the Password expiry setting for a user and if you delete
+the user account, the corresponding password expiry setting is not removed.
+
+The issue is resolved.
+
+YAI-25513 (Fix 11)
+
+Promoting assets takes a long time.
+Promoting a large set of APIs is observed to take a very long time. This
+drawback is on the target side with regards to managing the data to be imported.
+
+This issue is resolved. Now, this procedure is optimized.
+
+YAI-25525 (Fix 11)
+
+Search with multiple keywords in API Gateway UI fails.
+When searching with multiple keywords using the pipe symbol (|)
+in Promotion Management in API Gateway UI, does not always return all results.
+
+This issue is resolved.
+
+YAI-25539 (Fix 11)
+
+Unable to log on to API Gateway sometimes when you have enabled SSO.
+When you have enabled SSO, the API Gateway login fails sporadically. The 
+CredentialsExpiredException entry is added in the sag-osgi.log file during 
+such instances.
+
+The issue is resolved. 
+
+YAI-25571 (Fix 11)
+
+Updating truststore with another file and password fails.
+After updating an existing truststore with a new truststore file and another
+password, the truststore is loaded. When this API Gateway node is restarted,
+the updated truststore is shown as not loaded in the Integration Server UI.
+It is also observed that the new truststore is not loaded on the cluster nodes
+as well.
+
+This issue is resolved.
+
+YAI-25811 (Fix 11)
+
+API Mashups list does not display the correct name of the resources that have
+large resource names.
+In the API Mashups -> List of resources page, it is observed that resource names
+are truncated if the name exceeds 25 characters. Hovering over the truncated
+name does not display the full name making it difficult to identify the resource.
+
+This issue is resolved. The truncation of resource names is removed.
+
+YAI-25834 (Fix 11)
+
+An error occurs while deleting temp files and folders.
+In a cluster environment or in a single node environment, conflicts could
+occur on temporary folders with content. This means that one action deletes the
+others content, which might result in a FileNotFoundException.
+
+This issue is resolved.
+
+YAIC-4093 (Fix 11)
+
+Problems observed during import and export of Authentication Server Alias.
+While importing the Authentication Server Alias from an invalid export copy a
+"Import completed" message displays and a blank report is generated. It is
+observed that a wrong export gets generated even though keystore and truststore
+configuration does not exist. This happens as while deleting keystores and
+truststores it is not checked if they are referenced by Authentication Server
+Aliases. Also, the report generated just says "Alias" as Type without giving any
+details about the type of alias.
+
+These issues are resolved.
+Now, when deleting keystores and truststores there is a check if they are
+referenced by Authentication Server Aliases.
+
+YAI-25359 (Fix 11)
+
+Add the fixes audit.log to the diagnostic logs for API Gateway to help investigate customer issues.
+
+This issue is resolved.
+
+YAI-25797 (Fix 11)
+
+The swagger specification generated for policy management API has improper request and response definitions.
+
+The issue is resolved.
+
+YAI-25457 (Fix 11)
+
+Unable to restore indexes with the same prefix name.
+When you restore a backup file with the 'aggregate' parameter and if you
+provide index names with the same prefix, then the restore fails. For example,
+'gateway_default_analytics_errorevents-000001' and
+'gateway_default_analytics_errorevents-000002'.
+
+This issue is resolved.
+
+YAI-25061 (Fix 11)
+
+Namespace not added to applicable elements in native request payload of
+REST transformed SOAP API.
+If you invoke a REST transformed SOAP API, then the request payload sent
+to native service does not add appropriate namespaces for applicable elements
+and attributes.
+
+This issue is resolved.
+
+YAI-25546 (Fix 11)
+
+Cookies header from mashed-up API is not included in response sent to invoking
+client.
+If the last steps of an mashed-up API response have cookies header, then that
+header is not sent to the invoking client.
+
+This issue is resolved.
+
+YAI-24750 (Fix 11)
+
+When a JSON request to a SOAP-enabled API contains null values, then the 
+converted SOAP request sent to the native API also contains the null value as 
+text.
+
+For example, 
+JSON Request: 
+
+{     "Key": null      }
+Converted SOAP request:
+
+<Key>null</Key>
+
+This issue is resolved. 
+
+You can set the new extended setting 'pg.soapToRest.addNilAttribute' to 'true'
+to add null attribute to converted SOAP requests. 
+
+Sample SOAP request with the added null attribute:
+
+<Key xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true/>
+
+Note: The default value of the new extended setting is 'false'.
+
+
+YAI-25136 (Fix 11)
+
+Cluster administration shows bad cluster hosts.
+The API Gateway UI shows bad names and IP addresses in the 'Cluster hosts'
+section of the Administration -> Clustering page. For example, an IP address
+is displayed in the name field, and the IP address field displays
+'0:0:0:0:0:0:0:1%lo'.
+
+This issue is resolved.
+
+YAI-25357 (Fix 11)
+
+API Gateway AppMesh not functional in API Gateway 10.11
+The APIfy operation is disabled in AppMesh due to errors encountered while
+discovering ingress objects during AppMesh configuration, although there are no
+ingresses.
+
+This issue is resolved.
+
+YAI-24873 (Fix 11)
+
+Unable to promote assets after installing API Gateway 10.7 Fix 7.
+During promotion, the password encryption is found to depend on the extended
+setting 'defaultEncoding'. This results in incorrect password conversion leading
+to 401 responses.
+
+This issue is resolved.
+Now, the username and password is used unchanged for the promotion request.
+
+YAI-25333 (Fix 11)
+
+Response header parameter not included in the exported API specification.
+The exported Swagger or Open API documentation of an API does not include the
+defined response header parameter.
+
+This issue is resolved.
+
+
+YAI-25500 (Fix 11)
+
+Multiple schemes are not set when both the HTTP and HTTPS load balancers are set with the same host name and without ports.
+
+YAI-25622 (Fix 11)
+
+API Gateway server log shows NullPointerException during startup.
+During API Gateway startup, the server.log file shows the error message "Error
+while updating SoftwareAG-IS-API-Gateway.xml", together with a stack trace for
+a NullPointerException.
+
+This issue is resolved.
+
+YAI-25178 (Fix 11)
+
+Accessing the JWT claims through variables does not return JSON.
+When accessing a JWT claim from the authorization header through variable
+framework the value returned is not in the JSON format.
+
+The issue is resolved.
+
+YAI-25415 (Fix 11)
+
+Unable to delete OpenId strategy.
+When you update an existing normal OpenId strategy into an HMAC OpenId strategy,
+an error message appears.
+
+The issue is resolved.
+
+YAI-24613 (Fix 9)
+API key / Passman error after importing or promoting an application.
+
+API Gateway generates a new API key when:
+
+* API Gateway is unable to decrypt the API key of an imported application, or
+* The Passman data of API key is corrupted or the master password in the current
+    environment is different.
+
+An entry is added to the import log if the Passman data of the API key is
+corrupted; and an entry is added to the audit log if the API key is regenerated
+during the import of an application.
+
+YAI-23223 (Fix 9)
+Updation of existing API with Swagger file causes issues with runtime invocation
+of that API.
+
+When you update an existing API with a swagger file, the runtime invocation
+after the update fails sporadically with the following exception:
+'java.lang.ClassCastException: com.softwareag.apigateway.api.model.rest.openapi.
+parameter.Parameter cannot be cast to com.softwareag.apigateway.api.model.rest.
+QueryParameter.'
+
+This issue is resolved.
+
+YAI-25203 (Fix 9)
+Saving Custom destination with a variable framework syntax like
+${request.payload.jsonPath[]} fails.
+
+This issue is resolved.
+
+YAIC-4082 (Fix 9)
+Timeout exception occurs as API Gateway forwards the Content-Length header to
+Native Service for a GET method.
+
+This issue is resolved by removing the Content-Length header for GET method.
+
+
+YAI-24152 (Fix 9)
+Dashboard does not appear properly when you have enabled the Teams feature.
+
+When your teams have a large number of assets assigned to them and if you view
+analytics of your team assets, then the data does not appear properly on the
+Dashboard page.
+
+This issue is resolved.
+
+YAI-24196 (Fix 9)
+The Column with the type 'timestamp' is missing in the 'AGW_EVENT_AUDITLOGS'
+table.
+
+API Gateway creates the following table 'AGW_EVENT_AUDITLOGS' to store the audit
+logs. Since the Column with type 'timestamp' is missed in the table, the
+partitioning of the table is not possible.
+
+This issue is resolved by creating a new column 'EVENT_CREATE_TS' of type
+'TIMESTAMP' in the 'AGW_EVENT_AUDITLOGS' table.
+
+
+YAI-24782 (Fix 9)
+Unable to search for fields whose type is 'keyword'. 
+
+If you  search for a field that is saved as 'keyword' type in Elasticsearch 
+using the Search API option, then the system does not return the corresponding 
+results. If the type is not 'text', then you must provide the
+exact value of the field that you are searching for.
+
+This issue is now resolved. 
+
+YAI-25152 (Fix 9)
+The 'java.io.IOException: Invalid keystore format' error is added in the 
+"sag-osgi.log" file when API Gateway is starts up.
+
+The issue is resolved.
+
+YAIC-4024 (Fix 9)
+Team details page does not appear properly.
+When you set the 'enableTeamWork' setting to 'true' and create a new team, and 
+if you view the newly created team from the 'Teams' page under the 
+'User Management' section, then the team details page does not appear properly.
+
+The issue is resolved.
+
+YAIC-4061 (Fix 9)
+Job Id is not returned when you invoke the '/rest/apigateway/apitransactions'
+endpoint to purge data in API Gateway.
+
+This issue is resolved.
+
+YAI-23614 (Fix 9)
+Application de-registration from Developer Portal is not updated in API Gateway.
+
+When you remove multiple APIs from an application in Developer Portal, the
+corresponding application and the API association are not updated properly in
+API Gateway.
+
+The issue is resolved.
+
+YAI-24944 (Fix 9)
+Health check response 200 OK is received even before the API is activated.
+When using /rest/apigateway/health to check the accessibility of the port, it is
+observed that a response with status 200 OK is received even before the API is
+activated.
+The /rest/apigateway/health/engine request is now modified so that it only
+returns 200 when all APIs are activated after startup.
+
+This issue is resolved.
+
+YAI-24973 (Fix 9)
+Sub-facilities in logging levels of Integration server were overwritten when setting logging level for API Gateway.
+This issue is resolved.
+
+YAI-24988 (Fix 9)
+Local introspection fails on scope validation.
+With a JWT token, local introspection fails when the access tokens created from
+an external provider contains contains 'scopes' and not 'scope'. This happens as
+API Gateway supports only the claims 'scope' and 'scp'. Now, API Gateway additionally supports the claims
+'scopes'.
+
+This issue is resolved.
+
+YAI-25083 (Fix 9)
+Deployment of API and related URL alias fails.
+Importing APIs with customized endpoints together with URL aliases fails due to
+an invalid check.
+
+This issue is resolved.
+
+YAI-25195 (Fix 9)
+Updating aliases in a cluster environment leads to a memory spike.
+Updating aliases in a cluster environment might lead to an error in cluster
+synchronization. When such an error occurs multiple times, it might lead to a
+memory spike as the occupied memory is not released.
+
+This issue is resolved.
+
+YAI-25247 (Fix 9)
+External HTTP Port reported as created when it isn't.
+After try to create an external HTTP with the API Gateway UI,
+using a port as registration port which is already
+occupied on the PC, API Gateway displays a popup message
+"Port Created Successfully". But the port is not created.
+API Gateway now shows an error message
+with the information why the Port cannot be created
+
+This issue is resolved. 
+
+YAI-25279 (Fix 9)
+The Search REST API always responds with "isActive": false irrespective of the
+API state.
+Using the REST API to search for APIs, the field isActive always responds as
+false, irrespective whether the APIs are active or not.
+
+This issue is resolved.
+
+YAI-21693 (Fix 9)
+1. Introduced Package Tab supporting view and edit mode for API Detail Page.
+2. In Manage API Page, under Delete API Modal added Linked assets table.
+3. Removed Application link popup, which is now added inside the linked assets table.
+
+YAI-25043 (Fix 9)
+SOAP API activation fails, if you create the API using a WSDL file that has
+multiple endpoints.
+
+This issue is resolved.
+
+YAIC-3884 (Fix 9)
+OAuth security information is incorrect in the exported swagger and open API document.
+
+YAI-25309 (Fix 9)
+IAM policy associated with an API is deleted sometimes when you deactivate the
+corresponding package.
+
+If an API is associated with a package, and if you deactivate the package then
+the IAM policy associated with the API gets deleted sometimes.
+
+This issue is resolved.
+
+YAI-24660 (Fix 9)
+API Gateway is unable store strings on JDBC destination. 
+If the string byte length of configured events is greater the length configured 
+for fields in DB Schema, then API Gateway is unable to store strings in JDBC 
+destination.
+
+This issue is resolved.
+
+YAI-24889 (Fix 9)
+When a microgateway connects to APIs of API Gateway and then both API Gateway and Microgateway will be stopped. After restarting API Gateway, 
+those APIs are not accessible.
+
+This issue is resolved.
+
+YAI-24901 (Fix 9)
+Invalid response for a SOAP to REST API invocation if the array in the actual object is empty.
+If the customer invokes a SOAP to REST API using the REST endpoint and if the native SOAP response.
+contains the empty Array element it is returned array of null elements instead of null in the REST response.
+
+This issue is now resolved.
+
+YAI-25037 (Fix 9)
+Unable to activate websocket API if it has Traffic Optimization policy.
+After adding an Traffic Optimization policy to a websocket API, unable to
+activate the API.
+
+This issue is now resolved.
+
+YAI-25308 (Fix 9)
+Unable to export API Portal configurations with a GET request on an archived
+resource.
+
+This issue is resolved.
+
+YAI-24053 (Fix 9)
+Not able to migrate the analytics index containing large string as value.
+For the fresh installation this issue will be resolved as the mapping will be updated automatically.
+If the customer install as fix, they need to do a rollover for analytics event to avoid this issue.
+
+This issue is fixed now.
+
+YAI-24591 (Fix 8)
+JWT Token authentication changes to optional in API Portal 10.5
+
+JWT claims are not generated when you subscribe to a plan from API Portal.
+When you subscribe to a plan from API Portal, the application created in
+API Gateway does not include the default JWT claims.
+
+The issue is resolved.
+
+YAI-24618 (Fix 8)
+application Identifiers Http header UI issue
+
+When there are HTTP header values in an application and if you remove or edit
+them and update the application, then the values do not appear properly in UI.
+
+The issue is resolved.
+
+YAI-24667 (Fix 8)
+APIGW don't work with Partial Matching URL aliases
+
+Unable to invoke APIs with configured URL aliases.
+If you configure an API's endpoint with an URL alias without having the version
+information, then the runtime invoke of the API fails.
+
+This issue is resolved.
+
+YAI-24680 (Fix 8)
+Golang client support for swagger specs (Service Management)
+
+The swagger specification generated for service management API has improper API
+response definitions.
+
+The issue is resolved.
+
+YAI-24713 (Fix 8)
+XML to JSON conversion keep data type as string
+
+While converting payload from XML to JSON, the new library converts the data to respective data type. 
+But the old library converts everything to string. So solve this there is a method in the new library 
+which takes a boolean parameter to keep the data type as string. So introduced an 
+extended settings. In future customers can use this to toggle the behavior.
+
+YAI-24760 (Fix 8)
+Adding SOAP api support for conditions in the custom extension
+
+Conditions specified in the custom extension policy are not honored.
+When you specify a condition in the custom extension policy for a SOAP API, 
+the condition is not honored when invoking the API during runtime.
+
+This issue is resolved. 
+
+YAI-24538 (Fix 8)
+Import user fails with a NullPointerException.
+
+When trying to import a user that already exists in API Gateway with the same
+name but a different id, and Import Overwrite option is not selected, the
+operation fails with a NullPointerException.
+
+This issue is resolved.
+
+YAI-24570 (Fix 8)
+Content Based routing not working - APIGW not handling the converted value correctly
+
+During request transformation, if JSON payload is converted to XML, then the
+content-based routing does not work properly for XPath and JSON path.
+
+This issue is resolved.
+
+YAI-24045 (Fix 8)
+Ignite clustering stability
+
+API Gateway Ignite cluster is unstable.
+
+In an API Gateway cluster the embedded Ignite server stops and reports temporary
+network segmentation. The remaining cluster members report socket write timeout
+errors if trace log is switched on. Typically this happens if servers in the
+API Gateway cluster run with high CPU consumption.
+
+This issue is resolved.Timeout thresholds for the embedded Ignite server have been increased.
+
+YAI-24816 (Fix 8)
+Swagger "additionalProperties" being dropped after creating API from swagger file
+
+When you create an API by importing a JSON file that contains the
+"additionalProperties" field, and generate a swagger file for the API in
+API Gateway, then the generated file does not contain the field.
+
+This issue is resolved.
+
+YAI-23549 (Fix 7)
+Schema validation failure during runtime.
+
+If you enable schema validation for an API and add XML schema features to
+validate API specification policy action, and when you invoke the API, the
+validation is not performed during runtime.
+
+This issue is resolved.
+
+YAI-23633 (Fix 7)
+Query parameters forwarded to custom extension by default.
+
+When you add a custom extension policy to an API, the query parameters that are
+sent by the client to the API are passed to the custom extension even when the
+"forwardQueryParams" extended setting is disabled. This behavior is observed
+with the APIs that are part of the API Mashups also.
+
+This issue is resolved.
+
+YAM-1430 (Fix 7)
+An APIfied service does not work with all Kubernetes services.
+
+When API Gateway and microservice through AppMesh are in the same Kubernetes
+cluster then API Gateway does not use the ClusterIP service. In addition, if a
+port entry of a Kubernetes service does not have a name, then the URL is not
+exposed.
+ 
+This issue is resolved.
+
+YAI-24010 (Fix 7)
+API callback is not working.
+
+API callback is not working if the value of the callback URL has JSON path 
+expression.
+
+The issue is resolved.
+
+YAI-24070 (Fix 7)
+Unable to invoke APIs enforced with Basic Authentication and Allow Anonymous 
+set to true in the IAM policy.
+
+When you enforce Basic Authentication identification with registered 
+application for an API, and set the Allow Anonymous option to true, and if the 
+client does not send any password in the basic authorization header then the 
+application is not identified.
+
+The issue is resolved.
+
+YAI-24083 (Fix 7)
+When you invoke an API that is enforced with IAM policy configured with HTTP
+header identification, then the API Gateway responses slow down.
+
+The issue is resolved.
+
+YAI-24118 (Fix 7)
+Error message appears when migrating applications from 10.3 API Gateway.
+
+When you migrate applications from API Gateway 10.3, the JsonMappingException 
+error appears in the migration log.
+
+The issue is resolved.
+
+YAI-24183 (Fix 7)
+API Gateway takes a very long time to start up and Kibana does not start.
+
+When there are a large number of OAuth2 scopes in API Gateway, it takes a very 
+long time to start up and Kibana does not start.
+
+This issue is resolved.
+
+YAI-24226 (Fix 7)
+Authorization server scope descriptions are not meaningful for APIs published 
+from CentraSite.
+
+When the pg_oauth2_createDefaultScopes extended setting is set to true, and 
+an API is published from CentraSite then the description displayed for the 
+scopes created in the local authorization server are not meaningful.
+
+The issue is resolved.
+
+YAI-24259 (Fix 7)
+Error when you use the pub.oauth:removeExpiredAccessTokens service.
+
+When the number of expired OAuth2 token is huge and if you remove the expired
+OAuth tokens using the pub.oauth:removeExpiredAccessTokens service, then an
+error message appears.
+
+The issue is resolved.
+
+YAI-24291 (Fix 7)
+Error message logged when webMethods IS Service is invoked through a request
+transformation policy.
+
+An error message and stacktrace logs are added to the server.log file, whenever
+the webMethods IS Service is invoked.
+
+The issue is resolved.
+
+YAI-24313 (Fix 7)
+Transaction events are not masked properly in REST transformed APIs.
+
+When you have enabled REST transformation for a SOAP API, and if you configure
+the data masking policy for the API by setting transaction logging to 'true',
+then the native service request in the transaction event is not masked.
+
+Note: To mask the data in the transaction event of REST transformed APIs, you
+must specify the XPath of the native request SOAP payload.
+
+The issue is resolved.
+
+YAI-24386 (Fix 7)
+Unable to update the payload for a REST transformed API in the Conditional
+Error Processing policy.
+
+When you enforce Conditional Error Processing policy for a REST transformed
+enabled SOAP API and configure Invoke webMethods IS to update the payload
+during the post-processing step, the response sent to the client does not
+include the updated payload.
+
+The issue is resolved.
+
+YAI-24488 (Fix 7)
+Unable to log on to API Gateway sometimes when you have enabled SSO.
+
+When you have enabled SSO, the API Gateway login fails sporadically.
+
+The issue is resolved.
+Description
+
+YAI-24517 (Fix 7)
+Responses from API Gateway slow down when retrieving OAuth2 access tokens.
+
+API Gateway slows down in responding when OAuth2 access tokens are
+retrieved using the pub.apigateway.oauth2:getAccessToken service.
+
+The issue is resolved.
+
+YAI-23940 (Fix 7)
+Diagnostic port is reset to the original version on API Gateway restart.
+
+After deleting the default diagnostic port and creating a new diagnostic port,
+the old diagnostic port is recreated after the restart of API Gateway.
+
+This issue is resolved.
+
+YAI-24048 (Fix 7)
+When CentraSite deploys a virtual service together with an application, and
+API Gateway has applications with the same name, then the API is associated with
+all the applications.
+
+The issue is resolved. Only the deployed virtual service gets associated with
+the API.
+
+
+YAI-24094 (Fix 7)
+API Gateway takes very long time to start up.
+
+When there are large number of Passman handles to be synchronized to
+Integration Server, API Gateway takes very long time to start up.
+
+This issue is resolved.
+
+YAI-24130 (Fix 7)
+Unable to update keystore alias passwords.
+
+After updating an existing loaded keystore with new alias passwords in
+API Gateway UI, the keystore displays an error in Integration Server after
+reloading it due to an incorrect key alias password of the keystore.
+
+This issue is resolved.
+
+YAI-24143 (Fix 7)
+Importing an archive with a missing API is not handled gracefully.
+
+When importing an archive, which has an API declared in the
+APIGatewayAssets.acdl but is missing in the archive ZIP file, the import ends
+with a message dialog box "Importing an archive failed. Internal Server Error"
+being displayed.
+
+This issue is resolved. The import report is now created with the information
+that the API was not found in the ACDL file.
+
+YAI-24160 (Fix 7)
+API Gateway does not return Cache-Control header for WSDL files.
+
+When fetching a WSDL from API Gateway using a HTTP call, the Cache-Control
+response header is not set.
+
+This issue is resolved.
+
+YAI-24207 (Fix 7)
+Port configurations lost during port update.
+
+When you update an external port with a registration port through the
+API Gateway UI, and the registration port is enabled during the update, the
+registration port gets removed on updating the port.
+
+This issue is resolved.
+The registration ports are now disabled before the update and have to be enabled
+again manually after the update.
+
+YAI-24362 (Fix 7)
+Missing Authorization Header in the response sent by API Gateway to the client.
+
+The Authorization Header that is present in the native API response is found
+missing in the response sent to the client.
+
+This issue is resolved.
+
+YAI-24436 (Fix 7)
+Unable to import a SOAP WSDL as the WSDL contains a broken schema reference.
+
+A WSDL downloaded from an API Gateway SOAP API contains a broken schema
+reference. When feeding the WSDL into SOAP tooling an
+org.apache.xmlbeans.XmlException is reported. This happens if the schema
+reference is in the "wsdl:types/xsd:import" section of the WSDL.
+
+This issue is resolved.
+
+YAI-24448 (Fix 7)
+Security vulnerability identified in Moment.js library.
+
+To enhance the security, the 'Moment.js' library is upgraded to a safer version.
+
+This issue is resolved.
+
+YAI-24455 (Fix 7)
+An exception is observed when there is a broken Schema reference while loading
+the WSDL.
+
+A WSDL downloaded from an API Gateway SOAP API contains a broken schema
+reference. When feeding the WSDL into SOAP tooling an
+org.apache.xmlbeans.XmlException is reported. This happens if the schema
+reference is in the "wsdl:types/xsd:schema/xsd:include" section of the WSDL.
+
+This issue is resolved.
+
+YAI-24528 (Fix 7)
+API Gateway fails to start after a fix installation.
+
+API Gateway fails to start after installing API Gateway 10.5 Fix23 or 10.7 Fix14.
+In the Integration Server Administration UI the API Gateway package appears as
+partially loaded. This happens only if the connection to Elasticsearch is
+protected by SSL, for example, if the SearchGuard plugin is enabled in
+Elasticsearch.
+
+This issue is resolved.
+
+YAI-23532 (Fix 7)
+Incorrect statue code set for mocking conditions.
+
+When you create multiple mock conditions, the status code is not correctly
+set for some of the conditions.
+
+This issue is resolved.
+
+YAIC-3722 (Fix 7)
+Incorrect functioning of the OPTIONS method in REST APIs.
+
+When you set the "isStrictResourceMatching" extended setting to 'false', the 
+OPTIONS method does not work as expected.
+
+This issue is resolved.
+
+YAIC-3802 (Fix 7)
+The ${inboundRequestURI} variable used in a call returns the default endpoint
+instead of returning the custom endpoint.
+
+This issue is resolved.
+
+YAIC-3809 (Fix 7)
+Unable to save API after deleting the last resource from the API scope.
+
+When you delete the last resource from the scope of an API and save the API,
+the API is not saved.
+
+This issue is resolved.
+
+YAI-23278 (Fix 7)
+Updating APIs with a large number of methods consumes a lot of time.
+
+This issue is resolved. Changes are made to improve the performance of API
+design time updates.
+
+YAI-23356 (Fix 7)
+API validation failure.
+
+API validation for the query parameter does not work when the schema is
+referenced to the parameter object.
+
+This issue is resolved.
+
+YAI-23594 (Fix 7)
+When the data type of header parameters are updated, the latest changes are not
+reflected in the index templates properly.
+
+This issue is resolved.
+
+YAI-23805 (Fix 7)
+Notification message does not appear after the restore process.
+
+A message to convey that the restore process has successfully completed does 
+not appear.
+
+This issue is resolved.
+
+YAI-23823 (Fix 7)
+Unable to invoke IS services using the Custom destination option.
+
+The Null pointer exception error appears when you invoke an IS service using 
+the custom destination option.
+
+This issue is resolved.
+
+YAI-24247 (Fix 7)
+Description text does not appear in the WSDL for a SOAP API.
+
+If a SOAP API has a description text, then the description text does not appear
+in the WSDL under documentation tag for the API.
+
+This issue is resolved.
+The description text now appears in the WSDL for the API.
+
+YAIC-3726 (Fix 7)
+Configured values change in 'Alert settings' tab of 'Threat Protection' policy
+in API Gateway Cloud.
+
+In API Gateway Cloud, when you restart API Gateway, the values that are
+configured in the 'Alert settings' tab of 'Threat protection' policy page
+reverts back to 'default' values.
+
+This issue is resolved.
+
+YAI-22418 (Fix 7)
+When the API Gateway analytics page is loaded, '404' error is displayed in the
+browser console as one of the network calls fails.
+
+This issue is resolved.
+
+YAI-23604 (Fix 7)
+Usermanagement swagger documentation contain duplicate authorizeUser operationId
+
+In the APIGatewayUserManagementSwagger.json the operationId
+authorizeUser was used in two endpoints:
+POST /users/authenticate
+POST /authenticate
+
+This issue is resolved.
+
+YAI-23734 (Fix 7)
+Rolled over indexes are not migrated as separate indexes. 
+
+When you roll over some of the indexes and if you migrate them to a higher 
+version, all indexes of an alias migrate to target as a single index.
+
+This issue is resolved. If the index alias specified in source have multiple 
+rolled over indexes, then all those indexes are migrated to target as separate 
+indexes by replacing the tenant name and added to target index aliases as 
+read-only indexes.
+
+YAI-24509 (Fix 7)
+Unable to open SOAP APIs from a migrated environment.
+
+If you migrate API Gateway using Zero downtime migration, then the SOAP APIs
+do not open in the migrated instance of API Gateway UI.
+
+This issue is resolved.
+
+YAI-24168 (Fix 7)
+A blank screen opens up on the 'Plan' page.
+
+When you create a plan or open the plan to view its details, a blank screen is
+displayed.
+
+This issue is resolved.
+
+YAI-24383 (Fix 7)
+Response for a REST transformation enabled SOAP API is not proper.
+
+When the native API is sending a SOAP response that has blank spaces, then
+API Gateway transforms the blank spaces to JSON objects when performing the REST
+conversion.
+
+The issue is resolved. A new pg property, pg.soapToRest.removeWhitespaces, if
+set to true, then allows you to specify whether the empty lines between SOAP
+responses must be removed before performing the REST transformation. The value
+is true by default.
+
+YAIC-3849 (Fix 7)
+Error appears during the invoke of API that uses simple alias in its 
+Straight Through Routing policy.
+
+When you create a simple alias with a period (.) in the name and use the alias 
+in the Straight Through Routing policy, an error appears in the response 
+when invoking the API.
+
+The issue is resolved. 
+
+YAIC-3638 (Fix 6)
+API Gateway search operation takes more time to fetch the data in the cloud.
+
+In API Gateway Cloud, the global search and advanced search takes a longer time
+to retrieve and display the data.
+
+This issue is resolved.
+
+YAI-24057 (Fix 6)
+API Gateway startup failure due to NPE while syncing the passman data to IS
+
+This issue is resolved.
+
+YAI-23545 (Fix 6)
+Improvements to APIGateway Utility operations.
+
+When you do not specify the tenant name and repoName parameters while running
+apigatewayUtil scripts, 'list backup' command lists the snapshots from
+'default' repo. Whereas, 'create backup' and 'restore backup' commands pick
+the repo from 'pg.gateway.elasticsearch.tenantId' property located at
+packages\WmAPIGateway\config\resources\elasticsearch\config.properties.
+
+This issue is resolved now by changing the operations of few apigatewayUtil
+commands like 'list backup', 'rollover', and so on to pick the repo property
+from 'config.properties' file when none of the parameters like tenant name or
+repoName are specified.
+
+YAI-22995 (Fix 6)
+
+YAI-23270 (Fix 6)
+Team filter is not working for users in the Administrators team
+
+If the logged in user is part of Administrators team, then the Team filter in
+the API details page is not working.
+
+This issue is resolved.
+
+YAI-23262 (Fix 6)
+The allow headers in the CORS policy does not work properly
+
+When you enforce an API with CORS policy and if you configure the allow headers
+as * and if any header value is sent in Access-Control-Request-Headers,
+an error response with '403 Header not supported' is displayed.
+
+This issue is resolved.
+
+YAI-23180 (Fix 6)
+Re-importing application with OAuth strategy refreshes the client ID and secret.
+
+When an application is created with OAuth strategy and if it is re-imported then
+a new client ID and secret is generated by mistake instead of using the existing
+client ID and secret in the exported archive.
+
+This issue is resolved.
+
+YAI-23312 (Fix 6)
+Unable to partially import an archive
+
+When importing an archive into API Gateway, you can only import the complete
+archive. It is not possible to import a defined number of assets. For example,
+you cannot import a defined number of APIs.
+
+The issue is resolved.
+You can define the assets to be imported in the same way as export. For more
+information, see the updated swagger file APIGatewayArchive.json,
+located at SAGInstalldirectory/IntegrationServer/instances/default/packages/
+WmAPIGateway/resources/apigatewayservices.
+
+YAI-22857 (Fix 6)
+When you send the transactional events to external Elasticsearch,
+locallog or auditlog destinations, ApplicationIp, ServerID, and NativeEndpointURL
+fields are missing.
+
+This issue is fixed.
+
+YAI-20864 (Fix 6)
+When you use transactionalEvents API, transactional event fields like
+application_ip, ApiGW server name, port and the native endpoint URL, are missing
+in the API.
+
+This issue is resolved.
+
+YAI-23391 (Fix 6)
+Authorization server update takes more time
+
+When an authorization server has many scopes and if you update the authorization
+server, API Gateway takes more time to complete the update call.
+
+This issue is resolved.
+
+YAI-23189 (Fix 6)
+Transactional events are not published to Custom Destination after API Gateway
+restarts.
+
+The Transactional events that are configured for publishing to Custom
+Destinations are lost when API Gateway restarts.
+
+This issue is resolved.
+
+YAIC-3674 (Fix 6)
+An OData service with the same name for OData-Action and OData-Function is
+failing within service activation.
+
+The issue is resolved.
+
+YAI-23186 (Fix 6)
+When you sort the runtime events in the Analytics page using the apiName,
+an error is displayed.
+
+The issue is resolved.
+
+YAI-23365 (Fix 6)
+Deactivation of publishing of events and performance metrics data to database
+destination fails.
+
+API Gateway continues to publish the events and performance metrics data to
+database (DB2, Oracle, SQL Server) destination even after disabling the
+following database option from title bar menu > Administration > Destinations.
+
+This issue is resolved now.
+
+YAI-22697 (Fix 6)
+
+YAI-23596 (Fix 6)
+Users unable to select check boxes on the SAML SSO page.
+
+Users unable to select the following check boxes from the SAML SSO page:
+
+  - Send signed SAML auth request
+  - Request signed assertion from IDP
+
+The issue is resolved.
+
+YAI-23174 (Fix 6)
+
+YAIC-3574 (Fix 6)
+
+YAI-23377 (Fix 6)
+
+YAI-23359 (Fix 6)
+JSON schema validation is not working for the date field.
+
+This issue is resolved.
+
+YAI-23358 (Fix 6)
+API specification validation failure.
+
+If the query parameter has multiple values then the API specification
+validation fails for query parameters.
+
+This issue is resolved.
+
+YAIC-3661 (Fix 6)
+OAuth2 token removal is not reflected in all cluster nodes.
+
+When API Gateway is clustered, and when you remove an OAuth2 token from one of
+the internal authorization servers, then the removal is not reflected in other
+nodes of the cluster.
+
+The issue is resolved.
+
+YAI-23636 (Fix 6)
+Keystore configuration is not updated when deleting keystore or truststore
+
+When you delete a keystore or a truststore used in the global keystore
+configuration, the keystore or the truststore reference in the global keystore
+configuration is not updated.
+
+The issue is resolved.
+
+YAI-22526 (Fix 6)
+
+YAIC-3653 (Fix 6)
+
+YAI-23617 (Fix 6)
+Exported LDAP archive is corrupted.
+
+When you export LDAP configuration that has the Default Group set to 'None',
+the exported archive is corrupted.
+
+The issue is resolved.
+
+YAI-23401 (Fix 6)
+When we connect default kibana to an external Elasticsearch for analytics, while
+the core configuration is stored in the API Gateway Data Store itself, error 
+popups displayed in the dashboard, and no data / charts are visible.
+
+Now we have prepared a postman collection to fix this issue and given the 
+modified steps to connect default kibana to external Elasticsearch.
+
+YAI-23068 (Fix 6)
+Unable to clone global policy using the 'Policies' REST API.
+
+This issue is now resolved.
+
+YAI-23556 (Fix 6)
+Irrelevant server log entries after installing API Gateway Fix 16.
+
+When you install API Gateway 10.5 Fix 16, and when you start API Gateway, the
+"Error while updating the common fields mappings for index <index_name>" error
+message is written in the server log.
+
+This issue is resolved.
+
+YAI-23535 (Fix 6)
+Analytics data not displayed for applications with a name that contains
+double-byte characters.
+
+When an application name contains double-byte characters, and if you select the
+the application name from the Analytics screen, then the analytics data does
+not appear.
+
+This issue is resolved.
+
+YAI-23557 (Fix 6)
+Port import fails in API Gateway
+
+Unable to import ports in API Gateway. The ports are displayed in the
+API Gateway UI, but they are not created in Integration Server.
+
+This issue is resolved.
+
+YAI-23762 (Fix 6)
+WSS security elements are not generated in the outbound call to native API.
+
+When you enforce Outbound Message Security policy for an API whose WSDL has a
+PolicyReference element inside a Policy element then the outbound call to the
+native API does not contain WSS security elements.
+
+The issue is resolved.
+
+YAI-23037 (Fix 6)
+Users are incorrectly redirected to the API Gateway home page.
+
+If you have the Manage general administration configurations privilege only and
+if you try to navigate to any tab other than General, API Gateway redirects you
+to its home page
+
+This issue is resolved. Now the Administration screen displays tab based on the
+privilege assigned for the logged in user.
+
+YAI-23708 (Fix 6)
+Updated Partner Id value is not reflected.
+
+When you have used the ${request.application.partnerId} variable in any of the 
+policies and if you update the Partner Id value of an application then the 
+value of the identified application's Partner Id is not returned correctly.
+
+The issue is resolved.
+
+YAI-23627 (Fix 6)
+Incorrect API appears when you access disabled API.
+
+When there are two versions of a SOAP API, if you disable one of them and if
+you access the disabled API's endpoints then the existing API appears.
+
+This issue is resolved.
+
+YAIC-3697 (Fix 6)
+
+YAI-23756 (Fix 6)
+When API Gateway registers an API Portal on the cloud, a diagnostic health check 
+fails with an IllegalArgumentException error.
+
+The issue is resolved.
+
+YAI-23959 (Fix 6)
+Nested arrays not considered during SOAP to REST transformation.
+
+If you have enabled the "Use Schema for Transformation" during SOAP to REST 
+transformation, and if the request JSON has nested array elements then API 
+Gateway considers the nested array as an object though the SOAP API schema 
+identifies the nested arrays.
+
+This issue is resolved.
+
+YAI-23999 (Fix 6)
+Unable to download OpenAPI Swagger and RAML definitions.
+
+In some cases, the Swagger 2.0 or RAML 0.8 definitions of an OpenAPI 3.0 based
+API are not visible.
+
+This issue is resolved.
+
+YAI-23995 (Fix 6)
+When a swagger file contains external references, then API Gateway throws an
+exception when you publish a virtual service from CentraSite to API Gateway. An
+exception can occur during API Gateway import or CentraSite deployment.
+
+The issue is resolved.
+
+YAI-23906 (Fix 5)
+Identified third party Log4j 2.16.0, which have known security vulnerability
+CVE-2021-45105.
+
+The issue is resolved. All Log4j libraries are updated to version 2.17.1.
+
+YAI-23742 (Fix 3)
+Identified third party Log4j 2.13.3, which have known security vulnerability 
+CVE-2021-44228
+
+The issue is resolved. All Log4j libraries are updated to version 2.16.0.
+
+YAI-21890 (Fix 1)
+Expired OAuth access tokens are displayed under Administration > Security >
+JWT/OAuth/OpenID in API Gateway.
+
+This issue is resolved. The expired OAuth access tokens are removed now before
+the tokens are displayed and would not appear under Administration > Security >
+JWT/OAuth/OpenID anymore.
+
+YAI-22460 (Fix 1)
+When you run a SOAP to REST transformation, you get
+an improper error message in the response.
+
+This issue is resolved.
+
+YAI-22636 (Fix 1)
+When you purge application logs in API Gateway v10.7,
+the purge operation fails.
+
+This issue is resolved.
+
+YAI-22966 (Fix 1)
+Unable to view the API key for subscription by using REST API.
+
+If you add a user to the Everybody group, if the user is associated only
+with the Default Team, and if the user invokes the subscription endpoint using
+REST API to view API Key, the masked API key appears.
+
+This issue is resolved.
+
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action
+will revert your installation to the previously installed fix. You cannot use these instructions to
+uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

@@ -1,0 +1,164 @@
+		 Designer 10.15 Fix 11 readme
+
+                 December 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+
+Designer 10.15 Fix 11
+
+
+
+2.0 Fix ID
+
+SDF_10.15_Fix11
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Branding and Naming
+
+
+4.0 Requirements and Dependencies
+
+This fix requires an existing Designer 10.15 installation.
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by 
+Designer 10.15.
+
+
+6.0 Cautions and Warnings
+
+Warning: Do not use the "Uninstall" option (from About Eclipse
+SDK > Installation Details > Installed Software tab), as that
+will completely remove a particular feature.
+
+
+
+7.0 Fix Contents
+
+SDEF-4339
+Designer 10.15 lacks certain Java system packages in its installation,
+resulting in incomplete functionality for some features.
+
+This issue is now resolved.
+
+
+SDEF-4270 (SDF_10.15_Fix10)
+Added Java 17 OSGI environmental details into Designer Platform build. 
+Also the build source & target compatibility is set to Java 11.
+
+
+SDEF-4188/SDEF-4175 (SDF_10.15_Fix9)
+The Git perspective in Software AG Designer 10.15 is corrupted.
+
+Designer throws an error while opening the Git perspective as it is
+corrupted. The issue arises from conflicts between the versions
+of the Apache Commons Codec and HttpClient libraries.
+
+This issue is now resolved. 
+
+
+SDEF-3486(SDF_10.15_Fix8)
+Software AG Designer 10.15 now includes the Apache Commons Codec 
+1.15.0 library. 
+ 
+
+SDEF-3421 (SDF_10.15_Fix7)
+Designer Platform contains the third-party library Google Guava 
+with versions 15 & 18, which has known security vulnerabilities. 
+
+The issue is resolved. The vulnerable versions 15 & 18 of the 
+libraries are now upgraded to a more secure version (32.1.2-jre).
+
+
+SDEF-3398 (SDF_10.15_Fix6)
+Software AG Designer uses the org.apache.log4j_1.2.15.xxx.jar plugin,
+which has a security vulnerability.
+
+This issue is now resolved by removing the dependency on the 
+log4j JAR.
+
+
+SDEF-3385 (SDF_10.15_Fix5)
+A security issue with the jQuery JavaScript file was discovered
+in Common Designer platform.
+
+The issue is resolved. The vulnerable jQuery JavaScript file 
+version 1.4.2 is now upgraded to a more secure version (3.6.4).
+
+
+SDEF-3383 (SDF_10.15_Fix5)
+A security issue with the jQuery UI JavaScript file was discovered
+in Common Designer platform.
+
+The issue is resolved. The vulnerable jQuery UI JavaScript file 
+version 1.8.6 is now upgraded to a more secure version (1.13.2).
+
+
+SDEF-3328 (SDF_10.15_Fix4)
+A security issue with the Woodstox Core library was discovered
+in Common Designer platform.
+
+The issue is resolved. The vulnerable version 6.1.1 of the library
+is now upgraded to a more secure version (6.4.0).
+
+
+SDEF-3336 (SDF_10.15_Fix3)
+A security issue with the SnakeYAML library was discovered
+in Common Designer platform.
+
+The issue is resolved. The vulnerable version 1.26.0 of the library
+is now upgraded to a more secure version (1.33.0). 
+
+
+SDEF-3304 (SDF_10.15_Fix2)
+In Designer, the Entrust Toolkit library is upgraded from version 
+8.0.33 to 8.1.20.
+
+SDEF-3237 (SDF_10.15_Fix1)
+A security issue with the Apache Commons Text library was discovered
+in Common Designer platform.
+
+The issue is resolved. The vulnerable version 1.8.0 of the library
+is now upgraded to a more secure version (1.10.0).  
+
+
+8.0 Installation 
+
+Install using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+        
+
+9.0 Uninstallation 
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

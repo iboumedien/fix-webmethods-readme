@@ -1,0 +1,138 @@
+    webMethods Designer Service Development 11.1 Fix 4 readme
+
+                         December 2025
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Designer Service Development 11.1 Fix 4
+
+
+
+2.0 Fix ID
+
+ESB_11.1_Fix4
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Designer Service Development 11.1
+
+
+
+4.0 Requirements
+
+IS_11.1_Core_Fix7, TPP_11.1_Swagger_Fix1
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods 
+Designer Service Development 11.1.
+
+
+
+6.0 Cautions and Warnings
+
+Warning: Do not use the "Uninstall" option (from About Eclipse
+SDK > Installation Details > Installed Software tab), as that
+will completely remove a particular feature.
+
+
+
+7.0 Fix Contents
+
+WED-10798
+Upgraded OpenAPI Swagger libraries to address security vulnerabilities. 
+
+Designer now uses upgraded versions of the following third-party OpenAPI 
+Swagger libraries in a REST API Descriptor (RAD) to address the known 
+security vulnerabilities:
+
+- swagger-annotations: upgraded from 2.2.19 to 2.2.36
+- swagger-core: upgraded from 2.2.19 to 2.2.36 
+- swagger-models: upgraded from 2.2.19 to 2.2.36 
+- swagger-parser-core: upgraded from 2.1.19 to 2.1.32
+- swagger-parser-v3: upgraded from 2.1.19 to 2.1.32.
+
+Additionally, the following new library has been consuming in Designer:
+The swagger-parser-safe-url-resolver library has been added at version 2.1.32.
+
+
+WED-10807
+Asset comparison in Designer 11.1 fails with "Compare Failed: Error while
+comparing assets".
+
+This issue is now resolved.
+
+
+WF-24223/WF-24962/WF-24226/WF-24224 (ESB_11.1_Fix3)
+Changes to support the flow syntax IF/ELSEIF/ELSE, SWITCH-CASE, DO-UNTIL, 
+WHILE in IBM webMethods Designer.
+
+WED-10591 (ESB_11.1_Fix2)
+Resolved multiple security vulnerabilities in the Designer Service Development.
+
+This fix addresses the following categories of vulnerabilities within the Designer Service Development:
+
+• Do not compare class objects with getName() or getSimpleName() methods
+• Information exposure through error messages
+• Insecure SSL
+• Path Relative Stylesheet Import
+• Plaintext storage of Password
+• XML entity Injection rule
+
+WED-10594 (ESB_11.1_Fix2)
+Designer throws java.lang.StackOverflowError while creating
+a Document Type from an XML Schema Definition (XSD) file.
+
+On Linux or macOS platforms, Designer throws java.lang.StackOverflowError
+while creating a Document Type from an XSD file. The error occurs
+after specifying the schema domain because of the file protocol used to process relative XSD file paths 
+on these platforms.
+
+This issue is now resolved.
+
+
+WED-10576 (ESB_11.1_Fix1)
+As part of this fix, one of the internal library related to Flat File (ffcore.jar) 
+is updated to the latest version.
+
+
+8.0 Installation
+
+Install using Software AG Update Manager. For instructions, see the 
+documentation at https://docs.webmethods.io/.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot apply these instructions to the previously installed 
+fix. 
+
+Uninstall using the Software AG Update Manager. For instructions, see the 
+documentation at https://docs.webmethods.io/. 
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025
