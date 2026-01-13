@@ -46,38 +46,6 @@ https://empower.softwareag.com/Products/Globalization/default.asp
 
 5.0 Fix Contents
 
-YAI-42631 (Fix 8)
-Elasticsearch configuration property is not updated with the new name in the config.properties file during API Gateway startup.
-
-When API Gateway starts, the updated property pg.gateway.dataStore.tenantId=default does not appear in the config.properties file. Instead, the old property pg.gateway.elasticsearch.tenantId is displayed along with the new property. This causes Elasticsearch indices to be created for a different tenant.
-
-This issue is resolved. The property pg.gateway.elasticsearch.tenantId is now correctly replaced with pg.gateway.dataStore.tenantId=default during API Gateway startup.
-
-YAI-42643 (Fix 8)
-Environment variable passwords are printed in logs.
-
-When using the environment variables ui_https_keyPass and ui_https_keystorePass,
-for setting the keystore password for UI HTTPS communication, it is observed
-that these passwords are added to logs when starting API Gateway.
-
-This issue is resolved.
-
-YAI-42449 (Fix 8)
-API Gateway adds the variable '$wm_default' as a value in the header of DELETE
-requests if the content type is empty.
-
-If an internal content-type is set in a DELETE request and the request is
-redirected from an external API Gateway to an internal service, then it might
-influence the native service.
-
-This issue is resolved. Now, there is no internal Content-type used.
-
-YAI-42189 (Fix 8)
-Incorrect URL validation allows system traversal on the API Gateway server.
-
-This issue is resolved.
-
-
 YAI-41180 (Fix 7)
 The Search API in API Gateway fails to retrieve the request and response payload.
 
