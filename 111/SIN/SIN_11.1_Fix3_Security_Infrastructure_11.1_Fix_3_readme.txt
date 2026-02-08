@@ -1,0 +1,115 @@
+			IBM webMethods Security Infrastructure 11.1 Fix 3 readme
+
+                    January 2026
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+1.0 Fix Name
+
+IBM WebMethods Security Infrastructure 11.1 Fix 3
+
+
+
+2.0 Fix ID
+
+SIN_11.1_Fix3
+
+
+3.0 Product(s)/Component(s) Affected
+
+
+This fix affects IBM webMethods Security Infrastructure 11.1.
+
+
+
+4.0 Requirements
+
+This fix requires any of the products listed in 3.0 Products (s)/Component(s) Affected. 
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install
+the specified fix or later.
+
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+
+6.0 Cautions and Warnings
+
+All product profiles that run on top of OSGi runtimes are stopped by
+the IBM webMethods Update Manager and will automatically be started
+after the session completes.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes
+for the release.
+
+SIN-1808
+IBM WebMethods Common Runtime uses Joda library
+which contains outdated timezone data. 
+The issue is resolved.
+
+SIN-1771
+In IBM webMethods Security Infrastructure, a security issue with password-protected files
+in the third-party library Apache Velocity was discovered.
+The issue is now resolved.
+
+SIN-1749
+The Software AG Security Infrastructure uses a version of
+Spring Security that has known vulnerabilities CVE-2024-22257.
+This issue is resolved. Spring Security is upgraded to the stable
+version 5.8.16.
+
+SIN-1729
+Software AG Security Infrastructure uses the third-party engine
+Apache velocity 2.3.0, which has security vulnerabilities.
+The issue is resolved. Software AG Security Infrastructure now uses
+Apache Velocity 2.4.0.
+
+SIN-1738
+In some rare cases SAML static initialization gets bypassed, because of a race condition.
+Issue is fixed
+
+
+
+8.0 Installation
+
+Install using Update Manager. For instructions, see the documentation at
+https://docs.webmethods.io.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix.
+This action will revert your installation to the previously installed fix.
+You cannot use these instructions to uninstall the previously installed fix.
+
+Uninstall using Update Manager. For instructions, see the documentation at
+https://docs.webmethods.io.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025, 2026

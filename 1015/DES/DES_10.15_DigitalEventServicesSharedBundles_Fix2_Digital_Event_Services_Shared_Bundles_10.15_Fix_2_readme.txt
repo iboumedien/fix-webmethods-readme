@@ -1,0 +1,118 @@
+         webMethods Digital Event Services Shared Bundles 10.15 Fix 2 readme 
+		  
+                                  January 2026
+
+________________________________________________________________________________
+
+
+Contents:
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Globalization
+11.0  Copyright
+12.0  Contacting Us
+
+
+1.0 Fix Name
+
+webMethods Digital Event Services Shared Bundles 10.15 Fix 2
+
+
+
+2.0 Fix ID
+
+DEV_10.15_Digital Event Services Shared Bundles_Fix2
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects webMethods Digital Event Services Shared Bundles 10.15
+
+
+
+4.0 Requirements
+
+This fix requires webMethods Digital Event Services Shared Bundles 10.15
+
+For language pack requirements, see the Globalization section of the webMethods
+Empower Product Support website at
+https://empower.softwareag.com/Products/Globalization/default.asp
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported by webMethods Digital Event Services
+Shared Bundles 10.15
+
+
+
+6.0 Cautions and Warnings
+
+None.
+
+
+
+7.0 Fix Contents
+
+
+TPS-4759 (DEV_10.15_Digital Event Services Shared Bundles_Fix2)
+
+webMethods Shared Libraries contains the third party SLF4J and Log4j libraries,
+which have known security vulnerabilities.
+
+The issue is resolved.
+
+
+8.0 Installation
+
+Use Command Central to install fixes on multiple machines from a central 
+location (9.7 or later products), or webMethods Update Manager to install 
+fixes on one machine at a time. For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently 
+installed fix. This action will revert your installation to the previously 
+installed fix. You cannot apply these instructions to the previously 
+installed fix.
+
+Uninstall using Command Central (9.7 or later) or webMethods Update Manager. 
+For instructions, see the documentation at
+http://documentation.softwareag.com.
+
+
+
+10.0 Globalization
+
+This fix conforms to the internationalization standards of the webMethods 
+product suite and includes support for operation in any country, locale, or 
+language as specified in the Installing webMethods Products guide. It was not 
+tested with non-English configurations and non-ASCII data. However, this fix has
+no globalization impact and can be applied to systems running in any supported 
+locale or configuration.
+
+
+
+10.1 Localization
+
+This fix does not require an updated Language Pack. It might contain new 
+messages and these messages will appear in English.
+
+
+
+11.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

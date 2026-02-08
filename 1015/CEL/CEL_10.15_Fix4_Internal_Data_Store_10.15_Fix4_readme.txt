@@ -68,9 +68,36 @@ Any of these items can result in new or changed built-in services,
 APIs, or configuration parameters. Review the fix contents carefully
 before applying the fix.
 
-CEL- 1754
+CEL- 1754 (Fix 4)
 
 Added java dependency to cel fix
+This issue is resolved.
+
+CEL-1757 (Fix 3)
+The JDK is removed from the CEL due to security concerns.
+
+This issue is resolved. Post Fix 3, CEL will reuse the default JDK included in 
+the installation. As a workaround, users need to reinstall the Windows service
+using the following command - elasticsearch-service.bat install sagcel1015_1
+where sagcel1015_1 is the existing windows service name and 
+elasticsearch-service.bat is located in 
+<Installation_Location>/InternalDataStore/bin/.
+
+CEL-1708 (Fix 3)
+Vulnerable java version 17.32.14 has been removed.
+This issue is resolved.
+
+CEL-519 (Fix2)
+
+API Data Store returns an error while configuring the ports.
+This issue is resolved.
+
+CEL-500 (Fix1)
+
+Command Central displays the incorrect status of the API Gateway data store.
+When you start the API Gateway data store as a service, then the Command
+Central does not display the correct status of the data store.
+
 This issue is resolved.
 
 

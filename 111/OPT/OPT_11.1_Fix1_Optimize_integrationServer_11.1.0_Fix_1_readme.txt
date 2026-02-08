@@ -1,0 +1,146 @@
+          webMethods Optimize InfrastructureDC 11.1.0 Fix 1 readme
+
+                          January 2026
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+webMethods Optimize InfrastructureDC 11.1.0 Fix 1
+
+2.0 Fix ID
+
+WID_11.1.0_Fix1_InfrastructureDC
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects:
+
+- Infrastructure Data Collector 11.1
+
+
+4.0 Requirements and Dependencies
+
+None
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+5.0 Platform Support
+
+Same platforms as product release.
+
+6.0 Cautions and Warnings
+
+Attempting to install this fix in a My webMethods Server environment that is configured to use an
+embedded Derby database fails. You can find the error details about the fix installation failure in
+the IBM webMethods Update Manager log file.
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+WID-2449
+Upon starting Infradc server, Null Pointer Exceptions were seen in the server.log file. 
+The issue is resolved.
+
+WID-2413 
+When InfrastructureDC monitors Integration Server, a large number of poll threads are being created.
+The issue is resolved. 
+
+WID-2424 
+When InfrastructureDC monitors ART Connections, status alternates between connected and disconnected.
+The issue is resolved.
+
+WID-2365 
+When Infrastructure Data Collector monitors Integration Server components, error messages appear in the server log.
+The issue is resolved.
+
+WID-2387 
+The WmARTExtDC package causes error messages to appear in the server log. 
+The issue is resolved.
+
+WID-2321 
+Optimize for Infrastructure cannot discover Terracotta BigMemory Max 4.4.0.12.
+The issue is resolved.
+
+WID-2331 
+In Optimize for Infrastructure, the <SAG_Install_Dir>/InfrastructureDC/bin/migrate/migrate.sh utility throws an exception.
+The issue is resolved.
+
+WID-2180 
+In webMethods Optimize, after you discover an ART adapter connection, an "Encountered exception while handling adapter notfication: java.lang.NullPointerException" error appears in the server.log file. 
+The issue is resolved.
+
+WID-1989 
+Migration of InfrastructureDC from lower version to 10.15 fails
+The issue is resolved.
+
+WID-2089 
+InfrastructureDC migration utility fails on startup due to NullPointerException
+The issue is resolved.
+
+WID-2091 
+DISCOVERY of IS SERVERS Fails
+The issue is resolved. 
+
+WID-2007 
+Optimize creates Rule Violations for no reason until WmISExtDC package is restarted.
+The issue is resolved.
+
+WID-2093 
+Failed to discover IS host with underscore
+The issue is resolved.
+
+WID-2011 
+Discovery failing for some IS servers.
+The issue is resolved.
+
+WID-2137 
+webMethods Optimize for Infrastructure cannot connect to an SSL-enabled Universal Messaging server when deploying the environment.
+The issue is resolved.
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a central location (9.7 or later), 
+or IBM webMethods Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at https://docs.webmethods.io.
+
+Install using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Command Central (9.7 or later) or IBM webMethods Update Manager. For instructions, see 
+the documentation at https://docs.webmethods.io.
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+10.0 Copyright
+
+ Copyright IBM Corp. 2024, 2025, 2026

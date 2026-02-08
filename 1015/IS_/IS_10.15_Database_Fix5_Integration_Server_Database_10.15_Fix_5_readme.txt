@@ -49,7 +49,38 @@ Same platforms as product release.
 
 6.0 Cautions and Warnings
 
-None.
+PIE-103749
+
+Integration Server stores monitoring data in the IS_MONITOR table and related tables. These tables 
+should be regularly maintained, otherwise their size can increase significantly and impact migration 
+performance. 
+
+To reduce long migration times caused by large monitoring tables you can clean up old or unnecessary 
+monitoring data before you run migration scripts.
+
+For example, you can use the following procedure to purge the IS_MONITOR table and related tables on 
+SQL Server:
+
+1. Create a database backup of all required databases.
+
+2. Create a truncate.sql script containig the following commands:
+TRUNCATE TABLE IS_SERVICE_STATS;
+alter table IS_SERVICE_STATS drop constraint IS_SERVICE_STATS_FK;
+TRUNCATE TABLE IS_SERVER_STATS;
+alter table IS_SERVER_STATS drop constraint IS_SERVER_STATS_FK;
+TRUNCATE TABLE IS_SERVER_DETAILS;
+alter table IS_SERVER_DETAILS drop constraint IS_SERVER_DETAILS_FK;
+TRUNCATE TABLE IS_MONITOR;
+alter table IS_SERVICE_STATS add constraint IS_SERVICE_STATS_FK FOREIGN KEY (MONITOR_FK) REFERENCES IS_MONITOR(ID) ON DELETE CASCADE;
+alter table IS_SERVER_STATS add constraint IS_SERVER_STATS_FK FOREIGN KEY (MONITOR_FK) REFERENCES IS_MONITOR(ID) ON DELETE CASCADE;
+alter table IS_SERVER_DETAILS add constraint IS_SERVER_DETAILS_FK FOREIGN KEY (MONITOR_FK) REFERENCES IS_MONITOR(ID) ON DELETE CASCADE;
+
+3. Test the truncate.sql in a test environment.
+
+4. Run the truncate.sql in one production environment at a time.
+
+For detailed information about how to clean up monitoring tables, see the official documentation for 
+your database.
 
 
 
@@ -198,4 +229,4 @@ documentation at https://www.ibm.com/docs/en/products.
 
 10.0 Copyright
 
-Copyright IBM Corporation 2025
+Copyright IBM Corporation 2026
