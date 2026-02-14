@@ -1,0 +1,187 @@
+			Metering Agent 10.15 Fix 12 readme
+
+					January 2026
+
+____________________________________________________________________________________________________
+
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+1.0 Fix Name
+
+Metering Agent 10.15 Fix 12
+
+
+
+2.0 Fix ID
+
+MTA_10.15_Fix12
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+
+This fix affects MTA 10.15.
+
+
+
+4.0 Requirements
+
+This fix requires any of the products listed in 3.0 Products (s)/Component(s) Affected. 
+
+Official fixes are cumulative. Therefore, you can install the specified fix or later.
+
+
+
+5.0 Platform Support
+
+This fix is supported on all platforms supported
+by webMethods Product Suite 10.15.
+
+
+
+6.0 Cautions and Warnings
+
+All product profiles that run on top of OSGi runtimes are stopped by
+the IBM webMethods Update Manager and will automatically be started
+after the session completes.
+
+The webMethods products that use webMethods Мetering might not work if
+the metering license is not present. If you cannot start the webMethods
+product, you can temporarily revert its license to the previous version.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include
+enhancements to existing functionality and features. Any of these items can 
+result in new or changed built-in services, APIs, or configuration parameters. 
+Review the fix contents carefully before applying the fix.
+
+This fix is cumulative, which means that it is an aggregate of previous fixes 
+for the release.
+
+MTA-2271
+In IBM webMethods Metering, the diagnostics incorrectly report a failure
+when the license serial number contains alphabetic characters.
+This issue is now resolved.
+
+MTA-2061
+In IBM webMethods Metering, when a corrupted log file is generated,
+valid log files are not sent to the metering server.
+This issue is now resolved.
+
+MTA-2035
+In IBM webMethods Metering, log files might be generated without a header line.
+This issue is now resolved.
+
+MTA-1831
+In webMethods Metering, after PC time synchronization, usage data collection might stop or return incorrect values.
+This issue is now resolved.
+
+MTA-1772
+When generating logs, the Software AG Metering Agent might throw a ZoneRulesException error.
+The issue is resolved.
+
+MTA-1725
+The logs of Metering Agent are revisited and updated.
+
+MTA-1741
+After installing CJP_10.15_Fix354 that upgrades to Java 17, the Software AG Metering dry run check fails and the Metering Agent does not send usage data to the central server.
+This issue is resolved. Software AG Metering is now compatible with Java 17.
+
+MTA-1120
+When Software AG Metering collects data for a product that has more than two profiles
+or instances, the Metering Agent might throw a NoSuchFileException error.
+This issue is resolved.
+
+MTA-1092
+Software AG Metering's diagnostic fails when
+the storage directory is not yet created.
+This is fixed now.
+
+MTA-1068
+In Software AG Metering, obsolete usage measurement files are kept in the metering
+storage directory.
+The issue is resolved. Obsolete usage measurement files are now automatically deleted from
+the metering storage directory.
+
+MTA-1032
+In Software AG Metering, the runtime alias does not support double quotes
+and backslash characters.
+This issue is resolved. You can now use double quotes and backslash characters
+when you configure a runtime alias.
+
+MTA-955
+With Software AG Metering, when the underlying network setup does not allow the retrieval
+of the fully quilified domain name (FQDN) or the same FQDN is assigned to different product
+instances, the same runtime ID might be assigned to these product instances.
+
+This issue is resolved. All product instances that are deployed on a system with a unique
+hostname now have unique runtime IDs that are listed in the corresponding wrapper.log files.
+For details on finding the runtime ID of a product instance, see the Software AG Infrastructure
+Administrator�s Guide.
+
+MTA-839
+Issue a warning if proxy authentication is set, but important system property is not updated
+
+MTA-812
+We added logs that show if shutdown actions that include reporting measurements to the cloud are executed.
+
+MTA-763
+During graceful shutdown, the Software AG Metering Agent might throw a NullPointerException error.
+The issue is resolved.
+
+MTA-789
+During validation of the measurement files, 
+the Software AG Metering Agent Diagnostic Tool might disrupt 
+the reporting of collected usage data.
+The issue is resolved.
+
+MTA-729
+The Software AG Metering Agent does not support proxy with authentication.
+This issue is resolved. You can now do one of the following to configure 
+a proxy username and password:
+
+Use the metering.proxy.user and metering.proxy.pass properties 
+in the metering.agent.properties file
+Use metering.proxy.user and metering.proxy.pass as Java System properties
+Use METERING_PROXY_USER and METERING_PROXY_PASS as environment variables
+
+MTA-730
+MTA-616
+
+In rare cases if migration had failed, it was possible to remove backup file even if restore failed
+
+The issue is now fixed
+
+
+8.0 Installation
+
+Install using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+9.0 Uninstallation
+
+Uninstall using IBM webMethods Update Manager. For instructions, see the documentation at 
+https://docs.webmethods.io.
+
+
+
+10.0 Copyright
+
+Copyright IBM Corp. 2024, 2025

@@ -1,0 +1,250 @@
+                     Common Java Package 10.15 Fix 372 readme
+
+                                    February 2026
+
+____________________________________________________________________________________________________
+
+1.0   Fix Name
+2.0   Fix ID
+3.0   Product(s)/Component(s) Affected
+4.0   Requirements and Dependencies
+5.0   Platform Support
+6.0   Cautions and Warnings
+7.0   Fix Contents
+8.0   Installation
+9.0   Uninstallation
+10.0  Copyright
+____________________________________________________________________________________________________
+
+
+1.0 Fix Name
+
+Common Java Package 10.15 Fix 372
+
+
+
+2.0 Fix ID
+
+CJP_10.15_Fix372
+
+
+
+3.0 Product(s)/Component(s) Affected
+
+This fix affects Common Java Package.
+
+
+
+4.0 Requirements and Dependencies
+
+If offered by IBM webMethods Update Manager or IBM webMethods Command Central,
+please install also the following fixes (or newer):
+- Integration Server Core 10.15 Fix 12: IS_10.15_Core_Fix12
+- Platform 10.15.0 Fix 0013: OGI_10.15_Fix13
+- Branding and Naming Plug-in to Designer 10.15 Fix 8: SDF_10.15_Fix8
+- Shared Libraries Ant 10.15 Fix 1: TPP_10.15_Ant_Fix1
+- Shared Bundles Ant 10.15 Fix 1: TPS_10.15_Ant_Fix1
+- My webMethods Server 10.15 Fix 9: MWS_10.15_Fix9
+- UI Development Plug-in to Designer 10.15 Fix 4: DES_10.15_CAD_Fix4 (see also chapter 6.0 Cautions and Warnings)
+
+There are no further explicit fix requirements, but it is strongly 
+recommended that you install all available product fixes at the same time as Common Java Package 10.15 Fix 372.
+
+Fixes are cumulative. Therefore, for each of the listed fixes, you can install the specified fix or 
+later.
+
+
+
+5.0 Platform Support
+
+This fix is supported on Windows, Linux, Mac, zLinux and AIX operating systems.
+
+
+
+6.0 Cautions and Warnings
+
+*  Since Fix 354:
+   During the installation of this fix, you may need to select and install a large number of dependent fixes. This is expected behavior. 
+   Make sure you select the dependent fixes and proceed with the installation.
+
+   After installing this fix, all previously installed webMethods products on the environment will start using Azul Java version 17.50 for runtime. 
+   On AIX and zLinux, the products will start using IBM Semeru Java 17.0.9.
+
+   Future fixes on webMethods 10.15 products will require and only work with Java 17 runtime.
+
+*  Since Fix 152: 
+-  Please do not install this Java fix while using webMethods Business Console (SBP) product, it is still facing issues with the 
+   ZIP64 Extra Field Validation and looking forward for delivering a fix asap.
+-  Improved ZIP64 Extra Field Validation (JDK-8302483 (not public))
+   java.util.zip.ZipFile has been updated to provide additional validation of ZIP64 extra fields 
+   when opening a ZIP file. This validation may be disabled by setting the system property 
+   jdk.util.zip.disableZip64ExtraFieldValidation to true.
+
+*  Since Fix 152: 
+   Installing this fix on an environment that also includes UI Development Plug-in to Designer 10.15 Fix3:
+   DES_10.15_CAD_Fix3 might cause project deployment to My webMethods Server to fail.
+   To workaround this issue, install My webMethods Server on the machine that hosts the Composite Application Development installation,
+   and then install fix  My webMethods Server 10.15 Fix 6: MWS_10.15_Fix6.
+
+*  Since Fix 149: If you plan adding products to the existing installation folder, 
+   please, don't deploy this fix.
+
+*  Since release: All files in the "<installDir>/jvm/jvm" folder will be set to original vendor content.
+   Manual changes in the "<installDir>/jvm/jvm" folder need to be redone after the fix install.
+   The old files can be found for reference in the "<installDir>/jvm/jvmXXX.bck" folder.
+
+
+
+7.0 Fix Contents
+
+In addition to including resolutions to product defects, a fix may also include enhancements to 
+existing functionality and features. Any of these items can result in new or changed built-in services,
+APIs, or configuration parameters. Review the fix contents carefully before installing the fix.
+
+This fix is cumulative, which means that it includes all previous fixes for the release.
+
+
+CJP-755 (CJP_10.15_Fix372)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu 17.64.16 (January 2026 Update (OpenJDK 17.0.18)) for Windows, MacOS and Linux x64.
+*  IBM Semeru Java 17.0.18.0 for AIX and zLinux.
+
+CJP-742 (CJP_10.15_Fix370)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu 17.62.18 (October 2025 Update (OpenJDK 17.0.17)) for Windows, MacOS and Linux x64.
+*  IBM Semeru Java 17.0.17.0 for AIX and zLinux.
+
+CJP-711 (CJP_10.15_Fix368)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu 17.60.18 (July 2025 Update (OpenJDK 17.0.16)) for Windows, MacOS and Linux x64.
+*  IBM Semeru Java 17.0.16.0 for AIX and zLinux.
+
+CJP-697 (CJP_10.15_Fix366)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu 17.58.22 (April 2025 Update (OpenJDK 17.0.15)) for Windows, MacOS and Linux x64.
+*  IBM Semeru Java 17.0.15.0 for AIX and zLinux.
+
+CJP-690 (CJP_10.15_Fix364)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu 17.56 (October 2024 Update (OpenJDK 17.0.14)) for Windows, MacOS and Linux x64.
+*  IBM Semeru Java 17.0.14 for AIX and zLinux.
+
+CJP-671 (CJP_10.15_Fix362)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu 17.54 (October 2024 Update (OpenJDK 17.0.13)) for Windows, MacOS and Linux x64.
+*  IBM Semeru Java 17.0.12 for AIX and zLinux.
+
+CJP-658 (CJP_10.15_Fix360)
+
+Fixed an issue that prevented products from starting after installing Common Java Package 10.15 Fix 354 on OSX.
+
+CJP-653 (CJP_10.15_Fix359)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  IBM Semeru Java 17.0.11 for AIX.
+
+CJP-645 (CJP_10.15_Fix358)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu JDK 17.52 (openjdk version "17.0.12") for Windows, MacOS and Linux x86_64.
+*  IBM Semeru Java 17.0.11 for zLinux.
+
+CJP-624 (CJP_10.15_Fix354)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu JDK 17.50 (April 2024 Update (OpenJDK version "17.0.11")) for Windows, MacOS and Linux x86_64.
+*  IBM Semeru Java 17.0.9 for AIX.
+
+CJP-610 (CJP_10.15_Fix156)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu 11.72 (April 2024 Update (OpenJDK 11.0.23)) for Windows, MacOS and Linux x64.
+
+CJP-593 (CJP_10.15_Fix154)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu 11.70 (January 2024 Update (OpenJDK 11.0.22)) for Windows, MacOS and Linux x64.
+*  IBM Semeru (Nov 2023 Update 11.0.21) for AIX.
+
+CJP-569 (CJP_10.15_Fix152)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu 11.68 (October 2023 Update (OpenJDK 11.0.21)) for Windows, Linux x64 and MacOS.
+
+CJP-545 (CJP_10.15_Fix150)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu 11.64 (April 2023 Update (OpenJDK 11.0.19)) for Windows, Linux x64 and MacOS.
+
+CJP-530 (CJP_10.15_Fix148)
+
+Common Java Package (folder "<installDir>/jvm/jvm"), including:
+*  Azul Zulu 11.62 (January 2023 Update (OpenJDK 11.0.18)) for Windows, Linux x64 and MacOS.
+
+
+
+8.0 Installation
+
+Use IBM webMethods Command Central to install fixes on multiple machines from a central location (9.7 or later), 
+or IBM webMethods Update Manager to install fixes on one machine at a time. For instructions,
+see the documentation at https://www.ibm.com/docs/en/products.
+
+If you are using IBM webMethods Command Central, follow the steps below.
+
+1. Manually shut down all running products in the product directory that are not
+   managed by Command Central. Keep the Platform Manager in the product
+   directory running.
+2. Install Common Java Package 10.15 Fix 372 in the product directory.
+3. Start the products.
+
+If you are using IBM webMethods Update Manager, it is located in a different
+directory (e.g. C:\SoftwareAGSUM) than the product directory
+(e.g. C:\SoftwareAG). Follow the steps below.
+
+1. Shut down all running products in the product directory (e.g. "C:\SoftwareAG").
+2. Use the Update Manager (e.g. in "C:\SoftwareAGSUM") to install
+   Common Java Package 10.15 Fix 372 in the product directory
+   (e.g. "C:\SoftwareAG").
+3. Start the products.
+
+
+
+9.0 Uninstallation
+
+Note: These instructions can only be used to uninstall the most recently installed fix. This action 
+will revert your installation to the previously installed fix. You cannot use these instructions to 
+uninstall the previously installed fix.
+
+Uninstall using IBM webMethods Command Central (9.7 or later) or IBM webMethods Update Manager. For instructions, see 
+the documentation at https://www.ibm.com/docs/en/products.
+
+If you are using IBM webMethods Command Central, follow the steps below.
+
+1. Manually shut down all running products in the product directory that are not
+   managed by Command Central. Keep the Platform Manager in the product
+   directory running.
+2. Uninstall Common Java Package 10.15 Fix 372 from the product directory.
+3. Start the products.
+
+If you are using IBM webMethods Update Manager, it is located in a different
+directory (e.g. from "C:\SoftwareAGSUM") than the product directory
+(e.g. from "C:\SoftwareAG"). Follow the steps below.
+
+1. Shut down all running products in the product directory (e.g. "C:\SoftwareAG").
+2. Use the Update Manager (e.g. in "C:\SoftwareAGSUM") to uninstall
+   Common Java Package 10.15 Fix 372 from the product directory
+   (e.g. from "C:\SoftwareAG").
+3. Start the products.
+
+
+
+10.0 Copyright
+
+
+Copyright IBM Corporation 2026
